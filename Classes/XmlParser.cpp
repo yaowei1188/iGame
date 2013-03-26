@@ -54,7 +54,7 @@ bool XMLParser::initWithString(const char *content)
 void XMLParser::startElement(void *ctx, const char *name, const char **atts)
 {
 	this->startXMLElement = (char *)name;
-	CCLog("start=%s", startXMLElement.c_str());
+	//CCLog("start=%s", startXMLElement.c_str());
 	if(this->startXMLElement == "string")
 	{
 		while(atts && *atts)
@@ -75,7 +75,7 @@ void XMLParser::startElement(void *ctx, const char *name, const char **atts)
 void XMLParser::endElement(void *ctx, const char *name)
 {
 	this->endXMLElement = (char *)name;
-	CCLog("end=%s", endXMLElement.c_str());
+	//CCLog("end=%s", endXMLElement.c_str());
 }
 
 void XMLParser::textHandler(void *ctx, const char *s, int len)
@@ -92,7 +92,13 @@ void XMLParser::textHandler(void *ctx, const char *s, int len)
 	}
 	if(noValue) return;
 	CCString *pString = CCString::create(value);
-	CCLog("key=%s value=%s", m_key.c_str(), pString->getCString());
+
+	if (m_key=="")
+	{
+		m_key = "content";
+	}
+
+	//CCLog("key=%s value=%s", m_key.c_str(), pString->getCString());
 	this->m_pDictionary->setObject(pString, this->m_key);
 }
 

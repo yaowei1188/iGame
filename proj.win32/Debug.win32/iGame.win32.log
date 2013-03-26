@@ -1,9 +1,9 @@
-﻿Build started 2013/3/24 13:31:04.
+﻿Build started 2013/3/26 15:08:07.
      1>Project "F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\proj.win32\iGame.win32.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug.win32\iGame.win32.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I. /I..\Classes /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\cocos2dx" /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\cocos2dx\include" /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\cocos2dx\kazmath\include" /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\cocos2dx\platform\win32" /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\cocos2dx\platform\third_party\win32" /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\cocos2dx\platform\third_party\win32\OGLES" /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\CocosDenshion\include" /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\extensions" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D STRICT /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS_DEBUG /D COCOS2D_DEBUG=1 /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc100.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\HelloWorldScene.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I. /I..\Classes /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\cocos2dx" /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\cocos2dx\include" /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\cocos2dx\kazmath\include" /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\cocos2dx\platform\win32" /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\cocos2dx\platform\third_party\win32" /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\cocos2dx\platform\third_party\win32\OGLES" /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\CocosDenshion\include" /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\extensions" /I"F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\proj.win32\..\library\jsoncpp\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D STRICT /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS_DEBUG /D COCOS2D_DEBUG=1 /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc100.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\HelloWorldScene.cpp
          HelloWorldScene.cpp
        ResourceCompile:
          All outputs are up-to-date.
@@ -14,8 +14,11 @@
          Debug.win32\iGame.win32.exe.embed.manifest.res
          Debug.win32\AppDelegate.obj
          Debug.win32\HelloWorldScene.obj
-         Debug.win32\main.obj
          Debug.win32\XmlParser.obj
+         Debug.win32\json_reader.obj
+         Debug.win32\json_value.obj
+         Debug.win32\json_writer.obj
+         Debug.win32\main.obj
        Manifest:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug.win32\iGame.win32.exe.embed.manifest" /manifest Debug.win32\iGame.win32.exe.intermediate.manifest
          All outputs are up-to-date.
@@ -29,4 +32,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.60
+Time Elapsed 00:00:07.47

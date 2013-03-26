@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "json/json.h"
 
 using namespace cocos2d;
 
@@ -168,13 +169,30 @@ void HelloWorld::requestFinishedCallback(CCNode* pSender,void *data)
 	std::vector<char> *buffer = response->getResponseData(); 
 
 	//for (unsigned int i = 0; i < buffer->size(); i++)  
-	//{  
+	//{
 	//	CCLog("%c", (*buffer)[i]);
-	//}  
+	//}
 	std::string content(buffer->begin(),buffer->end());
-	CCLog(content.c_str());
+	//CCLog(content.c_str());
 
 	XMLParser *xmlParser = XMLParser::parseWithString(content.c_str());
-	xmlParser->getString("");
+	//xmlParser->getString("content");
+	//CCString *content = CCString::create(xmlParser->getString("content")->getCString());
+	CCLOG("%s",xmlParser->getString("content")->getCString());
+
+	parseJson();
+}
+
+void HelloWorld::parseJson()
+{
+	Json::Reader reader;  
+	Json::Value root; 
+
+	const char* str = "{\"uploadid\": \"UP000000\",\"code\": 100,\"msg\": \"\",\"files\": \"\"}";  
+	if (reader.parse(str, root)) 
+	{  
+		std::string upload_id = root["uploadid"].asString();
+		int code = root["code"].asInt();
+	}
 }
 

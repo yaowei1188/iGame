@@ -13,6 +13,9 @@
       <UniqueIdentifier>{eca1d720-2178-4778-bd4d-a4e1b088e8ad}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;jpg;jpeg;jpe;png;manifest</Extensions>
     </Filter>
+    <Filter Include="source\jsoncpp">
+      <UniqueIdentifier>{1a1abf64-483b-4eb9-a401-efdfa8255be9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\iGame.ico">
@@ -26,6 +29,18 @@
     </None>
     <None Include="..\Resources\HelloWorld.png">
       <Filter>resource</Filter>
+    </None>
+    <None Include="..\library\jsoncpp\src\lib_json\json_internalarray.inl">
+      <Filter>source\jsoncpp</Filter>
+    </None>
+    <None Include="..\library\jsoncpp\src\lib_json\json_internalmap.inl">
+      <Filter>source\jsoncpp</Filter>
+    </None>
+    <None Include="..\library\jsoncpp\src\lib_json\json_valueiterator.inl">
+      <Filter>source\jsoncpp</Filter>
+    </None>
+    <None Include="..\library\jsoncpp\src\lib_json\sconscript">
+      <Filter>source\jsoncpp</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -46,8 +61,11 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="XmlParser.h">
+    <ClInclude Include="..\Classes\XmlParser.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\library\jsoncpp\src\lib_json\json_batchallocator.h">
+      <Filter>source\jsoncpp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -60,8 +78,17 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="XmlParser.cpp">
+    <ClCompile Include="..\Classes\XmlParser.cpp">
       <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\jsoncpp\src\lib_json\json_reader.cpp">
+      <Filter>source\jsoncpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\jsoncpp\src\lib_json\json_value.cpp">
+      <Filter>source\jsoncpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\jsoncpp\src\lib_json\json_writer.cpp">
+      <Filter>source\jsoncpp</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

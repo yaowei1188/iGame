@@ -26,6 +26,7 @@ public:
     CREATE_FUNC(HelloWorld);
 	void submitClicked(CCObject *pSender,CCControlEvent event);
 	void doSubmit();
+	void parseJson();
 
 	CCEditBox *m_txtAccount;
 	CCEditBox *m_txtPassword;
