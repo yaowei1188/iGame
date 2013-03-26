@@ -3,6 +3,7 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
+#include "FriendListScene.h"
 
 using namespace CocosDenshion;
 
@@ -30,7 +31,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     pDirector->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-    CCScene *pScene = HelloWorld::scene();
+    //CCScene *pScene = HelloWorld::scene();
+	CCScene *pScene = FriendListScene::scene();
 
     // run
     pDirector->runWithScene(pScene);

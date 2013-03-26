@@ -67,6 +67,9 @@
     <ClInclude Include="..\library\jsoncpp\src\lib_json\json_batchallocator.h">
       <Filter>source\jsoncpp</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\FriendListScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -89,6 +92,9 @@
     </ClCompile>
     <ClCompile Include="..\library\jsoncpp\src\lib_json\json_writer.cpp">
       <Filter>source\jsoncpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\FriendListScene.cpp">
+      <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
