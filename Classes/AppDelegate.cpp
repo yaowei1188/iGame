@@ -4,6 +4,9 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "FriendListScene.h"
+#include "LoginScene.h"
+#include "MainGameScene.h"
+#include "MainGameSceneLoader.h"
 
 using namespace CocosDenshion;
 
@@ -31,11 +34,23 @@ bool AppDelegate::applicationDidFinishLaunching()
     pDirector->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-    //CCScene *pScene = HelloWorld::scene();
-	CCScene *pScene = FriendListScene::scene();
-
+    //CCScene *pScene = LoginScene::scene();
+	//CCScene *pScene = FriendListScene::scene();
+    
     // run
+    //pDirector->runWithScene(pScene);
+    
+    CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
+    //ccNodeLoaderLibrary->registerCCNodeLoader("MainGameScene", MainGameSceneLoader::loader());
+    
+    cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
+    ccbReader->autorelease();
+    
+    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
+    
     pDirector->runWithScene(pScene);
+
+
     return true;
 }
 
