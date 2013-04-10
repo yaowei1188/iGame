@@ -1,9 +1,9 @@
-#include "HelloWorldScene.h"
+#include "LoginScene.h"
 #include "json/json.h"
 
 using namespace cocos2d;
 
-CCScene* HelloWorld::scene()
+CCScene* LoginScene::scene()
 {
     CCScene * scene = NULL;
     do 
@@ -13,7 +13,7 @@ CCScene* HelloWorld::scene()
         CC_BREAK_IF(! scene);
 
         // 'layer' is an autorelease object
-        HelloWorld *layer = HelloWorld::create();
+        LoginScene *layer = LoginScene::create();
         CC_BREAK_IF(! layer);
 
         // add layer as a child to scene
@@ -25,7 +25,7 @@ CCScene* HelloWorld::scene()
 }
 
 // on "init" you need to initialize your instance
-bool HelloWorld::init()
+bool LoginScene::init()
 {
     bool bRet = false;
     do 
@@ -111,7 +111,7 @@ bool HelloWorld::init()
 
 		btnSubmit = CCControlButton::create(title,btnNormal);
 		btnSubmit->setPosition(CCPointMake(winSize.width/2,winSize.height - 290));
-		btnSubmit->addTargetWithActionForControlEvents(this,cccontrol_selector(HelloWorld::submitClicked),CCControlEventTouchDown);
+		btnSubmit->addTargetWithActionForControlEvents(this,cccontrol_selector(LoginScene::submitClicked),CCControlEventTouchDown);
 		addChild(btnSubmit);
 
         bRet = true;
@@ -120,7 +120,7 @@ bool HelloWorld::init()
     return bRet;
 }
 
-void HelloWorld::submitClicked(CCObject *pSender,CCControlEvent event)
+void LoginScene::submitClicked(CCObject *pSender,CCControlEvent event)
 {
 	CCLOG("i was clicked");
 	char sAccount[20];
@@ -133,11 +133,11 @@ void HelloWorld::submitClicked(CCObject *pSender,CCControlEvent event)
 
 }
 
-void HelloWorld::doSubmit()
+void LoginScene::doSubmit()
 {
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpPost);
-	request->setResponseCallback(this,callfuncND_selector(HelloWorld::requestFinishedCallback));
+	request->setResponseCallback(this,callfuncND_selector(LoginScene::requestFinishedCallback));
 	request->setTag("post testing!!!");
 	request->setUrl("http://223.4.10.91/andon_service/ANDON_EX_USER.asmx/GetList");
 
@@ -149,7 +149,7 @@ void HelloWorld::doSubmit()
 	request->release();
 }
 
-void HelloWorld::requestFinishedCallback(CCNode* pSender,void *data)
+void LoginScene::requestFinishedCallback(CCNode* pSender,void *data)
 {
     CCHttpResponse *response =  (CCHttpResponse*)data;
 	if(response==NULL)
@@ -183,16 +183,16 @@ void HelloWorld::requestFinishedCallback(CCNode* pSender,void *data)
 	parseJson();
 }
 
-void HelloWorld::parseJson()
+void LoginScene::parseJson()
 {
-	Json::Reader reader;  
-	Json::Value root; 
+//	Json::Reader reader;  
+//	Json::Value root; 
 
-	const char* str = "{\"uploadid\": \"UP000000\",\"code\": 100,\"msg\": \"\",\"files\": \"\"}";  
-	if (reader.parse(str, root)) 
-	{  
-		std::string upload_id = root["uploadid"].asString();
-		int code = root["code"].asInt();
-	}
+//	const char* str = "{\"uploadid\": \"UP000000\",\"code\": 100,\"msg\": \"\",\"files\": \"\"}";  
+//	if (reader.parse(str, root)) 
+//	{  
+//		std::string upload_id = root["uploadid"].asString();
+//		int code = root["code"].asInt();
+//	}
 }
 

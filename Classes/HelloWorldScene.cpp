@@ -185,14 +185,14 @@ void HelloWorld::requestFinishedCallback(CCNode* pSender,void *data)
 
 void HelloWorld::parseJson()
 {
-	Json::Reader reader;  
-	Json::Value root; 
-
-	const char* str = "{\"uploadid\": \"UP000000\",\"code\": 100,\"msg\": \"\",\"files\": \"\"}";  
-	if (reader.parse(str, root)) 
-	{  
-		std::string upload_id = root["uploadid"].asString();
-		int code = root["code"].asInt();
-	}
+//	Json::Reader reader;  
+//	Json::Value root; 
+//
+//	const char* str = "{\"uploadid\": \"UP000000\",\"code\": 100,\"msg\": \"\",\"files\": \"\"}";  
+//	if (reader.parse(str, root)) 
+//	{  
+//		std::string upload_id = root["uploadid"].asString();
+//		int code = root["code"].asInt();
+//	}
 }
 
