@@ -127,6 +127,9 @@ public:
     CCTableView();
     virtual ~CCTableView();
 
+    //add by ivan
+    static CCTableView* create();
+    
     /**
      * An intialized table view object
      *

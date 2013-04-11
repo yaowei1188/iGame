@@ -35,19 +35,38 @@ bool FriendListScene::init()
 
         CC_BREAK_IF(! CCLayer::init());
 
-		CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-
-		CCTableView* tableView = CCTableView::create(this, CCSizeMake(250, 250));
-		tableView->setDirection(kCCScrollViewDirectionVertical);
-		tableView->setPosition(ccp(0,winSize.height/2-30));
-		tableView->setDelegate(this);
-		this->addChild(tableView);
-		tableView->reloadData();
+//		CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+//
+//		
+//        mTableViewFriend = CCTableView::create(this, CCSizeMake(250, 250));
+//		mTableViewFriend->setDirection(kCCScrollViewDirectionVertical);
+//		mTableViewFriend->setPosition(ccp(0,winSize.height/2-30));
+//		mTableViewFriend->setDelegate(this);
+//		this->addChild(mTableViewFriend);
+//		mTableViewFriend->reloadData();
 
         bRet = true;
     } while (0);
 
     return bRet;
+}
+
+bool FriendListScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
+{
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableViewFriend", CCTableView*, this->mTableViewFriend);
+    return true;
+}
+
+void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
+{
+    CCLOG("TEST");
+    
+
+    mTableViewFriend->setDirection(kCCScrollViewDirectionVertical);
+    mTableViewFriend->setDataSource(this);
+//    mTableViewFriend->initWithViewSize(CCSizeMake(320, 250), this);
+    mTableViewFriend->setDelegate(this);
+    mTableViewFriend->reloadData();
 }
 
 void FriendListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)

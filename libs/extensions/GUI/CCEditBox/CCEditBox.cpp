@@ -52,6 +52,23 @@ void CCEditBox::touchDownAction(CCObject *sender, CCControlEvent controlEvent)
     m_pEditBoxImpl->openKeyboard();
 }
 
+//add by ivan
+CCEditBox* CCEditBox::create()
+{
+    CCEditBox* pRet = new CCEditBox();
+    
+    if (pRet != NULL && pRet->initWithSizeAndBackgroundSprite(CCSizeMake(200, 35), CCScale9Sprite::create("account.png")))
+    {
+        pRet->autorelease();
+    }
+    else
+    {
+        CC_SAFE_DELETE(pRet);
+    }
+    
+    return pRet;
+}
+
 CCEditBox* CCEditBox::create(const CCSize& size, CCScale9Sprite* pNormal9SpriteBg, CCScale9Sprite* pPressed9SpriteBg/* = NULL*/, CCScale9Sprite* pDisabled9SpriteBg/* = NULL*/)
 {
     CCEditBox* pRet = new CCEditBox();
