@@ -33,12 +33,12 @@
 
 NS_CC_EXT_BEGIN
 
+//add by ivan
 CCTableView* CCTableView::create()
 {
     CCTableView *table = new CCTableView();
-    table->initWithViewSize(CCSizeMake(320, 250));
+    table->initWithViewSize(CCSizeMake(312, 250),NULL);
     table->autorelease();
-    //table->_updateContentSize();
     
     return table;
 }

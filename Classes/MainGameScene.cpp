@@ -50,7 +50,7 @@ void MainGameScene::toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCContr
 	CCLOG("button clicked");
 }
 
-void MainGameScene::menuBarBtnClicked(CCObject *pSender, CCControlEvent pCCControlEvent)
+void MainGameScene::menuBarBtnClicked(CCObject *pSender)
 {
     CCControlButton *button = (CCControlButton*) pSender;
     switch (button->getTag()) {

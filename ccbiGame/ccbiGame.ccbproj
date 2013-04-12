@@ -27,7 +27,7 @@
 	<key>onlyPublishCCBs</key>
 	<false/>
 	<key>publishDirectory</key>
-	<string>../iGame/iGame/Resources</string>
+	<string>../Resources</string>
 	<key>publishDirectoryAndroid</key>
 	<string>Published-Android</string>
 	<key>publishDirectoryHTML5</key>
@@ -45,13 +45,13 @@
 	<key>publishResolutionHTML5_width</key>
 	<integer>480</integer>
 	<key>publishResolution_</key>
-	<true/>
+	<false/>
 	<key>publishResolution_hd</key>
-	<true/>
+	<false/>
 	<key>publishResolution_ipad</key>
-	<true/>
+	<false/>
 	<key>publishResolution_ipadhd</key>
-	<true/>
+	<false/>
 	<key>publishResolution_large</key>
 	<true/>
 	<key>publishResolution_medium</key>

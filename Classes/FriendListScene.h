@@ -27,7 +27,7 @@ public:
     void requestFinishedCallback(CCNode* pSender,void *p);
 
     // implement the "static node()" method manually
-    CREATE_FUNC(FriendListScene);
+    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(FriendListScene,create);
     
     virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
     virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);

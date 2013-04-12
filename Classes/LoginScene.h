@@ -29,7 +29,7 @@ public:
     
 	void submitClicked(CCObject *pSender,CCControlEvent event);
     
-    void menuBarBtnClicked(CCObject *pSender, CCControlEvent pCCControlEvent);
+    void menuBarBtnClicked(CCObject *pSender);
     
     void toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCControlEvent);
     

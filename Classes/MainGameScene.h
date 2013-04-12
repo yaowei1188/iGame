@@ -28,7 +28,7 @@ public:
     // returns a Scene that contains the HelloWorld as the only child
     static cocos2d::CCScene* scene();
     
-    void menuBarBtnClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
+    void menuBarBtnClicked(CCObject *pSender);
     
     void toolBarBtnClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
     

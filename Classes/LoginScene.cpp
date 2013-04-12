@@ -164,7 +164,7 @@ void LoginScene::toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCControlE
 	CCLOG("button clicked");
 }
 
-void LoginScene::menuBarBtnClicked(CCObject *pSender, CCControlEvent pCCControlEvent)
+void LoginScene::menuBarBtnClicked(CCObject *pSender)
 {
 //    CCControlButton *button = (CCControlButton*) pSender;
 //    switch (button->getTag()) {
