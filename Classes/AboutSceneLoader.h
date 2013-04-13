@@ -11,12 +11,9 @@
 
 #include <iostream>
 #include "cocos2d.h"
-#include "cocos-ext.h"
-#include "CCNodeLoader.h"
 #include "AboutScene.h"
 
 USING_NS_CC;
-USING_NS_CC_EXT;
 
 class AboutSceneLoader : public CCLayerLoader {
 public:

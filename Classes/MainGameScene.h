@@ -28,25 +28,23 @@ public:
     // returns a Scene that contains the HelloWorld as the only child
     static cocos2d::CCScene* scene();
     
-    void bottomBtnClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
+    void menuBarBtnClicked(CCObject *pSender);
     
-    void appleClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
+    void toolBarBtnClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
     
-    virtual cocos2d::SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
+    virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
     
-    virtual cocos2d::extension::SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
-    
-    CREATE_FUNC(MainGameScene);
-    
-    virtual bool init();
-    
-    CCLabelTTF *cat;
+    virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
     
     virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
     
     virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
     
-    //CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainMenuScene, create);
+    virtual bool init();
+    
+    CCLabelTTF *mlblName;
+    
+    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainGameScene, create);
 
 };
 

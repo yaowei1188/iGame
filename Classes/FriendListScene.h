@@ -10,7 +10,11 @@
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class FriendListScene : public cocos2d::CCLayer, public CCTableViewDataSource, public CCTableViewDelegate
+class FriendListScene : public cocos2d::CCLayer,
+public CCTableViewDataSource,
+public CCTableViewDelegate,
+public CCNodeLoaderListener,
+public CCBMemberVariableAssigner
 {
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
@@ -23,14 +27,19 @@ public:
     void requestFinishedCallback(CCNode* pSender,void *p);
 
     // implement the "static node()" method manually
-    CREATE_FUNC(FriendListScene);
-
+    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(FriendListScene,create);
+    
+    virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
+    virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
+    
 	virtual void scrollViewDidScroll(cocos2d::extension::CCScrollView* view) {};
 	virtual void scrollViewDidZoom(cocos2d::extension::CCScrollView* view) {}
 	virtual void tableCellTouched(cocos2d::extension::CCTableView* table, cocos2d::extension::CCTableViewCell* cell);
 	virtual cocos2d::CCSize cellSizeForTable(cocos2d::extension::CCTableView *table);
 	virtual cocos2d::extension::CCTableViewCell* tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx);
 	virtual unsigned int numberOfCellsInTableView(cocos2d::extension::CCTableView *table);
+    
+    CCTableView* mTableViewFriend;
 };
 
 #endif  // __HELLOWORLD_SCENE_H__

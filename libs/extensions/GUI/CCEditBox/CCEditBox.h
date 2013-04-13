@@ -182,6 +182,9 @@ public:
      * Destructor.
      */
     virtual ~CCEditBox(void);
+    
+    //add by ivan
+    static CCEditBox* create();
 
     /**
      * create a edit box with size.

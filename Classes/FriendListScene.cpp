@@ -35,19 +35,37 @@ bool FriendListScene::init()
 
         CC_BREAK_IF(! CCLayer::init());
 
-		CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-
-		CCTableView* tableView = CCTableView::create(this, CCSizeMake(250, 250));
-		tableView->setDirection(kCCScrollViewDirectionVertical);
-		tableView->setPosition(ccp(0,winSize.height/2-30));
-		tableView->setDelegate(this);
-		this->addChild(tableView);
-		tableView->reloadData();
-
         bRet = true;
     } while (0);
 
     return bRet;
+}
+
+bool FriendListScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
+{
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableViewFriend", CCTableView*, this->mTableViewFriend);
+    return true;
+}
+
+void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
+{
+    CCLOG("TEST");
+    
+//    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+//    
+//    mTableViewFriend->removeFromParentAndCleanup(true);
+//        
+//    mTableViewFriend = CCTableView::create(this, CCSizeMake(312, 250));
+//    mTableViewFriend->setDirection(kCCScrollViewDirectionVertical);
+//    mTableViewFriend->setPosition(ccp(0,winSize.height/2-30));
+//    mTableViewFriend->setDelegate(this);
+//    this->addChild(mTableViewFriend);
+//    mTableViewFriend->reloadData();
+
+    mTableViewFriend->setDirection(kCCScrollViewDirectionVertical);
+    mTableViewFriend->setDataSource(this);
+    mTableViewFriend->setDelegate(this);
+    mTableViewFriend->reloadData();
 }
 
 void FriendListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
@@ -67,10 +85,10 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 	if (!cell) {
 		cell = new CCTableViewCell();
 		cell->autorelease();
-		CCSprite *sprite = CCSprite::create("user_blue_32.png");
-		sprite->setAnchorPoint(CCPointZero);
-		sprite->setPosition(ccp(0, 0));
-		cell->addChild(sprite);
+//		CCSprite *sprite = CCSprite::create("user_blue_32.png");
+//		sprite->setAnchorPoint(CCPointZero);
+//		sprite->setPosition(ccp(0, 0));
+//		cell->addChild(sprite);
 
 		CCLabelTTF *lblName = CCLabelTTF::create(string->getCString(), "Helvetica", 20.0);
 		lblName->setPosition(CCPointZero);

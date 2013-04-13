@@ -9,9 +9,20 @@
 #include "MainGameScene.h"
 #include "AboutSceneLoader.h"
 
-#define PLAY_BUTTON_TAG 1
-#define OPTIONS_BUTTON_TAG 2
-#define ABOUT_BUTTON_TAG 3
+//竞技
+#define TOOLBAR_BTN_COMPETITION_TAG 1
+//神魔录
+#define TOOLBAR_BTN_GOD_DEMON_TAG 2
+//排行榜
+#define TOOLBAR_BTN_RANKLIST_TAG 3
+//好友
+#define TOOLBAR_BTN_FRIENDS_TAG 4
+//物品
+#define TOOLBAR_BTN_ITEMS_TAG 5
+//信件
+#define TOOLBAR_BTN_MAIL_TAG 6
+//设置
+#define TOOLBAR_BTN_SETTING_TAG 7
 
 MainGameScene::MainGameScene()
 {
@@ -20,41 +31,49 @@ MainGameScene::MainGameScene()
 
 MainGameScene::~MainGameScene()
 {
-    //this->cat->release();
+    this->mlblName->release();
 }
 
 void MainGameScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    //cat->setString("thank you");
+    this->mlblName->setString("孙悟空");
 }
 
 bool MainGameScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "cat", CCLabelTTF*, this->cat);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mlblName", CCLabelTTF*, this->mlblName);
     
     return true;
 }
 
-void MainGameScene::bottomBtnClicked(CCObject *pSender, CCControlEvent pCCControlEvent)
+void MainGameScene::toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
+	CCLOG("button clicked");
+}
+
+void MainGameScene::menuBarBtnClicked(CCObject *pSender)
 {
     CCControlButton *button = (CCControlButton*) pSender;
     switch (button->getTag()) {
-        case PLAY_BUTTON_TAG:
-            CCLOG("11111111111111111");
-            
-            cat->setString("fuck you");
-//            [[CCDirector sharedDirector] replaceScene:[CCTransitionCrossFade transitionWithDuration:1.0 scene:[CCBReader sceneWithNodeGraphFromFile:@"GameScene.ccbi"]]];
+        case TOOLBAR_BTN_COMPETITION_TAG:
+            CCLOG("11111");
             break;
-        case OPTIONS_BUTTON_TAG:
-//            [[CCDirector sharedDirector] replaceScene:[CCTransitionFlipAngular transitionWithDuration:1.0 scene:[CCBReader sceneWithNodeGraphFromFile:@"OptionsScene.ccbi"]]];
-            CCLOG("222222222222222222");
+        case TOOLBAR_BTN_GOD_DEMON_TAG:
+            CCLOG("22222");
             break;
-        case ABOUT_BUTTON_TAG:
-//            [[CCDirector sharedDirector] replaceScene:[CCTransitionCrossFade transitionWithDuration:1.0 scene:[CCBReader sceneWithNodeGraphFromFile:@"AboutScene.ccbi"]]];
-            CCLOG("3333333333333333333");
-            
-            //[[CCDirector sharedDirector] replaceScene:[CCTransitionFlipAngular transitionWithDuration:1.0 scene:[CCBReader sceneWithNodeGraphFromFile:@"AboutScene.ccbi"]]];
-            //CCDirector::sharedDirector()->replaceScene()
+        case TOOLBAR_BTN_RANKLIST_TAG:
+            CCLOG("33333");
+            break;
+        case TOOLBAR_BTN_FRIENDS_TAG:
+            CCLOG("44444");
+            break;
+        case TOOLBAR_BTN_ITEMS_TAG:
+            CCLOG("55555");
+            break;
+        case TOOLBAR_BTN_MAIL_TAG:
+            CCLOG("66666");
+            break;
+        case TOOLBAR_BTN_SETTING_TAG:
+            CCLOG("77777");
             
             CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
             ccNodeLoaderLibrary->registerCCNodeLoader("AboutScene", AboutSceneLoader::loader());
@@ -70,18 +89,14 @@ void MainGameScene::bottomBtnClicked(CCObject *pSender, CCControlEvent pCCContro
 
 SEL_MenuHandler MainGameScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
 {
-	//CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "appleClicked", MainGameScene::appleClicked);
+	CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "menuBarBtnClicked:", MainGameScene::menuBarBtnClicked);
     
 	return NULL;
 }
 
-void MainGameScene::appleClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
-	CCLOG("button clicked");
-}
-
 SEL_CCControlHandler MainGameScene::onResolveCCBCCControlSelector(CCObject *pTarget, const char * pSelectorName) {
     
-    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "bottomBtnClicked:", MainGameScene::bottomBtnClicked);
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "toolBarBtnClicked:", MainGameScene::toolBarBtnClicked);
     
 	return NULL;
 }

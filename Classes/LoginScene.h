@@ -10,7 +10,10 @@
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class LoginScene : public cocos2d::CCLayer
+class LoginScene : public cocos2d::CCLayer,
+public CCBSelectorResolver,
+public CCBMemberVariableAssigner,
+public CCNodeLoaderListener
 {
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
@@ -22,16 +25,27 @@ public:
     // a selector callback
     void requestFinishedCallback(CCNode* pSender,void *p);
 
-    // implement the "static node()" method manually
-    CREATE_FUNC(LoginScene);
+    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(LoginScene, create);
+    
 	void submitClicked(CCObject *pSender,CCControlEvent event);
+    
+    void menuBarBtnClicked(CCObject *pSender);
+    
+    void toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCControlEvent);
+    
+    virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
+    
+    virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
+    
+    virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
+    
+    virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
+    
 	void doSubmit();
 	void parseJson();
 
 	CCEditBox *m_txtAccount;
 	CCEditBox *m_txtPassword;
-	CCLabelTTF *lblAccount;
-	CCLabelTTF *lblPassword;
 
 	CCControlButton *btnSubmit;
 };

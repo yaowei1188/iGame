@@ -39,81 +39,7 @@ bool LoginScene::init()
         ////////////////////////////////////////////////////////////////////////////
         //// add your codes below...
         ////////////////////////////////////////////////////////////////////////////
-
-        //// 1. Add a menu item with "X" image, which is clicked to quit the program.
-
-        //// Create a "close" menu item with close icon, it's an auto release object.
-        //CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-        //    "CloseNormal.png",
-        //    "CloseSelected.png",
-        //    this,
-        //    menu_selector(HelloWorld::menuCloseCallback));
-        //CC_BREAK_IF(! pCloseItem);
-
-        //// Place the menu item bottom-right conner.
-        //pCloseItem->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20));
-
-        //// Create a menu with the "close" menu item, it's an auto release object.
-        //CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
-        //pMenu->setPosition(CCPointZero);
-        //CC_BREAK_IF(! pMenu);
-
-        //// Add the menu to HelloWorld layer as a child layer.
-        //this->addChild(pMenu, 1);
-
-        //// 2. Add a label shows "Hello World".
-
-        //// Create a label and initialize with string "Hello World".
-        //CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Arial", 24);
-        //CC_BREAK_IF(! pLabel);
-
-        //// Get window size and place the label upper. 
-        //CCSize size = CCDirector::sharedDirector()->getWinSize();
-        //pLabel->setPosition(ccp(size.width / 2, size.height - 50));
-
-        //// Add the label to HelloWorld layer as a child layer.
-        //this->addChild(pLabel, 1);
-
-        //// 3. Add add a splash screen, show the cocos2d splash image.
-        //CCSprite* pSprite = CCSprite::create("HelloWorld.png");
-        //CC_BREAK_IF(! pSprite);
-
-        //// Place the sprite on the center of the screen
-        //pSprite->setPosition(ccp(size.width/2, size.height/2));
-
-        //// Add the sprite to HelloWorld layer as a child layer.
-        //this->addChild(pSprite, 0);
-
-		CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-
-		lblAccount = CCLabelTTF::create("Account:","Arial",25);
-		lblAccount->setPosition(CCPointMake(100,winSize.height - 50));
-		//lblAccount->SET(CCTextAlignment::kCCTextAlignmentLeft);
-		addChild(lblAccount);
-
-		m_txtAccount = CCEditBox::create(CCSizeMake(400,50),CCScale9Sprite::create("account.png"));
-		m_txtAccount->setPosition(CCPointMake(250,winSize.height - 100));
-		m_txtAccount->setPlaceHolder("this is account");
-		addChild(m_txtAccount);
-
-		lblPassword = CCLabelTTF::create("Password:","Arial",25);
-		lblPassword->setPosition(CCPointMake(100,winSize.height - 150));
-		addChild(lblPassword);
-
-		m_txtPassword = CCEditBox::create(CCSizeMake(400,50),CCScale9Sprite::create("account.png"));
-		m_txtPassword->setInputFlag(kEditBoxInputFlagPassword);
-		m_txtPassword->setPosition(CCPointMake(250,winSize.height - 200));
-		m_txtPassword->setPlaceHolder("this is password");
-		addChild(m_txtPassword);
-
-		CCScale9Sprite* btnNormal = CCScale9Sprite::create("btnSubmit.png");  
-		CCLabelTTF *title = CCLabelTTF::create("Touch Me!", "Arial", 30);  
-
-		btnSubmit = CCControlButton::create(title,btnNormal);
-		btnSubmit->setPosition(CCPointMake(winSize.width/2,winSize.height - 290));
-		btnSubmit->addTargetWithActionForControlEvents(this,cccontrol_selector(LoginScene::submitClicked),CCControlEventTouchDown);
-		addChild(btnSubmit);
-
+        
         bRet = true;
     } while (0);
 
@@ -128,8 +54,17 @@ void LoginScene::submitClicked(CCObject *pSender,CCControlEvent event)
 	sprintf(sAccount,m_txtAccount->getText());
 	sprintf(sPassword,m_txtAccount->getText());
 
-	this->doSubmit();
-
+	//this->doSubmit();
+    
+    
+    CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::sharedCCNodeLoaderLibrary();
+    //ccNodeLoaderLibrary->registerCCNodeLoader("AboutScene", AboutSceneLoader::loader());
+    
+    cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
+    ccbReader->autorelease();
+    
+    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
+    CCDirector::sharedDirector()->replaceScene(CCTransitionFlipAngular::create(1.0, pScene));
 
 }
 
@@ -185,8 +120,8 @@ void LoginScene::requestFinishedCallback(CCNode* pSender,void *data)
 
 void LoginScene::parseJson()
 {
-//	Json::Reader reader;  
-//	Json::Value root; 
+	Json::Reader reader;  
+	Json::Value root; 
 
 //	const char* str = "{\"uploadid\": \"UP000000\",\"code\": 100,\"msg\": \"\",\"files\": \"\"}";  
 //	if (reader.parse(str, root)) 
@@ -194,5 +129,89 @@ void LoginScene::parseJson()
 //		std::string upload_id = root["uploadid"].asString();
 //		int code = root["code"].asInt();
 //	}
+}
+
+void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
+{
+    CCLOG("TEST");
+    
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    
+        m_txtAccount->setPlaceHolder("this is account");
+//    m_txtPassword = CCEditBox::create(CCSizeMake(400,50),CCScale9Sprite::create("account.png"));
+    m_txtPassword->setInputFlag(kEditBoxInputFlagPassword);
+//    m_txtPassword->setPosition(CCPointMake(104,winSize.height - 200));
+    m_txtPassword->setPlaceHolder("this is password");
+//    addChild(m_txtPassword);
+    
+//    CCScale9Sprite* btnNormal = CCScale9Sprite::create("btnSubmit.png");
+//    CCLabelTTF *title = CCLabelTTF::create("Touch Me!", "Arial", 30);
+//    
+//    btnSubmit = CCControlButton::create(title,btnNormal);
+//    btnSubmit->setPosition(CCPointMake(winSize.width/2,winSize.height - 290));
+//    btnSubmit->addTargetWithActionForControlEvents(this,cccontrol_selector(LoginScene::submitClicked),CCControlEventTouchDown);
+//    addChild(btnSubmit);
+}
+
+bool LoginScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
+{
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtPassword", CCEditBox*, this->m_txtPassword);
+    return true;
+}
+
+void LoginScene::toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
+	CCLOG("button clicked");
+}
+
+void LoginScene::menuBarBtnClicked(CCObject *pSender)
+{
+//    CCControlButton *button = (CCControlButton*) pSender;
+//    switch (button->getTag()) {
+//        case TOOLBAR_BTN_COMPETITION_TAG:
+//            CCLOG("11111");
+//            break;
+//        case TOOLBAR_BTN_GOD_DEMON_TAG:
+//            CCLOG("22222");
+//            break;
+//        case TOOLBAR_BTN_RANKLIST_TAG:
+//            CCLOG("33333");
+//            break;
+//        case TOOLBAR_BTN_FRIENDS_TAG:
+//            CCLOG("44444");
+//            break;
+//        case TOOLBAR_BTN_ITEMS_TAG:
+//            CCLOG("55555");
+//            break;
+//        case TOOLBAR_BTN_MAIL_TAG:
+//            CCLOG("66666");
+//            break;
+//        case TOOLBAR_BTN_SETTING_TAG:
+//            CCLOG("77777");
+//            
+//            CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
+//            ccNodeLoaderLibrary->registerCCNodeLoader("AboutScene", AboutSceneLoader::loader());
+//            
+//            cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
+//            ccbReader->autorelease();
+//            
+//            CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("AboutScene.ccbi");
+//            CCDirector::sharedDirector()->replaceScene(CCTransitionFlipAngular::create(1.0, pScene));
+//            break;
+//    }
+}
+
+SEL_MenuHandler LoginScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
+{
+//	CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "menuBarBtnClicked:", LoginScene::menuBarBtnClicked);
+    
+	return NULL;
+}
+
+SEL_CCControlHandler LoginScene::onResolveCCBCCControlSelector(CCObject *pTarget, const char * pSelectorName) {
+    
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "submitClicked:", LoginScene::submitClicked);
+    
+	return NULL;
 }
 
