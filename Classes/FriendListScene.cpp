@@ -63,9 +63,15 @@ void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 //    mTableViewFriend->reloadData();
 
     mTableViewFriend->setDirection(kCCScrollViewDirectionVertical);
+    mTableViewFriend->setVerticalFillOrder(kCCTableViewFillTopDown);
     mTableViewFriend->setDataSource(this);
     mTableViewFriend->setDelegate(this);
     mTableViewFriend->reloadData();
+}
+
+void FriendListScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
+{
+    
 }
 
 void FriendListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)

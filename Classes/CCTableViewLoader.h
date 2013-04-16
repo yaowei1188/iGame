@@ -12,6 +12,7 @@
 #include <iostream>
 #include "cocos2d.h"
 #include "cocos-ext.h"
+#include "CCTableView.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
