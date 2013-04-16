@@ -112,6 +112,23 @@ public:
      */
     virtual unsigned int numberOfCellsInTableView(CCTableView *table) = 0;
 
+    /**
+     * Asserts that each cell has a constant size.
+     * Returning false from this method enables a table scan, and may have
+     * performance penalties for larger data sets.  The per-cell size will
+     * be calculated by calling cellSizeForIndex
+     * Defaults to true.
+     *
+     * @return true iff cells in the table will be of constant size
+     */
+    virtual bool hasFixedCellSize();
+    
+    /**
+     * Called to determine the size of a cell at index.  This is only
+     * useful if hasFixedCellSize() returns false.  By default, returns
+     * cellSizeForTable()
+     */
+    virtual CCSize cellSizeForIndex(CCTableView *table, unsigned int idx);
 };
 
 
@@ -212,10 +229,11 @@ public:
     virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
-
-protected:
     
     CCTableViewCell *m_pTouchedCell;
+protected:
+    
+
     /**
      * vertical direction of cell filling
      */
@@ -250,6 +268,7 @@ protected:
     CCPoint __offsetFromIndex(unsigned int index);
     CCPoint _offsetFromIndex(unsigned int index);
     
+    CCTableViewCell* _cellWithIndex(unsigned int cellIndex);
 
     void _moveCellOutOfSight(CCTableViewCell *cell);
     void _setIndexForCell(unsigned int index, CCTableViewCell *cell);

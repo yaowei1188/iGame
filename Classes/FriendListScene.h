@@ -38,8 +38,10 @@ public:
 	virtual cocos2d::CCSize cellSizeForTable(cocos2d::extension::CCTableView *table);
 	virtual cocos2d::extension::CCTableViewCell* tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx);
 	virtual unsigned int numberOfCellsInTableView(cocos2d::extension::CCTableView *table);
-    
+    virtual bool hasFixedCellSize();
+    virtual CCSize cellSizeForIndex(CCTableView *table, unsigned int idx);
     CCTableView* mTableViewFriend;
+    unsigned int selectedindex;
 };
 
 #endif  // __HELLOWORLD_SCENE_H__

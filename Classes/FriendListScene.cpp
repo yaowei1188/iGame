@@ -26,6 +26,8 @@ CCScene* FriendListScene::scene()
 // on "init" you need to initialize your instance
 bool FriendListScene::init()
 {
+    selectedindex = -1;
+    
     bool bRet = false;
     do 
     {
@@ -70,12 +72,34 @@ void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 
 void FriendListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
+    selectedindex = cell->getIdx();
 	CCLOG("cell touched at index: %i", cell->getIdx());
+    table->scrollViewDidScroll(table);
+    table->reloadData();
+//    table->_updateContentSize();
+//    table->updateCellAtIndex(cell->getIdx());
 }
 
 CCSize FriendListScene::cellSizeForTable(CCTableView *table)
 {
 	return CCSizeMake(250, 60);
+}
+
+CCSize FriendListScene::cellSizeForIndex(CCTableView *table, unsigned int idx)
+{
+//    if (idx == 0) {
+//        return CCSizeMake(250, 100);
+//    }
+//    return CCSizeMake(250, 60);
+    if (selectedindex == idx ) {
+        return CCSizeMake(250, 100);
+    }
+    return CCSizeMake(250, 60);
+}
+
+bool FriendListScene::hasFixedCellSize()
+{
+    return false;
 }
 
 CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
@@ -85,10 +109,10 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 	if (!cell) {
 		cell = new CCTableViewCell();
 		cell->autorelease();
-//		CCSprite *sprite = CCSprite::create("user_blue_32.png");
-//		sprite->setAnchorPoint(CCPointZero);
-//		sprite->setPosition(ccp(0, 0));
-//		cell->addChild(sprite);
+		CCSprite *sprite = CCSprite::create("user_blue_32.png");
+		sprite->setAnchorPoint(CCPointZero);
+		sprite->setPosition(ccp(0, 0));
+		cell->addChild(sprite);
 
 		CCLabelTTF *lblName = CCLabelTTF::create(string->getCString(), "Helvetica", 20.0);
 		lblName->setPosition(CCPointZero);
