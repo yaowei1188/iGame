@@ -7,6 +7,8 @@
 #include "SimpleAudioEngine.h"
 #include "XmlParser.h"
 
+#include "CCMessageDialog.h"
+
 using namespace cocos2d;
 using namespace cocos2d::extension;
 

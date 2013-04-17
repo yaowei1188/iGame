@@ -2,7 +2,8 @@
 
 using namespace cocos2d;
 
-#define CELL_ITEMS_Y 30
+#define CELL_ITEMS_Y 38
+#define CELL_ITEMS_GAP 30
 
 CCScene* FriendListScene::scene()
 {
@@ -81,7 +82,7 @@ void FriendListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell
 
 CCSize FriendListScene::cellSizeForTable(CCTableView *table)
 {
-	return CCSizeMake(250, 50);
+	return CCSizeMake(320, 50);
 }
 
 CCSize FriendListScene::cellSizeForIndex(CCTableView *table, unsigned int idx)
@@ -123,31 +124,51 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 		lblName->setTag(123);
 		cell->addChild(lblName);
 
-		CCLabelTTF *lblLevel = CCLabelTTF::create("Lv2", "Helvetica", 20.0);
+		CCLabelTTF *lblLevel = CCLabelTTF::create("Lv2", "Helvetica", 15.0);
 		lblLevel->setPosition(ccp(90,size.height - CELL_ITEMS_Y));
 		lblLevel->setAnchorPoint(CCPointZero);
 		lblLevel->setTag(124);
 		cell->addChild(lblLevel);
 
-		CCLabelTTF *lblFriend = CCLabelTTF::create("friends", "Helvetica", 20.0);
+		CCLabelTTF *lblFriend = CCLabelTTF::create("friends", "Helvetica", 15.0);
 		lblFriend->setPosition(ccp(160,size.height - CELL_ITEMS_Y));
 		lblFriend->setAnchorPoint(CCPointZero);
         lblFriend->setTag(125);
 		cell->addChild(lblFriend);
 
-		CCLabelTTF *lblStatus = CCLabelTTF::create("Online", "Helvetica", 20.0);
+		CCLabelTTF *lblStatus = CCLabelTTF::create("Online", "Helvetica", 15.0);
 		lblStatus->setPosition(ccp(240,size.height - CELL_ITEMS_Y));
 		lblStatus->setAnchorPoint(CCPointZero);
         lblStatus->setTag(126);
 		cell->addChild(lblStatus);
         
-        CCControlButton * button = CCControlButton::create("Chat", "Helvetica", 15);
-        button->setPosition(ccp(60,size.height - CELL_ITEMS_Y * 2));
-        button->setAnchorPoint(CCPointZero);
-        button->setTag(127);
-//        button->setBackgroundSprite(CCScale9Sprite::create("btnSubmit.png"));
-        button->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchDown);
-        cell->addChild(button);
+        CCControlButton * chatBtn = CCControlButton::create("Chat", "Helvetica", 15);
+        chatBtn->setPosition(ccp(30,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+        chatBtn->setAnchorPoint(CCPointZero);
+        chatBtn->setTag(127);
+        chatBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchDown);
+        cell->addChild(chatBtn);
+        
+        CCControlButton * msgBtn = CCControlButton::create("message", "Helvetica", 15);
+        msgBtn->setPosition(ccp(90,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+        msgBtn->setAnchorPoint(CCPointZero);
+        msgBtn->setTag(128);
+        msgBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchDown);
+        cell->addChild(msgBtn);
+        
+        CCControlButton * formationBtn = CCControlButton::create("formation", "Helvetica", 15);
+        formationBtn->setPosition(ccp(150,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+        formationBtn->setAnchorPoint(CCPointZero);
+        formationBtn->setTag(129);
+        formationBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchDown);
+        cell->addChild(formationBtn);
+        
+        CCControlButton * deleteBtn = CCControlButton::create("Delete", "Helvetica", 15);
+        deleteBtn->setPosition(ccp(240,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+        deleteBtn->setAnchorPoint(CCPointZero);
+        deleteBtn->setTag(130);
+        deleteBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchDown);
+        cell->addChild(deleteBtn);
 	}
 	else
 	{
@@ -171,6 +192,18 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
         
         CCScale9Sprite *background = (CCScale9Sprite *)cell->getChildByTag(121);
         background->setContentSize(size);
+        
+        CCControlButton *chatBtn = (CCControlButton *)cell->getChildByTag(127);
+        chatBtn->setPosition(ccp(chatBtn->getPosition().x,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+        
+        CCControlButton *msgBtn = (CCControlButton *)cell->getChildByTag(128);
+        msgBtn->setPosition(ccp(msgBtn->getPosition().x,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+        
+        CCControlButton *formationBtn = (CCControlButton *)cell->getChildByTag(129);
+        formationBtn->setPosition(ccp(formationBtn->getPosition().x,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+        
+        CCControlButton *deleteBtn = (CCControlButton *)cell->getChildByTag(130);
+        deleteBtn->setPosition(ccp(deleteBtn->getPosition().x,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
 	}
 
 	return cell;
@@ -182,6 +215,10 @@ void FriendListScene::toolBarTouchDownAction(CCObject * sender , CCControlEvent 
 //    CCLabelTTF  * label = (CCLabelTTF*) this ->getChildByTag(923);
 //    label->setString(CCString::createWithFormat("按下")->getCString());
     CCLOG("CLICK");
+    
+//    CCMessageBox("oi","cole");
+    CCMessageDialog *box = CCMessageDialog::create();
+    this->addChild(box);
 }
 
 unsigned int FriendListScene::numberOfCellsInTableView(CCTableView *table)
