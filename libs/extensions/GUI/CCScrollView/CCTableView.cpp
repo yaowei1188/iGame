@@ -121,7 +121,7 @@ CCTableViewVerticalFillOrder CCTableView::getVerticalFillOrder()
 
 void CCTableView::reloadData()
 {
-    m_eOldDirection = kCCScrollViewDirectionNone;
+//    m_eOldDirection = kCCScrollViewDirectionNone;
     CCObject* pObj = NULL;
     CCARRAY_FOREACH(m_pCellsUsed, pObj)
     {
@@ -655,8 +655,21 @@ bool CCTableView::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
         point = this->getContainer()->convertTouchToNodeSpace(pTouch);
         
         if (m_eVordering == kCCTableViewFillTopDown) {
-            CCSize cellSize = m_pDataSource->cellSizeForTable(this);
-            point.y -= cellSize.height;
+            //CCSize cellSize = m_pDataSource->cellSizeForTable(this);
+            //point.y -= cellSize.height;
+
+			float extra = m_pDataSource->cellSizeForTable(this).height;
+
+			unsigned cell_ct = m_pDataSource->numberOfCellsInTableView(this);
+			if (! m_pDataSource->hasFixedCellSize()) {
+				if (cell_ct < 1) {
+					extra = 0;
+				} else {
+					extra = m_pDataSource->cellSizeForIndex(this, cell_ct-1).height;
+				}
+			}
+
+			point.y -= extra;
         }
         
         index = this->_indexFromOffset(point);

@@ -6,7 +6,6 @@
 
 #include "SimpleAudioEngine.h"
 #include "XmlParser.h"
-#include "CCTableView.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -35,13 +34,18 @@ public:
     
 	virtual void scrollViewDidScroll(cocos2d::extension::CCScrollView* view) {};
 	virtual void scrollViewDidZoom(cocos2d::extension::CCScrollView* view) {}
-	virtual void tableCellTouched(CCTableView* table, CCTableViewCell* cell);
-	virtual cocos2d::CCSize cellSizeForTable(CCTableView *table);
-	virtual CCTableViewCell* tableCellAtIndex(CCTableView *table, unsigned int idx);
-	virtual unsigned int numberOfCellsInTableView(CCTableView *table);
+	virtual void tableCellTouched(cocos2d::extension::CCTableView* table, cocos2d::extension::CCTableViewCell* cell);
+	virtual cocos2d::CCSize cellSizeForTable(cocos2d::extension::CCTableView *table);
+	virtual cocos2d::extension::CCTableViewCell* tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx);
+	virtual unsigned int numberOfCellsInTableView(cocos2d::extension::CCTableView *table);
+    virtual bool hasFixedCellSize();
+    virtual CCSize cellSizeForIndex(CCTableView *table, unsigned int idx);
     virtual void tableCellHighlight(CCTableView* table, CCTableViewCell* cell);
     
+    void toolBarTouchDownAction(CCObject * sender , CCControlEvent * controlEvent);
+    
     CCTableView* mTableViewFriend;
+    unsigned int selectedindex;
 };
 
 #endif  // __HELLOWORLD_SCENE_H__

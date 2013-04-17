@@ -229,10 +229,11 @@ public:
     virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
-
-protected:
     
     CCTableViewCell *m_pTouchedCell;
+protected:
+    
+
     /**
      * vertical direction of cell filling
      */
