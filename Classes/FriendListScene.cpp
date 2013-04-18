@@ -59,6 +59,7 @@ void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     mTableViewFriend->setDirection(kCCScrollViewDirectionVertical);
     mTableViewFriend->setVerticalFillOrder(kCCTableViewFillTopDown);
     mTableViewFriend->setDataSource(this);
+    mTableViewFriend->setViewSize(CCSizeMake(312, 290));
     mTableViewFriend->setDelegate(this);
     mTableViewFriend->reloadData();
 }
@@ -82,15 +83,15 @@ void FriendListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell
 
 CCSize FriendListScene::cellSizeForTable(CCTableView *table)
 {
-	return CCSizeMake(320, 50);
+	return CCSizeMake(312, 50);
 }
 
 CCSize FriendListScene::cellSizeForIndex(CCTableView *table, unsigned int idx)
 {
     if (selectedindex == idx ) {
-        return CCSizeMake(320, 80);
+        return CCSizeMake(312, 80);
     }
-    return CCSizeMake(320, 50);
+    return CCSizeMake(312, 50);
 }
 
 bool FriendListScene::hasFixedCellSize()
@@ -101,6 +102,7 @@ bool FriendListScene::hasFixedCellSize()
 CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
 	CCString *string = CCString::createWithFormat("%d", idx);
+    bool selected = (idx==selectedindex);
 	CCTableViewCell *cell = table->dequeueCell();
 	if (!cell) {
 		cell = new CCTableViewCell();
@@ -146,28 +148,32 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
         chatBtn->setPosition(ccp(30,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
         chatBtn->setAnchorPoint(CCPointZero);
         chatBtn->setTag(127);
-        chatBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchDown);
+        chatBtn->setVisible(selected);
+        chatBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
         cell->addChild(chatBtn);
         
         CCControlButton * msgBtn = CCControlButton::create("message", "Helvetica", 15);
         msgBtn->setPosition(ccp(90,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
         msgBtn->setAnchorPoint(CCPointZero);
         msgBtn->setTag(128);
-        msgBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchDown);
+        msgBtn->setVisible(selected);
+        msgBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
         cell->addChild(msgBtn);
         
         CCControlButton * formationBtn = CCControlButton::create("formation", "Helvetica", 15);
         formationBtn->setPosition(ccp(150,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
         formationBtn->setAnchorPoint(CCPointZero);
         formationBtn->setTag(129);
-        formationBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchDown);
+        formationBtn->setVisible(selected);
+        formationBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
         cell->addChild(formationBtn);
         
         CCControlButton * deleteBtn = CCControlButton::create("Delete", "Helvetica", 15);
         deleteBtn->setPosition(ccp(240,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
         deleteBtn->setAnchorPoint(CCPointZero);
         deleteBtn->setTag(130);
-        deleteBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchDown);
+        deleteBtn->setVisible(selected);
+        deleteBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
         cell->addChild(deleteBtn);
 	}
 	else
@@ -195,15 +201,19 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
         
         CCControlButton *chatBtn = (CCControlButton *)cell->getChildByTag(127);
         chatBtn->setPosition(ccp(chatBtn->getPosition().x,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+        chatBtn->setVisible(selected);
         
         CCControlButton *msgBtn = (CCControlButton *)cell->getChildByTag(128);
         msgBtn->setPosition(ccp(msgBtn->getPosition().x,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+        msgBtn->setVisible(selected);
         
         CCControlButton *formationBtn = (CCControlButton *)cell->getChildByTag(129);
         formationBtn->setPosition(ccp(formationBtn->getPosition().x,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+        formationBtn->setVisible(selected);
         
         CCControlButton *deleteBtn = (CCControlButton *)cell->getChildByTag(130);
         deleteBtn->setPosition(ccp(deleteBtn->getPosition().x,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+        deleteBtn->setVisible(selected);
 	}
 
 	return cell;

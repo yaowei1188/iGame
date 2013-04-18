@@ -13,6 +13,7 @@
 #include "CCTableViewLoader.h"
 #include "TaskListSceneLoader.h"
 #include "AddFriendSceneLoader.h"
+#include "MainSceneTemplateLoader.h"
 
 using namespace CocosDenshion;
 
@@ -48,6 +49,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     ccNodeLoaderLibrary->registerCCNodeLoader("LoginScene", LoginSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("CCEditBox", CCEditBoxLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("CCTableView", CCTableViewLoader::loader());
+    ccNodeLoaderLibrary->registerCCNodeLoader("MainSceneTemplate", MainSceneTemplateLoader::loader());    
     ccNodeLoaderLibrary->registerCCNodeLoader("FriendListScene", FriendListSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("TaskListScene", TaskListSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("AddFriendScene", AddFriendSceneLoader::loader());

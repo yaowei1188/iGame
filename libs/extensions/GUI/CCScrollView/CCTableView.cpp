@@ -47,7 +47,7 @@ CCSize CCTableViewDataSource::cellSizeForIndex(CCTableView *table, unsigned int 
 CCTableView* CCTableView::create()
 {
     CCTableView *table = new CCTableView();
-    table->initWithViewSize(CCSizeMake(320, 250),NULL);
+    table->initWithViewSize(CCSizeMake(312, 250),NULL);
     table->autorelease();
     
     return table;
