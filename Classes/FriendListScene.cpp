@@ -2,8 +2,7 @@
 
 using namespace cocos2d;
 
-#define CELL_ITEMS_Y 38
-#define CELL_ITEMS_GAP 30
+
 
 CCScene* FriendListScene::scene()
 {
@@ -39,6 +38,10 @@ bool FriendListScene::init()
         //////////////////////////////////////////////////////////////////////////
 
         CC_BREAK_IF(! CCLayer::init());
+        
+        mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("Li2"),CCString::create("Li3"),CCString::create("Li1"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
+        
+        mFriendList->retain();
 
         bRet = true;
     } while (0);
@@ -49,7 +52,20 @@ bool FriendListScene::init()
 bool FriendListScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableViewFriend", CCTableView*, this->mTableViewFriend);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainSceneTemp", MainSceneTemplate*, this->mMainSceneTemp);
     return true;
+}
+
+SEL_MenuHandler FriendListScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
+{
+//	CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "menuBarBtnClicked:", FriendListScene::menuBarBtnClicked);
+	return NULL;
+}
+
+SEL_CCControlHandler FriendListScene::onResolveCCBCCControlSelector(CCObject *pTarget, const char * pSelectorName) {
+    
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "buttonClicked:", FriendListScene::buttonClicked);
+	return NULL;
 }
 
 void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
@@ -81,6 +97,11 @@ void FriendListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell
     table->reloadData();
 }
 
+unsigned int FriendListScene::numberOfCellsInTableView(CCTableView *table)
+{
+	return mFriendList->count();
+}
+
 CCSize FriendListScene::cellSizeForTable(CCTableView *table)
 {
 	return CCSizeMake(312, 50);
@@ -101,7 +122,7 @@ bool FriendListScene::hasFixedCellSize()
 
 CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
-	CCString *string = CCString::createWithFormat("%d", idx);
+	CCString *string = (CCString *)mFriendList->objectAtIndex(idx);
     bool selected = (idx==selectedindex);
 	CCTableViewCell *cell = table->dequeueCell();
 	if (!cell) {
@@ -120,7 +141,7 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 //		sprite->setAnchorPoint(CCPointZero);
 //		cell->addChild(sprite);
 
-		CCLabelTTF *lblName = CCLabelTTF::create(string->getCString(), "Helvetica", 20.0);
+		CCLabelTTF *lblName = CCLabelTTF::create(string->getCString(), "Helvetica", 15.0);
 		lblName->setPosition(ccp(15,size.height - CELL_ITEMS_Y));
 		lblName->setAnchorPoint(CCPointZero);
 		lblName->setTag(123);
@@ -231,14 +252,36 @@ void FriendListScene::toolBarTouchDownAction(CCObject * sender , CCControlEvent 
     this->addChild(box);
 }
 
-unsigned int FriendListScene::numberOfCellsInTableView(CCTableView *table)
+void FriendListScene::buttonClicked(CCObject * sender , CCControlEvent * controlEvent)
 {
-	return 20;
+    CCLOG("SSSS");
+    
+    CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::sharedCCNodeLoaderLibrary();
+    
+    cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
+    ccbReader->autorelease();
+    
+    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("AddFriendScene.ccbi");
+    CCDirector::sharedDirector()->replaceScene(CCTransitionMoveInR::create(0.3, pScene));
 }
 
 
 void FriendListScene::requestFinishedCallback(CCNode* pSender,void *data)
 {
 
+}
+
+FriendListScene::FriendListScene()
+{
+    mTableViewFriend = NULL;
+    mMainSceneTemp = NULL;
+    mFriendList = NULL;
+}
+
+FriendListScene::~FriendListScene()
+{
+//    mTableViewFriend->release();
+//    mMainSceneTemp->release();
+//    mFriendList->release();
 }
 

@@ -25,7 +25,7 @@
 
 MainSceneTemplate::MainSceneTemplate()
 {
-    
+    this->mlblName = NULL;
 }
 
 MainSceneTemplate::~MainSceneTemplate()
@@ -35,7 +35,7 @@ MainSceneTemplate::~MainSceneTemplate()
 
 void MainSceneTemplate::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    this->mlblName->setString("孙悟空");
+    this->mlblName->setString("sunwukong");
 }
 
 bool MainSceneTemplate::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
