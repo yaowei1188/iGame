@@ -36,7 +36,7 @@ MainGameScene::~MainGameScene()
 
 void MainGameScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    this->mlblName->setString("孙悟空");
+    this->mlblName->setString("Sunwukong");
 }
 
 bool MainGameScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)

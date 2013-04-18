@@ -6,7 +6,7 @@
 
 #include "SimpleAudioEngine.h"
 #include "XmlParser.h"
-#include "CCTableView.h"
+//#include "CCTableView.h"
 //#include "CustomCCTableViewCell.h"
 
 using namespace cocos2d;

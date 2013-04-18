@@ -12,7 +12,7 @@
 #include <iostream>
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "CCNodeLoader.h"
+//#include "CCNodeLoader.h"
 #include "MainSceneTemplate.h"
 
 USING_NS_CC;

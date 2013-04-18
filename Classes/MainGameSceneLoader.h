@@ -12,7 +12,6 @@
 #include <iostream>
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "CCNodeLoader.h"
 #include "MainGameScene.h"
 
 USING_NS_CC;

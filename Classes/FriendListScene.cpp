@@ -241,7 +241,7 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 }
 
 //    按下按钮事件回调
-void FriendListScene::toolBarTouchDownAction(CCObject * sender , CCControlEvent * controlEvent)
+void FriendListScene::toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent)
 {
 //    CCLabelTTF  * label = (CCLabelTTF*) this ->getChildByTag(923);
 //    label->setString(CCString::createWithFormat("按下")->getCString());
@@ -252,7 +252,7 @@ void FriendListScene::toolBarTouchDownAction(CCObject * sender , CCControlEvent 
     this->addChild(box);
 }
 
-void FriendListScene::buttonClicked(CCObject * sender , CCControlEvent * controlEvent)
+void FriendListScene::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
 {
     CCLOG("SSSS");
     

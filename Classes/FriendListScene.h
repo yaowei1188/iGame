@@ -54,8 +54,8 @@ public:
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
     virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
     
-    void toolBarTouchDownAction(CCObject * sender , CCControlEvent * controlEvent);
-    void buttonClicked(CCObject * sender , CCControlEvent * controlEvent);
+    void toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent);
+    void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
     
     CCTableView* mTableViewFriend;
     MainSceneTemplate *mMainSceneTemp;
