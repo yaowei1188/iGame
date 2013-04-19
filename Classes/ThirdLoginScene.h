@@ -1,5 +1,5 @@
-#ifndef __LOGINSCENE_SCENE_H__
-#define __LOGINSCENE_SCENE_H__
+#ifndef __ThirdLoginScene_SCENE_H__
+#define __ThirdLoginScene_SCENE_H__
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
@@ -11,14 +11,14 @@
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class LoginScene : public cocos2d::CCLayer,
+class ThirdLoginScene : public cocos2d::CCLayer,
 public CCBSelectorResolver,
 public CCBMemberVariableAssigner,
 public CCNodeLoaderListener
 {
 public:
-    LoginScene();
-    ~LoginScene();
+    ThirdLoginScene();
+    ~ThirdLoginScene();
     
     virtual bool init();  
 
@@ -28,9 +28,8 @@ public:
     // a selector callback
     void requestFinishedCallback(CCNode* pSender,void *p);
 
-    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(LoginScene, create);
+    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(ThirdLoginScene, create);
     
-    void menuBarBtnClicked(CCObject *pSender);
     void buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent);
     
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
@@ -45,8 +44,6 @@ public:
 
 	CCEditBox *m_txtAccount;
 	CCEditBox *m_txtPassword;
-
-	CCControlSwitch *chkRememberPwd;
 };
 
-#endif  // __LOGINSCENE_SCENE_H__
+#endif  // __ThirdLoginScene_SCENE_H__
