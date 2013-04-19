@@ -16,6 +16,18 @@
     <Filter Include="source\jsoncpp">
       <UniqueIdentifier>{1a1abf64-483b-4eb9-a401-efdfa8255be9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resource\Scene">
+      <UniqueIdentifier>{a3b38869-b3e0-437e-92e1-50137239d5e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\ccbResources">
+      <UniqueIdentifier>{5b5810be-fba7-42da-89de-ee9786a5c9c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\Fonts">
+      <UniqueIdentifier>{f16afdd7-0ba0-462a-af32-f5043700b8cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\Image">
+      <UniqueIdentifier>{3edc8ee8-c0c6-41ee-97c7-2b3f8a312237}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\iGame.ico">
@@ -41,6 +53,111 @@
     </None>
     <None Include="..\library\jsoncpp\src\lib_json\sconscript">
       <Filter>source\jsoncpp</Filter>
+    </None>
+    <None Include="..\Resources\account.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\btnSubmit.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Default.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Icon.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Icon%402x.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Icon-72.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Icon-Small.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Icon-Small%402x.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Icon-Small-50.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Fonts\Arial.png">
+      <Filter>resource\Fonts</Filter>
+    </None>
+    <None Include="..\Resources\Fonts\Arial-hd.fnt">
+      <Filter>resource\Fonts</Filter>
+    </None>
+    <None Include="..\Resources\Fonts\Arial-hd.png">
+      <Filter>resource\Fonts</Filter>
+    </None>
+    <None Include="..\Resources\Fonts\Arial.fnt">
+      <Filter>resource\Fonts</Filter>
+    </None>
+    <None Include="..\Resources\ccbResources\ccbDefaultImages.plist">
+      <Filter>resource\ccbResources</Filter>
+    </None>
+    <None Include="..\Resources\ccbResources\ccbParticleStars.png">
+      <Filter>resource\ccbResources</Filter>
+    </None>
+    <None Include="..\Resources\ccbResources\ccbDefaultImages.png">
+      <Filter>resource\ccbResources</Filter>
+    </None>
+    <None Include="..\Resources\ccbResources\ccbParticleFire.png">
+      <Filter>resource\ccbResources</Filter>
+    </None>
+    <None Include="..\Resources\ccbResources\ccbParticleSmoke.png">
+      <Filter>resource\ccbResources</Filter>
+    </None>
+    <None Include="..\Resources\ccbResources\ccbParticleSnow.png">
+      <Filter>resource\ccbResources</Filter>
+    </None>
+    <None Include="..\Resources\FriendListScene.ccbi">
+      <Filter>resource\Scene</Filter>
+    </None>
+    <None Include="..\Resources\HeadScene.ccbi">
+      <Filter>resource\Scene</Filter>
+    </None>
+    <None Include="..\Resources\LoginScene.ccbi">
+      <Filter>resource\Scene</Filter>
+    </None>
+    <None Include="..\Resources\MainGameScene.ccbi">
+      <Filter>resource\Scene</Filter>
+    </None>
+    <None Include="..\Resources\boxbg.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\TaskListScene.ccbi">
+      <Filter>resource\Scene</Filter>
+    </None>
+    <None Include="..\Resources\MainSceneTemplate.ccbi">
+      <Filter>resource\Scene</Filter>
+    </None>
+    <None Include="..\Resources\Image\main-hd.plist">
+      <Filter>resource\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\main.png">
+      <Filter>resource\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\main-hd.png">
+      <Filter>resource\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\main.plist">
+      <Filter>resource\Image</Filter>
+    </None>
+    <None Include="..\Resources\AddFriendScene.ccbi">
+      <Filter>resource\Scene</Filter>
+    </None>
+    <None Include="..\Resources\Image\login.plist">
+      <Filter>resource\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\login.png">
+      <Filter>resource\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\login-hd.plist">
+      <Filter>resource\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\login-hd.png">
+      <Filter>resource\Image</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +187,60 @@
     <ClInclude Include="..\Classes\FriendListScene.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\AboutScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AboutSceneLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCEditBoxLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCTableViewLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\FriendListSceneLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LoginScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LoginSceneLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainGameScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainGameSceneLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AddFriendScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AddFriendSceneLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCMessageDialog.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainSceneTemplate.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainSceneTemplateLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TaskListScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TaskListSceneLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCControlSwitchLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -94,6 +265,27 @@
       <Filter>source\jsoncpp</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\FriendListScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AboutScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LoginScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MainGameScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AddFriendScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CCMessageDialog.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MainSceneTemplate.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TaskListScene.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
