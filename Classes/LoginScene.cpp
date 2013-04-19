@@ -153,19 +153,36 @@ void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     m_txtPassword->setInputFlag(kEditBoxInputFlagPassword);
     m_txtPassword->setPlaceHolder("this is password");
     
-    CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
-    spriteOn->setPosition(CCPointMake(100, 100));
-    CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
-    spriteOff->setPosition(CCPointMake(180, 100));
+	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
+	//spriteOn->setPosition(CCPointMake(100, 100));
+	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
+	//spriteOff->setPosition(CCPointMake(180, 100));
+	CCSprite *spriteMask = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("sina_2.png"));
+    //
+    //this->addChild(spriteOn);
+    //this->addChild(spriteOff);
+
+	CCControlSwitch *switchControl = CCControlSwitch::create(spriteMask,spriteOn,spriteOff,spriteOn);
+	switchControl->setPosition(ccp(290, 160)); 
+	switchControl->addTargetWithActionForControlEvents(this, cccontrol_selector(LoginScene::callbackSwitch), CCControlEventValueChanged);
+	this->addChild(switchControl);
     
-    this->addChild(spriteOn);
-    this->addChild(spriteOff);
-    ;
     
 //    CCScale9Sprite* btnNormal = CCSprite::create("btnSubmit.png");
 //    chkRememberPwd->initWithMaskSprite(spriteOn, spriteOn, spriteOff, spriteOff);
 
 }
+
+void LoginScene::callbackSwitch(CCObject* pSender, CCControlEvent pCCControlEvent){
+
+	CCControlSwitch* pSwitch = (CCControlSwitch*)pSender;
+
+	if (pSwitch->isOn()){
+		CCLog("CCControlSwitch value = ON");
+	} else{
+		CCLog("CCControlSwitch value = OFF");
+	}
+} 
 
 bool LoginScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {

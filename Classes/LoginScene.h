@@ -38,7 +38,8 @@ public:
     
     virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
     virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
-    
+    void callbackSwitch(CCObject* pSender, CCControlEvent pCCControlEvent);
+
 	void doSubmit();
 	void parseJson();
 
