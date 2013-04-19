@@ -7,7 +7,7 @@
             <key>XP条1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1013,359},{5,9}}</string>
+                <string>{{501,359},{5,9}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>XP条2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1013,352},{5,9}}</string>
+                <string>{{501,352},{5,9}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>XP条3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1013,345},{5,9}}</string>
+                <string>{{501,345},{5,9}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -43,23 +43,10 @@
                 <key>sourceSize</key>
                 <string>{5,9}</string>
             </dict>
-            <key>main.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,2},{510,1022}}</string>
-                <key>offset</key>
-                <string>{0,1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{1,0},{510,1022}}</string>
-                <key>sourceSize</key>
-                <string>{512,1024}</string>
-            </dict>
             <key>世界喇叭.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{996,2},{320,26}}</string>
+                <string>{{484,2},{320,26}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +59,7 @@
             <key>主页.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{961,404},{48,38}}</string>
+                <string>{{449,404},{48,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +72,7 @@
             <key>任务.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{884,480},{46,38}}</string>
+                <string>{{372,480},{46,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +85,7 @@
             <key>体力条1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1013,338},{5,9}}</string>
+                <string>{{501,338},{5,9}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +98,7 @@
             <key>体力条2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1013,331},{5,9}}</string>
+                <string>{{501,331},{5,9}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +111,7 @@
             <key>体力条3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1013,324},{5,9}}</string>
+                <string>{{501,324},{5,9}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +124,7 @@
             <key>信件.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{900,520},{30,30}}</string>
+                <string>{{388,520},{30,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +137,7 @@
             <key>副本.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{961,324},{50,38}}</string>
+                <string>{{449,324},{50,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +150,7 @@
             <key>加号按钮_down.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{993,464},{18,18}}</string>
+                <string>{{481,464},{18,18}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +163,7 @@
             <key>加号按钮_nor.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{993,444},{18,18}}</string>
+                <string>{{481,444},{18,18}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +176,7 @@
             <key>卡牌角色列表.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{514,420},{320,89}}</string>
+                <string>{{2,420},{320,89}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +189,7 @@
             <key>右箭头.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1011,386},{11,18}}</string>
+                <string>{{499,386},{11,18}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +202,7 @@
             <key>商城.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{836,480},{46,38}}</string>
+                <string>{{324,480},{46,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -228,7 +215,7 @@
             <key>好友.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{932,516},{34,30}}</string>
+                <string>{{420,516},{34,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -241,7 +228,7 @@
             <key>左箭头.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1011,366},{11,18}}</string>
+                <string>{{499,366},{11,18}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -254,7 +241,7 @@
             <key>排行榜.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{970,484},{36,30}}</string>
+                <string>{{458,484},{36,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,7 +254,7 @@
             <key>游戏主界面-底条.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{514,511},{320,40}}</string>
+                <string>{{2,511},{320,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -280,7 +267,7 @@
             <key>游戏主界面-底背景图.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{514,2},{320,480}}</string>
+                <string>{{2,2},{320,480}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -293,7 +280,7 @@
             <key>版头.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{514,324},{320,94}}</string>
+                <string>{{2,324},{320,94}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -306,7 +293,7 @@
             <key>物品.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{868,520},{30,30}}</string>
+                <string>{{356,520},{30,30}}</string>
                 <key>offset</key>
                 <string>{0,-1}</string>
                 <key>rotated</key>
@@ -319,7 +306,7 @@
             <key>玩家名称栏-仙.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{836,404},{123,38}}</string>
+                <string>{{324,404},{123,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -332,7 +319,7 @@
             <key>玩家名称栏-佛.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{836,364},{123,38}}</string>
+                <string>{{324,364},{123,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -345,7 +332,7 @@
             <key>玩家名称栏-妖.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{836,324},{123,38}}</string>
+                <string>{{324,324},{123,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -358,7 +345,7 @@
             <key>神魔录.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{932,484},{36,30}}</string>
+                <string>{{420,484},{36,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -371,7 +358,7 @@
             <key>竞技.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{836,520},{30,30}}</string>
+                <string>{{324,520},{30,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -384,7 +371,7 @@
             <key>聊天_down.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{836,462},{16,107}}</string>
+                <string>{{324,462},{16,107}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -397,7 +384,7 @@
             <key>聊天_nor.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{836,444},{16,107}}</string>
+                <string>{{324,444},{16,107}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -410,7 +397,7 @@
             <key>英雄.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{961,364},{48,38}}</string>
+                <string>{{449,364},{48,38}}</string>
                 <key>offset</key>
                 <string>{2,0}</string>
                 <key>rotated</key>
@@ -423,7 +410,7 @@
             <key>设置.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{968,516},{30,30}}</string>
+                <string>{{456,516},{30,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -436,7 +423,7 @@
             <key>门派.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{945,444},{46,38}}</string>
+                <string>{{433,444},{46,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -454,9 +441,9 @@
             <key>realTextureFileName</key>
             <string>main.png</string>
             <key>size</key>
-            <string>{1024,2048}</string>
+            <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:33b868a03f8353344ced9ce52e5949dd$</string>
+            <string>$TexturePacker:SmartUpdate:331dac019c24b4baae714aa2df9171bc$</string>
             <key>textureFileName</key>
             <string>main.png</string>
         </dict>

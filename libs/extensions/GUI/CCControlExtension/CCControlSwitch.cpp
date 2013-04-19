@@ -337,6 +337,29 @@ CCControlSwitch* CCControlSwitch::create(CCSprite *maskSprite, CCSprite * onSpri
     return pRet;
 }
 
+//add by ivan
+CCControlSwitch* CCControlSwitch::create()
+{
+    CCControlSwitch* pRet = new CCControlSwitch();
+//    if (pRet && pRet->initWithMaskSprite(NULL, NULL, NULL, NULL, NULL, NULL))
+//    {
+//        pRet->autorelease();
+//    }
+//    else
+//    {
+//        CC_SAFE_DELETE(pRet);
+//    }
+    if (pRet)
+    {
+        pRet->autorelease();
+    }
+    else
+    {
+        CC_SAFE_DELETE(pRet);
+    }
+    return pRet;
+}
+
 void CCControlSwitch::setOn(bool isOn)
 {
     setOn(isOn, false);

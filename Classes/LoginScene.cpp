@@ -3,6 +3,18 @@
 
 using namespace cocos2d;
 
+LoginScene::LoginScene()
+{
+    m_txtAccount = NULL;
+    m_txtPassword = NULL;
+    chkRememberPwd = NULL;
+}
+
+LoginScene::~LoginScene()
+{
+    
+}
+
 CCScene* LoginScene::scene()
 {
     CCScene * scene = NULL;
@@ -46,27 +58,27 @@ bool LoginScene::init()
     return bRet;
 }
 
-void LoginScene::submitClicked(CCObject *pSender,CCControlEvent event)
-{
-	CCLOG("i was clicked");
-	char sAccount[20];
-	char sPassword[20];
-	sprintf(sAccount,m_txtAccount->getText());
-	sprintf(sPassword,m_txtAccount->getText());
-
-	//this->doSubmit();
-    
-    
-    CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::sharedCCNodeLoaderLibrary();
-    //ccNodeLoaderLibrary->registerCCNodeLoader("AboutScene", AboutSceneLoader::loader());
-    
-    cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
-    ccbReader->autorelease();
-    
-    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
-    CCDirector::sharedDirector()->replaceScene(CCTransitionFlipAngular::create(1.0, pScene));
-
-}
+//void LoginScene::submitClicked(CCObject *pSender,CCControlEvent event)
+//{
+//	CCLOG("i was clicked");
+//	char sAccount[20];
+//	char sPassword[20];
+//	sprintf(sAccount,m_txtAccount->getText());
+//	sprintf(sPassword,m_txtAccount->getText());
+//
+//	//this->doSubmit();
+//    
+//    
+////    CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::sharedCCNodeLoaderLibrary();
+////    //ccNodeLoaderLibrary->registerCCNodeLoader("AboutScene", AboutSceneLoader::loader());
+////    
+////    cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
+////    ccbReader->autorelease();
+////    
+////    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
+////    CCDirector::sharedDirector()->replaceScene(CCTransitionFlipAngular::create(1.0, pScene));
+//
+//}
 
 void LoginScene::doSubmit()
 {
@@ -137,58 +149,69 @@ void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     
-        m_txtAccount->setPlaceHolder("this is account");
-//    m_txtPassword = CCEditBox::create(CCSizeMake(400,50),CCScale9Sprite::create("account.png"));
+    m_txtAccount->setPlaceHolder("this is account");
     m_txtPassword->setInputFlag(kEditBoxInputFlagPassword);
-//    m_txtPassword->setPosition(CCPointMake(104,winSize.height - 200));
     m_txtPassword->setPlaceHolder("this is password");
-//    addChild(m_txtPassword);
     
-//    CCScale9Sprite* btnNormal = CCScale9Sprite::create("btnSubmit.png");
-//    CCLabelTTF *title = CCLabelTTF::create("Touch Me!", "Arial", 30);
-//    
-//    btnSubmit = CCControlButton::create(title,btnNormal);
-//    btnSubmit->setPosition(CCPointMake(winSize.width/2,winSize.height - 290));
-//    btnSubmit->addTargetWithActionForControlEvents(this,cccontrol_selector(LoginScene::submitClicked),CCControlEventTouchDown);
-//    addChild(btnSubmit);
+    CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
+    spriteOn->setPosition(CCPointMake(100, 100));
+    CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
+    spriteOff->setPosition(CCPointMake(180, 100));
+    
+    this->addChild(spriteOn);
+    this->addChild(spriteOff);
+    ;
+    
+//    CCScale9Sprite* btnNormal = CCSprite::create("btnSubmit.png");
+//    chkRememberPwd->initWithMaskSprite(spriteOn, spriteOn, spriteOff, spriteOff);
+
 }
 
 bool LoginScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtPassword", CCEditBox*, this->m_txtPassword);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "chkRememberPwd", CCControlSwitch*, this->chkRememberPwd);
     return true;
 }
 
-void LoginScene::toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
-	CCLOG("button clicked");
+void LoginScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
+    
+    CCControlButton *button = (CCControlButton*) pSender;
+//	char sAccount[20];
+//	char sPassword[20];
+//	sprintf(sAccount,m_txtAccount->getText());
+//	sprintf(sPassword,m_txtAccount->getText());
+    
+    switch (button->getTag()) {
+        case LOGIN_BUTTON_ACTION_SIGNIN_TAG:
+            CCLOG("signin");
+            break;
+        case LOGIN_BUTTON_ACTION_SIGNUP_TAG:
+            CCLOG("signup");
+            break;
+        case LOGIN_BUTTON_ACTION_TOURIST_TAG:
+            CCLOG("tourist");
+            break;
+        case LOGIN_BUTTON_ACTION_FORGOT_PWD_TAG:
+            CCLOG("fotgot pwd");
+            break;
+    }
 }
 
 void LoginScene::menuBarBtnClicked(CCObject *pSender)
 {
-//    CCControlButton *button = (CCControlButton*) pSender;
-//    switch (button->getTag()) {
-//        case TOOLBAR_BTN_COMPETITION_TAG:
-//            CCLOG("11111");
-//            break;
-//        case TOOLBAR_BTN_GOD_DEMON_TAG:
-//            CCLOG("22222");
-//            break;
-//        case TOOLBAR_BTN_RANKLIST_TAG:
-//            CCLOG("33333");
-//            break;
-//        case TOOLBAR_BTN_FRIENDS_TAG:
-//            CCLOG("44444");
-//            break;
-//        case TOOLBAR_BTN_ITEMS_TAG:
-//            CCLOG("55555");
-//            break;
-//        case TOOLBAR_BTN_MAIL_TAG:
-//            CCLOG("66666");
-//            break;
-//        case TOOLBAR_BTN_SETTING_TAG:
-//            CCLOG("77777");
-//            
+    CCMenuItem *menuItem = (CCMenuItem*) pSender;
+    switch (menuItem->getTag()) {
+        case LOGIN_MENU_BAR_QQ_TAG:
+            CCLOG("qq");
+            break;
+        case LOGIN_MENU_BAR_SINA_TAG:
+            CCLOG("sina");
+            break;
+        case LOGIN_MENU_BAR_RENREN_TAG:
+            CCLOG("renren");
+            
 //            CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
 //            ccNodeLoaderLibrary->registerCCNodeLoader("AboutScene", AboutSceneLoader::loader());
 //            
@@ -197,21 +220,19 @@ void LoginScene::menuBarBtnClicked(CCObject *pSender)
 //            
 //            CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("AboutScene.ccbi");
 //            CCDirector::sharedDirector()->replaceScene(CCTransitionFlipAngular::create(1.0, pScene));
-//            break;
-//    }
+            break;
+    }
 }
 
 SEL_MenuHandler LoginScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
 {
-//	CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "menuBarBtnClicked:", LoginScene::menuBarBtnClicked);
-    
+	CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "menuBarBtnClicked:", LoginScene::menuBarBtnClicked);
 	return NULL;
 }
 
 SEL_CCControlHandler LoginScene::onResolveCCBCCControlSelector(CCObject *pTarget, const char * pSelectorName) {
     
-    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "submitClicked:", LoginScene::submitClicked);
-    
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "buttonClicked:", LoginScene::buttonClicked);
 	return NULL;
 }
 
