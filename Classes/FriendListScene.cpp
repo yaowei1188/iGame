@@ -52,7 +52,7 @@ bool FriendListScene::init()
 bool FriendListScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableViewFriend", CCTableView*, this->mTableViewFriend);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainSceneTemp", MainSceneTemplate*, this->mMainSceneTemp);
+//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainSceneTemp", MainSceneTemplate*, this->mMainSceneTemp);
     return true;
 }
 
@@ -274,7 +274,7 @@ void FriendListScene::requestFinishedCallback(CCNode* pSender,void *data)
 FriendListScene::FriendListScene()
 {
     mTableViewFriend = NULL;
-    mMainSceneTemp = NULL;
+//    mMainSceneTemp = NULL;
     mFriendList = NULL;
 }
 

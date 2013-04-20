@@ -7,55 +7,39 @@
 //
 
 #include "MainGameScene.h"
-#include "AboutSceneLoader.h"
-
-//竞技
-#define TOOLBAR_BTN_COMPETITION_TAG 1
-//神魔录
-#define TOOLBAR_BTN_GOD_DEMON_TAG 2
-//排行榜
-#define TOOLBAR_BTN_RANKLIST_TAG 3
-//好友
-#define TOOLBAR_BTN_FRIENDS_TAG 4
-//物品
-#define TOOLBAR_BTN_ITEMS_TAG 5
-//信件
-#define TOOLBAR_BTN_MAIL_TAG 6
-//设置
-#define TOOLBAR_BTN_SETTING_TAG 7
 
 MainGameScene::MainGameScene()
 {
-    
+    mMainSceneTemp = NULL;
+    mLayer = NULL;
 }
 
 MainGameScene::~MainGameScene()
 {
-    this->mlblName->release();
+
 }
 
 void MainGameScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    this->mlblName->setString("Sunwukong");
+
 }
 
 bool MainGameScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mlblName", CCLabelTTF*, this->mlblName);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainSceneTemp", MainSceneTemplate*, this->mMainSceneTemp);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mLayer", CCLayer*, this->mLayer);
     
     return true;
 }
 
 void MainGameScene::toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
-	CCLOG("button clicked");
-}
-
-void MainGameScene::menuBarBtnClicked(CCObject *pSender)
-{
     CCControlButton *button = (CCControlButton*) pSender;
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     switch (button->getTag()) {
         case TOOLBAR_BTN_COMPETITION_TAG:
             CCLOG("11111");
+            this->mLayer->runAction(CCMoveBy::create(0.5, ccp(-CCDirector::sharedDirector()->getWinSize().width,0)));
+            
             break;
         case TOOLBAR_BTN_GOD_DEMON_TAG:
             CCLOG("22222");
@@ -65,6 +49,7 @@ void MainGameScene::menuBarBtnClicked(CCObject *pSender)
             break;
         case TOOLBAR_BTN_FRIENDS_TAG:
             CCLOG("44444");
+            this->PushScene("FriendListScene");
             break;
         case TOOLBAR_BTN_ITEMS_TAG:
             CCLOG("55555");
@@ -74,23 +59,18 @@ void MainGameScene::menuBarBtnClicked(CCObject *pSender)
             break;
         case TOOLBAR_BTN_SETTING_TAG:
             CCLOG("77777");
-            
-            CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::sharedCCNodeLoaderLibrary();
-            ccNodeLoaderLibrary->registerCCNodeLoader("AboutScene", AboutSceneLoader::loader());
-            
-            cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
-            ccbReader->autorelease();
-            
-            CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("AboutScene.ccbi");
-            CCDirector::sharedDirector()->replaceScene(CCTransitionFlipAngular::create(1.0, pScene));
             break;
     }
+    
+    CCLayer *layer = (CCLayer *)this->GetLayer("FriendListScene");
+    layer->setPosition(ccp(0,38));
+    this->addChild(layer);
 }
 
 SEL_MenuHandler MainGameScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
 {
-	CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "menuBarBtnClicked:", MainGameScene::menuBarBtnClicked);
-    
+//	CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "menuBarBtnClicked:", MainGameScene::menuBarBtnClicked);
+//    
 	return NULL;
 }
 

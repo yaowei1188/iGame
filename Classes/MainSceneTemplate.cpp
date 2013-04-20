@@ -8,20 +8,6 @@
 
 #include "MainSceneTemplate.h"
 
-//竞技
-#define TOOLBAR_BTN_COMPETITION_TAG 1
-//神魔录
-#define TOOLBAR_BTN_GOD_DEMON_TAG 2
-//排行榜
-#define TOOLBAR_BTN_RANKLIST_TAG 3
-//好友
-#define TOOLBAR_BTN_FRIENDS_TAG 4
-//物品
-#define TOOLBAR_BTN_ITEMS_TAG 5
-//信件
-#define TOOLBAR_BTN_MAIL_TAG 6
-//设置
-#define TOOLBAR_BTN_SETTING_TAG 7
 
 MainSceneTemplate::MainSceneTemplate()
 {

@@ -6,12 +6,13 @@
 
 #include "SimpleAudioEngine.h"
 #include "XmlParser.h"
+#include "MainLayerBase.h"
 #include "common.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class LoginScene : public cocos2d::CCLayer,
+class LoginScene : public MainLayerBase,
 public CCBSelectorResolver,
 public CCBMemberVariableAssigner,
 public CCNodeLoaderListener
@@ -45,8 +46,8 @@ public:
 
 	CCEditBox *m_txtAccount;
 	CCEditBox *m_txtPassword;
-
-	CCControlSwitch *chkRememberPwd;
+    
+    bool m_blnRememberMe;
 };
 
 #endif  // __LOGINSCENE_SCENE_H__

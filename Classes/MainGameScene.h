@@ -12,11 +12,13 @@
 #include <iostream>
 #include "cocos2d.h"
 #include "cocos-ext.h"
+#include "MainSceneTemplate.h"
+#include "MainLayerBase.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class MainGameScene : public cocos2d::CCLayer,
+class MainGameScene : public MainLayerBase,
   public CCBSelectorResolver,
   public CCBMemberVariableAssigner,
   public CCNodeLoaderListener
@@ -27,8 +29,6 @@ public:
     
     // returns a Scene that contains the HelloWorld as the only child
     static cocos2d::CCScene* scene();
-    
-    void menuBarBtnClicked(CCObject *pSender);
     
     void toolBarBtnClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
     
@@ -42,7 +42,9 @@ public:
     
     virtual bool init();
     
-    CCLabelTTF *mlblName;
+    MainSceneTemplate *mMainSceneTemp;
+    
+    CCLayer *mLayer;
     
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainGameScene, create);
 

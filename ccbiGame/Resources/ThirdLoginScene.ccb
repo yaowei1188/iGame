@@ -765,7 +765,7 @@
 						<key>value</key>
 						<array>
 							<real>155</real>
-							<real>177</real>
+							<real>201</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -866,7 +866,7 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>120</real>
+							<real>250</real>
 							<real>40</real>
 							<integer>0</integer>
 						</array>

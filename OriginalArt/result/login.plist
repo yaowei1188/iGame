@@ -456,7 +456,7 @@
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:26cc24040acdf9270b00d568e1b70ab5$</string>
+            <string>$TexturePacker:SmartUpdate:aa248d82efd258b8f71cf5e55f1b7e16$</string>
             <key>textureFileName</key>
             <string>login.png</string>
         </dict>

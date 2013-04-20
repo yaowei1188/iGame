@@ -7,7 +7,8 @@ LoginScene::LoginScene()
 {
     m_txtAccount = NULL;
     m_txtPassword = NULL;
-    chkRememberPwd = NULL;
+    
+    m_blnRememberMe = false;
 }
 
 LoginScene::~LoginScene()
@@ -57,28 +58,6 @@ bool LoginScene::init()
 
     return bRet;
 }
-
-//void LoginScene::submitClicked(CCObject *pSender,CCControlEvent event)
-//{
-//	CCLOG("i was clicked");
-//	char sAccount[20];
-//	char sPassword[20];
-//	sprintf(sAccount,m_txtAccount->getText());
-//	sprintf(sPassword,m_txtAccount->getText());
-//
-//	//this->doSubmit();
-//    
-//    
-////    CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::sharedCCNodeLoaderLibrary();
-////    //ccNodeLoaderLibrary->registerCCNodeLoader("AboutScene", AboutSceneLoader::loader());
-////    
-////    cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
-////    ccbReader->autorelease();
-////    
-////    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
-////    CCDirector::sharedDirector()->replaceScene(CCTransitionFlipAngular::create(1.0, pScene));
-//
-//}
 
 void LoginScene::doSubmit()
 {
@@ -155,8 +134,8 @@ void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
     
     CCMenu* m_auto_op_menu = CCMenu::create();
-    CCMenuItemSprite* auto_op_btn = CCMenuItemSprite::create(spriteOn, NULL);
-    CCMenuItemSprite* auto_op_btn2 = CCMenuItemSprite::create(spriteOff, NULL);
+    CCMenuItemSprite* auto_op_btn = CCMenuItemSprite::create(spriteOff, NULL);
+    CCMenuItemSprite* auto_op_btn2 = CCMenuItemSprite::create(spriteOn, NULL);
     CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(LoginScene::callbackSwitch),auto_op_btn,auto_op_btn2,NULL);
     
     m_auto_op_menu->addChild(item);
@@ -166,20 +145,19 @@ void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 
 void LoginScene::callbackSwitch(CCObject* pSender){
 
-	CCControlSwitch* pSwitch = (CCControlSwitch*)pSender;
-
-	if (pSwitch->isOn()){
-		CCLog("CCControlSwitch value = ON");
-	} else{
-		CCLog("CCControlSwitch value = OFF");
-	}
-} 
+	CCMenuItemToggle* pSwitch = (CCMenuItemToggle*)pSender;
+    
+    if (pSwitch->getSelectedIndex()==0) {
+        m_blnRememberMe = false;
+    } else {
+        m_blnRememberMe = true;
+    }
+}
 
 bool LoginScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtPassword", CCEditBox*, this->m_txtPassword);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "chkRememberPwd", CCControlSwitch*, this->chkRememberPwd);
     return true;
 }
 
@@ -194,6 +172,7 @@ void LoginScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent
     switch (button->getTag()) {
         case LOGIN_BUTTON_ACTION_SIGNIN_TAG:
             CCLOG("signin");
+            this->OpenNewScene("MainGameScene");
             break;
         case LOGIN_BUTTON_ACTION_SIGNUP_TAG:
             CCLOG("signup");
@@ -222,13 +201,7 @@ void LoginScene::menuBarBtnClicked(CCObject *pSender)
             break;
     }
     
-    CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::sharedCCNodeLoaderLibrary();
-    
-    cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
-    ccbReader->autorelease();
-    
-    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("ThirdLoginScene.ccbi");
-    CCDirector::sharedDirector()->pushScene(CCTransitionMoveInR::create(0.3, pScene));
+    this->PushScene("ThirdLoginScene.ccbi");
 }
 
 SEL_MenuHandler LoginScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)

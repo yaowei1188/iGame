@@ -24,6 +24,79 @@
 		<array>
 			<dict>
 				<key>baseClass</key>
+				<string>CCNode</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string>CCTableView</string>
+				<key>displayName</key>
+				<string>CCTableView</string>
+				<key>memberVarAssignmentName</key>
+				<string>mTableViewFriend</string>
+				<key>memberVarAssignmentType</key>
+				<integer>1</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>4</real>
+							<real>44</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>contentSize</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>312</real>
+							<real>290</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ignoreAnchorPointForPosition</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>baseClass</key>
 				<string>CCScale9Sprite</string>
 				<key>children</key>
 				<array/>
@@ -44,9 +117,9 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>160</real>
-							<real>26</real>
-							<integer>1</integer>
+							<real>159</real>
+							<real>359</real>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -160,79 +233,6 @@
 			</dict>
 			<dict>
 				<key>baseClass</key>
-				<string>CCNode</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string>CCTableView</string>
-				<key>displayName</key>
-				<string>CCTableView</string>
-				<key>memberVarAssignmentName</key>
-				<string>mTableViewFriend</string>
-				<key>memberVarAssignmentType</key>
-				<integer>1</integer>
-				<key>properties</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>4</real>
-							<real>4</real>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>contentSize</string>
-						<key>type</key>
-						<string>Size</string>
-						<key>value</key>
-						<array>
-							<real>312</real>
-							<real>290</real>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>anchorPoint</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>scale</string>
-						<key>type</key>
-						<string>ScaleLock</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<false/>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>ignoreAnchorPointForPosition</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>baseClass</key>
 				<string>CCControlButton</string>
 				<key>children</key>
 				<array/>
@@ -253,8 +253,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>206</real>
-							<real>303</real>
+							<real>197</real>
+							<real>339</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -461,8 +461,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>27</real>
-							<real>323</real>
+							<real>43</real>
+							<real>360</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -578,7 +578,7 @@
 						<key>value</key>
 						<array>
 							<real>160</real>
-							<real>323</real>
+							<real>359</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -679,7 +679,7 @@
 		<key>memberVarAssignmentName</key>
 		<string></string>
 		<key>memberVarAssignmentType</key>
-		<integer>0</integer>
+		<integer>1</integer>
 		<key>properties</key>
 		<array>
 			<dict>
@@ -689,9 +689,9 @@
 				<string>Size</string>
 				<key>value</key>
 				<array>
-					<real>320</real>
-					<real>348</real>
-					<integer>0</integer>
+					<real>100</real>
+					<real>100</real>
+					<integer>1</integer>
 				</array>
 			</dict>
 			<dict>
@@ -778,27 +778,27 @@
 			<key>ext</key>
 			<string>iphone</string>
 			<key>height</key>
-			<integer>0</integer>
+			<integer>480</integer>
 			<key>name</key>
-			<string>iPhone</string>
+			<string>iPhone Portrait</string>
 			<key>scale</key>
 			<real>1</real>
 			<key>width</key>
-			<integer>0</integer>
+			<integer>320</integer>
 		</dict>
 		<dict>
 			<key>centeredOrigin</key>
 			<false/>
 			<key>ext</key>
-			<string>ipad iphonehd</string>
+			<string>iphone</string>
 			<key>height</key>
-			<integer>0</integer>
+			<integer>568</integer>
 			<key>name</key>
-			<string>iPad</string>
+			<string>iPhone 5 Portrait</string>
 			<key>scale</key>
-			<real>2</real>
+			<real>1</real>
 			<key>width</key>
-			<integer>0</integer>
+			<integer>320</integer>
 		</dict>
 	</array>
 	<key>sequences</key>
@@ -826,7 +826,7 @@
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>123.369384765625</real>
+			<real>128</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>
@@ -839,6 +839,6 @@
 		</dict>
 	</array>
 	<key>stageBorder</key>
-	<integer>3</integer>
+	<integer>0</integer>
 </dict>
 </plist>

@@ -12,11 +12,14 @@
 #include <iostream>
 #include "cocos2d.h"
 #include "cocos-ext.h"
+#include "common.h"
+#include "MainSceneTemplate.h"
+#include "MainLayerBase.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class MainSceneTemplate : public cocos2d::CCLayer,
+class MainSceneTemplate : public MainLayerBase,
   public CCBSelectorResolver,
   public CCBMemberVariableAssigner,
   public CCNodeLoaderListener

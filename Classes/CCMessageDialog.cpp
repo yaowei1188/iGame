@@ -34,9 +34,14 @@ bool CCMessageDialog::init()
         //////////////////////////////////////////////////////////////////////////
 
         CC_BREAK_IF(! CCLayer::init());
+        
+        CCSprite *mBg = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("提示框.png"));
+        CCSprite *cancelNormal = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("no_1.png"));
+        CCSprite *cancelHighlight = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("no_2.png"));
+        CCSprite *OKNormal = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("ok_1.png"));
+        CCSprite *OKHighlight = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("ok_2.png"));
 
         CCSize mSize=CCDirector::sharedDirector()->getWinSize();
-        CCSprite *mBg= CCSprite::create("boxbg.png");
         mBg->setPosition(ccp(mSize.width / 2, mSize.height / 2));
         this->addChild(mBg);
         
@@ -44,14 +49,23 @@ bool CCMessageDialog::init()
         pLabel->setPosition(ccp(mSize.width / 2, mSize.height / 2+40));
         this->addChild(pLabel);
         
-        CCMenuItemImage *pMenuItem = CCMenuItemImage::create(
-                                                             "btnSubmit.png",
-                                                             "btnSubmit.png",
+        CCMenuItemSprite *pMenuOK = CCMenuItemSprite::create(
+                                                             OKNormal,
+                                                             OKHighlight,
+                                                             NULL,
                                                              this,
                                                              menu_selector(CCMessageDialog::submitClicked));
-        pMenuItem->setPosition(ccp(mSize.width / 2, mSize.height / 2-40));
+        pMenuOK->setPosition(ccp(mSize.width *(3.0/10.0), mSize.height / 2-30));
+        
+        CCMenuItemSprite *pMenuCancel = CCMenuItemSprite::create(
+                                                             cancelNormal,
+                                                             cancelHighlight,
+                                                             NULL,
+                                                             this,
+                                                             menu_selector(CCMessageDialog::submitClicked));
+        pMenuCancel->setPosition(ccp(mSize.width *(7.0/10.0), mSize.height / 2-30));
 
-        CCMenu* pMenu = CCMenu::create(pMenuItem,NULL);  
+        CCMenu* pMenu = CCMenu::create(pMenuOK,pMenuCancel,NULL);
         pMenu->setPosition(CCPointZero);  
         this->addChild(pMenu);
         

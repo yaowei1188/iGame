@@ -9,12 +9,13 @@
 
 #include "CCMessageDialog.h"
 #include "MainSceneTemplate.h"
+#include "MainLayerBase.h"
 #include "common.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class FriendListScene : public cocos2d::CCLayer,
+class FriendListScene : public MainLayerBase,
 public CCTableViewDataSource,
 public CCTableViewDelegate,
 public CCBSelectorResolver,
@@ -58,7 +59,7 @@ public:
     void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
     
     CCTableView* mTableViewFriend;
-    MainSceneTemplate *mMainSceneTemp;
+//    MainSceneTemplate *mMainSceneTemp;
     unsigned int selectedindex;
     
     CCArray *mFriendList;
