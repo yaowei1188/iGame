@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>XP条1.png</key>
+            <key>t1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{227,1928},{10,18}}</string>
@@ -17,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{10,18}</string>
             </dict>
-            <key>XP条2.png</key>
+            <key>t2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{88,2017},{10,18}}</string>
@@ -30,10 +30,49 @@
                 <key>sourceSize</key>
                 <string>{10,18}</string>
             </dict>
-            <key>XP条3.png</key>
+            <key>t3.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{76,2017},{10,18}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{10,18}}</string>
+                <key>sourceSize</key>
+                <string>{10,18}</string>
+            </dict>
+            <key>x1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{64,2017},{10,18}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{10,18}}</string>
+                <key>sourceSize</key>
+                <string>{10,18}</string>
+            </dict>
+            <key>x2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{52,2017},{10,18}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{10,18}}</string>
+                <key>sourceSize</key>
+                <string>{10,18}</string>
+            </dict>
+            <key>x3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{40,2017},{10,18}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -81,45 +120,6 @@
                 <string>{{8,0},{92,75}}</string>
                 <key>sourceSize</key>
                 <string>{108,75}</string>
-            </dict>
-            <key>体力条1.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{64,2017},{10,18}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{10,18}}</string>
-                <key>sourceSize</key>
-                <string>{10,18}</string>
-            </dict>
-            <key>体力条2.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{52,2017},{10,18}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{10,18}}</string>
-                <key>sourceSize</key>
-                <string>{10,18}</string>
-            </dict>
-            <key>体力条3.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{40,2017},{10,18}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{10,18}}</string>
-                <key>sourceSize</key>
-                <string>{10,18}</string>
             </dict>
             <key>信件.png</key>
             <dict>
@@ -443,7 +443,7 @@
             <key>size</key>
             <string>{1024,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:df4419ec1fb0c42cc8cab5d12f29e09b$</string>
+            <string>$TexturePacker:SmartUpdate:f6b698222ae173ab05b886886bcd80b0$</string>
             <key>textureFileName</key>
             <string>main-hd.png</string>
         </dict>

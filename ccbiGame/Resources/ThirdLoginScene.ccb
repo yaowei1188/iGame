@@ -484,8 +484,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>64</real>
-							<real>447</real>
+							<real>35</real>
+							<real>445</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -528,8 +528,8 @@
 						<string>BlockCCControl</string>
 						<key>value</key>
 						<array>
-							<string></string>
-							<integer>0</integer>
+							<string>buttonClicked:</string>
+							<integer>1</integer>
 							<integer>32</integer>
 						</array>
 					</dict>
@@ -547,7 +547,7 @@
 						<key>type</key>
 						<string>String</string>
 						<key>value</key>
-						<string></string>
+						<string>返回</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -586,8 +586,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>120</real>
 							<real>40</real>
+							<real>23</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -607,7 +607,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>右箭头.png</string>
+							<string>back_1.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -629,8 +629,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>ccbResources/ccbDefaultImages.plist</string>
-							<string>ccbButtonHilite.png</string>
+							<string>Image/login.plist</string>
+							<string>back_2.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -652,8 +652,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>ccbResources/ccbDefaultImages.plist</string>
-							<string>ccbButtonDisabled.png</string>
+							<string>Image/login.plist</string>
+							<string>back_2.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -669,6 +669,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

@@ -16,12 +16,25 @@ MainSceneTemplate::MainSceneTemplate()
 
 MainSceneTemplate::~MainSceneTemplate()
 {
-    this->mlblName->release();
+    
 }
 
 void MainSceneTemplate::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     this->mlblName->setString("sunwukong");
+    
+    CCSprite *lCap = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("x1.png"));
+	CCScale9Sprite *mCap = CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("x2.png"));
+    CCSprite *rCap = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("x3.png"));
+    lCap->setPosition(ccp(47,399));
+//    mCap->setPosition(ccp(52,399));
+//    mCap->setAnchorPoint(ccp(0,0.5));
+//    mCap->setContentSize(CCSizeMake(60, 9));
+    rCap->setPosition(ccp(102,399));
+    
+    this->addChild(lCap);
+//    this->addChild(mCap);
+    this->addChild(rCap);
 }
 
 bool MainSceneTemplate::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)

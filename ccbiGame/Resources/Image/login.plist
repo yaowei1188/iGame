@@ -4,10 +4,36 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>back_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{484,44},{40,23}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{40,23}}</string>
+                <key>sourceSize</key>
+                <string>{40,23}</string>
+            </dict>
+            <key>back_2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{484,2},{40,23}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{40,23}}</string>
+                <key>sourceSize</key>
+                <string>{40,23}</string>
+            </dict>
             <key>bt3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{484,2},{62,18}}</string>
+                <string>{{484,86},{62,18}}</string>
                 <key>offset</key>
                 <string>{-2,0}</string>
                 <key>rotated</key>
@@ -20,7 +46,7 @@
             <key>bt_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{484,100},{32,18}}</string>
+                <string>{{484,184},{32,18}}</string>
                 <key>offset</key>
                 <string>{-2,0}</string>
                 <key>rotated</key>
@@ -33,7 +59,7 @@
             <key>bt_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{484,66},{32,18}}</string>
+                <string>{{484,150},{32,18}}</string>
                 <key>offset</key>
                 <string>{-2,0}</string>
                 <key>rotated</key>
@@ -59,7 +85,7 @@
             <key>gou_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{484,165},{16,16}}</string>
+                <string>{{484,249},{16,16}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +98,7 @@
             <key>gou_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{484,147},{16,16}}</string>
+                <string>{{484,231},{16,16}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +111,7 @@
             <key>loding1_01 (1).png</key>
             <dict>
                 <key>frame</key>
-                <string>{{484,268},{15,15}}</string>
+                <string>{{299,516},{15,15}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +124,7 @@
             <key>loding1_01 (2).png</key>
             <dict>
                 <key>frame</key>
-                <string>{{484,251},{15,15}}</string>
+                <string>{{299,499},{15,15}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +137,7 @@
             <key>loding1_01 (3).png</key>
             <dict>
                 <key>frame</key>
-                <string>{{484,234},{15,15}}</string>
+                <string>{{484,318},{15,15}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +150,7 @@
             <key>loding2_01 (1).png</key>
             <dict>
                 <key>frame</key>
-                <string>{{484,217},{15,15}}</string>
+                <string>{{484,301},{15,15}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +163,7 @@
             <key>loding2_01 (2).png</key>
             <dict>
                 <key>frame</key>
-                <string>{{484,200},{15,15}}</string>
+                <string>{{484,284},{15,15}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +176,7 @@
             <key>loding2_01 (3).png</key>
             <dict>
                 <key>frame</key>
-                <string>{{484,183},{15,15}}</string>
+                <string>{{484,267},{15,15}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +202,7 @@
             <key>monkey.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{324,324},{231,186}}</string>
+                <string>{{324,335},{231,186}}</string>
                 <key>offset</key>
                 <string>{1,-1}</string>
                 <key>rotated</key>
@@ -189,7 +215,7 @@
             <key>no_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{444,653},{95,40}}</string>
+                <string>{{444,664},{95,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +228,7 @@
             <key>no_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{299,654},{95,40}}</string>
+                <string>{{299,665},{95,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +241,7 @@
             <key>ok_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{347,641},{95,40}}</string>
+                <string>{{347,652},{95,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -228,7 +254,7 @@
             <key>ok_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{347,599},{95,40}}</string>
+                <string>{{347,610},{95,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -241,7 +267,7 @@
             <key>qqs_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{444,621},{60,30}}</string>
+                <string>{{444,632},{60,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -254,7 +280,7 @@
             <key>qqs_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{444,589},{60,30}}</string>
+                <string>{{444,600},{60,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,7 +293,7 @@
             <key>rrs_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{444,557},{60,30}}</string>
+                <string>{{444,568},{60,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -293,7 +319,7 @@
             <key>san_bg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{504,2},{1,55}}</string>
+                <string>{{509,2},{1,55}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -384,7 +410,7 @@
             <key>右箭头.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{484,134},{18,11}}</string>
+                <string>{{484,218},{18,11}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -397,7 +423,7 @@
             <key>忘记密码_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{299,557},{95,40}}</string>
+                <string>{{299,568},{95,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -410,7 +436,7 @@
             <key>忘记密码_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{347,557},{95,40}}</string>
+                <string>{{347,568},{95,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -456,7 +482,7 @@
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:aa248d82efd258b8f71cf5e55f1b7e16$</string>
+            <string>$TexturePacker:SmartUpdate:d8ea7257e22324a934ad01694a3eb7af$</string>
             <key>textureFileName</key>
             <string>login.png</string>
         </dict>
