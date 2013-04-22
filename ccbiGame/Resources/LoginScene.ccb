@@ -1416,9 +1416,9 @@
 				<key>displayName</key>
 				<string>CCSprite</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>mCloud</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1554,7 +1554,7 @@
 						<array>
 							<string>buttonClicked:</string>
 							<integer>1</integer>
-							<integer>32</integer>
+							<integer>33</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1770,7 +1770,7 @@
 						<array>
 							<string>buttonClicked:</string>
 							<integer>1</integer>
-							<integer>32</integer>
+							<integer>33</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1986,7 +1986,7 @@
 						<array>
 							<string>buttonClicked:</string>
 							<integer>1</integer>
-							<integer>32</integer>
+							<integer>33</integer>
 						</array>
 					</dict>
 					<dict>

@@ -16,7 +16,7 @@ void MainLayerBase::OpenNewScene(const char *pCCBFileName)
     ccbReader->autorelease();
     
     CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile(pCCBFileName);
-    CCDirector::sharedDirector()->replaceScene(CCTransitionMoveInR::create(0.3, pScene));
+    CCDirector::sharedDirector()->replaceScene(pScene);
 }
 
 void MainLayerBase::PushScene(const char *pCCBFileName)

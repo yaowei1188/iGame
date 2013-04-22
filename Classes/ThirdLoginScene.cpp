@@ -146,9 +146,11 @@ void ThirdLoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     CCLOG("TEST");
     
-    m_txtAccount->setPlaceHolder("Account");
+    m_txtAccount->setFontColor(ccc3(0,0,0));
+    m_txtAccount->setFont("Arial", 16);
     m_txtPassword->setInputFlag(kEditBoxInputFlagPassword);
-    m_txtPassword->setPlaceHolder("Password");
+    m_txtPassword->setFontColor(ccc3(0,0,0));
+    m_txtPassword->setFont("Arial", 16);
     
 	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
 	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
@@ -164,15 +166,15 @@ void ThirdLoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 }
 
 void ThirdLoginScene::callbackSwitch(CCObject* pSender){
-
-	CCControlSwitch* pSwitch = (CCControlSwitch*)pSender;
-
-	if (pSwitch->isOn()){
-		CCLog("CCControlSwitch value = ON");
-	} else{
-		CCLog("CCControlSwitch value = OFF");
-	}
-} 
+    
+	CCMenuItemToggle* pSwitch = (CCMenuItemToggle*)pSender;
+    
+    if (pSwitch->getSelectedIndex()==0) {
+        m_blnRememberMe = false;
+    } else {
+        m_blnRememberMe = true;
+    }
+}
 
 bool ThirdLoginScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
@@ -198,14 +200,6 @@ void ThirdLoginScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControl
             break;
             break;
     }
-    
-//    CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::sharedCCNodeLoaderLibrary();
-//    
-//    cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
-//    ccbReader->autorelease();
-//    
-//    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("ThirdLoginScene.ccbi");
-//    CCDirector::sharedDirector()->pushScene(CCTransitionMoveInR::create(0.3, pScene));
     
     CCDirector::sharedDirector()->popScene();
 }

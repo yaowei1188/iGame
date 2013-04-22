@@ -7,7 +7,7 @@ LoginScene::LoginScene()
 {
     m_txtAccount = NULL;
     m_txtPassword = NULL;
-    
+    mCloud = NULL;
     m_blnRememberMe = false;
 }
 
@@ -59,26 +59,48 @@ bool LoginScene::init()
     return bRet;
 }
 
+//void LoginScene::doSubmit()
+//{
+//	CCHttpRequest *request = new CCHttpRequest();
+//	request->setRequestType(CCHttpRequest::kHttpPost);
+//	request->setResponseCallback(this,callfuncND_selector(LoginScene::requestFinishedCallback));
+//	request->setTag("post testing!!!");
+//	request->setUrl("http://223.4.10.91/andon_service/ANDON_EX_USER.asmx/GetList");
+//
+//	const char* postData = "cid=120000&date=";
+//	request->setRequestData(postData,strlen(postData));
+//	CCHttpClient *client = CCHttpClient::getInstance();
+//	client->send(request);
+//
+//	request->release();
+//}
+
 void LoginScene::doSubmit()
 {
+    char sAccount[20];
+	char sPassword[20];
+	sprintf(sAccount,m_txtAccount->getText());
+	sprintf(sPassword,m_txtPassword->getText());
+    
 	CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpPost);
+	request->setRequestType(CCHttpRequest::kHttpGet);
 	request->setResponseCallback(this,callfuncND_selector(LoginScene::requestFinishedCallback));
-	request->setTag("post testing!!!");
-	request->setUrl("http://223.4.10.91/andon_service/ANDON_EX_USER.asmx/GetList");
-
-	const char* postData = "cid=120000&date=";
-	request->setRequestData(postData,strlen(postData));
+	request->setTag("1");
+    
+    char url[150] = {0};
+    sprintf(url,"%s/user/login/%s/%s",API_URL,sAccount,sPassword);
+	request->setUrl(url);
+    
 	CCHttpClient *client = CCHttpClient::getInstance();
 	client->send(request);
-
+    
 	request->release();
 }
 
 void LoginScene::requestFinishedCallback(CCNode* pSender,void *data)
 {
     CCHttpResponse *response =  (CCHttpResponse*)data;
-	if(response==NULL)
+	if(response == NULL)
 	{
 		return;
 	}
@@ -126,9 +148,11 @@ void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     CCLOG("TEST");
     
-    m_txtAccount->setPlaceHolder("Account");
+    m_txtAccount->setFontColor(ccc3(0,0,0));
+    m_txtAccount->setFont("Arial", 16);
     m_txtPassword->setInputFlag(kEditBoxInputFlagPassword);
-    m_txtPassword->setPlaceHolder("Password");
+    m_txtPassword->setFontColor(ccc3(0,0,0));
+    m_txtPassword->setFont("Arial", 16);
     
 	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
 	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
@@ -158,31 +182,33 @@ bool LoginScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMembe
 {
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtPassword", CCEditBox*, this->m_txtPassword);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mCloud", CCSprite*, this->mCloud);
+    
     return true;
 }
 
 void LoginScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
     
     CCControlButton *button = (CCControlButton*) pSender;
-//	char sAccount[20];
-//	char sPassword[20];
-//	sprintf(sAccount,m_txtAccount->getText());
-//	sprintf(sPassword,m_txtAccount->getText());
     
-    switch (button->getTag()) {
-        case LOGIN_BUTTON_ACTION_SIGNIN_TAG:
-            CCLOG("signin");
-            this->OpenNewScene("MainGameScene");
-            break;
-        case LOGIN_BUTTON_ACTION_SIGNUP_TAG:
-            CCLOG("signup");
-            break;
-        case LOGIN_BUTTON_ACTION_TOURIST_TAG:
-            CCLOG("tourist");
-            break;
-        case LOGIN_BUTTON_ACTION_FORGOT_PWD_TAG:
-            CCLOG("fotgot pwd");
-            break;
+    if (pCCControlEvent==CCControlEventTouchUpInside) {
+        switch (button->getTag()) {
+            case LOGIN_BUTTON_ACTION_SIGNIN_TAG:
+                CCLOG("signin");
+                this->OpenNewScene("MainGameScene");
+                break;
+            case LOGIN_BUTTON_ACTION_SIGNUP_TAG:
+                CCLOG("signup");
+                break;
+            case LOGIN_BUTTON_ACTION_TOURIST_TAG:
+                CCLOG("tourist");
+                break;
+            case LOGIN_BUTTON_ACTION_FORGOT_PWD_TAG:
+                CCLOG("fotgot pwd");
+                break;
+        }
+    } else if (pCCControlEvent==CCControlEventTouchDown) {
+        mCloud->runAction(CCMoveTo::create(0.1, button->getPosition()));
     }
 }
 
