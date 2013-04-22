@@ -50,7 +50,7 @@ CCRenderTexture* MainLayerBase::createStroke(cocos2d::CCLabelTTF *label, float s
     ccColor3B originalColor=label->getColor();
     label->setColor(color);
     ccBlendFunc originalBlend=label->getBlendFunc();
-    label->setBlendFunc((ccBlendFunc){GL_SRC_ALPHA,GL_ONE});
+    //label->setBlendFunc((ccBlendFunc){GL_SRC_ALPHA,GL_ONE});
     CCPoint center=ccp(x/2+size, y/2+size);
     rt->begin();
     for (int i=0; i<360; i+=15) {

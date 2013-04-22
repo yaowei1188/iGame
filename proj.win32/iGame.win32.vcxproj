@@ -164,6 +164,8 @@
     <None Include="..\Resources\MainGameScene.ccbi" />
     <None Include="..\Resources\MainSceneTemplate.ccbi" />
     <None Include="..\Resources\TaskListScene.ccbi" />
+    <None Include="..\Resources\ThirdLoginScene.ccbi" />
+    <None Include="..\Resources\transparent.png" />
     <None Include="res\iGame.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -187,10 +189,13 @@
     <ClInclude Include="..\Classes\LoginSceneLoader.h" />
     <ClInclude Include="..\Classes\MainGameScene.h" />
     <ClInclude Include="..\Classes\MainGameSceneLoader.h" />
+    <ClInclude Include="..\Classes\MainLayerBase.h" />
     <ClInclude Include="..\Classes\MainSceneTemplate.h" />
     <ClInclude Include="..\Classes\MainSceneTemplateLoader.h" />
     <ClInclude Include="..\Classes\TaskListScene.h" />
     <ClInclude Include="..\Classes\TaskListSceneLoader.h" />
+    <ClInclude Include="..\Classes\ThirdLoginScene.h" />
+    <ClInclude Include="..\Classes\ThirdLoginSceneLoader.h" />
     <ClInclude Include="..\Classes\XmlParser.h" />
     <ClInclude Include="..\library\jsoncpp\src\lib_json\json_batchallocator.h" />
     <ClInclude Include="main.h" />
@@ -205,8 +210,10 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\LoginScene.cpp" />
     <ClCompile Include="..\Classes\MainGameScene.cpp" />
+    <ClCompile Include="..\Classes\MainLayerBase.cpp" />
     <ClCompile Include="..\Classes\MainSceneTemplate.cpp" />
     <ClCompile Include="..\Classes\TaskListScene.cpp" />
+    <ClCompile Include="..\Classes\ThirdLoginScene.cpp" />
     <ClCompile Include="..\Classes\XmlParser.cpp" />
     <ClCompile Include="..\library\jsoncpp\src\lib_json\json_reader.cpp" />
     <ClCompile Include="..\library\jsoncpp\src\lib_json\json_value.cpp" />

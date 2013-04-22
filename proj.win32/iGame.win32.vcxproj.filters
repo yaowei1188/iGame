@@ -132,20 +132,23 @@
     <None Include="..\Resources\MainSceneTemplate.ccbi">
       <Filter>resource\Scene</Filter>
     </None>
-    <None Include="..\Resources\Image\main-hd.plist">
-      <Filter>resource\Image</Filter>
+    <None Include="..\Resources\AddFriendScene.ccbi">
+      <Filter>resource\Scene</Filter>
+    </None>
+    <None Include="..\Resources\ThirdLoginScene.ccbi">
+      <Filter>resource\Scene</Filter>
+    </None>
+    <None Include="..\Resources\transparent.png">
+      <Filter>resource</Filter>
     </None>
     <None Include="..\Resources\Image\main.png">
       <Filter>resource\Image</Filter>
     </None>
-    <None Include="..\Resources\Image\main-hd.png">
+    <None Include="..\Resources\Image\login-hd.plist">
       <Filter>resource\Image</Filter>
     </None>
-    <None Include="..\Resources\Image\main.plist">
+    <None Include="..\Resources\Image\login-hd.png">
       <Filter>resource\Image</Filter>
-    </None>
-    <None Include="..\Resources\AddFriendScene.ccbi">
-      <Filter>resource\Scene</Filter>
     </None>
     <None Include="..\Resources\Image\login.plist">
       <Filter>resource\Image</Filter>
@@ -153,10 +156,13 @@
     <None Include="..\Resources\Image\login.png">
       <Filter>resource\Image</Filter>
     </None>
-    <None Include="..\Resources\Image\login-hd.plist">
+    <None Include="..\Resources\Image\main-hd.plist">
       <Filter>resource\Image</Filter>
     </None>
-    <None Include="..\Resources\Image\login-hd.png">
+    <None Include="..\Resources\Image\main-hd.png">
+      <Filter>resource\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\main.plist">
       <Filter>resource\Image</Filter>
     </None>
   </ItemGroup>
@@ -241,6 +247,15 @@
     <ClInclude Include="..\Classes\CCControlSwitchLoader.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\ThirdLoginScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainLayerBase.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ThirdLoginSceneLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -286,6 +301,12 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\TaskListScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ThirdLoginScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MainLayerBase.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
