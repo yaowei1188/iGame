@@ -56,7 +56,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>2</uint>
+        <uint>1</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -66,7 +66,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
-        <uint>2</uint>
+        <uint>1</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -131,7 +131,7 @@
         <key>mainExtension</key>
         <string>-hd.</string>
         <key>forceIdenticalLayout</key>
-        <false/>
+        <true/>
         <key>outputFormat</key>
         <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
         <key>autoAliasEnabled</key>

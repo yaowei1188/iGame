@@ -14,6 +14,8 @@
 #include "cocos-ext.h"
 #include "MainSceneTemplate.h"
 #include "MainLayerBase.h"
+#include "MainSceneTemplate.h"
+#include "common.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -21,7 +23,8 @@ using namespace cocos2d::extension;
 class MainGameScene : public MainLayerBase,
   public CCBSelectorResolver,
   public CCBMemberVariableAssigner,
-  public CCNodeLoaderListener
+  public CCNodeLoaderListener,
+  public MainSceneTemplateDelegate
 {
 public:
     ~MainGameScene();
@@ -44,9 +47,12 @@ public:
     
     MainSceneTemplate *mMainSceneTemp;
     
-    CCLayer *mLayer;
+    CCLayer *mMainLayer;
+    CCLayer *mSubLayer;
     
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainGameScene, create);
+    bool mblnIsHomePage;
+    virtual void menuItemClicked(CCMenuItem *pItem);
 
 };
 

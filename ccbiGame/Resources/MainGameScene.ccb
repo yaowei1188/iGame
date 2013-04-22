@@ -2467,7 +2467,7 @@
 				<key>displayName</key>
 				<string>CCLayer</string>
 				<key>memberVarAssignmentName</key>
-				<string>mLayer</string>
+				<string>mMainLayer</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>

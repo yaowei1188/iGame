@@ -34,4 +34,17 @@
 #define TOOLBAR_BTN_MAIL_TAG 6
 //设置
 #define TOOLBAR_BTN_SETTING_TAG 7
+
+//主页
+#define MENUBAR_MAINPAGE_TAG 11
+//任务
+#define MENUBAR_TASK_TAG 12
+//副本
+#define MENUBAR_COPY_TAG 13
+//英雄
+#define MENUBAR_HERO_TAG 14
+//门派
+#define MENUBAR_GROUP_TAG 15
+//商店
+#define MENUBAR_SHOP_TAG 16
 #endif

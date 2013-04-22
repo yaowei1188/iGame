@@ -11,7 +11,8 @@
 MainGameScene::MainGameScene()
 {
     mMainSceneTemp = NULL;
-    mLayer = NULL;
+    mMainLayer = NULL;
+    mblnIsHomePage = true;
 }
 
 MainGameScene::~MainGameScene()
@@ -21,13 +22,13 @@ MainGameScene::~MainGameScene()
 
 void MainGameScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-
+    this->mMainSceneTemp->setdelegate(this);
 }
 
 bool MainGameScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainSceneTemp", MainSceneTemplate*, this->mMainSceneTemp);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mLayer", CCLayer*, this->mLayer);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainLayer", CCLayer*, this->mMainLayer);
     
     return true;
 }
@@ -38,8 +39,6 @@ void MainGameScene::toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCContr
     switch (button->getTag()) {
         case TOOLBAR_BTN_COMPETITION_TAG:
             CCLOG("11111");
-            this->mLayer->runAction(CCMoveBy::create(0.5, ccp(-CCDirector::sharedDirector()->getWinSize().width,0)));
-            
             break;
         case TOOLBAR_BTN_GOD_DEMON_TAG:
             CCLOG("22222");
@@ -49,7 +48,16 @@ void MainGameScene::toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCContr
             break;
         case TOOLBAR_BTN_FRIENDS_TAG:
             CCLOG("44444");
-            this->PushScene("FriendListScene");
+            mblnIsHomePage = false;
+
+            mSubLayer = (CCLayer *)this->GetLayer("FriendListScene");
+            mSubLayer->setPosition(ccp(0 + winSize.width,38));
+            this->addChild(mSubLayer);
+            this->mSubLayer->runAction(CCMoveTo::create(0.2, ccp(0,38)));
+            
+            //this->mMainLayer->runAction(CCMoveBy::create(0.3, CCPointMake(-CCDirector::sharedDirector()->getWinSize().width,0)));
+            this->mMainLayer->setVisible(false);
+            this->mMainLayer->setPosition(CCPointMake(-CCDirector::sharedDirector()->getWinSize().width,this->mMainLayer->getPosition().y));
             break;
         case TOOLBAR_BTN_ITEMS_TAG:
             CCLOG("55555");
@@ -62,9 +70,27 @@ void MainGameScene::toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCContr
             break;
     }
     
-    CCLayer *layer = (CCLayer *)this->GetLayer("FriendListScene");
-    layer->setPosition(ccp(0,38));
-    this->addChild(layer);
+
+}
+
+void MainGameScene::menuItemClicked(CCMenuItem *pItem)
+{
+    if (pItem->getTag() == MENUBAR_MAINPAGE_TAG) {
+        if (mblnIsHomePage) {
+            return;
+        }
+        
+        if (mSubLayer!=NULL) {
+            mSubLayer->removeFromParentAndCleanup(true);
+            mSubLayer = NULL;
+        }
+        
+        mMainLayer->setVisible(true);
+        CCActionInterval *action1 = CCMoveTo::create(0.2, ccp(0,mMainLayer->getPosition().y));
+        mMainLayer->runAction(action1);
+        mblnIsHomePage = true;
+        
+    }
 }
 
 SEL_MenuHandler MainGameScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)

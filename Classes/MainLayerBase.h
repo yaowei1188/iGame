@@ -22,6 +22,7 @@ protected:
     void OpenNewScene(const char *pCCBFileName);
     void PushScene(const char *pCCBFileName);
     CCNode* GetLayer(const char *pCCBFileName);
+    CCRenderTexture* createStroke(cocos2d::CCLabelTTF *label, float size, cocos2d::ccColor3B color);
 };
 
 #endif /* defined(__iGame__MainLayerBase__) */

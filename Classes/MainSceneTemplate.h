@@ -19,6 +19,17 @@
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
+/**
+ * Data source that governs table backend data.
+ */
+class MainSceneTemplateDelegate
+{
+public:
+
+    virtual void menuItemClicked(CCMenuItem *pItem) = 0;
+
+};
+
 class MainSceneTemplate : public MainLayerBase,
   public CCBSelectorResolver,
   public CCBMemberVariableAssigner,
@@ -43,8 +54,15 @@ public:
     virtual bool init();
     
     CCLabelTTF *mlblName;
+    CCLabelTTF *mlblHealth;
+    CCLabelTTF *mlblPower;
     
+    CCLabelTTF *mlblGold;
+    CCLabelTTF *mlblBronze;
+    CCLabelTTF *mlblGrade;
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainSceneTemplate, create);
+    
+    CC_SYNTHESIZE(MainSceneTemplateDelegate*, m_delegate, delegate);
 
 };
 

@@ -82,6 +82,19 @@
                 <key>sourceSize</key>
                 <string>{70,40}</string>
             </dict>
+            <key>downArrow.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{484,218},{18,11}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{18,11}}</string>
+                <key>sourceSize</key>
+                <string>{18,11}</string>
+            </dict>
             <key>gou_1.png</key>
             <dict>
                 <key>frame</key>
@@ -407,19 +420,6 @@
                 <key>sourceSize</key>
                 <string>{320,213}</string>
             </dict>
-            <key>右箭头.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{484,218},{18,11}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{18,11}}</string>
-                <key>sourceSize</key>
-                <string>{18,11}</string>
-            </dict>
             <key>忘记密码_1.png</key>
             <dict>
                 <key>frame</key>
@@ -482,7 +482,7 @@
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:d8ea7257e22324a934ad01694a3eb7af$</string>
+            <string>$TexturePacker:SmartUpdate:35088030a1d959fdbb521477aa33f174$</string>
             <key>textureFileName</key>
             <string>login.png</string>
         </dict>
