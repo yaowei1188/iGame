@@ -5,7 +5,7 @@
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>currentSequenceId</key>
 	<integer>0</integer>
 	<key>fileType</key>
@@ -22,6 +22,44 @@
 		<string>CCLayer</string>
 		<key>children</key>
 		<array>
+			<dict>
+				<key>baseClass</key>
+				<string>CCBFile</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>MainSceneTemplate</string>
+				<key>memberVarAssignmentName</key>
+				<string>mMainSceneTemp</string>
+				<key>memberVarAssignmentType</key>
+				<integer>0</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ccbFile</string>
+						<key>type</key>
+						<string>CCBFile</string>
+						<key>value</key>
+						<string>MainSceneTemplate.ccb</string>
+					</dict>
+				</array>
+			</dict>
 			<dict>
 				<key>baseClass</key>
 				<string>CCScale9Sprite</string>
@@ -44,8 +82,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>160</real>
-							<real>322</real>
+							<real>159</real>
+							<real>359</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -157,8 +195,6 @@
 						<real>0.0</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -183,7 +219,7 @@
 						<key>value</key>
 						<array>
 							<real>160</real>
-							<real>323</real>
+							<real>359</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -299,7 +335,7 @@
 						<key>value</key>
 						<array>
 							<real>197</real>
-							<real>259</real>
+							<real>339</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -514,8 +550,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>22</real>
-							<real>323</real>
+							<real>27</real>
+							<real>360</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -631,7 +667,7 @@
 						<key>value</key>
 						<array>
 							<real>4</real>
-							<real>4</real>
+							<real>44</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -704,7 +740,7 @@
 						<key>value</key>
 						<array>
 							<real>101</real>
-							<real>280</real>
+							<real>320</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -777,7 +813,7 @@
 						<key>value</key>
 						<array>
 							<real>197</real>
-							<real>303</real>
+							<real>299</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1094,20 +1130,6 @@
 			<integer>568</integer>
 			<key>name</key>
 			<string>iPhone 5 Portrait</string>
-			<key>scale</key>
-			<real>1</real>
-			<key>width</key>
-			<integer>320</integer>
-		</dict>
-		<dict>
-			<key>centeredOrigin</key>
-			<false/>
-			<key>ext</key>
-			<string>iphone</string>
-			<key>height</key>
-			<integer>348</integer>
-			<key>name</key>
-			<string>Custom</string>
 			<key>scale</key>
 			<real>1</real>
 			<key>width</key>

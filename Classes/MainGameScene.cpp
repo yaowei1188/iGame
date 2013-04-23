@@ -13,16 +13,19 @@ MainGameScene::MainGameScene()
     mMainSceneTemp = NULL;
     mMainLayer = NULL;
     mblnIsHomePage = true;
+    mlayArray = CCArray::create();
+    mlayArray->retain();
 }
 
 MainGameScene::~MainGameScene()
 {
-
+    mlayArray->release();
 }
 
 void MainGameScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     this->mMainSceneTemp->setdelegate(this);
+    this->mlayArray->addObject(mMainLayer);
 }
 
 bool MainGameScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
@@ -49,15 +52,7 @@ void MainGameScene::toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCContr
         case TOOLBAR_BTN_FRIENDS_TAG:
             CCLOG("44444");
             mblnIsHomePage = false;
-
-            mSubLayer = (CCLayer *)this->GetLayer("FriendListScene");
-            mSubLayer->setPosition(ccp(0 + winSize.width,38));
-            this->addChild(mSubLayer);
-            this->mSubLayer->runAction(CCMoveTo::create(0.2, ccp(0,38)));
-            
-            //this->mMainLayer->runAction(CCMoveBy::create(0.3, CCPointMake(-CCDirector::sharedDirector()->getWinSize().width,0)));
-            this->mMainLayer->setVisible(false);
-            this->mMainLayer->setPosition(CCPointMake(-CCDirector::sharedDirector()->getWinSize().width,this->mMainLayer->getPosition().y));
+            this->PushLayer((CCLayer *)this->GetLayer("FriendListScene"));
             break;
         case TOOLBAR_BTN_ITEMS_TAG:
             CCLOG("55555");
@@ -69,27 +64,98 @@ void MainGameScene::toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCContr
             CCLOG("77777");
             break;
     }
-    
+}
 
+void MainGameScene::PushLayer(CCLayer *subLayer)
+{
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    
+    CCLayer *prevLayer = (CCLayer *)mlayArray->objectAtIndex(mlayArray->count()-1);
+    
+    CCSequence *sequence = CCSequence::create(CCMoveBy::create(0.2, CCPointMake(-CCDirector::sharedDirector()->getWinSize().width,0)),CCCallFuncN::create(this, callfuncN_selector(MainGameScene::removeNodeCallBack)),NULL);
+    
+    prevLayer->runAction(sequence);
+    
+    subLayer->setPosition(ccp(0 + winSize.width,38));
+    this->addChild(subLayer);
+    subLayer->runAction(CCMoveTo::create(0.2, ccp(0,38)));
+
+    this->mlayArray->addObject(subLayer);
+}
+
+void MainGameScene::removeNodeCallBack(CCNode* pNode)
+{
+    pNode->removeFromParent();
+}
+
+void MainGameScene::removeAndCleanNodeCallBack(CCNode* pNode)
+{
+    pNode->removeFromParentAndCleanup(true);
+    mlayArray->removeLastObject();
+}
+
+void MainGameScene::PopToRoot()
+{
+    if (mlayArray->count()<=1) {
+        return;
+    }
+    
+    for (int i=mlayArray->count()-2; i>=1; i--) {
+        CCLayer *layer = (CCLayer *)mlayArray->objectAtIndex(i);
+        layer->removeFromParentAndCleanup(true);
+        mlayArray->removeObjectAtIndex(i);
+    }
+    
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    CCLayer *current = (CCLayer *)mlayArray->objectAtIndex(mlayArray->count()-1);
+    
+    CCSequence *sequence = CCSequence::create(CCMoveBy::create(0.2, CCPointMake(winSize.width,0)),CCCallFuncN::create(this, callfuncN_selector(MainGameScene::removeAndCleanNodeCallBack)),NULL);
+    
+    current->runAction(sequence);
+    
+    CCLayer *root = (CCLayer *)mlayArray->objectAtIndex(0);
+    
+    root->setPosition(ccp(-320, root->getPosition().y));
+    this->addChild(root);
+    root->runAction(CCMoveTo::create(0.2, ccp(0,root->getPosition().y)));
+}
+
+void MainGameScene::PopLayer()
+{
+    if (mlayArray->count()<=1) {
+        return;
+    }
+    
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    CCLayer *current = (CCLayer *)mlayArray->objectAtIndex(mlayArray->count()-1);
+    
+    CCSequence *sequence = CCSequence::create(CCMoveBy::create(0.2, CCPointMake(winSize.width,0)),CCCallFuncN::create(this, callfuncN_selector(MainGameScene::removeAndCleanNodeCallBack)),NULL);
+    
+    current->runAction(sequence);
+    
+    CCLayer *prev = (CCLayer *)mlayArray->objectAtIndex(mlayArray->count()-2);
+    prev->setPosition(ccp(-160, prev->getPosition().y));
+    this->addChild(prev);
+    prev->runAction(CCMoveTo::create(0.2, ccp(0,prev->getPosition().y)));
 }
 
 void MainGameScene::menuItemClicked(CCMenuItem *pItem)
 {
     if (pItem->getTag() == MENUBAR_MAINPAGE_TAG) {
-        if (mblnIsHomePage) {
-            return;
-        }
-        
-        if (mSubLayer!=NULL) {
-            mSubLayer->removeFromParentAndCleanup(true);
-            mSubLayer = NULL;
-        }
-        
-        mMainLayer->setVisible(true);
-        CCActionInterval *action1 = CCMoveTo::create(0.2, ccp(0,mMainLayer->getPosition().y));
-        mMainLayer->runAction(action1);
-        mblnIsHomePage = true;
-        
+//        if (mblnIsHomePage) {
+//            return;
+//        }
+//        
+//        if (mSubLayer!=NULL) {
+//            mSubLayer->removeFromParentAndCleanup(true);
+//            mSubLayer = NULL;
+//        }
+//
+//        mMainLayer->setVisible(true);
+//        CCActionInterval *action1 = CCMoveTo::create(0.2, ccp(0,mMainLayer->getPosition().y));
+//        mMainLayer->runAction(action1);
+//        mblnIsHomePage = true;
+        this->PopToRoot();
     }
 }
 

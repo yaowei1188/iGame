@@ -39,8 +39,7 @@ bool AddFriendScene::init()
         selectedindex = -1;
 
         mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("Li2"),CCString::create("Li3"),CCString::create("Li1"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
-        
-//        mFriendList->retain();
+        mFriendList->retain();
         
         bRet = true;
     } while (0);
@@ -52,18 +51,14 @@ void AddFriendScene::buttonClicked(CCObject *pSender,CCControlEvent event)
 {
 	CCLOG("i was clicked");
 	char sSearchText[20];
-	sprintf(sSearchText,m_txtSearchField->getText());
+	sprintf(sSearchText,"%s",m_txtSearchField->getText());
     
     CCControlButton *button = (CCControlButton *)pSender;
     
-    if (button->getTag()==1) {
-        CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::sharedCCNodeLoaderLibrary();
+    if (button->getTag()==2) {
 
-        cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
-        ccbReader->autorelease();
-
-        CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("FriendListScene.ccbi");
-        CCDirector::sharedDirector()->replaceScene(CCTransitionMoveInL::create(0.2, pScene));
+        MainGameScene *mainScene = (MainGameScene *)this->getParent();
+        mainScene->PopLayer();
         
     } else if(button->getTag()==2) {
         this->doSearchFriend();
@@ -137,8 +132,6 @@ void AddFriendScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     CCLOG("TEST");
     
-    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    
     m_txtSearchField->setPlaceHolder("please input search field");
     
     mTableViewFriend->setDirection(kCCScrollViewDirectionVertical);
@@ -154,7 +147,6 @@ bool AddFriendScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pM
 {
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtSearchField", CCEditBox*, this->m_txtSearchField);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableViewFriend", CCTableView*, this->mTableViewFriend);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainSceneTemp", MainSceneTemplate*, this->mMainSceneTemp);
     return true;
 }
 
@@ -339,7 +331,6 @@ CCTableViewCell* AddFriendScene::tableCellAtIndex(CCTableView *table, unsigned i
 AddFriendScene::AddFriendScene()
 {
     mTableViewFriend = NULL;
-    mMainSceneTemp = NULL;
     mFriendList = NULL;
     m_txtSearchField = NULL;
 }
@@ -348,7 +339,7 @@ AddFriendScene::~AddFriendScene()
 {
 //    mTableViewFriend->release();
 //    mMainSceneTemp->release();
-//    mFriendList->release();
+    mFriendList->release();
 //    m_txtSearchField->release();
 }
 

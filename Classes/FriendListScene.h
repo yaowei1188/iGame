@@ -8,6 +8,7 @@
 #include "XmlParser.h"
 
 #include "CCMessageDialog.h"
+#include "MainGameScene.h"
 #include "MainSceneTemplate.h"
 #include "MainLayerBase.h"
 #include "common.h"

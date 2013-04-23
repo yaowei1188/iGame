@@ -8,6 +8,11 @@
 
 #include "MainLayerBase.h"
 
+MainLayerBase::MainLayerBase()
+{
+    this->loading = NULL;
+}
+
 void MainLayerBase::OpenNewScene(const char *pCCBFileName)
 {
     CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::sharedCCNodeLoaderLibrary();
@@ -71,4 +76,24 @@ CCRenderTexture* MainLayerBase::createStroke(cocos2d::CCLabelTTF *label, float s
     rt->setPosition(ccp(rtX, rtY));
     
     return rt;
+}
+
+void MainLayerBase::ShowLoad(const char *pCCBFileName)
+{
+    if (loading==NULL) {
+        loading = LoadingScene::create();
+        this->addChild(loading);
+    }
+}
+
+
+
+void MainLayerBase::HideLoad()
+{
+    if (loading==NULL) {
+        return;
+    }
+    
+    this->loading->removeFromParentAndCleanup(true);
+    this->loading = NULL;
 }

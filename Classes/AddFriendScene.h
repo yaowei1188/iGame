@@ -6,6 +6,7 @@
 
 #include "SimpleAudioEngine.h"
 #include "XmlParser.h"
+#include "MainGameScene.h"
 #include "MainSceneTemplate.h"
 #include "common.h"
 
@@ -59,7 +60,6 @@ public:
 
 	CCEditBox *m_txtSearchField;
     CCTableView* mTableViewFriend;
-    MainSceneTemplate *mMainSceneTemp;
     unsigned int selectedindex;
     CCArray *mFriendList;
 };

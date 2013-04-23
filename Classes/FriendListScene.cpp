@@ -243,11 +243,8 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 //    按下按钮事件回调
 void FriendListScene::toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent)
 {
-//    CCLabelTTF  * label = (CCLabelTTF*) this ->getChildByTag(923);
-//    label->setString(CCString::createWithFormat("按下")->getCString());
     CCLOG("CLICK");
     
-//    CCMessageBox("oi","cole");
     CCMessageDialog *box = CCMessageDialog::create();
     this->addChild(box);
 }
@@ -256,13 +253,11 @@ void FriendListScene::buttonClicked(CCObject * sender , CCControlEvent controlEv
 {
     CCLOG("SSSS");
     
-    CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::sharedCCNodeLoaderLibrary();
+//    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     
-    cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
-    ccbReader->autorelease();
-    
-    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("AddFriendScene.ccbi");
-    CCDirector::sharedDirector()->replaceScene(CCTransitionMoveInR::create(0.3, pScene));
+    CCLayer *addFriendLayer = (CCLayer *)this->GetLayer("AddFriendScene");
+    MainGameScene *mainScene = (MainGameScene *)this->getParent();
+    mainScene->PushLayer(addFriendLayer);
 }
 
 

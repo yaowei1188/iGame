@@ -21,9 +21,9 @@
 	<key>generatedSpriteSheets</key>
 	<dict/>
 	<key>javascriptBased</key>
-	<true/>
+	<false/>
 	<key>javascriptMainCCB</key>
-	<string>MainScene</string>
+	<string></string>
 	<key>onlyPublishCCBs</key>
 	<false/>
 	<key>publishDirectory</key>

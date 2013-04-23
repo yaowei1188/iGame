@@ -48,10 +48,6 @@ bool LoginScene::init()
         //////////////////////////////////////////////////////////////////////////
 
         CC_BREAK_IF(! CCLayer::init());
-
-        ////////////////////////////////////////////////////////////////////////////
-        //// add your codes below...
-        ////////////////////////////////////////////////////////////////////////////
         
         bRet = true;
     } while (0);
@@ -79,8 +75,10 @@ void LoginScene::doSubmit()
 {
     char sAccount[20];
 	char sPassword[20];
-	sprintf(sAccount,m_txtAccount->getText());
-	sprintf(sPassword,m_txtPassword->getText());
+	sprintf(sAccount,"%s",m_txtAccount->getText());
+	sprintf(sPassword,"%s",m_txtPassword->getText());
+    
+    this->ShowLoad("");
     
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
@@ -88,7 +86,8 @@ void LoginScene::doSubmit()
 	request->setTag("1");
     
     char url[150] = {0};
-    sprintf(url,"%s/user/login/%s/%s",API_URL,sAccount,sPassword);
+    sprintf(url,"%suser/login/%s/%s",API_URL,sAccount,sPassword);
+    CCLOG(url);
 	request->setUrl(url);
     
 	CCHttpClient *client = CCHttpClient::getInstance();
@@ -99,6 +98,8 @@ void LoginScene::doSubmit()
 
 void LoginScene::requestFinishedCallback(CCNode* pSender,void *data)
 {
+    this->HideLoad();
+    
     CCHttpResponse *response =  (CCHttpResponse*)data;
 	if(response == NULL)
 	{
@@ -111,7 +112,8 @@ void LoginScene::requestFinishedCallback(CCNode* pSender,void *data)
 	if (!response->isSucceed())   
 	{  
 		CCLog("response failed");  
-		CCLog("error buffer: %s", response->getErrorBuffer());  
+		CCLog("error buffer: %s", response->getErrorBuffer());
+        CCMessageBox("ERROR", "Response failed");
 		return;  
 	}
 	std::vector<char> *buffer = response->getResponseData(); 
@@ -196,6 +198,7 @@ void LoginScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent
             case LOGIN_BUTTON_ACTION_SIGNIN_TAG:
                 CCLOG("signin");
                 this->OpenNewScene("MainGameScene");
+//                this->doSubmit();
                 break;
             case LOGIN_BUTTON_ACTION_SIGNUP_TAG:
                 CCLOG("signup");

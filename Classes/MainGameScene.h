@@ -48,12 +48,19 @@ public:
     MainSceneTemplate *mMainSceneTemp;
     
     CCLayer *mMainLayer;
-    CCLayer *mSubLayer;
     
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainGameScene, create);
     bool mblnIsHomePage;
     virtual void menuItemClicked(CCMenuItem *pItem);
-
+    void removeNodeCallBack(CCNode *pNode);
+    void removeAndCleanNodeCallBack(CCNode *pNode);
+    
+public:
+    void PushLayer(CCLayer *layer);
+    void PopLayer();
+    void PopToRoot();
+private:
+    CCArray *mlayArray;
 };
 
 #endif /* defined(__cctest__MainMenuScene__) */
