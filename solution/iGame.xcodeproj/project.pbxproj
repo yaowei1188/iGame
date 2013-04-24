@@ -9,15 +9,8 @@
 /* Begin PBXBuildFile section */
 		6F0A93301724C40A006082DC /* MainLayerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F0A932E1724C40A006082DC /* MainLayerBase.cpp */; };
 		6F0A93351724C423006082DC /* ThirdLoginScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F0A93321724C423006082DC /* ThirdLoginScene.cpp */; };
-		6F0A93401724C46E006082DC /* login-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F0A93381724C46E006082DC /* login-hd.plist */; };
-		6F0A93411724C46E006082DC /* login-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F0A93391724C46E006082DC /* login-hd.png */; };
-		6F0A93421724C46E006082DC /* login.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F0A933A1724C46E006082DC /* login.plist */; };
-		6F0A93431724C46E006082DC /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F0A933B1724C46E006082DC /* login.png */; };
-		6F0A93441724C46E006082DC /* main-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F0A933C1724C46E006082DC /* main-hd.plist */; };
-		6F0A93451724C46E006082DC /* main-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F0A933D1724C46E006082DC /* main-hd.png */; };
-		6F0A93461724C46E006082DC /* main.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F0A933E1724C46E006082DC /* main.plist */; };
-		6F0A93471724C46E006082DC /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F0A933F1724C46E006082DC /* main.png */; };
 		6F0A93491724C54A006082DC /* ThirdLoginScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 6F0A93481724C54A006082DC /* ThirdLoginScene.ccbi */; };
+		6F0A934D1725185B006082DC /* transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F0A934C1725185B006082DC /* transparent.png */; };
 		6F4A3F3B171F7EBF008F9FB0 /* AddFriendScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F4A3F36171F7EBF008F9FB0 /* AddFriendScene.cpp */; };
 		6F4A3F3C171F7EBF008F9FB0 /* CCMessageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F4A3F39171F7EBF008F9FB0 /* CCMessageDialog.cpp */; };
 		6F4A3F3E171F7F00008F9FB0 /* boxbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F4A3F3D171F7F00008F9FB0 /* boxbg.png */; };
@@ -31,6 +24,8 @@
 		6F51E9A9171D2C620092EE63 /* CCTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F51E9A7171D2C620092EE63 /* CCTableView.cpp */; };
 		6F51E9AA171D2C620092EE63 /* CCTableViewCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F51E9A8171D2C620092EE63 /* CCTableViewCell.cpp */; };
 		6F51E9AE171D2CA20092EE63 /* FriendListScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F51E9AB171D2CA20092EE63 /* FriendListScene.cpp */; };
+		6F82C60C17264E700007122E /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 6F82C60B17264E700007122E /* Image */; };
+		6F82C60F17265BF90007122E /* LoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F82C60D17265BF80007122E /* LoadingScene.cpp */; };
 		6FBA777B17153C4400ECA334 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBA777A17153C4400ECA334 /* QuartzCore.framework */; };
 		6FBA777D17153C4400ECA334 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBA777C17153C4400ECA334 /* OpenGLES.framework */; };
 		6FBA777F17153C4400ECA334 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBA777E17153C4400ECA334 /* OpenAL.framework */; };
@@ -266,15 +261,8 @@
 		6F0A93321724C423006082DC /* ThirdLoginScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ThirdLoginScene.cpp; path = Classes/ThirdLoginScene.cpp; sourceTree = "<group>"; };
 		6F0A93331724C423006082DC /* ThirdLoginScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThirdLoginScene.h; path = Classes/ThirdLoginScene.h; sourceTree = "<group>"; };
 		6F0A93341724C423006082DC /* ThirdLoginSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThirdLoginSceneLoader.h; path = Classes/ThirdLoginSceneLoader.h; sourceTree = "<group>"; };
-		6F0A93381724C46E006082DC /* login-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "login-hd.plist"; path = "Resources/Image/login-hd.plist"; sourceTree = "<group>"; };
-		6F0A93391724C46E006082DC /* login-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-hd.png"; path = "Resources/Image/login-hd.png"; sourceTree = "<group>"; };
-		6F0A933A1724C46E006082DC /* login.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = login.plist; path = Resources/Image/login.plist; sourceTree = "<group>"; };
-		6F0A933B1724C46E006082DC /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login.png; path = Resources/Image/login.png; sourceTree = "<group>"; };
-		6F0A933C1724C46E006082DC /* main-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "main-hd.plist"; path = "Resources/Image/main-hd.plist"; sourceTree = "<group>"; };
-		6F0A933D1724C46E006082DC /* main-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "main-hd.png"; path = "Resources/Image/main-hd.png"; sourceTree = "<group>"; };
-		6F0A933E1724C46E006082DC /* main.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = main.plist; path = Resources/Image/main.plist; sourceTree = "<group>"; };
-		6F0A933F1724C46E006082DC /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = main.png; path = Resources/Image/main.png; sourceTree = "<group>"; };
 		6F0A93481724C54A006082DC /* ThirdLoginScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = ThirdLoginScene.ccbi; path = Resources/ThirdLoginScene.ccbi; sourceTree = "<group>"; };
+		6F0A934C1725185B006082DC /* transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = transparent.png; path = Resources/transparent.png; sourceTree = "<group>"; };
 		6F4A3F36171F7EBF008F9FB0 /* AddFriendScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AddFriendScene.cpp; path = Classes/AddFriendScene.cpp; sourceTree = "<group>"; };
 		6F4A3F37171F7EBF008F9FB0 /* AddFriendScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddFriendScene.h; path = Classes/AddFriendScene.h; sourceTree = "<group>"; };
 		6F4A3F38171F7EBF008F9FB0 /* AddFriendSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddFriendSceneLoader.h; path = Classes/AddFriendSceneLoader.h; sourceTree = "<group>"; };
@@ -302,6 +290,9 @@
 		6F51E9AD171D2CA20092EE63 /* FriendListSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendListSceneLoader.h; path = Classes/FriendListSceneLoader.h; sourceTree = "<group>"; };
 		6F51E9B1171D2D710092EE63 /* CCTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCTableView.h; path = libs/extensions/GUI/CCScrollView/CCTableView.h; sourceTree = "<group>"; };
 		6F51E9B2171D2D710092EE63 /* CCTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCTableViewCell.h; path = libs/extensions/GUI/CCScrollView/CCTableViewCell.h; sourceTree = "<group>"; };
+		6F82C60B17264E700007122E /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Image; path = Resources/Image; sourceTree = "<group>"; };
+		6F82C60D17265BF80007122E /* LoadingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadingScene.cpp; path = Classes/LoadingScene.cpp; sourceTree = "<group>"; };
+		6F82C60E17265BF80007122E /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingScene.h; path = Classes/LoadingScene.h; sourceTree = "<group>"; };
 		6FB9C384172139EC002101F9 /* CCControlSwitchLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCControlSwitchLoader.h; path = Classes/CCControlSwitchLoader.h; sourceTree = "<group>"; };
 		6FBA777717153C4400ECA334 /* iGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FBA777A17153C4400ECA334 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -815,6 +806,8 @@
 		6F0A932D1724C3F8006082DC /* common */ = {
 			isa = PBXGroup;
 			children = (
+				6F82C60E17265BF80007122E /* LoadingScene.h */,
+				6F82C60D17265BF80007122E /* LoadingScene.cpp */,
 				6F4A3F45171FB7EC008F9FB0 /* common.h */,
 				6F0A932E1724C40A006082DC /* MainLayerBase.cpp */,
 				6F0A932F1724C40A006082DC /* MainLayerBase.h */,
@@ -825,11 +818,11 @@
 		6F0A93311724C40F006082DC /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				6F0A93321724C423006082DC /* ThirdLoginScene.cpp */,
 				6FBA7A6D17153F2700ECA334 /* LoginScene.h */,
 				6FBA7A6C17153F2700ECA334 /* LoginScene.cpp */,
 				6FBA7AD317166C9100ECA334 /* LoginSceneLoader.h */,
 				6F0A93331724C423006082DC /* ThirdLoginScene.h */,
+				6F0A93321724C423006082DC /* ThirdLoginScene.cpp */,
 				6F0A93341724C423006082DC /* ThirdLoginSceneLoader.h */,
 			);
 			name = Login;
@@ -838,26 +831,14 @@
 		6F0A93361724C42E006082DC /* Friend */ = {
 			isa = PBXGroup;
 			children = (
+				6F4A3F36171F7EBF008F9FB0 /* AddFriendScene.cpp */,
+				6F4A3F37171F7EBF008F9FB0 /* AddFriendScene.h */,
+				6F4A3F38171F7EBF008F9FB0 /* AddFriendSceneLoader.h */,
 				6F51E9AB171D2CA20092EE63 /* FriendListScene.cpp */,
 				6F51E9AC171D2CA20092EE63 /* FriendListScene.h */,
 				6F51E9AD171D2CA20092EE63 /* FriendListSceneLoader.h */,
 			);
 			name = Friend;
-			sourceTree = "<group>";
-		};
-		6F0A93371724C458006082DC /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				6F0A93381724C46E006082DC /* login-hd.plist */,
-				6F0A93391724C46E006082DC /* login-hd.png */,
-				6F0A933A1724C46E006082DC /* login.plist */,
-				6F0A933B1724C46E006082DC /* login.png */,
-				6F0A933C1724C46E006082DC /* main-hd.plist */,
-				6F0A933D1724C46E006082DC /* main-hd.png */,
-				6F0A933E1724C46E006082DC /* main.plist */,
-				6F0A933F1724C46E006082DC /* main.png */,
-			);
-			name = Image;
 			sourceTree = "<group>";
 		};
 		6F51E989171D12C10092EE63 /* CCScrollView */ = {
@@ -923,11 +904,12 @@
 		6FBA778B17153C4400ECA334 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6F0A93371724C458006082DC /* Image */,
+				6F82C60B17264E700007122E /* Image */,
 				6FBA7AED1717997800ECA334 /* Scene */,
 				6FBA7ADF1717996900ECA334 /* ccbResources */,
 				6FBA7AE01717996900ECA334 /* Fonts */,
 				6FBA7A76171540DD00ECA334 /* account.png */,
+				6F0A934C1725185B006082DC /* transparent.png */,
 				6F4A3F3D171F7F00008F9FB0 /* boxbg.png */,
 				6FBA7A77171540DD00ECA334 /* btnSubmit.png */,
 				6FBA778C17153C4400ECA334 /* CloseNormal.png */,
@@ -1852,9 +1834,6 @@
 				6F4A3F3F171F8957008F9FB0 /* MainSceneTemplate.cpp */,
 				6F4A3F40171F8957008F9FB0 /* MainSceneTemplate.h */,
 				6F4A3F41171F8957008F9FB0 /* MainSceneTemplateLoader.h */,
-				6F4A3F36171F7EBF008F9FB0 /* AddFriendScene.cpp */,
-				6F4A3F37171F7EBF008F9FB0 /* AddFriendScene.h */,
-				6F4A3F38171F7EBF008F9FB0 /* AddFriendSceneLoader.h */,
 				6F4A3F39171F7EBF008F9FB0 /* CCMessageDialog.cpp */,
 				6F4A3F3A171F7EBF008F9FB0 /* CCMessageDialog.h */,
 				6F51E982171D085D0092EE63 /* TaskListScene.h */,
@@ -1995,15 +1974,9 @@
 				6F4A3F3E171F7F00008F9FB0 /* boxbg.png in Resources */,
 				6F4A3F44171F8CDE008F9FB0 /* MainSceneTemplate.ccbi in Resources */,
 				6F4A3F47171FB903008F9FB0 /* AddFriendScene.ccbi in Resources */,
-				6F0A93401724C46E006082DC /* login-hd.plist in Resources */,
-				6F0A93411724C46E006082DC /* login-hd.png in Resources */,
-				6F0A93421724C46E006082DC /* login.plist in Resources */,
-				6F0A93431724C46E006082DC /* login.png in Resources */,
-				6F0A93441724C46E006082DC /* main-hd.plist in Resources */,
-				6F0A93451724C46E006082DC /* main-hd.png in Resources */,
-				6F0A93461724C46E006082DC /* main.plist in Resources */,
-				6F0A93471724C46E006082DC /* main.png in Resources */,
 				6F0A93491724C54A006082DC /* ThirdLoginScene.ccbi in Resources */,
+				6F0A934D1725185B006082DC /* transparent.png in Resources */,
+				6F82C60C17264E700007122E /* Image in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2215,6 +2188,7 @@
 				6F4A3F42171F8957008F9FB0 /* MainSceneTemplate.cpp in Sources */,
 				6F0A93301724C40A006082DC /* MainLayerBase.cpp in Sources */,
 				6F0A93351724C423006082DC /* ThirdLoginScene.cpp in Sources */,
+				6F82C60F17265BF90007122E /* LoadingScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
