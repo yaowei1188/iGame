@@ -73,12 +73,16 @@ bool LoginScene::init()
 
 void LoginScene::doSubmit()
 {
-    char sAccount[20];
-	char sPassword[20];
-	sprintf(sAccount,"%s",m_txtAccount->getText());
-	sprintf(sPassword,"%s",m_txtPassword->getText());
+    std::string sAccount(m_txtAccount->getText());
+	std::string sPassword(m_txtPassword->getText());
     
-    this->ShowLoad("");
+    if (trimRight(sAccount).empty() || trimRight(sPassword).empty()) {
+        CCMessageBox("用户名密码不能为空！","ERROR");
+        return;
+    }
+    
+    
+    this->ShowLoadingIndicator("");
     
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
@@ -86,7 +90,7 @@ void LoginScene::doSubmit()
 	request->setTag("1");
     
     char url[150] = {0};
-    sprintf(url,"%suser/login/%s/%s",API_URL,sAccount,sPassword);
+    sprintf(url,"%s/user/login/%s/%s",API_URL,sAccount.c_str(),sPassword.c_str());
     CCLOG(url);
 	request->setUrl(url);
     
@@ -98,7 +102,7 @@ void LoginScene::doSubmit()
 
 void LoginScene::requestFinishedCallback(CCNode* pSender,void *data)
 {
-    this->HideLoad();
+    this->HideLoadingIndicator();
     
     CCHttpResponse *response =  (CCHttpResponse*)data;
 	if(response == NULL)
@@ -118,37 +122,42 @@ void LoginScene::requestFinishedCallback(CCNode* pSender,void *data)
 	}
 	std::vector<char> *buffer = response->getResponseData(); 
 
-	//for (unsigned int i = 0; i < buffer->size(); i++)  
-	//{
-	//	CCLog("%c", (*buffer)[i]);
-	//}
 	std::string content(buffer->begin(),buffer->end());
-	//CCLog(content.c_str());
+	CCLog(content.c_str());
 
-	XMLParser *xmlParser = XMLParser::parseWithString(content.c_str());
-	//xmlParser->getString("content");
-	//CCString *content = CCString::create(xmlParser->getString("content")->getCString());
-	CCLOG("%s",xmlParser->getString("content")->getCString());
-
-	parseJson();
+	parseJson(content);
 }
 
-void LoginScene::parseJson()
+void LoginScene::parseJson(std::string &content)
 {
 	Json::Reader reader;  
 	Json::Value root; 
 
-//	const char* str = "{\"uploadid\": \"UP000000\",\"code\": 100,\"msg\": \"\",\"files\": \"\"}";  
-//	if (reader.parse(str, root)) 
-//	{  
-//		std::string upload_id = root["uploadid"].asString();
-//		int code = root["code"].asInt();
-//	}
+	const char* str = content.c_str();
+	if (!reader.parse(str, root))
+	{
+        CCMessageBox("Parse failed","ERROR");
+		return;
+	}
+    int code = root["code"].asInt();
+    if (code!=200) {
+        
+        CCMessageBox("登陆失败,用户名或者密码错误！","ERROR");
+        return;
+    }
+
+    CCUserDefault::sharedUserDefault()->setStringForKey("username", root["username"].asString());
+    CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", root["encryptedUserInfo"].asString());
+    
+    this->OpenNewScene("MainGameScene");
 }
 
 void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     CCLOG("TEST");
+    
+    m_txtAccount->setText("yaowei");
+    m_txtPassword->setText("123456");
     
     m_txtAccount->setFontColor(ccc3(0,0,0));
     m_txtAccount->setFont("Arial", 16);
@@ -197,8 +206,7 @@ void LoginScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent
         switch (button->getTag()) {
             case LOGIN_BUTTON_ACTION_SIGNIN_TAG:
                 CCLOG("signin");
-                this->OpenNewScene("MainGameScene");
-//                this->doSubmit();
+                this->doSubmit();
                 break;
             case LOGIN_BUTTON_ACTION_SIGNUP_TAG:
                 CCLOG("signup");

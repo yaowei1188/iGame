@@ -26,8 +26,8 @@ protected:
     void PushScene(const char *pCCBFileName);
     CCNode* GetLayer(const char *pCCBFileName);
     CCRenderTexture* createStroke(cocos2d::CCLabelTTF *label, float size, cocos2d::ccColor3B color);
-    void ShowLoad(const char *pCCBFileName);
-    void HideLoad();
+    void ShowLoadingIndicator(const char *pCCBFileName);
+    void HideLoadingIndicator();
     
 private:
     LoadingScene *loading;

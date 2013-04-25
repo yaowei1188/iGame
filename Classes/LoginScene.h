@@ -8,6 +8,7 @@
 #include "XmlParser.h"
 #include "MainLayerBase.h"
 #include "common.h"
+#include "StringExt.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -42,7 +43,7 @@ public:
     void callbackSwitch(CCObject* pSender);
 
 	void doSubmit();
-	void parseJson();
+	void parseJson(std::string& content);
 
 	CCEditBox *m_txtAccount;
 	CCEditBox *m_txtPassword;

@@ -33,7 +33,7 @@ public:
     // a selector callback
     void requestFinishedCallback(CCNode* pSender,void *p);
     void doSearchFriend();
-	void parseJson();
+    void addFriendRequest(std::string &userinfo);
 
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(AddFriendScene, create);
     
@@ -58,6 +58,7 @@ public:
     virtual CCSize cellSizeForIndex(CCTableView *table, unsigned int idx);
     virtual void tableCellHighlight(CCTableView* table, CCTableViewCell* cell);
 
+    
 	CCEditBox *m_txtSearchField;
     CCTableView* mTableViewFriend;
     unsigned int selectedindex;

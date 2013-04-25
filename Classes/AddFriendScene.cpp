@@ -68,64 +68,71 @@ void AddFriendScene::buttonClicked(CCObject *pSender,CCControlEvent event)
 void AddFriendScene::doSearchFriend()
 {
 	CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpPost);
+	request->setRequestType(CCHttpRequest::kHttpGet);
 	request->setResponseCallback(this,callfuncND_selector(AddFriendScene::requestFinishedCallback));
 	request->setTag("101");
-	request->setUrl("http://223.4.10.91/andon_service/ANDON_EX_USER.asmx/GetList");
+    
+    char url[150] = {0};
+    //sprintf(url,"%s/friend/addFriend/%s/%s",API_URL,CCUserDefault::sharedUserDefault()->getStringForKey("userinfo").c_str(),userinfo.c_str());
+    CCLOG(url);
+	request->setUrl(url);
 
-	const char* postData = "cid=120000&date=";
-	request->setRequestData(postData,strlen(postData));
 	CCHttpClient *client = CCHttpClient::getInstance();
 	client->send(request);
 
 	request->release();
 }
 
+void AddFriendScene::addFriendRequest(std::string &userinfo)
+{
+	CCHttpRequest *request = new CCHttpRequest();
+	request->setRequestType(CCHttpRequest::kHttpGet);
+	request->setResponseCallback(this,callfuncND_selector(AddFriendScene::requestFinishedCallback));
+	request->setTag("102");
+    
+    char url[150] = {0};
+    sprintf(url,"%s/friend/addFriend/%s/%s",API_URL,CCUserDefault::sharedUserDefault()->getStringForKey("userinfo").c_str(),userinfo.c_str());
+    CCLOG(url);
+	request->setUrl(url);
+
+	CCHttpClient *client = CCHttpClient::getInstance();
+	client->send(request);
+    
+	request->release();
+}
+
 void AddFriendScene::requestFinishedCallback(CCNode* pSender,void *data)
 {
     CCHttpResponse *response =  (CCHttpResponse*)data;
-	if(response==NULL)
+    
+	if (!response->isSucceed())
 	{
+		CCLog("response failed");
+		CCLog("error buffer: %s", response->getErrorBuffer());
+        CCMessageBox("ERROR", "Response failed");
 		return;
 	}
-	int statusCode = response->getResponseCode();
-	char statusString[64] = {};
-	CCLOG(statusString, "HTTP Status Code: %d, tag = %s", statusCode, response->getHttpRequest()->getTag());
-
-	if (!response->isSucceed())   
-	{  
-		CCLog("response failed");  
-		CCLog("error buffer: %s", response->getErrorBuffer());  
-		return;  
-	}
-	std::vector<char> *buffer = response->getResponseData(); 
-
-	//for (unsigned int i = 0; i < buffer->size(); i++)  
-	//{
-	//	CCLog("%c", (*buffer)[i]);
-	//}
+    
+    std::vector<char> *buffer = response->getResponseData();
 	std::string content(buffer->begin(),buffer->end());
-	//CCLog(content.c_str());
-
-	XMLParser *xmlParser = XMLParser::parseWithString(content.c_str());
-	//xmlParser->getString("content");
-	//CCString *content = CCString::create(xmlParser->getString("content")->getCString());
-	CCLOG("%s",xmlParser->getString("content")->getCString());
-
-	parseJson();
-}
-
-void AddFriendScene::parseJson()
-{
-	Json::Reader reader;  
-	Json::Value root; 
-
-//	const char* str = "{\"uploadid\": \"UP000000\",\"code\": 100,\"msg\": \"\",\"files\": \"\"}";  
-//	if (reader.parse(str, root)) 
-//	{  
-//		std::string upload_id = root["uploadid"].asString();
-//		int code = root["code"].asInt();
-//	}
+    
+    Json::Reader reader;
+	Json::Value root;
+    
+    const char* str = content.c_str();
+	if (!reader.parse(str, root))
+	{
+        CCMessageBox("Parse failed","ERROR");
+		return;
+	}
+    
+    std::string requestTag(response->getHttpRequest()->getTag());
+    
+    if (requestTag == "101") {
+        std::string a(root["username"].asString());
+    } else if (requestTag == "102"){
+        std::string a(root["username"].asString());
+    }
 }
 
 void AddFriendScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
@@ -151,7 +158,24 @@ bool AddFriendScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pM
 }
 
 void AddFriendScene::toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
-	CCLOG("button clicked");
+	CCControlButton *button = (CCControlButton *)pSender;
+    switch (button->getTag()) {
+        case 127:
+            std::string userinfo = "6a5f0245b228a6c6f464fd300304857e";
+            this->addFriendRequest(userinfo);
+            break;
+//        case 128:
+//            
+//            break;
+//        case 129:
+//            
+//            break;
+//        case 130:
+//            
+//            break;
+//        default:
+//            break;
+    }
 }
 
 SEL_MenuHandler AddFriendScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
@@ -164,7 +188,6 @@ SEL_MenuHandler AddFriendScene::onResolveCCBCCMenuItemSelector(CCObject * pTarge
 SEL_CCControlHandler AddFriendScene::onResolveCCBCCControlSelector(CCObject *pTarget, const char * pSelectorName) {
     
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "buttonClicked:", AddFriendScene::buttonClicked);
-    
 	return NULL;
 }
 

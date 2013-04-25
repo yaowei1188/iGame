@@ -9,7 +9,7 @@
 #ifndef iGame_common_h
 #define iGame_common_h
 
-#define API_URL "http://www.99dial.cn:81/pilgrimageWestwards/"
+#define API_URL "http://www.runapk.com/dzxy"
 
 #define CELL_ITEMS_Y 38
 #define CELL_ITEMS_GAP 30

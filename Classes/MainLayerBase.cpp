@@ -78,7 +78,7 @@ CCRenderTexture* MainLayerBase::createStroke(cocos2d::CCLabelTTF *label, float s
     return rt;
 }
 
-void MainLayerBase::ShowLoad(const char *pCCBFileName)
+void MainLayerBase::ShowLoadingIndicator(const char *pCCBFileName)
 {
     if (loading==NULL) {
         loading = LoadingScene::create();
@@ -88,7 +88,7 @@ void MainLayerBase::ShowLoad(const char *pCCBFileName)
 
 
 
-void MainLayerBase::HideLoad()
+void MainLayerBase::HideLoadingIndicator()
 {
     if (loading==NULL) {
         return;
