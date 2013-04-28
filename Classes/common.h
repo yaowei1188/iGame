@@ -11,8 +11,9 @@
 
 #define API_URL "http://www.runapk.com/dzxy"
 
-#define CELL_ITEMS_Y 38
+#define CELL_ITEMS_Y 25
 #define CELL_ITEMS_GAP 30
+#define CELL_LOVE_XGAP 15
 
 #define LOGIN_MENU_BAR_QQ_TAG 101
 #define LOGIN_MENU_BAR_SINA_TAG 102

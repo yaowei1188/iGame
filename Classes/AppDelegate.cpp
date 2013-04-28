@@ -58,6 +58,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("Image/login.plist");
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("Image/main.plist");
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("Image/login.plist");
     
     CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
 //        CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");

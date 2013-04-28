@@ -39,7 +39,7 @@ bool FriendListScene::init()
 
         CC_BREAK_IF(! CCLayer::init());
         
-        mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("Li2"),CCString::create("Li3"),CCString::create("Li1"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
+        mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
         
         mFriendList->retain();
 
@@ -75,14 +75,21 @@ void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     mTableViewFriend->setDirection(kCCScrollViewDirectionVertical);
     mTableViewFriend->setVerticalFillOrder(kCCTableViewFillTopDown);
     mTableViewFriend->setDataSource(this);
-    mTableViewFriend->setViewSize(CCSizeMake(312, 290));
+    mTableViewFriend->setViewSize(CCSizeMake(312, 280));
     mTableViewFriend->setDelegate(this);
     mTableViewFriend->reloadData();
 }
 
 void FriendListScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
 {
-    
+    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
+    sSelected->setVisible(true);
+}
+
+void FriendListScene::tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell)
+{
+    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
+    sSelected->setVisible(false);
 }
 
 void FriendListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
@@ -112,7 +119,7 @@ CCSize FriendListScene::cellSizeForIndex(CCTableView *table, unsigned int idx)
     if (selectedindex == idx ) {
         return CCSizeMake(312, 80);
     }
-    return CCSizeMake(312, 50);
+    return CCSizeMake(312, 44);
 }
 
 bool FriendListScene::hasFixedCellSize()
@@ -130,42 +137,61 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 		cell->autorelease();
         
         CCSize size = this->cellSizeForIndex(table, idx);
-    
-        CCScale9Sprite *background = CCScale9Sprite::create("account.png", CCRectMake(0, 0, size.width, size.height));
-        background->setAnchorPoint(CCPointZero);
-        background->setTag(121);
-        cell->addChild(background);
         
-//		CCSprite *sprite = CCSprite::create("user_blue_32.png");
-//		sprite->setPosition(ccp(40,10));
-//		sprite->setAnchorPoint(CCPointZero);
-//		cell->addChild(sprite);
+        CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_cellhighlight.png"));
+        sSelected->setVisible(false);
+        sSelected->setTag(121);
+		sSelected->setPosition(ccp(13,size.height - 39));
+		sSelected->setAnchorPoint(CCPointZero);
+		cell->addChild(sSelected);
+        
+        CCSprite *sGroup = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_dairy.png"));
+        sGroup->setTag(122);
+		sGroup->setPosition(ccp(11,size.height - CELL_ITEMS_Y - 10));
+		sGroup->setAnchorPoint(CCPointZero);
+		cell->addChild(sGroup);
 
-		CCLabelTTF *lblName = CCLabelTTF::create(string->getCString(), "Helvetica", 15.0);
-		lblName->setPosition(ccp(15,size.height - CELL_ITEMS_Y));
+		CCLabelTTF *lblName = CCLabelTTF::create(string->getCString(), "Arial", 14.0);
+		lblName->setPosition(ccp(51,size.height - CELL_ITEMS_Y));
 		lblName->setAnchorPoint(CCPointZero);
+        lblName->setColor(ccc3(248, 255, 38));
 		lblName->setTag(123);
 		cell->addChild(lblName);
 
-		CCLabelTTF *lblLevel = CCLabelTTF::create("Lv2", "Helvetica", 15.0);
-		lblLevel->setPosition(ccp(90,size.height - CELL_ITEMS_Y));
+		CCLabelTTF *lblLevel = CCLabelTTF::create("LV. 3", "Arial", 14.0);
+		lblLevel->setPosition(ccp(165,size.height - CELL_ITEMS_Y));
 		lblLevel->setAnchorPoint(CCPointZero);
+        lblLevel->setColor(ccc3(248, 255, 38));
 		lblLevel->setTag(124);
 		cell->addChild(lblLevel);
 
-		CCLabelTTF *lblFriend = CCLabelTTF::create("friends", "Helvetica", 15.0);
-		lblFriend->setPosition(ccp(160,size.height - CELL_ITEMS_Y));
+		CCLabelTTF *lblFriend = CCLabelTTF::create("生死不弃", "Arial", 14.0);
+		lblFriend->setPosition(ccp(218,size.height - CELL_ITEMS_Y));
 		lblFriend->setAnchorPoint(CCPointZero);
+        lblFriend->setColor(ccc3(248, 255, 38));
         lblFriend->setTag(125);
 		cell->addChild(lblFriend);
 
-		CCLabelTTF *lblStatus = CCLabelTTF::create("Online", "Helvetica", 15.0);
-		lblStatus->setPosition(ccp(240,size.height - CELL_ITEMS_Y));
+		CCLabelTTF *lblStatus = CCLabelTTF::create("100", "Arial", 14.0);
+		lblStatus->setPosition(ccp(283,size.height - CELL_ITEMS_Y));
 		lblStatus->setAnchorPoint(CCPointZero);
+        lblStatus->setColor(ccc3(248, 255, 38));
         lblStatus->setTag(126);
 		cell->addChild(lblStatus);
         
-        CCControlButton * chatBtn = CCControlButton::create("Chat", "Helvetica", 15);
+        int length = rand()%5;
+        CCLayer *layer = CCLayer::create();
+        layer->setTag(131);
+        cell->addChild(layer);
+
+        for (int i=0; i<length; i++) {
+            CCSprite *sFriendheart = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_love.png"));
+            sFriendheart->setPosition(ccp(218 + CELL_LOVE_XGAP * i,size.height - CELL_ITEMS_Y - 15));
+            sFriendheart->setAnchorPoint(CCPointZero);
+            layer->addChild(sFriendheart);
+        }
+        
+        CCControlButton * chatBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_chat.png")));
         chatBtn->setPosition(ccp(30,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
         chatBtn->setAnchorPoint(CCPointZero);
         chatBtn->setTag(127);
@@ -173,7 +199,7 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
         chatBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
         cell->addChild(chatBtn);
         
-        CCControlButton * msgBtn = CCControlButton::create("message", "Helvetica", 15);
+        CCControlButton * msgBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_emailbtn.png")));
         msgBtn->setPosition(ccp(90,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
         msgBtn->setAnchorPoint(CCPointZero);
         msgBtn->setTag(128);
@@ -181,7 +207,7 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
         msgBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
         cell->addChild(msgBtn);
         
-        CCControlButton * formationBtn = CCControlButton::create("formation", "Helvetica", 15);
+        CCControlButton * formationBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_formation.png")));
         formationBtn->setPosition(ccp(150,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
         formationBtn->setAnchorPoint(CCPointZero);
         formationBtn->setTag(129);
@@ -189,7 +215,7 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
         formationBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
         cell->addChild(formationBtn);
         
-        CCControlButton * deleteBtn = CCControlButton::create("Delete", "Helvetica", 15);
+        CCControlButton * deleteBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_delete.png")));
         deleteBtn->setPosition(ccp(240,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
         deleteBtn->setAnchorPoint(CCPointZero);
         deleteBtn->setTag(130);
@@ -200,6 +226,17 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 	else
 	{
         CCSize size = this->cellSizeForIndex(table, idx);
+        
+        CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
+        sSelected->setPosition(ccp(13,size.height - 39));
+        if (selectedindex == idx ) {
+            sSelected->setVisible(true);
+        } else {
+            sSelected->setVisible(false);
+        }
+        
+        CCSprite *sGroup = (CCSprite*)cell->getChildByTag(122);
+        sGroup->setPosition(ccp(sGroup->getPosition().x,size.height - CELL_ITEMS_Y - 10));
         
 		CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);
 		lblName->setString(string->getCString());
@@ -217,8 +254,8 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 //		lblStatus->setString(string->getCString());
         lblStatus->setPosition(ccp(lblStatus->getPosition().x,size.height - CELL_ITEMS_Y));
         
-        CCScale9Sprite *background = (CCScale9Sprite *)cell->getChildByTag(121);
-        background->setContentSize(size);
+//        CCScale9Sprite *background = (CCScale9Sprite *)cell->getChildByTag(121);
+//        background->setContentSize(size);
         
         CCControlButton *chatBtn = (CCControlButton *)cell->getChildByTag(127);
         chatBtn->setPosition(ccp(chatBtn->getPosition().x,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
@@ -235,6 +272,15 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
         CCControlButton *deleteBtn = (CCControlButton *)cell->getChildByTag(130);
         deleteBtn->setPosition(ccp(deleteBtn->getPosition().x,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
         deleteBtn->setVisible(selected);
+        
+        CCLayer *heartLayer = (CCLayer *)cell->getChildByTag(131);
+        CCArray *array = heartLayer->getChildren();
+        if (array!=NULL) {
+            for (int i=0; i<array->count(); i++) {
+                CCSprite *sprite = (CCSprite *)array->objectAtIndex(i);
+                sprite->setPosition(ccp(sprite->getPosition().x,size.height - CELL_ITEMS_Y - 15));
+            }
+        }
 	}
 
 	return cell;

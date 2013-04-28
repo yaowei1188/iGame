@@ -52,6 +52,7 @@ public:
     virtual bool hasFixedCellSize();
     virtual CCSize cellSizeForIndex(CCTableView *table, unsigned int idx);
     virtual void tableCellHighlight(CCTableView* table, CCTableViewCell* cell);
+    virtual void tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell);
     
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
     virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
