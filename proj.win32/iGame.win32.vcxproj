@@ -184,7 +184,7 @@
     <ClInclude Include="..\Classes\common.h" />
     <ClInclude Include="..\Classes\FriendListScene.h" />
     <ClInclude Include="..\Classes\FriendListSceneLoader.h" />
-    <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\Classes\LoadingScene.h" />
     <ClInclude Include="..\Classes\LoginScene.h" />
     <ClInclude Include="..\Classes\LoginSceneLoader.h" />
     <ClInclude Include="..\Classes\MainGameScene.h" />
@@ -207,7 +207,7 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\CCMessageDialog.cpp" />
     <ClCompile Include="..\Classes\FriendListScene.cpp" />
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\LoadingScene.cpp" />
     <ClCompile Include="..\Classes\LoginScene.cpp" />
     <ClCompile Include="..\Classes\MainGameScene.cpp" />
     <ClCompile Include="..\Classes\MainLayerBase.cpp" />
