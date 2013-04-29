@@ -35,7 +35,7 @@ bool CCMessageDialog::init()
 
         CC_BREAK_IF(! CCLayer::init());
         
-        CCSprite *mBg = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("提示框.png"));
+        CCSprite *mBg = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("prompt_dialog.png"));
         CCSprite *cancelNormal = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("no_1.png"));
         CCSprite *cancelHighlight = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("no_2.png"));
         CCSprite *OKNormal = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("ok_1.png"));

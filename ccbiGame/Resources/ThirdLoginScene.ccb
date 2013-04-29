@@ -669,8 +669,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -739,7 +737,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>未标题-5.png</string>
+							<string>login_section.png</string>
 						</array>
 					</dict>
 				</array>
