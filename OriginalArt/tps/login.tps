@@ -15,7 +15,7 @@
                 <key>extension</key>
                 <string>.</string>
                 <key>acceptFractionalValues</key>
-                <false/>
+                <true/>
                 <key>maxTextureSize</key>
                 <QSize>
                     <key>width</key>
@@ -131,7 +131,7 @@
         <key>mainExtension</key>
         <string>-hd.</string>
         <key>forceIdenticalLayout</key>
-        <false/>
+        <true/>
         <key>outputFormat</key>
         <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
         <key>autoAliasEnabled</key>

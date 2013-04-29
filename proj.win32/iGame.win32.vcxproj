@@ -152,6 +152,10 @@
     <None Include="..\Resources\Icon-Small-50.png" />
     <None Include="..\Resources\Icon-Small.png" />
     <None Include="..\Resources\Icon.png" />
+    <None Include="..\Resources\Image\friends-hd.plist" />
+    <None Include="..\Resources\Image\friends-hd.png" />
+    <None Include="..\Resources\Image\friends.plist" />
+    <None Include="..\Resources\Image\friends.png" />
     <None Include="..\Resources\Image\login-hd.plist" />
     <None Include="..\Resources\Image\login-hd.png" />
     <None Include="..\Resources\Image\login.plist" />
@@ -163,9 +167,12 @@
     <None Include="..\Resources\LoginScene.ccbi" />
     <None Include="..\Resources\MainGameScene.ccbi" />
     <None Include="..\Resources\MainSceneTemplate.ccbi" />
+    <None Include="..\Resources\NewMailScene.ccbi" />
+    <None Include="..\Resources\SysMailScene.ccbi" />
     <None Include="..\Resources\TaskListScene.ccbi" />
     <None Include="..\Resources\ThirdLoginScene.ccbi" />
     <None Include="..\Resources\transparent.png" />
+    <None Include="..\Resources\UserMailScene.ccbi" />
     <None Include="res\iGame.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +199,8 @@
     <ClInclude Include="..\Classes\MainLayerBase.h" />
     <ClInclude Include="..\Classes\MainSceneTemplate.h" />
     <ClInclude Include="..\Classes\MainSceneTemplateLoader.h" />
+    <ClInclude Include="..\Classes\NewMailScene.h" />
+    <ClInclude Include="..\Classes\NewMailSceneLoader.h" />
     <ClInclude Include="..\Classes\TaskListScene.h" />
     <ClInclude Include="..\Classes\TaskListSceneLoader.h" />
     <ClInclude Include="..\Classes\ThirdLoginScene.h" />
@@ -212,6 +221,7 @@
     <ClCompile Include="..\Classes\MainGameScene.cpp" />
     <ClCompile Include="..\Classes\MainLayerBase.cpp" />
     <ClCompile Include="..\Classes\MainSceneTemplate.cpp" />
+    <ClCompile Include="..\Classes\NewMailScene.cpp" />
     <ClCompile Include="..\Classes\TaskListScene.cpp" />
     <ClCompile Include="..\Classes\ThirdLoginScene.cpp" />
     <ClCompile Include="..\Classes\XmlParser.cpp" />

@@ -165,6 +165,27 @@
     <None Include="..\Resources\Image\main.plist">
       <Filter>resource\Image</Filter>
     </None>
+    <None Include="..\Resources\Image\friends.plist">
+      <Filter>resource\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\friends.png">
+      <Filter>resource\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\friends-hd.plist">
+      <Filter>resource\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\friends-hd.png">
+      <Filter>resource\Image</Filter>
+    </None>
+    <None Include="..\Resources\NewMailScene.ccbi">
+      <Filter>resource\Scene</Filter>
+    </None>
+    <None Include="..\Resources\SysMailScene.ccbi">
+      <Filter>resource\Scene</Filter>
+    </None>
+    <None Include="..\Resources\UserMailScene.ccbi">
+      <Filter>resource\Scene</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="iGame.rc">
@@ -256,6 +277,12 @@
     <ClInclude Include="..\Classes\LoadingScene.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\NewMailScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NewMailSceneLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -307,6 +334,9 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\LoadingScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NewMailScene.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

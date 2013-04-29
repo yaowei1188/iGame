@@ -15,7 +15,7 @@
                 <key>extension</key>
                 <string>.</string>
                 <key>acceptFractionalValues</key>
-                <false/>
+                <true/>
                 <key>maxTextureSize</key>
                 <QSize>
                     <key>width</key>

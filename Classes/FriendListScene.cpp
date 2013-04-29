@@ -184,41 +184,46 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
         layer->setTag(131);
         cell->addChild(layer);
 
-        for (int i=0; i<length; i++) {
+        for (int i=0; i<5; i++) {
             CCSprite *sFriendheart = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_love.png"));
             sFriendheart->setPosition(ccp(218 + CELL_LOVE_XGAP * i,size.height - CELL_ITEMS_Y - 15));
             sFriendheart->setAnchorPoint(CCPointZero);
             layer->addChild(sFriendheart);
         }
         
+		
         CCControlButton * chatBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_chat.png")));
-        chatBtn->setPosition(ccp(30,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
-        chatBtn->setAnchorPoint(CCPointZero);
+        chatBtn->setPosition(ccp(4,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+        chatBtn->setAnchorPoint(ccp(0,0.5));
         chatBtn->setTag(127);
         chatBtn->setVisible(selected);
+		chatBtn->setPreferredSize(CCSizeMake(74,34));
         chatBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
         cell->addChild(chatBtn);
         
         CCControlButton * msgBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_emailbtn.png")));
-        msgBtn->setPosition(ccp(90,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
-        msgBtn->setAnchorPoint(CCPointZero);
+        msgBtn->setPosition(ccp(81,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+        msgBtn->setAnchorPoint(ccp(0,0.5));
         msgBtn->setTag(128);
+		msgBtn->setPreferredSize(CCSizeMake(74,34));
         msgBtn->setVisible(selected);
         msgBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
         cell->addChild(msgBtn);
         
         CCControlButton * formationBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_formation.png")));
-        formationBtn->setPosition(ccp(150,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
-        formationBtn->setAnchorPoint(CCPointZero);
+        formationBtn->setPosition(ccp(158,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+        formationBtn->setAnchorPoint(ccp(0,0.5));
         formationBtn->setTag(129);
+		formationBtn->setPreferredSize(CCSizeMake(74,34));
         formationBtn->setVisible(selected);
         formationBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
         cell->addChild(formationBtn);
         
         CCControlButton * deleteBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_delete.png")));
-        deleteBtn->setPosition(ccp(240,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
-        deleteBtn->setAnchorPoint(CCPointZero);
+        deleteBtn->setPosition(ccp(235,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+        deleteBtn->setAnchorPoint(ccp(0,0.5));
         deleteBtn->setTag(130);
+		deleteBtn->setPreferredSize(CCSizeMake(74,34));
         deleteBtn->setVisible(selected);
         deleteBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
         cell->addChild(deleteBtn);
@@ -300,9 +305,9 @@ void FriendListScene::buttonClicked(CCObject * sender , CCControlEvent controlEv
     CCLOG("SSSS");
     
 //    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    
-    CCLayer *addFriendLayer = (CCLayer *)this->GetLayer("AddFriendScene");
     MainGameScene *mainScene = (MainGameScene *)this->getParent();
+
+    CCLayer *addFriendLayer = (CCLayer *)this->GetLayer("AddFriendScene");
     mainScene->PushLayer(addFriendLayer);
 }
 
