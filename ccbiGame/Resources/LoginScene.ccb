@@ -365,7 +365,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>未标题-5.png</string>
+							<string>login_section.png</string>
 						</array>
 					</dict>
 				</array>
@@ -669,7 +669,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>忘记密码_1.png</string>
+							<string>forgot_pwd_1.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -692,7 +692,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>忘记密码_2.png</string>
+							<string>forgot_pwd_2.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -715,7 +715,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>忘记密码_2.png</string>
+							<string>forgot_pwd_2.png</string>
 						</array>
 					</dict>
 					<dict>
