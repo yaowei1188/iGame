@@ -9,11 +9,12 @@
 #include "MainGameScene.h"
 #include "MainSceneTemplate.h"
 #include "common.h"
+#include "StringExt.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class AddFriendScene : public cocos2d::CCLayer,
+class AddFriendScene : public MainLayerBase,
 public CCTableViewDataSource,
 public CCTableViewDelegate,
 public CCBSelectorResolver,
@@ -39,7 +40,7 @@ public:
     
 	void buttonClicked(CCObject *pSender,CCControlEvent event);
     
-    void toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCControlEvent);
+    void toolBarTouchDownAction(CCObject *pSender, CCControlEvent pCCControlEvent);
     
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
     virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
@@ -57,7 +58,7 @@ public:
     virtual bool hasFixedCellSize();
     virtual CCSize cellSizeForIndex(CCTableView *table, unsigned int idx);
     virtual void tableCellHighlight(CCTableView* table, CCTableViewCell* cell);
-
+	virtual void tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell);
     
 	CCEditBox *m_txtSearchField;
     CCTableView* mTableViewFriend;

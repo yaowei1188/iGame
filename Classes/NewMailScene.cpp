@@ -65,7 +65,6 @@ void NewMailScene::doSubmit()
         return;
     }
     
-    
     this->ShowLoadingIndicator("");
     
 	CCHttpRequest *request = new CCHttpRequest();
@@ -140,44 +139,33 @@ void NewMailScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     CCLOG("TEST");
     
-    m_txtAccount->setText("yaowei");
-    m_txtPassword->setText("123456");
-    
-    m_txtAccount->setFontColor(ccc3(0,0,0));
-    m_txtAccount->setFont("Arial", 16);
-    m_txtPassword->setInputFlag(kEditBoxInputFlagPassword);
-    m_txtPassword->setFontColor(ccc3(0,0,0));
-    m_txtPassword->setFont("Arial", 16);
-    
-	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
-	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
-    
-    CCMenu* m_auto_op_menu = CCMenu::create();
-    CCMenuItemSprite* auto_op_btn = CCMenuItemSprite::create(spriteOff, NULL);
-    CCMenuItemSprite* auto_op_btn2 = CCMenuItemSprite::create(spriteOn, NULL);
-    CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(NewMailScene::callbackSwitch),auto_op_btn,auto_op_btn2,NULL);
-    
-    m_auto_op_menu->addChild(item);
-    m_auto_op_menu->setPosition(ccp(116, 148));
-    this->addChild(m_auto_op_menu);
-}
-
-void NewMailScene::callbackSwitch(CCObject* pSender){
-
-	CCMenuItemToggle* pSwitch = (CCMenuItemToggle*)pSender;
-    
-    if (pSwitch->getSelectedIndex()==0) {
-        m_blnRememberMe = false;
-    } else {
-        m_blnRememberMe = true;
-    }
+ //   m_txtAccount->setText("yaowei");
+ //   m_txtPassword->setText("123456");
+ //   
+ //   m_txtAccount->setFontColor(ccc3(0,0,0));
+ //   m_txtAccount->setFont("Arial", 16);
+ //   m_txtPassword->setInputFlag(kEditBoxInputFlagPassword);
+ //   m_txtPassword->setFontColor(ccc3(0,0,0));
+ //   m_txtPassword->setFont("Arial", 16);
+ //   
+	//CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
+	//CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
+ //   
+ //   CCMenu* m_auto_op_menu = CCMenu::create();
+ //   CCMenuItemSprite* auto_op_btn = CCMenuItemSprite::create(spriteOff, NULL);
+ //   CCMenuItemSprite* auto_op_btn2 = CCMenuItemSprite::create(spriteOn, NULL);
+ //   CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(NewMailScene::callbackSwitch),auto_op_btn,auto_op_btn2,NULL);
+ //   
+ //   m_auto_op_menu->addChild(item);
+ //   m_auto_op_menu->setPosition(ccp(116, 148));
+ //   this->addChild(m_auto_op_menu);
 }
 
 bool NewMailScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtPassword", CCEditBox*, this->m_txtPassword);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mCloud", CCSprite*, this->mCloud);
+    //CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
+    //CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtPassword", CCEditBox*, this->m_txtPassword);
+    //CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mCloud", CCSprite*, this->mCloud);
     
     return true;
 }
@@ -207,27 +195,8 @@ void NewMailScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEve
     }
 }
 
-void NewMailScene::menuBarBtnClicked(CCObject *pSender)
-{
-    CCMenuItem *menuItem = (CCMenuItem*) pSender;
-    switch (menuItem->getTag()) {
-        case LOGIN_MENU_BAR_QQ_TAG:
-            CCLOG("qq");
-            break;
-        case LOGIN_MENU_BAR_SINA_TAG:
-            CCLOG("sina");
-            break;
-        case LOGIN_MENU_BAR_RENREN_TAG:
-            CCLOG("renren");
-            break;
-    }
-    
-    this->PushScene("ThirdLoginScene.ccbi");
-}
-
 SEL_MenuHandler NewMailScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
 {
-	CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "menuBarBtnClicked:", NewMailScene::menuBarBtnClicked);
 	return NULL;
 }
 

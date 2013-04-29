@@ -15,6 +15,7 @@
 #include "MainSceneTemplateLoader.h"
 #include "CCControlSwitchLoader.h"
 #include "ThirdLoginSceneLoader.h"
+#include "NewMailSceneLoader.h"
 
 using namespace CocosDenshion;
 
@@ -52,7 +53,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     ccNodeLoaderLibrary->registerCCNodeLoader("TaskListScene", TaskListSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("AddFriendScene", AddFriendSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("ThirdLoginScene", ThirdLoginSceneLoader::loader());
-    
+    ccNodeLoaderLibrary->registerCCNodeLoader("NewMailSceneLoader", NewMailSceneLoader::loader());
+
     cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
     ccbReader->autorelease();
     

@@ -35,6 +35,7 @@ public:
     
     // a selector callback
     void requestFinishedCallback(CCNode* pSender,void *p);
+	void doSearchFriend();
 
     // implement the "static node()" method manually
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(FriendListScene,create);

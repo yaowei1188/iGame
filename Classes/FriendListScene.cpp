@@ -40,13 +40,32 @@ bool FriendListScene::init()
         CC_BREAK_IF(! CCLayer::init());
         
         mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
-        
         mFriendList->retain();
 
         bRet = true;
     } while (0);
 
     return bRet;
+}
+
+void FriendListScene::doSearchFriend()
+{
+	this->ShowLoadingIndicator("");
+
+	CCHttpRequest *request = new CCHttpRequest();
+	request->setRequestType(CCHttpRequest::kHttpGet);
+	request->setResponseCallback(this,callfuncND_selector(FriendListScene::requestFinishedCallback));
+	request->setTag("101");
+
+	char url[150] = {0};
+	sprintf(url,"%s/friend/retrieveFriend/%s",API_URL,CCUserDefault::sharedUserDefault()->getStringForKey("userinfo").c_str());
+	CCLOG(url);
+	request->setUrl(url);
+
+	CCHttpClient *client = CCHttpClient::getInstance();
+	client->send(request);
+
+	request->release();
 }
 
 bool FriendListScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
@@ -75,9 +94,11 @@ void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     mTableViewFriend->setDirection(kCCScrollViewDirectionVertical);
     mTableViewFriend->setVerticalFillOrder(kCCTableViewFillTopDown);
     mTableViewFriend->setDataSource(this);
-    mTableViewFriend->setViewSize(CCSizeMake(312, 280));
+    mTableViewFriend->setViewSize(CCSizeMake(312, 250));
     mTableViewFriend->setDelegate(this);
     mTableViewFriend->reloadData();
+
+	doSearchFriend();
 }
 
 void FriendListScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
@@ -303,18 +324,50 @@ void FriendListScene::toolBarTouchDownAction(CCObject * sender , CCControlEvent 
 void FriendListScene::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
 {
     CCLOG("SSSS");
-    
-//    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    MainGameScene *mainScene = (MainGameScene *)this->getParent();
-
-    CCLayer *addFriendLayer = (CCLayer *)this->GetLayer("AddFriendScene");
-    mainScene->PushLayer(addFriendLayer);
+	MainGameScene *mainScene = (MainGameScene *)this->getParent();
+	CCControlButton *button = (CCControlButton *)sender;
+	switch (button->getTag()) {
+	case 101:
+		CCLOG("11111");
+		mainScene->PopLayer();
+		break;
+	case 102:
+		CCLOG("22222");
+		mainScene->PushLayer((CCLayer *)this->GetLayer("AddFriendScene"));
+		break;
+	case 103:
+		CCLOG("33333");
+		break;
+	}
 }
 
 
 void FriendListScene::requestFinishedCallback(CCNode* pSender,void *data)
 {
+	this->HideLoadingIndicator();
 
+	CCHttpResponse *response =  (CCHttpResponse*)data;
+	if(response == NULL)
+	{
+		return;
+	}
+	int statusCode = response->getResponseCode();
+	char statusString[64] = {};
+	CCLOG(statusString, "HTTP Status Code: %d, tag = %s", statusCode, response->getHttpRequest()->getTag());
+
+	if (!response->isSucceed())   
+	{  
+		CCLog("response failed");  
+		CCLog("error buffer: %s", response->getErrorBuffer());
+		CCMessageBox("ERROR", "Response failed");
+		return;  
+	}
+	std::vector<char> *buffer = response->getResponseData(); 
+
+	std::string content(buffer->begin(),buffer->end());
+	CCLog(content.c_str());
+
+	//parseJson(content);
 }
 
 FriendListScene::FriendListScene()

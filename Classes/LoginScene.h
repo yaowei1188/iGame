@@ -7,6 +7,7 @@
 #include "SimpleAudioEngine.h"
 #include "XmlParser.h"
 #include "MainLayerBase.h"
+#include "MainSceneTemplate.h"
 #include "common.h"
 #include "StringExt.h"
 
