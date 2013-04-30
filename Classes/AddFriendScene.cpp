@@ -72,7 +72,7 @@ void AddFriendScene::doSearchFriend()
 	std::string sSearchTest(m_txtSearchField->getText());
 
 	if (trimRight(sSearchTest).empty()) {
-		CCMessageBox("ËÑË÷ÄÚÈÝ²»ÄÜÎª¿Õ£¡","ERROR");
+		CCMessageBox("Ã€â€”Ã€ËœÆ’â„Â»â€ºâ‰¤ÂªÆ’â€¹Å’â„¢Ã¸â€™Â£Â°","ERROR");
 		return;
 	}
 
@@ -173,7 +173,7 @@ void AddFriendScene::toolBarTouchDownAction(CCObject *pSender, CCControlEvent pC
     switch (button->getTag()) {
         case 128:
             //std::string userinfo = "6a5f0245b228a6c6f464fd300304857e";
-            this->addFriendRequest(std::string("6a5f0245b228a6c6f464fd300304857e"));
+            //this->addFriendRequest(std::string("6a5f0245b228a6c6f464fd300304857e"));
 			break;
 		case 129:
 			CCLOG("22222");
@@ -289,7 +289,7 @@ CCTableViewCell* AddFriendScene::tableCellAtIndex(CCTableView *table, unsigned i
 		lblLevel->setTag(124);
 		cell->addChild(lblLevel);
 
-		CCLabelTTF *lblFriend = CCLabelTTF::create("ÉúËÀ²»Æú", "Arial", 14.0);
+		CCLabelTTF *lblFriend = CCLabelTTF::create("â€¦Ë™Ã€Â¿â‰¤Âªâˆ†Ë™", "Arial", 14.0);
 		lblFriend->setPosition(ccp(218,size.height - CELL_ITEMS_Y));
 		lblFriend->setAnchorPoint(CCPointZero);
 		lblFriend->setColor(ccc3(248, 255, 38));

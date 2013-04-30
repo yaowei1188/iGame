@@ -53,7 +53,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     ccNodeLoaderLibrary->registerCCNodeLoader("TaskListScene", TaskListSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("AddFriendScene", AddFriendSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("ThirdLoginScene", ThirdLoginSceneLoader::loader());
-    ccNodeLoaderLibrary->registerCCNodeLoader("NewMailSceneLoader", NewMailSceneLoader::loader());
+    ccNodeLoaderLibrary->registerCCNodeLoader("NewMailScene", NewMailSceneLoader::loader());
 
     cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
     ccbReader->autorelease();
