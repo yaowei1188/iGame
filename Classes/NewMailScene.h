@@ -7,6 +7,8 @@
 #include "SimpleAudioEngine.h"
 #include "XmlParser.h"
 #include "MainLayerBase.h"
+#include "MainGameScene.h"
+#include "MainSceneTemplate.h"
 #include "common.h"
 #include "StringExt.h"
 
@@ -45,11 +47,9 @@ public:
 	void doSubmit();
 	void parseJson(std::string& content);
 
-	CCEditBox *m_txtAccount;
-	CCEditBox *m_txtPassword;
-    CCSprite *mCloud;
-    
-    bool m_blnRememberMe;
+	CCEditBox *m_txtReceiver;
+	CCEditBox *m_txtSubject;
+    CCEditBox *m_txtContent;
 };
 
 #endif

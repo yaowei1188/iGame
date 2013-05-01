@@ -651,6 +651,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>tag</string>
+						<key>type</key>
+						<string>Integer</string>
+						<key>value</key>
+						<integer>102</integer>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>ignoreAnchorPointForPosition</string>
 						<key>type</key>
 						<string>Check</string>
@@ -902,7 +910,7 @@
 						<key>value</key>
 						<array>
 							<real>187</real>
-							<real>230</real>
+							<real>231</real>
 							<integer>0</integer>
 						</array>
 					</dict>

@@ -158,6 +158,10 @@ void AddFriendScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     mTableViewFriend->setViewSize(CCSizeMake(312, 235));
     mTableViewFriend->setDelegate(this);
     mTableViewFriend->reloadData();
+    
+//    m_txtSearchField->setPosition(ccp(133, 284));
+//    m_txtSearchField->setContentSize(CCSizeMake(230, 35));
+//    m_txtSearchField->setPreferredSize(CCSizeMake(230, 35));
 
 }
 
@@ -172,22 +176,19 @@ void AddFriendScene::toolBarTouchDownAction(CCObject *pSender, CCControlEvent pC
 	CCControlButton *button = (CCControlButton *)pSender;
     switch (button->getTag()) {
         case 128:
-            //std::string userinfo = "6a5f0245b228a6c6f464fd300304857e";
-            //this->addFriendRequest(std::string("6a5f0245b228a6c6f464fd300304857e"));
-			break;
-		case 129:
-			CCLOG("22222");
+        {
 			MainGameScene *mainScene = (MainGameScene *)this->getParent();
 			mainScene->PushLayer((CCLayer *)this->GetLayer("NewMailScene"));
+        }
 			break;
-//        case 129:
-//            
-//            break;
-//        case 130:
-//            
-//            break;
-//        default:
-//            break;
+		case 129:
+        {
+            std::string userinfo = "6a5f0245b228a6c6f464fd300304857e";
+            this->addFriendRequest(userinfo);
+        }
+			break;
+        default:
+            break;
     }
 }
 

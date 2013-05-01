@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20774242172FA04A008D719A /* AddFriendScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20774241172FA04A008D719A /* AddFriendScene.cpp */; };
+		2086642A172F9DCB00EF81E2 /* NewMailScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20866427172F9DCB00EF81E2 /* NewMailScene.cpp */; };
+		20878674172E8C0400A7404A /* NewMailScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20878671172E8C0400A7404A /* NewMailScene.ccbi */; };
+		20878675172E8C0400A7404A /* SysMailScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20878672172E8C0400A7404A /* SysMailScene.ccbi */; };
+		20878676172E8C0400A7404A /* UserMailScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20878673172E8C0400A7404A /* UserMailScene.ccbi */; };
 		6F0A93301724C40A006082DC /* MainLayerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F0A932E1724C40A006082DC /* MainLayerBase.cpp */; };
 		6F0A93351724C423006082DC /* ThirdLoginScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F0A93321724C423006082DC /* ThirdLoginScene.cpp */; };
 		6F0A93491724C54A006082DC /* ThirdLoginScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 6F0A93481724C54A006082DC /* ThirdLoginScene.ccbi */; };
 		6F0A934D1725185B006082DC /* transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F0A934C1725185B006082DC /* transparent.png */; };
-		6F4A3F3B171F7EBF008F9FB0 /* AddFriendScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F4A3F36171F7EBF008F9FB0 /* AddFriendScene.cpp */; };
 		6F4A3F3C171F7EBF008F9FB0 /* CCMessageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F4A3F39171F7EBF008F9FB0 /* CCMessageDialog.cpp */; };
 		6F4A3F3E171F7F00008F9FB0 /* boxbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F4A3F3D171F7F00008F9FB0 /* boxbg.png */; };
 		6F4A3F42171F8957008F9FB0 /* MainSceneTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F4A3F3F171F8957008F9FB0 /* MainSceneTemplate.cpp */; };
@@ -256,6 +260,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20774241172FA04A008D719A /* AddFriendScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AddFriendScene.cpp; path = Classes/AddFriendScene.cpp; sourceTree = "<group>"; };
+		20866427172F9DCB00EF81E2 /* NewMailScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NewMailScene.cpp; path = Classes/NewMailScene.cpp; sourceTree = "<group>"; };
+		20866428172F9DCB00EF81E2 /* NewMailScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewMailScene.h; path = Classes/NewMailScene.h; sourceTree = "<group>"; };
+		20866429172F9DCB00EF81E2 /* NewMailSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewMailSceneLoader.h; path = Classes/NewMailSceneLoader.h; sourceTree = "<group>"; };
+		20878671172E8C0400A7404A /* NewMailScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = NewMailScene.ccbi; path = Resources/NewMailScene.ccbi; sourceTree = "<group>"; };
+		20878672172E8C0400A7404A /* SysMailScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = SysMailScene.ccbi; path = Resources/SysMailScene.ccbi; sourceTree = "<group>"; };
+		20878673172E8C0400A7404A /* UserMailScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = UserMailScene.ccbi; path = Resources/UserMailScene.ccbi; sourceTree = "<group>"; };
+		20878677172E8C2E00A7404A /* StringExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringExt.h; path = Classes/StringExt.h; sourceTree = "<group>"; };
 		6F0A932E1724C40A006082DC /* MainLayerBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainLayerBase.cpp; path = Classes/MainLayerBase.cpp; sourceTree = "<group>"; };
 		6F0A932F1724C40A006082DC /* MainLayerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainLayerBase.h; path = Classes/MainLayerBase.h; sourceTree = "<group>"; };
 		6F0A93321724C423006082DC /* ThirdLoginScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ThirdLoginScene.cpp; path = Classes/ThirdLoginScene.cpp; sourceTree = "<group>"; };
@@ -263,7 +275,6 @@
 		6F0A93341724C423006082DC /* ThirdLoginSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThirdLoginSceneLoader.h; path = Classes/ThirdLoginSceneLoader.h; sourceTree = "<group>"; };
 		6F0A93481724C54A006082DC /* ThirdLoginScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = ThirdLoginScene.ccbi; path = Resources/ThirdLoginScene.ccbi; sourceTree = "<group>"; };
 		6F0A934C1725185B006082DC /* transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = transparent.png; path = Resources/transparent.png; sourceTree = "<group>"; };
-		6F4A3F36171F7EBF008F9FB0 /* AddFriendScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AddFriendScene.cpp; path = Classes/AddFriendScene.cpp; sourceTree = "<group>"; };
 		6F4A3F37171F7EBF008F9FB0 /* AddFriendScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddFriendScene.h; path = Classes/AddFriendScene.h; sourceTree = "<group>"; };
 		6F4A3F38171F7EBF008F9FB0 /* AddFriendSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddFriendSceneLoader.h; path = Classes/AddFriendSceneLoader.h; sourceTree = "<group>"; };
 		6F4A3F39171F7EBF008F9FB0 /* CCMessageDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCMessageDialog.cpp; path = Classes/CCMessageDialog.cpp; sourceTree = "<group>"; };
@@ -294,7 +305,7 @@
 		6F82C60D17265BF80007122E /* LoadingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadingScene.cpp; path = Classes/LoadingScene.cpp; sourceTree = "<group>"; };
 		6F82C60E17265BF80007122E /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingScene.h; path = Classes/LoadingScene.h; sourceTree = "<group>"; };
 		6FB9C384172139EC002101F9 /* CCControlSwitchLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCControlSwitchLoader.h; path = Classes/CCControlSwitchLoader.h; sourceTree = "<group>"; };
-		6FBA777717153C4400ECA334 /* iGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FBA777717153C4400ECA334 /* douzhan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = douzhan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FBA777A17153C4400ECA334 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6FBA777C17153C4400ECA334 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		6FBA777E17153C4400ECA334 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -806,6 +817,7 @@
 		6F0A932D1724C3F8006082DC /* common */ = {
 			isa = PBXGroup;
 			children = (
+				20878677172E8C2E00A7404A /* StringExt.h */,
 				6F82C60E17265BF80007122E /* LoadingScene.h */,
 				6F82C60D17265BF80007122E /* LoadingScene.cpp */,
 				6F4A3F45171FB7EC008F9FB0 /* common.h */,
@@ -831,8 +843,11 @@
 		6F0A93361724C42E006082DC /* Friend */ = {
 			isa = PBXGroup;
 			children = (
-				6F4A3F36171F7EBF008F9FB0 /* AddFriendScene.cpp */,
+				20866427172F9DCB00EF81E2 /* NewMailScene.cpp */,
+				20866428172F9DCB00EF81E2 /* NewMailScene.h */,
+				20866429172F9DCB00EF81E2 /* NewMailSceneLoader.h */,
 				6F4A3F37171F7EBF008F9FB0 /* AddFriendScene.h */,
+				20774241172FA04A008D719A /* AddFriendScene.cpp */,
 				6F4A3F38171F7EBF008F9FB0 /* AddFriendSceneLoader.h */,
 				6F51E9AB171D2CA20092EE63 /* FriendListScene.cpp */,
 				6F51E9AC171D2CA20092EE63 /* FriendListScene.h */,
@@ -868,7 +883,7 @@
 		6FBA777817153C4400ECA334 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6FBA777717153C4400ECA334 /* iGame.app */,
+				6FBA777717153C4400ECA334 /* douzhan.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1881,6 +1896,9 @@
 		6FBA7AED1717997800ECA334 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				20878671172E8C0400A7404A /* NewMailScene.ccbi */,
+				20878672172E8C0400A7404A /* SysMailScene.ccbi */,
+				20878673172E8C0400A7404A /* UserMailScene.ccbi */,
 				6F0A93481724C54A006082DC /* ThirdLoginScene.ccbi */,
 				6F4A3F46171FB903008F9FB0 /* AddFriendScene.ccbi */,
 				6F4A3F43171F8CDE008F9FB0 /* MainSceneTemplate.ccbi */,
@@ -1896,9 +1914,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6FBA777617153C4300ECA334 /* iGame */ = {
+		6FBA777617153C4300ECA334 /* douzhan */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6FBA7A6117153C4700ECA334 /* Build configuration list for PBXNativeTarget "iGame" */;
+			buildConfigurationList = 6FBA7A6117153C4700ECA334 /* Build configuration list for PBXNativeTarget "douzhan" */;
 			buildPhases = (
 				6FBA777317153C4300ECA334 /* Sources */,
 				6FBA777417153C4300ECA334 /* Frameworks */,
@@ -1908,9 +1926,9 @@
 			);
 			dependencies = (
 			);
-			name = iGame;
+			name = douzhan;
 			productName = iGame;
-			productReference = 6FBA777717153C4400ECA334 /* iGame.app */;
+			productReference = 6FBA777717153C4400ECA334 /* douzhan.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1933,7 +1951,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6FBA777617153C4300ECA334 /* iGame */,
+				6FBA777617153C4300ECA334 /* douzhan */,
 			);
 		};
 /* End PBXProject section */
@@ -1977,6 +1995,9 @@
 				6F0A93491724C54A006082DC /* ThirdLoginScene.ccbi in Resources */,
 				6F0A934D1725185B006082DC /* transparent.png in Resources */,
 				6F82C60C17264E700007122E /* Image in Resources */,
+				20878674172E8C0400A7404A /* NewMailScene.ccbi in Resources */,
+				20878675172E8C0400A7404A /* SysMailScene.ccbi in Resources */,
+				20878676172E8C0400A7404A /* UserMailScene.ccbi in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2183,12 +2204,13 @@
 				6F51E9A9171D2C620092EE63 /* CCTableView.cpp in Sources */,
 				6F51E9AA171D2C620092EE63 /* CCTableViewCell.cpp in Sources */,
 				6F51E9AE171D2CA20092EE63 /* FriendListScene.cpp in Sources */,
-				6F4A3F3B171F7EBF008F9FB0 /* AddFriendScene.cpp in Sources */,
 				6F4A3F3C171F7EBF008F9FB0 /* CCMessageDialog.cpp in Sources */,
 				6F4A3F42171F8957008F9FB0 /* MainSceneTemplate.cpp in Sources */,
 				6F0A93301724C40A006082DC /* MainLayerBase.cpp in Sources */,
 				6F0A93351724C423006082DC /* ThirdLoginScene.cpp in Sources */,
 				6F82C60F17265BF90007122E /* LoadingScene.cpp in Sources */,
+				2086642A172F9DCB00EF81E2 /* NewMailScene.cpp in Sources */,
+				20774242172FA04A008D719A /* AddFriendScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2259,6 +2281,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: XiaoMin Yu (PL2W28CYYJ)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2286,6 +2309,7 @@
 					"-lsqlite3",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "DB75D8D5-1EC4-4759-A2BE-3E986F282943";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2294,6 +2318,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: XiaoMin Yu (PL2W28CYYJ)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iGame/Prefix.pch;
@@ -2320,6 +2345,7 @@
 					"-lsqlite3",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "DB75D8D5-1EC4-4759-A2BE-3E986F282943";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2337,7 +2363,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6FBA7A6117153C4700ECA334 /* Build configuration list for PBXNativeTarget "iGame" */ = {
+		6FBA7A6117153C4700ECA334 /* Build configuration list for PBXNativeTarget "douzhan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6FBA7A6217153C4700ECA334 /* Debug */,

@@ -5,10 +5,9 @@ using namespace cocos2d;
 
 NewMailScene::NewMailScene()
 {
-    m_txtAccount = NULL;
-    m_txtPassword = NULL;
-    mCloud = NULL;
-    m_blnRememberMe = false;
+    m_txtReceiver = NULL;
+    m_txtSubject = NULL;
+    m_txtContent = false;
 }
 
 NewMailScene::~NewMailScene()
@@ -57,11 +56,12 @@ bool NewMailScene::init()
 
 void NewMailScene::doSubmit()
 {
-    std::string sAccount(m_txtAccount->getText());
-	std::string sPassword(m_txtPassword->getText());
+    std::string sReceiver(m_txtReceiver->getText());
+	std::string sSubject(m_txtSubject->getText());
+    std::string sContent(m_txtContent->getText());
     
-    if (trimRight(sAccount).empty() || trimRight(sPassword).empty()) {
-        CCMessageBox("用户名密码不能为空！","ERROR");
+    if (trimRight(sReceiver).empty() || trimRight(sSubject).empty() || trimRight(sContent).empty()) {
+        CCMessageBox("字段不能为空！","ERROR");
         return;
     }
     
@@ -73,7 +73,7 @@ void NewMailScene::doSubmit()
 	request->setTag("1");
     
     char url[150] = {0};
-    sprintf(url,"%s/user/login/%s/%s",API_URL,sAccount.c_str(),sPassword.c_str());
+    sprintf(url,"%s/user/login/%s/%s/%s",API_URL,sReceiver.c_str(),sSubject.c_str(),sContent.c_str());
     CCLOG(url);
 	request->setUrl(url);
     
@@ -139,33 +139,23 @@ void NewMailScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     CCLOG("TEST");
     
- //   m_txtAccount->setText("yaowei");
- //   m_txtPassword->setText("123456");
- //   
- //   m_txtAccount->setFontColor(ccc3(0,0,0));
- //   m_txtAccount->setFont("Arial", 16);
- //   m_txtPassword->setInputFlag(kEditBoxInputFlagPassword);
- //   m_txtPassword->setFontColor(ccc3(0,0,0));
- //   m_txtPassword->setFont("Arial", 16);
- //   
-	//CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
-	//CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
- //   
- //   CCMenu* m_auto_op_menu = CCMenu::create();
- //   CCMenuItemSprite* auto_op_btn = CCMenuItemSprite::create(spriteOff, NULL);
- //   CCMenuItemSprite* auto_op_btn2 = CCMenuItemSprite::create(spriteOn, NULL);
- //   CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(NewMailScene::callbackSwitch),auto_op_btn,auto_op_btn2,NULL);
- //   
- //   m_auto_op_menu->addChild(item);
- //   m_auto_op_menu->setPosition(ccp(116, 148));
- //   this->addChild(m_auto_op_menu);
+    m_txtReceiver->setFontColor(ccc3(251,255,33));
+    m_txtReceiver->setFont("Arial", 14);
+ 
+    m_txtSubject->setFontColor(ccc3(251,255,33));
+    m_txtSubject->setFont("Arial", 14);
+    
+    m_txtContent->setFontColor(ccc3(251,255,33));
+    m_txtContent->setFont("Arial", 14);
+    m_txtContent->setContentSize(CCSizeMake(200, 85));
+    m_txtContent->setPreferredSize(CCSizeMake(200, 85));
 }
 
 bool NewMailScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-    //CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
-    //CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtPassword", CCEditBox*, this->m_txtPassword);
-    //CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mCloud", CCSprite*, this->mCloud);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtReceiver", CCEditBox*, this->m_txtReceiver);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtSubject", CCEditBox*, this->m_txtSubject);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtContent", CCEditBox*, this->m_txtContent);
     
     return true;
 }
@@ -174,24 +164,19 @@ void NewMailScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEve
     
     CCControlButton *button = (CCControlButton*) pSender;
     
-    if (pCCControlEvent==CCControlEventTouchUpInside) {
-        switch (button->getTag()) {
-            case LOGIN_BUTTON_ACTION_SIGNIN_TAG:
-                CCLOG("signin");
-                this->doSubmit();
-                break;
-            case LOGIN_BUTTON_ACTION_SIGNUP_TAG:
-                CCLOG("signup");
-                break;
-            case LOGIN_BUTTON_ACTION_TOURIST_TAG:
-                CCLOG("tourist");
-                break;
-            case LOGIN_BUTTON_ACTION_FORGOT_PWD_TAG:
-                CCLOG("fotgot pwd");
-                break;
+    switch (button->getTag()) {
+        case 101:
+        {
+            MainGameScene *mainScene = (MainGameScene *)this->getParent();
+            mainScene->PopLayer();
         }
-    } else if (pCCControlEvent==CCControlEventTouchDown) {
-        mCloud->runAction(CCMoveTo::create(0.1, button->getPosition()));
+            break;
+        case 102:
+        {
+            CCLOG("popup");
+            this->doSubmit();
+        }
+            break;
     }
 }
 
