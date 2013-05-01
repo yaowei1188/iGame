@@ -30,7 +30,7 @@ void MainSceneTemplate::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     this->mlblHealth->setZOrder(20);
     this->mlblPower->setZOrder(10);
     
-    CCSpriteBatchNode *batchNode = CCSpriteBatchNode::create("Image/main.png");
+    CCSpriteBatchNode *batchNode = CCSpriteBatchNode::create("main.png");
     this->addChild(batchNode);
     
     CCSprite *lhCap = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("x1.png"));

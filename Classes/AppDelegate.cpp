@@ -42,6 +42,61 @@ bool AppDelegate::applicationDidFinishLaunching()
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
     
+    CCSize screenSize = CCEGLView::sharedOpenGLView()->getFrameSize();
+    
+    CCSize designSize = CCSizeMake(320, 480);
+    CCSize resourceSize = CCSizeMake(320, 480);
+    
+    std::vector<std::string> searchPaths;
+    std::vector<std::string> resDirOrders;
+    
+    TargetPlatform platform = CCApplication::sharedApplication()->getTargetPlatform();
+    if (platform == kTargetIphone || platform == kTargetIpad)
+    {
+        searchPaths.push_back("Image"); // Resources/Published-iOS 
+        searchPaths.push_back("ccbResources");
+        CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+        
+        if (screenSize.height > 480)
+        {
+            resourceSize = CCSizeMake(640, 960);
+            resDirOrders.push_back("resources-iphonehd");
+        }
+        else
+        {
+            resDirOrders.push_back("resources-iphone");
+        }
+        
+        CCFileUtils::sharedFileUtils()->setSearchResolutionsOrder(resDirOrders);
+    }
+    else if (platform == kTargetAndroid || platform == kTargetWindows)
+    {
+        if (screenSize.height > 960)
+        {
+            resourceSize = CCSizeMake(640, 960);
+            resDirOrders.push_back("resources-large");
+            resDirOrders.push_back("resources-medium");
+            resDirOrders.push_back("resources-small");
+        }
+        else if (screenSize.height > 480)
+        {
+            resourceSize = CCSizeMake(480, 720);
+            resDirOrders.push_back("resources-medium");
+            resDirOrders.push_back("resources-small");
+        }
+        else
+        {
+            resourceSize = CCSizeMake(320, 568);
+            resDirOrders.push_back("resources-small");
+        }
+        
+        CCFileUtils::sharedFileUtils()->setSearchResolutionsOrder(resDirOrders);
+    }
+    
+    pDirector->setContentScaleFactor(resourceSize.width/designSize.width);
+    
+    CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionShowAll);
+    
     CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::sharedCCNodeLoaderLibrary();
     ccNodeLoaderLibrary->registerCCNodeLoader("MainGameScene", MainGameSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("LoginScene", LoginSceneLoader::loader());
@@ -58,12 +113,12 @@ bool AppDelegate::applicationDidFinishLaunching()
     cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
     ccbReader->autorelease();
     
-    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("Image/login.plist");
-    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("Image/main.plist");
-    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("Image/login.plist");
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("login.plist");
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("main.plist");
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("login.plist");
     
     CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
-//        CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
+//    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("FriendListScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskListScene.ccbi");
     pDirector->runWithScene(pScene);
