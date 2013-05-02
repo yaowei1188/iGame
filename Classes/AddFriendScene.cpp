@@ -72,7 +72,7 @@ void AddFriendScene::doSearchFriend()
 	std::string sSearchTest(m_txtSearchField->getText());
 
 	if (trimRight(sSearchTest).empty()) {
-		CCMessageBox("À—À˜ƒ⁄»›≤ªƒ‹Œ™ø’£°","ERROR");
+		CCMessageBox("搜索内容不能为空","ERROR");
 		return;
 	}
 
@@ -149,8 +149,11 @@ void AddFriendScene::requestFinishedCallback(CCNode* pSender,void *data)
 void AddFriendScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     CCLOG("TEST");
-    
-    //m_txtSearchField->setPlaceHolder("please input search field");
+
+    m_txtSearchField->setContentSize(CCSizeMake(230, 35));
+//    m_txtSearchField->setPreferredSize(CCSizeMake(230, 35));
+//    m_txtSearchField->setPlaceHolder("please input search field");
+//    m_txtSearchField->setPosition(ccp(133, 284));
     
     mTableViewFriend->setDirection(kCCScrollViewDirectionVertical);
     mTableViewFriend->setVerticalFillOrder(kCCTableViewFillTopDown);
@@ -158,11 +161,6 @@ void AddFriendScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     mTableViewFriend->setViewSize(CCSizeMake(312, 235));
     mTableViewFriend->setDelegate(this);
     mTableViewFriend->reloadData();
-    
-//    m_txtSearchField->setPosition(ccp(133, 284));
-//    m_txtSearchField->setContentSize(CCSizeMake(230, 35));
-//    m_txtSearchField->setPreferredSize(CCSizeMake(230, 35));
-
 }
 
 bool AddFriendScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
@@ -290,7 +288,7 @@ CCTableViewCell* AddFriendScene::tableCellAtIndex(CCTableView *table, unsigned i
 		lblLevel->setTag(124);
 		cell->addChild(lblLevel);
 
-		CCLabelTTF *lblFriend = CCLabelTTF::create("…˙À¿≤ª∆˙", "Arial", 14.0);
+		CCLabelTTF *lblFriend = CCLabelTTF::create("一生所爱", "Arial", 14.0);
 		lblFriend->setPosition(ccp(218,size.height - CELL_ITEMS_Y));
 		lblFriend->setAnchorPoint(CCPointZero);
 		lblFriend->setColor(ccc3(248, 255, 38));

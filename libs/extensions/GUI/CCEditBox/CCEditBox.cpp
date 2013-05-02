@@ -57,7 +57,7 @@ CCEditBox* CCEditBox::create()
 {
     CCEditBox* pRet = new CCEditBox();
     
-    if (pRet != NULL && pRet->initWithSizeAndBackgroundSprite(CCSizeMake(200, 35), CCScale9Sprite::create("account.png")))
+    if (pRet != NULL && pRet->initWithSizeAndBackgroundSprite(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png")))
     {
         pRet->autorelease();
     }

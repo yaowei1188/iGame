@@ -146,6 +146,7 @@ static const int CC_EDIT_BOX_PADDING = 5;
     {
         [self performSelector:@selector(animationSelector) withObject:nil afterDelay:0.0f];
     }
+    getEditBoxImplIOS()->adjustTextFieldPosition();
     cocos2d::extension::CCEditBoxDelegate* pDelegate = getEditBoxImplIOS()->getDelegate();
     if (pDelegate != NULL)
     {
