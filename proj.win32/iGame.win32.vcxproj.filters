@@ -22,24 +22,15 @@
     <Filter Include="resource\ccbResources">
       <UniqueIdentifier>{5b5810be-fba7-42da-89de-ee9786a5c9c9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="resource\Fonts">
-      <UniqueIdentifier>{f16afdd7-0ba0-462a-af32-f5043700b8cc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="resource\Image">
       <UniqueIdentifier>{3edc8ee8-c0c6-41ee-97c7-2b3f8a312237}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\Image\resources-iphonehd">
+      <UniqueIdentifier>{5cbc9e86-271c-40ec-90b0-f3a85978b8ec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\iGame.ico">
-      <Filter>resource</Filter>
-    </None>
-    <None Include="..\Resources\CloseSelected.png">
-      <Filter>resource</Filter>
-    </None>
-    <None Include="..\Resources\CloseNormal.png">
-      <Filter>resource</Filter>
-    </None>
-    <None Include="..\Resources\HelloWorld.png">
       <Filter>resource</Filter>
     </None>
     <None Include="..\library\jsoncpp\src\lib_json\json_internalarray.inl">
@@ -55,9 +46,6 @@
       <Filter>source\jsoncpp</Filter>
     </None>
     <None Include="..\Resources\account.png">
-      <Filter>resource</Filter>
-    </None>
-    <None Include="..\Resources\btnSubmit.png">
       <Filter>resource</Filter>
     </None>
     <None Include="..\Resources\Default.png">
@@ -80,18 +68,6 @@
     </None>
     <None Include="..\Resources\Icon-Small-50.png">
       <Filter>resource</Filter>
-    </None>
-    <None Include="..\Resources\Fonts\Arial.png">
-      <Filter>resource\Fonts</Filter>
-    </None>
-    <None Include="..\Resources\Fonts\Arial-hd.fnt">
-      <Filter>resource\Fonts</Filter>
-    </None>
-    <None Include="..\Resources\Fonts\Arial-hd.png">
-      <Filter>resource\Fonts</Filter>
-    </None>
-    <None Include="..\Resources\Fonts\Arial.fnt">
-      <Filter>resource\Fonts</Filter>
     </None>
     <None Include="..\Resources\ccbResources\ccbDefaultImages.plist">
       <Filter>resource\ccbResources</Filter>
@@ -123,9 +99,6 @@
     <None Include="..\Resources\MainGameScene.ccbi">
       <Filter>resource\Scene</Filter>
     </None>
-    <None Include="..\Resources\boxbg.png">
-      <Filter>resource</Filter>
-    </None>
     <None Include="..\Resources\TaskListScene.ccbi">
       <Filter>resource\Scene</Filter>
     </None>
@@ -144,22 +117,10 @@
     <None Include="..\Resources\Image\main.png">
       <Filter>resource\Image</Filter>
     </None>
-    <None Include="..\Resources\Image\login-hd.plist">
-      <Filter>resource\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\login-hd.png">
-      <Filter>resource\Image</Filter>
-    </None>
     <None Include="..\Resources\Image\login.plist">
       <Filter>resource\Image</Filter>
     </None>
     <None Include="..\Resources\Image\login.png">
-      <Filter>resource\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\main-hd.plist">
-      <Filter>resource\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\main-hd.png">
       <Filter>resource\Image</Filter>
     </None>
     <None Include="..\Resources\Image\main.plist">
@@ -171,12 +132,6 @@
     <None Include="..\Resources\Image\friends.png">
       <Filter>resource\Image</Filter>
     </None>
-    <None Include="..\Resources\Image\friends-hd.plist">
-      <Filter>resource\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\friends-hd.png">
-      <Filter>resource\Image</Filter>
-    </None>
     <None Include="..\Resources\NewMailScene.ccbi">
       <Filter>resource\Scene</Filter>
     </None>
@@ -185,6 +140,36 @@
     </None>
     <None Include="..\Resources\UserMailScene.ccbi">
       <Filter>resource\Scene</Filter>
+    </None>
+    <None Include="..\Resources\Image\Arial.fnt">
+      <Filter>resource\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\Arial.png">
+      <Filter>resource\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\Arial.fnt">
+      <Filter>resource\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\Arial.png">
+      <Filter>resource\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\friends.plist">
+      <Filter>resource\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\friends.png">
+      <Filter>resource\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\login.plist">
+      <Filter>resource\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\login.png">
+      <Filter>resource\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\main.plist">
+      <Filter>resource\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\main.png">
+      <Filter>resource\Image\resources-iphonehd</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

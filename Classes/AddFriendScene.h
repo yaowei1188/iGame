@@ -19,7 +19,8 @@ public CCTableViewDataSource,
 public CCTableViewDelegate,
 public CCBSelectorResolver,
 public CCNodeLoaderListener,
-public CCBMemberVariableAssigner
+public CCBMemberVariableAssigner,
+public CCMessageDialogDelegate
 {
 public:
     AddFriendScene();
@@ -59,6 +60,8 @@ public:
     virtual CCSize cellSizeForIndex(CCTableView *table, unsigned int idx);
     virtual void tableCellHighlight(CCTableView* table, CCTableViewCell* cell);
 	virtual void tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell);
+
+	virtual void didClickButton(CCMessageDialog* dialog,unsigned int index);
     
 	CCEditBox *m_txtSearchField;
     CCTableView* mTableViewFriend;

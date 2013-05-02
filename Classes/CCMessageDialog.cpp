@@ -45,34 +45,41 @@ bool CCMessageDialog::init()
         mBg->setPosition(ccp(mSize.width / 2, mSize.height / 2));
         this->addChild(mBg);
         
-        CCLabelTTF* pLabel=CCLabelTTF::create("Are you sure ?","Arial",20);
-        pLabel->setPosition(ccp(mSize.width / 2, mSize.height / 2+40));
-        this->addChild(pLabel);
+        lblTitle = CCLabelTTF::create("Are you sure ?","Arial",20);
+        lblTitle->setPosition(ccp(mSize.width / 2, mSize.height / 2+40));
+        this->addChild(lblTitle);
         
         CCMenuItemSprite *pMenuOK = CCMenuItemSprite::create(
                                                              OKNormal,
                                                              OKHighlight,
                                                              NULL,
                                                              this,
-                                                             menu_selector(CCMessageDialog::submitClicked));
+                                                             menu_selector(CCMessageDialog::buttonClicked));
         pMenuOK->setPosition(ccp(mSize.width *(3.0/10.0), mSize.height / 2-30));
+		pMenuOK->setTag(0);
         
         CCMenuItemSprite *pMenuCancel = CCMenuItemSprite::create(
                                                              cancelNormal,
                                                              cancelHighlight,
                                                              NULL,
                                                              this,
-                                                             menu_selector(CCMessageDialog::submitClicked));
+                                                             menu_selector(CCMessageDialog::buttonClicked));
         pMenuCancel->setPosition(ccp(mSize.width *(7.0/10.0), mSize.height / 2-30));
+		pMenuOK->setTag(1);
 
         CCMenu* pMenu = CCMenu::create(pMenuOK,pMenuCancel,NULL);
-        pMenu->setPosition(CCPointZero);  
+        pMenu->setPosition(CCPointZero);
         this->addChild(pMenu);
         
         bRet = true;
     } while (0);
 
     return bRet;
+}
+
+void CCMessageDialog::setTitle(const char * title)
+{
+	lblTitle->setString(title);
 }
 
 void CCMessageDialog::registerWithTouchDispatcher(void){
@@ -85,9 +92,14 @@ bool CCMessageDialog::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 	return true;
 }
 
-void CCMessageDialog::submitClicked(CCObject *pSender)
+void CCMessageDialog::buttonClicked(CCObject *pSender)
 {
-	CCLOG("i was clicked");
+	int tag = ((CCNode *)pSender)->getTag();
     this->removeFromParentAndCleanup(true);
+	if (m_pDelegate!=NULL)
+	{
+		m_pDelegate->didClickButton(this,tag);
+	}
+
 }
 

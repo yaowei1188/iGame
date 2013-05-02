@@ -181,13 +181,22 @@ void AddFriendScene::toolBarTouchDownAction(CCObject *pSender, CCControlEvent pC
 			break;
 		case 129:
         {
-            std::string userinfo = "6a5f0245b228a6c6f464fd300304857e";
-            this->addFriendRequest(userinfo);
+            //std::string userinfo = "6a5f0245b228a6c6f464fd300304857e";
+            //this->addFriendRequest(userinfo);
+			CCMessageDialog *box = CCMessageDialog::create();
+			box->setTitle("Are you sure add this guy as your friends?");
+			box->setDelegate(this);
+			this->addChild(box);
         }
 			break;
         default:
             break;
     }
+}
+
+void AddFriendScene::didClickButton(CCMessageDialog* dialog,unsigned int index)
+{
+	CCLOG("didClickButton");
 }
 
 SEL_MenuHandler AddFriendScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
@@ -288,7 +297,7 @@ CCTableViewCell* AddFriendScene::tableCellAtIndex(CCTableView *table, unsigned i
 		lblLevel->setTag(124);
 		cell->addChild(lblLevel);
 
-		CCLabelTTF *lblFriend = CCLabelTTF::create("一生所爱", "Arial", 14.0);
+		CCLabelTTF *lblFriend = CCLabelTTF::create("yishengsuoai", "Arial", 14.0);
 		lblFriend->setPosition(ccp(218,size.height - CELL_ITEMS_Y));
 		lblFriend->setAnchorPoint(CCPointZero);
 		lblFriend->setColor(ccc3(248, 255, 38));

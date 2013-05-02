@@ -69,7 +69,7 @@ bool AppDelegate::applicationDidFinishLaunching()
         
         CCFileUtils::sharedFileUtils()->setSearchResolutionsOrder(resDirOrders);
     }
-    else if (platform == kTargetAndroid || platform == kTargetWindows)
+    else if (platform == kTargetAndroid)
     {
         if (screenSize.height > 960)
         {
@@ -92,6 +92,14 @@ bool AppDelegate::applicationDidFinishLaunching()
         
         CCFileUtils::sharedFileUtils()->setSearchResolutionsOrder(resDirOrders);
     }
+	else if (platform == kTargetWindows)
+	{
+		searchPaths.push_back("Image"); // Resources/Published-iOS 
+		searchPaths.push_back("ccbResources");
+		CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+
+		CCFileUtils::sharedFileUtils()->setSearchResolutionsOrder(resDirOrders);
+	}
     
     pDirector->setContentScaleFactor(resourceSize.width/designSize.width);
     

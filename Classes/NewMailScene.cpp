@@ -61,7 +61,7 @@ void NewMailScene::doSubmit()
     std::string sContent(m_txtContent->getText());
     
     if (trimRight(sReceiver).empty() || trimRight(sSubject).empty() || trimRight(sContent).empty()) {
-        CCMessageBox("字段不能为空！","ERROR");
+        CCMessageBox("field can not be empty","ERROR");
         return;
     }
     
