@@ -7,7 +7,7 @@
             <key>friends_addbtn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{648,326},{101,28}}</string>
+                <string>{{753,358},{101,28}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>friends_addfriend_title.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{648,220},{134,38}}</string>
+                <string>{{648,262},{134,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>friends_cell_addfriend.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{648,148},{147,68}}</string>
+                <string>{{799,148},{147,68}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>friends_chat.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{799,76},{147,68}}</string>
+                <string>{{648,148},{147,68}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>friends_dairy.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{648,456},{60,60}}</string>
+                <string>{{816,446},{60,60}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>friends_dairy_copy.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{712,426},{60,60}}</string>
+                <string>{{900,442},{60,60}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>friends_delete.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{648,76},{147,68}}</string>
+                <string>{{799,76},{147,68}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +137,7 @@
             <key>friends_email.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{799,190},{134,38}}</string>
+                <string>{{786,220},{134,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +150,7 @@
             <key>friends_emailbtn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{799,4},{147,68}}</string>
+                <string>{{648,76},{147,68}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +163,7 @@
             <key>friends_fo.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{796,386},{60,60}}</string>
+                <string>{{648,436},{60,60}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +176,7 @@
             <key>friends_fo_copy.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{648,392},{60,60}}</string>
+                <string>{{942,378},{60,60}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +189,7 @@
             <key>friends_formation.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{648,4},{147,68}}</string>
+                <string>{{799,4},{147,68}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +215,7 @@
             <key>friends_love.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{900,232},{30,30}}</string>
+                <string>{{858,326},{30,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -241,7 +241,7 @@
             <key>friends_number.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{753,296},{101,28}}</string>
+                <string>{{648,336},{101,28}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,7 +267,7 @@
             <key>friends_searchbtn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{900,288},{110,60}}</string>
+                <string>{{900,280},{110,60}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -280,7 +280,7 @@
             <key>friends_searchbtn_copy.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{786,232},{110,60}}</string>
+                <string>{{786,262},{110,60}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -293,7 +293,7 @@
             <key>friends_searchresult.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{648,294},{101,28}}</string>
+                <string>{{753,326},{101,28}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -306,7 +306,7 @@
             <key>friends_wizard.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{732,362},{60,60}}</string>
+                <string>{{950,216},{60,60}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -319,7 +319,7 @@
             <key>friends_wizard_copy.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{921,352},{60,60}}</string>
+                <string>{{950,152},{60,60}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -329,10 +329,23 @@
                 <key>sourceSize</key>
                 <string>{60,60}</string>
             </dict>
+            <key>line.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1014,152},{2,2}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{2,2}}</string>
+                <key>sourceSize</key>
+                <string>{2,2}</string>
+            </dict>
             <key>myfriend_btn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{648,262},{101,28}}</string>
+                <string>{{648,304},{101,28}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -345,7 +358,7 @@
             <key>myfriend_title.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{799,148},{134,38}}</string>
+                <string>{{648,220},{134,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -358,7 +371,7 @@
             <key>nev_dengji.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{837,352},{80,30}}</string>
+                <string>{{732,424},{80,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -371,7 +384,7 @@
             <key>nev_neirong.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{648,358},{80,30}}</string>
+                <string>{{816,412},{80,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -384,7 +397,7 @@
             <key>nev_nicheng.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{753,328},{80,30}}</string>
+                <string>{{648,402},{80,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -397,7 +410,7 @@
             <key>nev_qingyi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{934,254},{80,30}}</string>
+                <string>{{732,390},{80,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -410,7 +423,7 @@
             <key>nev_shoujian.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{937,220},{80,30}}</string>
+                <string>{{858,378},{80,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -423,7 +436,7 @@
             <key>nev_zhenying.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{937,186},{80,30}}</string>
+                <string>{{892,344},{80,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -436,7 +449,7 @@
             <key>nev_zhuti.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{937,152},{80,30}}</string>
+                <string>{{648,368},{80,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -445,6 +458,32 @@
                 <string>{{0,0},{80,30}}</string>
                 <key>sourceSize</key>
                 <string>{80,30}</string>
+            </dict>
+            <key>sent_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{648,4},{147,68}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{147,68}}</string>
+                <key>sourceSize</key>
+                <string>{147,68}</string>
+            </dict>
+            <key>sent_2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{648,4},{147,68}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{147,68}}</string>
+                <key>sourceSize</key>
+                <string>{147,68}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -456,7 +495,7 @@
             <key>size</key>
             <string>{1024,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:23b75e4ca90126798a10bd29f694e789$</string>
+            <string>$TexturePacker:SmartUpdate:60629569a0d81670cadabf0aa92ba7da$</string>
             <key>textureFileName</key>
             <string>friends-hd.png</string>
         </dict>
