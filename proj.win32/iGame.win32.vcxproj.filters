@@ -28,6 +28,9 @@
     <Filter Include="resource\Image\resources-iphonehd">
       <UniqueIdentifier>{5cbc9e86-271c-40ec-90b0-f3a85978b8ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\Jsonbox">
+      <UniqueIdentifier>{259027f6-59ca-4d88-84f7-57e452d59829}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\iGame.ico">
@@ -323,6 +326,30 @@
     </ClCompile>
     <ClCompile Include="..\Classes\NewMailScene.cpp">
       <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\JsonBox\src\Array.cpp">
+      <Filter>source\Jsonbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\JsonBox\src\Convert.cpp">
+      <Filter>source\Jsonbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\JsonBox\src\Escaper.cpp">
+      <Filter>source\Jsonbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\JsonBox\src\Indenter.cpp">
+      <Filter>source\Jsonbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\JsonBox\src\Object.cpp">
+      <Filter>source\Jsonbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\JsonBox\src\SolidusEscaper.cpp">
+      <Filter>source\Jsonbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\JsonBox\src\Value.cpp">
+      <Filter>source\Jsonbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\JsonBox\src\IndentCanceller.cpp">
+      <Filter>source\Jsonbox</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
