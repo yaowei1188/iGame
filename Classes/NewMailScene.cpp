@@ -7,7 +7,7 @@ NewMailScene::NewMailScene()
 {
     m_txtReceiver = NULL;
     m_txtSubject = NULL;
-    m_txtContent = false;
+    m_txtContent = NULL;
 }
 
 NewMailScene::~NewMailScene()

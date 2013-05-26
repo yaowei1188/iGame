@@ -71,26 +71,26 @@ bool AppDelegate::applicationDidFinishLaunching()
     }
     else if (platform == kTargetAndroid)
     {
-        if (screenSize.height > 960)
-        {
-            resourceSize = CCSizeMake(640, 960);
-            resDirOrders.push_back("resources-large");
-            resDirOrders.push_back("resources-medium");
-            resDirOrders.push_back("resources-small");
-        }
-        else if (screenSize.height > 480)
-        {
-            resourceSize = CCSizeMake(480, 720);
-            resDirOrders.push_back("resources-medium");
-            resDirOrders.push_back("resources-small");
-        }
-        else
-        {
-            resourceSize = CCSizeMake(320, 568);
-            resDirOrders.push_back("resources-small");
-        }
-        
-        CCFileUtils::sharedFileUtils()->setSearchResolutionsOrder(resDirOrders);
+		searchPaths.push_back("Image"); // Resources/Published-iOS
+		searchPaths.push_back("ccbResources");
+		CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+
+		if (screenSize.height > 960)
+		{
+			resourceSize = CCSizeMake(640, 960);
+			resDirOrders.push_back("resources-iphonehd");
+		}
+		else if (screenSize.height > 480)
+		{
+			resourceSize = CCSizeMake(640, 960);
+			resDirOrders.push_back("resources-iphonehd");
+		}
+		else
+		{
+			resDirOrders.push_back("resources-iphone");
+		}
+
+		CCFileUtils::sharedFileUtils()->setSearchResolutionsOrder(resDirOrders);
     }
 	else if (platform == kTargetWindows)
 	{
