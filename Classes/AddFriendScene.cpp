@@ -1,5 +1,5 @@
 #include "AddFriendScene.h"
-#include "json/json.h"
+#include "JsonBox.h"
 
 using namespace cocos2d;
 
@@ -127,22 +127,34 @@ void AddFriendScene::requestFinishedCallback(CCNode* pSender,void *data)
     std::vector<char> *buffer = response->getResponseData();
 	std::string content(buffer->begin(),buffer->end());
     
-    Json::Reader reader;
-	Json::Value root;
+//    Json::Reader reader;
+//	Json::Value root;
+//    
+//    const char* str = content.c_str();
+//	if (!reader.parse(str, root))
+//	{
+//        CCMessageBox("Parse failed","ERROR");
+//		return;
+//	}
     
-    const char* str = content.c_str();
-	if (!reader.parse(str, root))
-	{
-        CCMessageBox("Parse failed","ERROR");
-		return;
-	}
+    JsonBox::Value v2;
+	v2.loadFromString(content);
+    
+    int code = v2["code"].getInt();
+    if (code!=200) {
+        
+        CCMessageBox("invoke web api failed!","ERROR");
+        return;
+    }else {
+    	CCLOG("douzhan:add friend successfully!");
+    }
     
     std::string requestTag(response->getHttpRequest()->getTag());
     
     if (requestTag == "101") {
-        std::string a(root["username"].asString());
+        std::string a(v2["username"].getString());
     } else if (requestTag == "102"){
-        std::string a(root["username"].asString());
+        std::string a(v2["username"].getString());
     }
 }
 

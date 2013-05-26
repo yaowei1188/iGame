@@ -1,5 +1,5 @@
 #include "NewMailScene.h"
-#include "json/json.h"
+#include "JsonBox.h"
 
 using namespace cocos2d;
 
@@ -113,26 +113,20 @@ void NewMailScene::requestFinishedCallback(CCNode* pSender,void *data)
 
 void NewMailScene::parseJson(std::string &content)
 {
-	Json::Reader reader;  
-	Json::Value root; 
-
-	const char* str = content.c_str();
-	if (!reader.parse(str, root))
-	{
-        CCMessageBox("Parse failed","ERROR");
-		return;
-	}
-    int code = root["code"].asInt();
-    if (code!=200) {
-        
-        CCMessageBox("登陆失败,用户名或者密码错误！","ERROR");
-        return;
-    }
-
-    CCUserDefault::sharedUserDefault()->setStringForKey("username", root["username"].asString());
-    CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", root["encryptedUserInfo"].asString());
-    
-    this->OpenNewScene("MainGameScene");
+//    JsonBox::Value v2;
+//	v2.loadFromString(content);
+//    
+//    int code = v2["code"].getInt();
+//    if (code!=200) {
+//        
+//        CCMessageBox("invoke web api failed!","ERROR");
+//        return;
+//    }else {
+//    	CCLOG("douzhan:login successfully!");
+//    }
+//    
+//    CCUserDefault::sharedUserDefault()->setStringForKey("username", v2["username"].getString());
+//    CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", v2["encryptedUserInfo"].getString());
 }
 
 void NewMailScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)

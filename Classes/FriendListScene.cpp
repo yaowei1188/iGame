@@ -200,6 +200,12 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
         lblStatus->setTag(126);
 		cell->addChild(lblStatus);
         
+        CCScale9Sprite *sline = CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("line.png"));
+        sline->setPreferredSize(CCSizeMake(290, 1));
+        sline->setPosition(ccp(15,size.height - CELL_ITEMS_Y - 20));
+        sline->setAnchorPoint(CCPointZero);
+        cell->addChild(sline);
+        
         int length = rand()%5;
         CCLayer *layer = CCLayer::create();
         layer->setTag(131);

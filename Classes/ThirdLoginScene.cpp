@@ -1,5 +1,5 @@
 #include "ThirdLoginScene.h"
-#include "json/json.h"
+#include "JsonBox.h"
 
 using namespace cocos2d;
 
@@ -131,15 +131,17 @@ void ThirdLoginScene::requestFinishedCallback(CCNode* pSender,void *data)
 
 void ThirdLoginScene::parseJson()
 {
-	Json::Reader reader;  
-	Json::Value root; 
-
-//	const char* str = "{\"uploadid\": \"UP000000\",\"code\": 100,\"msg\": \"\",\"files\": \"\"}";  
-//	if (reader.parse(str, root)) 
-//	{  
-//		std::string upload_id = root["uploadid"].asString();
-//		int code = root["code"].asInt();
-//	}
+//    JsonBox::Value v2;
+//	v2.loadFromString(content);
+//    
+//    int code = v2["code"].getInt();
+//    if (code!=200) {
+//        
+//        CCMessageBox("invoke web api failed!","ERROR");
+//        return;
+//    }else {
+//    	CCLOG("douzhan:login successfully!");
+//    }
 }
 
 void ThirdLoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)

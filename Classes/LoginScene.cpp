@@ -1,10 +1,21 @@
 #include "LoginScene.h"
 #include "json/json.h"
+#include "JsonBox.h"
+#include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
+using namespace CocosDenshion;
 
 LoginScene::LoginScene()
 {
+//    // preload background music and effect
+//    SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic( MUSIC_FILE );
+//    SimpleAudioEngine::sharedEngine()->preloadEffect( EFFECT_FILE );
+//    
+//    // set default volume
+//    SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.5);
+//    SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
+    
     m_txtAccount = NULL;
     m_txtPassword = NULL;
     mCloud = NULL;
@@ -48,6 +59,9 @@ bool LoginScene::init()
         //////////////////////////////////////////////////////////////////////////
 
         CC_BREAK_IF(! CCLayer::init());
+    
+        
+//        SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
         
         bRet = true;
     } while (0);
@@ -130,24 +144,39 @@ void LoginScene::requestFinishedCallback(CCNode* pSender,void *data)
 
 void LoginScene::parseJson(std::string &content)
 {
-	Json::Reader reader;  
-	Json::Value root; 
-
-	const char* str = content.c_str();
-	if (!reader.parse(str, root))
-	{
-        CCMessageBox("Parse failed","ERROR");
-		return;
-	}
-    int code = root["code"].asInt();
+//	Json::Reader reader;  
+//	Json::Value root; 
+//
+//	const char* str = content.c_str();
+//	if (!reader.parse(str, root))
+//	{
+//        CCMessageBox("Parse failed","ERROR");
+//		return;
+//	}
+//    int code = root["code"].asInt();
+//    if (code!=200) {
+//        
+//        CCMessageBox("登陆失败,用户名或者密码错误！","ERROR");
+//        return;
+//    }
+    
+    JsonBox::Value v2;
+	v2.loadFromString(content);
+    
+    int code = v2["code"].getInt();
     if (code!=200) {
         
-        CCMessageBox("登陆失败,用户名或者密码错误！","ERROR");
+        CCMessageBox("invoke web api failed!","ERROR");
         return;
+    }else {
+    	CCLOG("douzhan:login successfully!");
     }
 
-    CCUserDefault::sharedUserDefault()->setStringForKey("username", root["username"].asString());
-    CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", root["encryptedUserInfo"].asString());
+    CCUserDefault::sharedUserDefault()->setStringForKey("username", v2["username"].getString());
+    CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", v2["encryptedUserInfo"].getString());
+    
+//    CCUserDefault::sharedUserDefault()->setStringForKey("username", root["username"].asString());
+//    CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", root["encryptedUserInfo"].asString());
     
     this->OpenNewScene("MainGameScene");
 }
@@ -200,6 +229,7 @@ bool LoginScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMembe
 
 void LoginScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
     
+//    SimpleAudioEngine::sharedEngine()->playEffect( EFFECT_FILE );
     CCControlButton *button = (CCControlButton*) pSender;
     
     if (pCCControlEvent==CCControlEventTouchUpInside) {
