@@ -15,7 +15,9 @@
 #include "LoadingScene.h"
 #include "CCMessageDialog.h"
 #include "JsonBox.h"
+#include "common.h"
 
+using namespace std;
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
@@ -31,6 +33,7 @@ protected:
     void ShowLoadingIndicator(const char *pCCBFileName);
     void HideLoadingIndicator();
 	bool ValidateResponseData(CCNode* pSender,void *data);
+    std::string CompleteUrl(std::string url);
 
 private:
     LoadingScene *loading;

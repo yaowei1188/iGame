@@ -103,7 +103,7 @@ bool MainLayerBase::ValidateResponseData(CCNode* pSender,void *data)
 	CCHttpResponse *response =  (CCHttpResponse*)data;
 	if(response == NULL)
 	{
-		return FALSE;
+		return false;
 	}
 
 	int statusCode = response->getResponseCode();
@@ -114,8 +114,15 @@ bool MainLayerBase::ValidateResponseData(CCNode* pSender,void *data)
 	{  
 		CCLog("error buffer: %s", response->getErrorBuffer());
 		CCMessageBox("ERROR", response->getErrorBuffer());
-		return FALSE;
+		return false;
 	}
 
-	return TRUE;
+	return true;
+}
+
+std::string MainLayerBase::CompleteUrl(std::string function_url)
+{
+    std::string url(API_URL);
+    url.append(function_url);
+    return url;
 }

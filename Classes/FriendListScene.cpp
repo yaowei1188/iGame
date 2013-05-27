@@ -1,4 +1,5 @@
 #include "FriendListScene.h"
+#include "CCJSONConverter.h"
 
 using namespace cocos2d;
 
@@ -57,15 +58,55 @@ void FriendListScene::doSearchFriend()
 	request->setResponseCallback(this,callfuncND_selector(FriendListScene::requestFinishedCallback));
 	request->setTag("101");
 
-	char url[150] = {0};
-	sprintf(url,"%s/friend/list/%s",API_URL,CCUserDefault::sharedUserDefault()->getStringForKey("userinfo").c_str());
-	CCLOG(url);
-	request->setUrl(url);
+    string url = CompleteUrl(URL_FRIEND_LIST);
+    url.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+
+	request->setUrl(url.c_str());
 
 	CCHttpClient *client = CCHttpClient::getInstance();
 	client->send(request);
 
 	request->release();
+}
+
+void FriendListScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
+{
+	if (!this->ValidateResponseData(pSender,Rspdata))
+	{
+		return;
+	}
+
+	CCHttpResponse *response =  (CCHttpResponse*)Rspdata;
+	std::vector<char> *buffer = response->getResponseData();
+
+	std::string content(buffer->begin(),buffer->end());
+	CCLog(content.c_str());
+
+//	JsonBox::Value val;
+//	val.loadFromString(content);
+//
+//    int code = val["code"].getInt();
+//    if (code != 200) {
+//        CCMessageBox("invoke web api failed!","ERROR");
+//        return;
+//    }else {
+//    	CCLOG("douzhan:login successfully!");
+//    }
+//
+//    string data(val["friendList"].getString());
+//    CCLOG("douzhan:%s",data.c_str());
+
+//    CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
+    CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom("{\"code\":\"200\",\"message\":\"test\",\"friendList\":[{\"allQuantity\":3,\"couponId\":\"8\",\"currentPrice\":\"90.0\",\"iconUrl\":\"/rest/coupon/unau/img/8/1\",\"originalPrice\":\"100.0\",\"status\":-1,\"title\":\"巴蜀传香\",\"type\":\"0\",\"usedQuantity\":3},{\"allQuantity\":21,\"couponId\":\"1\",\"currentPrice\":\"80.0\",\"iconUrl\":\"/rest/coupon/unau/img/1/1\",\"originalPrice\":\"100.0\",\"status\":-1,\"title\":\"测试\",\"type\":\"0\",\"usedQuantity\":21},{\"allQuantity\":20,\"couponId\":\"11\",\"currentPrice\":\"60.0\",\"iconUrl\":\"/rest/coupon/unau/img/11/1\",\"originalPrice\":\"80.0\",\"status\":1,\"title\":\"独墅湖影剧院\",\"type\":\"0\",\"usedQuantity\":16},{\"allQuantity\":7,\"couponId\":\"10\",\"currentPrice\":\"45.0\",\"iconUrl\":\"/rest/coupon/unau/img/10/1\",\"originalPrice\":\"60.0\",\"status\":1,\"title\":\"大光明影城\",\"type\":\"0\",\"usedQuantity\":5},{\"allQuantity\":12,\"couponId\":\"3\",\"currentPrice\":\"10.0\",\"iconUrl\":\"/rest/coupon/unau/img/3/1\",\"originalPrice\":\"60.0\",\"status\":-1,\"title\":\"bscxsi\",\"type\":\"0\",\"usedQuantity\":12}]}");
+    int code  = dictionary->valueForKey("code")->intValue();
+    if (code != 200) {
+        CCMessageBox("invoke web api failed!","ERROR");
+        return;
+    }
+    
+    mFriendList = (CCArray *)dictionary->objectForKey("friendList");
+
+    CCLOG("test");
 }
 
 bool FriendListScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
@@ -342,26 +383,6 @@ void FriendListScene::buttonClicked(CCObject * sender , CCControlEvent controlEv
 		CCLOG("33333");
 		break;
 	}
-}
-
-
-void FriendListScene::requestFinishedCallback(CCNode* pSender,void *data)
-{
-	if (this->ValidateResponseData(pSender,data))
-	{
-		return;
-	}
-
-	CCHttpResponse *response =  (CCHttpResponse*)data;
-	std::vector<char> *buffer = response->getResponseData(); 
-
-	std::string content(buffer->begin(),buffer->end());
-	CCLog(content.c_str());
-
-	JsonBox::Value val;
-	val.loadFromString(content);
-
-	//parseJson(content);
 }
 
 FriendListScene::FriendListScene()
