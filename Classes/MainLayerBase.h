@@ -16,6 +16,7 @@
 #include "CCMessageDialog.h"
 #include "JsonBox.h"
 #include "common.h"
+#include "CCJSONConverter.h"
 
 using namespace std;
 using namespace cocos2d;

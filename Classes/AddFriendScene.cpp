@@ -38,7 +38,8 @@ bool AddFriendScene::init()
         
         selectedindex = -1;
 
-        mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("Li2"),CCString::create("Li3"),CCString::create("Li1"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
+		mFriendList= CCArray::create();
+        //mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("Li2"),CCString::create("Li3"),CCString::create("Li1"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
         mFriendList->retain();
         
         bRet = true;
@@ -69,9 +70,10 @@ void AddFriendScene::buttonClicked(CCObject *pSender,CCControlEvent event)
 
 void AddFriendScene::doSearchFriend()
 {
-	std::string sSearchTest(m_txtSearchField->getText());
+	std::string sSearchField(m_txtSearchField->getText());
+	sSearchField = trimRight(sSearchField);
 
-	if (trimRight(sSearchTest).empty()) {
+	if (sSearchField.empty()) {
 		CCMessageBox("搜索内容不能为空","ERROR");
 		return;
 	}
@@ -83,10 +85,14 @@ void AddFriendScene::doSearchFriend()
 	request->setResponseCallback(this,callfuncND_selector(AddFriendScene::requestFinishedCallback));
 	request->setTag("101");
     
-	char url[150] = {0};
-	sprintf(url,"%s/friend/retrieveFriend/%s",API_URL,sSearchTest.c_str());
-	CCLOG(url);
-	request->setUrl(url);
+	string _strUrl = CompleteUrl(URL_FRIEND_SEARCH);
+	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+	_strUrl.append("/");
+	_strUrl.append(sSearchField);
+
+	CCLOG(_strUrl.c_str());
+
+	request->setUrl(_strUrl.c_str());
 
 	CCHttpClient *client = CCHttpClient::getInstance();
 	client->send(request);
@@ -94,17 +100,18 @@ void AddFriendScene::doSearchFriend()
 	request->release();
 }
 
-void AddFriendScene::addFriendRequest(std::string &userinfo)
+void AddFriendScene::addFriendRequest(std::string &targetUser)
 {
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
 	request->setResponseCallback(this,callfuncND_selector(AddFriendScene::requestFinishedCallback));
 	request->setTag("102");
     
-    char url[150] = {0};
-    sprintf(url,"%s/friend/addFriend/%s/%s",API_URL,CCUserDefault::sharedUserDefault()->getStringForKey("userinfo").c_str(),userinfo.c_str());
-    CCLOG(url);
-	request->setUrl(url);
+	string _strUrl = CompleteUrl(URL_FRIEND_ADD_NEW);
+	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+	_strUrl.append("/" + targetUser);
+
+	request->setUrl(_strUrl.c_str());
 
 	CCHttpClient *client = CCHttpClient::getInstance();
 	client->send(request);
@@ -112,56 +119,43 @@ void AddFriendScene::addFriendRequest(std::string &userinfo)
 	request->release();
 }
 
-void AddFriendScene::requestFinishedCallback(CCNode* pSender,void *data)
+void AddFriendScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
 {
-    CCHttpResponse *response =  (CCHttpResponse*)data;
-    
-	if (!response->isSucceed())
+	if (!this->ValidateResponseData(pSender,Rspdata))
 	{
-		CCLog("response failed");
-		CCLog("error buffer: %s", response->getErrorBuffer());
-        CCMessageBox("ERROR", "Response failed");
 		return;
 	}
+
+    CCHttpResponse *response =  (CCHttpResponse*)Rspdata;
     
     std::vector<char> *buffer = response->getResponseData();
 	std::string content(buffer->begin(),buffer->end());
     
-//    Json::Reader reader;
-//	Json::Value root;
-//    
-//    const char* str = content.c_str();
-//	if (!reader.parse(str, root))
-//	{
-//        CCMessageBox("Parse failed","ERROR");
-//		return;
-//	}
-    
-    JsonBox::Value v2;
-	v2.loadFromString(content);
-    
-    int code = v2["code"].getInt();
-    if (code!=200) {
-        
-        CCMessageBox("invoke web api failed!","ERROR");
-        return;
-    }else {
-    	CCLOG("douzhan:add friend successfully!");
-    }
+	CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
+	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
+	if (code != 200) {
+		CCMessageBox("invoke web api failed!","ERROR");
+		return;
+	}
     
     std::string requestTag(response->getHttpRequest()->getTag());
     
     if (requestTag == "101") {
-        std::string a(v2["username"].getString());
+		mFriendList->removeAllObjects();
+		CCDictionary * friendDictionary = dynamic_cast<CCDictionary *>(dictionary->objectForKey("searchUserAccount"));
+		if (friendDictionary != NULL)
+		{
+			  mFriendList->addObject(friendDictionary);
+		}
+		selectedindex = -1;
+		this->mTableViewFriend->reloadData();
     } else if (requestTag == "102"){
-        std::string a(v2["username"].getString());
+       CCMessageBox("add new friend successfully","Success");
     }
 }
 
 void AddFriendScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    CCLOG("TEST");
-
     m_txtSearchField->setContentSize(CCSizeMake(230, 35));
 //    m_txtSearchField->setPreferredSize(CCSizeMake(230, 35));
 //    m_txtSearchField->setPlaceHolder("please input search field");
@@ -172,7 +166,7 @@ void AddFriendScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     mTableViewFriend->setDataSource(this);
     mTableViewFriend->setViewSize(CCSizeMake(312, 235));
     mTableViewFriend->setDelegate(this);
-    mTableViewFriend->reloadData();
+    //mTableViewFriend->reloadData();
 }
 
 bool AddFriendScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
@@ -193,8 +187,6 @@ void AddFriendScene::toolBarTouchDownAction(CCObject *pSender, CCControlEvent pC
 			break;
 		case 129:
         {
-            //std::string userinfo = "6a5f0245b228a6c6f464fd300304857e";
-            //this->addFriendRequest(userinfo);
 			CCMessageDialog *box = CCMessageDialog::create();
 			box->setTitle("Are you sure add this guy as your friends?");
 			box->setDelegate(this);
@@ -208,7 +200,11 @@ void AddFriendScene::toolBarTouchDownAction(CCObject *pSender, CCControlEvent pC
 
 void AddFriendScene::didClickButton(CCMessageDialog* dialog,unsigned int index)
 {
-	CCLOG("didClickButton");
+	if (index == 0)
+	{
+		CCDictionary *dict = (CCDictionary *)mFriendList->objectAtIndex(selectedindex);
+		this->addFriendRequest(string(dict->valueForKey("encryptedUserInfo")->getCString()));
+	}
 }
 
 SEL_MenuHandler AddFriendScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
@@ -273,7 +269,7 @@ bool AddFriendScene::hasFixedCellSize()
 
 CCTableViewCell* AddFriendScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
-	CCString *string = (CCString *)mFriendList->objectAtIndex(idx);
+	CCDictionary *dict = (CCDictionary *)mFriendList->objectAtIndex(idx);
 	bool selected = (idx==selectedindex);
 	CCTableViewCell *cell = table->dequeueCell();
 	if (!cell) {
@@ -295,7 +291,7 @@ CCTableViewCell* AddFriendScene::tableCellAtIndex(CCTableView *table, unsigned i
 		sGroup->setAnchorPoint(CCPointZero);
 		cell->addChild(sGroup);
 
-		CCLabelTTF *lblName = CCLabelTTF::create(string->getCString(), "Arial", 14.0);
+		CCLabelTTF *lblName = CCLabelTTF::create(dict->valueForKey("username")->getCString(), "Arial", 14.0);
 		lblName->setPosition(ccp(51,size.height - CELL_ITEMS_Y));
 		lblName->setAnchorPoint(CCPointZero);
 		lblName->setColor(ccc3(248, 255, 38));
@@ -388,7 +384,7 @@ CCTableViewCell* AddFriendScene::tableCellAtIndex(CCTableView *table, unsigned i
 		sGroup->setPosition(ccp(sGroup->getPosition().x,size.height - CELL_ITEMS_Y - 10));
 
 		CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);
-		lblName->setString(string->getCString());
+		lblName->setString(dict->valueForKey("username")->getCString());
 		lblName->setPosition(ccp(lblName->getPosition().x,size.height - CELL_ITEMS_Y));
 
 		CCLabelTTF *lblLevel = (CCLabelTTF*)cell->getChildByTag(124);

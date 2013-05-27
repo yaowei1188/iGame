@@ -69,6 +69,9 @@
 #endif // CC_PLATFORM_WIN32
 
 /*Function url*/
+//User
+#define URL_USER_LOGIN                             "/user/login/"
+
 //Friends
 #define URL_FRIEND_LIST                             "/friend/list/"
 #define URL_FRIEND_ADD_NEW                          "/friend/addFriend/"

@@ -351,5 +351,11 @@
     <ClCompile Include="..\library\JsonBox\src\IndentCanceller.cpp">
       <Filter>source\Jsonbox</Filter>
     </ClCompile>
+    <ClCompile Include="..\library\jsonconverter\CCJSONConverter.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\jsonconverter\cJSON.c">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -101,11 +101,16 @@ void LoginScene::doSubmit()
 	request->setRequestType(CCHttpRequest::kHttpGet);
 	request->setResponseCallback(this,callfuncND_selector(LoginScene::requestFinishedCallback));
 	request->setTag("1");
+
+	string _strUrl = CompleteUrl(URL_USER_LOGIN);
+	_strUrl.append(sAccount + "/");
+	_strUrl.append(sPassword);
+	request->setUrl(_strUrl.c_str());
     
-    char url[150] = {0};
-    sprintf(url,"%s/user/login/%s/%s",API_URL,sAccount.c_str(),sPassword.c_str());
-    CCLOG(url);
-	request->setUrl(url);
+ //   char url[150] = {0};
+ //   sprintf(url,"%s/user/login/%s/%s",API_URL,sAccount.c_str(),sPassword.c_str());
+ //   CCLOG(url);
+	//request->setUrl(url);
     
 	CCHttpClient *client = CCHttpClient::getInstance();
 	client->send(request);

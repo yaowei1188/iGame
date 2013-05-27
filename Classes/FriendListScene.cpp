@@ -1,9 +1,6 @@
 #include "FriendListScene.h"
-#include "CCJSONConverter.h"
 
 using namespace cocos2d;
-
-
 
 CCScene* FriendListScene::scene()
 {
@@ -40,6 +37,7 @@ bool FriendListScene::init()
 
         CC_BREAK_IF(! CCLayer::init());
         
+		//mFriendList =  CCArray::create();
         mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
         mFriendList->retain();
 
@@ -58,10 +56,10 @@ void FriendListScene::doSearchFriend()
 	request->setResponseCallback(this,callfuncND_selector(FriendListScene::requestFinishedCallback));
 	request->setTag("101");
 
-    string url = CompleteUrl(URL_FRIEND_LIST);
-    url.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+    string _strUrl = CompleteUrl(URL_FRIEND_LIST);
+    _strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
 
-	request->setUrl(url.c_str());
+	request->setUrl(_strUrl.c_str());
 
 	CCHttpClient *client = CCHttpClient::getInstance();
 	client->send(request);
@@ -82,31 +80,28 @@ void FriendListScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
 	std::string content(buffer->begin(),buffer->end());
 	CCLog(content.c_str());
 
-//	JsonBox::Value val;
-//	val.loadFromString(content);
-//
-//    int code = val["code"].getInt();
-//    if (code != 200) {
-//        CCMessageBox("invoke web api failed!","ERROR");
-//        return;
-//    }else {
-//    	CCLOG("douzhan:login successfully!");
-//    }
-//
-//    string data(val["friendList"].getString());
-//    CCLOG("douzhan:%s",data.c_str());
-
-//    CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
-    CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom("{\"code\":\"200\",\"message\":\"test\",\"friendList\":[{\"allQuantity\":3,\"couponId\":\"8\",\"currentPrice\":\"90.0\",\"iconUrl\":\"/rest/coupon/unau/img/8/1\",\"originalPrice\":\"100.0\",\"status\":-1,\"title\":\"巴蜀传香\",\"type\":\"0\",\"usedQuantity\":3},{\"allQuantity\":21,\"couponId\":\"1\",\"currentPrice\":\"80.0\",\"iconUrl\":\"/rest/coupon/unau/img/1/1\",\"originalPrice\":\"100.0\",\"status\":-1,\"title\":\"测试\",\"type\":\"0\",\"usedQuantity\":21},{\"allQuantity\":20,\"couponId\":\"11\",\"currentPrice\":\"60.0\",\"iconUrl\":\"/rest/coupon/unau/img/11/1\",\"originalPrice\":\"80.0\",\"status\":1,\"title\":\"独墅湖影剧院\",\"type\":\"0\",\"usedQuantity\":16},{\"allQuantity\":7,\"couponId\":\"10\",\"currentPrice\":\"45.0\",\"iconUrl\":\"/rest/coupon/unau/img/10/1\",\"originalPrice\":\"60.0\",\"status\":1,\"title\":\"大光明影城\",\"type\":\"0\",\"usedQuantity\":5},{\"allQuantity\":12,\"couponId\":\"3\",\"currentPrice\":\"10.0\",\"iconUrl\":\"/rest/coupon/unau/img/3/1\",\"originalPrice\":\"60.0\",\"status\":-1,\"title\":\"bscxsi\",\"type\":\"0\",\"usedQuantity\":12}]}");
-    int code  = dictionary->valueForKey("code")->intValue();
+    CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
+	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
     if (code != 200) {
         CCMessageBox("invoke web api failed!","ERROR");
         return;
     }
-    
-    mFriendList = (CCArray *)dictionary->objectForKey("friendList");
 
-    CCLOG("test");
+	std::string requestTag(response->getHttpRequest()->getTag());
+
+	if (requestTag == "101") {
+		mFriendList = dynamic_cast<CCArray *>(dictionary->objectForKey("friendList"));
+		if (mFriendList==NULL)
+		{
+			return;
+		}
+
+		selectedindex = -1;
+		mTableViewFriend->reloadData();
+	} else if (requestTag == "102"){
+		this->doSearchFriend();
+		CCMessageBox("delete friend successfully","Success");
+	}
 }
 
 bool FriendListScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
@@ -137,7 +132,7 @@ void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     mTableViewFriend->setDelegate(this);
     mTableViewFriend->reloadData();
 
-	doSearchFriend();
+	//doSearchFriend();
 }
 
 void FriendListScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
@@ -360,10 +355,61 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 //    按下按钮事件回调
 void FriendListScene::toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent)
 {
-    CCLOG("CLICK");
-    
-    CCMessageDialog *box = CCMessageDialog::create();
-    this->addChild(box);
+	CCControlButton *button = (CCControlButton *)sender;
+	switch (button->getTag()) 
+	{
+	case 127:
+		{
+			break;
+		}
+	case 128:
+		{
+			MainGameScene *mainScene = (MainGameScene *)this->getParent();
+			mainScene->PushLayer((CCLayer *)this->GetLayer("NewMailScene"));
+			break;
+		}
+	case 129:
+		{
+			break;
+		}
+	case 130:
+		{
+			CCMessageDialog *box = CCMessageDialog::create();
+			box->setTitle("Are you sure add this guy as your friends?");
+			box->setDelegate(this);
+			this->addChild(box);
+
+			break;
+		}
+	}
+}
+
+void FriendListScene::didClickButton(CCMessageDialog* dialog,unsigned int index)
+{
+	if (index == 0)
+	{
+		CCDictionary *dict = (CCDictionary *)mFriendList->objectAtIndex(selectedindex);
+		this->deleteFriend(string(dict->valueForKey("encryptedUserInfo")->getCString()));
+	}
+}
+
+void FriendListScene::deleteFriend(std::string &targetUser)
+{
+	CCHttpRequest *request = new CCHttpRequest();
+	request->setRequestType(CCHttpRequest::kHttpGet);
+	request->setResponseCallback(this,callfuncND_selector(FriendListScene::requestFinishedCallback));
+	request->setTag("103");
+
+	string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
+	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+	_strUrl.append("/" + targetUser);
+
+	request->setUrl(_strUrl.c_str());
+
+	CCHttpClient *client = CCHttpClient::getInstance();
+	client->send(request);
+
+	request->release();
 }
 
 void FriendListScene::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
