@@ -58,7 +58,7 @@ void FriendListScene::doSearchFriend()
 	request->setTag("101");
 
 	char url[150] = {0};
-	sprintf(url,"%s/friend/retrieveFriend/%s",API_URL,CCUserDefault::sharedUserDefault()->getStringForKey("userinfo").c_str());
+	sprintf(url,"%s/friend/list/%s",API_URL,CCUserDefault::sharedUserDefault()->getStringForKey("userinfo").c_str());
 	CCLOG(url);
 	request->setUrl(url);
 
@@ -89,8 +89,6 @@ SEL_CCControlHandler FriendListScene::onResolveCCBCCControlSelector(CCObject *pT
 
 void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    CCLOG("TEST");
-
     mTableViewFriend->setDirection(kCCScrollViewDirectionVertical);
     mTableViewFriend->setVerticalFillOrder(kCCTableViewFillTopDown);
     mTableViewFriend->setDataSource(this);
@@ -329,7 +327,6 @@ void FriendListScene::toolBarTouchDownAction(CCObject * sender , CCControlEvent 
 
 void FriendListScene::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
 {
-    CCLOG("SSSS");
 	MainGameScene *mainScene = (MainGameScene *)this->getParent();
 	CCControlButton *button = (CCControlButton *)sender;
 	switch (button->getTag()) {
@@ -350,28 +347,19 @@ void FriendListScene::buttonClicked(CCObject * sender , CCControlEvent controlEv
 
 void FriendListScene::requestFinishedCallback(CCNode* pSender,void *data)
 {
-	this->HideLoadingIndicator();
-
-	CCHttpResponse *response =  (CCHttpResponse*)data;
-	if(response == NULL)
+	if (this->ValidateResponseData(pSender,data))
 	{
 		return;
 	}
-	int statusCode = response->getResponseCode();
-	char statusString[64] = {};
-	CCLOG(statusString, "HTTP Status Code: %d, tag = %s", statusCode, response->getHttpRequest()->getTag());
 
-	if (!response->isSucceed())   
-	{  
-		CCLog("response failed");  
-		CCLog("error buffer: %s", response->getErrorBuffer());
-		CCMessageBox("ERROR", "Response failed");
-		return;  
-	}
+	CCHttpResponse *response =  (CCHttpResponse*)data;
 	std::vector<char> *buffer = response->getResponseData(); 
 
 	std::string content(buffer->begin(),buffer->end());
 	CCLog(content.c_str());
+
+	JsonBox::Value val;
+	val.loadFromString(content);
 
 	//parseJson(content);
 }

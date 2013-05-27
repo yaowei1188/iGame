@@ -1,6 +1,5 @@
 #include "LoginScene.h"
 //#include "json/json.h"
-#include "JsonBox.h"
 #include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
@@ -160,10 +159,10 @@ void LoginScene::parseJson(std::string &content)
 //        return;
 //    }
     
-    JsonBox::Value v2;
-	v2.loadFromString(content);
+    JsonBox::Value val;
+	val.loadFromString(content);
     
-    int code = v2["code"].getInt();
+    int code = val["code"].getInt();
     if (code!=200) {
         
         CCMessageBox("invoke web api failed!","ERROR");
@@ -172,8 +171,8 @@ void LoginScene::parseJson(std::string &content)
     	CCLOG("douzhan:login successfully!");
     }
 
-    CCUserDefault::sharedUserDefault()->setStringForKey("username", v2["username"].getString());
-    CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", v2["encryptedUserInfo"].getString());
+    CCUserDefault::sharedUserDefault()->setStringForKey("username", val["username"].getString());
+    CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", val["encryptedUserInfo"].getString());
     
 //    CCUserDefault::sharedUserDefault()->setStringForKey("username", root["username"].asString());
 //    CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", root["encryptedUserInfo"].asString());
