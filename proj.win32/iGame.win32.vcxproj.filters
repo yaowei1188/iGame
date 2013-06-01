@@ -174,6 +174,18 @@
     <None Include="..\Resources\Image\resources-iphonehd\main.png">
       <Filter>resource\Image\resources-iphonehd</Filter>
     </None>
+    <None Include="..\Resources\tab_normal.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\tab_line.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\tab_kuan.9.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\tab_active.png">
+      <Filter>resource</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="iGame.rc">
@@ -271,6 +283,18 @@
     <ClInclude Include="..\Classes\NewMailSceneLoader.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\StringExt.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCTabView.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MailMainScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MailMainSceneLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -355,6 +379,12 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\library\jsonconverter\cJSON.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CCTabView.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MailMainScene.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

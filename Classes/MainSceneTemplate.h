@@ -15,6 +15,7 @@
 #include "common.h"
 #include "MainSceneTemplate.h"
 #include "MainLayerBase.h"
+#include "StringExt.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;

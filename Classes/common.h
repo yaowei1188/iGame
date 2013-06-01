@@ -79,3 +79,12 @@
 #define URL_FRIEND_SEARCH                           "/friend/search/"
 #define URL_FRIEND_DELETE                           "/friend/delete/"
 #define URL_FRIEND_CONFIRM                          "/friend/confirm/"
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#define ShowString(text)  WStrToUTF8(L##text)
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#define ShowString(text)  text
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+#define ShowString(text)  WStrToUTF8(L##text)
+#endif
+

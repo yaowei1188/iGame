@@ -164,6 +164,10 @@
     <None Include="..\Resources\MainSceneTemplate.ccbi" />
     <None Include="..\Resources\NewMailScene.ccbi" />
     <None Include="..\Resources\SysMailScene.ccbi" />
+    <None Include="..\Resources\tab_active.png" />
+    <None Include="..\Resources\tab_kuan.9.png" />
+    <None Include="..\Resources\tab_line.png" />
+    <None Include="..\Resources\tab_normal.png" />
     <None Include="..\Resources\TaskListScene.ccbi" />
     <None Include="..\Resources\ThirdLoginScene.ccbi" />
     <None Include="..\Resources\transparent.png" />
@@ -183,12 +187,15 @@
     <ClInclude Include="..\Classes\CCEditBoxLoader.h" />
     <ClInclude Include="..\Classes\CCMessageDialog.h" />
     <ClInclude Include="..\Classes\CCTableViewLoader.h" />
+    <ClInclude Include="..\Classes\CCTabView.h" />
     <ClInclude Include="..\Classes\common.h" />
     <ClInclude Include="..\Classes\FriendListScene.h" />
     <ClInclude Include="..\Classes\FriendListSceneLoader.h" />
     <ClInclude Include="..\Classes\LoadingScene.h" />
     <ClInclude Include="..\Classes\LoginScene.h" />
     <ClInclude Include="..\Classes\LoginSceneLoader.h" />
+    <ClInclude Include="..\Classes\MailMainScene.h" />
+    <ClInclude Include="..\Classes\MailMainSceneLoader.h" />
     <ClInclude Include="..\Classes\MainGameScene.h" />
     <ClInclude Include="..\Classes\MainGameSceneLoader.h" />
     <ClInclude Include="..\Classes\MainLayerBase.h" />
@@ -196,6 +203,7 @@
     <ClInclude Include="..\Classes\MainSceneTemplateLoader.h" />
     <ClInclude Include="..\Classes\NewMailScene.h" />
     <ClInclude Include="..\Classes\NewMailSceneLoader.h" />
+    <ClInclude Include="..\Classes\StringExt.h" />
     <ClInclude Include="..\Classes\TaskListScene.h" />
     <ClInclude Include="..\Classes\TaskListSceneLoader.h" />
     <ClInclude Include="..\Classes\ThirdLoginScene.h" />
@@ -210,9 +218,11 @@
     <ClCompile Include="..\Classes\AddFriendScene.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\CCMessageDialog.cpp" />
+    <ClCompile Include="..\Classes\CCTabView.cpp" />
     <ClCompile Include="..\Classes\FriendListScene.cpp" />
     <ClCompile Include="..\Classes\LoadingScene.cpp" />
     <ClCompile Include="..\Classes\LoginScene.cpp" />
+    <ClCompile Include="..\Classes\MailMainScene.cpp" />
     <ClCompile Include="..\Classes\MainGameScene.cpp" />
     <ClCompile Include="..\Classes\MainLayerBase.cpp" />
     <ClCompile Include="..\Classes\MainSceneTemplate.cpp" />

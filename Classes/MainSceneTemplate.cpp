@@ -26,7 +26,12 @@ MainSceneTemplate::~MainSceneTemplate()
 
 void MainSceneTemplate::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    this->mlblName->setString("SUNWUKONG");
+	//wstring ss = L"TEST";
+	std::string text = ShowString("你好世界");
+	/*std::string text = WStrToUTF8(L"你好世界");*/
+	//CCLabelTTF* pLabel = CCLabelTTF::labelWithString(text.c_str(), "Arial", 24);
+
+    this->mlblName->setString(text.c_str());
     this->mlblHealth->setZOrder(20);
     this->mlblPower->setZOrder(10);
     
