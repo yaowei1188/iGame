@@ -46,7 +46,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)CocosDenshion\include;$(SolutionDir)extensions;$(ProjectDir)..\library\jsoncpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)CocosDenshion\include;$(SolutionDir)extensions;$(ProjectDir)..\library\jsoncpp\include;$(ProjectDir)..\library\JsonBox\include;$(ProjectDir)..\library\jsonconverter;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
@@ -220,6 +220,16 @@
     <ClCompile Include="..\Classes\TaskListScene.cpp" />
     <ClCompile Include="..\Classes\ThirdLoginScene.cpp" />
     <ClCompile Include="..\Classes\XmlParser.cpp" />
+    <ClCompile Include="..\library\JsonBox\src\Array.cpp" />
+    <ClCompile Include="..\library\JsonBox\src\Convert.cpp" />
+    <ClCompile Include="..\library\JsonBox\src\Escaper.cpp" />
+    <ClCompile Include="..\library\JsonBox\src\IndentCanceller.cpp" />
+    <ClCompile Include="..\library\JsonBox\src\Indenter.cpp" />
+    <ClCompile Include="..\library\JsonBox\src\Object.cpp" />
+    <ClCompile Include="..\library\JsonBox\src\SolidusEscaper.cpp" />
+    <ClCompile Include="..\library\JsonBox\src\Value.cpp" />
+    <ClCompile Include="..\library\jsonconverter\CCJSONConverter.cpp" />
+    <ClCompile Include="..\library\jsonconverter\cJSON.c" />
     <ClCompile Include="..\library\jsoncpp\src\lib_json\json_reader.cpp" />
     <ClCompile Include="..\library\jsoncpp\src\lib_json\json_value.cpp" />
     <ClCompile Include="..\library\jsoncpp\src\lib_json\json_writer.cpp" />

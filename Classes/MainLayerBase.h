@@ -14,7 +14,11 @@
 #include "cocos-ext.h"
 #include "LoadingScene.h"
 #include "CCMessageDialog.h"
+#include "JsonBox.h"
+#include "common.h"
+#include "CCJSONConverter.h"
 
+using namespace std;
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
@@ -29,7 +33,9 @@ protected:
     CCRenderTexture* createStroke(cocos2d::CCLabelTTF *label, float size, cocos2d::ccColor3B color);
     void ShowLoadingIndicator(const char *pCCBFileName);
     void HideLoadingIndicator();
-    
+	bool ValidateResponseData(CCNode* pSender,void *data);
+    std::string CompleteUrl(std::string url);
+
 private:
     LoadingScene *loading;
 };

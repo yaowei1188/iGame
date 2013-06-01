@@ -2,8 +2,6 @@
 
 using namespace cocos2d;
 
-
-
 CCScene* FriendListScene::scene()
 {
     CCScene * scene = NULL;
@@ -39,6 +37,7 @@ bool FriendListScene::init()
 
         CC_BREAK_IF(! CCLayer::init());
         
+		//mFriendList =  CCArray::create();
         mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
         mFriendList->retain();
 
@@ -57,15 +56,52 @@ void FriendListScene::doSearchFriend()
 	request->setResponseCallback(this,callfuncND_selector(FriendListScene::requestFinishedCallback));
 	request->setTag("101");
 
-	char url[150] = {0};
-	sprintf(url,"%s/friend/retrieveFriend/%s",API_URL,CCUserDefault::sharedUserDefault()->getStringForKey("userinfo").c_str());
-	CCLOG(url);
-	request->setUrl(url);
+    string _strUrl = CompleteUrl(URL_FRIEND_LIST);
+    _strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+
+	request->setUrl(_strUrl.c_str());
 
 	CCHttpClient *client = CCHttpClient::getInstance();
 	client->send(request);
 
 	request->release();
+}
+
+void FriendListScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
+{
+	if (!this->ValidateResponseData(pSender,Rspdata))
+	{
+		return;
+	}
+
+	CCHttpResponse *response =  (CCHttpResponse*)Rspdata;
+	std::vector<char> *buffer = response->getResponseData();
+
+	std::string content(buffer->begin(),buffer->end());
+	CCLog(content.c_str());
+
+    CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
+	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
+    if (code != 200) {
+        CCMessageBox("invoke web api failed!","ERROR");
+        return;
+    }
+
+	std::string requestTag(response->getHttpRequest()->getTag());
+
+	if (requestTag == "101") {
+		mFriendList = dynamic_cast<CCArray *>(dictionary->objectForKey("friendList"));
+		if (mFriendList==NULL)
+		{
+			return;
+		}
+
+		selectedindex = -1;
+		mTableViewFriend->reloadData();
+	} else if (requestTag == "102"){
+		this->doSearchFriend();
+		CCMessageBox("delete friend successfully","Success");
+	}
 }
 
 bool FriendListScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
@@ -89,8 +125,6 @@ SEL_CCControlHandler FriendListScene::onResolveCCBCCControlSelector(CCObject *pT
 
 void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    CCLOG("TEST");
-
     mTableViewFriend->setDirection(kCCScrollViewDirectionVertical);
     mTableViewFriend->setVerticalFillOrder(kCCTableViewFillTopDown);
     mTableViewFriend->setDataSource(this);
@@ -98,7 +132,7 @@ void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     mTableViewFriend->setDelegate(this);
     mTableViewFriend->reloadData();
 
-	doSearchFriend();
+	//doSearchFriend();
 }
 
 void FriendListScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
@@ -321,15 +355,65 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 //    按下按钮事件回调
 void FriendListScene::toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent)
 {
-    CCLOG("CLICK");
-    
-    CCMessageDialog *box = CCMessageDialog::create();
-    this->addChild(box);
+	CCControlButton *button = (CCControlButton *)sender;
+	switch (button->getTag()) 
+	{
+	case 127:
+		{
+			break;
+		}
+	case 128:
+		{
+			MainGameScene *mainScene = (MainGameScene *)this->getParent();
+			mainScene->PushLayer((CCLayer *)this->GetLayer("NewMailScene"));
+			break;
+		}
+	case 129:
+		{
+			break;
+		}
+	case 130:
+		{
+			CCMessageDialog *box = CCMessageDialog::create();
+			box->setTitle("Are you sure add this guy as your friends?");
+			box->setDelegate(this);
+			this->addChild(box);
+
+			break;
+		}
+	}
+}
+
+void FriendListScene::didClickButton(CCMessageDialog* dialog,unsigned int index)
+{
+	if (index == 0)
+	{
+		CCDictionary *dict = (CCDictionary *)mFriendList->objectAtIndex(selectedindex);
+		this->deleteFriend(string(dict->valueForKey("encryptedUserInfo")->getCString()));
+	}
+}
+
+void FriendListScene::deleteFriend(std::string &targetUser)
+{
+	CCHttpRequest *request = new CCHttpRequest();
+	request->setRequestType(CCHttpRequest::kHttpGet);
+	request->setResponseCallback(this,callfuncND_selector(FriendListScene::requestFinishedCallback));
+	request->setTag("103");
+
+	string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
+	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+	_strUrl.append("/" + targetUser);
+
+	request->setUrl(_strUrl.c_str());
+
+	CCHttpClient *client = CCHttpClient::getInstance();
+	client->send(request);
+
+	request->release();
 }
 
 void FriendListScene::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
 {
-    CCLOG("SSSS");
 	MainGameScene *mainScene = (MainGameScene *)this->getParent();
 	CCControlButton *button = (CCControlButton *)sender;
 	switch (button->getTag()) {
@@ -345,35 +429,6 @@ void FriendListScene::buttonClicked(CCObject * sender , CCControlEvent controlEv
 		CCLOG("33333");
 		break;
 	}
-}
-
-
-void FriendListScene::requestFinishedCallback(CCNode* pSender,void *data)
-{
-	this->HideLoadingIndicator();
-
-	CCHttpResponse *response =  (CCHttpResponse*)data;
-	if(response == NULL)
-	{
-		return;
-	}
-	int statusCode = response->getResponseCode();
-	char statusString[64] = {};
-	CCLOG(statusString, "HTTP Status Code: %d, tag = %s", statusCode, response->getHttpRequest()->getTag());
-
-	if (!response->isSucceed())   
-	{  
-		CCLog("response failed");  
-		CCLog("error buffer: %s", response->getErrorBuffer());
-		CCMessageBox("ERROR", "Response failed");
-		return;  
-	}
-	std::vector<char> *buffer = response->getResponseData(); 
-
-	std::string content(buffer->begin(),buffer->end());
-	CCLog(content.c_str());
-
-	//parseJson(content);
 }
 
 FriendListScene::FriendListScene()

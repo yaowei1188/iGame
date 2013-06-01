@@ -1,0 +1,29 @@
+obj/local/armeabi/objs/cocos_extension_static/GUI/CCControlExtension/CCInvocation.o: \
+ /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/GUI/CCControlExtension/CCInvocation.cpp \
+ /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/GUI/CCControlExtension/CCInvocation.h \
+ /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/cocoa/CCObject.h \
+ /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/platform/CCPlatformMacros.h \
+ /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/include/ccConfig.h \
+ /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/platform/CCPlatformConfig.h \
+ /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/platform/CCPlatformConfig.h \
+ /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/platform/android/CCPlatformDefine.h \
+ /cygdrive/f/Android/android-ndk-r8e/platforms/android-14/arch-arm/usr/include/android/log.h \
+ /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/ExtensionMacros.h
+
+/cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/GUI/CCControlExtension/CCInvocation.h:
+
+/cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/cocoa/CCObject.h:
+
+/cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/platform/CCPlatformMacros.h:
+
+/cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/include/ccConfig.h:
+
+/cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/platform/CCPlatformConfig.h:
+
+/cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/platform/CCPlatformConfig.h:
+
+/cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/platform/android/CCPlatformDefine.h:
+
+/cygdrive/f/Android/android-ndk-r8e/platforms/android-14/arch-arm/usr/include/android/log.h:
+
+/cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/ExtensionMacros.h:

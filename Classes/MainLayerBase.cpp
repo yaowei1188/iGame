@@ -86,8 +86,6 @@ void MainLayerBase::ShowLoadingIndicator(const char *pCCBFileName)
     }
 }
 
-
-
 void MainLayerBase::HideLoadingIndicator()
 {
     if (loading==NULL) {
@@ -96,4 +94,35 @@ void MainLayerBase::HideLoadingIndicator()
     
     this->loading->removeFromParentAndCleanup(true);
     this->loading = NULL;
+}
+
+bool MainLayerBase::ValidateResponseData(CCNode* pSender,void *data)
+{
+	this->HideLoadingIndicator();
+
+	CCHttpResponse *response =  (CCHttpResponse*)data;
+	if(response == NULL)
+	{
+		return false;
+	}
+
+	int statusCode = response->getResponseCode();
+	char statusString[64] = {};
+	CCLOG(statusString, "HTTP Status Code: %d, tag = %s", statusCode, response->getHttpRequest()->getTag());
+
+	if (!response->isSucceed())   
+	{  
+		CCLog("error buffer: %s", response->getErrorBuffer());
+		CCMessageBox("ERROR", response->getErrorBuffer());
+		return false;
+	}
+
+	return true;
+}
+
+std::string MainLayerBase::CompleteUrl(std::string function_url)
+{
+    std::string url(API_URL);
+    url.append(function_url);
+    return url;
 }

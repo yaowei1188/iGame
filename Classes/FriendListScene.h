@@ -21,7 +21,8 @@ public CCTableViewDataSource,
 public CCTableViewDelegate,
 public CCBSelectorResolver,
 public CCNodeLoaderListener,
-public CCBMemberVariableAssigner
+public CCBMemberVariableAssigner,
+public CCMessageDialogDelegate
 {
 public:
     FriendListScene();
@@ -60,7 +61,8 @@ public:
     
     void toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent);
     void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
-    
+	void didClickButton(CCMessageDialog* dialog,unsigned int index);
+	void deleteFriend(std::string &targetUser);
     CCTableView* mTableViewFriend;
 //    MainSceneTemplate *mMainSceneTemp;
     unsigned int selectedindex;
