@@ -121,7 +121,8 @@ CCTableViewVerticalFillOrder CCTableView::getVerticalFillOrder()
 
 void CCTableView::reloadData()
 {
-//    m_eOldDirection = kCCScrollViewDirectionNone;
+    Orgoffset = this->getContainer()->getContentSize().height - m_tViewSize.height/this->getContainer()->getScaleY() + this->getContentOffset().y;
+    m_eOldDirection = kCCScrollViewDirectionNone;
     CCObject* pObj = NULL;
     CCARRAY_FOREACH(m_pCellsUsed, pObj)
     {
@@ -148,6 +149,8 @@ void CCTableView::reloadData()
     {
         this->scrollViewDidScroll(this);
     }
+    float newOffset = (m_tViewSize.height/this->getContainer()->getScaleY() + Orgoffset) - this->getContainer()->getContentSize().height;
+	this->setContentOffset(CCPointMake(0,newOffset));
 }
 
 CCTableViewCell *CCTableView::cellAtIndex(unsigned int idx)

@@ -389,7 +389,8 @@ void FriendListScene::didClickButton(CCMessageDialog* dialog,unsigned int index)
 	if (index == 0)
 	{
 		CCDictionary *dict = (CCDictionary *)mFriendList->objectAtIndex(selectedindex);
-		this->deleteFriend(string(dict->valueForKey("encryptedUserInfo")->getCString()));
+        string encryptedUserInfo(dict->valueForKey("encryptedUserInfo")->getCString());
+		this->deleteFriend(encryptedUserInfo);
 	}
 }
 

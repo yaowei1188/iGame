@@ -203,7 +203,8 @@ void AddFriendScene::didClickButton(CCMessageDialog* dialog,unsigned int index)
 	if (index == 0)
 	{
 		CCDictionary *dict = (CCDictionary *)mFriendList->objectAtIndex(selectedindex);
-		this->addFriendRequest(string(dict->valueForKey("encryptedUserInfo")->getCString()));
+        string encryptedUserInfo(dict->valueForKey("encryptedUserInfo")->getCString());
+		this->addFriendRequest(encryptedUserInfo);
 	}
 }
 

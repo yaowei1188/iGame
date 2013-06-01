@@ -15,6 +15,7 @@
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
+using namespace std;
 
 class FriendListScene : public MainLayerBase,
 public CCTableViewDataSource,

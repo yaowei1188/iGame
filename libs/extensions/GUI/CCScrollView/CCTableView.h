@@ -276,6 +276,7 @@ protected:
     
 public:
     void _updateContentSize();
+    float Orgoffset;
 
 };
 
