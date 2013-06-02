@@ -13,9 +13,9 @@
                 <key>scale</key>
                 <double>0.5</double>
                 <key>extension</key>
-                <string>.</string>
+                <string></string>
                 <key>acceptFractionalValues</key>
-                <true/>
+                <false/>
                 <key>maxTextureSize</key>
                 <QSize>
                     <key>width</key>
@@ -38,7 +38,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../result/login-hd.png</filename>
+        <filename>../result/iphone/login.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -127,9 +127,9 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../result/login-hd.plist</filename>
+        <filename>../result/iphone/login.plist</filename>
         <key>mainExtension</key>
-        <string>-hd.</string>
+        <string></string>
         <key>forceIdenticalLayout</key>
         <true/>
         <key>outputFormat</key>

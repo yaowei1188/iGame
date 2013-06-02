@@ -15,7 +15,7 @@
                 <key>extension</key>
                 <string></string>
                 <key>acceptFractionalValues</key>
-                <true/>
+                <false/>
                 <key>maxTextureSize</key>
                 <QSize>
                     <key>width</key>
@@ -38,7 +38,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../result/friends-hd.png</filename>
+        <filename>../result/iphone/friends.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -127,9 +127,9 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../result/friends-hd.plist</filename>
+        <filename>../result/iphone/friends.plist</filename>
         <key>mainExtension</key>
-        <string>-hd</string>
+        <string></string>
         <key>forceIdenticalLayout</key>
         <true/>
         <key>outputFormat</key>

@@ -31,6 +31,12 @@
     <Filter Include="source\Jsonbox">
       <UniqueIdentifier>{259027f6-59ca-4d88-84f7-57e452d59829}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\loader">
+      <UniqueIdentifier>{9ea79ca1-292a-46a9-a272-000de5599492}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\common">
+      <UniqueIdentifier>{42dde2f2-bd15-4a20-92f7-35a79560e0ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\iGame.ico">
@@ -214,55 +220,22 @@
     <ClInclude Include="..\Classes\AboutScene.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\AboutSceneLoader.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CCEditBoxLoader.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CCTableViewLoader.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\FriendListSceneLoader.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\LoginScene.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\LoginSceneLoader.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\MainGameScene.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\MainGameSceneLoader.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\AddFriendScene.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AddFriendSceneLoader.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\CCMessageDialog.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\common.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\MainSceneTemplate.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\MainSceneTemplateLoader.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\TaskListScene.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\TaskListSceneLoader.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CCControlSwitchLoader.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\ThirdLoginScene.h">
@@ -271,19 +244,10 @@
     <ClInclude Include="..\Classes\MainLayerBase.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ThirdLoginSceneLoader.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\LoadingScene.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\NewMailScene.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\NewMailSceneLoader.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\StringExt.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\CCTabView.h">
@@ -292,7 +256,67 @@
     <ClInclude Include="..\Classes\MailMainScene.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\MailListScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AboutSceneLoader.h">
+      <Filter>include\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AddFriendSceneLoader.h">
+      <Filter>include\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCControlSwitchLoader.h">
+      <Filter>include\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCTableViewLoader.h">
+      <Filter>include\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\FriendListSceneLoader.h">
+      <Filter>include\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LoginSceneLoader.h">
+      <Filter>include\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MailListSceneLoader.h">
+      <Filter>include\loader</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\MailMainSceneLoader.h">
+      <Filter>include\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainGameSceneLoader.h">
+      <Filter>include\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainSceneTemplateLoader.h">
+      <Filter>include\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NewMailSceneLoader.h">
+      <Filter>include\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TaskListSceneLoader.h">
+      <Filter>include\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ThirdLoginSceneLoader.h">
+      <Filter>include\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCEditBoxLoader.h">
+      <Filter>include\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common.h">
+      <Filter>include\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StringExt.h">
+      <Filter>include\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CharacterScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CharacterSceneLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ServerListScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ServerListSceneLoader.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -385,6 +409,15 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\MailMainScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MailListScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CharacterScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ServerListScene.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

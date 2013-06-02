@@ -42,7 +42,7 @@ bool MailMainScene::init()
         mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
         mFriendList->retain();
 
-		CCTabView * myTab = new CCTabView(CCRectMake(50, 20, 380, 300));
+		CCTabView * myTab = new CCTabView(CCRectMake(10, 20, 300, 300));
 		myTab->autorelease();
 
 		CCLayerColor * mylay = CCLayerColor::create(ccc4(255, 0, 0,120),200,100);
