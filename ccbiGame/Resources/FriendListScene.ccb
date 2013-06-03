@@ -45,7 +45,7 @@
 						<key>value</key>
 						<array>
 							<real>160</real>
-							<real>175</real>
+							<real>208</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -89,7 +89,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/friends.plist</string>
-							<string>friends_frame.png</string>
+							<string>main_frame.png</string>
 						</array>
 					</dict>
 				</array>
@@ -212,7 +212,7 @@
 						<key>value</key>
 						<array>
 							<real>312</real>
-							<real>250</real>
+							<real>290</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -273,7 +273,7 @@
 						<key>value</key>
 						<array>
 							<real>53</real>
-							<real>324</real>
+							<real>381</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -401,7 +401,7 @@
 						<key>value</key>
 						<array>
 							<real>259</real>
-							<real>324</real>
+							<real>379</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -617,7 +617,7 @@
 						<key>value</key>
 						<array>
 							<real>160</real>
-							<real>335</real>
+							<real>400</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -689,7 +689,7 @@
 						<key>value</key>
 						<array>
 							<real>27</real>
-							<real>324</real>
+							<real>381</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -761,7 +761,7 @@
 						<key>value</key>
 						<array>
 							<real>303</real>
-							<real>330</real>
+							<real>398</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -977,7 +977,7 @@
 						<key>value</key>
 						<array>
 							<real>36</real>
-							<real>292</real>
+							<real>342</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1048,8 +1048,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>257</real>
-							<real>292</real>
+							<real>104</real>
+							<real>342</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1093,7 +1093,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/friends.plist</string>
-							<string>nev_qingyi.png</string>
+							<string>nev_nicheng.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1121,7 +1121,7 @@
 						<key>value</key>
 						<array>
 							<real>190</real>
-							<real>292</real>
+							<real>342</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1192,8 +1192,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>104</real>
-							<real>292</real>
+							<real>257</real>
+							<real>342</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1237,10 +1237,12 @@
 						<key>value</key>
 						<array>
 							<string>Image/friends.plist</string>
-							<string>nev_nicheng.png</string>
+							<string>nev_qingyi.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -1261,8 +1263,8 @@
 				<key>value</key>
 				<array>
 					<real>320</real>
-					<real>350</real>
-					<integer>0</integer>
+					<real>415</real>
+					<integer>5</integer>
 				</array>
 			</dict>
 			<dict>
@@ -1377,7 +1379,7 @@
 			<key>ext</key>
 			<string>iphone</string>
 			<key>height</key>
-			<integer>348</integer>
+			<integer>415</integer>
 			<key>name</key>
 			<string>Custom</string>
 			<key>scale</key>
