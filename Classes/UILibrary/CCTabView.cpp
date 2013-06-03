@@ -6,6 +6,7 @@
 //
 
 #include "CCTabView.h"
+#include <math.h>
 
 #define TAB_NORMAL "tab_normal.png"
 #define TAB_ACTIVE "tab_active.png"
@@ -103,7 +104,8 @@ void CCTabView::initTabData()
 		return;
 	}
     
-    int tabCount = min(tabNameCount,tabViewCount);
+    
+    int tabCount = MAX(tabNameCount,tabViewCount);
     
 	CCPoint tabStartPos = ccp(_tabSize.width/2 + _leftMargin,this->getContentSize().height-_tabSize.height/2);
     CCPoint lastPos = CCPointZero;

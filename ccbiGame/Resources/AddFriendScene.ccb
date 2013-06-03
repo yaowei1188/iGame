@@ -551,7 +551,7 @@
 						<key>value</key>
 						<array>
 							<real>27</real>
-							<real>391</real>
+							<real>381</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -623,7 +623,7 @@
 						<key>value</key>
 						<array>
 							<real>57</real>
-							<real>391</real>
+							<real>381</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -727,8 +727,6 @@
 						<string>10</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -753,7 +751,7 @@
 						<key>value</key>
 						<array>
 							<real>259</real>
-							<real>389</real>
+							<real>381</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1589,6 +1587,16 @@
 			</dict>
 			<dict>
 				<key>name</key>
+				<string>accelerometerEnabled</string>
+				<key>platform</key>
+				<string>iOS</string>
+				<key>type</key>
+				<string>Check</string>
+				<key>value</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>mouseEnabled</string>
 				<key>platform</key>
 				<string>Mac</string>
@@ -1596,6 +1604,16 @@
 				<string>Check</string>
 				<key>value</key>
 				<true/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>keyboardEnabled</string>
+				<key>platform</key>
+				<string>Mac</string>
+				<key>type</key>
+				<string>Check</string>
+				<key>value</key>
+				<false/>
 			</dict>
 		</array>
 	</dict>
