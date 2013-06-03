@@ -90,7 +90,7 @@ void LoginScene::doSubmit()
 	std::string sPassword(m_txtPassword->getText());
     
     if (trimRight(sAccount).empty() || trimRight(sPassword).empty()) {
-        CCMessageBox("用户名密码不能为空！","ERROR");
+        CCMessageBox(GlobalData::getLocalString("account_pwd_empty")->getCString(),"ERROR");
         return;
     }
     

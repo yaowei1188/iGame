@@ -126,3 +126,9 @@ std::string MainLayerBase::CompleteUrl(std::string function_url)
     url.append(function_url);
     return url;
 }
+
+std::string MainLayerBase::getLocalString(std::string name)
+{
+    CCDictionary *dict = CCDictionary::createWithContentsOfFile("chs.plist");
+    return ((CCString*)dict->objectForKey(name))->getCString();
+}

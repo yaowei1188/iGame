@@ -7,12 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		20774242172FA04A008D719A /* AddFriendScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20774241172FA04A008D719A /* AddFriendScene.cpp */; };
-		2086642A172F9DCB00EF81E2 /* NewMailScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20866427172F9DCB00EF81E2 /* NewMailScene.cpp */; };
 		20878674172E8C0400A7404A /* NewMailScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20878671172E8C0400A7404A /* NewMailScene.ccbi */; };
 		20878675172E8C0400A7404A /* SysMailScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20878672172E8C0400A7404A /* SysMailScene.ccbi */; };
 		20878676172E8C0400A7404A /* UserMailScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20878673172E8C0400A7404A /* UserMailScene.ccbi */; };
-		20C7673C1751C32A00038E56 /* ivantest.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20C7673B1751C32A00038E56 /* ivantest.ccbi */; };
 		20C767421751C34E00038E56 /* ccbParticleStars.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C7673D1751C34E00038E56 /* ccbParticleStars.png */; };
 		20C767431751C34E00038E56 /* particle-fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C7673E1751C34E00038E56 /* particle-fire.png */; };
 		20C767441751C34E00038E56 /* particle-smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C7673F1751C34E00038E56 /* particle-smoke.png */; };
@@ -31,23 +28,64 @@
 		20D2E85817521C900059F2BE /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20D2E85017521C900059F2BE /* Object.cpp */; };
 		20D2E85917521C900059F2BE /* SolidusEscaper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20D2E85117521C900059F2BE /* SolidusEscaper.cpp */; };
 		20D2E85A17521C900059F2BE /* Value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20D2E85217521C900059F2BE /* Value.cpp */; };
-		6F0A93301724C40A006082DC /* MainLayerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F0A932E1724C40A006082DC /* MainLayerBase.cpp */; };
-		6F0A93351724C423006082DC /* ThirdLoginScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F0A93321724C423006082DC /* ThirdLoginScene.cpp */; };
+		2C7749A9175C797C00FF722E /* CCJSONConverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749A4175C797C00FF722E /* CCJSONConverter.cpp */; };
+		2C7749AA175C797C00FF722E /* cJSON.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749A7175C797C00FF722E /* cJSON.c */; };
+		2C7749AF175C7C3400FF722E /* XmlParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749AD175C7C3400FF722E /* XmlParser.cpp */; };
+		2C7749E8175C7C6200FF722E /* MainLayerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749B2175C7C6200FF722E /* MainLayerBase.cpp */; };
+		2C7749E9175C7C6200FF722E /* MainSceneTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749B4175C7C6200FF722E /* MainSceneTemplate.cpp */; };
+		2C7749EA175C7C6200FF722E /* AddFriendScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749B9175C7C6200FF722E /* AddFriendScene.cpp */; };
+		2C7749EB175C7C6200FF722E /* FriendListScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749BC175C7C6200FF722E /* FriendListScene.cpp */; };
+		2C7749EC175C7C6200FF722E /* CharacterScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749C0175C7C6200FF722E /* CharacterScene.cpp */; };
+		2C7749ED175C7C6200FF722E /* LoginScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749C3175C7C6200FF722E /* LoginScene.cpp */; };
+		2C7749EE175C7C6200FF722E /* ServerListScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749C6175C7C6200FF722E /* ServerListScene.cpp */; };
+		2C7749EF175C7C6200FF722E /* ThirdLoginScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749C9175C7C6200FF722E /* ThirdLoginScene.cpp */; };
+		2C7749F0175C7C6200FF722E /* MailListScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749CD175C7C6200FF722E /* MailListScene.cpp */; };
+		2C7749F1175C7C6200FF722E /* MailMainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749D0175C7C6200FF722E /* MailMainScene.cpp */; };
+		2C7749F2175C7C6200FF722E /* NewMailScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749D3175C7C6200FF722E /* NewMailScene.cpp */; };
+		2C7749F3175C7C6200FF722E /* AboutScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749D7175C7C6200FF722E /* AboutScene.cpp */; };
+		2C7749F4175C7C6200FF722E /* TaskListScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749DE175C7C6200FF722E /* TaskListScene.cpp */; };
+		2C7749F5175C7C6200FF722E /* CCMessageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749E2175C7C6200FF722E /* CCMessageDialog.cpp */; };
+		2C7749F6175C7C6200FF722E /* CCTabView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749E4175C7C6200FF722E /* CCTabView.cpp */; };
+		2C7749F7175C7C6200FF722E /* LoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749E6175C7C6200FF722E /* LoadingScene.cpp */; };
+		2C7749FC175C7D2300FF722E /* tab_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C7749F8175C7D2300FF722E /* tab_active.png */; };
+		2C7749FD175C7D2300FF722E /* tab_kuan.9.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C7749F9175C7D2300FF722E /* tab_kuan.9.png */; };
+		2C7749FE175C7D2300FF722E /* tab_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C7749FA175C7D2300FF722E /* tab_line.png */; };
+		2C7749FF175C7D2300FF722E /* tab_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C7749FB175C7D2300FF722E /* tab_normal.png */; };
+		2C774A02175C85FE00FF722E /* SlidingMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C774A00175C85FE00FF722E /* SlidingMenu.cpp */; };
+		2C774A25175C8CBE00FF722E /* CCActivityIndicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C774A04175C8CBE00FF722E /* CCActivityIndicator.cpp */; };
+		2C774A26175C8CBE00FF722E /* ccactivityindicator.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C774A07175C8CBE00FF722E /* ccactivityindicator.plist */; };
+		2C774A27175C8CBE00FF722E /* ccactivityindicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C774A08175C8CBE00FF722E /* ccactivityindicator.png */; };
+		2C774A28175C8CBE00FF722E /* ccactivityindicator_1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C774A09175C8CBE00FF722E /* ccactivityindicator_1.gif */; };
+		2C774A29175C8CBE00FF722E /* ccactivityindicator_10.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C774A0A175C8CBE00FF722E /* ccactivityindicator_10.gif */; };
+		2C774A2A175C8CBE00FF722E /* ccactivityindicator_11.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C774A0B175C8CBE00FF722E /* ccactivityindicator_11.gif */; };
+		2C774A2B175C8CBE00FF722E /* ccactivityindicator_12.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C774A0C175C8CBE00FF722E /* ccactivityindicator_12.gif */; };
+		2C774A2C175C8CBE00FF722E /* ccactivityindicator_2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C774A0D175C8CBE00FF722E /* ccactivityindicator_2.gif */; };
+		2C774A2D175C8CBE00FF722E /* ccactivityindicator_3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C774A0E175C8CBE00FF722E /* ccactivityindicator_3.gif */; };
+		2C774A2E175C8CBE00FF722E /* ccactivityindicator_4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C774A0F175C8CBE00FF722E /* ccactivityindicator_4.gif */; };
+		2C774A2F175C8CBE00FF722E /* ccactivityindicator_5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C774A10175C8CBE00FF722E /* ccactivityindicator_5.gif */; };
+		2C774A30175C8CBE00FF722E /* ccactivityindicator_6.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C774A11175C8CBE00FF722E /* ccactivityindicator_6.gif */; };
+		2C774A31175C8CBE00FF722E /* ccactivityindicator_7.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C774A12175C8CBE00FF722E /* ccactivityindicator_7.gif */; };
+		2C774A32175C8CBE00FF722E /* ccactivityindicator_8.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C774A13175C8CBE00FF722E /* ccactivityindicator_8.gif */; };
+		2C774A33175C8CBE00FF722E /* ccactivityindicator_9.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C774A14175C8CBE00FF722E /* ccactivityindicator_9.gif */; };
+		2C774A34175C8CBE00FF722E /* CCGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C774A16175C8CBE00FF722E /* CCGestureRecognizer.cpp */; };
+		2C774A35175C8CBE00FF722E /* CCLongPressGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C774A18175C8CBE00FF722E /* CCLongPressGestureRecognizer.cpp */; };
+		2C774A36175C8CBE00FF722E /* CCPanGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C774A1A175C8CBE00FF722E /* CCPanGestureRecognizer.cpp */; };
+		2C774A37175C8CBE00FF722E /* CCPinchGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C774A1C175C8CBE00FF722E /* CCPinchGestureRecognizer.cpp */; };
+		2C774A38175C8CBE00FF722E /* CCSwipeGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C774A1E175C8CBE00FF722E /* CCSwipeGestureRecognizer.cpp */; };
+		2C774A39175C8CBE00FF722E /* CCTapGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C774A20175C8CBE00FF722E /* CCTapGestureRecognizer.cpp */; };
+		2C774A3A175C8CBE00FF722E /* CCProgressLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C774A23175C8CBE00FF722E /* CCProgressLayer.cpp */; };
+		2C774A3D175C9ACB00FF722E /* chs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C774A3C175C9ACB00FF722E /* chs.plist */; };
+		2C774A40175C9F7400FF722E /* GlobalData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C774A3E175C9F7400FF722E /* GlobalData.cpp */; };
 		6F0A93491724C54A006082DC /* ThirdLoginScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 6F0A93481724C54A006082DC /* ThirdLoginScene.ccbi */; };
 		6F0A934D1725185B006082DC /* transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F0A934C1725185B006082DC /* transparent.png */; };
-		6F4A3F3C171F7EBF008F9FB0 /* CCMessageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F4A3F39171F7EBF008F9FB0 /* CCMessageDialog.cpp */; };
-		6F4A3F42171F8957008F9FB0 /* MainSceneTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F4A3F3F171F8957008F9FB0 /* MainSceneTemplate.cpp */; };
 		6F4A3F44171F8CDE008F9FB0 /* MainSceneTemplate.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 6F4A3F43171F8CDE008F9FB0 /* MainSceneTemplate.ccbi */; };
 		6F4A3F47171FB903008F9FB0 /* AddFriendScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 6F4A3F46171FB903008F9FB0 /* AddFriendScene.ccbi */; };
-		6F51E984171D085D0092EE63 /* TaskListScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F51E981171D085D0092EE63 /* TaskListScene.cpp */; };
 		6F51E986171D0A340092EE63 /* TaskListScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 6F51E985171D0A340092EE63 /* TaskListScene.ccbi */; };
 		6F51E992171D12DA0092EE63 /* CCScrollView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F51E98A171D12DA0092EE63 /* CCScrollView.cpp */; };
 		6F51E993171D12DA0092EE63 /* CCSorting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F51E98C171D12DA0092EE63 /* CCSorting.cpp */; };
 		6F51E9A9171D2C620092EE63 /* CCTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F51E9A7171D2C620092EE63 /* CCTableView.cpp */; };
 		6F51E9AA171D2C620092EE63 /* CCTableViewCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F51E9A8171D2C620092EE63 /* CCTableViewCell.cpp */; };
-		6F51E9AE171D2CA20092EE63 /* FriendListScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F51E9AB171D2CA20092EE63 /* FriendListScene.cpp */; };
 		6F82C60C17264E700007122E /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 6F82C60B17264E700007122E /* Image */; };
-		6F82C60F17265BF90007122E /* LoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F82C60D17265BF80007122E /* LoadingScene.cpp */; };
 		6FBA777B17153C4400ECA334 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBA777A17153C4400ECA334 /* QuartzCore.framework */; };
 		6FBA777D17153C4400ECA334 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBA777C17153C4400ECA334 /* OpenGLES.framework */; };
 		6FBA777F17153C4400ECA334 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBA777E17153C4400ECA334 /* OpenAL.framework */; };
@@ -253,10 +291,7 @@
 		6FBA7A5317153C4700ECA334 /* cocos2dx-ext.mkf in Resources */ = {isa = PBXBuildFile; fileRef = 6FBA7A5217153C4700ECA334 /* cocos2dx-ext.mkf */; };
 		6FBA7A5517153C4700ECA334 /* cocos2dx-ext_public.defines.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6FBA7A5417153C4700ECA334 /* cocos2dx-ext_public.defines.txt */; };
 		6FBA7A5B17153C4700ECA334 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA7A5A17153C4700ECA334 /* AppDelegate.cpp */; };
-		6FBA7A7117153F2700ECA334 /* LoginScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA7A6C17153F2700ECA334 /* LoginScene.cpp */; };
-		6FBA7A7217153F2700ECA334 /* XmlParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA7A6E17153F2700ECA334 /* XmlParser.cpp */; };
 		6FBA7A79171540DD00ECA334 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBA7A76171540DD00ECA334 /* account.png */; };
-		6FBA7A851715486A00ECA334 /* AboutScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA7A7E1715486900ECA334 /* AboutScene.cpp */; };
 		6FBA7A861715486A00ECA334 /* MainGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA7A811715486900ECA334 /* MainGameScene.cpp */; };
 		6FBA7ACC17164BA900ECA334 /* json_internalarray.inl in Resources */ = {isa = PBXBuildFile; fileRef = 6FBA7AC517164BA900ECA334 /* json_internalarray.inl */; };
 		6FBA7ACD17164BA900ECA334 /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = 6FBA7AC617164BA900ECA334 /* json_internalmap.inl */; };
@@ -265,8 +300,6 @@
 		6FBA7AD017164BA900ECA334 /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = 6FBA7AC917164BA900ECA334 /* json_valueiterator.inl */; };
 		6FBA7AD117164BA900ECA334 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA7ACA17164BA900ECA334 /* json_writer.cpp */; };
 		6FBA7AD217164BA900ECA334 /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = 6FBA7ACB17164BA900ECA334 /* sconscript */; };
-		6FBA7AE61717996A00ECA334 /* ccbResources in Resources */ = {isa = PBXBuildFile; fileRef = 6FBA7ADF1717996900ECA334 /* ccbResources */; };
-		6FBA7AE71717996A00ECA334 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 6FBA7AE01717996900ECA334 /* Fonts */; };
 		6FBA7AE81717996A00ECA334 /* FriendListScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 6FBA7AE11717996900ECA334 /* FriendListScene.ccbi */; };
 		6FBA7AE91717996A00ECA334 /* HeadScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 6FBA7AE21717996900ECA334 /* HeadScene.ccbi */; };
 		6FBA7AEB1717996A00ECA334 /* LoginScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 6FBA7AE41717996A00ECA334 /* LoginScene.ccbi */; };
@@ -274,15 +307,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		20774241172FA04A008D719A /* AddFriendScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AddFriendScene.cpp; path = Classes/AddFriendScene.cpp; sourceTree = "<group>"; };
-		20866427172F9DCB00EF81E2 /* NewMailScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NewMailScene.cpp; path = Classes/NewMailScene.cpp; sourceTree = "<group>"; };
-		20866428172F9DCB00EF81E2 /* NewMailScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewMailScene.h; path = Classes/NewMailScene.h; sourceTree = "<group>"; };
-		20866429172F9DCB00EF81E2 /* NewMailSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewMailSceneLoader.h; path = Classes/NewMailSceneLoader.h; sourceTree = "<group>"; };
 		20878671172E8C0400A7404A /* NewMailScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = NewMailScene.ccbi; path = Resources/NewMailScene.ccbi; sourceTree = "<group>"; };
 		20878672172E8C0400A7404A /* SysMailScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = SysMailScene.ccbi; path = Resources/SysMailScene.ccbi; sourceTree = "<group>"; };
 		20878673172E8C0400A7404A /* UserMailScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = UserMailScene.ccbi; path = Resources/UserMailScene.ccbi; sourceTree = "<group>"; };
-		20878677172E8C2E00A7404A /* StringExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringExt.h; path = Classes/StringExt.h; sourceTree = "<group>"; };
-		20C7673B1751C32A00038E56 /* ivantest.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = ivantest.ccbi; path = Resources/ivantest.ccbi; sourceTree = "<group>"; };
 		20C7673D1751C34E00038E56 /* ccbParticleStars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ccbParticleStars.png; path = Resources/ccbParticleStars.png; sourceTree = "<group>"; };
 		20C7673E1751C34E00038E56 /* particle-fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "particle-fire.png"; path = "Resources/particle-fire.png"; sourceTree = "<group>"; };
 		20C7673F1751C34E00038E56 /* particle-smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "particle-smoke.png"; path = "Resources/particle-smoke.png"; sourceTree = "<group>"; };
@@ -301,26 +328,105 @@
 		20D2E85017521C900059F2BE /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Object.cpp; path = library/JsonBox/src/Object.cpp; sourceTree = "<group>"; };
 		20D2E85117521C900059F2BE /* SolidusEscaper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SolidusEscaper.cpp; path = library/JsonBox/src/SolidusEscaper.cpp; sourceTree = "<group>"; };
 		20D2E85217521C900059F2BE /* Value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Value.cpp; path = library/JsonBox/src/Value.cpp; sourceTree = "<group>"; };
-		6F0A932E1724C40A006082DC /* MainLayerBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainLayerBase.cpp; path = Classes/MainLayerBase.cpp; sourceTree = "<group>"; };
-		6F0A932F1724C40A006082DC /* MainLayerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainLayerBase.h; path = Classes/MainLayerBase.h; sourceTree = "<group>"; };
-		6F0A93321724C423006082DC /* ThirdLoginScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ThirdLoginScene.cpp; path = Classes/ThirdLoginScene.cpp; sourceTree = "<group>"; };
-		6F0A93331724C423006082DC /* ThirdLoginScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThirdLoginScene.h; path = Classes/ThirdLoginScene.h; sourceTree = "<group>"; };
-		6F0A93341724C423006082DC /* ThirdLoginSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThirdLoginSceneLoader.h; path = Classes/ThirdLoginSceneLoader.h; sourceTree = "<group>"; };
+		2C7749A4175C797C00FF722E /* CCJSONConverter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCJSONConverter.cpp; sourceTree = "<group>"; };
+		2C7749A5175C797C00FF722E /* CCJSONConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCJSONConverter.h; sourceTree = "<group>"; };
+		2C7749A6175C797C00FF722E /* CCJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCJSONData.h; sourceTree = "<group>"; };
+		2C7749A7175C797C00FF722E /* cJSON.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cJSON.c; sourceTree = "<group>"; };
+		2C7749A8175C797C00FF722E /* cJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cJSON.h; sourceTree = "<group>"; };
+		2C7749AD175C7C3400FF722E /* XmlParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XmlParser.cpp; sourceTree = "<group>"; };
+		2C7749AE175C7C3400FF722E /* XmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XmlParser.h; sourceTree = "<group>"; };
+		2C7749B1175C7C6200FF722E /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		2C7749B2175C7C6200FF722E /* MainLayerBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainLayerBase.cpp; sourceTree = "<group>"; };
+		2C7749B3175C7C6200FF722E /* MainLayerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainLayerBase.h; sourceTree = "<group>"; };
+		2C7749B4175C7C6200FF722E /* MainSceneTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainSceneTemplate.cpp; sourceTree = "<group>"; };
+		2C7749B5175C7C6200FF722E /* MainSceneTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSceneTemplate.h; sourceTree = "<group>"; };
+		2C7749B6175C7C6200FF722E /* MainSceneTemplateLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSceneTemplateLoader.h; sourceTree = "<group>"; };
+		2C7749B7175C7C6200FF722E /* StringExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringExt.h; sourceTree = "<group>"; };
+		2C7749B9175C7C6200FF722E /* AddFriendScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AddFriendScene.cpp; sourceTree = "<group>"; };
+		2C7749BA175C7C6200FF722E /* AddFriendScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendScene.h; sourceTree = "<group>"; };
+		2C7749BB175C7C6200FF722E /* AddFriendSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendSceneLoader.h; sourceTree = "<group>"; };
+		2C7749BC175C7C6200FF722E /* FriendListScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FriendListScene.cpp; sourceTree = "<group>"; };
+		2C7749BD175C7C6200FF722E /* FriendListScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListScene.h; sourceTree = "<group>"; };
+		2C7749BE175C7C6200FF722E /* FriendListSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListSceneLoader.h; sourceTree = "<group>"; };
+		2C7749C0175C7C6200FF722E /* CharacterScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CharacterScene.cpp; sourceTree = "<group>"; };
+		2C7749C1175C7C6200FF722E /* CharacterScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterScene.h; sourceTree = "<group>"; };
+		2C7749C2175C7C6200FF722E /* CharacterSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterSceneLoader.h; sourceTree = "<group>"; };
+		2C7749C3175C7C6200FF722E /* LoginScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoginScene.cpp; sourceTree = "<group>"; };
+		2C7749C4175C7C6200FF722E /* LoginScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginScene.h; sourceTree = "<group>"; };
+		2C7749C5175C7C6200FF722E /* LoginSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSceneLoader.h; sourceTree = "<group>"; };
+		2C7749C6175C7C6200FF722E /* ServerListScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerListScene.cpp; sourceTree = "<group>"; };
+		2C7749C7175C7C6200FF722E /* ServerListScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerListScene.h; sourceTree = "<group>"; };
+		2C7749C8175C7C6200FF722E /* ServerListSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerListSceneLoader.h; sourceTree = "<group>"; };
+		2C7749C9175C7C6200FF722E /* ThirdLoginScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThirdLoginScene.cpp; sourceTree = "<group>"; };
+		2C7749CA175C7C6200FF722E /* ThirdLoginScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdLoginScene.h; sourceTree = "<group>"; };
+		2C7749CB175C7C6200FF722E /* ThirdLoginSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdLoginSceneLoader.h; sourceTree = "<group>"; };
+		2C7749CD175C7C6200FF722E /* MailListScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MailListScene.cpp; sourceTree = "<group>"; };
+		2C7749CE175C7C6200FF722E /* MailListScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailListScene.h; sourceTree = "<group>"; };
+		2C7749CF175C7C6200FF722E /* MailListSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailListSceneLoader.h; sourceTree = "<group>"; };
+		2C7749D0175C7C6200FF722E /* MailMainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MailMainScene.cpp; sourceTree = "<group>"; };
+		2C7749D1175C7C6200FF722E /* MailMainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailMainScene.h; sourceTree = "<group>"; };
+		2C7749D2175C7C6200FF722E /* MailMainSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailMainSceneLoader.h; sourceTree = "<group>"; };
+		2C7749D3175C7C6200FF722E /* NewMailScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewMailScene.cpp; sourceTree = "<group>"; };
+		2C7749D4175C7C6200FF722E /* NewMailScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMailScene.h; sourceTree = "<group>"; };
+		2C7749D5175C7C6200FF722E /* NewMailSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMailSceneLoader.h; sourceTree = "<group>"; };
+		2C7749D7175C7C6200FF722E /* AboutScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AboutScene.cpp; sourceTree = "<group>"; };
+		2C7749D8175C7C6200FF722E /* AboutScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutScene.h; sourceTree = "<group>"; };
+		2C7749D9175C7C6200FF722E /* AboutSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutSceneLoader.h; sourceTree = "<group>"; };
+		2C7749DA175C7C6200FF722E /* CCControlSwitchLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCControlSwitchLoader.h; sourceTree = "<group>"; };
+		2C7749DB175C7C6200FF722E /* CCEditBoxLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCEditBoxLoader.h; sourceTree = "<group>"; };
+		2C7749DC175C7C6200FF722E /* CCTableViewLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTableViewLoader.h; sourceTree = "<group>"; };
+		2C7749DE175C7C6200FF722E /* TaskListScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TaskListScene.cpp; sourceTree = "<group>"; };
+		2C7749DF175C7C6200FF722E /* TaskListScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListScene.h; sourceTree = "<group>"; };
+		2C7749E0175C7C6200FF722E /* TaskListSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListSceneLoader.h; sourceTree = "<group>"; };
+		2C7749E2175C7C6200FF722E /* CCMessageDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCMessageDialog.cpp; sourceTree = "<group>"; };
+		2C7749E3175C7C6200FF722E /* CCMessageDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMessageDialog.h; sourceTree = "<group>"; };
+		2C7749E4175C7C6200FF722E /* CCTabView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTabView.cpp; sourceTree = "<group>"; };
+		2C7749E5175C7C6200FF722E /* CCTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTabView.h; sourceTree = "<group>"; };
+		2C7749E6175C7C6200FF722E /* LoadingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingScene.cpp; sourceTree = "<group>"; };
+		2C7749E7175C7C6200FF722E /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScene.h; sourceTree = "<group>"; };
+		2C7749F8175C7D2300FF722E /* tab_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_active.png; path = Resources/tab_active.png; sourceTree = "<group>"; };
+		2C7749F9175C7D2300FF722E /* tab_kuan.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_kuan.9.png; path = Resources/tab_kuan.9.png; sourceTree = "<group>"; };
+		2C7749FA175C7D2300FF722E /* tab_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_line.png; path = Resources/tab_line.png; sourceTree = "<group>"; };
+		2C7749FB175C7D2300FF722E /* tab_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_normal.png; path = Resources/tab_normal.png; sourceTree = "<group>"; };
+		2C774A00175C85FE00FF722E /* SlidingMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SlidingMenu.cpp; sourceTree = "<group>"; };
+		2C774A01175C85FE00FF722E /* SlidingMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingMenu.h; sourceTree = "<group>"; };
+		2C774A04175C8CBE00FF722E /* CCActivityIndicator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCActivityIndicator.cpp; sourceTree = "<group>"; };
+		2C774A05175C8CBE00FF722E /* CCActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCActivityIndicator.h; sourceTree = "<group>"; };
+		2C774A07175C8CBE00FF722E /* ccactivityindicator.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ccactivityindicator.plist; sourceTree = "<group>"; };
+		2C774A08175C8CBE00FF722E /* ccactivityindicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ccactivityindicator.png; sourceTree = "<group>"; };
+		2C774A09175C8CBE00FF722E /* ccactivityindicator_1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ccactivityindicator_1.gif; sourceTree = "<group>"; };
+		2C774A0A175C8CBE00FF722E /* ccactivityindicator_10.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ccactivityindicator_10.gif; sourceTree = "<group>"; };
+		2C774A0B175C8CBE00FF722E /* ccactivityindicator_11.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ccactivityindicator_11.gif; sourceTree = "<group>"; };
+		2C774A0C175C8CBE00FF722E /* ccactivityindicator_12.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ccactivityindicator_12.gif; sourceTree = "<group>"; };
+		2C774A0D175C8CBE00FF722E /* ccactivityindicator_2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ccactivityindicator_2.gif; sourceTree = "<group>"; };
+		2C774A0E175C8CBE00FF722E /* ccactivityindicator_3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ccactivityindicator_3.gif; sourceTree = "<group>"; };
+		2C774A0F175C8CBE00FF722E /* ccactivityindicator_4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ccactivityindicator_4.gif; sourceTree = "<group>"; };
+		2C774A10175C8CBE00FF722E /* ccactivityindicator_5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ccactivityindicator_5.gif; sourceTree = "<group>"; };
+		2C774A11175C8CBE00FF722E /* ccactivityindicator_6.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ccactivityindicator_6.gif; sourceTree = "<group>"; };
+		2C774A12175C8CBE00FF722E /* ccactivityindicator_7.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ccactivityindicator_7.gif; sourceTree = "<group>"; };
+		2C774A13175C8CBE00FF722E /* ccactivityindicator_8.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ccactivityindicator_8.gif; sourceTree = "<group>"; };
+		2C774A14175C8CBE00FF722E /* ccactivityindicator_9.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ccactivityindicator_9.gif; sourceTree = "<group>"; };
+		2C774A16175C8CBE00FF722E /* CCGestureRecognizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCGestureRecognizer.cpp; sourceTree = "<group>"; };
+		2C774A17175C8CBE00FF722E /* CCGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCGestureRecognizer.h; sourceTree = "<group>"; };
+		2C774A18175C8CBE00FF722E /* CCLongPressGestureRecognizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCLongPressGestureRecognizer.cpp; sourceTree = "<group>"; };
+		2C774A19175C8CBE00FF722E /* CCLongPressGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		2C774A1A175C8CBE00FF722E /* CCPanGestureRecognizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCPanGestureRecognizer.cpp; sourceTree = "<group>"; };
+		2C774A1B175C8CBE00FF722E /* CCPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPanGestureRecognizer.h; sourceTree = "<group>"; };
+		2C774A1C175C8CBE00FF722E /* CCPinchGestureRecognizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCPinchGestureRecognizer.cpp; sourceTree = "<group>"; };
+		2C774A1D175C8CBE00FF722E /* CCPinchGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPinchGestureRecognizer.h; sourceTree = "<group>"; };
+		2C774A1E175C8CBE00FF722E /* CCSwipeGestureRecognizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSwipeGestureRecognizer.cpp; sourceTree = "<group>"; };
+		2C774A1F175C8CBE00FF722E /* CCSwipeGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSwipeGestureRecognizer.h; sourceTree = "<group>"; };
+		2C774A20175C8CBE00FF722E /* CCTapGestureRecognizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTapGestureRecognizer.cpp; sourceTree = "<group>"; };
+		2C774A21175C8CBE00FF722E /* CCTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTapGestureRecognizer.h; sourceTree = "<group>"; };
+		2C774A23175C8CBE00FF722E /* CCProgressLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCProgressLayer.cpp; sourceTree = "<group>"; };
+		2C774A24175C8CBE00FF722E /* CCProgressLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCProgressLayer.h; sourceTree = "<group>"; };
+		2C774A3C175C9ACB00FF722E /* chs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = chs.plist; sourceTree = "<group>"; };
+		2C774A3E175C9F7400FF722E /* GlobalData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlobalData.cpp; sourceTree = "<group>"; };
+		2C774A3F175C9F7400FF722E /* GlobalData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalData.h; sourceTree = "<group>"; };
 		6F0A93481724C54A006082DC /* ThirdLoginScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = ThirdLoginScene.ccbi; path = Resources/ThirdLoginScene.ccbi; sourceTree = "<group>"; };
 		6F0A934C1725185B006082DC /* transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = transparent.png; path = Resources/transparent.png; sourceTree = "<group>"; };
-		6F4A3F37171F7EBF008F9FB0 /* AddFriendScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddFriendScene.h; path = Classes/AddFriendScene.h; sourceTree = "<group>"; };
-		6F4A3F38171F7EBF008F9FB0 /* AddFriendSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddFriendSceneLoader.h; path = Classes/AddFriendSceneLoader.h; sourceTree = "<group>"; };
-		6F4A3F39171F7EBF008F9FB0 /* CCMessageDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCMessageDialog.cpp; path = Classes/CCMessageDialog.cpp; sourceTree = "<group>"; };
-		6F4A3F3A171F7EBF008F9FB0 /* CCMessageDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCMessageDialog.h; path = Classes/CCMessageDialog.h; sourceTree = "<group>"; };
-		6F4A3F3F171F8957008F9FB0 /* MainSceneTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainSceneTemplate.cpp; path = Classes/MainSceneTemplate.cpp; sourceTree = "<group>"; };
-		6F4A3F40171F8957008F9FB0 /* MainSceneTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainSceneTemplate.h; path = Classes/MainSceneTemplate.h; sourceTree = "<group>"; };
-		6F4A3F41171F8957008F9FB0 /* MainSceneTemplateLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainSceneTemplateLoader.h; path = Classes/MainSceneTemplateLoader.h; sourceTree = "<group>"; };
 		6F4A3F43171F8CDE008F9FB0 /* MainSceneTemplate.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = MainSceneTemplate.ccbi; path = Resources/MainSceneTemplate.ccbi; sourceTree = "<group>"; };
-		6F4A3F45171FB7EC008F9FB0 /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = common.h; path = Classes/common.h; sourceTree = "<group>"; };
 		6F4A3F46171FB903008F9FB0 /* AddFriendScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = AddFriendScene.ccbi; path = Resources/AddFriendScene.ccbi; sourceTree = "<group>"; };
-		6F51E981171D085D0092EE63 /* TaskListScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TaskListScene.cpp; path = Classes/TaskListScene.cpp; sourceTree = "<group>"; };
-		6F51E982171D085D0092EE63 /* TaskListScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskListScene.h; path = Classes/TaskListScene.h; sourceTree = "<group>"; };
-		6F51E983171D085D0092EE63 /* TaskListSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskListSceneLoader.h; path = Classes/TaskListSceneLoader.h; sourceTree = "<group>"; };
 		6F51E985171D0A340092EE63 /* TaskListScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = TaskListScene.ccbi; path = Resources/TaskListScene.ccbi; sourceTree = "<group>"; };
 		6F51E98A171D12DA0092EE63 /* CCScrollView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCScrollView.cpp; path = libs/extensions/GUI/CCScrollView/CCScrollView.cpp; sourceTree = "<group>"; };
 		6F51E98B171D12DA0092EE63 /* CCScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCScrollView.h; path = libs/extensions/GUI/CCScrollView/CCScrollView.h; sourceTree = "<group>"; };
@@ -328,15 +434,9 @@
 		6F51E98D171D12DA0092EE63 /* CCSorting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCSorting.h; path = libs/extensions/GUI/CCScrollView/CCSorting.h; sourceTree = "<group>"; };
 		6F51E9A7171D2C620092EE63 /* CCTableView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCTableView.cpp; path = libs/extensions/GUI/CCScrollView/CCTableView.cpp; sourceTree = "<group>"; };
 		6F51E9A8171D2C620092EE63 /* CCTableViewCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCTableViewCell.cpp; path = libs/extensions/GUI/CCScrollView/CCTableViewCell.cpp; sourceTree = "<group>"; };
-		6F51E9AB171D2CA20092EE63 /* FriendListScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FriendListScene.cpp; path = Classes/FriendListScene.cpp; sourceTree = "<group>"; };
-		6F51E9AC171D2CA20092EE63 /* FriendListScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendListScene.h; path = Classes/FriendListScene.h; sourceTree = "<group>"; };
-		6F51E9AD171D2CA20092EE63 /* FriendListSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendListSceneLoader.h; path = Classes/FriendListSceneLoader.h; sourceTree = "<group>"; };
 		6F51E9B1171D2D710092EE63 /* CCTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCTableView.h; path = libs/extensions/GUI/CCScrollView/CCTableView.h; sourceTree = "<group>"; };
 		6F51E9B2171D2D710092EE63 /* CCTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCTableViewCell.h; path = libs/extensions/GUI/CCScrollView/CCTableViewCell.h; sourceTree = "<group>"; };
 		6F82C60B17264E700007122E /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Image; path = Resources/Image; sourceTree = "<group>"; };
-		6F82C60D17265BF80007122E /* LoadingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadingScene.cpp; path = Classes/LoadingScene.cpp; sourceTree = "<group>"; };
-		6F82C60E17265BF80007122E /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingScene.h; path = Classes/LoadingScene.h; sourceTree = "<group>"; };
-		6FB9C384172139EC002101F9 /* CCControlSwitchLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCControlSwitchLoader.h; path = Classes/CCControlSwitchLoader.h; sourceTree = "<group>"; };
 		6FBA777717153C4400ECA334 /* mengdou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mengdou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FBA777A17153C4400ECA334 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6FBA777C17153C4400ECA334 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -791,14 +891,7 @@
 		6FBA7A5717153C4700ECA334 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		6FBA7A5917153C4700ECA334 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		6FBA7A5A17153C4700ECA334 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
-		6FBA7A6C17153F2700ECA334 /* LoginScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoginScene.cpp; path = Classes/LoginScene.cpp; sourceTree = "<group>"; };
-		6FBA7A6D17153F2700ECA334 /* LoginScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginScene.h; path = Classes/LoginScene.h; sourceTree = "<group>"; };
-		6FBA7A6E17153F2700ECA334 /* XmlParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XmlParser.cpp; path = Classes/XmlParser.cpp; sourceTree = "<group>"; };
-		6FBA7A6F17153F2700ECA334 /* XmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XmlParser.h; path = Classes/XmlParser.h; sourceTree = "<group>"; };
 		6FBA7A76171540DD00ECA334 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = account.png; path = Resources/account.png; sourceTree = "<group>"; };
-		6FBA7A7E1715486900ECA334 /* AboutScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AboutScene.cpp; path = Classes/AboutScene.cpp; sourceTree = "<group>"; };
-		6FBA7A7F1715486900ECA334 /* AboutScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutScene.h; path = Classes/AboutScene.h; sourceTree = "<group>"; };
-		6FBA7A801715486900ECA334 /* AboutSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutSceneLoader.h; path = Classes/AboutSceneLoader.h; sourceTree = "<group>"; };
 		6FBA7A811715486900ECA334 /* MainGameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainGameScene.cpp; path = Classes/MainGameScene.cpp; sourceTree = "<group>"; };
 		6FBA7A821715486900ECA334 /* MainGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainGameScene.h; path = Classes/MainGameScene.h; sourceTree = "<group>"; };
 		6FBA7A841715486900ECA334 /* MainGameSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainGameSceneLoader.h; path = Classes/MainGameSceneLoader.h; sourceTree = "<group>"; };
@@ -810,11 +903,6 @@
 		6FBA7AC917164BA900ECA334 /* json_valueiterator.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = json_valueiterator.inl; path = library/jsoncpp/src/lib_json/json_valueiterator.inl; sourceTree = "<group>"; };
 		6FBA7ACA17164BA900ECA334 /* json_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json_writer.cpp; path = library/jsoncpp/src/lib_json/json_writer.cpp; sourceTree = "<group>"; };
 		6FBA7ACB17164BA900ECA334 /* sconscript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sconscript; path = library/jsoncpp/src/lib_json/sconscript; sourceTree = "<group>"; };
-		6FBA7AD317166C9100ECA334 /* LoginSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginSceneLoader.h; path = Classes/LoginSceneLoader.h; sourceTree = "<group>"; };
-		6FBA7ADA171681B400ECA334 /* CCEditBoxLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCEditBoxLoader.h; path = Classes/CCEditBoxLoader.h; sourceTree = "<group>"; };
-		6FBA7ADC1716A8CB00ECA334 /* CCTableViewLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCTableViewLoader.h; path = Classes/CCTableViewLoader.h; sourceTree = "<group>"; };
-		6FBA7ADF1717996900ECA334 /* ccbResources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ccbResources; path = Resources/ccbResources; sourceTree = "<group>"; };
-		6FBA7AE01717996900ECA334 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = Resources/Fonts; sourceTree = "<group>"; };
 		6FBA7AE11717996900ECA334 /* FriendListScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = FriendListScene.ccbi; path = Resources/FriendListScene.ccbi; sourceTree = "<group>"; };
 		6FBA7AE21717996900ECA334 /* HeadScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = HeadScene.ccbi; path = Resources/HeadScene.ccbi; sourceTree = "<group>"; };
 		6FBA7AE41717996A00ECA334 /* LoginScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = LoginScene.ccbi; path = Resources/LoginScene.ccbi; sourceTree = "<group>"; };
@@ -855,15 +943,6 @@
 			path = Resources/sound;
 			sourceTree = "<group>";
 		};
-		20D2E84717520A370059F2BE /* XmlParser */ = {
-			isa = PBXGroup;
-			children = (
-				6FBA7A6E17153F2700ECA334 /* XmlParser.cpp */,
-				6FBA7A6F17153F2700ECA334 /* XmlParser.h */,
-			);
-			name = XmlParser;
-			sourceTree = "<group>";
-		};
 		20D2E84A17521C7C0059F2BE /* JsonBox */ = {
 			isa = PBXGroup;
 			children = (
@@ -879,46 +958,207 @@
 			name = JsonBox;
 			sourceTree = "<group>";
 		};
-		6F0A932D1724C3F8006082DC /* common */ = {
+		2C7749A3175C797C00FF722E /* jsonconverter */ = {
 			isa = PBXGroup;
 			children = (
-				20878677172E8C2E00A7404A /* StringExt.h */,
-				6F82C60E17265BF80007122E /* LoadingScene.h */,
-				6F82C60D17265BF80007122E /* LoadingScene.cpp */,
-				6F4A3F45171FB7EC008F9FB0 /* common.h */,
-				6F0A932E1724C40A006082DC /* MainLayerBase.cpp */,
-				6F0A932F1724C40A006082DC /* MainLayerBase.h */,
+				2C7749A4175C797C00FF722E /* CCJSONConverter.cpp */,
+				2C7749A5175C797C00FF722E /* CCJSONConverter.h */,
+				2C7749A6175C797C00FF722E /* CCJSONData.h */,
+				2C7749A7175C797C00FF722E /* cJSON.c */,
+				2C7749A8175C797C00FF722E /* cJSON.h */,
 			);
-			name = common;
+			name = jsonconverter;
+			path = library/jsonconverter;
 			sourceTree = "<group>";
 		};
-		6F0A93311724C40F006082DC /* Login */ = {
+		2C7749AC175C7C3400FF722E /* XmlParser */ = {
 			isa = PBXGroup;
 			children = (
-				6FBA7A6D17153F2700ECA334 /* LoginScene.h */,
-				6FBA7A6C17153F2700ECA334 /* LoginScene.cpp */,
-				6FBA7AD317166C9100ECA334 /* LoginSceneLoader.h */,
-				6F0A93331724C423006082DC /* ThirdLoginScene.h */,
-				6F0A93321724C423006082DC /* ThirdLoginScene.cpp */,
-				6F0A93341724C423006082DC /* ThirdLoginSceneLoader.h */,
+				2C7749AD175C7C3400FF722E /* XmlParser.cpp */,
+				2C7749AE175C7C3400FF722E /* XmlParser.h */,
+			);
+			name = XmlParser;
+			path = library/XmlParser;
+			sourceTree = "<group>";
+		};
+		2C7749B0175C7C6200FF722E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2C7749B1175C7C6200FF722E /* common.h */,
+				2C7749B2175C7C6200FF722E /* MainLayerBase.cpp */,
+				2C7749B3175C7C6200FF722E /* MainLayerBase.h */,
+				2C7749B4175C7C6200FF722E /* MainSceneTemplate.cpp */,
+				2C7749B5175C7C6200FF722E /* MainSceneTemplate.h */,
+				2C7749B6175C7C6200FF722E /* MainSceneTemplateLoader.h */,
+				2C7749B7175C7C6200FF722E /* StringExt.h */,
+				2C774A3E175C9F7400FF722E /* GlobalData.cpp */,
+				2C774A3F175C9F7400FF722E /* GlobalData.h */,
+			);
+			name = Common;
+			path = Classes/Common;
+			sourceTree = "<group>";
+		};
+		2C7749B8175C7C6200FF722E /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				2C7749B9175C7C6200FF722E /* AddFriendScene.cpp */,
+				2C7749BA175C7C6200FF722E /* AddFriendScene.h */,
+				2C7749BB175C7C6200FF722E /* AddFriendSceneLoader.h */,
+				2C7749BC175C7C6200FF722E /* FriendListScene.cpp */,
+				2C7749BD175C7C6200FF722E /* FriendListScene.h */,
+				2C7749BE175C7C6200FF722E /* FriendListSceneLoader.h */,
+			);
+			name = Friends;
+			path = Classes/Friends;
+			sourceTree = "<group>";
+		};
+		2C7749BF175C7C6200FF722E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2C7749C0175C7C6200FF722E /* CharacterScene.cpp */,
+				2C7749C1175C7C6200FF722E /* CharacterScene.h */,
+				2C7749C2175C7C6200FF722E /* CharacterSceneLoader.h */,
+				2C7749C3175C7C6200FF722E /* LoginScene.cpp */,
+				2C7749C4175C7C6200FF722E /* LoginScene.h */,
+				2C7749C5175C7C6200FF722E /* LoginSceneLoader.h */,
+				2C7749C6175C7C6200FF722E /* ServerListScene.cpp */,
+				2C7749C7175C7C6200FF722E /* ServerListScene.h */,
+				2C7749C8175C7C6200FF722E /* ServerListSceneLoader.h */,
+				2C7749C9175C7C6200FF722E /* ThirdLoginScene.cpp */,
+				2C7749CA175C7C6200FF722E /* ThirdLoginScene.h */,
+				2C7749CB175C7C6200FF722E /* ThirdLoginSceneLoader.h */,
 			);
 			name = Login;
+			path = Classes/Login;
 			sourceTree = "<group>";
 		};
-		6F0A93361724C42E006082DC /* Friend */ = {
+		2C7749CC175C7C6200FF722E /* Mail */ = {
 			isa = PBXGroup;
 			children = (
-				20866427172F9DCB00EF81E2 /* NewMailScene.cpp */,
-				20866428172F9DCB00EF81E2 /* NewMailScene.h */,
-				20866429172F9DCB00EF81E2 /* NewMailSceneLoader.h */,
-				6F4A3F37171F7EBF008F9FB0 /* AddFriendScene.h */,
-				20774241172FA04A008D719A /* AddFriendScene.cpp */,
-				6F4A3F38171F7EBF008F9FB0 /* AddFriendSceneLoader.h */,
-				6F51E9AB171D2CA20092EE63 /* FriendListScene.cpp */,
-				6F51E9AC171D2CA20092EE63 /* FriendListScene.h */,
-				6F51E9AD171D2CA20092EE63 /* FriendListSceneLoader.h */,
+				2C7749CD175C7C6200FF722E /* MailListScene.cpp */,
+				2C7749CE175C7C6200FF722E /* MailListScene.h */,
+				2C7749CF175C7C6200FF722E /* MailListSceneLoader.h */,
+				2C7749D0175C7C6200FF722E /* MailMainScene.cpp */,
+				2C7749D1175C7C6200FF722E /* MailMainScene.h */,
+				2C7749D2175C7C6200FF722E /* MailMainSceneLoader.h */,
+				2C7749D3175C7C6200FF722E /* NewMailScene.cpp */,
+				2C7749D4175C7C6200FF722E /* NewMailScene.h */,
+				2C7749D5175C7C6200FF722E /* NewMailSceneLoader.h */,
 			);
-			name = Friend;
+			name = Mail;
+			path = Classes/Mail;
+			sourceTree = "<group>";
+		};
+		2C7749D6175C7C6200FF722E /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				2C7749D7175C7C6200FF722E /* AboutScene.cpp */,
+				2C7749D8175C7C6200FF722E /* AboutScene.h */,
+				2C7749D9175C7C6200FF722E /* AboutSceneLoader.h */,
+				2C7749DA175C7C6200FF722E /* CCControlSwitchLoader.h */,
+				2C7749DB175C7C6200FF722E /* CCEditBoxLoader.h */,
+				2C7749DC175C7C6200FF722E /* CCTableViewLoader.h */,
+			);
+			name = Other;
+			path = Classes/Other;
+			sourceTree = "<group>";
+		};
+		2C7749DD175C7C6200FF722E /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				2C7749DE175C7C6200FF722E /* TaskListScene.cpp */,
+				2C7749DF175C7C6200FF722E /* TaskListScene.h */,
+				2C7749E0175C7C6200FF722E /* TaskListSceneLoader.h */,
+			);
+			name = Task;
+			path = Classes/Task;
+			sourceTree = "<group>";
+		};
+		2C7749E1175C7C6200FF722E /* UILibrary */ = {
+			isa = PBXGroup;
+			children = (
+				2C774A03175C8CBE00FF722E /* CCActivityIndicator */,
+				2C774A15175C8CBE00FF722E /* CCGestureRecognizer */,
+				2C774A22175C8CBE00FF722E /* CCProgressLayer */,
+				2C774A00175C85FE00FF722E /* SlidingMenu.cpp */,
+				2C774A01175C85FE00FF722E /* SlidingMenu.h */,
+				2C7749E2175C7C6200FF722E /* CCMessageDialog.cpp */,
+				2C7749E3175C7C6200FF722E /* CCMessageDialog.h */,
+				2C7749E4175C7C6200FF722E /* CCTabView.cpp */,
+				2C7749E5175C7C6200FF722E /* CCTabView.h */,
+				2C7749E6175C7C6200FF722E /* LoadingScene.cpp */,
+				2C7749E7175C7C6200FF722E /* LoadingScene.h */,
+			);
+			name = UILibrary;
+			path = Classes/UILibrary;
+			sourceTree = "<group>";
+		};
+		2C774A03175C8CBE00FF722E /* CCActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				2C774A04175C8CBE00FF722E /* CCActivityIndicator.cpp */,
+				2C774A05175C8CBE00FF722E /* CCActivityIndicator.h */,
+				2C774A06175C8CBE00FF722E /* Resources */,
+			);
+			path = CCActivityIndicator;
+			sourceTree = "<group>";
+		};
+		2C774A06175C8CBE00FF722E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2C774A07175C8CBE00FF722E /* ccactivityindicator.plist */,
+				2C774A08175C8CBE00FF722E /* ccactivityindicator.png */,
+				2C774A09175C8CBE00FF722E /* ccactivityindicator_1.gif */,
+				2C774A0A175C8CBE00FF722E /* ccactivityindicator_10.gif */,
+				2C774A0B175C8CBE00FF722E /* ccactivityindicator_11.gif */,
+				2C774A0C175C8CBE00FF722E /* ccactivityindicator_12.gif */,
+				2C774A0D175C8CBE00FF722E /* ccactivityindicator_2.gif */,
+				2C774A0E175C8CBE00FF722E /* ccactivityindicator_3.gif */,
+				2C774A0F175C8CBE00FF722E /* ccactivityindicator_4.gif */,
+				2C774A10175C8CBE00FF722E /* ccactivityindicator_5.gif */,
+				2C774A11175C8CBE00FF722E /* ccactivityindicator_6.gif */,
+				2C774A12175C8CBE00FF722E /* ccactivityindicator_7.gif */,
+				2C774A13175C8CBE00FF722E /* ccactivityindicator_8.gif */,
+				2C774A14175C8CBE00FF722E /* ccactivityindicator_9.gif */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2C774A15175C8CBE00FF722E /* CCGestureRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				2C774A16175C8CBE00FF722E /* CCGestureRecognizer.cpp */,
+				2C774A17175C8CBE00FF722E /* CCGestureRecognizer.h */,
+				2C774A18175C8CBE00FF722E /* CCLongPressGestureRecognizer.cpp */,
+				2C774A19175C8CBE00FF722E /* CCLongPressGestureRecognizer.h */,
+				2C774A1A175C8CBE00FF722E /* CCPanGestureRecognizer.cpp */,
+				2C774A1B175C8CBE00FF722E /* CCPanGestureRecognizer.h */,
+				2C774A1C175C8CBE00FF722E /* CCPinchGestureRecognizer.cpp */,
+				2C774A1D175C8CBE00FF722E /* CCPinchGestureRecognizer.h */,
+				2C774A1E175C8CBE00FF722E /* CCSwipeGestureRecognizer.cpp */,
+				2C774A1F175C8CBE00FF722E /* CCSwipeGestureRecognizer.h */,
+				2C774A20175C8CBE00FF722E /* CCTapGestureRecognizer.cpp */,
+				2C774A21175C8CBE00FF722E /* CCTapGestureRecognizer.h */,
+			);
+			path = CCGestureRecognizer;
+			sourceTree = "<group>";
+		};
+		2C774A22175C8CBE00FF722E /* CCProgressLayer */ = {
+			isa = PBXGroup;
+			children = (
+				2C774A23175C8CBE00FF722E /* CCProgressLayer.cpp */,
+				2C774A24175C8CBE00FF722E /* CCProgressLayer.h */,
+			);
+			path = CCProgressLayer;
+			sourceTree = "<group>";
+		};
+		2C774A3B175C9AA100FF722E /* language */ = {
+			isa = PBXGroup;
+			children = (
+				2C774A3C175C9ACB00FF722E /* chs.plist */,
+			);
+			name = language;
+			path = Resources/language;
 			sourceTree = "<group>";
 		};
 		6F51E989171D12C10092EE63 /* CCScrollView */ = {
@@ -984,6 +1224,11 @@
 		6FBA778B17153C4400ECA334 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2C774A3B175C9AA100FF722E /* language */,
+				2C7749F8175C7D2300FF722E /* tab_active.png */,
+				2C7749F9175C7D2300FF722E /* tab_kuan.9.png */,
+				2C7749FA175C7D2300FF722E /* tab_line.png */,
+				2C7749FB175C7D2300FF722E /* tab_normal.png */,
 				20C767481751C6F100038E56 /* sound */,
 				20C7673D1751C34E00038E56 /* ccbParticleStars.png */,
 				20C7673E1751C34E00038E56 /* particle-fire.png */,
@@ -992,8 +1237,6 @@
 				20C767411751C34E00038E56 /* particle-stars.png */,
 				6F82C60B17264E700007122E /* Image */,
 				6FBA7AED1717997800ECA334 /* Scene */,
-				6FBA7ADF1717996900ECA334 /* ccbResources */,
-				6FBA7AE01717996900ECA334 /* Fonts */,
 				6FBA7A76171540DD00ECA334 /* account.png */,
 				6F0A934C1725185B006082DC /* transparent.png */,
 				6FBA779017153C4400ECA334 /* Default.png */,
@@ -1908,23 +2151,13 @@
 		6FBA7A5817153C4700ECA334 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				6F0A93361724C42E006082DC /* Friend */,
-				6F0A93311724C40F006082DC /* Login */,
-				6F0A932D1724C3F8006082DC /* common */,
-				6FB9C384172139EC002101F9 /* CCControlSwitchLoader.h */,
-				6F4A3F3F171F8957008F9FB0 /* MainSceneTemplate.cpp */,
-				6F4A3F40171F8957008F9FB0 /* MainSceneTemplate.h */,
-				6F4A3F41171F8957008F9FB0 /* MainSceneTemplateLoader.h */,
-				6F4A3F39171F7EBF008F9FB0 /* CCMessageDialog.cpp */,
-				6F4A3F3A171F7EBF008F9FB0 /* CCMessageDialog.h */,
-				6F51E982171D085D0092EE63 /* TaskListScene.h */,
-				6F51E981171D085D0092EE63 /* TaskListScene.cpp */,
-				6F51E983171D085D0092EE63 /* TaskListSceneLoader.h */,
-				6FBA7ADC1716A8CB00ECA334 /* CCTableViewLoader.h */,
-				6FBA7ADA171681B400ECA334 /* CCEditBoxLoader.h */,
-				6FBA7A7E1715486900ECA334 /* AboutScene.cpp */,
-				6FBA7A7F1715486900ECA334 /* AboutScene.h */,
-				6FBA7A801715486900ECA334 /* AboutSceneLoader.h */,
+				2C7749B0175C7C6200FF722E /* Common */,
+				2C7749B8175C7C6200FF722E /* Friends */,
+				2C7749BF175C7C6200FF722E /* Login */,
+				2C7749CC175C7C6200FF722E /* Mail */,
+				2C7749D6175C7C6200FF722E /* Other */,
+				2C7749DD175C7C6200FF722E /* Task */,
+				2C7749E1175C7C6200FF722E /* UILibrary */,
 				6FBA7A821715486900ECA334 /* MainGameScene.h */,
 				6FBA7A811715486900ECA334 /* MainGameScene.cpp */,
 				6FBA7A841715486900ECA334 /* MainGameSceneLoader.h */,
@@ -1937,8 +2170,9 @@
 		6FBA7A731715404A00ECA334 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				2C7749AC175C7C3400FF722E /* XmlParser */,
+				2C7749A3175C797C00FF722E /* jsonconverter */,
 				20D2E84A17521C7C0059F2BE /* JsonBox */,
-				20D2E84717520A370059F2BE /* XmlParser */,
 				6FBA7AC317164B9300ECA334 /* jsoncpp */,
 			);
 			name = Library;
@@ -1962,7 +2196,6 @@
 		6FBA7AED1717997800ECA334 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				20C7673B1751C32A00038E56 /* ivantest.ccbi */,
 				20878671172E8C0400A7404A /* NewMailScene.ccbi */,
 				20878672172E8C0400A7404A /* SysMailScene.ccbi */,
 				20878673172E8C0400A7404A /* UserMailScene.ccbi */,
@@ -2045,8 +2278,6 @@
 				6FBA7ACD17164BA900ECA334 /* json_internalmap.inl in Resources */,
 				6FBA7AD017164BA900ECA334 /* json_valueiterator.inl in Resources */,
 				6FBA7AD217164BA900ECA334 /* sconscript in Resources */,
-				6FBA7AE61717996A00ECA334 /* ccbResources in Resources */,
-				6FBA7AE71717996A00ECA334 /* Fonts in Resources */,
 				6FBA7AE81717996A00ECA334 /* FriendListScene.ccbi in Resources */,
 				6FBA7AE91717996A00ECA334 /* HeadScene.ccbi in Resources */,
 				6FBA7AEB1717996A00ECA334 /* LoginScene.ccbi in Resources */,
@@ -2060,7 +2291,6 @@
 				20878674172E8C0400A7404A /* NewMailScene.ccbi in Resources */,
 				20878675172E8C0400A7404A /* SysMailScene.ccbi in Resources */,
 				20878676172E8C0400A7404A /* UserMailScene.ccbi in Resources */,
-				20C7673C1751C32A00038E56 /* ivantest.ccbi in Resources */,
 				20C767421751C34E00038E56 /* ccbParticleStars.png in Resources */,
 				20C767431751C34E00038E56 /* particle-fire.png in Resources */,
 				20C767441751C34E00038E56 /* particle-smoke.png in Resources */,
@@ -2071,6 +2301,25 @@
 				20C767501751C6F100038E56 /* effect1.wav in Resources */,
 				20C767511751C6F100038E56 /* effect2.ogg in Resources */,
 				20C767521751C6F100038E56 /* music.mid in Resources */,
+				2C7749FC175C7D2300FF722E /* tab_active.png in Resources */,
+				2C7749FD175C7D2300FF722E /* tab_kuan.9.png in Resources */,
+				2C7749FE175C7D2300FF722E /* tab_line.png in Resources */,
+				2C7749FF175C7D2300FF722E /* tab_normal.png in Resources */,
+				2C774A26175C8CBE00FF722E /* ccactivityindicator.plist in Resources */,
+				2C774A27175C8CBE00FF722E /* ccactivityindicator.png in Resources */,
+				2C774A28175C8CBE00FF722E /* ccactivityindicator_1.gif in Resources */,
+				2C774A29175C8CBE00FF722E /* ccactivityindicator_10.gif in Resources */,
+				2C774A2A175C8CBE00FF722E /* ccactivityindicator_11.gif in Resources */,
+				2C774A2B175C8CBE00FF722E /* ccactivityindicator_12.gif in Resources */,
+				2C774A2C175C8CBE00FF722E /* ccactivityindicator_2.gif in Resources */,
+				2C774A2D175C8CBE00FF722E /* ccactivityindicator_3.gif in Resources */,
+				2C774A2E175C8CBE00FF722E /* ccactivityindicator_4.gif in Resources */,
+				2C774A2F175C8CBE00FF722E /* ccactivityindicator_5.gif in Resources */,
+				2C774A30175C8CBE00FF722E /* ccactivityindicator_6.gif in Resources */,
+				2C774A31175C8CBE00FF722E /* ccactivityindicator_7.gif in Resources */,
+				2C774A32175C8CBE00FF722E /* ccactivityindicator_8.gif in Resources */,
+				2C774A33175C8CBE00FF722E /* ccactivityindicator_9.gif in Resources */,
+				2C774A3D175C9ACB00FF722E /* chs.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2264,26 +2513,14 @@
 				6FBA7A4C17153C4700ECA334 /* CCPhysicsDebugNode.cpp in Sources */,
 				6FBA7A4F17153C4700ECA334 /* CCPhysicsSprite.cpp in Sources */,
 				6FBA7A5B17153C4700ECA334 /* AppDelegate.cpp in Sources */,
-				6FBA7A7117153F2700ECA334 /* LoginScene.cpp in Sources */,
-				6FBA7A7217153F2700ECA334 /* XmlParser.cpp in Sources */,
-				6FBA7A851715486A00ECA334 /* AboutScene.cpp in Sources */,
 				6FBA7A861715486A00ECA334 /* MainGameScene.cpp in Sources */,
 				6FBA7ACE17164BA900ECA334 /* json_reader.cpp in Sources */,
 				6FBA7ACF17164BA900ECA334 /* json_value.cpp in Sources */,
 				6FBA7AD117164BA900ECA334 /* json_writer.cpp in Sources */,
-				6F51E984171D085D0092EE63 /* TaskListScene.cpp in Sources */,
 				6F51E992171D12DA0092EE63 /* CCScrollView.cpp in Sources */,
 				6F51E993171D12DA0092EE63 /* CCSorting.cpp in Sources */,
 				6F51E9A9171D2C620092EE63 /* CCTableView.cpp in Sources */,
 				6F51E9AA171D2C620092EE63 /* CCTableViewCell.cpp in Sources */,
-				6F51E9AE171D2CA20092EE63 /* FriendListScene.cpp in Sources */,
-				6F4A3F3C171F7EBF008F9FB0 /* CCMessageDialog.cpp in Sources */,
-				6F4A3F42171F8957008F9FB0 /* MainSceneTemplate.cpp in Sources */,
-				6F0A93301724C40A006082DC /* MainLayerBase.cpp in Sources */,
-				6F0A93351724C423006082DC /* ThirdLoginScene.cpp in Sources */,
-				6F82C60F17265BF90007122E /* LoadingScene.cpp in Sources */,
-				2086642A172F9DCB00EF81E2 /* NewMailScene.cpp in Sources */,
-				20774242172FA04A008D719A /* AddFriendScene.cpp in Sources */,
 				20D2E85317521C900059F2BE /* Array.cpp in Sources */,
 				20D2E85417521C900059F2BE /* Convert.cpp in Sources */,
 				20D2E85517521C900059F2BE /* Escaper.cpp in Sources */,
@@ -2292,6 +2529,35 @@
 				20D2E85817521C900059F2BE /* Object.cpp in Sources */,
 				20D2E85917521C900059F2BE /* SolidusEscaper.cpp in Sources */,
 				20D2E85A17521C900059F2BE /* Value.cpp in Sources */,
+				2C7749A9175C797C00FF722E /* CCJSONConverter.cpp in Sources */,
+				2C7749AA175C797C00FF722E /* cJSON.c in Sources */,
+				2C7749AF175C7C3400FF722E /* XmlParser.cpp in Sources */,
+				2C7749E8175C7C6200FF722E /* MainLayerBase.cpp in Sources */,
+				2C7749E9175C7C6200FF722E /* MainSceneTemplate.cpp in Sources */,
+				2C7749EA175C7C6200FF722E /* AddFriendScene.cpp in Sources */,
+				2C7749EB175C7C6200FF722E /* FriendListScene.cpp in Sources */,
+				2C7749EC175C7C6200FF722E /* CharacterScene.cpp in Sources */,
+				2C7749ED175C7C6200FF722E /* LoginScene.cpp in Sources */,
+				2C7749EE175C7C6200FF722E /* ServerListScene.cpp in Sources */,
+				2C7749EF175C7C6200FF722E /* ThirdLoginScene.cpp in Sources */,
+				2C7749F0175C7C6200FF722E /* MailListScene.cpp in Sources */,
+				2C7749F1175C7C6200FF722E /* MailMainScene.cpp in Sources */,
+				2C7749F2175C7C6200FF722E /* NewMailScene.cpp in Sources */,
+				2C7749F3175C7C6200FF722E /* AboutScene.cpp in Sources */,
+				2C7749F4175C7C6200FF722E /* TaskListScene.cpp in Sources */,
+				2C7749F5175C7C6200FF722E /* CCMessageDialog.cpp in Sources */,
+				2C7749F6175C7C6200FF722E /* CCTabView.cpp in Sources */,
+				2C7749F7175C7C6200FF722E /* LoadingScene.cpp in Sources */,
+				2C774A02175C85FE00FF722E /* SlidingMenu.cpp in Sources */,
+				2C774A25175C8CBE00FF722E /* CCActivityIndicator.cpp in Sources */,
+				2C774A34175C8CBE00FF722E /* CCGestureRecognizer.cpp in Sources */,
+				2C774A35175C8CBE00FF722E /* CCLongPressGestureRecognizer.cpp in Sources */,
+				2C774A36175C8CBE00FF722E /* CCPanGestureRecognizer.cpp in Sources */,
+				2C774A37175C8CBE00FF722E /* CCPinchGestureRecognizer.cpp in Sources */,
+				2C774A38175C8CBE00FF722E /* CCSwipeGestureRecognizer.cpp in Sources */,
+				2C774A39175C8CBE00FF722E /* CCTapGestureRecognizer.cpp in Sources */,
+				2C774A3A175C8CBE00FF722E /* CCProgressLayer.cpp in Sources */,
+				2C774A40175C9F7400FF722E /* GlobalData.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

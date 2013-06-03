@@ -45,7 +45,7 @@
 						<key>value</key>
 						<array>
 							<real>160</real>
-							<real>175</real>
+							<real>209</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -117,7 +117,7 @@
 						<key>value</key>
 						<array>
 							<real>248</real>
-							<real>268</real>
+							<real>334</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -345,7 +345,7 @@
 						<key>value</key>
 						<array>
 							<real>312</real>
-							<real>230</real>
+							<real>290</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -405,8 +405,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>134</real>
-							<real>284</real>
+							<real>135</real>
+							<real>349</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -478,7 +478,7 @@
 						<key>value</key>
 						<array>
 							<real>140</real>
-							<real>284</real>
+							<real>348</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -551,7 +551,7 @@
 						<key>value</key>
 						<array>
 							<real>27</real>
-							<real>324</real>
+							<real>391</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -623,7 +623,7 @@
 						<key>value</key>
 						<array>
 							<real>57</real>
-							<real>325</real>
+							<real>391</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -727,6 +727,8 @@
 						<string>10</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -751,7 +753,7 @@
 						<key>value</key>
 						<array>
 							<real>259</real>
-							<real>324</real>
+							<real>389</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -967,7 +969,7 @@
 						<key>value</key>
 						<array>
 							<real>303</real>
-							<real>330</real>
+							<real>397</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1183,7 +1185,7 @@
 						<key>value</key>
 						<array>
 							<real>36</real>
-							<real>248</real>
+							<real>315</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1255,7 +1257,7 @@
 						<key>value</key>
 						<array>
 							<real>104</real>
-							<real>248</real>
+							<real>315</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1327,7 +1329,7 @@
 						<key>value</key>
 						<array>
 							<real>190</real>
-							<real>248</real>
+							<real>315</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1399,7 +1401,7 @@
 						<key>value</key>
 						<array>
 							<real>257</real>
-							<real>248</real>
+							<real>315</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1471,7 +1473,7 @@
 						<key>value</key>
 						<array>
 							<real>160</real>
-							<real>335</real>
+							<real>402</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1587,16 +1589,6 @@
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>accelerometerEnabled</string>
-				<key>platform</key>
-				<string>iOS</string>
-				<key>type</key>
-				<string>Check</string>
-				<key>value</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>name</key>
 				<string>mouseEnabled</string>
 				<key>platform</key>
 				<string>Mac</string>
@@ -1604,16 +1596,6 @@
 				<string>Check</string>
 				<key>value</key>
 				<true/>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>keyboardEnabled</string>
-				<key>platform</key>
-				<string>Mac</string>
-				<key>type</key>
-				<string>Check</string>
-				<key>value</key>
-				<false/>
 			</dict>
 		</array>
 	</dict>
@@ -1655,7 +1637,7 @@
 			<key>ext</key>
 			<string>iphone</string>
 			<key>height</key>
-			<integer>348</integer>
+			<integer>415</integer>
 			<key>name</key>
 			<string>Custom</string>
 			<key>scale</key>

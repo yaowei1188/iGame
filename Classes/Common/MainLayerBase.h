@@ -17,6 +17,7 @@
 #include "JsonBox.h"
 #include "common.h"
 #include "CCJSONConverter.h"
+#include "GlobalData.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -35,6 +36,7 @@ protected:
     void HideLoadingIndicator();
 	bool ValidateResponseData(CCNode* pSender,void *data);
     std::string CompleteUrl(std::string url);
+    std::string getLocalString(std::string name);
 
 private:
     LoadingScene *loading;

@@ -128,7 +128,7 @@ void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     mTableViewFriend->setDirection(kCCScrollViewDirectionVertical);
     mTableViewFriend->setVerticalFillOrder(kCCTableViewFillTopDown);
     mTableViewFriend->setDataSource(this);
-    mTableViewFriend->setViewSize(CCSizeMake(312, 250));
+    mTableViewFriend->setViewSize(CCSizeMake(312, 300));
     mTableViewFriend->setDelegate(this);
     mTableViewFriend->reloadData();
 
