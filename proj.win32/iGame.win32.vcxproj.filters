@@ -1,424 +1,512 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="source">
-      <UniqueIdentifier>{1eb2c72c-5e63-49ce-a7e6-342b13f00dea}</UniqueIdentifier>
-      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{f9fda3b3-bf9b-456c-a413-a99bee655e36}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include">
-      <UniqueIdentifier>{560f3d36-b418-41d0-90ef-0ee94228f4dd}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    <Filter Include="Classes\UILibrary">
+      <UniqueIdentifier>{5442dc66-cb20-43bf-beb5-924aa4372f2e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="resource">
+    <Filter Include="Classes\Task">
+      <UniqueIdentifier>{de192036-caac-44d2-9998-f2d5e2e3b8cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Other">
+      <UniqueIdentifier>{dc9a70bd-b271-447b-8679-0c8457d8faab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Mail">
+      <UniqueIdentifier>{0e6aec58-ff21-4f07-9f61-185a95c0b7f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Login">
+      <UniqueIdentifier>{19e37c31-1d96-4e99-a5ac-0621814bb2f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Friends">
+      <UniqueIdentifier>{4de81cd3-b9ff-4030-8ccb-52276f24ead4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Common">
+      <UniqueIdentifier>{e9c3a00a-6e65-4efa-af9c-3df5a511d10e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\UILibrary\CCActivityIndicator">
+      <UniqueIdentifier>{2b21be53-a175-41d1-b07b-b500e1130af0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\UILibrary\CCGestureRecognizer">
+      <UniqueIdentifier>{5f786bdb-5f31-4976-9cdb-56059703dfd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\UILibrary\CCProgressLayer">
+      <UniqueIdentifier>{151e2e2f-a0a6-4622-8a1c-51207882bce7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\UILibrary\CCActivityIndicator\Resources">
+      <UniqueIdentifier>{f8595bd4-81c1-4bd3-a0a5-1d1f31b34337}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library">
+      <UniqueIdentifier>{7fc324a0-e181-4c4f-a3c2-5bb23e3a2963}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\JsonBox">
+      <UniqueIdentifier>{28bed987-c69c-4dd9-8e4c-67f3fe310761}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\jsonconverter">
+      <UniqueIdentifier>{5a8c2602-b7b3-43a6-a4e4-c165b373c452}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\XmlParser">
+      <UniqueIdentifier>{5f396e56-99a9-410d-bb07-6eed94b3ca88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
       <UniqueIdentifier>{eca1d720-2178-4778-bd4d-a4e1b088e8ad}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;jpg;jpeg;jpe;png;manifest</Extensions>
     </Filter>
-    <Filter Include="source\jsoncpp">
-      <UniqueIdentifier>{1a1abf64-483b-4eb9-a401-efdfa8255be9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="resource\Scene">
+    <Filter Include="Resources\Scene">
       <UniqueIdentifier>{a3b38869-b3e0-437e-92e1-50137239d5e8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="resource\ccbResources">
-      <UniqueIdentifier>{5b5810be-fba7-42da-89de-ee9786a5c9c9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="resource\Image">
+    <Filter Include="Resources\Image">
       <UniqueIdentifier>{3edc8ee8-c0c6-41ee-97c7-2b3f8a312237}</UniqueIdentifier>
     </Filter>
-    <Filter Include="resource\Image\resources-iphonehd">
+    <Filter Include="Resources\Image\resources-iphonehd">
       <UniqueIdentifier>{5cbc9e86-271c-40ec-90b0-f3a85978b8ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\Jsonbox">
-      <UniqueIdentifier>{259027f6-59ca-4d88-84f7-57e452d59829}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\loader">
-      <UniqueIdentifier>{9ea79ca1-292a-46a9-a272-000de5599492}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\common">
-      <UniqueIdentifier>{42dde2f2-bd15-4a20-92f7-35a79560e0ca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\iGame.ico">
-      <Filter>resource</Filter>
-    </None>
-    <None Include="..\library\jsoncpp\src\lib_json\json_internalarray.inl">
-      <Filter>source\jsoncpp</Filter>
-    </None>
-    <None Include="..\library\jsoncpp\src\lib_json\json_internalmap.inl">
-      <Filter>source\jsoncpp</Filter>
-    </None>
-    <None Include="..\library\jsoncpp\src\lib_json\json_valueiterator.inl">
-      <Filter>source\jsoncpp</Filter>
-    </None>
-    <None Include="..\library\jsoncpp\src\lib_json\sconscript">
-      <Filter>source\jsoncpp</Filter>
+      <Filter>Resources</Filter>
     </None>
     <None Include="..\Resources\account.png">
-      <Filter>resource</Filter>
+      <Filter>Resources</Filter>
     </None>
     <None Include="..\Resources\Default.png">
-      <Filter>resource</Filter>
+      <Filter>Resources</Filter>
     </None>
     <None Include="..\Resources\Icon.png">
-      <Filter>resource</Filter>
+      <Filter>Resources</Filter>
     </None>
     <None Include="..\Resources\Icon%402x.png">
-      <Filter>resource</Filter>
+      <Filter>Resources</Filter>
     </None>
     <None Include="..\Resources\Icon-72.png">
-      <Filter>resource</Filter>
+      <Filter>Resources</Filter>
     </None>
     <None Include="..\Resources\Icon-Small.png">
-      <Filter>resource</Filter>
+      <Filter>Resources</Filter>
     </None>
     <None Include="..\Resources\Icon-Small%402x.png">
-      <Filter>resource</Filter>
+      <Filter>Resources</Filter>
     </None>
     <None Include="..\Resources\Icon-Small-50.png">
-      <Filter>resource</Filter>
-    </None>
-    <None Include="..\Resources\ccbResources\ccbDefaultImages.plist">
-      <Filter>resource\ccbResources</Filter>
-    </None>
-    <None Include="..\Resources\ccbResources\ccbParticleStars.png">
-      <Filter>resource\ccbResources</Filter>
-    </None>
-    <None Include="..\Resources\ccbResources\ccbDefaultImages.png">
-      <Filter>resource\ccbResources</Filter>
-    </None>
-    <None Include="..\Resources\ccbResources\ccbParticleFire.png">
-      <Filter>resource\ccbResources</Filter>
-    </None>
-    <None Include="..\Resources\ccbResources\ccbParticleSmoke.png">
-      <Filter>resource\ccbResources</Filter>
-    </None>
-    <None Include="..\Resources\ccbResources\ccbParticleSnow.png">
-      <Filter>resource\ccbResources</Filter>
+      <Filter>Resources</Filter>
     </None>
     <None Include="..\Resources\FriendListScene.ccbi">
-      <Filter>resource\Scene</Filter>
+      <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\HeadScene.ccbi">
-      <Filter>resource\Scene</Filter>
+      <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\LoginScene.ccbi">
-      <Filter>resource\Scene</Filter>
+      <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\MainGameScene.ccbi">
-      <Filter>resource\Scene</Filter>
+      <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\TaskListScene.ccbi">
-      <Filter>resource\Scene</Filter>
+      <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\MainSceneTemplate.ccbi">
-      <Filter>resource\Scene</Filter>
+      <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\AddFriendScene.ccbi">
-      <Filter>resource\Scene</Filter>
+      <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\ThirdLoginScene.ccbi">
-      <Filter>resource\Scene</Filter>
+      <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\transparent.png">
-      <Filter>resource</Filter>
+      <Filter>Resources</Filter>
     </None>
     <None Include="..\Resources\Image\main.png">
-      <Filter>resource\Image</Filter>
+      <Filter>Resources\Image</Filter>
     </None>
     <None Include="..\Resources\Image\login.plist">
-      <Filter>resource\Image</Filter>
+      <Filter>Resources\Image</Filter>
     </None>
     <None Include="..\Resources\Image\login.png">
-      <Filter>resource\Image</Filter>
+      <Filter>Resources\Image</Filter>
     </None>
     <None Include="..\Resources\Image\main.plist">
-      <Filter>resource\Image</Filter>
+      <Filter>Resources\Image</Filter>
     </None>
     <None Include="..\Resources\Image\friends.plist">
-      <Filter>resource\Image</Filter>
+      <Filter>Resources\Image</Filter>
     </None>
     <None Include="..\Resources\Image\friends.png">
-      <Filter>resource\Image</Filter>
+      <Filter>Resources\Image</Filter>
     </None>
     <None Include="..\Resources\NewMailScene.ccbi">
-      <Filter>resource\Scene</Filter>
+      <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\SysMailScene.ccbi">
-      <Filter>resource\Scene</Filter>
+      <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\UserMailScene.ccbi">
-      <Filter>resource\Scene</Filter>
+      <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\Image\Arial.fnt">
-      <Filter>resource\Image</Filter>
+      <Filter>Resources\Image</Filter>
     </None>
     <None Include="..\Resources\Image\Arial.png">
-      <Filter>resource\Image</Filter>
+      <Filter>Resources\Image</Filter>
     </None>
     <None Include="..\Resources\Image\resources-iphonehd\Arial.fnt">
-      <Filter>resource\Image\resources-iphonehd</Filter>
+      <Filter>Resources\Image\resources-iphonehd</Filter>
     </None>
     <None Include="..\Resources\Image\resources-iphonehd\Arial.png">
-      <Filter>resource\Image\resources-iphonehd</Filter>
+      <Filter>Resources\Image\resources-iphonehd</Filter>
     </None>
     <None Include="..\Resources\Image\resources-iphonehd\friends.plist">
-      <Filter>resource\Image\resources-iphonehd</Filter>
+      <Filter>Resources\Image\resources-iphonehd</Filter>
     </None>
     <None Include="..\Resources\Image\resources-iphonehd\friends.png">
-      <Filter>resource\Image\resources-iphonehd</Filter>
+      <Filter>Resources\Image\resources-iphonehd</Filter>
     </None>
     <None Include="..\Resources\Image\resources-iphonehd\login.plist">
-      <Filter>resource\Image\resources-iphonehd</Filter>
+      <Filter>Resources\Image\resources-iphonehd</Filter>
     </None>
     <None Include="..\Resources\Image\resources-iphonehd\login.png">
-      <Filter>resource\Image\resources-iphonehd</Filter>
+      <Filter>Resources\Image\resources-iphonehd</Filter>
     </None>
     <None Include="..\Resources\Image\resources-iphonehd\main.plist">
-      <Filter>resource\Image\resources-iphonehd</Filter>
+      <Filter>Resources\Image\resources-iphonehd</Filter>
     </None>
     <None Include="..\Resources\Image\resources-iphonehd\main.png">
-      <Filter>resource\Image\resources-iphonehd</Filter>
+      <Filter>Resources\Image\resources-iphonehd</Filter>
     </None>
     <None Include="..\Resources\tab_normal.png">
-      <Filter>resource</Filter>
+      <Filter>Resources</Filter>
     </None>
     <None Include="..\Resources\tab_line.png">
-      <Filter>resource</Filter>
+      <Filter>Resources</Filter>
     </None>
     <None Include="..\Resources\tab_kuan.9.png">
-      <Filter>resource</Filter>
+      <Filter>Resources</Filter>
     </None>
     <None Include="..\Resources\tab_active.png">
-      <Filter>resource</Filter>
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator.plist">
+      <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
+    </None>
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator.png">
+      <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
+    </None>
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_1.gif">
+      <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
+    </None>
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_2.gif">
+      <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
+    </None>
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_3.gif">
+      <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
+    </None>
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_4.gif">
+      <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
+    </None>
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_5.gif">
+      <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
+    </None>
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_6.gif">
+      <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
+    </None>
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_7.gif">
+      <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
+    </None>
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_8.gif">
+      <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
+    </None>
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_9.gif">
+      <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
+    </None>
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_10.gif">
+      <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
+    </None>
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_11.gif">
+      <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
+    </None>
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_12.gif">
+      <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="iGame.rc">
-      <Filter>resource</Filter>
+      <Filter>Resources</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="resource.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="main.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\AppDelegate.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\XmlParser.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\library\jsoncpp\src\lib_json\json_batchallocator.h">
-      <Filter>source\jsoncpp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\FriendListScene.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AboutScene.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\LoginScene.h">
-      <Filter>include</Filter>
+      <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\MainGameScene.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AddFriendScene.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CCMessageDialog.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\MainSceneTemplate.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\TaskListScene.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ThirdLoginScene.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\MainLayerBase.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\LoadingScene.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\NewMailScene.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CCTabView.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\MailMainScene.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\MailListScene.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AboutSceneLoader.h">
-      <Filter>include\loader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AddFriendSceneLoader.h">
-      <Filter>include\loader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CCControlSwitchLoader.h">
-      <Filter>include\loader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CCTableViewLoader.h">
-      <Filter>include\loader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\FriendListSceneLoader.h">
-      <Filter>include\loader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\LoginSceneLoader.h">
-      <Filter>include\loader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\MailListSceneLoader.h">
-      <Filter>include\loader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\MailMainSceneLoader.h">
-      <Filter>include\loader</Filter>
+      <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\MainGameSceneLoader.h">
-      <Filter>include\loader</Filter>
+      <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\MainSceneTemplateLoader.h">
-      <Filter>include\loader</Filter>
+    <ClInclude Include="..\Classes\Mail\MailListScene.h">
+      <Filter>Classes\Mail</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\NewMailSceneLoader.h">
-      <Filter>include\loader</Filter>
+    <ClInclude Include="..\Classes\Mail\MailListSceneLoader.h">
+      <Filter>Classes\Mail</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\TaskListSceneLoader.h">
-      <Filter>include\loader</Filter>
+    <ClInclude Include="..\Classes\Mail\MailMainScene.h">
+      <Filter>Classes\Mail</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ThirdLoginSceneLoader.h">
-      <Filter>include\loader</Filter>
+    <ClInclude Include="..\Classes\Mail\MailMainSceneLoader.h">
+      <Filter>Classes\Mail</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CCEditBoxLoader.h">
-      <Filter>include\loader</Filter>
+    <ClInclude Include="..\Classes\Mail\NewMailScene.h">
+      <Filter>Classes\Mail</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\common.h">
-      <Filter>include\common</Filter>
+    <ClInclude Include="..\Classes\Mail\NewMailSceneLoader.h">
+      <Filter>Classes\Mail</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\StringExt.h">
-      <Filter>include\common</Filter>
+    <ClInclude Include="..\Classes\Login\CharacterScene.h">
+      <Filter>Classes\Login</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CharacterScene.h">
-      <Filter>include</Filter>
+    <ClInclude Include="..\Classes\Login\CharacterSceneLoader.h">
+      <Filter>Classes\Login</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CharacterSceneLoader.h">
-      <Filter>include</Filter>
+    <ClInclude Include="..\Classes\Login\LoginScene.h">
+      <Filter>Classes\Login</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ServerListScene.h">
-      <Filter>include</Filter>
+    <ClInclude Include="..\Classes\Login\LoginSceneLoader.h">
+      <Filter>Classes\Login</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ServerListSceneLoader.h">
-      <Filter>include</Filter>
+    <ClInclude Include="..\Classes\Login\ServerListScene.h">
+      <Filter>Classes\Login</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Login\ServerListSceneLoader.h">
+      <Filter>Classes\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Login\ThirdLoginScene.h">
+      <Filter>Classes\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Login\ThirdLoginSceneLoader.h">
+      <Filter>Classes\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Friends\AddFriendScene.h">
+      <Filter>Classes\Friends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Friends\AddFriendSceneLoader.h">
+      <Filter>Classes\Friends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Friends\FriendListScene.h">
+      <Filter>Classes\Friends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Friends\FriendListSceneLoader.h">
+      <Filter>Classes\Friends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\common.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\GlobalData.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\MainLayerBase.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\MainSceneTemplate.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\MainSceneTemplateLoader.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\StringExt.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Other\AboutScene.h">
+      <Filter>Classes\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Other\AboutSceneLoader.h">
+      <Filter>Classes\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Other\CCControlSwitchLoader.h">
+      <Filter>Classes\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Other\CCEditBoxLoader.h">
+      <Filter>Classes\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Other\CCTableViewLoader.h">
+      <Filter>Classes\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Task\TaskListScene.h">
+      <Filter>Classes\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Task\TaskListSceneLoader.h">
+      <Filter>Classes\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\CCMessageDialog.h">
+      <Filter>Classes\UILibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\CCTabView.h">
+      <Filter>Classes\UILibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\LoadingScene.h">
+      <Filter>Classes\UILibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\SlidingMenu.h">
+      <Filter>Classes\UILibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\CCActivityIndicator\CCActivityIndicator.h">
+      <Filter>Classes\UILibrary\CCActivityIndicator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\CCGestureRecognizer\CCGestureRecognizer.h">
+      <Filter>Classes\UILibrary\CCGestureRecognizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\CCGestureRecognizer\CCLongPressGestureRecognizer.h">
+      <Filter>Classes\UILibrary\CCGestureRecognizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\CCGestureRecognizer\CCPanGestureRecognizer.h">
+      <Filter>Classes\UILibrary\CCGestureRecognizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\CCGestureRecognizer\CCPinchGestureRecognizer.h">
+      <Filter>Classes\UILibrary\CCGestureRecognizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\CCGestureRecognizer\CCSwipeGestureRecognizer.h">
+      <Filter>Classes\UILibrary\CCGestureRecognizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\CCGestureRecognizer\CCTapGestureRecognizer.h">
+      <Filter>Classes\UILibrary\CCGestureRecognizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\CCProgressLayer\CCProgressLayer.h">
+      <Filter>Classes\UILibrary\CCProgressLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\library\jsonconverter\CCJSONConverter.h">
+      <Filter>Library\jsonconverter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\library\jsonconverter\CCJSONData.h">
+      <Filter>Library\jsonconverter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\library\jsonconverter\cJSON.h">
+      <Filter>Library\jsonconverter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\library\XmlParser\XmlParser.h">
+      <Filter>Library\XmlParser</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\XmlParser.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\library\jsoncpp\src\lib_json\json_reader.cpp">
-      <Filter>source\jsoncpp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\library\jsoncpp\src\lib_json\json_value.cpp">
-      <Filter>source\jsoncpp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\library\jsoncpp\src\lib_json\json_writer.cpp">
-      <Filter>source\jsoncpp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\FriendListScene.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AboutScene.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\LoginScene.cpp">
-      <Filter>source</Filter>
+      <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\MainGameScene.cpp">
-      <Filter>source</Filter>
+      <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\AddFriendScene.cpp">
-      <Filter>source</Filter>
+    <ClCompile Include="..\Classes\Mail\MailListScene.cpp">
+      <Filter>Classes\Mail</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\CCMessageDialog.cpp">
-      <Filter>source</Filter>
+    <ClCompile Include="..\Classes\Mail\MailMainScene.cpp">
+      <Filter>Classes\Mail</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\MainSceneTemplate.cpp">
-      <Filter>source</Filter>
+    <ClCompile Include="..\Classes\Mail\NewMailScene.cpp">
+      <Filter>Classes\Mail</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\TaskListScene.cpp">
-      <Filter>source</Filter>
+    <ClCompile Include="..\Classes\Login\CharacterScene.cpp">
+      <Filter>Classes\Login</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\ThirdLoginScene.cpp">
-      <Filter>source</Filter>
+    <ClCompile Include="..\Classes\Login\LoginScene.cpp">
+      <Filter>Classes\Login</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\MainLayerBase.cpp">
-      <Filter>source</Filter>
+    <ClCompile Include="..\Classes\Login\ServerListScene.cpp">
+      <Filter>Classes\Login</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\LoadingScene.cpp">
-      <Filter>source</Filter>
+    <ClCompile Include="..\Classes\Login\ThirdLoginScene.cpp">
+      <Filter>Classes\Login</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\NewMailScene.cpp">
-      <Filter>source</Filter>
+    <ClCompile Include="..\Classes\Friends\AddFriendScene.cpp">
+      <Filter>Classes\Friends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Friends\FriendListScene.cpp">
+      <Filter>Classes\Friends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\GlobalData.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\MainLayerBase.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\MainSceneTemplate.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Other\AboutScene.cpp">
+      <Filter>Classes\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Task\TaskListScene.cpp">
+      <Filter>Classes\Task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\CCMessageDialog.cpp">
+      <Filter>Classes\UILibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\CCTabView.cpp">
+      <Filter>Classes\UILibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\LoadingScene.cpp">
+      <Filter>Classes\UILibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\SlidingMenu.cpp">
+      <Filter>Classes\UILibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\CCActivityIndicator\CCActivityIndicator.cpp">
+      <Filter>Classes\UILibrary\CCActivityIndicator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCGestureRecognizer.cpp">
+      <Filter>Classes\UILibrary\CCGestureRecognizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCLongPressGestureRecognizer.cpp">
+      <Filter>Classes\UILibrary\CCGestureRecognizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCPanGestureRecognizer.cpp">
+      <Filter>Classes\UILibrary\CCGestureRecognizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCPinchGestureRecognizer.cpp">
+      <Filter>Classes\UILibrary\CCGestureRecognizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCSwipeGestureRecognizer.cpp">
+      <Filter>Classes\UILibrary\CCGestureRecognizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCTapGestureRecognizer.cpp">
+      <Filter>Classes\UILibrary\CCGestureRecognizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\CCProgressLayer\CCProgressLayer.cpp">
+      <Filter>Classes\UILibrary\CCProgressLayer</Filter>
     </ClCompile>
     <ClCompile Include="..\library\JsonBox\src\Array.cpp">
-      <Filter>source\Jsonbox</Filter>
+      <Filter>Library\JsonBox</Filter>
     </ClCompile>
     <ClCompile Include="..\library\JsonBox\src\Convert.cpp">
-      <Filter>source\Jsonbox</Filter>
+      <Filter>Library\JsonBox</Filter>
     </ClCompile>
     <ClCompile Include="..\library\JsonBox\src\Escaper.cpp">
-      <Filter>source\Jsonbox</Filter>
-    </ClCompile>
-    <ClCompile Include="..\library\JsonBox\src\Indenter.cpp">
-      <Filter>source\Jsonbox</Filter>
-    </ClCompile>
-    <ClCompile Include="..\library\JsonBox\src\Object.cpp">
-      <Filter>source\Jsonbox</Filter>
-    </ClCompile>
-    <ClCompile Include="..\library\JsonBox\src\SolidusEscaper.cpp">
-      <Filter>source\Jsonbox</Filter>
-    </ClCompile>
-    <ClCompile Include="..\library\JsonBox\src\Value.cpp">
-      <Filter>source\Jsonbox</Filter>
+      <Filter>Library\JsonBox</Filter>
     </ClCompile>
     <ClCompile Include="..\library\JsonBox\src\IndentCanceller.cpp">
-      <Filter>source\Jsonbox</Filter>
+      <Filter>Library\JsonBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\JsonBox\src\Indenter.cpp">
+      <Filter>Library\JsonBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\JsonBox\src\Object.cpp">
+      <Filter>Library\JsonBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\JsonBox\src\SolidusEscaper.cpp">
+      <Filter>Library\JsonBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\JsonBox\src\Value.cpp">
+      <Filter>Library\JsonBox</Filter>
     </ClCompile>
     <ClCompile Include="..\library\jsonconverter\CCJSONConverter.cpp">
-      <Filter>source</Filter>
+      <Filter>Library\jsonconverter</Filter>
     </ClCompile>
     <ClCompile Include="..\library\jsonconverter\cJSON.c">
-      <Filter>source</Filter>
+      <Filter>Library\jsonconverter</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\CCTabView.cpp">
-      <Filter>source</Filter>
+    <ClCompile Include="..\library\XmlParser\XmlParser.cpp">
+      <Filter>Library\XmlParser</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\MailMainScene.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\MailListScene.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CharacterScene.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\ServerListScene.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
 </Project>

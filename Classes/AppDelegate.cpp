@@ -55,7 +55,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     if (platform == kTargetIphone || platform == kTargetIpad)
     {
         searchPaths.push_back("Image");
-        searchPaths.push_back("ccbResources");
+        //searchPaths.push_back("ccbResources");
         CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
         
         if (screenSize.height > 480)
@@ -73,7 +73,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     else if (platform == kTargetAndroid)
     {
 		searchPaths.push_back("Image");
-		searchPaths.push_back("ccbResources");
+		//searchPaths.push_back("ccbResources");
 		CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
 
 		if (screenSize.height > 960)
@@ -96,11 +96,20 @@ bool AppDelegate::applicationDidFinishLaunching()
 	else if (platform == kTargetWindows)
 	{
 		searchPaths.push_back("Image");
-		searchPaths.push_back("ccbResources");
+		//searchPaths.push_back("ccbResources");
 		CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
 
 		//resourceSize = CCSizeMake(640, 960);
 		//resDirOrders.push_back("resources-iphonehd");
+		if (screenSize.height > 480)
+		{
+			resourceSize = CCSizeMake(640, 960);
+			resDirOrders.push_back("resources-iphonehd");
+		}
+		else
+		{
+			resDirOrders.push_back("resources-iphone");
+		}
 
 		CCFileUtils::sharedFileUtils()->setSearchResolutionsOrder(resDirOrders);
 	}

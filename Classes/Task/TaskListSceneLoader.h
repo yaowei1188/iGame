@@ -19,7 +19,7 @@ class TaskListSceneLoader : public CCLayerLoader {
 public:
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_METHOD(TaskListSceneLoader, loader);
 protected:
-//    CCB_VIRTUAL_NEW_AUTORELEASE_CREATECCNODE_METHOD(TaskListScene);
+    CCB_VIRTUAL_NEW_AUTORELEASE_CREATECCNODE_METHOD(TaskListScene);
 };
 
 #endif

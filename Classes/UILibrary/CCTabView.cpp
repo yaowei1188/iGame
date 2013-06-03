@@ -103,7 +103,7 @@ void CCTabView::initTabData()
 		return;
 	}
     
-    int tabCount = fmin(tabNameCount,tabViewCount);
+    int tabCount = min(tabNameCount,tabViewCount);
     
 	CCPoint tabStartPos = ccp(_tabSize.width/2 + _leftMargin,this->getContentSize().height-_tabSize.height/2);
     CCPoint lastPos = CCPointZero;

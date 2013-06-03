@@ -46,7 +46,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)CocosDenshion\include;$(SolutionDir)extensions;$(ProjectDir)..\library\jsoncpp\include;$(ProjectDir)..\library\JsonBox\include;$(ProjectDir)..\library\jsonconverter;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)CocosDenshion\include;$(SolutionDir)extensions;$(ProjectDir)..\library\jsoncpp\include;$(ProjectDir)..\library\JsonBox\include;$(ProjectDir)..\library\jsonconverter;$(ProjectDir)..\Classes\Common;$(ProjectDir)..\library\XmlParser;$(ProjectDir)..\Classes\UILibrary;$(ProjectDir)..\Classes\UILibrary\CCActivityIndicator;$(ProjectDir)..\Classes\Task;$(ProjectDir)..\Classes\Other;$(ProjectDir)..\Classes\Mail;$(ProjectDir)..\Classes\Login;$(ProjectDir)..\Classes\Friends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
@@ -122,18 +122,22 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="..\library\jsoncpp\src\lib_json\json_internalarray.inl" />
-    <None Include="..\library\jsoncpp\src\lib_json\json_internalmap.inl" />
-    <None Include="..\library\jsoncpp\src\lib_json\json_valueiterator.inl" />
-    <None Include="..\library\jsoncpp\src\lib_json\sconscript" />
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator.plist" />
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator.png" />
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_1.gif" />
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_10.gif" />
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_11.gif" />
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_12.gif" />
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_2.gif" />
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_3.gif" />
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_4.gif" />
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_5.gif" />
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_6.gif" />
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_7.gif" />
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_8.gif" />
+    <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_9.gif" />
     <None Include="..\Resources\account.png" />
     <None Include="..\Resources\AddFriendScene.ccbi" />
-    <None Include="..\Resources\ccbResources\ccbDefaultImages.plist" />
-    <None Include="..\Resources\ccbResources\ccbDefaultImages.png" />
-    <None Include="..\Resources\ccbResources\ccbParticleFire.png" />
-    <None Include="..\Resources\ccbResources\ccbParticleSmoke.png" />
-    <None Include="..\Resources\ccbResources\ccbParticleSnow.png" />
-    <None Include="..\Resources\ccbResources\ccbParticleStars.png" />
     <None Include="..\Resources\Default.png" />
     <None Include="..\Resources\FriendListScene.ccbi" />
     <None Include="..\Resources\HeadScene.ccbi" />
@@ -178,67 +182,88 @@
     <ResourceCompile Include="iGame.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Classes\AboutScene.h" />
-    <ClInclude Include="..\Classes\AboutSceneLoader.h" />
-    <ClInclude Include="..\Classes\AddFriendScene.h" />
-    <ClInclude Include="..\Classes\AddFriendSceneLoader.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
-    <ClInclude Include="..\Classes\CCControlSwitchLoader.h" />
-    <ClInclude Include="..\Classes\CCEditBoxLoader.h" />
-    <ClInclude Include="..\Classes\CCMessageDialog.h" />
-    <ClInclude Include="..\Classes\CCTableViewLoader.h" />
-    <ClInclude Include="..\Classes\CCTabView.h" />
-    <ClInclude Include="..\Classes\CharacterScene.h" />
-    <ClInclude Include="..\Classes\CharacterSceneLoader.h" />
-    <ClInclude Include="..\Classes\common.h" />
-    <ClInclude Include="..\Classes\FriendListScene.h" />
-    <ClInclude Include="..\Classes\FriendListSceneLoader.h" />
-    <ClInclude Include="..\Classes\LoadingScene.h" />
-    <ClInclude Include="..\Classes\LoginScene.h" />
-    <ClInclude Include="..\Classes\LoginSceneLoader.h" />
-    <ClInclude Include="..\Classes\MailListScene.h" />
-    <ClInclude Include="..\Classes\MailListSceneLoader.h" />
-    <ClInclude Include="..\Classes\MailMainScene.h" />
-    <ClInclude Include="..\Classes\MailMainSceneLoader.h" />
+    <ClInclude Include="..\Classes\Common\common.h" />
+    <ClInclude Include="..\Classes\Common\GlobalData.h" />
+    <ClInclude Include="..\Classes\Common\MainLayerBase.h" />
+    <ClInclude Include="..\Classes\Common\MainSceneTemplate.h" />
+    <ClInclude Include="..\Classes\Common\MainSceneTemplateLoader.h" />
+    <ClInclude Include="..\Classes\Common\StringExt.h" />
+    <ClInclude Include="..\Classes\Friends\AddFriendScene.h" />
+    <ClInclude Include="..\Classes\Friends\AddFriendSceneLoader.h" />
+    <ClInclude Include="..\Classes\Friends\FriendListScene.h" />
+    <ClInclude Include="..\Classes\Friends\FriendListSceneLoader.h" />
+    <ClInclude Include="..\Classes\Login\CharacterScene.h" />
+    <ClInclude Include="..\Classes\Login\CharacterSceneLoader.h" />
+    <ClInclude Include="..\Classes\Login\LoginScene.h" />
+    <ClInclude Include="..\Classes\Login\LoginSceneLoader.h" />
+    <ClInclude Include="..\Classes\Login\ServerListScene.h" />
+    <ClInclude Include="..\Classes\Login\ServerListSceneLoader.h" />
+    <ClInclude Include="..\Classes\Login\ThirdLoginScene.h" />
+    <ClInclude Include="..\Classes\Login\ThirdLoginSceneLoader.h" />
+    <ClInclude Include="..\Classes\Mail\MailListScene.h" />
+    <ClInclude Include="..\Classes\Mail\MailListSceneLoader.h" />
+    <ClInclude Include="..\Classes\Mail\MailMainScene.h" />
+    <ClInclude Include="..\Classes\Mail\MailMainSceneLoader.h" />
+    <ClInclude Include="..\Classes\Mail\NewMailScene.h" />
+    <ClInclude Include="..\Classes\Mail\NewMailSceneLoader.h" />
     <ClInclude Include="..\Classes\MainGameScene.h" />
     <ClInclude Include="..\Classes\MainGameSceneLoader.h" />
-    <ClInclude Include="..\Classes\MainLayerBase.h" />
-    <ClInclude Include="..\Classes\MainSceneTemplate.h" />
-    <ClInclude Include="..\Classes\MainSceneTemplateLoader.h" />
-    <ClInclude Include="..\Classes\NewMailScene.h" />
-    <ClInclude Include="..\Classes\NewMailSceneLoader.h" />
-    <ClInclude Include="..\Classes\ServerListScene.h" />
-    <ClInclude Include="..\Classes\ServerListSceneLoader.h" />
-    <ClInclude Include="..\Classes\StringExt.h" />
-    <ClInclude Include="..\Classes\TaskListScene.h" />
-    <ClInclude Include="..\Classes\TaskListSceneLoader.h" />
-    <ClInclude Include="..\Classes\ThirdLoginScene.h" />
-    <ClInclude Include="..\Classes\ThirdLoginSceneLoader.h" />
-    <ClInclude Include="..\Classes\XmlParser.h" />
-    <ClInclude Include="..\library\jsoncpp\src\lib_json\json_batchallocator.h" />
+    <ClInclude Include="..\Classes\Other\AboutScene.h" />
+    <ClInclude Include="..\Classes\Other\AboutSceneLoader.h" />
+    <ClInclude Include="..\Classes\Other\CCControlSwitchLoader.h" />
+    <ClInclude Include="..\Classes\Other\CCEditBoxLoader.h" />
+    <ClInclude Include="..\Classes\Other\CCTableViewLoader.h" />
+    <ClInclude Include="..\Classes\Task\TaskListScene.h" />
+    <ClInclude Include="..\Classes\Task\TaskListSceneLoader.h" />
+    <ClInclude Include="..\Classes\UILibrary\CCActivityIndicator\CCActivityIndicator.h" />
+    <ClInclude Include="..\Classes\UILibrary\CCGestureRecognizer\CCGestureRecognizer.h" />
+    <ClInclude Include="..\Classes\UILibrary\CCGestureRecognizer\CCLongPressGestureRecognizer.h" />
+    <ClInclude Include="..\Classes\UILibrary\CCGestureRecognizer\CCPanGestureRecognizer.h" />
+    <ClInclude Include="..\Classes\UILibrary\CCGestureRecognizer\CCPinchGestureRecognizer.h" />
+    <ClInclude Include="..\Classes\UILibrary\CCGestureRecognizer\CCSwipeGestureRecognizer.h" />
+    <ClInclude Include="..\Classes\UILibrary\CCGestureRecognizer\CCTapGestureRecognizer.h" />
+    <ClInclude Include="..\Classes\UILibrary\CCMessageDialog.h" />
+    <ClInclude Include="..\Classes\UILibrary\CCProgressLayer\CCProgressLayer.h" />
+    <ClInclude Include="..\Classes\UILibrary\CCTabView.h" />
+    <ClInclude Include="..\Classes\UILibrary\LoadingScene.h" />
+    <ClInclude Include="..\Classes\UILibrary\SlidingMenu.h" />
+    <ClInclude Include="..\library\jsonconverter\CCJSONConverter.h" />
+    <ClInclude Include="..\library\jsonconverter\CCJSONData.h" />
+    <ClInclude Include="..\library\jsonconverter\cJSON.h" />
+    <ClInclude Include="..\library\XmlParser\XmlParser.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Classes\AboutScene.cpp" />
-    <ClCompile Include="..\Classes\AddFriendScene.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\Classes\CCMessageDialog.cpp" />
-    <ClCompile Include="..\Classes\CCTabView.cpp" />
-    <ClCompile Include="..\Classes\CharacterScene.cpp" />
-    <ClCompile Include="..\Classes\FriendListScene.cpp" />
-    <ClCompile Include="..\Classes\LoadingScene.cpp" />
-    <ClCompile Include="..\Classes\LoginScene.cpp" />
-    <ClCompile Include="..\Classes\MailListScene.cpp" />
-    <ClCompile Include="..\Classes\MailMainScene.cpp" />
+    <ClCompile Include="..\Classes\Common\GlobalData.cpp" />
+    <ClCompile Include="..\Classes\Common\MainLayerBase.cpp" />
+    <ClCompile Include="..\Classes\Common\MainSceneTemplate.cpp" />
+    <ClCompile Include="..\Classes\Friends\AddFriendScene.cpp" />
+    <ClCompile Include="..\Classes\Friends\FriendListScene.cpp" />
+    <ClCompile Include="..\Classes\Login\CharacterScene.cpp" />
+    <ClCompile Include="..\Classes\Login\LoginScene.cpp" />
+    <ClCompile Include="..\Classes\Login\ServerListScene.cpp" />
+    <ClCompile Include="..\Classes\Login\ThirdLoginScene.cpp" />
+    <ClCompile Include="..\Classes\Mail\MailListScene.cpp" />
+    <ClCompile Include="..\Classes\Mail\MailMainScene.cpp" />
+    <ClCompile Include="..\Classes\Mail\NewMailScene.cpp" />
     <ClCompile Include="..\Classes\MainGameScene.cpp" />
-    <ClCompile Include="..\Classes\MainLayerBase.cpp" />
-    <ClCompile Include="..\Classes\MainSceneTemplate.cpp" />
-    <ClCompile Include="..\Classes\NewMailScene.cpp" />
-    <ClCompile Include="..\Classes\ServerListScene.cpp" />
-    <ClCompile Include="..\Classes\TaskListScene.cpp" />
-    <ClCompile Include="..\Classes\ThirdLoginScene.cpp" />
-    <ClCompile Include="..\Classes\XmlParser.cpp" />
+    <ClCompile Include="..\Classes\Other\AboutScene.cpp" />
+    <ClCompile Include="..\Classes\Task\TaskListScene.cpp" />
+    <ClCompile Include="..\Classes\UILibrary\CCActivityIndicator\CCActivityIndicator.cpp" />
+    <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCGestureRecognizer.cpp" />
+    <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCLongPressGestureRecognizer.cpp" />
+    <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCPanGestureRecognizer.cpp" />
+    <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCPinchGestureRecognizer.cpp" />
+    <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCSwipeGestureRecognizer.cpp" />
+    <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCTapGestureRecognizer.cpp" />
+    <ClCompile Include="..\Classes\UILibrary\CCMessageDialog.cpp" />
+    <ClCompile Include="..\Classes\UILibrary\CCProgressLayer\CCProgressLayer.cpp" />
+    <ClCompile Include="..\Classes\UILibrary\CCTabView.cpp" />
+    <ClCompile Include="..\Classes\UILibrary\LoadingScene.cpp" />
+    <ClCompile Include="..\Classes\UILibrary\SlidingMenu.cpp" />
     <ClCompile Include="..\library\JsonBox\src\Array.cpp" />
     <ClCompile Include="..\library\JsonBox\src\Convert.cpp" />
     <ClCompile Include="..\library\JsonBox\src\Escaper.cpp" />
@@ -249,9 +274,7 @@
     <ClCompile Include="..\library\JsonBox\src\Value.cpp" />
     <ClCompile Include="..\library\jsonconverter\CCJSONConverter.cpp" />
     <ClCompile Include="..\library\jsonconverter\cJSON.c" />
-    <ClCompile Include="..\library\jsoncpp\src\lib_json\json_reader.cpp" />
-    <ClCompile Include="..\library\jsoncpp\src\lib_json\json_value.cpp" />
-    <ClCompile Include="..\library\jsoncpp\src\lib_json\json_writer.cpp" />
+    <ClCompile Include="..\library\XmlParser\XmlParser.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -5,43 +5,64 @@
 #include "cocos-ext.h"
 
 #include "SimpleAudioEngine.h"
-#include "XmlParser.h"
-//#include "CCTableView.h"
-//#include "CustomCCTableViewCell.h"
+#include "MainGameScene.h"
+#include "MainSceneTemplate.h"
+#include "MainLayerBase.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class TaskListScene : public cocos2d::CCLayer,
-public CCTableViewDataSource,
-public CCTableViewDelegate,
-public CCNodeLoaderListener,
-public CCBMemberVariableAssigner
+class TaskListScene : public MainLayerBase,
+	public CCTableViewDataSource,
+	public CCTableViewDelegate,
+	public CCBSelectorResolver,
+	public CCNodeLoaderListener,
+	public CCBMemberVariableAssigner,
+	public CCMessageDialogDelegate
 {
 public:
-    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool init();  
+	TaskListScene();
+	~TaskListScene();
 
-    // there's no 'id' in cpp, so we recommand to return the exactly class pointer
-    static cocos2d::CCScene* scene();
-    
-    // a selector callback
-    void requestFinishedCallback(CCNode* pSender,void *p);
+	virtual bool init();  
 
-    // implement the "static node()" method manually
-//    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(TaskListScene,create);
-    
-    virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
-    virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
-    
-    CCTableView* mTableViewFriend;
-    
-//    virtual unsigned int numberOfRowsInSection(unsigned int mSection,CCTableView * mTableView);
-//	virtual unsigned int numberOfSectionsInCCTableView(CCTableView * mTableView){return 1;}
-//	virtual void ccTableViewCommitCellEditingStyleForRowAtIndexPath(CCTableView * mTableView,CCTableViewCellEditingStyle mCellEditStyle,CCIndexPath &mIndexPath){}
-	/*cell was set to anchor point(0.5,0.5)*/
-//	virtual CCTableViewCell * cellForRowAtIndexPath(CCIndexPath &mIndexPath,CCTableView * mTableView);
-//    float cellHeightForRowAtIndexPath(CCIndexPath & mIndexPath,CCTableView * mTableView);
+	// there's no 'id' in cpp, so we recommand to return the exactly class pointer
+	static cocos2d::CCScene* scene();
+
+	// a selector callback
+	void requestFinishedCallback(CCNode* pSender,void *p);
+	void doSearch();
+
+	// implement the "static node()" method manually
+	CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(TaskListScene,create);
+
+	virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
+	virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
+
+	virtual void scrollViewDidScroll(cocos2d::extension::CCScrollView* view) {};
+	virtual void scrollViewDidZoom(cocos2d::extension::CCScrollView* view) {}
+
+	virtual void tableCellTouched(cocos2d::extension::CCTableView* table, CCTableViewCell* cell);
+	virtual cocos2d::CCSize cellSizeForTable(cocos2d::extension::CCTableView *table);
+	virtual CCTableViewCell* tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx);
+	virtual unsigned int numberOfCellsInTableView(CCTableView *table);
+	virtual bool hasFixedCellSize();
+	virtual CCSize cellSizeForIndex(CCTableView *table, unsigned int idx);
+	virtual void tableCellHighlight(CCTableView* table, CCTableViewCell* cell);
+	virtual void tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell);
+
+	virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
+	virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
+
+	void toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent);
+	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
+	void didClickButton(CCMessageDialog* dialog,unsigned int index);
+	void deleteEntry(std::string &targetUser);
+	CCTableView* mTableViewMail;
+	//    MainSceneTemplate *mMainSceneTemp;
+	unsigned int selectedindex;
+
+	CCArray *mArrayList;
 };
 
-#endif  // __HELLOWORLD_SCENE_H__
+#endif  // __TASK_LIST_SCENE_H__

@@ -1,7 +1,5 @@
 #include "MailListScene.h"
 
-using namespace cocos2d;
-
 CCScene* MailListScene::scene()
 {
     CCScene * scene = NULL;
