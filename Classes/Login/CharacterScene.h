@@ -5,13 +5,14 @@
 #include "cocos-ext.h"
 
 #include "SimpleAudioEngine.h"
-#include "XmlParser.h"
-#include "common.h"
+#include "MainLayerBase.h"
+
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
+using namespace std;
 
-class CharacterScene : public cocos2d::CCLayer,
+class CharacterScene : public MainLayerBase,
 public CCBSelectorResolver,
 public CCBMemberVariableAssigner,
 public CCNodeLoaderListener
@@ -37,15 +38,11 @@ public:
     
     virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
     virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
-    void callbackSwitch(CCObject* pSender);
 
 	void doSubmit();
-	void parseJson();
 
 	CCEditBox *m_txtAccount;
-	CCEditBox *m_txtPassword;
-    
-    bool m_blnRememberMe;
+    CCSprite *m_ImgGroup;
 };
 
 #endif  // __CharacterScene_SCENE_H__

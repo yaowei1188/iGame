@@ -18,8 +18,7 @@ public CCTableViewDataSource,
 public CCTableViewDelegate,
 public CCBSelectorResolver,
 public CCNodeLoaderListener,
-public CCBMemberVariableAssigner,
-public CCMessageDialogDelegate
+public CCBMemberVariableAssigner
 {
 public:
     ServerListScene();
@@ -56,11 +55,9 @@ public:
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
     virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
     
-    void toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent);
     void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
-	void didClickButton(CCMessageDialog* dialog,unsigned int index);
-	void deleteEntry(std::string &targetUser);
-    CCTableView* mTableViewMail;
+	void submitSelectedServer(std::string &targetUser);
+    CCTableView* mTableView;
 //    MainSceneTemplate *mMainSceneTemp;
     unsigned int selectedindex;
     
