@@ -229,6 +229,21 @@
     <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_12.gif">
       <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
     </None>
+    <None Include="..\Resources\TaskRewardScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\TaskDetailScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\TaskBoxScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\ServerListScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\CharacterScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="iGame.rc">

@@ -5,13 +5,9 @@
 #include "cocos-ext.h"
 
 #include "SimpleAudioEngine.h"
-#include "XmlParser.h"
-
-//#include "CCMessageDialog.h"
 #include "MainGameScene.h"
 #include "MainSceneTemplate.h"
 #include "MainLayerBase.h"
-#include "common.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;

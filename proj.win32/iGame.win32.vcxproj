@@ -138,6 +138,7 @@
     <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_9.gif" />
     <None Include="..\Resources\account.png" />
     <None Include="..\Resources\AddFriendScene.ccbi" />
+    <None Include="..\Resources\CharacterScene.ccbi" />
     <None Include="..\Resources\Default.png" />
     <None Include="..\Resources\FriendListScene.ccbi" />
     <None Include="..\Resources\HeadScene.ccbi" />
@@ -167,12 +168,16 @@
     <None Include="..\Resources\MainGameScene.ccbi" />
     <None Include="..\Resources\MainSceneTemplate.ccbi" />
     <None Include="..\Resources\NewMailScene.ccbi" />
+    <None Include="..\Resources\ServerListScene.ccbi" />
     <None Include="..\Resources\SysMailScene.ccbi" />
     <None Include="..\Resources\tab_active.png" />
     <None Include="..\Resources\tab_kuan.9.png" />
     <None Include="..\Resources\tab_line.png" />
     <None Include="..\Resources\tab_normal.png" />
+    <None Include="..\Resources\TaskBoxScene.ccbi" />
+    <None Include="..\Resources\TaskDetailScene.ccbi" />
     <None Include="..\Resources\TaskListScene.ccbi" />
+    <None Include="..\Resources\TaskRewardScene.ccbi" />
     <None Include="..\Resources\ThirdLoginScene.ccbi" />
     <None Include="..\Resources\transparent.png" />
     <None Include="..\Resources\UserMailScene.ccbi" />

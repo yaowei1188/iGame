@@ -15,6 +15,11 @@
 #include "MainSceneTemplateLoader.h"
 #include "CCControlSwitchLoader.h"
 #include "ThirdLoginSceneLoader.h"
+
+#include "CharacterSceneLoader.h"
+#include "ServerListSceneLoader.h"
+
+
 #include "NewMailSceneLoader.h"
 #include "MailMainScene.h"
 
@@ -131,6 +136,9 @@ bool AppDelegate::applicationDidFinishLaunching()
     ccNodeLoaderLibrary->registerCCNodeLoader("ThirdLoginScene", ThirdLoginSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("NewMailScene", NewMailSceneLoader::loader());
 
+	ccNodeLoaderLibrary->registerCCNodeLoader("ServerListScene", ServerListSceneLoader::loader());
+	ccNodeLoaderLibrary->registerCCNodeLoader("CharacterScene", CharacterSceneLoader::loader());
+
     cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
     ccbReader->autorelease();
     
@@ -138,10 +146,10 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("main.plist");
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("friends.plist");
     
-    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
+    //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
 
 	//CCScene *pScene = MailMainScene::scene();
-//    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("ivantest.ccbi");
+    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("ServerListScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("FriendListScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskListScene.ccbi");
