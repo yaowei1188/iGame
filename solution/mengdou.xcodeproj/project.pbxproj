@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2081D0E3175F73C60000414C /* TaskDetailScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2081D0E0175F73C60000414C /* TaskDetailScene.cpp */; };
+		2081D0E6175F84FF0000414C /* Task1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2081D0E5175F84FF0000414C /* Task1.plist */; };
 		20878674172E8C0400A7404A /* NewMailScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20878671172E8C0400A7404A /* NewMailScene.ccbi */; };
 		20878675172E8C0400A7404A /* SysMailScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20878672172E8C0400A7404A /* SysMailScene.ccbi */; };
 		20878676172E8C0400A7404A /* UserMailScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20878673172E8C0400A7404A /* UserMailScene.ccbi */; };
@@ -28,6 +30,11 @@
 		20D2E85817521C900059F2BE /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20D2E85017521C900059F2BE /* Object.cpp */; };
 		20D2E85917521C900059F2BE /* SolidusEscaper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20D2E85117521C900059F2BE /* SolidusEscaper.cpp */; };
 		20D2E85A17521C900059F2BE /* Value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20D2E85217521C900059F2BE /* Value.cpp */; };
+		20F513E6175E332800580D5F /* CharacterScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20F513E1175E332800580D5F /* CharacterScene.ccbi */; };
+		20F513E7175E332800580D5F /* ServerListScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20F513E2175E332800580D5F /* ServerListScene.ccbi */; };
+		20F513E8175E332800580D5F /* TaskBoxScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20F513E3175E332800580D5F /* TaskBoxScene.ccbi */; };
+		20F513E9175E332800580D5F /* TaskDetailScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20F513E4175E332800580D5F /* TaskDetailScene.ccbi */; };
+		20F513EA175E332800580D5F /* TaskRewardScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20F513E5175E332800580D5F /* TaskRewardScene.ccbi */; };
 		2C7749A9175C797C00FF722E /* CCJSONConverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749A4175C797C00FF722E /* CCJSONConverter.cpp */; };
 		2C7749AA175C797C00FF722E /* cJSON.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749A7175C797C00FF722E /* cJSON.c */; };
 		2C7749AF175C7C3400FF722E /* XmlParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749AD175C7C3400FF722E /* XmlParser.cpp */; };
@@ -307,6 +314,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2081D0E0175F73C60000414C /* TaskDetailScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TaskDetailScene.cpp; sourceTree = "<group>"; };
+		2081D0E1175F73C60000414C /* TaskDetailScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskDetailScene.h; sourceTree = "<group>"; };
+		2081D0E2175F73C60000414C /* TaskDetailSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskDetailSceneLoader.h; sourceTree = "<group>"; };
+		2081D0E5175F84FF0000414C /* Task1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Task1.plist; sourceTree = "<group>"; };
 		20878671172E8C0400A7404A /* NewMailScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = NewMailScene.ccbi; path = Resources/NewMailScene.ccbi; sourceTree = "<group>"; };
 		20878672172E8C0400A7404A /* SysMailScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = SysMailScene.ccbi; path = Resources/SysMailScene.ccbi; sourceTree = "<group>"; };
 		20878673172E8C0400A7404A /* UserMailScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = UserMailScene.ccbi; path = Resources/UserMailScene.ccbi; sourceTree = "<group>"; };
@@ -328,6 +339,11 @@
 		20D2E85017521C900059F2BE /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Object.cpp; path = library/JsonBox/src/Object.cpp; sourceTree = "<group>"; };
 		20D2E85117521C900059F2BE /* SolidusEscaper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SolidusEscaper.cpp; path = library/JsonBox/src/SolidusEscaper.cpp; sourceTree = "<group>"; };
 		20D2E85217521C900059F2BE /* Value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Value.cpp; path = library/JsonBox/src/Value.cpp; sourceTree = "<group>"; };
+		20F513E1175E332800580D5F /* CharacterScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = CharacterScene.ccbi; path = Resources/CharacterScene.ccbi; sourceTree = "<group>"; };
+		20F513E2175E332800580D5F /* ServerListScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = ServerListScene.ccbi; path = Resources/ServerListScene.ccbi; sourceTree = "<group>"; };
+		20F513E3175E332800580D5F /* TaskBoxScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = TaskBoxScene.ccbi; path = Resources/TaskBoxScene.ccbi; sourceTree = "<group>"; };
+		20F513E4175E332800580D5F /* TaskDetailScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = TaskDetailScene.ccbi; path = Resources/TaskDetailScene.ccbi; sourceTree = "<group>"; };
+		20F513E5175E332800580D5F /* TaskRewardScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = TaskRewardScene.ccbi; path = Resources/TaskRewardScene.ccbi; sourceTree = "<group>"; };
 		2C7749A4175C797C00FF722E /* CCJSONConverter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCJSONConverter.cpp; sourceTree = "<group>"; };
 		2C7749A5175C797C00FF722E /* CCJSONConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCJSONConverter.h; sourceTree = "<group>"; };
 		2C7749A6175C797C00FF722E /* CCJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCJSONData.h; sourceTree = "<group>"; };
@@ -930,6 +946,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2081D0E4175F84FF0000414C /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				2081D0E5175F84FF0000414C /* Task1.plist */,
+			);
+			name = Task;
+			path = Resources/Task;
+			sourceTree = "<group>";
+		};
 		20C767481751C6F100038E56 /* sound */ = {
 			isa = PBXGroup;
 			children = (
@@ -1066,6 +1091,9 @@
 		2C7749DD175C7C6200FF722E /* Task */ = {
 			isa = PBXGroup;
 			children = (
+				2081D0E0175F73C60000414C /* TaskDetailScene.cpp */,
+				2081D0E1175F73C60000414C /* TaskDetailScene.h */,
+				2081D0E2175F73C60000414C /* TaskDetailSceneLoader.h */,
 				2C7749DE175C7C6200FF722E /* TaskListScene.cpp */,
 				2C7749DF175C7C6200FF722E /* TaskListScene.h */,
 				2C7749E0175C7C6200FF722E /* TaskListSceneLoader.h */,
@@ -1224,6 +1252,7 @@
 		6FBA778B17153C4400ECA334 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2081D0E4175F84FF0000414C /* Task */,
 				2C774A3B175C9AA100FF722E /* language */,
 				2C7749F8175C7D2300FF722E /* tab_active.png */,
 				2C7749F9175C7D2300FF722E /* tab_kuan.9.png */,
@@ -2196,6 +2225,11 @@
 		6FBA7AED1717997800ECA334 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				20F513E1175E332800580D5F /* CharacterScene.ccbi */,
+				20F513E2175E332800580D5F /* ServerListScene.ccbi */,
+				20F513E3175E332800580D5F /* TaskBoxScene.ccbi */,
+				20F513E4175E332800580D5F /* TaskDetailScene.ccbi */,
+				20F513E5175E332800580D5F /* TaskRewardScene.ccbi */,
 				20878671172E8C0400A7404A /* NewMailScene.ccbi */,
 				20878672172E8C0400A7404A /* SysMailScene.ccbi */,
 				20878673172E8C0400A7404A /* UserMailScene.ccbi */,
@@ -2320,6 +2354,12 @@
 				2C774A32175C8CBE00FF722E /* ccactivityindicator_8.gif in Resources */,
 				2C774A33175C8CBE00FF722E /* ccactivityindicator_9.gif in Resources */,
 				2C774A3D175C9ACB00FF722E /* chs.plist in Resources */,
+				20F513E6175E332800580D5F /* CharacterScene.ccbi in Resources */,
+				20F513E7175E332800580D5F /* ServerListScene.ccbi in Resources */,
+				20F513E8175E332800580D5F /* TaskBoxScene.ccbi in Resources */,
+				20F513E9175E332800580D5F /* TaskDetailScene.ccbi in Resources */,
+				20F513EA175E332800580D5F /* TaskRewardScene.ccbi in Resources */,
+				2081D0E6175F84FF0000414C /* Task1.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2558,6 +2598,7 @@
 				2C774A39175C8CBE00FF722E /* CCTapGestureRecognizer.cpp in Sources */,
 				2C774A3A175C8CBE00FF722E /* CCProgressLayer.cpp in Sources */,
 				2C774A40175C9F7400FF722E /* GlobalData.cpp in Sources */,
+				2081D0E3175F73C60000414C /* TaskDetailScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
