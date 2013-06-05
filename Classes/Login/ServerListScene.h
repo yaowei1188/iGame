@@ -60,7 +60,6 @@ public:
     CCTableView* mTableView;
 //    MainSceneTemplate *mMainSceneTemp;
     unsigned int selectedindex;
-    
     CCArray *mArrayList;
 };
 

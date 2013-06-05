@@ -52,9 +52,11 @@ bool SlidingMenuGrid::initWithArray(CCArray * items, int cols, int rows, CCPoint
 	selectedItem = NULL;
     setTouchEnabled(true);
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this,0,true);
-	int iTag;//Tag saved in every item in array of items
+	int iTag;
+    
 	pMenu=new CCMenu;
 	addChild(pMenu,0);
+    
     CCObject* item;
     CCARRAY_FOREACH(items, item)
     {
@@ -62,13 +64,6 @@ bool SlidingMenuGrid::initWithArray(CCArray * items, int cols, int rows, CCPoint
         iTag=getItem->getTag();
 		pMenu->addChild(getItem, 1, iTag);
     }
-//	CCMenuItemsArray::CCMutableArrayIterator it;
-//	for (it = items->begin(); it != items->end();it++)
-//	{
-//		CCMenuItemSprite* getItem = *it;
-//		iTag=getItem->getTag();
-//		pMenu->addChild(getItem, 1, iTag);		
-//	}
 	padding = pad;
 	iCurrentPage = 0;
 	bMoving = false;
@@ -108,7 +103,9 @@ void SlidingMenuGrid::buildGrid(int cols, int rows)
 			}
 		}
 	}
-//	srand(time(NULL));
+    if (col>0 || row > 0) {
+        iPageCount++;
+    }
 }
 
 void SlidingMenuGrid::buildGridVertical(int cols, int rows)
@@ -153,15 +150,10 @@ CCMenuItemSprite* SlidingMenuGrid::GetItemWithinTouch(CCTouch* touch)
 		CCPoint local = getItem->convertToNodeSpace(touchLocation);
 		CCRect r = getItem->rect();
 		r.origin = CCPointZero;// If the touch was within this item. Return the item.
-//		if (CCRect::CCRectContainsPoint(r, local))
-//		{
-//			return getItem;			
-//		}
         if (r.containsPoint(local)) {
             return getItem;
         }
 	}
-	// Didn't touch an item. 
 	return NULL;
 }
 
@@ -211,7 +203,7 @@ void SlidingMenuGrid::ccTouchMoved(CCTouch* touch, CCEvent* event)
 		return;
 	}
 	// Calculate the current touch point during the move.
-	touchStop = CCDirector::sharedDirector()->convertToGL(touch->getLocationInView());// Distance between the origin of the touch and current touch point.
+	touchStop = CCDirector::sharedDirector()->convertToGL(touch->getLocationInView());
 	fMoveDelta = (bVerticalPaging) ? (touchStop.y - touchOrigin.y) : (touchStop.x - touchOrigin.x);// Set our position.    
 	setPosition(GetPositionOfCurrentPageWithOffset(fMoveDelta));
 	bMoving = true;
@@ -307,23 +299,42 @@ bool SlidingMenuGrid::IsVerticallyPaged()
 void SlidingMenuGrid::SetVerticalPaging(bool bValue) 
 {
 	bVerticalPaging = bValue;
-	// this->buildGridVertical();
 }
 
 void SlidingMenuGrid::gotoPage(int iPage)
 {
 	int iSetPage=iPage;
 	if(iPage<=0)
-		iSetPage=1;
+		iSetPage=0;
 	else if(iPage>iPageCount)
 	{
-		iSetPage=iPageCount;
+		iSetPage=iPageCount-1;
 	}
 	if(bVerticalPaging)
 		iCurrentPage=iPageCount-iSetPage;
 	else
-		iCurrentPage=iSetPage-1;
+		iCurrentPage=iSetPage;
 	moveToCurrentPage();
+}
+
+void SlidingMenuGrid::gotoNextPage()
+{
+	if(iCurrentPage>=iPageCount-1)
+    {
+        return;
+    }
+
+	gotoPage(iCurrentPage+1);
+}
+
+void SlidingMenuGrid::gotoPreviousPage()
+{
+	if(iCurrentPage<=0)
+    {
+        return;
+    }
+
+	gotoPage(iCurrentPage-1);
 }
 
 void SlidingMenuGrid::setPageLabel( int iPage,CCLabelTTF * pLabel)

@@ -13,8 +13,6 @@
 
 USING_NS_CC;
 
-//typedef CCArray<CCMenuItemSprite*> CCMenuItemsArray;
-
 class SlidingMenuGrid:public CCLayer
 {
 protected:
@@ -26,6 +24,7 @@ protected:
 	virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
 	virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
 	virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
+    
 	CCPoint GetPositionOfCurrentPage();
 	CCPoint GetPositionOfCurrentPageWithOffset(float offset);
 	CCMenuItemSprite* GetItemWithinTouch(CCTouch* touch);
@@ -64,7 +63,8 @@ public:
 	bool IsVerticallyPaged();
 	void SetVerticalPaging(bool bValue);
 	int getPageCount(){return iPageCount;}
-	
+	void gotoPreviousPage();
+    void gotoNextPage();
 	void gotoPage(int iPage=0);
 	void setPageLabel(int,CCLabelTTF *);//Add label on the page
 };

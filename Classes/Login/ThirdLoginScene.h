@@ -44,7 +44,7 @@ public:
 
 	CCEditBox *m_txtAccount;
 	CCEditBox *m_txtPassword;
-    
+
     bool m_blnRememberMe;
 };
 
