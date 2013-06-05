@@ -21,6 +21,8 @@ class GlobalData
 {
 public:
     static CCString* getLocalString(std::string name);
+    
+    static CCDictionary* getTasks(std::string name);
 };
 
 #endif /* defined(__mengdou__GlobalData__) */

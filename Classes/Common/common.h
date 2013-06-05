@@ -88,3 +88,6 @@
 #define ShowString(text)  WStrToUTF8(L##text)
 #endif
 
+//Color
+#define TITLE_COLOR ccc3(250, 250, 0)
+

@@ -18,6 +18,7 @@
 
 #include "CharacterSceneLoader.h"
 #include "ServerListSceneLoader.h"
+#include "TaskDetailSceneLoader.h"
 
 
 #include "NewMailSceneLoader.h"
@@ -139,6 +140,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	ccNodeLoaderLibrary->registerCCNodeLoader("ServerListScene", ServerListSceneLoader::loader());
 	ccNodeLoaderLibrary->registerCCNodeLoader("CharacterScene", CharacterSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("TaskListScene", TaskListSceneLoader::loader());
+    ccNodeLoaderLibrary->registerCCNodeLoader("TaskDetailScene", TaskDetailSceneLoader::loader());
 
     cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
     ccbReader->autorelease();
@@ -152,8 +154,8 @@ bool AppDelegate::applicationDidFinishLaunching()
 	//CCScene *pScene = MailMainScene::scene();
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("ServerListScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("CharacterScene.ccbi");
-    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskListScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskListScene.ccbi");
+    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskDetailScene.ccbi");
     pDirector->runWithScene(pScene);
 
     return true;

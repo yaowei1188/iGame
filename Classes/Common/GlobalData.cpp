@@ -9,6 +9,7 @@
 #include "GlobalData.h"
 
 static CCDictionary *dictLanguage;
+static CCArray *arrayTasks;
 
 CCString* GlobalData::getLocalString(std::string name)
 {
@@ -16,4 +17,12 @@ CCString* GlobalData::getLocalString(std::string name)
         dictLanguage = CCDictionary::createWithContentsOfFile("chs.plist");
     }
     return (CCString*)dictLanguage->objectForKey(name);
+}
+
+CCDictionary* GlobalData::getTasks(std::string name)
+{
+    if (arrayTasks==NULL) {
+        arrayTasks = CCArray::createWithContentsOfFile("Task1.plist");
+    }
+    return (CCDictionary*)arrayTasks->objectAtIndex(0);
 }
