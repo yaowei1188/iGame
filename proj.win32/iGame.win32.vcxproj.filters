@@ -62,6 +62,12 @@
     <Filter Include="Resources\Image\resources-iphonehd">
       <UniqueIdentifier>{5cbc9e86-271c-40ec-90b0-f3a85978b8ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\Language">
+      <UniqueIdentifier>{c7200224-5d99-4854-9589-99fb02b4e47a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Task">
+      <UniqueIdentifier>{21f2be3e-3e94-44b1-b594-0171ae7fae47}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\iGame.ico">
@@ -244,6 +250,12 @@
     <None Include="..\Resources\CharacterScene.ccbi">
       <Filter>Resources\Scene</Filter>
     </None>
+    <None Include="..\Resources\language\chs.plist">
+      <Filter>Resources\Language</Filter>
+    </None>
+    <None Include="..\Resources\Task\Task1.plist">
+      <Filter>Resources\Task</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="iGame.rc">
@@ -403,6 +415,12 @@
     </ClInclude>
     <ClInclude Include="main.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="..\Classes\Task\TaskDetailScene.h">
+      <Filter>Classes\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Task\TaskDetailSceneLoader.h">
+      <Filter>Classes\Task</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -523,5 +541,8 @@
       <Filter>Library\XmlParser</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\Classes\Task\TaskDetailScene.cpp">
+      <Filter>Classes\Task</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

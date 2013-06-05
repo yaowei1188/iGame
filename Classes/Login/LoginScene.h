@@ -4,7 +4,6 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 
-#include "SimpleAudioEngine.h"
 #include "XmlParser.h"
 #include "MainLayerBase.h"
 #include "MainSceneTemplate.h"

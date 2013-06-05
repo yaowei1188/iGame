@@ -1,5 +1,4 @@
 #include "LoginScene.h"
-//#include "json/json.h"
 #include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
@@ -7,14 +6,6 @@ using namespace CocosDenshion;
 
 LoginScene::LoginScene()
 {
-//    // preload background music and effect
-//    SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic( MUSIC_FILE );
-//    SimpleAudioEngine::sharedEngine()->preloadEffect( EFFECT_FILE );
-//    
-//    // set default volume
-//    SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.5);
-//    SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
-    
     m_txtAccount = NULL;
     m_txtPassword = NULL;
     mCloud = NULL;
@@ -59,9 +50,6 @@ bool LoginScene::init()
 
         CC_BREAK_IF(! CCLayer::init());
     
-        
-//        SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
-        
         bRet = true;
     } while (0);
 
@@ -232,8 +220,10 @@ bool LoginScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMembe
 }
 
 void LoginScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
-    
-//    SimpleAudioEngine::sharedEngine()->playEffect( EFFECT_FILE );
+	#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+	    SimpleAudioEngine::sharedEngine()->playEffect( EFFECT_FILE );
+    #endif
+
     CCControlButton *button = (CCControlButton*) pSender;
     
     if (pCCControlEvent==CCControlEventTouchUpInside) {

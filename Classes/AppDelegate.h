@@ -2,8 +2,8 @@
 #define __APP_DELEGATE_H__
 
 #include "cocos2d.h"
-
 #include "CCApplication.h"
+#include "SimpleAudioEngine.h"
 
 /**
 @brief    The cocos2d Application.

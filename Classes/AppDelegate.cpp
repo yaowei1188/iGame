@@ -30,6 +30,15 @@ USING_NS_CC;
 
 AppDelegate::AppDelegate()
 {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+	// preload background music and effect
+	SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic( MUSIC_FILE );
+	SimpleAudioEngine::sharedEngine()->preloadEffect( EFFECT_FILE );
+
+	// set default volume
+	SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.5);
+	SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
+#endif
 }
 
 AppDelegate::~AppDelegate()
@@ -57,13 +66,15 @@ bool AppDelegate::applicationDidFinishLaunching()
     std::vector<std::string> searchPaths;
     std::vector<std::string> resDirOrders;
     
+	searchPaths.push_back("Task");
+	searchPaths.push_back("Image");
+	searchPaths.push_back("sound");
+	//searchPaths.push_back("ccbResources");
+
+
     TargetPlatform platform = CCApplication::sharedApplication()->getTargetPlatform();
     if (platform == kTargetIphone || platform == kTargetIpad)
     {
-        searchPaths.push_back("Image");
-        //searchPaths.push_back("ccbResources");
-        CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
-        
         if (screenSize.height > 480)
         {
             resourceSize = CCSizeMake(640, 960);
@@ -73,15 +84,9 @@ bool AppDelegate::applicationDidFinishLaunching()
         {
             resDirOrders.push_back("resources-iphone");
         }
-        
-        CCFileUtils::sharedFileUtils()->setSearchResolutionsOrder(resDirOrders);
     }
     else if (platform == kTargetAndroid)
     {
-		searchPaths.push_back("Image");
-		//searchPaths.push_back("ccbResources");
-		CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
-
 		if (screenSize.height > 960)
 		{
 			resourceSize = CCSizeMake(640, 960);
@@ -96,17 +101,9 @@ bool AppDelegate::applicationDidFinishLaunching()
 		{
 			resDirOrders.push_back("resources-iphone");
 		}
-
-		CCFileUtils::sharedFileUtils()->setSearchResolutionsOrder(resDirOrders);
     }
 	else if (platform == kTargetWindows)
 	{
-		searchPaths.push_back("Image");
-		//searchPaths.push_back("ccbResources");
-		CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
-
-		//resourceSize = CCSizeMake(640, 960);
-		//resDirOrders.push_back("resources-iphonehd");
 		if (screenSize.height > 480)
 		{
 			resourceSize = CCSizeMake(640, 960);
@@ -116,9 +113,10 @@ bool AppDelegate::applicationDidFinishLaunching()
 		{
 			resDirOrders.push_back("resources-iphone");
 		}
-
-		CCFileUtils::sharedFileUtils()->setSearchResolutionsOrder(resDirOrders);
 	}
+
+	CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+	CCFileUtils::sharedFileUtils()->setSearchResolutionsOrder(resDirOrders);
     
     pDirector->setContentScaleFactor(resourceSize.width/designSize.width);
     
@@ -148,6 +146,10 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("login.plist");
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("main.plist");
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("friends.plist");
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+	SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
+#endif
     
     //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
 

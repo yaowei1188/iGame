@@ -38,7 +38,7 @@ bool ServerListScene::init()
         CC_BREAK_IF(! CCLayer::init());
         
 		//mArrayList =  CCArray::create();
-        mArrayList = CCArray::create(CCString::create("1区 花果山"),CCString::create("2区 齐天大圣"),CCString::create("3区 如来佛主"),NULL);
+        mArrayList = CCArray::create(CCString::create("1"),CCString::create("2"),CCString::create("3"),NULL);
         mArrayList->retain();
 
         bRet = true;

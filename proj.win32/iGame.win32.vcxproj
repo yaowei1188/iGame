@@ -164,6 +164,7 @@
     <None Include="..\Resources\Image\resources-iphonehd\login.png" />
     <None Include="..\Resources\Image\resources-iphonehd\main.plist" />
     <None Include="..\Resources\Image\resources-iphonehd\main.png" />
+    <None Include="..\Resources\language\chs.plist" />
     <None Include="..\Resources\LoginScene.ccbi" />
     <None Include="..\Resources\MainGameScene.ccbi" />
     <None Include="..\Resources\MainSceneTemplate.ccbi" />
@@ -178,6 +179,7 @@
     <None Include="..\Resources\TaskDetailScene.ccbi" />
     <None Include="..\Resources\TaskListScene.ccbi" />
     <None Include="..\Resources\TaskRewardScene.ccbi" />
+    <None Include="..\Resources\Task\Task1.plist" />
     <None Include="..\Resources\ThirdLoginScene.ccbi" />
     <None Include="..\Resources\transparent.png" />
     <None Include="..\Resources\UserMailScene.ccbi" />
@@ -219,6 +221,8 @@
     <ClInclude Include="..\Classes\Other\CCControlSwitchLoader.h" />
     <ClInclude Include="..\Classes\Other\CCEditBoxLoader.h" />
     <ClInclude Include="..\Classes\Other\CCTableViewLoader.h" />
+    <ClInclude Include="..\Classes\Task\TaskDetailScene.h" />
+    <ClInclude Include="..\Classes\Task\TaskDetailSceneLoader.h" />
     <ClInclude Include="..\Classes\Task\TaskListScene.h" />
     <ClInclude Include="..\Classes\Task\TaskListSceneLoader.h" />
     <ClInclude Include="..\Classes\UILibrary\CCActivityIndicator\CCActivityIndicator.h" />
@@ -256,6 +260,7 @@
     <ClCompile Include="..\Classes\Mail\NewMailScene.cpp" />
     <ClCompile Include="..\Classes\MainGameScene.cpp" />
     <ClCompile Include="..\Classes\Other\AboutScene.cpp" />
+    <ClCompile Include="..\Classes\Task\TaskDetailScene.cpp" />
     <ClCompile Include="..\Classes\Task\TaskListScene.cpp" />
     <ClCompile Include="..\Classes\UILibrary\CCActivityIndicator\CCActivityIndicator.cpp" />
     <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCGestureRecognizer.cpp" />
