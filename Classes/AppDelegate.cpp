@@ -19,6 +19,7 @@
 #include "CharacterSceneLoader.h"
 #include "ServerListSceneLoader.h"
 #include "TaskDetailSceneLoader.h"
+#include "TaskRewardSceneLoader.h"
 
 
 #include "NewMailSceneLoader.h"
@@ -70,7 +71,6 @@ bool AppDelegate::applicationDidFinishLaunching()
 	searchPaths.push_back("Image");
 	searchPaths.push_back("sound");
 	//searchPaths.push_back("ccbResources");
-
 
     TargetPlatform platform = CCApplication::sharedApplication()->getTargetPlatform();
     if (platform == kTargetIphone || platform == kTargetIpad)
@@ -139,6 +139,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	ccNodeLoaderLibrary->registerCCNodeLoader("CharacterScene", CharacterSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("TaskListScene", TaskListSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("TaskDetailScene", TaskDetailSceneLoader::loader());
+    ccNodeLoaderLibrary->registerCCNodeLoader("TaskRewardScene", TaskRewardSceneLoader::loader());
 
     cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
     ccbReader->autorelease();
@@ -151,13 +152,13 @@ bool AppDelegate::applicationDidFinishLaunching()
 	SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
 #endif
     
-    //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
+    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
 
 	//CCScene *pScene = MailMainScene::scene();
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("ServerListScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("CharacterScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskListScene.ccbi");
-    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskDetailScene.ccbi");
+//    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskRewardScene.ccbi");
     pDirector->runWithScene(pScene);
 
     return true;

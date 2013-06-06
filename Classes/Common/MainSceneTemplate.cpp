@@ -26,10 +26,7 @@ MainSceneTemplate::~MainSceneTemplate()
 
 void MainSceneTemplate::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-	//wstring ss = L"TEST";
-	std::string text = ShowString("ÄãºÃÊÀ½ç");
-	/*std::string text = WStrToUTF8(L"ÄãºÃÊÀ½ç");*/
-	//CCLabelTTF* pLabel = CCLabelTTF::labelWithString(text.c_str(), "Arial", 24);
+	std::string text = ShowString("å­™æ‚Ÿç©º");
 
     this->mlblName->setString(text.c_str());
     this->mlblHealth->setZOrder(20);
@@ -90,29 +87,6 @@ void MainSceneTemplate::toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCC
 void MainSceneTemplate::menuBarBtnClicked(CCObject *pSender)
 {
     CCMenuItem *button = (CCMenuItem*) pSender;
-    switch (button->getTag()) {
-        case TOOLBAR_BTN_COMPETITION_TAG:
-            CCLOG("11111");
-            break;
-        case TOOLBAR_BTN_GOD_DEMON_TAG:
-            CCLOG("22222");
-            break;
-        case TOOLBAR_BTN_RANKLIST_TAG:
-            CCLOG("33333");
-            break;
-        case TOOLBAR_BTN_FRIENDS_TAG:
-            CCLOG("44444");
-            break;
-        case TOOLBAR_BTN_ITEMS_TAG:
-            CCLOG("55555");
-            break;
-        case TOOLBAR_BTN_MAIL_TAG:
-            CCLOG("66666");
-            break;
-        case TOOLBAR_BTN_SETTING_TAG:
-            CCLOG("77777");
-            break;
-    }
     if(m_delegate != NULL) {
         m_delegate->menuItemClicked(button);
     }

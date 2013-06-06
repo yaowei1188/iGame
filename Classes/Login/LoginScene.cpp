@@ -170,7 +170,14 @@ void LoginScene::parseJson(std::string &content)
 //    CCUserDefault::sharedUserDefault()->setStringForKey("username", root["username"].asString());
 //    CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", root["encryptedUserInfo"].asString());
     
-    this->OpenNewScene("MainGameScene");
+    string selectedServer = CCUserDefault::sharedUserDefault()->getStringForKey("SelectedServer");
+    if (selectedServer.length()>0) {
+         this->OpenNewScene("MainGameScene");
+    } else {
+        this->OpenNewScene("ServerListScene");
+    }
+    
+   
 }
 
 void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)

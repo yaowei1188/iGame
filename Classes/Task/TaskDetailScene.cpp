@@ -307,7 +307,7 @@ TaskDetailScene::~TaskDetailScene()
 {
 	m_sProgress->release();
 	m_lblTitle->release();
-	mTaskList->release();
+//	mTaskList->release();
     lblSubTitle->release();
 }
 

@@ -142,20 +142,9 @@ void MainGameScene::PopLayer()
 void MainGameScene::menuItemClicked(CCMenuItem *pItem)
 {
     if (pItem->getTag() == MENUBAR_MAINPAGE_TAG) {
-//        if (mblnIsHomePage) {
-//            return;
-//        }
-//        
-//        if (mSubLayer!=NULL) {
-//            mSubLayer->removeFromParentAndCleanup(true);
-//            mSubLayer = NULL;
-//        }
-//
-//        mMainLayer->setVisible(true);
-//        CCActionInterval *action1 = CCMoveTo::create(0.2, ccp(0,mMainLayer->getPosition().y));
-//        mMainLayer->runAction(action1);
-//        mblnIsHomePage = true;
         this->PopToRoot();
+    } else if (pItem->getTag() == MENUBAR_TASK_TAG) {
+        this->PushLayer((CCLayer *)this->GetLayer("TaskListScene"));
     }
 }
 
