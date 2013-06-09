@@ -20,6 +20,7 @@ protected:
 	void buildGridVertical(int cols, int rows);
 	void moveToCurrentPage();
 
+	virtual void registerWithTouchDispatcher();
 	virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
 	virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
 	virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
@@ -53,19 +54,17 @@ protected:
 public:
 	SlidingMenuGrid();
 	~SlidingMenuGrid();
-	virtual bool init();
-	virtual void onExit();
 	static SlidingMenuGrid* menuWithArray(CCArray* items, int cols, int rows, CCPoint pos , CCPoint pad);
 	static SlidingMenuGrid* menuWithArray(CCArray* items, int cols, int rows, CCPoint pos , CCPoint pad, bool vertical);
 	bool initWithArray(CCArray* items, int cols, int rows, CCPoint pos , CCPoint pad, bool vertical);
-	float GetSwipeDeadZone();
-	void SetSwipeDeadZone(float fValue);
+	//float GetSwipeDeadZone();
+	//void SetSwipeDeadZone(float fValue);
 	bool IsVerticallyPaged();
 	void SetVerticalPaging(bool bValue);
 	int getPageCount(){return iPageCount;}
 	void gotoPreviousPage();
     void gotoNextPage();
 	void gotoPage(int iPage=0);
-	void setPageLabel(int,CCLabelTTF *);//Add label on the page
+	//void setPageLabel(int,CCLabelTTF *);//Add label on the page
 };
 #endif

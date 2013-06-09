@@ -26,7 +26,7 @@ MainSceneTemplate::~MainSceneTemplate()
 
 void MainSceneTemplate::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-	std::string text = ShowString("孙悟空");
+	std::string text = ShowString("sun");
 
     this->mlblName->setString(text.c_str());
     this->mlblHealth->setZOrder(20);

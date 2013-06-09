@@ -39,8 +39,8 @@ bool TaskListScene::init()
 		CC_BREAK_IF(! CCLayer::init());
 
 		//mArrayList =  CCArray::create();
-		mArrayList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
-		mArrayList->retain();
+		//mArrayList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
+		//mArrayList->retain();
 
 		bRet = true;
 	} while (0);
@@ -156,7 +156,7 @@ void TaskListScene::showTaskLists()
 
     sliderMenu = SlidingMenuGrid::menuWithArray(mArrayList,TASK_COLUMN,TASK_ROW,menuPosition,p );
     sliderMenu->setAnchorPoint(ccp(0.5, 0.5));
-    //    sliderMenu->setPosition(100,100);
+    sliderMenu->setContentSize(CCSizeMake(280,400));
     
     this->addChild(sliderMenu);
 }
@@ -220,12 +220,8 @@ void TaskListScene::buttonClicked(CCObject * sender , CCControlEvent controlEven
 		break;
 	case 102:
 		CCLOG("22222");
-            sliderMenu->gotoNextPage();
-//		mainScene->PushLayer((CCLayer *)this->GetLayer("AddFriendScene"));
+        sliderMenu->gotoNextPage();
 		break;
-//	case 103:
-//		CCLOG("33333");
-//		break;
 	}
 }
 

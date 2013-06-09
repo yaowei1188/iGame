@@ -23,6 +23,7 @@ CCDictionary* GlobalData::getTasks(std::string name)
 {
     if (arrayTasks==NULL) {
         arrayTasks = CCArray::createWithContentsOfFile("Task1.plist");
+		arrayTasks->retain();
     }
     return (CCDictionary*)arrayTasks->objectAtIndex(0);
-}
+};

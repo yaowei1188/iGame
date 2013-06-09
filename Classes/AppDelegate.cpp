@@ -149,7 +149,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("friends.plist");
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-	SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
+	//SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
 #endif
     
     CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");

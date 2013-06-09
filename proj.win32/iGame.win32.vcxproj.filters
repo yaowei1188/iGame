@@ -421,6 +421,12 @@
     <ClInclude Include="..\Classes\Task\TaskDetailSceneLoader.h">
       <Filter>Classes\Task</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Task\TaskRewardScene.h">
+      <Filter>Classes\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Task\TaskRewardSceneLoader.h">
+      <Filter>Classes\Task</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -542,6 +548,9 @@
     </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="..\Classes\Task\TaskDetailScene.cpp">
+      <Filter>Classes\Task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Task\TaskRewardScene.cpp">
       <Filter>Classes\Task</Filter>
     </ClCompile>
   </ItemGroup>
