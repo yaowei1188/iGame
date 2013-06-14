@@ -225,6 +225,8 @@
     <ClInclude Include="..\Classes\Task\TaskDetailSceneLoader.h" />
     <ClInclude Include="..\Classes\Task\TaskListScene.h" />
     <ClInclude Include="..\Classes\Task\TaskListSceneLoader.h" />
+    <ClInclude Include="..\Classes\Task\TaskRewardScene.h" />
+    <ClInclude Include="..\Classes\Task\TaskRewardSceneLoader.h" />
     <ClInclude Include="..\Classes\UILibrary\CCActivityIndicator\CCActivityIndicator.h" />
     <ClInclude Include="..\Classes\UILibrary\CCGestureRecognizer\CCGestureRecognizer.h" />
     <ClInclude Include="..\Classes\UILibrary\CCGestureRecognizer\CCLongPressGestureRecognizer.h" />
@@ -262,6 +264,7 @@
     <ClCompile Include="..\Classes\Other\AboutScene.cpp" />
     <ClCompile Include="..\Classes\Task\TaskDetailScene.cpp" />
     <ClCompile Include="..\Classes\Task\TaskListScene.cpp" />
+    <ClCompile Include="..\Classes\Task\TaskRewardScene.cpp" />
     <ClCompile Include="..\Classes\UILibrary\CCActivityIndicator\CCActivityIndicator.cpp" />
     <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCGestureRecognizer.cpp" />
     <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCLongPressGestureRecognizer.cpp" />

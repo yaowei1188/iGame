@@ -228,7 +228,7 @@ bool LoginScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMembe
 
 void LoginScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
 	#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-	    SimpleAudioEngine::sharedEngine()->playEffect( EFFECT_FILE );
+	    //SimpleAudioEngine::sharedEngine()->playEffect( EFFECT_FILE );
     #endif
 
     CCControlButton *button = (CCControlButton*) pSender;
