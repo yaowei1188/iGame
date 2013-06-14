@@ -158,7 +158,7 @@
 						<array>
 							<string>buttonClicked:</string>
 							<integer>1</integer>
-							<integer>33</integer>
+							<integer>32</integer>
 						</array>
 					</dict>
 					<dict>
@@ -320,8 +320,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>188</real>
-							<real>174</real>
+							<real>135</real>
+							<real>133</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -406,7 +406,7 @@
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>2</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -414,7 +414,7 @@
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>2</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -422,7 +422,14 @@
 						<key>type</key>
 						<string>Text</string>
 						<key>value</key>
-						<string>第三方账号登陆</string>
+						<string>XXXXXXXXXXXXXXXXXXXXXXXSASDFASDFASFAS
+ASDFASDFASFDASFASDFASFDASFD
+ASDFASFDASDFASDFASDFSADFASDF
+ASDFASDFASDFASDFASDFASDF
+ADFASDFADSFASDFASDFAS
+ASDFASDF
+ASDFASDFASDFASDFASFD
+</string>
 					</dict>
 				</array>
 			</dict>
@@ -710,16 +717,6 @@
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>accelerometerEnabled</string>
-				<key>platform</key>
-				<string>iOS</string>
-				<key>type</key>
-				<string>Check</string>
-				<key>value</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>name</key>
 				<string>mouseEnabled</string>
 				<key>platform</key>
 				<string>Mac</string>
@@ -727,16 +724,6 @@
 				<string>Check</string>
 				<key>value</key>
 				<true/>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>keyboardEnabled</string>
-				<key>platform</key>
-				<string>Mac</string>
-				<key>type</key>
-				<string>Check</string>
-				<key>value</key>
-				<false/>
 			</dict>
 		</array>
 	</dict>
