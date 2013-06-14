@@ -176,8 +176,6 @@ void LoginScene::parseJson(std::string &content)
     } else {
         this->OpenNewScene("ServerListScene");
     }
-    
-   
 }
 
 void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)

@@ -6,11 +6,13 @@ using namespace cocos2d;
 CharacterScene::CharacterScene()
 {
     m_txtAccount = NULL;
+	m_ImgGroup = NULL;
 }
 
 CharacterScene::~CharacterScene()
 {
-    
+    CC_SAFE_RELEASE(m_txtAccount);
+	CC_SAFE_RELEASE(m_ImgGroup);
 }
 
 CCScene* CharacterScene::scene()
@@ -113,18 +115,30 @@ void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     m_txtAccount->setFontColor(ccc3(255,255,153));
     m_txtAccount->setFont("Arial", 16);
     m_txtAccount->setPosition(ccp(148, 40));
-    
-//	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
-//	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
-//    
-//    CCMenu* m_auto_op_menu = CCMenu::create();
-//    CCMenuItemSprite* auto_op_btn = CCMenuItemSprite::create(spriteOn, NULL);
-//    CCMenuItemSprite* auto_op_btn2 = CCMenuItemSprite::create(spriteOff, NULL);
-//    CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(CharacterScene::callbackSwitch),auto_op_btn,auto_op_btn2,NULL);
-//    
-//    m_auto_op_menu->addChild(item);
-//    m_auto_op_menu->setPosition(ccp(116, 268));
-//    this->addChild(m_auto_op_menu);
+
+	spritFou = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("fou.png"));
+ //   CCSprite *spriteXian = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("xian.png"));
+	//CCSprite *spriteYao = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("yao.png"));
+	spritFou->setAnchorPoint(ccp(0.5,0.5));
+	spritFou->setPosition(ccp(160,320));
+	//spriteXian->setAnchorPoint(ccp(0,0));
+	//spriteYao->setAnchorPoint(ccp(0,0));
+	this->addChild(spritFou);
+	//this->addChild(spriteXian);
+	//this->addChild(spriteYao);
+
+	//this->doEllipse();
+}
+
+void CharacterScene::doEllipse()
+{
+	lrEllipseConfig config;
+	config.aLength = 100;
+	config.cLength = 30;
+	config.centerPosition = ccp(160,370);
+	EllipseActionInterval *ellipse = EllipseActionInterval::actionWithDuration(1,config);
+	ellipse->step(0.001);
+	spritFou->runAction(ellipse);
 }
 
 bool CharacterScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
@@ -138,11 +152,13 @@ void CharacterScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlE
     
     CCControlButton *button = (CCControlButton*) pSender;
     
-    switch (button->getTag()) {
-        case LOGIN_BUTTON_ACTION_SIGNIN_TAG:
-            CCLOG("signin");
-            break;
-    }
+	this->doEllipse();
+	
+    //switch (button->getTag()) {
+    //    case LOGIN_BUTTON_ACTION_SIGNIN_TAG:
+    //        CCLOG("signin");
+    //        break;
+    //}
 }
 
 SEL_MenuHandler CharacterScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)

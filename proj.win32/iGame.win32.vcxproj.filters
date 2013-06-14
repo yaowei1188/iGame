@@ -427,6 +427,9 @@
     <ClInclude Include="..\Classes\Task\TaskRewardSceneLoader.h">
       <Filter>Classes\Task</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\EllipseActionInterval.h">
+      <Filter>Classes\UILibrary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -552,6 +555,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Task\TaskRewardScene.cpp">
       <Filter>Classes\Task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\EllipseActionInterval.cpp">
+      <Filter>Classes\UILibrary</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -26,7 +26,7 @@ CCScene* ServerListScene::scene()
 // on "init" you need to initialize your instance
 bool ServerListScene::init()
 {
-    selectedindex = -1;
+    selectedindex = 0;
     
     bool bRet = false;
     do 
@@ -38,7 +38,26 @@ bool ServerListScene::init()
         CC_BREAK_IF(! CCLayer::init());
         
 		//mArrayList =  CCArray::create();
-        mArrayList = CCArray::create(CCString::create("1"),CCString::create("2"),CCString::create("3"),NULL);
+		CCDictionary *dict0 = CCDictionary::create();
+		dict0->setObject(CCString::create("2区 花果山1"),"ServerName");
+		dict0->setObject(CCString::create("良好"),"Status");
+		dict0->setObject(CCString::create("1"),"Category");
+
+		CCDictionary *dict1 = CCDictionary::create();
+		dict1->setObject(CCString::create("1区 齐天大圣1"),"ServerName");
+		dict1->setObject(CCString::create("流畅"),"Status");
+		dict1->setObject(CCString::create("2"),"Category");
+
+		CCDictionary *dict2 = CCDictionary::create();
+		dict2->setObject(CCString::create("2区 花果山1"),"ServerName");
+		dict2->setObject(CCString::create("良好"),"Status");
+		dict2->setObject(CCString::create("3"),"Category");
+
+		CCDictionary *dict3 = CCDictionary::create();
+		dict3->setObject(CCString::create("3区 如来佛祖1"),"ServerName");
+		dict3->setObject(CCString::create("爆满"),"Status");
+		dict3->setObject(CCString::create("3"),"Category");
+        mArrayList = CCArray::create(dict0,dict1,dict2,dict3,NULL);
         mArrayList->retain();
 
         bRet = true;
@@ -128,25 +147,25 @@ void ServerListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     mTableView->setDirection(kCCScrollViewDirectionVertical);
     mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
     mTableView->setDataSource(this);
-    mTableView->setViewSize(CCSizeMake(290, 220));
-    mTableView->setPosition(ccp(160, 120));
+    mTableView->setViewSize(CCSizeMake(290, 210));
+    mTableView->setPosition(ccp(160, 220));
     mTableView->setDelegate(this);
     mTableView->reloadData();
 
 	//doSearchFriend();
 }
 
-void ServerListScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
-{
-    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-    sSelected->setVisible(true);
-}
-
-void ServerListScene::tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell)
-{
-    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-    sSelected->setVisible(false);
-}
+//void ServerListScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
+//{
+//    //CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
+//    //sSelected->setVisible(true);
+//}
+//
+//void ServerListScene::tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell)
+//{
+//    //CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
+//    //sSelected->setVisible(false);
+//}
 
 void ServerListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
@@ -157,7 +176,8 @@ void ServerListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell
         selectedindex = cell->getIdx();
     }
 
-    table->reloadData();
+    //table->updateCellAtIndex(cell->getIdx());
+	table->refreshData();
 }
 
 unsigned int ServerListScene::numberOfCellsInTableView(CCTableView *table)
@@ -172,32 +192,47 @@ CCSize ServerListScene::cellSizeForTable(CCTableView *table)
 
 CCSize ServerListScene::cellSizeForIndex(CCTableView *table, unsigned int idx)
 {
+	CCDictionary *dict = (CCDictionary *)mArrayList->objectAtIndex(idx);
+	CCString *category = (CCString *)dict->objectForKey("Category");
+
+	if (strcmp(category->getCString(),"1")==0)
+	{
+		return CCSizeMake(290, 65);
+	}
+	else if (strcmp(category->getCString(),"2")==0)
+	{
+		return CCSizeMake(290, 65);
+	}
+
     return CCSizeMake(290, 40);
 }
 
 bool ServerListScene::hasFixedCellSize()
 {
-    return true;
+    return false;
 }
 
 CCTableViewCell* ServerListScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
-	CCString *string = (CCString *)mArrayList->objectAtIndex(idx);
+	CCDictionary *dict = (CCDictionary *)mArrayList->objectAtIndex(idx);
     bool selected = (idx==selectedindex);
 	CCTableViewCell *cell = table->dequeueCell();
     CCSize size = this->cellSizeForIndex(table, idx);
+	CCString *category = (CCString *)dict->objectForKey("Category");
 	if (!cell) {
 		cell = new CCTableViewCell();
 		cell->autorelease();
         
         CCSprite *sbackground = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("server_cell_bg.png"));
         sbackground->setTag(120);
-		sbackground->setPosition(ccp(size.width/2,size.height/2));
+		sbackground->setAnchorPoint(ccp(0.5,0));
+		sbackground->setPosition(ccp(size.width/2,0));
 		cell->addChild(sbackground);
         
         CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("yuan.png"));
         sSelected->setTag(121);
-		sSelected->setPosition(ccp(50,size.height/2));
+		sSelected->setAnchorPoint(ccp(0.5,0));
+		sSelected->setPosition(ccp(50,10));
 		cell->addChild(sSelected);
         
         if (selected ) {
@@ -206,8 +241,9 @@ CCTableViewCell* ServerListScene::tableCellAtIndex(CCTableView *table, unsigned 
             sSelected->setVisible(false);
         }
 
-		CCLabelTTF *lblName = CCLabelTTF::create(string->getCString(), "Arial", 12.0);
-		lblName->setPosition(ccp(130,size.height/2));
+		CCLabelTTF *lblName = CCLabelTTF::create(((CCString *)dict->objectForKey("ServerName"))->getCString(), "Arial", 12.0);
+		lblName->setPosition(ccp(130,10));
+		lblName->setAnchorPoint(ccp(0.5,0));
         lblName->setVerticalAlignment(kCCVerticalTextAlignmentCenter);
         lblName->setColor(ccc3(0, 0, 0));
 		lblName->setTag(123);
@@ -220,12 +256,36 @@ CCTableViewCell* ServerListScene::tableCellAtIndex(CCTableView *table, unsigned 
 //		lblLevel->setTag(124);
 //		cell->addChild(lblLevel);
 
-		CCLabelTTF *lblFriend = CCLabelTTF::create("良好", "Arial", 11.0);
-		lblFriend->setPosition(ccp(218,size.height/2));
-        lblFriend->setVerticalAlignment(kCCVerticalTextAlignmentCenter);
-        lblFriend->setColor(ccc3(51, 153, 00));
-        lblFriend->setTag(125);
-		cell->addChild(lblFriend);
+		CCLabelTTF *lblStatus = CCLabelTTF::create(((CCString *)dict->objectForKey("Status"))->getCString(), "Arial", 11.0);
+		lblStatus->setPosition(ccp(218,10));
+		lblStatus->setAnchorPoint(ccp(0.5,0));
+        lblStatus->setVerticalAlignment(kCCVerticalTextAlignmentCenter);
+        lblStatus->setColor(ccc3(51, 153, 00));
+        lblStatus->setTag(125);
+		cell->addChild(lblStatus);
+
+		CCLabelTTF *lblTitle = CCLabelTTF::create("", "Arial", 11.0);
+		lblTitle->setPosition(ccp(130,38));
+		lblTitle->setAnchorPoint(ccp(0.5,0));
+		lblTitle->setVerticalAlignment(kCCVerticalTextAlignmentCenter);
+		lblTitle->setColor(ccc3(51, 153, 00));
+		lblTitle->setTag(126);
+		cell->addChild(lblTitle);
+		if (strcmp(category->getCString(),"1")==0)
+		{
+			lblTitle->setVisible(true);
+			lblTitle->setString("最近登录1");
+		}
+		else if (strcmp(category->getCString(),"2")==0)
+		{
+			lblTitle->setVisible(true);
+			lblTitle->setString("选择服务器1");
+		}
+		else
+		{
+			lblTitle->setVisible(false);
+		}
+		
     }
 	else
 	{
@@ -237,40 +297,61 @@ CCTableViewCell* ServerListScene::tableCellAtIndex(CCTableView *table, unsigned 
         }
         
 		CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);
-		lblName->setString(string->getCString());
+		lblName->setString(((CCString *)dict->objectForKey("ServerName"))->getCString());
         
-//        CCLabelTTF *lblLevel = (CCLabelTTF*)cell->getChildByTag(124);
-		//lblLevel->setString(string->getCString());
-        
-//        CCLabelTTF *lblFriend = (CCLabelTTF*)cell->getChildByTag(125);
-//		lblFriend->setString(string->getCString());
+		CCLabelTTF *lblStatus = (CCLabelTTF*)cell->getChildByTag(125);
+		lblStatus->setString(((CCString *)dict->objectForKey("Status"))->getCString());
+
+
+		CCLabelTTF *lblTitle = (CCLabelTTF*)cell->getChildByTag(126);
+		if (strcmp(category->getCString(),"1")==0)
+		{
+			lblTitle->setVisible(true);
+			lblTitle->setString("最近登录1");
+		}
+		else if (strcmp(category->getCString(),"2")==0)
+		{
+			lblTitle->setVisible(true);
+			lblTitle->setString("选择服务器1");
+		}
+		else
+		{
+			lblTitle->setVisible(false);
+		}
 	}
 
 	return cell;
 }
 
-void ServerListScene::submitSelectedServer(std::string &targetUser)
+void ServerListScene::submitSelectedServer()
 {
     if (selectedindex == -1) {
         CCMessageBox(GlobalData::getLocalString("account_pwd_empty")->getCString(),"ERROR");
         return;
     }
+
+	string character = CCUserDefault::sharedUserDefault()->getStringForKey("Character");
+	if (character.length()>0) {
+		this->OpenNewScene("MainGameScene");
+	} else {
+		this->OpenNewScene("CharacterScene");
+	}
     
-	CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(ServerListScene::requestFinishedCallback));
-	request->setTag("103");
+	//CCHttpRequest *request = new CCHttpRequest();
+	//request->setRequestType(CCHttpRequest::kHttpGet);
+	//request->setResponseCallback(this,callfuncND_selector(ServerListScene::requestFinishedCallback));
+	//request->setTag("103");
 
-	string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
-	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-	_strUrl.append("/" + targetUser);
+	//string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
+	//_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+	//_strUrl.append("/" + targetUser);
 
-	request->setUrl(_strUrl.c_str());
+	//request->setUrl(_strUrl.c_str());
 
-	CCHttpClient *client = CCHttpClient::getInstance();
-	client->send(request);
+	//CCHttpClient *client = CCHttpClient::getInstance();
+	//client->send(request);
 
-	request->release();
+	//request->release();
 }
 
 void ServerListScene::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
@@ -278,13 +359,15 @@ void ServerListScene::buttonClicked(CCObject * sender , CCControlEvent controlEv
 	MainGameScene *mainScene = (MainGameScene *)this->getParent();
 	CCControlButton *button = (CCControlButton *)sender;
 	switch (button->getTag()) {
-	case 101:
-		CCLOG("11111");
-		mainScene->PopLayer();
-		break;
+	//case 101:
+	//	CCLOG("11111");
+	//	mainScene->PopLayer();
+	//	break;
 	case 102:
-		this->OpenNewScene("MainGameScene");
-		break;
+		{
+			this->submitSelectedServer();
+			break;
+		}
 	}
 }
 

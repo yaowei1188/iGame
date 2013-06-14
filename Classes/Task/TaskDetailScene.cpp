@@ -174,7 +174,7 @@ void TaskDetailScene::showTaskInfo()
 
 		CCSprite *sStar = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("shuangxin.png"));
 		sStar->setPosition(ccp(240, 200));
-		sStar->setAnchorPoint(CCPointZero);
+		sStar->setAnchorPoint(CCPointZero);											
 		addChild(sStar);
     } else {
         lblSubTitle = (CCLabelTTF *)getChildByTag(0);

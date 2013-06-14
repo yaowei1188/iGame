@@ -49,14 +49,14 @@ public:
 	virtual unsigned int numberOfCellsInTableView(CCTableView *table);
     virtual bool hasFixedCellSize();
     virtual CCSize cellSizeForIndex(CCTableView *table, unsigned int idx);
-    virtual void tableCellHighlight(CCTableView* table, CCTableViewCell* cell);
-    virtual void tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell);
+    //virtual void tableCellHighlight(CCTableView* table, CCTableViewCell* cell);
+    //virtual void tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell);
     
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
     virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
     
     void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
-	void submitSelectedServer(std::string &targetUser);
+	void submitSelectedServer();
     CCTableView* mTableView;
 //    MainSceneTemplate *mMainSceneTemp;
     unsigned int selectedindex;

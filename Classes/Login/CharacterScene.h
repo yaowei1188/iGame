@@ -6,7 +6,7 @@
 
 #include "SimpleAudioEngine.h"
 #include "MainLayerBase.h"
-
+#include "EllipseActionInterval.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -40,9 +40,14 @@ public:
     virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
 
 	void doSubmit();
+	void doEllipse();
 
 	CCEditBox *m_txtAccount;
     CCSprite *m_ImgGroup;
+
+	CCSprite *spritFou;
+	CCSprite *spriteXian;
+	CCSprite *spriteYao;
 };
 
 #endif  // __CharacterScene_SCENE_H__
