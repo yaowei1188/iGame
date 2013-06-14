@@ -39,6 +39,8 @@ public:
     virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
     virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
 
+    void animateEndCallBack(CCNode *node);
+
 	void doSubmit();
 	void doEllipse();
 
@@ -48,7 +50,14 @@ public:
 	CCSprite *spritFou;
 	CCSprite *spriteXian;
 	CCSprite *spriteYao;
-	lrEllipseConfig config;
+
+    CCMenuItemSprite *spritFou;
+	CCMenuItemSprite *spriteXian;
+	CCMenuItemSprite *spriteYao;
+    
+	lrEllipseConfig config1;
+    lrEllipseConfig config2;
+    lrEllipseConfig config3;
 };
 
 #endif  // __CharacterScene_SCENE_H__

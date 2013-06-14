@@ -3,6 +3,9 @@
 
 using namespace cocos2d;
 
+#define ELLIPSE_WIDTH 100
+#define ELLIPSE_HEIGHT 30
+
 CharacterScene::CharacterScene()
 {
     m_txtAccount = NULL;
@@ -48,14 +51,22 @@ bool CharacterScene::init()
 
         CC_BREAK_IF(! CCLayer::init());
 
-		config.aLength = 100;
-		config.cLength = 30;
-		//config.startAngle = M_PI * 1/3;
-		config.centerPosition = ccp(160,320);
+        CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 
-        ////////////////////////////////////////////////////////////////////////////
-        //// add your codes below...
-        ////////////////////////////////////////////////////////////////////////////
+		config1.aLength = ELLIPSE_WIDTH;
+		config1.cLength = ELLIPSE_HEIGHT;
+		config1.startAngle = M_PI * 0/3;
+		config1.centerPosition = ccp(winSize.width * 0.5,320);
+
+        config2.aLength = ELLIPSE_WIDTH;
+		config2.cLength = ELLIPSE_HEIGHT;
+		config2.startAngle = M_PI * 1/3;
+		config2.centerPosition = ccp(winSize.width * 0.5,320);
+
+        config3.aLength = ELLIPSE_WIDTH;
+		config3.cLength = ELLIPSE_HEIGHT;
+		config3.startAngle = M_PI * 2/3;
+		config3.centerPosition = ccp(winSize.width * 0.5,320);
         
         bRet = true;
     } while (0);
@@ -121,6 +132,16 @@ void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     m_txtAccount->setFont("Arial", 16);
     m_txtAccount->setPosition(ccp(148, 40));
 
+
+
+//    spritFou = CCMenuItemSprite::create(CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("fou.png")), NULL, NULL, this, menu_selector(CharacterScene::menuItemCallback));
+//
+//    spriteXian = CCMenuItemSprite::create(CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("xian.png")), NULL, NULL, this, menu_selector(CharacterScene::menuItemCallback));
+//
+//    spriteYao = CCMenuItemSprite::create(CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("yao.png")), NULL, NULL, this, menu_selector(CharacterScene::menuItemCallback));
+//
+//    CCMenu *menu = CCMenu::create(spritFou,spriteXian,spriteYao);
+
 	spritFou = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("fou.png"));
     spriteXian = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("xian.png"));
 	spriteYao = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("yao.png"));
@@ -128,36 +149,33 @@ void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	//spriteXian->setAnchorPoint(ccp(0,0));
 	//spriteYao->setAnchorPoint(ccp(0,0));
 
+    spriteXian->setUserData(&config1);
+    spriteYao->setUserData(&config2);
+    spritFou->setUserData(&config3);
+
 	this->addChild(spriteXian);
 	this->addChild(spriteYao);
-		this->addChild(spritFou);
+    this->addChild(spritFou);
 
-	CCPoint point = ccpAdd(config.centerPosition,ccp(tuoyuanXat(config.aLength,config.cLength,M_PI * 0/3,0.0),tuoyuanYat(config.aLength,config.cLength,M_PI * 0/3,0.0)));
-	CCPoint point1 = ccpAdd(config.centerPosition,ccp(tuoyuanXat(config.aLength,config.cLength,M_PI * 1/3,0.0),tuoyuanYat(config.aLength,config.cLength,M_PI * 1/3,0.0)));
-	CCPoint point2 = ccpAdd(config.centerPosition,ccp(tuoyuanXat(config.aLength,config.cLength,M_PI * 2/3,0.0),tuoyuanYat(config.aLength,config.cLength,M_PI * 2/3,0.0)));
+	CCPoint point = ccpAdd(config1.centerPosition,ccp(tuoyuanXat(config1.aLength,config1.cLength,M_PI * 0/3,0.0),tuoyuanYat(config1.aLength,config1.cLength,config1.startAngle,0.0)));
+	CCPoint point1 = ccpAdd(config2.centerPosition,ccp(tuoyuanXat(config2.aLength,config2.cLength,M_PI * 1/3,0.0),tuoyuanYat(config2.aLength,config2.cLength,config2.startAngle,0.0)));
+	CCPoint point2 = ccpAdd(config3.centerPosition,ccp(tuoyuanXat(config3.aLength,config3.cLength,M_PI * 2/3,0.0),tuoyuanYat(config3.aLength,config3.cLength,config3.startAngle,0.0)));
 
 	spritFou->setPosition(point);
 	spriteXian->setPosition(point1);
 	spriteYao->setPosition(point2);
-	//this->doEllipse();
 }
 
 void CharacterScene::doEllipse()
 {
-	lrEllipseConfig config1= config;
-	config1.startAngle = M_PI * 0/3;
 	EllipseActionInterval *ellipse = EllipseActionInterval::actionWithDuration(1,config1);
-	spritFou->runAction(ellipse);
+	spritFou->runAction(CCSequence::create(ellipse,CCCallFuncN::create(this, callfuncN_selector(CharacterScene::animateEndCallBack()))));
 
-	lrEllipseConfig config2= config;
-	config2.startAngle = M_PI * 1/3;
 	EllipseActionInterval *ellipse1 = EllipseActionInterval::actionWithDuration(1,config2);
-	spriteXian->runAction(ellipse1);
+    spriteXian->runAction(CCSequence::create(ellipse,CCCallFuncN::create(this, callfuncN_selector(CharacterScene::animateEndCallBack()))));
 
-	lrEllipseConfig config3= config;
-	config3.startAngle = M_PI * 2/3;
 	EllipseActionInterval *ellipse2 = EllipseActionInterval::actionWithDuration(1,config3);
-	spriteYao->runAction(ellipse2);
+    spriteYao->runAction(CCSequence::create(ellipse,CCCallFuncN::create(this, callfuncN_selector(CharacterScene::animateEndCallBack()))));
 }
 
 bool CharacterScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
@@ -165,6 +183,18 @@ bool CharacterScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pM
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_Imggroup", CCSprite*, this->m_ImgGroup);
     return true;
+}
+
+void CharacterScene::menuItemCallback(CCObject* pSender)
+{
+    CCMenuItemSprite *item = (CCMenuItemSprite*)pSender;
+}
+
+void CharacterScene::animateEndCallBack(CCNode *node)
+{
+    CCSprite *sprite = (CCSprite *)node;
+    lrEllipseConfig *config = (lrEllipseConfig *)sprite->getUserData();
+    config->startAngle += 2 * M_PI * 1/3;
 }
 
 void CharacterScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
