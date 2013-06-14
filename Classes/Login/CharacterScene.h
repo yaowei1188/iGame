@@ -48,6 +48,7 @@ public:
 	CCSprite *spritFou;
 	CCSprite *spriteXian;
 	CCSprite *spriteYao;
+	lrEllipseConfig config;
 };
 
 #endif  // __CharacterScene_SCENE_H__

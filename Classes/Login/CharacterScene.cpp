@@ -48,6 +48,11 @@ bool CharacterScene::init()
 
         CC_BREAK_IF(! CCLayer::init());
 
+		config.aLength = 100;
+		config.cLength = 30;
+		//config.startAngle = M_PI * 1/3;
+		config.centerPosition = ccp(160,320);
+
         ////////////////////////////////////////////////////////////////////////////
         //// add your codes below...
         ////////////////////////////////////////////////////////////////////////////
@@ -117,28 +122,42 @@ void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     m_txtAccount->setPosition(ccp(148, 40));
 
 	spritFou = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("fou.png"));
- //   CCSprite *spriteXian = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("xian.png"));
-	//CCSprite *spriteYao = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("yao.png"));
-	spritFou->setAnchorPoint(ccp(0.5,0.5));
-	spritFou->setPosition(ccp(160,320));
+    spriteXian = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("xian.png"));
+	spriteYao = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("yao.png"));
+	//spritFou->setAnchorPoint(ccp(0.5,0.5));
 	//spriteXian->setAnchorPoint(ccp(0,0));
 	//spriteYao->setAnchorPoint(ccp(0,0));
-	this->addChild(spritFou);
-	//this->addChild(spriteXian);
-	//this->addChild(spriteYao);
 
+	this->addChild(spriteXian);
+	this->addChild(spriteYao);
+		this->addChild(spritFou);
+
+	CCPoint point = ccpAdd(config.centerPosition,ccp(tuoyuanXat(config.aLength,config.cLength,M_PI * 0/3,0.0),tuoyuanYat(config.aLength,config.cLength,M_PI * 0/3,0.0)));
+	CCPoint point1 = ccpAdd(config.centerPosition,ccp(tuoyuanXat(config.aLength,config.cLength,M_PI * 1/3,0.0),tuoyuanYat(config.aLength,config.cLength,M_PI * 1/3,0.0)));
+	CCPoint point2 = ccpAdd(config.centerPosition,ccp(tuoyuanXat(config.aLength,config.cLength,M_PI * 2/3,0.0),tuoyuanYat(config.aLength,config.cLength,M_PI * 2/3,0.0)));
+
+	spritFou->setPosition(point);
+	spriteXian->setPosition(point1);
+	spriteYao->setPosition(point2);
 	//this->doEllipse();
 }
 
 void CharacterScene::doEllipse()
 {
-	lrEllipseConfig config;
-	config.aLength = 100;
-	config.cLength = 30;
-	config.centerPosition = ccp(160,370);
-	EllipseActionInterval *ellipse = EllipseActionInterval::actionWithDuration(1,config);
-	ellipse->step(0.001);
+	lrEllipseConfig config1= config;
+	config1.startAngle = M_PI * 0/3;
+	EllipseActionInterval *ellipse = EllipseActionInterval::actionWithDuration(1,config1);
 	spritFou->runAction(ellipse);
+
+	lrEllipseConfig config2= config;
+	config2.startAngle = M_PI * 1/3;
+	EllipseActionInterval *ellipse1 = EllipseActionInterval::actionWithDuration(1,config2);
+	spriteXian->runAction(ellipse1);
+
+	lrEllipseConfig config3= config;
+	config3.startAngle = M_PI * 2/3;
+	EllipseActionInterval *ellipse2 = EllipseActionInterval::actionWithDuration(1,config3);
+	spriteYao->runAction(ellipse2);
 }
 
 bool CharacterScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
