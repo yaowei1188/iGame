@@ -40,6 +40,7 @@ public:
     virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
 
     void animateEndCallBack(CCNode *node);
+	void menuItemCallback(CCObject* pSender);
 
 	void doSubmit();
 	void doEllipse();
@@ -47,11 +48,11 @@ public:
 	CCEditBox *m_txtAccount;
     CCSprite *m_ImgGroup;
 
-	CCSprite *spritFou;
-	CCSprite *spriteXian;
-	CCSprite *spriteYao;
+	//CCSprite *spritFou;
+	//CCSprite *spriteXian;
+	//CCSprite *spriteYao;
 
-    CCMenuItemSprite *spritFou;
+	CCMenuItemSprite *spritFou;
 	CCMenuItemSprite *spriteXian;
 	CCMenuItemSprite *spriteYao;
     
