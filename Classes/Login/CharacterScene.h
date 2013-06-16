@@ -48,10 +48,6 @@ public:
 	CCEditBox *m_txtAccount;
     CCSprite *m_ImgGroup;
 
-	//CCSprite *spritFou;
-	//CCSprite *spriteXian;
-	//CCSprite *spriteYao;
-
 	CCMenuItemSprite *spritFou;
 	CCMenuItemSprite *spriteXian;
 	CCMenuItemSprite *spriteYao;

@@ -121,7 +121,6 @@ CCTableViewVerticalFillOrder CCTableView::getVerticalFillOrder()
 
 void CCTableView::reloadData()
 {
-    Orgoffset = this->getContainer()->getContentSize().height - m_tViewSize.height/this->getContainer()->getScaleY() + this->getContentOffset().y;
     m_eOldDirection = kCCScrollViewDirectionNone;
     CCObject* pObj = NULL;
     CCARRAY_FOREACH(m_pCellsUsed, pObj)
@@ -140,6 +139,38 @@ void CCTableView::reloadData()
         }
     }
 
+    m_pIndices->clear();
+    m_pCellsUsed->release();
+    m_pCellsUsed = new CCArrayForObjectSorting();
+    
+    this->_updateContentSize();
+    if (m_pDataSource->numberOfCellsInTableView(this) > 0)
+    {
+        this->scrollViewDidScroll(this);
+    }
+}
+
+void CCTableView::refreshData()
+{
+    Orgoffset = this->getContainer()->getContentSize().height - m_tViewSize.height/this->getContainer()->getScaleY() + this->getContentOffset().y;
+    m_eOldDirection = kCCScrollViewDirectionNone;
+    CCObject* pObj = NULL;
+    CCARRAY_FOREACH(m_pCellsUsed, pObj)
+    {
+        CCTableViewCell* cell = (CCTableViewCell*)pObj;
+        
+        if(m_pTableViewDelegate != NULL) {
+            m_pTableViewDelegate->tableCellWillRecycle(this, cell);
+        }
+        
+        m_pCellsFreed->addObject(cell);
+        cell->reset();
+        if (cell->getParent() == this->getContainer())
+        {
+            this->getContainer()->removeChild(cell, true);
+        }
+    }
+    
     m_pIndices->clear();
     m_pCellsUsed->release();
     m_pCellsUsed = new CCArrayForObjectSorting();

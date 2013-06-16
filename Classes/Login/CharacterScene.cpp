@@ -14,7 +14,7 @@ CharacterScene::CharacterScene()
 
 CharacterScene::~CharacterScene()
 {
-    CC_SAFE_RELEASE(m_txtAccount);
+//    CC_SAFE_RELEASE(m_txtAccount);
 	CC_SAFE_RELEASE(m_ImgGroup);
 }
 
@@ -131,9 +131,12 @@ void CharacterScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
 
 void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
+    m_txtAccount = CCEditBox::create(CCSizeMake(150, 34), CCScale9Sprite::create("transparent.png"));
+    addChild(m_txtAccount);
     m_txtAccount->setFontColor(ccc3(255,255,153));
     m_txtAccount->setFont("Arial", 16);
     m_txtAccount->setPosition(ccp(148, 40));
+    
 	CCSprite *fou = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("fou.png"));
 	spritFou = CCMenuItemSprite::create(fou, fou, fou, this, menu_selector(CharacterScene::menuItemCallback));
 
@@ -147,21 +150,9 @@ void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	menu->setPosition(0,0);
 	this->addChild(menu);
 
-	//spritFou = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("fou.png"));
- //   spriteXian = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("xian.png"));
-	//spriteYao = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("yao.png"));
-	//spritFou->setAnchorPoint(ccp(0.5,0.5));
-	//spriteXian->setAnchorPoint(ccp(0,0));
-	//spriteYao->setAnchorPoint(ccp(0,0));
-
 	spritFou->setUserData(&config1);
     spriteXian->setUserData(&config2);
     spriteYao->setUserData(&config3);
-
-
-	//this->addChild(spriteXian);
-	//this->addChild(spriteYao);
- //   this->addChild(spritFou);
 
 	CCPoint point1 = ccpAdd(config1.centerPosition,ccp(getEllipseX(config1.aLength,config1.cLength,config1.startAngle,0.0),getEllipseY(config1.aLength,config1.cLength,config1.startAngle,0.0)));
 	CCPoint point2 = ccpAdd(config2.centerPosition,ccp(getEllipseX(config2.aLength,config2.cLength,config2.startAngle,0.0),getEllipseY(config2.aLength,config2.cLength,config2.startAngle,0.0)));
@@ -200,7 +191,7 @@ void CharacterScene::doEllipse()
 
 bool CharacterScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
+//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_Imggroup", CCSprite*, this->m_ImgGroup);
     return true;
 }
@@ -220,8 +211,6 @@ void CharacterScene::menuItemCallback(CCObject* pSender)
 		CCLOG("yao");
 	}
 
-
-
 	CCAction *action = sprite->getActionByTag(1);
 	if (action!=NULL && !action->isDone())
 	{
@@ -232,8 +221,6 @@ void CharacterScene::menuItemCallback(CCObject* pSender)
 	{
 		return;
 	}
-
-
 
 	spritFou->setZOrder(1);
 	spriteXian->setZOrder(1);
@@ -284,6 +271,8 @@ void CharacterScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlE
     //        CCLOG("signin");
     //        break;
     //}
+    
+    this->OpenNewScene("MainGameScene");
 }
 
 SEL_MenuHandler CharacterScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)

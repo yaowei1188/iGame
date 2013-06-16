@@ -133,23 +133,32 @@ void NewMailScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     CCLOG("TEST");
     
+    m_txtReceiver = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
+    this->addChild(m_txtReceiver);
+    m_txtReceiver->setPosition(ccp(187, 343));
     m_txtReceiver->setFontColor(ccc3(251,255,33));
     m_txtReceiver->setFont("Arial", 14);
  
+    m_txtSubject = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
+    this->addChild(m_txtSubject);
+    m_txtSubject->setPosition(ccp(187, 297));
     m_txtSubject->setFontColor(ccc3(251,255,33));
     m_txtSubject->setFont("Arial", 14);
     
+    m_txtContent = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
+    this->addChild(m_txtContent);
+    m_txtContent->setPosition(ccp(187, 248));
     m_txtContent->setFontColor(ccc3(251,255,33));
     m_txtContent->setFont("Arial", 14);
-    m_txtContent->setContentSize(CCSizeMake(200, 85));
-    m_txtContent->setPreferredSize(CCSizeMake(200, 85));
+//    m_txtContent->setContentSize(CCSizeMake(200, 85));
+//    m_txtContent->setPreferredSize(CCSizeMake(200, 85));
 }
 
 bool NewMailScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtReceiver", CCEditBox*, this->m_txtReceiver);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtSubject", CCEditBox*, this->m_txtSubject);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtContent", CCEditBox*, this->m_txtContent);
+//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtReceiver", CCEditBox*, this->m_txtReceiver);
+//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtSubject", CCEditBox*, this->m_txtSubject);
+//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtContent", CCEditBox*, this->m_txtContent);
     
     return true;
 }

@@ -231,6 +231,9 @@ public:
     virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
     
     CCTableViewCell *m_pTouchedCell;
+    
+    //add by ivan
+    void refreshData();
 protected:
     
 

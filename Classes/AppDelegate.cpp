@@ -31,7 +31,7 @@ USING_NS_CC;
 
 AppDelegate::AppDelegate()
 {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 	// preload background music and effect
 	SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic( MUSIC_FILE );
 	SimpleAudioEngine::sharedEngine()->preloadEffect( EFFECT_FILE );
@@ -39,7 +39,7 @@ AppDelegate::AppDelegate()
 	// set default volume
 	SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.5);
 	SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
-#endif
+//#endif
 }
 
 AppDelegate::~AppDelegate()
@@ -54,7 +54,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
 
     // turn on display FPS
-    pDirector->setDisplayStats(FALSE);
+    pDirector->setDisplayStats(false);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
@@ -146,15 +146,15 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("main.plist");
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("friends.plist");
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-	//SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
-#endif
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+	SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
+//#endif
     
-    //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
+    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
 
 	//CCScene *pScene = MailMainScene::scene();
     //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("ServerListScene.ccbi");
-    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("CharacterScene.ccbi");
+//    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("CharacterScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskListScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskRewardScene.ccbi");
     pDirector->runWithScene(pScene);
