@@ -146,7 +146,13 @@ void ThirdLoginScene::parseJson()
 
 void ThirdLoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    CCLOG("TEST");
+    m_txtAccount = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
+    this->addChild(m_txtAccount);
+    m_txtAccount->setPosition(ccp(177, 368));
+    
+    m_txtPassword = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
+    this->addChild(m_txtPassword);
+    m_txtPassword->setPosition(ccp(177, 320));
     
     m_txtAccount->setFontColor(ccc3(0,0,0));
     m_txtAccount->setFont("Arial", 16);
@@ -180,8 +186,8 @@ void ThirdLoginScene::callbackSwitch(CCObject* pSender){
 
 bool ThirdLoginScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtPassword", CCEditBox*, this->m_txtPassword);
+//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
+//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtPassword", CCEditBox*, this->m_txtPassword);
     return true;
 }
 

@@ -182,6 +182,14 @@ void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     CCLOG("TEST");
     
+    m_txtAccount = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
+    this->addChild(m_txtAccount);
+    m_txtAccount->setPosition(ccp(177, 247));
+    
+    m_txtPassword = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
+    this->addChild(m_txtPassword);
+    m_txtPassword->setPosition(ccp(177, 201));
+    
     m_txtAccount->setText("yaowei");
     m_txtPassword->setText("123456");
     
@@ -217,8 +225,8 @@ void LoginScene::callbackSwitch(CCObject* pSender){
 
 bool LoginScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtPassword", CCEditBox*, this->m_txtPassword);
+//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
+//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtPassword", CCEditBox*, this->m_txtPassword);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mCloud", CCSprite*, this->mCloud);
     
     return true;

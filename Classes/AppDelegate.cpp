@@ -31,7 +31,7 @@ USING_NS_CC;
 
 AppDelegate::AppDelegate()
 {
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 	// preload background music and effect
 	SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic( MUSIC_FILE );
 	SimpleAudioEngine::sharedEngine()->preloadEffect( EFFECT_FILE );
@@ -39,7 +39,7 @@ AppDelegate::AppDelegate()
 	// set default volume
 	SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.5);
 	SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
-//#endif
+#endif
 }
 
 AppDelegate::~AppDelegate()
@@ -146,9 +146,9 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("main.plist");
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("friends.plist");
 
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 	SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
-//#endif
+#endif
     
     CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
 
