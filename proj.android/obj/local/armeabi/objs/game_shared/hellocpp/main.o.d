@@ -229,6 +229,8 @@ obj/local/armeabi/objs/game_shared/hellocpp/main.o: jni/hellocpp/main.cpp \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/CCScheduler.h \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/support/data_support/uthash.h \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/platform/android/CCApplication.h \
+ /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../CocosDenshion/android/../include/SimpleAudioEngine.h \
+ /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../CocosDenshion/android/../include/Export.h \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/platform/android/jni/JniHelper.h \
  /cygdrive/f/Android/android-ndk-r8e/platforms/android-14/arch-arm/usr/include/jni.h
 
@@ -691,6 +693,10 @@ jni/../../Classes/AppDelegate.h:
 /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/support/data_support/uthash.h:
 
 /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/platform/android/CCApplication.h:
+
+/cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../CocosDenshion/android/../include/SimpleAudioEngine.h:
+
+/cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../CocosDenshion/android/../include/Export.h:
 
 /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/platform/android/jni/JniHelper.h:
 

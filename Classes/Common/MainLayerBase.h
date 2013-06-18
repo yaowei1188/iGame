@@ -14,10 +14,10 @@
 #include "cocos-ext.h"
 #include "LoadingScene.h"
 #include "CCMessageDialog.h"
-#include "JsonBox.h"
 #include "common.h"
 #include "CCJSONConverter.h"
 #include "GlobalData.h"
+#include "StringExt.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -37,6 +37,7 @@ protected:
 	bool ValidateResponseData(CCNode* pSender,void *data);
     std::string CompleteUrl(std::string url);
     std::string getLocalString(std::string name);
+	std::string showUTF8String(std::string name);
 
 private:
     LoadingScene *loading;

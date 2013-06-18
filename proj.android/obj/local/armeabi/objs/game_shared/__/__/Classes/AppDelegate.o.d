@@ -233,7 +233,7 @@ obj/local/armeabi/objs/game_shared/__/__/Classes/AppDelegate.o: \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/platform/android/CCApplication.h \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../CocosDenshion/android/../include/SimpleAudioEngine.h \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../CocosDenshion/android/../include/Export.h \
- jni/../../Classes/FriendListScene.h \
+ jni/../../Classes/Friends/FriendListScene.h \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/cocos-ext.h \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/ExtensionMacros.h \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/CCBReader/CCBFileLoader.h \
@@ -309,23 +309,51 @@ obj/local/armeabi/objs/game_shared/__/__/Classes/AppDelegate.o: \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/network/HttpRequest.h \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/network/HttpClient.h \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/network/HttpResponse.h \
- jni/../../Classes/XmlParser.h jni/../../Classes/MainGameScene.h \
- jni/../../Classes/MainSceneTemplate.h jni/../../Classes/common.h \
- jni/../../Classes/MainLayerBase.h jni/../../Classes/LoadingScene.h \
- jni/../../Classes/CCMessageDialog.h jni/../../Classes/LoginScene.h \
- jni/../../Classes/StringExt.h jni/../../Classes/MainGameSceneLoader.h \
- jni/../../Classes/LoginSceneLoader.h jni/../../Classes/CCEditBoxLoader.h \
- jni/../../Classes/FriendListSceneLoader.h \
- jni/../../Classes/CCTableViewLoader.h \
- jni/../../Classes/TaskListSceneLoader.h \
- jni/../../Classes/TaskListScene.h \
- jni/../../Classes/AddFriendSceneLoader.h \
- jni/../../Classes/AddFriendScene.h \
- jni/../../Classes/MainSceneTemplateLoader.h \
- jni/../../Classes/CCControlSwitchLoader.h \
- jni/../../Classes/ThirdLoginSceneLoader.h \
- jni/../../Classes/ThirdLoginScene.h \
- jni/../../Classes/NewMailSceneLoader.h jni/../../Classes/NewMailScene.h
+ jni/../../library/XmlParser/XmlParser.h \
+ jni/../../Classes/MainGameScene.h \
+ jni/../../Classes/Common/MainSceneTemplate.h \
+ jni/../../Classes/Common/common.h \
+ jni/../../Classes/Common/MainSceneTemplate.h \
+ jni/../../Classes/Common/MainLayerBase.h \
+ jni/../../Classes/UILibrary/LoadingScene.h \
+ jni/../../Classes/UILibrary/CCMessageDialog.h \
+ jni/../../library/jsonconverter/CCJSONConverter.h \
+ jni/../../library/jsonconverter/CCJSONData.h \
+ jni/../../library/jsonconverter/cJSON.h \
+ jni/../../Classes/Common/GlobalData.h \
+ jni/../../Classes/Common/StringExt.h \
+ jni/../../Classes/Common/MainLayerBase.h \
+ jni/../../Classes/Common/common.h jni/../../Classes/Login/LoginScene.h \
+ jni/../../Classes/MainGameScene.h \
+ jni/../../Classes/MainGameSceneLoader.h \
+ jni/../../Classes/Login/LoginSceneLoader.h \
+ jni/../../Classes/Login/LoginScene.h \
+ jni/../../Classes/Other/CCEditBoxLoader.h \
+ jni/../../Classes/Friends/FriendListSceneLoader.h \
+ jni/../../Classes/Friends/FriendListScene.h \
+ jni/../../Classes/Other/CCTableViewLoader.h \
+ jni/../../Classes/Task/TaskListSceneLoader.h \
+ jni/../../Classes/Task/TaskListScene.h \
+ jni/../../Classes/UILibrary/SlidingMenu.h \
+ jni/../../Classes/Friends/AddFriendSceneLoader.h \
+ jni/../../Classes/Friends/AddFriendScene.h \
+ jni/../../Classes/Common/StringExt.h \
+ jni/../../Classes/Common/MainSceneTemplateLoader.h \
+ jni/../../Classes/Other/CCControlSwitchLoader.h \
+ jni/../../Classes/Login/ThirdLoginSceneLoader.h \
+ jni/../../Classes/Login/ThirdLoginScene.h \
+ jni/../../Classes/Login/CharacterSceneLoader.h \
+ jni/../../Classes/Login/CharacterScene.h \
+ jni/../../Classes/UILibrary/EllipseActionInterval.h \
+ jni/../../Classes/Login/ServerListSceneLoader.h \
+ jni/../../Classes/Login/ServerListScene.h \
+ jni/../../Classes/Task/TaskDetailSceneLoader.h \
+ jni/../../Classes/Task/TaskDetailScene.h \
+ jni/../../Classes/Task/TaskRewardSceneLoader.h \
+ jni/../../Classes/Task/TaskRewardScene.h \
+ jni/../../Classes/Mail/NewMailSceneLoader.h \
+ jni/../../Classes/Mail/NewMailScene.h \
+ jni/../../Classes/Mail/MailMainScene.h
 
 /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../cocos2dx/include/cocos2d.h:
 
@@ -793,7 +821,7 @@ jni/../../Classes/AppDelegate.h:
 
 /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../CocosDenshion/android/../include/Export.h:
 
-jni/../../Classes/FriendListScene.h:
+jni/../../Classes/Friends/FriendListScene.h:
 
 /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/cocos-ext.h:
 
@@ -945,50 +973,94 @@ jni/../../Classes/FriendListScene.h:
 
 /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/network/HttpResponse.h:
 
-jni/../../Classes/XmlParser.h:
+jni/../../library/XmlParser/XmlParser.h:
 
 jni/../../Classes/MainGameScene.h:
 
-jni/../../Classes/MainSceneTemplate.h:
+jni/../../Classes/Common/MainSceneTemplate.h:
 
-jni/../../Classes/common.h:
+jni/../../Classes/Common/common.h:
 
-jni/../../Classes/MainLayerBase.h:
+jni/../../Classes/Common/MainSceneTemplate.h:
 
-jni/../../Classes/LoadingScene.h:
+jni/../../Classes/Common/MainLayerBase.h:
 
-jni/../../Classes/CCMessageDialog.h:
+jni/../../Classes/UILibrary/LoadingScene.h:
 
-jni/../../Classes/LoginScene.h:
+jni/../../Classes/UILibrary/CCMessageDialog.h:
 
-jni/../../Classes/StringExt.h:
+jni/../../library/jsonconverter/CCJSONConverter.h:
+
+jni/../../library/jsonconverter/CCJSONData.h:
+
+jni/../../library/jsonconverter/cJSON.h:
+
+jni/../../Classes/Common/GlobalData.h:
+
+jni/../../Classes/Common/StringExt.h:
+
+jni/../../Classes/Common/MainLayerBase.h:
+
+jni/../../Classes/Common/common.h:
+
+jni/../../Classes/Login/LoginScene.h:
+
+jni/../../Classes/MainGameScene.h:
 
 jni/../../Classes/MainGameSceneLoader.h:
 
-jni/../../Classes/LoginSceneLoader.h:
+jni/../../Classes/Login/LoginSceneLoader.h:
 
-jni/../../Classes/CCEditBoxLoader.h:
+jni/../../Classes/Login/LoginScene.h:
 
-jni/../../Classes/FriendListSceneLoader.h:
+jni/../../Classes/Other/CCEditBoxLoader.h:
 
-jni/../../Classes/CCTableViewLoader.h:
+jni/../../Classes/Friends/FriendListSceneLoader.h:
 
-jni/../../Classes/TaskListSceneLoader.h:
+jni/../../Classes/Friends/FriendListScene.h:
 
-jni/../../Classes/TaskListScene.h:
+jni/../../Classes/Other/CCTableViewLoader.h:
 
-jni/../../Classes/AddFriendSceneLoader.h:
+jni/../../Classes/Task/TaskListSceneLoader.h:
 
-jni/../../Classes/AddFriendScene.h:
+jni/../../Classes/Task/TaskListScene.h:
 
-jni/../../Classes/MainSceneTemplateLoader.h:
+jni/../../Classes/UILibrary/SlidingMenu.h:
 
-jni/../../Classes/CCControlSwitchLoader.h:
+jni/../../Classes/Friends/AddFriendSceneLoader.h:
 
-jni/../../Classes/ThirdLoginSceneLoader.h:
+jni/../../Classes/Friends/AddFriendScene.h:
 
-jni/../../Classes/ThirdLoginScene.h:
+jni/../../Classes/Common/StringExt.h:
 
-jni/../../Classes/NewMailSceneLoader.h:
+jni/../../Classes/Common/MainSceneTemplateLoader.h:
 
-jni/../../Classes/NewMailScene.h:
+jni/../../Classes/Other/CCControlSwitchLoader.h:
+
+jni/../../Classes/Login/ThirdLoginSceneLoader.h:
+
+jni/../../Classes/Login/ThirdLoginScene.h:
+
+jni/../../Classes/Login/CharacterSceneLoader.h:
+
+jni/../../Classes/Login/CharacterScene.h:
+
+jni/../../Classes/UILibrary/EllipseActionInterval.h:
+
+jni/../../Classes/Login/ServerListSceneLoader.h:
+
+jni/../../Classes/Login/ServerListScene.h:
+
+jni/../../Classes/Task/TaskDetailSceneLoader.h:
+
+jni/../../Classes/Task/TaskDetailScene.h:
+
+jni/../../Classes/Task/TaskRewardSceneLoader.h:
+
+jni/../../Classes/Task/TaskRewardScene.h:
+
+jni/../../Classes/Mail/NewMailSceneLoader.h:
+
+jni/../../Classes/Mail/NewMailScene.h:
+
+jni/../../Classes/Mail/MailMainScene.h:

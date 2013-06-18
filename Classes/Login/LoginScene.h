@@ -7,8 +7,6 @@
 #include "XmlParser.h"
 #include "MainLayerBase.h"
 #include "MainSceneTemplate.h"
-#include "common.h"
-#include "StringExt.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;

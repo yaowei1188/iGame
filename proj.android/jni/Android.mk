@@ -8,29 +8,43 @@ LOCAL_MODULE_FILENAME := libgame
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \
-                   ../../Classes/LoginScene.cpp \
-                   ../../Classes/MainLayerBase.cpp \
-                   ../../Classes/LoadingScene.cpp \
                    ../../Classes/MainGameScene.cpp \
-                   ../../Classes/MainSceneTemplate.cpp \
-                   ../../Classes/ThirdLoginScene.cpp \
-                   ../../Classes/FriendListScene.cpp \
-                   ../../Classes/AddFriendScene.cpp \
-                   ../../Classes/NewMailScene.cpp \
-                   ../../Classes/CCMessageDialog.cpp \
-                   ../../Classes/XmlParser.cpp \
-                   ../../library/JsonBox/src/Array.cpp \
-                   ../../library/JsonBox/src/Convert.cpp \
-                   ../../library/JsonBox/src/Escaper.cpp \
-                   ../../library/JsonBox/src/IndentCanceller.cpp \
-                   ../../library/JsonBox/src/Indenter.cpp \
-                   ../../library/JsonBox/src/Object.cpp \
-                   ../../library/JsonBox/src/SolidusEscaper.cpp \
-                   ../../library/JsonBox/src/Value.cpp
+                   ../../Classes/Common/MainLayerBase.cpp \
+                   ../../Classes/Common/MainSceneTemplate.cpp \
+                   ../../Classes/Common/GlobalData.cpp \
+                   ../../Classes/Friends/FriendListScene.cpp \
+                   ../../Classes/Friends/AddFriendScene.cpp \
+                   ../../Classes/Login/CharacterScene.cpp \
+                   ../../Classes/Login/LoginScene.cpp \
+                   ../../Classes/Login/ServerListScene.cpp \
+                   ../../Classes/Login/ThirdLoginScene.cpp \
+                   ../../Classes/Mail/MailListScene.cpp \
+                   ../../Classes/Mail/MailMainScene.cpp \
+                   ../../Classes/Mail/NewMailScene.cpp \
+                   ../../Classes/Other/AboutScene.cpp \
+                   ../../Classes/Task/TaskDetailScene.cpp \
+                   ../../Classes/Task/TaskListScene.cpp \
+                   ../../Classes/Task/TaskRewardScene.cpp \
+                   ../../Classes/UILibrary/CCMessageDialog.cpp \
+                   ../../Classes/UILibrary/CCTabView.cpp \
+                   ../../Classes/UILibrary/EllipseActionInterval.cpp \
+                   ../../Classes/UILibrary/LoadingScene.cpp \
+                   ../../Classes/UILibrary/SlidingMenu.cpp \
+                   ../../library/XmlParser/XmlParser.cpp \
+                   ../../library/jsonconverter/cJSON.c \
+                   ../../library/jsonconverter/CCJSONConverter.cpp
                    
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes  \
-                    $(LOCAL_PATH)/../../library/JsonBox/include                   
-
+					$(LOCAL_PATH)/../../Classes/Friends  \
+					$(LOCAL_PATH)/../../Classes/Common  \
+					$(LOCAL_PATH)/../../Classes/UILibrary  \
+					$(LOCAL_PATH)/../../Classes/Task  \
+					$(LOCAL_PATH)/../../Classes/Other  \
+					$(LOCAL_PATH)/../../Classes/Mail  \
+					$(LOCAL_PATH)/../../Classes/Login  \
+                    $(LOCAL_PATH)/../../library/jsonconverter  \
+                    $(LOCAL_PATH)/../../library/XmlParser 
+                    
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static cocosdenshion_static cocos_extension_static
             
 include $(BUILD_SHARED_LIBRARY)

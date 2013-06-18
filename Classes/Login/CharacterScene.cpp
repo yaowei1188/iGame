@@ -1,5 +1,5 @@
 #include "CharacterScene.h"
-#include "JsonBox.h"
+//#include "JsonBox.h"
 
 using namespace cocos2d;
 
@@ -79,20 +79,29 @@ bool CharacterScene::init()
 
 void CharacterScene::doSubmit()
 {
-	CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(CharacterScene::requestFinishedCallback));
-	request->setTag("103");
-    
-	string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
-	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-    
-	request->setUrl(_strUrl.c_str());
-    
-	CCHttpClient *client = CCHttpClient::getInstance();
-	client->send(request);
-    
-	request->release();
+	std::string sAccount(m_txtAccount->getText());
+
+	if (trimRight(sAccount).empty() ) {
+		CCMessageBox(GlobalData::getLocalString("account_pwd_empty")->getCString(),"ERROR");
+		return;
+	}
+
+	 this->OpenNewScene("MainGameScene");
+
+	//CCHttpRequest *request = new CCHttpRequest();
+	//request->setRequestType(CCHttpRequest::kHttpGet);
+	//request->setResponseCallback(this,callfuncND_selector(CharacterScene::requestFinishedCallback));
+	//request->setTag("103");
+ //   
+	//string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
+	//_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+ //   
+	//request->setUrl(_strUrl.c_str());
+ //   
+	//CCHttpClient *client = CCHttpClient::getInstance();
+	//client->send(request);
+ //   
+	//request->release();
 }
 
 void CharacterScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
@@ -271,8 +280,8 @@ void CharacterScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlE
     //        CCLOG("signin");
     //        break;
     //}
-    
-    this->OpenNewScene("MainGameScene");
+    this->doSubmit();
+   
 }
 
 SEL_MenuHandler CharacterScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)

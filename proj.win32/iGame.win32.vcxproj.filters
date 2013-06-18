@@ -430,6 +430,12 @@
     <ClInclude Include="..\Classes\UILibrary\EllipseActionInterval.h">
       <Filter>Classes\UILibrary</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Common\MainInnerLayer.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\MainInnerLayerLoader.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -558,6 +564,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\UILibrary\EllipseActionInterval.cpp">
       <Filter>Classes\UILibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\MainInnerLayer.cpp">
+      <Filter>Classes\Common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

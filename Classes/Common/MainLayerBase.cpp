@@ -132,3 +132,15 @@ std::string MainLayerBase::getLocalString(std::string name)
     CCDictionary *dict = CCDictionary::createWithContentsOfFile("chs.plist");
     return ((CCString*)dict->objectForKey(name))->getCString();
 }
+
+std::string MainLayerBase::showUTF8String(std::string name)
+{
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+std::string text = WStrToUTF8(StringToWString(name));
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+std::string text = name;
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+	std::string text = WStrToUTF8(StringToWString(name));
+#endif
+	return text;
+}

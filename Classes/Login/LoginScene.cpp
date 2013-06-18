@@ -82,7 +82,6 @@ void LoginScene::doSubmit()
         return;
     }
     
-    
     this->ShowLoadingIndicator("");
     
 	CCHttpRequest *request = new CCHttpRequest();
@@ -152,20 +151,20 @@ void LoginScene::parseJson(std::string &content)
 //        return;
 //    }
     
-    JsonBox::Value val;
-	val.loadFromString(content);
-    
-    int code = val["code"].getInt();
-    if (code!=200) {
-        
-        CCMessageBox("invoke web api failed!","ERROR");
-        return;
-    }else {
-    	CCLOG("douzhan:login successfully!");
-    }
+//    JsonBox::Value val;
+//	val.loadFromString(content);
+//
+//    int code = val["code"].getInt();
+//    if (code!=200) {
+//
+//        CCMessageBox("invoke web api failed!","ERROR");
+//        return;
+//    }else {
+//    	CCLOG("douzhan:login successfully!");
+//    }
 
-    CCUserDefault::sharedUserDefault()->setStringForKey("username", val["username"].getString());
-    CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", val["encryptedUserInfo"].getString());
+//    CCUserDefault::sharedUserDefault()->setStringForKey("username", val["username"].getString());
+//    CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", val["encryptedUserInfo"].getString());
     
 //    CCUserDefault::sharedUserDefault()->setStringForKey("username", root["username"].asString());
 //    CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", root["encryptedUserInfo"].asString());
@@ -190,14 +189,15 @@ void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     this->addChild(m_txtPassword);
     m_txtPassword->setPosition(ccp(177, 201));
     
-    m_txtAccount->setText("yaowei");
-    m_txtPassword->setText("123456");
-    
     m_txtAccount->setFontColor(ccc3(0,0,0));
-    m_txtAccount->setFont("Arial", 16);
+    m_txtAccount->setFont(FONT_LOGIN, 16);
+
     m_txtPassword->setInputFlag(kEditBoxInputFlagPassword);
     m_txtPassword->setFontColor(ccc3(0,0,0));
-    m_txtPassword->setFont("Arial", 16);
+    m_txtPassword->setFont(FONT_LOGIN, 16);
+
+	m_txtAccount->setText("yaowei");
+	m_txtPassword->setText("123456");
     
 	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
 	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));

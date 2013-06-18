@@ -272,12 +272,22 @@ obj/local/armeabi/objs/game_shared/__/__/Classes/MainGameScene.o: \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/network/HttpRequest.h \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/network/HttpClient.h \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/network/HttpResponse.h \
- jni/../../Classes/MainSceneTemplate.h jni/../../Classes/common.h \
- jni/../../Classes/MainLayerBase.h jni/../../Classes/LoadingScene.h \
- jni/../../Classes/CCMessageDialog.h \
+ jni/../../Classes/Common/MainSceneTemplate.h \
+ jni/../../Classes/Common/common.h \
+ jni/../../Classes/Common/MainSceneTemplate.h \
+ jni/../../Classes/Common/MainLayerBase.h \
+ jni/../../Classes/UILibrary/LoadingScene.h \
+ jni/../../Classes/UILibrary/CCMessageDialog.h \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../CocosDenshion/android/../include/SimpleAudioEngine.h \
  /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../CocosDenshion/android/../include/Export.h \
- jni/../../Classes/XmlParser.h
+ jni/../../library/XmlParser/XmlParser.h \
+ jni/../../library/jsonconverter/CCJSONConverter.h \
+ jni/../../library/jsonconverter/CCJSONData.h \
+ jni/../../library/jsonconverter/cJSON.h \
+ jni/../../Classes/Common/GlobalData.h \
+ jni/../../Classes/Common/StringExt.h \
+ jni/../../Classes/Common/MainLayerBase.h \
+ jni/../../Classes/Common/common.h
 
 jni/../../Classes/MainGameScene.h:
 
@@ -825,18 +835,34 @@ jni/../../Classes/MainGameScene.h:
 
 /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../extensions/network/HttpResponse.h:
 
-jni/../../Classes/MainSceneTemplate.h:
+jni/../../Classes/Common/MainSceneTemplate.h:
 
-jni/../../Classes/common.h:
+jni/../../Classes/Common/common.h:
 
-jni/../../Classes/MainLayerBase.h:
+jni/../../Classes/Common/MainSceneTemplate.h:
 
-jni/../../Classes/LoadingScene.h:
+jni/../../Classes/Common/MainLayerBase.h:
 
-jni/../../Classes/CCMessageDialog.h:
+jni/../../Classes/UILibrary/LoadingScene.h:
+
+jni/../../Classes/UILibrary/CCMessageDialog.h:
 
 /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../CocosDenshion/android/../include/SimpleAudioEngine.h:
 
 /cygdrive/f/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/proj.android/../../CocosDenshion/android/../include/Export.h:
 
-jni/../../Classes/XmlParser.h:
+jni/../../library/XmlParser/XmlParser.h:
+
+jni/../../library/jsonconverter/CCJSONConverter.h:
+
+jni/../../library/jsonconverter/CCJSONData.h:
+
+jni/../../library/jsonconverter/cJSON.h:
+
+jni/../../Classes/Common/GlobalData.h:
+
+jni/../../Classes/Common/StringExt.h:
+
+jni/../../Classes/Common/MainLayerBase.h:
+
+jni/../../Classes/Common/common.h:

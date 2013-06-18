@@ -97,4 +97,11 @@ inline std::string WStrToUTF8(const std::wstring& str){
 	return result;
 }
 
+inline std::wstring StringToWString(const std::string &s)
+{
+	std::wstring wsTmp(s.begin(), s.end());
+
+	return wsTmp;
+}
+
 #endif /* defined(__iGame__StringExt__) */

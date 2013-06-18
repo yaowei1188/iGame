@@ -25,21 +25,7 @@
 							</builder>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.libs.49153338" name="holder for library settings" superClass="org.eclipse.cdt.build.core.settings.holder.libs"/>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.1948052590" name="Assembly" superClass="org.eclipse.cdt.build.core.settings.holder">
-								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1857464650" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
-									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/platforms/android-9/arch-arm/usr/include"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/cocos2dx"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/cocos2dx/include"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/CocosDenshion/include"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/cocos2dx/platform/android"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/extensions"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/library/jsoncpp/include"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/cocos2dx/platform"/>
-									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/system/include"/>
-									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/gnu-libstdc++/4.6/include"/>
-									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/gnu-libstdc++/4.6/libs/armeabi-v7a/include"/>
-									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows-x86_64/lib/gcc/arm-linux-androideabi/4.4.3/include"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/library/JsonBox/include"/>
-								</option>
+								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1857464650" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath"/>
 								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.1255464099" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;COCOS2DX_ROOT=${ProjDirPath}/../../../&quot;"/>
 								</option>
@@ -58,8 +44,16 @@
 									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/gnu-libstdc++/4.6/include"/>
 									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/gnu-libstdc++/4.6/libs/armeabi-v7a/include"/>
 									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows-x86_64/lib/gcc/arm-linux-androideabi/4.4.3/include"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/library/JsonBox/include"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/library/jsoncpp/include"/>
+									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\library\jsonconverter&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\library\XmlParser&quot;"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/Classes/Friends"/>
+									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\Classes&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\Classes\UILibrary&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\Classes\Task&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\Classes\Other&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\Classes\Mail&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\Classes\Login&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\Classes\Common&quot;"/>
 								</option>
 								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.656762238" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;COCOS2DX_ROOT=${ProjDirPath}/../../../&quot;"/>
@@ -67,21 +61,7 @@
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.1229650612" languageId="org.eclipse.cdt.core.g++" languageName="GNU C++" sourceContentType="org.eclipse.cdt.core.cxxSource,org.eclipse.cdt.core.cxxHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.657615967" name="GNU C" superClass="org.eclipse.cdt.build.core.settings.holder">
-								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1426385637" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
-									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/platforms/android-9/arch-arm/usr/include"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/cocos2dx"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/cocos2dx/include"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/CocosDenshion/include"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/cocos2dx/platform/android"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/extensions"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/library/jsoncpp/include"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/cocos2dx/platform"/>
-									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/system/include"/>
-									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/gnu-libstdc++/4.6/include"/>
-									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/gnu-libstdc++/4.6/libs/armeabi-v7a/include"/>
-									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows-x86_64/lib/gcc/arm-linux-androideabi/4.4.3/include"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/library/JsonBox/include"/>
-								</option>
+								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1426385637" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath"/>
 								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.451334047" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;COCOS2DX_ROOT=${ProjDirPath}/../../../&quot;"/>
 								</option>

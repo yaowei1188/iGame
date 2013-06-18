@@ -192,6 +192,8 @@
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\Common\common.h" />
     <ClInclude Include="..\Classes\Common\GlobalData.h" />
+    <ClInclude Include="..\Classes\Common\MainInnerLayer.h" />
+    <ClInclude Include="..\Classes\Common\MainInnerLayerLoader.h" />
     <ClInclude Include="..\Classes\Common\MainLayerBase.h" />
     <ClInclude Include="..\Classes\Common\MainSceneTemplate.h" />
     <ClInclude Include="..\Classes\Common\MainSceneTemplateLoader.h" />
@@ -250,6 +252,7 @@
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Common\GlobalData.cpp" />
+    <ClCompile Include="..\Classes\Common\MainInnerLayer.cpp" />
     <ClCompile Include="..\Classes\Common\MainLayerBase.cpp" />
     <ClCompile Include="..\Classes\Common\MainSceneTemplate.cpp" />
     <ClCompile Include="..\Classes\Friends\AddFriendScene.cpp" />

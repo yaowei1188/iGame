@@ -1,5 +1,5 @@
 #include "NewMailScene.h"
-#include "JsonBox.h"
+//#include "JsonBox.h"
 
 using namespace cocos2d;
 

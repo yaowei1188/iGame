@@ -15,13 +15,10 @@
 #include "MainSceneTemplateLoader.h"
 #include "CCControlSwitchLoader.h"
 #include "ThirdLoginSceneLoader.h"
-
 #include "CharacterSceneLoader.h"
 #include "ServerListSceneLoader.h"
 #include "TaskDetailSceneLoader.h"
 #include "TaskRewardSceneLoader.h"
-
-
 #include "NewMailSceneLoader.h"
 #include "MailMainScene.h"
 
@@ -68,6 +65,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     std::vector<std::string> resDirOrders;
     
 	searchPaths.push_back("Task");
+	searchPaths.push_back("Language");
 	searchPaths.push_back("Image");
 	searchPaths.push_back("sound");
 	//searchPaths.push_back("ccbResources");
@@ -147,7 +145,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("friends.plist");
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-	SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
+	//SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
 #endif
     
     CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
@@ -156,7 +154,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("ServerListScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("CharacterScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskListScene.ccbi");
-//    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskRewardScene.ccbi");
+    //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
     pDirector->runWithScene(pScene);
 
     return true;

@@ -91,3 +91,6 @@
 //Color
 #define TITLE_COLOR ccc3(250, 250, 0)
 
+//font
+#define FONT_LOGIN "Helvetica-Bold"
+
