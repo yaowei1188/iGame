@@ -27,7 +27,7 @@ class MainSceneTemplateDelegate
 {
 public:
 
-    virtual void menuItemClicked(CCMenuItem *pItem) = 0;
+    virtual void menuItemClickedCallBack(CCMenuItem *pItem) = 0;
 
 };
 
@@ -63,7 +63,7 @@ public:
     CCLabelTTF *mlblGrade;
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainSceneTemplate, create);
     
-    CC_SYNTHESIZE(MainSceneTemplateDelegate*, m_delegate, delegate);
+    CC_SYNTHESIZE(MainSceneTemplateDelegate*, m_delegate, Delegate);
 
 };
 

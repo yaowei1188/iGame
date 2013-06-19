@@ -88,7 +88,7 @@ void MainSceneTemplate::menuBarBtnClicked(CCObject *pSender)
 {
     CCMenuItem *button = (CCMenuItem*) pSender;
     if(m_delegate != NULL) {
-        m_delegate->menuItemClicked(button);
+        m_delegate->menuItemClickedCallBack(button);
     }
 }
 

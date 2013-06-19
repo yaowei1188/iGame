@@ -19,20 +19,18 @@
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-/**
- * Data source that governs table backend data.
- */
-//class MainSceneTemplateDelegate
-//{
-//public:
-//
-//    virtual void menuItemClicked(CCMenuItem *pItem) = 0;
-//
-//};
+
+class MainInnerLayerDelegate
+{
+public:
+
+    virtual void toolBarButtonClickedCallBack(CCControlButton *pItem) = 0;
+
+};
 
 class MainInnerLayer : public MainLayerBase,
-public CCTableViewDataSource,
-public CCTableViewDelegate,
+  public CCTableViewDataSource,
+  public CCTableViewDelegate,
   public CCBSelectorResolver,
   public CCBMemberVariableAssigner,
   public CCNodeLoaderListener
@@ -41,11 +39,13 @@ public:
     ~MainInnerLayer();
     MainInnerLayer();
     
-    void menuBarBtnClicked(CCObject *pSender);
+//    void menuBarBtnClicked(CCObject *pSender);
     
+    void buttonClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
     void toolBarBtnClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
 
 	CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainInnerLayer, create);
+    CC_SYNTHESIZE(MainInnerLayerDelegate*, m_delegate, Delegate);
     
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
     virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
@@ -69,7 +69,7 @@ public:
     
 	unsigned int selectedindex;
 	CCTableView* mTableView;
-	CCArray *mFriendList;
+	CCArray *mCardList;
 
 };
 
