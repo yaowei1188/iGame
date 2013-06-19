@@ -203,8 +203,8 @@
 								<string>BlockCCControl</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<integer>0</integer>
+									<string>buttonClicked:</string>
+									<integer>1</integer>
 									<integer>32</integer>
 								</array>
 							</dict>
@@ -411,8 +411,8 @@
 								<string>BlockCCControl</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<integer>0</integer>
+									<string>buttonClicked:</string>
+									<integer>1</integer>
 									<integer>32</integer>
 								</array>
 							</dict>
@@ -2461,6 +2461,79 @@
 							</dict>
 						</array>
 					</dict>
+					<dict>
+						<key>baseClass</key>
+						<string>CCNode</string>
+						<key>children</key>
+						<array/>
+						<key>customClass</key>
+						<string>CCTableView</string>
+						<key>displayName</key>
+						<string>CCTableView</string>
+						<key>memberVarAssignmentName</key>
+						<string>mTableView</string>
+						<key>memberVarAssignmentType</key>
+						<integer>1</integer>
+						<key>properties</key>
+						<array>
+							<dict>
+								<key>name</key>
+								<string>position</string>
+								<key>type</key>
+								<string>Position</string>
+								<key>value</key>
+								<array>
+									<real>161</real>
+									<real>307</real>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>contentSize</string>
+								<key>type</key>
+								<string>Size</string>
+								<key>value</key>
+								<array>
+									<real>262</real>
+									<real>65</real>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>anchorPoint</string>
+								<key>type</key>
+								<string>Point</string>
+								<key>value</key>
+								<array>
+									<real>0.5</real>
+									<real>0.5</real>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>scale</string>
+								<key>type</key>
+								<string>ScaleLock</string>
+								<key>value</key>
+								<array>
+									<real>1</real>
+									<real>1</real>
+									<false/>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>ignoreAnchorPointForPosition</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+						</array>
+					</dict>
 				</array>
 				<key>customClass</key>
 				<string></string>
@@ -2540,6 +2613,16 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>accelerometerEnabled</string>
+						<key>platform</key>
+						<string>iOS</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>mouseEnabled</string>
 						<key>platform</key>
 						<string>Mac</string>
@@ -2547,6 +2630,16 @@
 						<string>Check</string>
 						<key>value</key>
 						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>keyboardEnabled</string>
+						<key>platform</key>
+						<string>Mac</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
 					</dict>
 				</array>
 			</dict>
@@ -2619,6 +2712,16 @@
 			</dict>
 			<dict>
 				<key>name</key>
+				<string>accelerometerEnabled</string>
+				<key>platform</key>
+				<string>iOS</string>
+				<key>type</key>
+				<string>Check</string>
+				<key>value</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>mouseEnabled</string>
 				<key>platform</key>
 				<string>Mac</string>
@@ -2626,6 +2729,16 @@
 				<string>Check</string>
 				<key>value</key>
 				<true/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>keyboardEnabled</string>
+				<key>platform</key>
+				<string>Mac</string>
+				<key>type</key>
+				<string>Check</string>
+				<key>value</key>
+				<false/>
 			</dict>
 		</array>
 	</dict>
