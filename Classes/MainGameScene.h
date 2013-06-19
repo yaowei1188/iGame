@@ -15,6 +15,7 @@
 #include "MainSceneTemplate.h"
 #include "MainLayerBase.h"
 #include "MainSceneTemplate.h"
+#include "MainInnerLayer.h"
 #include "common.h"
 
 using namespace cocos2d;
@@ -24,16 +25,16 @@ class MainGameScene : public MainLayerBase,
   public CCBSelectorResolver,
   public CCBMemberVariableAssigner,
   public CCNodeLoaderListener,
-  public MainSceneTemplateDelegate
+  public MainSceneTemplateDelegate,
+  public MainInnerLayerDelegate
 {
 public:
     ~MainGameScene();
     MainGameScene();
     
-    // returns a Scene that contains the HelloWorld as the only child
     static cocos2d::CCScene* scene();
     
-    void toolBarBtnClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
+//    void toolBarBtnClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
     
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
     
@@ -47,11 +48,14 @@ public:
     
     MainSceneTemplate *mMainSceneTemp;
     
-    CCLayer *mMainLayer;
+    MainInnerLayer *mMainLayer;
     
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainGameScene, create);
     bool mblnIsHomePage;
-    virtual void menuItemClicked(CCMenuItem *pItem);
+    
+    virtual void menuItemClickedCallBack(CCMenuItem *pItem);
+    virtual void toolBarButtonClickedCallBack(CCControlButton *pItem);
+    
     void removeNodeCallBack(CCNode *pNode);
     void removeAndCleanNodeCallBack(CCNode *pNode);
     

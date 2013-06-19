@@ -24,22 +24,23 @@ MainGameScene::~MainGameScene()
 
 void MainGameScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    this->mMainSceneTemp->setdelegate(this);
+    this->mMainSceneTemp->setDelegate(this);
+    this->mMainLayer->setDelegate(this);
     this->mlayArray->addObject(mMainLayer);
 }
 
 bool MainGameScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainSceneTemp", MainSceneTemplate*, this->mMainSceneTemp);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainLayer", CCLayer*, this->mMainLayer);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainLayer", MainInnerLayer*, this->mMainLayer);
     
     return true;
 }
 
-void MainGameScene::toolBarBtnClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
-    CCControlButton *button = (CCControlButton*) pSender;
-    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    switch (button->getTag()) {
+void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
+
+//    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    switch (pSender->getTag()) {
         case TOOLBAR_BTN_COMPETITION_TAG:
             CCLOG("11111");
             break;
@@ -139,7 +140,7 @@ void MainGameScene::PopLayer()
     prev->runAction(CCMoveTo::create(0.2, ccp(0,prev->getPosition().y)));
 }
 
-void MainGameScene::menuItemClicked(CCMenuItem *pItem)
+void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
 {
     if (pItem->getTag() == MENUBAR_MAINPAGE_TAG) {
         this->PopToRoot();
@@ -157,7 +158,7 @@ SEL_MenuHandler MainGameScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget
 
 SEL_CCControlHandler MainGameScene::onResolveCCBCCControlSelector(CCObject *pTarget, const char * pSelectorName) {
     
-    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "toolBarBtnClicked:", MainGameScene::toolBarBtnClicked);
+//    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "toolBarBtnClicked:", MainGameScene::toolBarBtnClicked);
     
 	return NULL;
 }
