@@ -500,7 +500,7 @@ ASDFASDFASDFASDFASFD
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>佛陀.png</string>
+							<string>formation_foto.png</string>
 						</array>
 					</dict>
 				</array>
@@ -576,6 +576,8 @@ ASDFASDFASDFASDFASFD
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

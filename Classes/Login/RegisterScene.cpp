@@ -1,22 +1,21 @@
-#include "LoginScene.h"
+#include "RegisterScene.h"
 #include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
 
-LoginScene::LoginScene()
+RegisterScene::RegisterScene()
 {
     m_txtAccount = NULL;
     m_txtPassword = NULL;
-    m_blnRememberMe = false;
 }
 
-LoginScene::~LoginScene()
+RegisterScene::~RegisterScene()
 {
     
 }
 
-CCScene* LoginScene::scene()
+CCScene* RegisterScene::scene()
 {
     CCScene * scene = NULL;
     do 
@@ -26,7 +25,7 @@ CCScene* LoginScene::scene()
         CC_BREAK_IF(! scene);
 
         // 'layer' is an autorelease object
-        LoginScene *layer = LoginScene::create();
+        RegisterScene *layer = RegisterScene::create();
         CC_BREAK_IF(! layer);
 
         // add layer as a child to scene
@@ -38,7 +37,7 @@ CCScene* LoginScene::scene()
 }
 
 // on "init" you need to initialize your instance
-bool LoginScene::init()
+bool RegisterScene::init()
 {
     bool bRet = false;
     do 
@@ -55,11 +54,11 @@ bool LoginScene::init()
     return bRet;
 }
 
-//void LoginScene::doSubmit()
+//void RegisterScene::doSubmit()
 //{
 //	CCHttpRequest *request = new CCHttpRequest();
 //	request->setRequestType(CCHttpRequest::kHttpPost);
-//	request->setResponseCallback(this,callfuncND_selector(LoginScene::requestFinishedCallback));
+//	request->setResponseCallback(this,callfuncND_selector(RegisterScene::requestFinishedCallback));
 //	request->setTag("post testing!!!");
 //	request->setUrl("http://223.4.10.91/andon_service/ANDON_EX_USER.asmx/GetList");
 //
@@ -71,7 +70,7 @@ bool LoginScene::init()
 //	request->release();
 //}
 
-void LoginScene::doSubmit()
+void RegisterScene::doSubmit()
 {
     std::string sAccount(m_txtAccount->getText());
 	std::string sPassword(m_txtPassword->getText());
@@ -85,7 +84,7 @@ void LoginScene::doSubmit()
     
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(LoginScene::requestFinishedCallback));
+	request->setResponseCallback(this,callfuncND_selector(RegisterScene::requestFinishedCallback));
 	request->setTag("1");
 
 	string _strUrl = CompleteUrl(URL_USER_LOGIN);
@@ -104,7 +103,7 @@ void LoginScene::doSubmit()
 	request->release();
 }
 
-void LoginScene::requestFinishedCallback(CCNode* pSender,void *data)
+void RegisterScene::requestFinishedCallback(CCNode* pSender,void *data)
 {
     this->HideLoadingIndicator();
     
@@ -132,7 +131,7 @@ void LoginScene::requestFinishedCallback(CCNode* pSender,void *data)
 	parseJson(content);
 }
 
-void LoginScene::parseJson(std::string &content)
+void RegisterScene::parseJson(std::string &content)
 {
 //	Json::Reader reader;  
 //	Json::Value root; 
@@ -176,7 +175,7 @@ void LoginScene::parseJson(std::string &content)
     }
 }
 
-void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
+void RegisterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     CCLOG("TEST");
     
@@ -195,34 +194,11 @@ void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     m_txtPassword->setFontColor(ccc3(0,0,0));
     m_txtPassword->setFont(FONT_LOGIN, 16);
 
-	m_txtAccount->setText("yaowei");
-	m_txtPassword->setText("123456");
-    
-	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
-	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
-    
-    CCMenu* m_auto_op_menu = CCMenu::create();
-    CCMenuItemSprite* auto_op_btn = CCMenuItemSprite::create(spriteOff, NULL);
-    CCMenuItemSprite* auto_op_btn2 = CCMenuItemSprite::create(spriteOn, NULL);
-    CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(LoginScene::callbackSwitch),auto_op_btn,auto_op_btn2,NULL);
-    
-    m_auto_op_menu->addChild(item);
-    m_auto_op_menu->setPosition(ccp(85, 148));
-    this->addChild(m_auto_op_menu);
+//	m_txtAccount->setText("yaowei");
+//	m_txtPassword->setText("123456");
 }
 
-void LoginScene::callbackSwitch(CCObject* pSender){
-
-	CCMenuItemToggle* pSwitch = (CCMenuItemToggle*)pSender;
-    
-    if (pSwitch->getSelectedIndex()==0) {
-        m_blnRememberMe = false;
-    } else {
-        m_blnRememberMe = true;
-    }
-}
-
-bool LoginScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
+bool RegisterScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
 //    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
 //    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtPassword", CCEditBox*, this->m_txtPassword);
@@ -230,7 +206,7 @@ bool LoginScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMembe
     return true;
 }
 
-void LoginScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
+void RegisterScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
 	#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 	    //SimpleAudioEngine::sharedEngine()->playEffect( EFFECT_FILE );
     #endif
@@ -239,26 +215,17 @@ void LoginScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent
     
     if (pCCControlEvent==CCControlEventTouchUpInside) {
         switch (button->getTag()) {
-            case LOGIN_BUTTON_ACTION_SIGNIN_TAG:
-                CCLOG("signin");
-                this->doSubmit();
-                break;
             case LOGIN_BUTTON_ACTION_SIGNUP_TAG:
                 CCLOG("signup");
-                this->PushScene("RegisterScene");
                 break;
             case LOGIN_BUTTON_ACTION_TOURIST_TAG:
-                CCLOG("tourist");
-                this->doSubmit();
-                break;
-            case LOGIN_BUTTON_ACTION_FORGOT_PWD_TAG:
-                CCLOG("fotgot pwd");
+                CCDirector::sharedDirector()->popScene();
                 break;
         }
     }
 }
 
-void LoginScene::menuBarBtnClicked(CCObject *pSender)
+void RegisterScene::menuBarBtnClicked(CCObject *pSender)
 {
     CCMenuItem *menuItem = (CCMenuItem*) pSender;
     switch (menuItem->getTag()) {
@@ -273,18 +240,18 @@ void LoginScene::menuBarBtnClicked(CCObject *pSender)
             break;
     }
     
-    this->PushScene("ThirdLoginScene.ccbi");
+    this->PushScene("ThirdRegisterScene.ccbi");
 }
 
-SEL_MenuHandler LoginScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
+SEL_MenuHandler RegisterScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
 {
-	CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "menuBarBtnClicked:", LoginScene::menuBarBtnClicked);
+	CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "menuBarBtnClicked:", RegisterScene::menuBarBtnClicked);
 	return NULL;
 }
 
-SEL_CCControlHandler LoginScene::onResolveCCBCCControlSelector(CCObject *pTarget, const char * pSelectorName) {
+SEL_CCControlHandler RegisterScene::onResolveCCBCCControlSelector(CCObject *pTarget, const char * pSelectorName) {
     
-    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "buttonClicked:", LoginScene::buttonClicked);
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "buttonClicked:", RegisterScene::buttonClicked);
 	return NULL;
 }
 

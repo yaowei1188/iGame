@@ -328,7 +328,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>右箭头.png</string>
+							<string>main_arrow_rightbtn.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -390,8 +390,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -460,7 +458,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>任务_02.png</string>
+							<string>task_eightyone.png</string>
 						</array>
 					</dict>
 				</array>
@@ -820,7 +818,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>圈画押.png</string>
+							<string>task_selected.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1008,6 +1006,16 @@
 			</dict>
 			<dict>
 				<key>name</key>
+				<string>accelerometerEnabled</string>
+				<key>platform</key>
+				<string>iOS</string>
+				<key>type</key>
+				<string>Check</string>
+				<key>value</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>mouseEnabled</string>
 				<key>platform</key>
 				<string>Mac</string>
@@ -1015,6 +1023,16 @@
 				<string>Check</string>
 				<key>value</key>
 				<true/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>keyboardEnabled</string>
+				<key>platform</key>
+				<string>Mac</string>
+				<key>type</key>
+				<string>Check</string>
+				<key>value</key>
+				<false/>
 			</dict>
 		</array>
 	</dict>

@@ -377,7 +377,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>剧情宝箱.png</string>
+							<string>task_box.png</string>
 						</array>
 					</dict>
 				</array>
@@ -736,8 +736,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>155</real>
-							<real>276</real>
+							<real>160</real>
+							<real>257</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -780,8 +780,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string></string>
-							<string></string>
+							<string>Image/main.plist</string>
+							<string>card_rulaifo.png</string>
 						</array>
 					</dict>
 				</array>

@@ -77,7 +77,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>游戏主界面-底背景图.png</string>
+							<string>main_bg.png</string>
 						</array>
 					</dict>
 				</array>
@@ -149,7 +149,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>游戏主界面-底条.png</string>
+							<string>main_bottom_bar.png</string>
 						</array>
 					</dict>
 				</array>
@@ -221,7 +221,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>版头.png</string>
+							<string>main_head.png</string>
 						</array>
 					</dict>
 				</array>
@@ -325,7 +325,7 @@
 								<key>value</key>
 								<array>
 									<string>Image/main.plist</string>
-									<string>主页.png</string>
+									<string>menubar_home.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -336,7 +336,7 @@
 								<key>value</key>
 								<array>
 									<string>Image/main.plist</string>
-									<string>主页.png</string>
+									<string>menubar_home.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -446,7 +446,7 @@
 								<key>value</key>
 								<array>
 									<string>Image/main.plist</string>
-									<string>任务.png</string>
+									<string>menubar_task.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -456,8 +456,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string></string>
+									<string>Image/main.plist</string>
+									<string>menubar_task.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -567,7 +567,7 @@
 								<key>value</key>
 								<array>
 									<string>Image/main.plist</string>
-									<string>副本.png</string>
+									<string>menubar_copy.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -577,8 +577,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string></string>
+									<string>Image/main.plist</string>
+									<string>menubar_copy.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -688,7 +688,7 @@
 								<key>value</key>
 								<array>
 									<string>Image/main.plist</string>
-									<string>英雄.png</string>
+									<string>menubar_hero.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -698,8 +698,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string></string>
+									<string>Image/main.plist</string>
+									<string>menubar_hero.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -809,7 +809,7 @@
 								<key>value</key>
 								<array>
 									<string>Image/main.plist</string>
-									<string>门派.png</string>
+									<string>menubar_formation.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -819,8 +819,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string></string>
+									<string>Image/main.plist</string>
+									<string>menubar_formation.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -930,7 +930,7 @@
 								<key>value</key>
 								<array>
 									<string>Image/main.plist</string>
-									<string>商城.png</string>
+									<string>menubar_shop.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -940,8 +940,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string></string>
+									<string>Image/main.plist</string>
+									<string>menubar_shop.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1133,7 +1133,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>玩家名称栏-妖.png</string>
+							<string>main_play_yao.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1399,7 +1399,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>加号按钮_nor.png</string>
+							<string>main_plus_normal.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1422,7 +1422,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>加号按钮_down.png</string>
+							<string>main_plus_click.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1445,7 +1445,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>加号按钮_down.png</string>
+							<string>main_chatbtn_click.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1607,7 +1607,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>加号按钮_nor.png</string>
+							<string>main_plus_normal.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1630,7 +1630,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>加号按钮_down.png</string>
+							<string>main_plus_click.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1653,7 +1653,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>加号按钮_down.png</string>
+							<string>main_plus_click.png</string>
 						</array>
 					</dict>
 					<dict>

@@ -89,7 +89,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/friends.plist</string>
-							<string>friends_frame.png</string>
+							<string>main_frame.png</string>
 						</array>
 					</dict>
 				</array>
@@ -621,7 +621,7 @@
 						<key>value</key>
 						<array>
 							<real>160</real>
-							<real>31</real>
+							<real>27</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -813,6 +813,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

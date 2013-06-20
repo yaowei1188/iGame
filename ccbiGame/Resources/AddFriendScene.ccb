@@ -89,7 +89,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/friends.plist</string>
-							<string>friends_frame.png</string>
+							<string>main_frame.png</string>
 						</array>
 					</dict>
 				</array>

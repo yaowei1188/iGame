@@ -887,7 +887,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>sandeng_1.png</string>
+							<string>login_btn_normal.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -910,7 +910,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>sandeng_2.png</string>
+							<string>login_btn_click.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -933,7 +933,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>sandeng_2.png</string>
+							<string>login_btn_click.png</string>
 						</array>
 					</dict>
 					<dict>

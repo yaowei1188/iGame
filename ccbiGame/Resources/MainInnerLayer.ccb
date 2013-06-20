@@ -89,7 +89,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>卡牌角色列表.png</string>
+							<string>main_card_container.png</string>
 						</array>
 					</dict>
 				</array>
@@ -161,7 +161,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>世界喇叭.png</string>
+							<string>main_trumpet.png</string>
 						</array>
 					</dict>
 				</array>
@@ -311,7 +311,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>聊天_nor.png</string>
+							<string>main_chatbtn_normal.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -334,7 +334,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>聊天_down.png</string>
+							<string>main_chatbtn_click.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -356,8 +356,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>ccbResources/ccbDefaultImages.plist</string>
-							<string>ccbButtonDisabled.png</string>
+							<string>Image/main.plist</string>
+							<string>main_chatbtn_click.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -527,7 +527,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>竞技.png</string>
+							<string>toolbar_combat.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -550,7 +550,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>竞技.png</string>
+							<string>toolbar_combat.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -573,7 +573,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>竞技.png</string>
+							<string>toolbar_combat.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -743,7 +743,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>神魔录.png</string>
+							<string>toolbar_shengmolu.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -766,7 +766,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>神魔录.png</string>
+							<string>toolbar_shengmolu.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -789,7 +789,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>神魔录.png</string>
+							<string>toolbar_shengmolu.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -959,7 +959,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>排行榜.png</string>
+							<string>toolbar_rank.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -982,7 +982,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>排行榜.png</string>
+							<string>toolbar_rank.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1005,7 +1005,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>排行榜.png</string>
+							<string>toolbar_rank.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1175,7 +1175,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>好友.png</string>
+							<string>toolbar_friend.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1198,7 +1198,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>好友.png</string>
+							<string>toolbar_friend.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1221,7 +1221,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>好友.png</string>
+							<string>toolbar_friend.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1391,7 +1391,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>物品.png</string>
+							<string>toolbar_items.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1414,7 +1414,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>物品.png</string>
+							<string>toolbar_items.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1437,7 +1437,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>物品.png</string>
+							<string>toolbar_items.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1607,7 +1607,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>信件.png</string>
+							<string>toolbar_mail.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1630,7 +1630,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>信件.png</string>
+							<string>toolbar_mail.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1653,7 +1653,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>信件.png</string>
+							<string>toolbar_mail.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1823,7 +1823,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>设置.png</string>
+							<string>toolbar_setting.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1846,7 +1846,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>设置.png</string>
+							<string>toolbar_setting.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1869,7 +1869,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>设置.png</string>
+							<string>toolbar_setting.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2220,7 +2220,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>左箭头.png</string>
+							<string>main_arrow_leftbtn.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2243,7 +2243,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>左箭头.png</string>
+							<string>main_arrow_leftbtn.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2266,7 +2266,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>左箭头.png</string>
+							<string>main_arrow_leftbtn.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2428,7 +2428,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>右箭头.png</string>
+							<string>main_arrow_rightbtn.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2451,7 +2451,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>右箭头.png</string>
+							<string>main_arrow_rightbtn.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2474,7 +2474,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/main.plist</string>
-							<string>右箭头.png</string>
+							<string>main_arrow_rightbtn.png</string>
 						</array>
 					</dict>
 					<dict>
