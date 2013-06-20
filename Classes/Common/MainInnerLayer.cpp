@@ -15,35 +15,35 @@ MainInnerLayer::MainInnerLayer()
     mCardList->addObject(CCString::create("test"));
     mCardList->addObject(CCString::create("test1"));
     mCardList->addObject(CCString::create("test2"));
-    mCardList->addObject(CCString::create("test3"));
-    mCardList->addObject(CCString::create("test"));
-    mCardList->addObject(CCString::create("test1"));
-    mCardList->addObject(CCString::create("test2"));
-    mCardList->addObject(CCString::create("test3"));
-    mCardList->addObject(CCString::create("test"));
-    mCardList->addObject(CCString::create("test1"));
-    mCardList->addObject(CCString::create("test2"));
-    mCardList->addObject(CCString::create("test3"));
-    mCardList->addObject(CCString::create("test"));
-    mCardList->addObject(CCString::create("test1"));
-    mCardList->addObject(CCString::create("test2"));
-    mCardList->addObject(CCString::create("test3"));
-    mCardList->addObject(CCString::create("test"));
-    mCardList->addObject(CCString::create("test1"));
-    mCardList->addObject(CCString::create("test2"));
-    mCardList->addObject(CCString::create("test3"));
-    mCardList->addObject(CCString::create("test"));
-    mCardList->addObject(CCString::create("test1"));
-    mCardList->addObject(CCString::create("test2"));
-    mCardList->addObject(CCString::create("test3"));
-    mCardList->addObject(CCString::create("test"));
-    mCardList->addObject(CCString::create("test1"));
-    mCardList->addObject(CCString::create("test2"));
-    mCardList->addObject(CCString::create("test3"));
-    mCardList->addObject(CCString::create("test"));
-    mCardList->addObject(CCString::create("test1"));
-    mCardList->addObject(CCString::create("test2"));
-    mCardList->addObject(CCString::create("test3"));
+//    mCardList->addObject(CCString::create("test3"));
+//    mCardList->addObject(CCString::create("test"));
+//    mCardList->addObject(CCString::create("test1"));
+//    mCardList->addObject(CCString::create("test2"));
+//    mCardList->addObject(CCString::create("test3"));
+//    mCardList->addObject(CCString::create("test"));
+//    mCardList->addObject(CCString::create("test1"));
+//    mCardList->addObject(CCString::create("test2"));
+//    mCardList->addObject(CCString::create("test3"));
+//    mCardList->addObject(CCString::create("test"));
+//    mCardList->addObject(CCString::create("test1"));
+//    mCardList->addObject(CCString::create("test2"));
+//    mCardList->addObject(CCString::create("test3"));
+//    mCardList->addObject(CCString::create("test"));
+//    mCardList->addObject(CCString::create("test1"));
+//    mCardList->addObject(CCString::create("test2"));
+//    mCardList->addObject(CCString::create("test3"));
+//    mCardList->addObject(CCString::create("test"));
+//    mCardList->addObject(CCString::create("test1"));
+//    mCardList->addObject(CCString::create("test2"));
+//    mCardList->addObject(CCString::create("test3"));
+//    mCardList->addObject(CCString::create("test"));
+//    mCardList->addObject(CCString::create("test1"));
+//    mCardList->addObject(CCString::create("test2"));
+//    mCardList->addObject(CCString::create("test3"));
+//    mCardList->addObject(CCString::create("test"));
+//    mCardList->addObject(CCString::create("test1"));
+//    mCardList->addObject(CCString::create("test2"));
+//    mCardList->addObject(CCString::create("test3"));
     mCardList->retain();
 }
 
@@ -72,14 +72,14 @@ bool MainInnerLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pM
 
 void MainInnerLayer::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
 {
-	//CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-	//sSelected->setVisible(true);
+    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
+    sSelected->setVisible(true);
 }
 
 void MainInnerLayer::tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell)
 {
-	//CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-	//sSelected->setVisible(false);
+    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
+    sSelected->setVisible(false);
 }
 
 void MainInnerLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
@@ -125,15 +125,14 @@ CCTableViewCell* MainInnerLayer::tableCellAtIndex(CCTableView *table, unsigned i
 
 		CCSize size = this->cellSizeForIndex(table, idx);
 
-//		CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_cellhighlight.png"));
-//		sSelected->setVisible(false);
-//		sSelected->setTag(121);
-//		sSelected->setPosition(ccp(13,size.height - 39));
-//		sSelected->setAnchorPoint(CCPointZero);
-//		cell->addChild(sSelected);
+		CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_selected.png"));
+		sSelected->setVisible(false);
+		sSelected->setTag(121);
+		sSelected->setPosition(ccp(2,0));
+		sSelected->setAnchorPoint(CCPointZero);
+		cell->addChild(sSelected);
 
-//		CCSprite *sCard = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_dairy.png"));
-        CCSprite *sCard = CCSprite::create("Icon.png");
+		CCSprite *sCard = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_rulaifo.png"));
 		sCard->setTag(122);
 		sCard->setPosition(ccp(2,0));
 		sCard->setAnchorPoint(CCPointZero);
@@ -142,14 +141,6 @@ CCTableViewCell* MainInnerLayer::tableCellAtIndex(CCTableView *table, unsigned i
 	else
 	{
 		CCSize size = this->cellSizeForIndex(table, idx);
-
-//		CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-//		sSelected->setPosition(ccp(13,size.height - 39));
-//		if (selectedindex == idx ) {
-//			sSelected->setVisible(true);
-//		} else {
-//			sSelected->setVisible(false);
-//		}
 
 		CCSprite *sCard = (CCSprite*)cell->getChildByTag(122);
         

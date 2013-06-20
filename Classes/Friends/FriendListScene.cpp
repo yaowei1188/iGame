@@ -156,7 +156,7 @@ void FriendListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell
         selectedindex = cell->getIdx();
     }
 
-    table->reloadData();
+    table->refreshData();
 }
 
 unsigned int FriendListScene::numberOfCellsInTableView(CCTableView *table)

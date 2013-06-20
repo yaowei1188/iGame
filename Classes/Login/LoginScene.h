@@ -45,7 +45,6 @@ public:
 
 	CCEditBox *m_txtAccount;
 	CCEditBox *m_txtPassword;
-    CCSprite *mCloud;
     
     bool m_blnRememberMe;
 };
