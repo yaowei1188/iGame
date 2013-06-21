@@ -104,4 +104,24 @@ inline std::wstring StringToWString(const std::string &s)
 	return wsTmp;
 }
 
+inline ccColor3B convertColor(const std::string &str)
+{
+	long color;
+    char * pEnd;
+//    if(str.find("#")!=-1)
+//    {
+//        color =strtol(str.c_str(), &pEnd,16);
+//    }
+    color =strtol(str.c_str(), &pEnd,16);
+    
+    int R = (color & 0xFF0000 )>>16;
+    int G = (color & 0x00FF00 )>>8;
+    int B =  color & 0x0000FF;
+    
+    
+    
+    return ccc3(R, G, B);
+
+}
+
 #endif /* defined(__iGame__StringExt__) */

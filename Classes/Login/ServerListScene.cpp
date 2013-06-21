@@ -245,7 +245,7 @@ CCTableViewCell* ServerListScene::tableCellAtIndex(CCTableView *table, unsigned 
 		lblName->setPosition(ccp(130,10));
 		lblName->setAnchorPoint(ccp(0.5,0));
         lblName->setVerticalAlignment(kCCVerticalTextAlignmentCenter);
-        lblName->setColor(ccc3(0, 0, 0));
+        lblName->setColor(convertColor("660000"));
 		lblName->setTag(123);
 		cell->addChild(lblName);
 

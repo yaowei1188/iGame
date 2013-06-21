@@ -82,7 +82,7 @@ void CharacterScene::doSubmit()
 	std::string sAccount(m_txtAccount->getText());
 
 	if (trimRight(sAccount).empty() ) {
-		CCMessageBox(GlobalData::getLocalString("account_pwd_empty")->getCString(),"ERROR");
+		CCMessageBox(GlobalData::getLocalString("character_name_empty")->getCString(),"ERROR");
 		return;
 	}
 

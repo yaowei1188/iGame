@@ -15,6 +15,7 @@ CCString* GlobalData::getLocalString(std::string name)
 {
     if (dictLanguage==NULL) {
         dictLanguage = CCDictionary::createWithContentsOfFile("chs.plist");
+        dictLanguage->retain();
     }
     return (CCString*)dictLanguage->objectForKey(name);
 }
