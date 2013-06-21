@@ -1,1 +1,11 @@
 Debug.win32
+assets
+/proj.android/libs/armeabi/libgame.so
+/proj.android/obj/local/armeabi/objs
+/proj.android/obj/local/armeabi/libcocos2d.a
+/proj.android/obj/local/armeabi/libcocosdenshion.a
+/proj.android/obj/local/armeabi/libcpufeatures.a
+/proj.android/obj/local/armeabi/libextension.a
+/proj.android/obj/local/armeabi/libgame.so
+/proj.android/obj/local/armeabi/libbox2d.a
+/proj.android/obj/local/armeabi/libchipmunk.a

@@ -169,6 +169,7 @@
     <None Include="..\Resources\MainGameScene.ccbi" />
     <None Include="..\Resources\MainSceneTemplate.ccbi" />
     <None Include="..\Resources\NewMailScene.ccbi" />
+    <None Include="..\Resources\RegisterScene.ccbi" />
     <None Include="..\Resources\ServerListScene.ccbi" />
     <None Include="..\Resources\SysMailScene.ccbi" />
     <None Include="..\Resources\tab_active.png" />
@@ -206,6 +207,8 @@
     <ClInclude Include="..\Classes\Login\CharacterSceneLoader.h" />
     <ClInclude Include="..\Classes\Login\LoginScene.h" />
     <ClInclude Include="..\Classes\Login\LoginSceneLoader.h" />
+    <ClInclude Include="..\Classes\Login\RegisterScene.h" />
+    <ClInclude Include="..\Classes\Login\RegisterSceneLoader.h" />
     <ClInclude Include="..\Classes\Login\ServerListScene.h" />
     <ClInclude Include="..\Classes\Login\ServerListSceneLoader.h" />
     <ClInclude Include="..\Classes\Login\ThirdLoginScene.h" />
@@ -259,6 +262,7 @@
     <ClCompile Include="..\Classes\Friends\FriendListScene.cpp" />
     <ClCompile Include="..\Classes\Login\CharacterScene.cpp" />
     <ClCompile Include="..\Classes\Login\LoginScene.cpp" />
+    <ClCompile Include="..\Classes\Login\RegisterScene.cpp" />
     <ClCompile Include="..\Classes\Login\ServerListScene.cpp" />
     <ClCompile Include="..\Classes\Login\ThirdLoginScene.cpp" />
     <ClCompile Include="..\Classes\Mail\MailListScene.cpp" />
