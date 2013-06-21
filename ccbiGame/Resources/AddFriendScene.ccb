@@ -457,79 +457,6 @@
 			</dict>
 			<dict>
 				<key>baseClass</key>
-				<string>CCNode</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string>CCEditBox</string>
-				<key>displayName</key>
-				<string>CCEditBox</string>
-				<key>memberVarAssignmentName</key>
-				<string>m_txtSearchField</string>
-				<key>memberVarAssignmentType</key>
-				<integer>1</integer>
-				<key>properties</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>140</real>
-							<real>348</real>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>contentSize</string>
-						<key>type</key>
-						<string>Size</string>
-						<key>value</key>
-						<array>
-							<real>230</real>
-							<real>35</real>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>anchorPoint</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.5</real>
-							<real>0.5</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>scale</string>
-						<key>type</key>
-						<string>ScaleLock</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<false/>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>ignoreAnchorPointForPosition</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>baseClass</key>
 				<string>CCSprite</string>
 				<key>children</key>
 				<array/>
@@ -550,8 +477,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>27</real>
-							<real>381</real>
+							<real>37</real>
+							<real>384</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -622,8 +549,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>57</real>
-							<real>381</real>
+							<real>73</real>
+							<real>384</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -750,8 +677,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>259</real>
-							<real>381</real>
+							<real>260</real>
+							<real>384</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -860,8 +787,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
-							<real>14</real>
+							<real>55</real>
+							<real>20</real>
 							<integer>0</integer>
 						</array>
 					</dict>

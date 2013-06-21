@@ -71,6 +71,7 @@
 /*Function url*/
 //User
 #define URL_USER_LOGIN                             "/user/login/"
+#define URL_USER_REGISTER                          "/user/register/"
 
 //Friends
 #define URL_FRIEND_LIST                             "/friend/list/"

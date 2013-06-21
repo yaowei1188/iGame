@@ -350,8 +350,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/friends.plist</string>
-							<string>friends_addbtn.png</string>
+							<string>Image/main.plist</string>
+							<string>main_arrow_rightbtn.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -373,8 +373,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/friends.plist</string>
-							<string>friends_addbtn.png</string>
+							<string>Image/main.plist</string>
+							<string>main_arrow_rightbtn.png</string>
 						</array>
 					</dict>
 					<dict>

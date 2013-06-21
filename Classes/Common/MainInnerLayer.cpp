@@ -11,10 +11,12 @@
 
 MainInnerLayer::MainInnerLayer()
 {
+    mTableView = NULL;
+     
     mCardList =  CCArray::create();
-    mCardList->addObject(CCString::create("test"));
-    mCardList->addObject(CCString::create("test1"));
-    mCardList->addObject(CCString::create("test2"));
+    mCardList->addObject(CCString::create("head_rulaifo.png"));
+    mCardList->addObject(CCString::create("head_sunwukong.png"));
+    mCardList->addObject(CCString::create("head_erlangsheng.png"));
 //    mCardList->addObject(CCString::create("test3"));
 //    mCardList->addObject(CCString::create("test"));
 //    mCardList->addObject(CCString::create("test1"));
@@ -45,11 +47,12 @@ MainInnerLayer::MainInnerLayer()
 //    mCardList->addObject(CCString::create("test2"));
 //    mCardList->addObject(CCString::create("test3"));
     mCardList->retain();
+
 }
 
 MainInnerLayer::~MainInnerLayer()
 {
-    
+    CC_SAFE_RELEASE(mTableView);
 }
 
 void MainInnerLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
@@ -118,21 +121,23 @@ CCTableViewCell* MainInnerLayer::tableCellAtIndex(CCTableView *table, unsigned i
 {
 	CCString *string = (CCString *)mCardList->objectAtIndex(idx);
 	bool selected = (idx==selectedindex);
+    CCSprite *sCard = NULL;
+    CCSprite *sSelected = NULL;
 	CCTableViewCell *cell = table->dequeueCell();
 	if (!cell) {
 		cell = new CCTableViewCell();
 		cell->autorelease();
 
-		CCSize size = this->cellSizeForIndex(table, idx);
+//		CCSize size = this->cellSizeForIndex(table, idx);
 
-		CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_selected.png"));
+		sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_selected.png"));
 		sSelected->setVisible(false);
 		sSelected->setTag(121);
 		sSelected->setPosition(ccp(2,0));
 		sSelected->setAnchorPoint(CCPointZero);
 		cell->addChild(sSelected);
 
-		CCSprite *sCard = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_rulaifo.png"));
+		sCard = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(string->getCString()));
 		sCard->setTag(122);
 		sCard->setPosition(ccp(2,0));
 		sCard->setAnchorPoint(CCPointZero);
@@ -140,12 +145,10 @@ CCTableViewCell* MainInnerLayer::tableCellAtIndex(CCTableView *table, unsigned i
 	}
 	else
 	{
-		CCSize size = this->cellSizeForIndex(table, idx);
-
-		CCSprite *sCard = (CCSprite*)cell->getChildByTag(122);
-        
-//		sCard->setPosition(ccp(sCard->getPosition().x,size.height - CELL_ITEMS_Y - 10));
+		sCard = (CCSprite*)cell->getChildByTag(122);
+        sCard->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(string->getCString()));
 	}
+
 
 	return cell;
 }

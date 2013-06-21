@@ -108,11 +108,13 @@ inline ccColor3B convertColor(const std::string &str)
 {
 	long color;
     char * pEnd;
-//    if(str.find("#")!=-1)
-//    {
-//        color =strtol(str.c_str(), &pEnd,16);
-//    }
-    color =strtol(str.c_str(), &pEnd,16);
+    
+    if(str.find("#")!=-1)
+    {
+        color =strtol(str.substr(1).c_str(), &pEnd,16);
+    } else {
+        color =strtol(str.c_str(), &pEnd,16);
+    }
     
     int R = (color & 0xFF0000 )>>16;
     int G = (color & 0x00FF00 )>>8;

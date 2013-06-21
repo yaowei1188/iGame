@@ -130,8 +130,8 @@ void TaskRewardScene::showTaskInfo()
 
 
     
-    CCString *str = (CCString *)mTaskList->objectForKey("TaskName");
-    CCArray *subTasks = (CCArray *)mTaskList->objectForKey("SubTasks");
+//    CCString *str = (CCString *)mTaskList->objectForKey("TaskName");
+//    CCArray *subTasks = (CCArray *)mTaskList->objectForKey("SubTasks");
     
 //    m_lblTitle->setString("大唐西行(1)  河边放生");
     
@@ -188,7 +188,7 @@ TaskRewardScene::~TaskRewardScene()
 {
 	m_sCard->release();
 	m_lblTitle->release();
-	mTaskList->release();
+//	mTaskList->release();
     m_lblLife->release();
 }
 

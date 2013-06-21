@@ -130,6 +130,8 @@ void TaskDetailScene::showTaskInfo()
     CCArray *subTasks = (CCArray *)mTaskList->objectForKey("SubTasks");
     
     if (selectedindex>=subTasks->count()) {
+        MainGameScene *mainScene = (MainGameScene *)this->getParent();
+        mainScene->PushLayer((CCLayer *)this->GetLayer("TaskRewardScene"));
         return;
     }
     

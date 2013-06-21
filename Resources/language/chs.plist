@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>register_have_sameuser</key>
+	<string>该用户名已经被他人注册！</string>
+	<key>register_successfully</key>
+	<string>注册成功！</string>
 	<key>character_name_empty</key>
 	<string>请输入用户名称！</string>
 	<key>account_pwd_empty</key>

@@ -183,14 +183,12 @@ void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     m_txtAccount = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
     this->addChild(m_txtAccount);
     m_txtAccount->setPosition(ccp(177, 247));
-    
-    m_txtPassword = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
-    this->addChild(m_txtPassword);
-    m_txtPassword->setPosition(ccp(177, 201));
-    
     m_txtAccount->setFontColor(ccc3(0,0,0));
     m_txtAccount->setFont(FONT_LOGIN, 16);
 
+    m_txtPassword = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
+    this->addChild(m_txtPassword);
+    m_txtPassword->setPosition(ccp(177, 201));
     m_txtPassword->setInputFlag(kEditBoxInputFlagPassword);
     m_txtPassword->setFontColor(ccc3(0,0,0));
     m_txtPassword->setFont(FONT_LOGIN, 16);

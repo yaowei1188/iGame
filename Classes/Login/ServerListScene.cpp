@@ -40,22 +40,26 @@ bool ServerListScene::init()
 		//mArrayList =  CCArray::create();
 		CCDictionary *dict0 = CCDictionary::create();
 		dict0->setObject(CCString::create("2区 花果山1"),"ServerName");
-		dict0->setObject(CCString::create("良好"),"Status");
+		dict0->setObject(CCString::create("良好"),"StatusStr");
+        dict0->setObject(CCString::create("1"),"Status");
 		dict0->setObject(CCString::create("1"),"Category");
 
 		CCDictionary *dict1 = CCDictionary::create();
 		dict1->setObject(CCString::create("1区 齐天大圣1"),"ServerName");
-		dict1->setObject(CCString::create("流畅"),"Status");
+		dict1->setObject(CCString::create("流畅"),"StatusStr");
+        dict1->setObject(CCString::create("2"),"Status");
 		dict1->setObject(CCString::create("2"),"Category");
 
 		CCDictionary *dict2 = CCDictionary::create();
 		dict2->setObject(CCString::create("2区 花果山1"),"ServerName");
-		dict2->setObject(CCString::create("良好"),"Status");
+		dict2->setObject(CCString::create("良好"),"StatusStr");
+        dict2->setObject(CCString::create("1"),"Status");
 		dict2->setObject(CCString::create("3"),"Category");
 
 		CCDictionary *dict3 = CCDictionary::create();
 		dict3->setObject(CCString::create("3区 如来佛祖1"),"ServerName");
-		dict3->setObject(CCString::create("爆满"),"Status");
+		dict3->setObject(CCString::create("爆满"),"StatusStr");
+        dict3->setObject(CCString::create("3"),"Status");
 		dict3->setObject(CCString::create("3"),"Category");
         mArrayList = CCArray::create(dict0,dict1,dict2,dict3,NULL);
         mArrayList->retain();
@@ -219,6 +223,7 @@ CCTableViewCell* ServerListScene::tableCellAtIndex(CCTableView *table, unsigned 
 	CCTableViewCell *cell = table->dequeueCell();
     CCSize size = this->cellSizeForIndex(table, idx);
 	CCString *category = (CCString *)dict->objectForKey("Category");
+    CCString *status = (CCString *)dict->objectForKey("Status");
 	if (!cell) {
 		cell = new CCTableViewCell();
 		cell->autorelease();
@@ -245,7 +250,7 @@ CCTableViewCell* ServerListScene::tableCellAtIndex(CCTableView *table, unsigned 
 		lblName->setPosition(ccp(130,10));
 		lblName->setAnchorPoint(ccp(0.5,0));
         lblName->setVerticalAlignment(kCCVerticalTextAlignmentCenter);
-        lblName->setColor(convertColor("660000"));
+        lblName->setColor(ccc3(0, 0, 0));;
 		lblName->setTag(123);
 		cell->addChild(lblName);
 
@@ -256,11 +261,10 @@ CCTableViewCell* ServerListScene::tableCellAtIndex(CCTableView *table, unsigned 
 //		lblLevel->setTag(124);
 //		cell->addChild(lblLevel);
 
-		CCLabelTTF *lblStatus = CCLabelTTF::create(((CCString *)dict->objectForKey("Status"))->getCString(), "Arial", 11.0);
+		CCLabelTTF *lblStatus = CCLabelTTF::create(((CCString *)dict->objectForKey("StatusStr"))->getCString(), "Arial", 11.0);
 		lblStatus->setPosition(ccp(218,10));
 		lblStatus->setAnchorPoint(ccp(0.5,0));
         lblStatus->setVerticalAlignment(kCCVerticalTextAlignmentCenter);
-        lblStatus->setColor(ccc3(51, 153, 00));
         lblStatus->setTag(125);
 		cell->addChild(lblStatus);
 
@@ -268,7 +272,7 @@ CCTableViewCell* ServerListScene::tableCellAtIndex(CCTableView *table, unsigned 
 		lblTitle->setPosition(ccp(130,38));
 		lblTitle->setAnchorPoint(ccp(0.5,0));
 		lblTitle->setVerticalAlignment(kCCVerticalTextAlignmentCenter);
-		lblTitle->setColor(ccc3(51, 153, 00));
+		lblTitle->setColor(convertColor("#660000"));
 		lblTitle->setTag(126);
 		cell->addChild(lblTitle);
 		if (strcmp(category->getCString(),"1")==0)
@@ -285,6 +289,19 @@ CCTableViewCell* ServerListScene::tableCellAtIndex(CCTableView *table, unsigned 
 		{
 			lblTitle->setVisible(false);
 		}
+        
+        if (strcmp(status->getCString(),"1")==0)
+		{
+			lblStatus->setColor(ccc3(51, 153, 00));
+		}
+		else if (strcmp(status->getCString(),"2")==0)
+		{
+			lblStatus->setColor(convertColor("#0099cc"));
+		}
+        else if (strcmp(status->getCString(),"3")==0)
+		{
+			lblStatus->setColor(convertColor("#cc3333"));
+		}
 		
     }
 	else
@@ -300,7 +317,7 @@ CCTableViewCell* ServerListScene::tableCellAtIndex(CCTableView *table, unsigned 
 		lblName->setString(((CCString *)dict->objectForKey("ServerName"))->getCString());
         
 		CCLabelTTF *lblStatus = (CCLabelTTF*)cell->getChildByTag(125);
-		lblStatus->setString(((CCString *)dict->objectForKey("Status"))->getCString());
+		lblStatus->setString(((CCString *)dict->objectForKey("StatusStr"))->getCString());
 
 
 		CCLabelTTF *lblTitle = (CCLabelTTF*)cell->getChildByTag(126);
@@ -317,6 +334,19 @@ CCTableViewCell* ServerListScene::tableCellAtIndex(CCTableView *table, unsigned 
 		else
 		{
 			lblTitle->setVisible(false);
+		}
+        
+        if (strcmp(status->getCString(),"1")==0)
+		{
+			lblStatus->setColor(ccc3(51, 153, 00));
+		}
+		else if (strcmp(status->getCString(),"2")==0)
+		{
+			lblStatus->setColor(convertColor("#0099cc"));
+		}
+        else if (strcmp(status->getCString(),"3")==0)
+		{
+			lblStatus->setColor(convertColor("#cc3333"));
 		}
 	}
 
