@@ -46,7 +46,15 @@ public:
 	void doEllipse();
 
 	CCEditBox *m_txtAccount;
-    CCSprite *m_ImgGroup;
+    CCSprite *m_sCharacterBelow;
+    
+    CCLabelTTF *m_lblCharacterName;
+    CCLabelTTF *m_lblCharacterDesc;
+    
+    CCLabelTTF *m_lblHp;
+    CCLabelTTF *m_lblDefence;
+    CCLabelTTF *m_lblAttack;
+    CCLabelTTF *m_lblAvoid;
 
 	CCMenuItemSprite *spritFou;
 	CCMenuItemSprite *spriteXian;

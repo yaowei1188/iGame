@@ -9,13 +9,25 @@ using namespace cocos2d;
 CharacterScene::CharacterScene()
 {
     m_txtAccount = NULL;
-	m_ImgGroup = NULL;
+	m_sCharacterBelow = NULL;
+    
+    m_lblCharacterName = NULL;
+    m_lblCharacterDesc = NULL;
+    m_lblHp = NULL;
+    m_lblDefence = NULL;
+    m_lblAttack = NULL;
+    m_lblAvoid = NULL;
 }
 
 CharacterScene::~CharacterScene()
 {
-//    CC_SAFE_RELEASE(m_txtAccount);
-	CC_SAFE_RELEASE(m_ImgGroup);
+	CC_SAFE_RELEASE(m_sCharacterBelow);
+    CC_SAFE_RELEASE(m_lblCharacterName);
+    CC_SAFE_RELEASE(m_lblCharacterDesc);
+    CC_SAFE_RELEASE(m_lblHp);
+    CC_SAFE_RELEASE(m_lblDefence);
+    CC_SAFE_RELEASE(m_lblAttack);
+    CC_SAFE_RELEASE(m_lblAvoid);
 }
 
 CCScene* CharacterScene::scene()
@@ -57,19 +69,19 @@ bool CharacterScene::init()
 		config1.cLength = ELLIPSE_HEIGHT;
 		config1.startAngle = 2 * M_PI * 3/4;
 		config1.step = 1;
-		config1.centerPosition = ccp(winSize.width * 0.5,330);
+		config1.centerPosition = ccp(winSize.width * 0.5,300);
 
         config2.aLength = ELLIPSE_WIDTH;
 		config2.cLength = ELLIPSE_HEIGHT;
 		config2.startAngle = 2 * M_PI * 1/12;
 		config2.step = 1;
-		config2.centerPosition = ccp(winSize.width * 0.5,330);
+		config2.centerPosition = ccp(winSize.width * 0.5,300);
 
         config3.aLength = ELLIPSE_WIDTH;
 		config3.cLength = ELLIPSE_HEIGHT;
 		config3.startAngle = 2 * M_PI * 5/12;
 		config3.step = 1;
-		config3.centerPosition = ccp(winSize.width * 0.5,330);
+		config3.centerPosition = ccp(winSize.width * 0.5,300);
         
         bRet = true;
     } while (0);
@@ -200,8 +212,15 @@ void CharacterScene::doEllipse()
 
 bool CharacterScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_Imggroup", CCSprite*, this->m_ImgGroup);
+
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCharacterBelow", CCSprite*, this->m_sCharacterBelow);
+    
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblCharacterName", CCLabelTTF*, this->m_lblCharacterName);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblCharacterDesc", CCLabelTTF*, this->m_lblCharacterDesc);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblHp", CCLabelTTF*, this->m_lblHp);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblDefence", CCLabelTTF*, this->m_lblDefence);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAttack", CCLabelTTF*, this->m_lblAttack);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAvoid", CCLabelTTF*, this->m_lblAvoid);
     return true;
 }
 
@@ -275,13 +294,16 @@ void CharacterScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlE
     
     CCControlButton *button = (CCControlButton*) pSender;
 	
-    //switch (button->getTag()) {
-    //    case LOGIN_BUTTON_ACTION_SIGNIN_TAG:
-    //        CCLOG("signin");
-    //        break;
-    //}
-    this->doSubmit();
-   
+    if (pCCControlEvent==CCControlEventTouchUpInside) {
+        switch (button->getTag()) {
+            case 101:
+                this->doSubmit();
+                break;
+        }
+    } else if (pCCControlEvent==CCControlEventTouchDown) {
+        CCPoint point = button->getPosition();
+        m_sCharacterBelow->runAction(CCMoveTo::create(0.5, point));
+    }
 }
 
 SEL_MenuHandler CharacterScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
