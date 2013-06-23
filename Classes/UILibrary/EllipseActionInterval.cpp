@@ -8,18 +8,6 @@
 
 #include "EllipseActionInterval.h"
 
-
-
-EllipseActionInterval::EllipseActionInterval()
-{
-
-}
-
-EllipseActionInterval::~EllipseActionInterval()
-{
-    
-}
-
 EllipseActionInterval* EllipseActionInterval::actionWithDuration(float t, const lrEllipseConfig& c)
 {  
 	EllipseActionInterval *pTuoyuanBy = new EllipseActionInterval();  
@@ -45,8 +33,9 @@ void EllipseActionInterval::update(float time)
 	{  
 		float a = m_sConfig.aLength;   
 		float c = m_sConfig.cLength;
-		float x = getEllipseX(a, c, m_sConfig.startAngle, time/3 * m_sConfig.step);
-		float y = getEllipseY(a, c, m_sConfig.startAngle, time/3 * m_sConfig.step);  
+		float gap = 2*M_PI / m_sConfig.step;
+		float x = getEllipseX(a, c, m_sConfig.startAngle, time/gap);
+		float y = getEllipseY(a, c, m_sConfig.startAngle, time/gap);  
 		CCPoint point = ccpAdd(m_sConfig.centerPosition, ccp(x, y));
 		m_pTarget->setPosition(point); 
 	}  

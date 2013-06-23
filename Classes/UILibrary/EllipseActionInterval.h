@@ -20,7 +20,7 @@ static inline float getEllipseX( float a, float c, float startAngle,float t )//·
 }
 static inline float getEllipseY( float a, float c, float startAngle,float t )//·µ»ØY×ø±ê  
 {
-	return c*sin(startAngle + 2*M_PI*t);  
+	return c*sin(startAngle + 2*M_PI*t);
 } 
 
 typedef struct _lrEllipseConfig {  
@@ -29,12 +29,11 @@ typedef struct _lrEllipseConfig {
 	float cLength;
 	float startAngle;
 	float step;
+	float scale;
 } lrEllipseConfig; 
 
 class EllipseActionInterval : public cocos2d::CCActionInterval {
 public:
-    ~EllipseActionInterval();
-    EllipseActionInterval();
 
 	bool initWithDuration(float t, const lrEllipseConfig& c);  
 	virtual void update(float time);

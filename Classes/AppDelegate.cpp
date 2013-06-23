@@ -7,13 +7,13 @@
 #include "MainGameScene.h"
 #include "MainGameSceneLoader.h"
 #include "LoginSceneLoader.h"
-#include "CCEditBoxLoader.h"
+//#include "CCEditBoxLoader.h"
 #include "FriendListSceneLoader.h"
 #include "CCTableViewLoader.h"
 #include "TaskListSceneLoader.h"
 #include "AddFriendSceneLoader.h"
 #include "MainSceneTemplateLoader.h"
-#include "CCControlSwitchLoader.h"
+//#include "CCControlSwitchLoader.h"
 #include "ThirdLoginSceneLoader.h"
 #include "CharacterSceneLoader.h"
 #include "ServerListSceneLoader.h"
@@ -126,8 +126,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::sharedCCNodeLoaderLibrary();
     ccNodeLoaderLibrary->registerCCNodeLoader("MainGameScene", MainGameSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("LoginScene", LoginSceneLoader::loader());
-    ccNodeLoaderLibrary->registerCCNodeLoader("CCEditBox", CCEditBoxLoader::loader());
-    ccNodeLoaderLibrary->registerCCNodeLoader("CCControlSwitch", CCControlSwitchLoader::loader());
+    //ccNodeLoaderLibrary->registerCCNodeLoader("CCEditBox", CCEditBoxLoader::loader());
+    //ccNodeLoaderLibrary->registerCCNodeLoader("CCControlSwitch", CCControlSwitchLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("CCTableView", CCTableViewLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("MainSceneTemplate", MainSceneTemplateLoader::loader());    
     ccNodeLoaderLibrary->registerCCNodeLoader("FriendListScene", FriendListSceneLoader::loader());
@@ -153,11 +153,11 @@ bool AppDelegate::applicationDidFinishLaunching()
 	//SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
 #endif
     
-    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
+    //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
 
 	//CCScene *pScene = MailMainScene::scene();
     //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("ServerListScene.ccbi");
-//    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("CharacterScene.ccbi");
+    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("CharacterScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskListScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
     pDirector->runWithScene(pScene);

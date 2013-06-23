@@ -5,12 +5,12 @@ using namespace cocos2d;
 
 #define ELLIPSE_WIDTH 90
 #define ELLIPSE_HEIGHT 20
+#define START_ANGLE 2 * M_PI * 3/4
 
 CharacterScene::CharacterScene()
 {
     m_txtAccount = NULL;
 	m_sCharacterBelow = NULL;
-    
     m_lblCharacterName = NULL;
     m_lblCharacterDesc = NULL;
     m_lblHp = NULL;
@@ -63,25 +63,20 @@ bool CharacterScene::init()
 
         CC_BREAK_IF(! CCLayer::init());
 
-        CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+		mCardList = CCArray::create();
+		mCardList->retain();
 
-		config1.aLength = ELLIPSE_WIDTH;
-		config1.cLength = ELLIPSE_HEIGHT;
-		config1.startAngle = 2 * M_PI * 3/4;
-		config1.step = 1;
-		config1.centerPosition = ccp(winSize.width * 0.5,300);
+		mCardNameList = CCArray::create();
+		mCardNameList->retain();
 
-        config2.aLength = ELLIPSE_WIDTH;
-		config2.cLength = ELLIPSE_HEIGHT;
-		config2.startAngle = 2 * M_PI * 1/12;
-		config2.step = 1;
-		config2.centerPosition = ccp(winSize.width * 0.5,300);
+		mCardNameList->addObject(CCString::create("card_rulaifo.png"));
+		mCardNameList->addObject(CCString::create("Card_Level5.png"));
+		mCardNameList->addObject(CCString::create("Card_Level6.png"));
+		mCardNameList->addObject(CCString::create("Card_Level3.png"));
+		mCardNameList->addObject(CCString::create("Card_Level4.png"));
 
-        config3.aLength = ELLIPSE_WIDTH;
-		config3.cLength = ELLIPSE_HEIGHT;
-		config3.startAngle = 2 * M_PI * 5/12;
-		config3.step = 1;
-		config3.centerPosition = ccp(winSize.width * 0.5,300);
+
+		selectedIndex = 0;
         
         bRet = true;
     } while (0);
@@ -157,57 +152,142 @@ void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     m_txtAccount->setFontColor(ccc3(255,255,153));
     m_txtAccount->setFont("Arial", 16);
     m_txtAccount->setPosition(ccp(148, 40));
-    
-	CCSprite *fou = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("fou.png"));
-	spritFou = CCMenuItemSprite::create(fou, fou, fou, this, menu_selector(CharacterScene::menuItemCallback));
 
-	CCSprite *xian = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("xian.png"));
-	spriteXian = CCMenuItemSprite::create(xian, xian, xian, this, menu_selector(CharacterScene::menuItemCallback));
+	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+	CCObject *object;
 
-	CCSprite *yao = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("yao.png"));
-	spriteYao = CCMenuItemSprite::create(yao, yao, yao, this, menu_selector(CharacterScene::menuItemCallback));
-
-	CCMenu *menu = CCMenu::create(spritFou,spriteYao,spriteXian,NULL);
+	CCMenu *menu = CCMenu::create();
 	menu->setPosition(0,0);
 	this->addChild(menu);
 
-	spritFou->setUserData(&config1);
-    spriteXian->setUserData(&config2);
-    spriteYao->setUserData(&config3);
+	CCARRAY_FOREACH(mCardNameList,object)
+	{
+		CCString *strCardName = (CCString*)object; 
+		CCSprite *fou = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardName->getCString()));
+		CCMenuItemSprite *spritCard = CCMenuItemSprite::create(fou, fou, fou, this, menu_selector(CharacterScene::menuItemCallback));
+		mCardList->addObject(spritCard);
+		menu->addChild(spritCard);
+	}
 
-	CCPoint point1 = ccpAdd(config1.centerPosition,ccp(getEllipseX(config1.aLength,config1.cLength,config1.startAngle,0.0),getEllipseY(config1.aLength,config1.cLength,config1.startAngle,0.0)));
-	CCPoint point2 = ccpAdd(config2.centerPosition,ccp(getEllipseX(config2.aLength,config2.cLength,config2.startAngle,0.0),getEllipseY(config2.aLength,config2.cLength,config2.startAngle,0.0)));
-	CCPoint point3 = ccpAdd(config3.centerPosition,ccp(getEllipseX(config3.aLength,config3.cLength,config3.startAngle,0.0),getEllipseY(config3.aLength,config3.cLength,config3.startAngle,0.0)));
+	m_configs = new std::vector<lrEllipseConfig*>();
+	int cardLength = mCardList->count();
 
-	spritFou->setPosition(point1);
-	spriteXian->setPosition(point2);
-	spriteYao->setPosition(point3);
+	for(int i=0;i<cardLength;i++)
+	{
+		CCMenuItemSprite *sprite = (CCMenuItemSprite *)mCardList->objectAtIndex(i);
+		sprite->setTag(i);
 
-	spritFou->setZOrder(2);
-	spriteXian->setZOrder(1);
-	spriteYao->setZOrder(1);
+		lrEllipseConfig *config = new lrEllipseConfig();
 
-	spritFou->setScale(0.9);
-	spriteXian->setScale(0.9);
-	spriteYao->setScale(0.9);
+		config->aLength = ELLIPSE_WIDTH;
+		config->cLength = ELLIPSE_HEIGHT;
+		angleStep = 2 * M_PI / cardLength;
+		config->step = 2 * M_PI / cardLength;
+		config->startAngle = START_ANGLE + i * config->step;
+		config->centerPosition = ccp(winSize.width * 0.5,300);
+
+		CCPoint position = ccpAdd(config->centerPosition,ccp(getEllipseX(config->aLength,config->cLength,config->startAngle,0.0),getEllipseY(config->aLength,config->cLength,config->startAngle,0.0)));
+		sprite->setPosition(position);
+		sprite->setScale(0.9);
+		m_configs->push_back(config);
+	}
+
+	resetZorder();
+
+	for(int i=0;i<cardLength;i++)
+	{
+		lrEllipseConfig* config = m_configs->at(i);
+		CCMenuItemSprite *sprite = (CCMenuItemSprite *)mCardList->objectAtIndex(i);
+		sprite->setScale(config->scale);
+	}
+}
+
+void CharacterScene::resetZorder()
+{
+	lrEllipseConfig* config = m_configs->at(selectedIndex);
+	CCMenuItemSprite *currentSprite = (CCMenuItemSprite *)mCardList->objectAtIndex(selectedIndex);
+	int cardLength = mCardList->count();
+
+	int number = 0;
+	int maxZorder = 2 * cardLength;
+
+	for(int i=selectedIndex-1;i>=0;i--)
+	{
+		CCMenuItemSprite *sprite = (CCMenuItemSprite *)mCardList->objectAtIndex(i);
+		if (config->step>0)
+		{
+			sprite->setZOrder(maxZorder - cardLength + number++);
+		}
+		else
+		{
+			sprite->setZOrder(--maxZorder);
+		}
+	}
+	number = 0;
+	maxZorder = 2 * cardLength;
+
+	currentSprite->setZOrder(maxZorder);
+
+	for(int i=selectedIndex+1;i<cardLength;i++)
+	{
+		CCMenuItemSprite *sprite = (CCMenuItemSprite *)mCardList->objectAtIndex(i);
+		if (config->step>0)
+		{
+			sprite->setZOrder(--maxZorder);
+		}
+		else
+		{
+			sprite->setZOrder(maxZorder - cardLength +  ++number);
+		}
+	}
+
+	float maxScale = 0.9;
+	float minScale = 0.8;
+	
+	number = (cardLength-1)/2 + (cardLength-1)%2;
+	float scaleStep = (maxScale-minScale)/number;
+	config->scale = maxScale;
+	int low = selectedIndex-1;
+	int high = selectedIndex+1;
+
+	for(int i=1;i<=number;i++)
+	{
+		if(low<0) {
+			low = cardLength-1;
+		}
+		if (high>=cardLength)
+		{
+			high = 0;
+		}
+
+		lrEllipseConfig* config1 = m_configs->at(low);
+		lrEllipseConfig* config2 = m_configs->at(high);
+
+		config1->scale = maxScale- number * scaleStep;
+		config2->scale = maxScale- number * scaleStep;
+
+		low--;
+		high++;
+	}
 }
 
 void CharacterScene::doEllipse()
 {
-	EllipseActionInterval *ellipse1 = EllipseActionInterval::actionWithDuration(0.6,config1);
-	CCSequence *sequence1 = CCSequence::create(ellipse1,CCCallFuncN::create(this, callfuncN_selector(CharacterScene::animateEndCallBack)),NULL);
-	sequence1->setTag(1);
-	spritFou->runAction(sequence1);
+	int cardLength = mCardList->count();
+	for(int i=0;i<cardLength;i++)
+	{
+		CCMenuItemSprite *sprite = (CCMenuItemSprite *)mCardList->objectAtIndex(i);
+		lrEllipseConfig* config = m_configs->at(i);
 
-	EllipseActionInterval *ellipse2 = EllipseActionInterval::actionWithDuration(0.6,config2);
-	CCSequence *sequence2 = CCSequence::create(ellipse2,CCCallFuncN::create(this, callfuncN_selector(CharacterScene::animateEndCallBack)),NULL);
-	sequence2->setTag(1);
-    spriteXian->runAction(sequence2);
+		EllipseActionInterval *ellipseInterval = EllipseActionInterval::actionWithDuration(0.6,*config);
+		CCActionInterval *scaleInvertval = CCScaleTo::create(0.6,config->scale,config->scale);
 
-	EllipseActionInterval *ellipse3 = EllipseActionInterval::actionWithDuration(0.6,config3);
-	CCSequence *sequence3 = CCSequence::create(ellipse3,CCCallFuncN::create(this, callfuncN_selector(CharacterScene::animateEndCallBack)),NULL);
-	sequence3->setTag(1);
-    spriteYao->runAction(sequence3);
+		CCSpawn *action = CCSpawn::createWithTwoActions(ellipseInterval,scaleInvertval);
+
+		CCSequence *sequence = CCSequence::create(action,CCCallFuncN::create(this, callfuncN_selector(CharacterScene::animateEndCallBack)),NULL);
+		sequence->setTag(1);
+		sprite->runAction(sequence);
+	}
 }
 
 bool CharacterScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
@@ -228,66 +308,57 @@ void CharacterScene::menuItemCallback(CCObject* pSender)
 {
 	CCMenuItemSprite *sprite = (CCMenuItemSprite*)pSender;
 
-	if (sprite->isEqual(spritFou))
-	{
-		CCLOG("fou");
-	} else if (sprite->isEqual(spriteXian))
-	{
-		CCLOG("xian");
-	} else if (sprite->isEqual(spriteYao))
-	{
-		CCLOG("yao");
-	}
-
 	CCAction *action = sprite->getActionByTag(1);
 	if (action!=NULL && !action->isDone())
 	{
 		return;
 	}
-	int zOrder = sprite->getZOrder();
-	if (zOrder==2)
+
+	if (selectedIndex == sprite->getTag())
 	{
 		return;
 	}
 
-	spritFou->setZOrder(1);
-	spriteXian->setZOrder(1);
-	spriteYao->setZOrder(1);
-
 	float x = sprite->getPositionX();
-	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 
-	if (x>winSize.width * 0.5)
+	int cardLength = mCardList->count();
+	for(int i=0;i<cardLength;i++)
 	{
-		config1.step = -1;
-		config2.step = -1;
-		config3.step = -1;
-	} else {
-		config1.step = 1;
-		config2.step = 1;
-		config3.step = 1;
+		lrEllipseConfig* config = m_configs->at(i);
+
+		int gap  = selectedIndex - sprite->getTag();
+		if (abs(gap) > cardLength/2)
+		{
+			if (gap>0)
+			{
+				config->step = angleStep * ((cardLength-gap) * -1);
+			}
+			else
+			{
+				config->step = angleStep * ((cardLength+gap));
+			}
+			
+		}
+		else
+		{
+			config->step = angleStep * gap;
+		}
+		
 	}
 
-	sprite->setZOrder(2);
+	selectedIndex = sprite->getTag();
 
+	this->resetZorder();
 	this->doEllipse();
 }
 
 void CharacterScene::animateEndCallBack(CCNode *node)
 {
     CCSprite *sprite = (CCSprite *)node;
-    lrEllipseConfig *config = (lrEllipseConfig *)sprite->getUserData();
-	if (config->step==1)
-	{
-		config->startAngle += 2 * M_PI * 1/3;
-	}
-	else
-	{
-		config->startAngle -= 2 * M_PI * 1/3;
-	}
+	lrEllipseConfig* config = m_configs->at(sprite->getTag());
 
-	//CCSprite *fou = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("fou.png"));
-    
+	config->startAngle += config->step;
+	config->startAngle = fmod((double)config->startAngle,2 * M_PI);
 }
 
 void CharacterScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {

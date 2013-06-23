@@ -44,7 +44,7 @@ public:
 
 	void doSubmit();
 	void doEllipse();
-
+	void resetZorder();
 	CCEditBox *m_txtAccount;
     CCSprite *m_sCharacterBelow;
     
@@ -56,13 +56,21 @@ public:
     CCLabelTTF *m_lblAttack;
     CCLabelTTF *m_lblAvoid;
 
-	CCMenuItemSprite *spritFou;
-	CCMenuItemSprite *spriteXian;
-	CCMenuItemSprite *spriteYao;
-    
-	lrEllipseConfig config1;
-    lrEllipseConfig config2;
-    lrEllipseConfig config3;
+	//CCMenuItemSprite *spritFou;
+	//CCMenuItemSprite *spriteXian;
+	//CCMenuItemSprite *spriteYao;
+
+	//lrEllipseConfig config1;
+	//lrEllipseConfig config2;
+	//lrEllipseConfig config3;
+
+	CCArray *mCardList;
+	CCArray *mCardNameList;
+
+	int selectedIndex;
+	float angleStep;
+
+	std::vector<lrEllipseConfig*> *m_configs;
 };
 
 #endif  // __CharacterScene_SCENE_H__
