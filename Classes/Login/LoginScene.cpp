@@ -93,87 +93,55 @@ void LoginScene::doSubmit()
 	_strUrl.append(sPassword);
 	request->setUrl(_strUrl.c_str());
     
- //   char url[150] = {0};
- //   sprintf(url,"%s/user/login/%s/%s",API_URL,sAccount.c_str(),sPassword.c_str());
- //   CCLOG(url);
-	//request->setUrl(url);
-    
 	CCHttpClient *client = CCHttpClient::getInstance();
 	client->send(request);
     
 	request->release();
 }
 
-void LoginScene::requestFinishedCallback(CCNode* pSender,void *data)
+void LoginScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
 {
     this->HideLoadingIndicator();
-    
-    CCHttpResponse *response =  (CCHttpResponse*)data;
-	if(response == NULL)
+
+	if (!this->ValidateResponseData(pSender,Rspdata))
 	{
 		return;
 	}
-	int statusCode = response->getResponseCode();
-	char statusString[64] = {};
-	CCLOG(statusString, "HTTP Status Code: %d, tag = %s", statusCode, response->getHttpRequest()->getTag());
+    
+    CCHttpResponse *response =  (CCHttpResponse*)Rspdata;
 
-	if (!response->isSucceed())   
-	{  
-		CCLog("response failed");  
-		CCLog("error buffer: %s", response->getErrorBuffer());
-        CCMessageBox("ERROR", "Response failed");
-		return;  
-	}
-	std::vector<char> *buffer = response->getResponseData(); 
-
+	std::vector<char> *buffer = response->getResponseData();
 	std::string content(buffer->begin(),buffer->end());
-	CCLog(content.c_str());
 
-	parseJson(content);
-}
+	CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
+	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
+	if (code != 200) {
+		if (code == 121) {
+			CCMessageBox(GlobalData::getLocalString("register_have_sameuser")->getCString(),"");
+		} else {
+			CCMessageBox(response->getErrorBuffer(),"error");
+		}
+		return;
+	}
 
-void LoginScene::parseJson(std::string &content)
-{
-//	Json::Reader reader;  
-//	Json::Value root; 
-//
-//	const char* str = content.c_str();
-//	if (!reader.parse(str, root))
-//	{
-//        CCMessageBox("Parse failed","ERROR");
-//		return;
-//	}
-//    int code = root["code"].asInt();
-//    if (code!=200) {
-//        
-//        CCMessageBox("登陆失败,用户名或者密码错误！","ERROR");
-//        return;
-//    }
-    
-//    JsonBox::Value val;
-//	val.loadFromString(content);
-//
-//    int code = val["code"].getInt();
-//    if (code!=200) {
-//
-//        CCMessageBox("invoke web api failed!","ERROR");
-//        return;
-//    }else {
-//    	CCLOG("douzhan:login successfully!");
-//    }
+	std::string requestTag(response->getHttpRequest()->getTag());
 
-//    CCUserDefault::sharedUserDefault()->setStringForKey("username", val["username"].getString());
-//    CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", val["encryptedUserInfo"].getString());
-    
-//    CCUserDefault::sharedUserDefault()->setStringForKey("username", root["username"].asString());
-//    CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", root["encryptedUserInfo"].asString());
-    
-    string selectedServer = CCUserDefault::sharedUserDefault()->getStringForKey("SelectedServer");
-    if (selectedServer.length()>0) {
-         this->OpenNewScene("MainGameScene");
-    } else {
-        this->OpenNewScene("ServerListScene");
-    }
+	if (requestTag == "1") {
+		CCString *strEncryptedUser = (CCString *)dictionary->objectForKey("encryptedUserInfo");
+		CCString *strName = (CCString *)dictionary->objectForKey("username");
+		if(strEncryptedUser->length() > 0)
+		{
+			CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", strEncryptedUser->getCString());
+			CCUserDefault::sharedUserDefault()->setStringForKey("username", strName->getCString());
+
+			string selectedServer = CCUserDefault::sharedUserDefault()->getStringForKey("SelectedServer");
+			if (selectedServer.length()>0) {
+				this->OpenNewScene("MainGameScene");
+			} else {
+				this->OpenNewScene("ServerListScene");
+			}
+		}
+	}
 }
 
 void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)

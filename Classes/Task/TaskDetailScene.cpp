@@ -91,17 +91,10 @@ void TaskDetailScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
 	std::string requestTag(response->getHttpRequest()->getTag());
 
 	if (requestTag == "101") {
-//		mArrayList = dynamic_cast<CCArray *>(dictionary->objectForKey("friendList"));
-//		if (mArrayList==NULL)
-//		{
-//			return;
-//		}
-//
-//		selectedindex = -1;
-//		mTableView->reloadData();
+
 	} else if (requestTag == "102"){
-		this->doSearch();
-		CCMessageBox("delete friend successfully","Success");
+		
+		CCMessageBox("invoke api sucessfully","Success");
 	}
 }
 
@@ -202,7 +195,7 @@ void TaskDetailScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	mTaskList = GlobalData::getTasks("");
 	mTaskList->retain();
 
-	showTaskInfo();
+	//showTaskInfo();
 }
 
 //void TaskDetailScene::didClickButton(CCMessageDialog* dialog,unsigned int index)
@@ -215,16 +208,17 @@ void TaskDetailScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 //	}
 //}
 
-void TaskDetailScene::executeTask(std::string &targetUser)
+void TaskDetailScene::executeTask(std::string index,std::string subIndex)
 {
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
 	request->setResponseCallback(this,callfuncND_selector(TaskDetailScene::requestFinishedCallback));
-	request->setTag("103");
+	request->setTag("102");
 
-	string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
+	string _strUrl = CompleteUrl(URL_TASK_EXPLORE);
 	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-	_strUrl.append("/" + targetUser);
+	_strUrl.append("/" + index);
+	_strUrl.append("/" + subIndex);
 
 	request->setUrl(_strUrl.c_str());
 
@@ -247,6 +241,7 @@ void TaskDetailScene::buttonClicked(CCObject * sender , CCControlEvent controlEv
 	case 102:
         {
 		CCLOG("22222");
+			executeTask("0","0");
             selectedindex++;
             showTaskInfo();
         }

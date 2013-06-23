@@ -88,10 +88,10 @@ void CharacterScene::doSubmit()
 {
 	std::string sAccount(m_txtAccount->getText());
 
-	if (trimRight(sAccount).empty() ) {
-		CCMessageBox(GlobalData::getLocalString("character_name_empty")->getCString(),"ERROR");
-		return;
-	}
+	//if (trimRight(sAccount).empty() ) {
+	//	CCMessageBox(GlobalData::getLocalString("character_name_empty")->getCString(),"ERROR");
+	//	return;
+	//}
 
 	 this->OpenNewScene("MainGameScene");
 
@@ -337,7 +337,6 @@ void CharacterScene::menuItemCallback(CCObject* pSender)
 			{
 				config->step = angleStep * ((cardLength+gap));
 			}
-			
 		}
 		else
 		{

@@ -44,7 +44,7 @@ public:
 
 	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
 //	void didClickButton(CCMessageDialog* dialog,unsigned int index);
-	void executeTask(std::string &targetUser);
+	void executeTask(std::string index,std::string subIndex);
     void showTaskInfo();
     void menuItemCallback(CCObject* pSender);
 	unsigned int selectedindex;

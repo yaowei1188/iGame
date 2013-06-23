@@ -38,6 +38,8 @@ bool TaskListScene::init()
 
 		CC_BREAK_IF(! CCLayer::init());
 
+		this->retrieveCurrentTask();
+
 		//mArrayList =  CCArray::create();
 		//mArrayList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
 		//mArrayList->retain();
@@ -48,7 +50,7 @@ bool TaskListScene::init()
 	return bRet;
 }
 
-void TaskListScene::doSearch()
+void TaskListScene::retrieveCurrentTask()
 {
 	this->ShowLoadingIndicator("");
 
@@ -57,7 +59,7 @@ void TaskListScene::doSearch()
 	request->setResponseCallback(this,callfuncND_selector(TaskListScene::requestFinishedCallback));
 	request->setTag("101");
 
-	string _strUrl = CompleteUrl(URL_FRIEND_LIST);
+	string _strUrl = CompleteUrl(URL_TASK_RETRIEVE_CURRENT);
 	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
 
 	request->setUrl(_strUrl.c_str());
@@ -66,6 +68,25 @@ void TaskListScene::doSearch()
 	client->send(request);
 
 	request->release();
+
+	/*this->ShowLoadingIndicator("");
+
+	CCHttpRequest *request = new CCHttpRequest();
+	request->setRequestType(CCHttpRequest::kHttpPost);
+	request->setResponseCallback(this,callfuncND_selector(TaskListScene::requestFinishedCallback));
+	request->setTag("101");
+
+	string _strUrl = CompleteUrl(URL_TASK_RETRIEVE_CURRENT);
+	string _strPostData("encryptedUserInfo=");
+	_strPostData.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+	request->setRequestData(_strPostData.c_str(), _strPostData.length());
+
+	request->setUrl(_strUrl.c_str());
+
+	CCHttpClient *client = CCHttpClient::getInstance();
+	client->send(request);
+
+	request->release();*/
 }
 
 void TaskListScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
@@ -100,8 +121,7 @@ void TaskListScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
 		selectedindex = -1;
 //		mTableView->reloadData();
 	} else if (requestTag == "102"){
-		this->doSearch();
-		CCMessageBox("delete friend successfully","Success");
+
 	}
 }
 

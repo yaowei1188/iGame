@@ -41,7 +41,6 @@ public:
     void callbackSwitch(CCObject* pSender);
 
 	void doSubmit();
-	void parseJson(std::string& content);
 
 	CCEditBox *m_txtAccount;
 	CCEditBox *m_txtPassword;

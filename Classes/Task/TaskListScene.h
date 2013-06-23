@@ -32,7 +32,7 @@ public:
 
 	// a selector callback
 	void requestFinishedCallback(CCNode* pSender,void *p);
-	void doSearch();
+	void retrieveCurrentTask();
 
 	// implement the "static node()" method manually
 	CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(TaskListScene,create);
