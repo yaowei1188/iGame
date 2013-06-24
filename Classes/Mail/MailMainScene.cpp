@@ -42,28 +42,7 @@ bool MailMainScene::init()
         mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
         mFriendList->retain();
 
-		CCTabView * myTab = new CCTabView(CCRectMake(10, 20, 300, 300));
-		myTab->autorelease();
 
-		CCLayerColor * mylay = CCLayerColor::create(ccc4(255, 0, 0,120),200,100);
-		CCLabelTTF * lbl = CCLabelTTF::create("tab1","Thonburi",18);
-		lbl->setPosition(ccp(50,50));
-		mylay->addChild(lbl);
-
-		CCLayerColor * mylay1 = CCLayerColor::create(ccc4(0, 255, 0,120),200,100);
-		CCLabelTTF * lbl1 = CCLabelTTF::create("tab2","Thonburi",18);
-		lbl1->setPosition(ccp(50,50));
-		mylay1->addChild(lbl1);
-
-		CCLayerColor * mylay2 = CCLayerColor::create(ccc4(0,50, 220,120),200,100);
-		CCLabelTTF * lbl2 = CCLabelTTF::create("tab3","Thonburi",18);
-		lbl2->setPosition(ccp(50,50));
-		mylay2->addChild(lbl2);
-
-		myTab->addTab("tab1", mylay);
-		myTab->addTab("tab2", mylay1);
-		myTab->addTab("tab3", mylay2);
-		this->addChild(myTab);
 
         bRet = true;
     } while (0);
@@ -121,7 +100,7 @@ void MailMainScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
 		}
 
 		selectedindex = -1;
-		mTableViewFriend->reloadData();
+		mTableView->reloadData();
 	} else if (requestTag == "102"){
 		this->doSearchFriend();
 		CCMessageBox("delete friend successfully","Success");
@@ -130,14 +109,13 @@ void MailMainScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
 
 bool MailMainScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableViewFriend", CCTableView*, this->mTableViewFriend);
-//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainSceneTemp", MainSceneTemplate*, this->mMainSceneTemp);
+
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblPage", CCLabelTTF*, this->m_lblPage);
     return true;
 }
 
 SEL_MenuHandler MailMainScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
 {
-//	CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "menuBarBtnClicked:", MailMainScene::menuBarBtnClicked);
 	return NULL;
 }
 
@@ -158,7 +136,7 @@ void MailMainScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 
 	//doSearchFriend();
 
-	/*CCTabView * myTab = new CCTabView(CCRectMake(50, 20, 380, 300));
+	CCTabView * myTab = new CCTabView(CCRectMake(50, 20, 380, 300));
 	myTab->autorelease();
 
 	CCLayerColor * mylay = CCLayerColor::create(ccc4(255, 0, 0,120),200,100);
@@ -171,15 +149,9 @@ void MailMainScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	lbl1->setPosition(ccp(50,50));
 	mylay1->addChild(lbl1);
 
-	CCLayerColor * mylay2 = CCLayerColor::create(ccc4(0,50, 220,120),200,100);
-	CCLabelTTF * lbl2 = CCLabelTTF::create("tab3","Thonburi",18);
-	lbl2->setPosition(ccp(50,50));
-	mylay2->addChild(lbl2);
-
-	myTab->addTab("tab1", mylay);
-	myTab->addTab("tab2", mylay1);
-	myTab->addTab("tab3", mylay2);
-	this->addChild(myTab);*/
+	myTab->addTab("tab1","mail_tab_secret.png","mail_tab_secret_selected.png", mylay);
+	myTab->addTab("tab2","mail_tab_sys_mail.png","mail_tab_sys_mail_selected.png", mylay1);
+	this->addChild(myTab);
 }
 
 void MailMainScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
@@ -481,8 +453,8 @@ void MailMainScene::buttonClicked(CCObject * sender , CCControlEvent controlEven
 
 MailMainScene::MailMainScene()
 {
-    mTableViewFriend = NULL;
-//    mMainSceneTemp = NULL;
+    mTableView = NULL;
+    m_lblPage = NULL;
     mFriendList = NULL;
 }
 

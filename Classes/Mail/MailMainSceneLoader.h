@@ -1,25 +1,25 @@
 //
-//  FriendListSceneLoader.h
+//  MailMainSceneLoader.h
 //  cctest
 //
 //  Created by China Team on 4/9/13.
 //
 //
 
-#ifndef cctest_FriendListSceneLoader_h
-#define cctest_FriendListSceneLoader_h
+#ifndef cctest_MailMainSceneLoader_h
+#define cctest_MailMainSceneLoader_h
 
 #include <iostream>
 #include "cocos2d.h"
-#include "FriendListScene.h"
+#include "MailMainScene.h"
 
 USING_NS_CC;
 
-class FriendListSceneLoader : public CCLayerLoader {
+class MailMainSceneLoader : public CCLayerLoader {
 public:
-    CCB_STATIC_NEW_AUTORELEASE_OBJECT_METHOD(FriendListSceneLoader, loader);
+    CCB_STATIC_NEW_AUTORELEASE_OBJECT_METHOD(MailMainSceneLoader, loader);
 protected:
-    CCB_VIRTUAL_NEW_AUTORELEASE_CREATECCNODE_METHOD(FriendListScene);
+    CCB_VIRTUAL_NEW_AUTORELEASE_CREATECCNODE_METHOD(MailMainScene);
 };
 
 #endif

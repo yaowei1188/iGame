@@ -63,11 +63,11 @@ public:
     void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
 	void didClickButton(CCMessageDialog* dialog,unsigned int index);
 	void deleteFriend(std::string &targetUser);
-    CCTableView* mTableViewFriend;
-//    MainSceneTemplate *mMainSceneTemp;
+    CCTableView* mTableView;
     unsigned int selectedindex;
     //CCTabView *tabView;
     CCArray *mFriendList;
+    CCLabelTTF *m_lblPage;
 };
 
 #endif  // __HELLOWORLD_SCENE_H__

@@ -514,7 +514,7 @@
             <key>next.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{891,653},{61,33}}</string>
+                <string>{{965,653},{61,33}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -592,7 +592,7 @@
             <key>qqs_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{324,702},{60,30}}</string>
+                <string>{{420,709},{60,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -605,11 +605,11 @@
             <key>qqs_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{324,781},{60,30}}</string>
+                <string>{{388,709},{60,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{60,30}}</string>
                 <key>sourceSize</key>
@@ -631,7 +631,7 @@
             <key>rrs_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{324,813},{60,30}}</string>
+                <string>{{356,709},{60,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -644,11 +644,11 @@
             <key>rrs_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{958,685},{60,30}}</string>
+                <string>{{324,709},{60,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{60,30}}</string>
                 <key>sourceSize</key>
@@ -735,7 +735,7 @@
             <key>sina_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{958,653},{60,30}}</string>
+                <string>{{386,781},{60,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -748,11 +748,11 @@
             <key>sina_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{926,653},{60,30}}</string>
+                <string>{{324,781},{60,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{60,30}}</string>
                 <key>sourceSize</key>
@@ -800,30 +800,43 @@
             <key>task_locked.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{565,700},{63,68}}</string>
+                <string>{{324,813},{72,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{63,68}}</string>
+                <string>{{0,0},{72,72}}</string>
                 <key>sourceSize</key>
-                <string>{63,68}</string>
+                <string>{72,72}</string>
             </dict>
             <key>task_normal.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{565,635},{63,68}}</string>
+                <string>{{891,653},{72,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{63,68}}</string>
+                <string>{{0,0},{72,72}}</string>
                 <key>sourceSize</key>
-                <string>{63,68}</string>
+                <string>{72,72}</string>
             </dict>
-            <key>task_normal1.png</key>
+            <key>task_passed.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{565,635},{72,72}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{72,72}}</string>
+                <key>sourceSize</key>
+                <string>{72,72}</string>
+            </dict>
+            <key>task_progress.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{595,528},{63,68}}</string>
@@ -950,7 +963,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:dcebe3ecee057ebe3d9efcac69123fbe$</string>
+            <string>$TexturePacker:SmartUpdate:56d5207e78030d78721f2fabf8aa5da8$</string>
             <key>textureFileName</key>
             <string>login.png</string>
         </dict>

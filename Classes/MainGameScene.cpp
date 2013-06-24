@@ -12,7 +12,6 @@ MainGameScene::MainGameScene()
 {
     mMainSceneTemp = NULL;
     mMainLayer = NULL;
-    mblnIsHomePage = true;
     mlayArray = CCArray::create();
     mlayArray->retain();
 }
@@ -51,8 +50,6 @@ void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
             CCLOG("33333");
             break;
         case TOOLBAR_BTN_FRIENDS_TAG:
-            CCLOG("44444");
-            mblnIsHomePage = false;
             this->PushLayer((CCLayer *)this->GetLayer("FriendListScene"));
             break;
         case TOOLBAR_BTN_ITEMS_TAG:
@@ -60,6 +57,7 @@ void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
             break;
         case TOOLBAR_BTN_MAIL_TAG:
             CCLOG("66666");
+            this->PushLayer((CCLayer *)this->GetLayer("MailMainScene"));
             break;
         case TOOLBAR_BTN_SETTING_TAG:
             CCLOG("77777");

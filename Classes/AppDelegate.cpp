@@ -24,6 +24,8 @@
 #include "MailMainScene.h"
 #include "RegisterScene.h"
 #include "RegisterSceneLoader.h"
+#include "MailMainScene.h"
+#include "MailMainSceneLoader.h"
 
 using namespace CocosDenshion;
 
@@ -141,6 +143,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     ccNodeLoaderLibrary->registerCCNodeLoader("TaskRewardScene", TaskRewardSceneLoader::loader());
 	ccNodeLoaderLibrary->registerCCNodeLoader("MainInnerLayer", MainInnerLayerLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("RegisterScene", RegisterSceneLoader::loader());
+    ccNodeLoaderLibrary->registerCCNodeLoader("MailMainScene", MailMainSceneLoader::loader());
 
     cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
     ccbReader->autorelease();

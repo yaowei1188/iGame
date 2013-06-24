@@ -15,7 +15,7 @@
 USING_NS_CC;
 
 
-#define DEF_HEADER_SIZE CCSizeMake(77,42)
+#define DEF_HEADER_SIZE CCSizeMake(66,42)
 
 class  CCTabView : public CCLayer
 {
@@ -24,16 +24,17 @@ public:
     virtual ~CCTabView();
     
     void addTab(const char * tabName, CCLayer * tabView);
+    void addTab(const char * tabName,const char * tabNormal,const char * tabActive, CCLayer * tabView);
 
     virtual void onEnter();
 	virtual void onExit();
     
     // handle touch events
-    virtual void registerWithTouchDispatcher();
-	virtual bool ccTouchBegan(CCTouch* touch, CCEvent* event);
-	virtual void ccTouchEnded(CCTouch* touch, CCEvent* event);
-	virtual void ccTouchCancelled(CCTouch *touch, CCEvent* event);
-	virtual void ccTouchMoved(CCTouch* touch, CCEvent* event);
+//    virtual void registerWithTouchDispatcher();
+//	virtual bool ccTouchBegan(CCTouch* touch, CCEvent* event);
+//	virtual void ccTouchEnded(CCTouch* touch, CCEvent* event);
+//	virtual void ccTouchCancelled(CCTouch *touch, CCEvent* event);
+//	virtual void ccTouchMoved(CCTouch* touch, CCEvent* event);
     
     // tab clicked events
     void tabClicked(CCObject * obj);
@@ -68,7 +69,7 @@ private:
     void initTabData();
     CCSize _edgeSize;
     
-    CCMenuItemImage * _preSelectedTab;
+    CCMenuItemSprite * _preSelectedTab;
     CCLayerColor * _tabView;
     
 };
