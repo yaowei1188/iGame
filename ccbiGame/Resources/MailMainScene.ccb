@@ -96,79 +96,6 @@
 			</dict>
 			<dict>
 				<key>baseClass</key>
-				<string>CCNode</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string>CCTableView</string>
-				<key>displayName</key>
-				<string>CCTableView</string>
-				<key>memberVarAssignmentName</key>
-				<string>mTableViewFriend</string>
-				<key>memberVarAssignmentType</key>
-				<integer>1</integer>
-				<key>properties</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>4</real>
-							<real>7</real>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>contentSize</string>
-						<key>type</key>
-						<string>Size</string>
-						<key>value</key>
-						<array>
-							<real>312</real>
-							<real>290</real>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>anchorPoint</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>scale</string>
-						<key>type</key>
-						<string>ScaleLock</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<false/>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>ignoreAnchorPointForPosition</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>baseClass</key>
 				<string>CCLabelTTF</string>
 				<key>children</key>
 				<array/>
@@ -317,8 +244,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>226</real>
-							<real>40</real>
+							<real>218</real>
+							<real>32</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -606,7 +533,7 @@
 						<key>value</key>
 						<array>
 							<real>111</real>
-							<real>40</real>
+							<real>32</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -798,6 +725,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

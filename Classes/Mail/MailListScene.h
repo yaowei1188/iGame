@@ -28,7 +28,6 @@ public:
     MailListScene();
     ~MailListScene();
     
-    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();  
 
     // there's no 'id' in cpp, so we recommand to return the exactly class pointer
@@ -37,12 +36,12 @@ public:
     // a selector callback
     void requestFinishedCallback(CCNode* pSender,void *p);
 	void doSearch();
+    
+    CCMenu *generateCheckBox();
+    void callbackSwitch(CCObject* pSender);
 
     // implement the "static node()" method manually
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MailListScene,create);
-    
-    //virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
-    //virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
     
 	virtual void scrollViewDidScroll(cocos2d::extension::CCScrollView* view) {};
 	virtual void scrollViewDidZoom(cocos2d::extension::CCScrollView* view) {}
