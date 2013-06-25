@@ -259,6 +259,9 @@
     <None Include="..\Resources\RegisterScene.ccbi">
       <Filter>Resources\Scene</Filter>
     </None>
+    <None Include="..\Resources\MailMainScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="iGame.rc">

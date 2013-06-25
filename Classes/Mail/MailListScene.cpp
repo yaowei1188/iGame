@@ -39,6 +39,22 @@ bool MailListScene::init()
         mArrayList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
         mArrayList->retain();
 
+		CCSprite *mailListBg = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_list_bg.png"));
+		mailListBg->retain();
+		mailListBg->setAnchorPoint(CCPointZero);
+		mailListBg->setPosition(ccp(0,0));
+		this->addChild(mailListBg);
+
+		mTableViewMail = CCTableView::create(this,CCSizeMake(312,250));
+		mTableViewMail->retain();
+		mTableViewMail->setPosition(CCPointZero);
+		this->addChild(mTableViewMail);
+		mTableViewMail->setDirection(kCCScrollViewDirectionVertical);
+		mTableViewMail->setVerticalFillOrder(kCCTableViewFillTopDown);
+		mTableViewMail->setDataSource(this);
+		mTableViewMail->setDelegate(this);
+		mTableViewMail->reloadData();
+
         bRet = true;
     } while (0);
 
@@ -102,36 +118,36 @@ void MailListScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
 	}
 }
 
-bool MailListScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
-{
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableViewMail", CCTableView*, this->mTableViewMail);
-//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainSceneTemp", MainSceneTemplate*, this->mMainSceneTemp);
-    return true;
-}
+//bool MailListScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
+//{
+//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableViewMail", CCTableView*, this->mTableViewMail);
+////    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainSceneTemp", MainSceneTemplate*, this->mMainSceneTemp);
+//    return true;
+//}
+//
+//SEL_MenuHandler MailListScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
+//{
+////	CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "menuBarBtnClicked:", MailListScene::menuBarBtnClicked);
+//	return NULL;
+//}
+//
+//SEL_CCControlHandler MailListScene::onResolveCCBCCControlSelector(CCObject *pTarget, const char * pSelectorName) {
+//    
+//    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "buttonClicked:", MailListScene::buttonClicked);
+//	return NULL;
+//}
 
-SEL_MenuHandler MailListScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
-{
-//	CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "menuBarBtnClicked:", MailListScene::menuBarBtnClicked);
-	return NULL;
-}
-
-SEL_CCControlHandler MailListScene::onResolveCCBCCControlSelector(CCObject *pTarget, const char * pSelectorName) {
-    
-    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "buttonClicked:", MailListScene::buttonClicked);
-	return NULL;
-}
-
-void MailListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
-{
-    mTableViewMail->setDirection(kCCScrollViewDirectionVertical);
-    mTableViewMail->setVerticalFillOrder(kCCTableViewFillTopDown);
-    mTableViewMail->setDataSource(this);
-    mTableViewMail->setViewSize(CCSizeMake(312, 250));
-    mTableViewMail->setDelegate(this);
-    mTableViewMail->reloadData();
-
-	//doSearchFriend();
-}
+//void MailListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
+//{
+//    mTableViewMail->setDirection(kCCScrollViewDirectionVertical);
+//    mTableViewMail->setVerticalFillOrder(kCCTableViewFillTopDown);
+//    mTableViewMail->setDataSource(this);
+//    mTableViewMail->setViewSize(CCSizeMake(312, 250));
+//    mTableViewMail->setDelegate(this);
+//    mTableViewMail->reloadData();
+//
+//	//doSearchFriend();
+//}
 
 void MailListScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
 {
@@ -432,7 +448,7 @@ void MailListScene::buttonClicked(CCObject * sender , CCControlEvent controlEven
 
 MailListScene::MailListScene()
 {
-    mTableViewMail = NULL;
+    //mTableViewMail = NULL;
 //    mMainSceneTemp = NULL;
     mArrayList = NULL;
 }

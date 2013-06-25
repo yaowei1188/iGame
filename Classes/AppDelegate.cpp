@@ -26,6 +26,8 @@
 #include "RegisterSceneLoader.h"
 #include "MailMainScene.h"
 #include "MailMainSceneLoader.h"
+#include "MailListScene.h"
+
 
 using namespace CocosDenshion;
 
@@ -156,13 +158,15 @@ bool AppDelegate::applicationDidFinishLaunching()
 	//SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
 #endif
     
-    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
+    //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
 
-	//CCScene *pScene = MailMainScene::scene();
+
+	//CCScene *pScene = MailListScene::scene();
+	//CCScene *pScene = MailListScene::scene();
     //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("ServerListScene.ccbi");
     //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("CharacterScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskListScene.ccbi");
-//    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
+    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
     pDirector->runWithScene(pScene);
 
     return true;

@@ -11,6 +11,7 @@
 #include "MainSceneTemplate.h"
 #include "MainLayerBase.h"
 #include "common.h"
+#include "MailListScene.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;

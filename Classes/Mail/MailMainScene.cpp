@@ -136,22 +136,24 @@ void MailMainScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 
 	//doSearchFriend();
 
-	CCTabView * myTab = new CCTabView(CCRectMake(50, 20, 380, 300));
-	myTab->autorelease();
+	CCTabView * _mailTab = new CCTabView(CCRectMake(20, 80, 320, 300));
+	_mailTab->autorelease();
 
-	CCLayerColor * mylay = CCLayerColor::create(ccc4(255, 0, 0,120),200,100);
-	CCLabelTTF * lbl = CCLabelTTF::create("tab1","Thonburi",18);
-	lbl->setPosition(ccp(50,50));
-	mylay->addChild(lbl);
+	MailListScene * _layMail = MailListScene::create();
+	_layMail->retain();
+	//CCLabelTTF * lbl = CCLabelTTF::create("tab1","Thonburi",18);
+	//lbl->setPosition(ccp(50,50));
+	//_layMail->addChild(lbl);
 
-	CCLayerColor * mylay1 = CCLayerColor::create(ccc4(0, 255, 0,120),200,100);
-	CCLabelTTF * lbl1 = CCLabelTTF::create("tab2","Thonburi",18);
-	lbl1->setPosition(ccp(50,50));
-	mylay1->addChild(lbl1);
+	MailListScene * _laySysMail = MailListScene::create();
+	_laySysMail->retain();
+	//CCLabelTTF * lbl1 = CCLabelTTF::create("tab2","Thonburi",18);
+	//lbl1->setPosition(ccp(50,50));
+	//_laySysMail->addChild(lbl1);
 
-	myTab->addTab("tab1","mail_tab_secret.png","mail_tab_secret_selected.png", mylay);
-	myTab->addTab("tab2","mail_tab_sys_mail.png","mail_tab_sys_mail_selected.png", mylay1);
-	this->addChild(myTab);
+	_mailTab->addTab("tab1","mail_tab_secret.png","mail_tab_secret_selected.png", _layMail);
+	_mailTab->addTab("tab2","mail_tab_sys_mail.png","mail_tab_sys_mail_selected.png", _laySysMail);
+	this->addChild(_mailTab);
 }
 
 void MailMainScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)

@@ -70,7 +70,7 @@ private:
     CCSize _edgeSize;
     
     CCMenuItemSprite * _preSelectedTab;
-    CCLayerColor * _tabView;
+    CCLayer * _tabView;
     
 };
 

@@ -8,10 +8,10 @@
 #include "CCTabView.h"
 #include <math.h>
 
-#define TAB_NORMAL "tab_normal.png"
-#define TAB_ACTIVE "tab_active.png"
-#define TAB_LINE "tab_line.png"
-#define TAB_EDGE "tab_kuan.9.png"
+//#define TAB_NORMAL "tab_normal.png"
+//#define TAB_ACTIVE "tab_active.png"
+//#define TAB_LINE "tab_line.png"
+//#define TAB_EDGE "tab_kuan.9.png"
 
 #define kCCMenuTouchPriority 1
 
@@ -37,14 +37,15 @@ CCTabView::CCTabView(CCRect rect)
 	_tabViewArray->retain();
     
     // pre-load tab images
-    CCTextureCache::sharedTextureCache()->addImage(TAB_NORMAL);
-    CCTextureCache::sharedTextureCache()->addImage(TAB_LINE);
-    CCTextureCache::sharedTextureCache()->addImage(TAB_ACTIVE);
-    CCTexture2D * edgeTexture = CCTextureCache::sharedTextureCache()->addImage(TAB_EDGE);
-    _edgeSize = edgeTexture->getContentSize();
+    //CCTextureCache::sharedTextureCache()->addImage(TAB_NORMAL);
+    //CCTextureCache::sharedTextureCache()->addImage(TAB_LINE);
+    //CCTextureCache::sharedTextureCache()->addImage(TAB_ACTIVE);
+    //CCTexture2D * edgeTexture = CCTextureCache::sharedTextureCache()->addImage(TAB_EDGE);
+    //_edgeSize = edgeTexture->getContentSize();
     
     // create sub view container
-    _tabView = CCLayerColor::create(ccc4(255, 255, 255, 0), rect.size.width, rect.size.height-_tabSize.height);
+    _tabView = CCLayer::create();
+	_tabView->setAnchorPoint(CCPointZero);
 	_tabView->setPosition(CCPointZero);
     this->addChild(_tabView);
 
@@ -69,6 +70,7 @@ void CCTabView::addTab(const char * tabName, CCLayer * tabView)
 void CCTabView::addTab(const char * tabName,const char * tabNormal,const char * tabActive, CCLayer * tabView)
 {
     CCDictionary *dict = CCDictionary::create();
+
     CCString * strTabName = CCString::create(tabName);
     dict->setObject(strTabName, "TabTitle");
     
@@ -77,6 +79,7 @@ void CCTabView::addTab(const char * tabName,const char * tabNormal,const char * 
     
     CCString * strTabActive = CCString::create(tabActive);
     dict->setObject(strTabActive, "TabActive");
+
     _tabNameArray->addObject(dict);
     
     _tabViewArray->addObject(tabView);
@@ -88,13 +91,14 @@ void CCTabView::tabClicked(CCObject * obj)
     CCMenuItemSprite * pMenu = dynamic_cast<CCMenuItemSprite*>(obj);
     if ( pMenu != _preSelectedTab )
     {
+		// unselected previous one
+		if ( _preSelectedTab != NULL )
+		{
+			_preSelectedTab->unselected();
+		}
+
         pMenu->selected(); 
-        
-        // unselected previous one
-        if ( _preSelectedTab != NULL )
-        {
-            _preSelectedTab->unselected();
-        }
+
         _preSelectedTab = pMenu;
         
         // showing related tab view
@@ -103,8 +107,9 @@ void CCTabView::tabClicked(CCObject * obj)
         // remove previous tab view
         _tabView->removeAllChildrenWithCleanup(true);
         CCLayer * subView = (CCLayer *)_tabViewArray->objectAtIndex(tabIndex);
-        float yPos = this->getContentSize().height - _tabSize.height - subView->getContentSize().height;
-        subView->setPosition(ccp(2,yPos-2));
+        //float yPos = this->getContentSize().height - _tabSize.height - subView->getContentSize().height;
+        subView->setPosition(ccp(2,-36));
+		subView->setAnchorPoint(CCPointZero);
         _tabView->addChild(subView);
     }
 }
@@ -119,11 +124,14 @@ void CCTabView::initTabData()
 		return;
 	}
     
-    
     int tabCount = MAX(tabNameCount,tabViewCount);
     
 	CCPoint tabStartPos = ccp(_tabSize.width/2 + _leftMargin,this->getContentSize().height-_tabSize.height/2);
     CCPoint lastPos = CCPointZero;
+	CCMenu * pMenu = CCMenu::create();
+	pMenu->setPosition(CCPointZero);
+	this->addChild(pMenu);
+
     for ( int i = 0 ; i < tabCount ; i++ )
     {
         CCDictionary *dict = (CCDictionary *)_tabNameArray->objectAtIndex(i);
@@ -142,6 +150,8 @@ void CCTabView::initTabData()
         
         oneTab->setPosition(lastPos);
         oneTab->setTag(i);
+
+		pMenu->addChild(oneTab);
         
         if ( i == _selectedTab ) 
         {
@@ -149,24 +159,20 @@ void CCTabView::initTabData()
             _preSelectedTab = oneTab;
             
             _tabView->removeAllChildrenWithCleanup(true);
+
             CCLayer * subView = (CCLayer *)_tabViewArray->objectAtIndex(i);
-            float yPos = this->getContentSize().height - _tabSize.height - subView->getContentSize().height;
-            subView->setPosition(ccp(2,yPos-2));
+            //float yPos = this->getContentSize().height - subView->getContentSize().height;
+            subView->setPosition(ccp(2,-36));
+			subView->setAnchorPoint(CCPointZero);
             _tabView->addChild(subView);
         }
         
-        CCMenu * pMenu = CCMenu::create(oneTab,NULL);
-        pMenu->setPosition(CCPointZero);
-        pMenu->setTag(i);
-        this->addChild(pMenu);
-        
         // set tab title
-        
-        CCString * titleName = (CCString *)dict->objectForKey("TabTitle");
-        CCLabelTTF * ttl = CCLabelTTF::create(titleName->getCString(),_titleFontName.c_str(),_titleFontSize);
-        ttl->setColor(_titleFontColor);
-        ttl->setPosition(lastPos);
-        this->addChild(ttl);
+        //CCString * titleName = (CCString *)dict->objectForKey("TabTitle");
+        //CCLabelTTF * ttl = CCLabelTTF::create(titleName->getCString(),_titleFontName.c_str(),_titleFontSize);
+        //ttl->setColor(_titleFontColor);
+        //ttl->setPosition(lastPos);
+        //this->addChild(ttl);
     }
     
 //    // draw edges
@@ -254,10 +260,10 @@ void CCTabView::onEnter()
 
 void CCTabView::onExit()
 {
-    CCTextureCache::sharedTextureCache()->removeTextureForKey(TAB_NORMAL);
-    CCTextureCache::sharedTextureCache()->removeTextureForKey(TAB_ACTIVE);
-    CCTextureCache::sharedTextureCache()->removeTextureForKey(TAB_LINE);
-    CCTextureCache::sharedTextureCache()->removeTextureForKey(TAB_EDGE);
+    //CCTextureCache::sharedTextureCache()->removeTextureForKey(TAB_NORMAL);
+    //CCTextureCache::sharedTextureCache()->removeTextureForKey(TAB_ACTIVE);
+    //CCTextureCache::sharedTextureCache()->removeTextureForKey(TAB_LINE);
+    //CCTextureCache::sharedTextureCache()->removeTextureForKey(TAB_EDGE);
     
     CCLayer::onExit();
 }

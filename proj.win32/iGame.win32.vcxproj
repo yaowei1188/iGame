@@ -166,6 +166,7 @@
     <None Include="..\Resources\Image\resources-iphonehd\main.png" />
     <None Include="..\Resources\language\chs.plist" />
     <None Include="..\Resources\LoginScene.ccbi" />
+    <None Include="..\Resources\MailMainScene.ccbi" />
     <None Include="..\Resources\MainGameScene.ccbi" />
     <None Include="..\Resources\MainSceneTemplate.ccbi" />
     <None Include="..\Resources\NewMailScene.ccbi" />
