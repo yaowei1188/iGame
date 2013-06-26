@@ -40,7 +40,7 @@ bool MailListScene::init()
         mArrayList->retain();
         
         vUserData = new int[mArrayList->count()]();
-        memset(vUserData, 4 * mArrayList->count(), 0);
+        memset(vUserData, sizeof(int) * mArrayList->count(), 0);
 
 		CCSprite *mailListBg = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_list_bg.png"));
 		mailListBg->setAnchorPoint(CCPointZero);
@@ -59,7 +59,6 @@ bool MailListScene::init()
         
         menuCheckAll = this->generateCheckBox();
         this->addChild(menuCheckAll);
-        menuCheckAll->setTag(1);
         menuCheckAll->setAnchorPoint(CCPointMake(0, 0.5));
         menuCheckAll->setPosition(CCPointMake(240, 275));
 
@@ -181,15 +180,33 @@ bool MailListScene::hasFixedCellSize()
 void MailListScene::callbackSwitch(CCObject* pSender){
     
 	CCMenuItemToggle* pSwitch = (CCMenuItemToggle*)pSender;
-   int *idx = (int *)pSwitch->getUserData();
-    
-    if (pSwitch->getSelectedIndex()==0) {
-//        m_blnRememberMe = false;
-        *idx = 0;
-    } else {
-//        m_blnRememberMe = true;
-        *idx = 1;
-    }
+	
+	int *idx = (int *)pSwitch->getUserData();
+	if (idx==NULL)
+	{
+		if (pSwitch->getSelectedIndex()==0) {
+			for(int i=0;i<mArrayList->count();i++)
+			{
+				vUserData[i]=0;
+			}
+		} else {
+			for(int i=0;i<mArrayList->count();i++)
+			{
+				vUserData[i]=1;
+			}
+		}
+		mTableViewMail->refreshData();
+	}
+	else
+	{
+		if (pSwitch->getSelectedIndex()==0) {
+			*idx = 0;
+		} else {
+			*idx = 1;
+		}
+	}
+
+
 }
 
 CCMenu* MailListScene::generateCheckBox()
@@ -198,9 +215,9 @@ CCMenu* MailListScene::generateCheckBox()
 	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox.png"));
     
     CCMenu* m_auto_op_menu = CCMenu::create();
-    CCMenuItemSprite* auto_op_btn = CCMenuItemSprite::create(spriteOff, NULL);
-    CCMenuItemSprite* auto_op_btn2 = CCMenuItemSprite::create(spriteOn, NULL);
-    CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(MailListScene::callbackSwitch),auto_op_btn,auto_op_btn2,NULL);
+    CCMenuItemSprite* menuOff = CCMenuItemSprite::create(spriteOff, NULL);
+    CCMenuItemSprite* menuOn = CCMenuItemSprite::create(spriteOn, NULL);
+    CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(MailListScene::callbackSwitch),menuOff,menuOn,NULL);
     item->setTag(1);
     
     m_auto_op_menu->addChild(item);
@@ -237,12 +254,16 @@ CCTableViewCell* MailListScene::tableCellAtIndex(CCTableView *table, unsigned in
         sline->setAnchorPoint(CCPointZero);
         cell->addChild(sline);
         
-        vUserData[idx] = 0;
-        
         CCMenu *menuCheck = this->generateCheckBox();
         cell->addChild(menuCheck);
         CCMenuItemToggle *toggle= (CCMenuItemToggle *)menuCheck->getChildByTag(1);
         toggle->setUserData(&vUserData[idx]);
+		if (vUserData[idx] == 1) {
+			toggle->setSelectedIndex(1);
+		} else {
+			toggle->setSelectedIndex(0);
+		}
+
         menuCheck->setTag(123);
         menuCheck->setAnchorPoint(CCPointMake(0, 0.5));
         menuCheck->setPosition(CCPointMake(240, size.height * 0.5));
@@ -257,10 +278,12 @@ CCTableViewCell* MailListScene::tableCellAtIndex(CCTableView *table, unsigned in
         
         CCMenu *menuCheck = (CCMenu *)cell->getChildByTag(123);
         CCMenuItemToggle *toggle= (CCMenuItemToggle *)menuCheck->getChildByTag(1);
+		toggle->setUserData(&vUserData[idx]);
+
         if (vUserData[idx] == 1) {
-            toggle->selected();
+			toggle->setSelectedIndex(1);
         } else {
-            toggle->unselected();
+            toggle->setSelectedIndex(0);
         }
 	}
 
