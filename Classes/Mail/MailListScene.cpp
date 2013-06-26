@@ -38,6 +38,9 @@ bool MailListScene::init()
 		//mArrayList =  CCArray::create();
         mArrayList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
         mArrayList->retain();
+        
+        vUserData = new int[mArrayList->count()]();
+        memset(vUserData, 4 * mArrayList->count(), 0);
 
 		CCSprite *mailListBg = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_list_bg.png"));
 		mailListBg->setAnchorPoint(CCPointZero);
@@ -54,9 +57,11 @@ bool MailListScene::init()
 		sSubject->setPosition(CCPointMake(120, 275));
 		this->addChild(sSubject);
         
-        CCMenu *menu = this->generateCheckBox();
-        menu->setAnchorPoint(CCPointMake(0, 0.5));
-        menu->setPosition(CCPointMake(190, 275));
+        menuCheckAll = this->generateCheckBox();
+        this->addChild(menuCheckAll);
+        menuCheckAll->setTag(1);
+        menuCheckAll->setAnchorPoint(CCPointMake(0, 0.5));
+        menuCheckAll->setPosition(CCPointMake(240, 275));
 
 		mTableViewMail = CCTableView::create(this,CCSizeMake(300,240));
 		mTableViewMail->setPosition(CCPointMake(0, 15));
@@ -64,7 +69,6 @@ bool MailListScene::init()
 		mTableViewMail->setDirection(kCCScrollViewDirectionVertical);
 		mTableViewMail->setVerticalFillOrder(kCCTableViewFillTopDown);
 		mTableViewMail->setDelegate(this);
-//        mTableViewMail->setViewSize(CCSizeMake(300, 220));
 		mTableViewMail->reloadData();
 
         bRet = true;
@@ -132,14 +136,14 @@ void MailListScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
 
 void MailListScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
 {
-    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-    sSelected->setVisible(true);
+//    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
+//    sSelected->setVisible(true);
 }
 
 void MailListScene::tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell)
 {
-    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-    sSelected->setVisible(false);
+//    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
+//    sSelected->setVisible(false);
 }
 
 void MailListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
@@ -151,7 +155,7 @@ void MailListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
         selectedindex = cell->getIdx();
     }
 
-    table->reloadData();
+    table->refreshData();
 }
 
 unsigned int MailListScene::numberOfCellsInTableView(CCTableView *table)
@@ -177,26 +181,29 @@ bool MailListScene::hasFixedCellSize()
 void MailListScene::callbackSwitch(CCObject* pSender){
     
 	CCMenuItemToggle* pSwitch = (CCMenuItemToggle*)pSender;
+   int *idx = (int *)pSwitch->getUserData();
     
     if (pSwitch->getSelectedIndex()==0) {
 //        m_blnRememberMe = false;
+        *idx = 0;
     } else {
 //        m_blnRememberMe = true;
+        *idx = 1;
     }
 }
 
 CCMenu* MailListScene::generateCheckBox()
 {
-    CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
-	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
+    CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox_checked.png"));
+	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox.png"));
     
     CCMenu* m_auto_op_menu = CCMenu::create();
     CCMenuItemSprite* auto_op_btn = CCMenuItemSprite::create(spriteOff, NULL);
     CCMenuItemSprite* auto_op_btn2 = CCMenuItemSprite::create(spriteOn, NULL);
     CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(MailListScene::callbackSwitch),auto_op_btn,auto_op_btn2,NULL);
+    item->setTag(1);
     
     m_auto_op_menu->addChild(item);
-//    m_auto_op_menu->autorelease();
     
     return m_auto_op_menu;
 }
@@ -209,15 +216,6 @@ CCTableViewCell* MailListScene::tableCellAtIndex(CCTableView *table, unsigned in
 	if (!cell) {
 		cell = new CCTableViewCell();
 		cell->autorelease();
-        
-        
-        
-//        CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_cellhighlight.png"));
-//        sSelected->setVisible(false);
-//        sSelected->setTag(121);
-//		sSelected->setPosition(ccp(13,size.height - 39));
-//		sSelected->setAnchorPoint(CCPointZero);
-//		cell->addChild(sSelected);
 
 		CCLabelTTF *lblFriendName = CCLabelTTF::create(string->getCString(), "Arial", 14.0);
 		lblFriendName->setPosition(ccp(40,size.height * 0.5));
@@ -238,22 +236,32 @@ CCTableViewCell* MailListScene::tableCellAtIndex(CCTableView *table, unsigned in
         sline->setPosition(ccp(5,size.height-2));
         sline->setAnchorPoint(CCPointZero);
         cell->addChild(sline);
+        
+        vUserData[idx] = 0;
+        
+        CCMenu *menuCheck = this->generateCheckBox();
+        cell->addChild(menuCheck);
+        CCMenuItemToggle *toggle= (CCMenuItemToggle *)menuCheck->getChildByTag(1);
+        toggle->setUserData(&vUserData[idx]);
+        menuCheck->setTag(123);
+        menuCheck->setAnchorPoint(CCPointMake(0, 0.5));
+        menuCheck->setPosition(CCPointMake(240, size.height * 0.5));
 	}
 	else
 	{
-//        CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-//        sSelected->setPosition(ccp(13,size.height - 39));
-//        if (selectedindex == idx ) {
-//            sSelected->setVisible(true);
-//        } else {
-//            sSelected->setVisible(false);
-//        }
-        
 		CCLabelTTF *lblFriendName = (CCLabelTTF*)cell->getChildByTag(121);
 		lblFriendName->setString(string->getCString());
         
         CCLabelTTF *lblSubject = (CCLabelTTF*)cell->getChildByTag(122);
 		lblSubject->setString(string->getCString());
+        
+        CCMenu *menuCheck = (CCMenu *)cell->getChildByTag(123);
+        CCMenuItemToggle *toggle= (CCMenuItemToggle *)menuCheck->getChildByTag(1);
+        if (vUserData[idx] == 1) {
+            toggle->selected();
+        } else {
+            toggle->unselected();
+        }
 	}
 
 	return cell;

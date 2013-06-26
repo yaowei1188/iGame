@@ -64,8 +64,9 @@ public:
 	void deleteEntry(std::string &targetUser);
     CCTableView* mTableViewMail;
     unsigned int selectedindex;
-    
+    CCMenu *menuCheckAll;
     CCArray *mArrayList;
+    int *vUserData;
 };
 
 #endif
