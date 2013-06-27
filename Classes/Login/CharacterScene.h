@@ -45,6 +45,7 @@ public:
 	void doSubmit();
 	void doEllipse();
 	void resetZorder();
+	void createUserGameRole();
 	CCEditBox *m_txtAccount;
     CCSprite *m_sCharacterBelow;
     
@@ -70,6 +71,7 @@ public:
 	int selectedIndex;
 	float angleStep;
 
+	std::string m_strSelectedRoleId;
 	std::vector<lrEllipseConfig*> *m_configs;
 };
 

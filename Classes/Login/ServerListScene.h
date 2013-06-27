@@ -32,7 +32,7 @@ public:
     
     // a selector callback
     void requestFinishedCallback(CCNode* pSender,void *p);
-	void doSearch();
+	void retrieveUserGameRole();
 
     // implement the "static node()" method manually
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(ServerListScene,create);
@@ -58,9 +58,9 @@ public:
     void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
 	void submitSelectedServer();
     CCTableView* mTableView;
-//    MainSceneTemplate *mMainSceneTemp;
     unsigned int selectedindex;
     CCArray *mArrayList;
+	bool mHasCreatedRole;
 };
 
 #endif  // __MAIL_LIST_SCENE_H__
