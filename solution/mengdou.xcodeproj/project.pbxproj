@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2018C4BB1778938500A6813A /* MailMainScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 2018C4BA1778938500A6813A /* MailMainScene.ccbi */; };
 		2081D0E3175F73C60000414C /* TaskDetailScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2081D0E0175F73C60000414C /* TaskDetailScene.cpp */; };
 		2081D0E6175F84FF0000414C /* Task1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2081D0E5175F84FF0000414C /* Task1.plist */; };
 		20878674172E8C0400A7404A /* NewMailScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20878671172E8C0400A7404A /* NewMailScene.ccbi */; };
 		20878675172E8C0400A7404A /* SysMailScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20878672172E8C0400A7404A /* SysMailScene.ccbi */; };
 		20878676172E8C0400A7404A /* UserMailScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20878673172E8C0400A7404A /* UserMailScene.ccbi */; };
+		20950DC01771F8CD00160DD6 /* MainInnerLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20950DBD1771F8CD00160DD6 /* MainInnerLayer.cpp */; };
+		20950DC21772016800160DD6 /* MainInnerLayer.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20950DC11772016800160DD6 /* MainInnerLayer.ccbi */; };
+		20A260E51760D5450031D482 /* TaskRewardScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20A260E21760D5450031D482 /* TaskRewardScene.cpp */; };
+		20B54331176D4E45004A03D8 /* EllipseActionInterval.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B5432F176D4E45004A03D8 /* EllipseActionInterval.cpp */; };
 		20C767421751C34E00038E56 /* ccbParticleStars.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C7673D1751C34E00038E56 /* ccbParticleStars.png */; };
 		20C767431751C34E00038E56 /* particle-fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C7673E1751C34E00038E56 /* particle-fire.png */; };
 		20C767441751C34E00038E56 /* particle-smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C7673F1751C34E00038E56 /* particle-smoke.png */; };
@@ -35,6 +40,8 @@
 		20F513E8175E332800580D5F /* TaskBoxScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20F513E3175E332800580D5F /* TaskBoxScene.ccbi */; };
 		20F513E9175E332800580D5F /* TaskDetailScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20F513E4175E332800580D5F /* TaskDetailScene.ccbi */; };
 		20F513EA175E332800580D5F /* TaskRewardScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20F513E5175E332800580D5F /* TaskRewardScene.ccbi */; };
+		20FE6B86177355C1005D96E7 /* RegisterScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 20FE6B85177355C1005D96E7 /* RegisterScene.ccbi */; };
+		20FE6B8A17735600005D96E7 /* RegisterScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20FE6B8717735600005D96E7 /* RegisterScene.cpp */; };
 		2C7749A9175C797C00FF722E /* CCJSONConverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749A4175C797C00FF722E /* CCJSONConverter.cpp */; };
 		2C7749AA175C797C00FF722E /* cJSON.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749A7175C797C00FF722E /* cJSON.c */; };
 		2C7749AF175C7C3400FF722E /* XmlParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7749AD175C7C3400FF722E /* XmlParser.cpp */; };
@@ -314,6 +321,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2018C4BA1778938500A6813A /* MailMainScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = MailMainScene.ccbi; path = Resources/MailMainScene.ccbi; sourceTree = "<group>"; };
 		2081D0E0175F73C60000414C /* TaskDetailScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TaskDetailScene.cpp; sourceTree = "<group>"; };
 		2081D0E1175F73C60000414C /* TaskDetailScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskDetailScene.h; sourceTree = "<group>"; };
 		2081D0E2175F73C60000414C /* TaskDetailSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskDetailSceneLoader.h; sourceTree = "<group>"; };
@@ -321,6 +329,15 @@
 		20878671172E8C0400A7404A /* NewMailScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = NewMailScene.ccbi; path = Resources/NewMailScene.ccbi; sourceTree = "<group>"; };
 		20878672172E8C0400A7404A /* SysMailScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = SysMailScene.ccbi; path = Resources/SysMailScene.ccbi; sourceTree = "<group>"; };
 		20878673172E8C0400A7404A /* UserMailScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = UserMailScene.ccbi; path = Resources/UserMailScene.ccbi; sourceTree = "<group>"; };
+		20950DBD1771F8CD00160DD6 /* MainInnerLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainInnerLayer.cpp; sourceTree = "<group>"; };
+		20950DBE1771F8CD00160DD6 /* MainInnerLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainInnerLayer.h; sourceTree = "<group>"; };
+		20950DBF1771F8CD00160DD6 /* MainInnerLayerLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainInnerLayerLoader.h; sourceTree = "<group>"; };
+		20950DC11772016800160DD6 /* MainInnerLayer.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = MainInnerLayer.ccbi; path = Resources/MainInnerLayer.ccbi; sourceTree = "<group>"; };
+		20A260E21760D5450031D482 /* TaskRewardScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TaskRewardScene.cpp; sourceTree = "<group>"; };
+		20A260E31760D5450031D482 /* TaskRewardScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskRewardScene.h; sourceTree = "<group>"; };
+		20A260E41760D5450031D482 /* TaskRewardSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskRewardSceneLoader.h; sourceTree = "<group>"; };
+		20B5432F176D4E45004A03D8 /* EllipseActionInterval.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EllipseActionInterval.cpp; sourceTree = "<group>"; };
+		20B54330176D4E45004A03D8 /* EllipseActionInterval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EllipseActionInterval.h; sourceTree = "<group>"; };
 		20C7673D1751C34E00038E56 /* ccbParticleStars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ccbParticleStars.png; path = Resources/ccbParticleStars.png; sourceTree = "<group>"; };
 		20C7673E1751C34E00038E56 /* particle-fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "particle-fire.png"; path = "Resources/particle-fire.png"; sourceTree = "<group>"; };
 		20C7673F1751C34E00038E56 /* particle-smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "particle-smoke.png"; path = "Resources/particle-smoke.png"; sourceTree = "<group>"; };
@@ -344,6 +361,10 @@
 		20F513E3175E332800580D5F /* TaskBoxScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = TaskBoxScene.ccbi; path = Resources/TaskBoxScene.ccbi; sourceTree = "<group>"; };
 		20F513E4175E332800580D5F /* TaskDetailScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = TaskDetailScene.ccbi; path = Resources/TaskDetailScene.ccbi; sourceTree = "<group>"; };
 		20F513E5175E332800580D5F /* TaskRewardScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = TaskRewardScene.ccbi; path = Resources/TaskRewardScene.ccbi; sourceTree = "<group>"; };
+		20FE6B85177355C1005D96E7 /* RegisterScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = RegisterScene.ccbi; path = Resources/RegisterScene.ccbi; sourceTree = "<group>"; };
+		20FE6B8717735600005D96E7 /* RegisterScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RegisterScene.cpp; sourceTree = "<group>"; };
+		20FE6B8817735600005D96E7 /* RegisterScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterScene.h; sourceTree = "<group>"; };
+		20FE6B8917735600005D96E7 /* RegisterSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterSceneLoader.h; sourceTree = "<group>"; };
 		2C7749A4175C797C00FF722E /* CCJSONConverter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCJSONConverter.cpp; sourceTree = "<group>"; };
 		2C7749A5175C797C00FF722E /* CCJSONConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCJSONConverter.h; sourceTree = "<group>"; };
 		2C7749A6175C797C00FF722E /* CCJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCJSONData.h; sourceTree = "<group>"; };
@@ -1009,6 +1030,9 @@
 		2C7749B0175C7C6200FF722E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				20950DBD1771F8CD00160DD6 /* MainInnerLayer.cpp */,
+				20950DBE1771F8CD00160DD6 /* MainInnerLayer.h */,
+				20950DBF1771F8CD00160DD6 /* MainInnerLayerLoader.h */,
 				2C7749B1175C7C6200FF722E /* common.h */,
 				2C7749B2175C7C6200FF722E /* MainLayerBase.cpp */,
 				2C7749B3175C7C6200FF722E /* MainLayerBase.h */,
@@ -1040,6 +1064,9 @@
 		2C7749BF175C7C6200FF722E /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				20FE6B8717735600005D96E7 /* RegisterScene.cpp */,
+				20FE6B8817735600005D96E7 /* RegisterScene.h */,
+				20FE6B8917735600005D96E7 /* RegisterSceneLoader.h */,
 				2C7749C0175C7C6200FF722E /* CharacterScene.cpp */,
 				2C7749C1175C7C6200FF722E /* CharacterScene.h */,
 				2C7749C2175C7C6200FF722E /* CharacterSceneLoader.h */,
@@ -1091,6 +1118,9 @@
 		2C7749DD175C7C6200FF722E /* Task */ = {
 			isa = PBXGroup;
 			children = (
+				20A260E21760D5450031D482 /* TaskRewardScene.cpp */,
+				20A260E31760D5450031D482 /* TaskRewardScene.h */,
+				20A260E41760D5450031D482 /* TaskRewardSceneLoader.h */,
 				2081D0E0175F73C60000414C /* TaskDetailScene.cpp */,
 				2081D0E1175F73C60000414C /* TaskDetailScene.h */,
 				2081D0E2175F73C60000414C /* TaskDetailSceneLoader.h */,
@@ -1105,6 +1135,8 @@
 		2C7749E1175C7C6200FF722E /* UILibrary */ = {
 			isa = PBXGroup;
 			children = (
+				20B5432F176D4E45004A03D8 /* EllipseActionInterval.cpp */,
+				20B54330176D4E45004A03D8 /* EllipseActionInterval.h */,
 				2C774A03175C8CBE00FF722E /* CCActivityIndicator */,
 				2C774A15175C8CBE00FF722E /* CCGestureRecognizer */,
 				2C774A22175C8CBE00FF722E /* CCProgressLayer */,
@@ -2225,6 +2257,9 @@
 		6FBA7AED1717997800ECA334 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				2018C4BA1778938500A6813A /* MailMainScene.ccbi */,
+				20FE6B85177355C1005D96E7 /* RegisterScene.ccbi */,
+				20950DC11772016800160DD6 /* MainInnerLayer.ccbi */,
 				20F513E1175E332800580D5F /* CharacterScene.ccbi */,
 				20F513E2175E332800580D5F /* ServerListScene.ccbi */,
 				20F513E3175E332800580D5F /* TaskBoxScene.ccbi */,
@@ -2360,6 +2395,9 @@
 				20F513E9175E332800580D5F /* TaskDetailScene.ccbi in Resources */,
 				20F513EA175E332800580D5F /* TaskRewardScene.ccbi in Resources */,
 				2081D0E6175F84FF0000414C /* Task1.plist in Resources */,
+				20950DC21772016800160DD6 /* MainInnerLayer.ccbi in Resources */,
+				20FE6B86177355C1005D96E7 /* RegisterScene.ccbi in Resources */,
+				2018C4BB1778938500A6813A /* MailMainScene.ccbi in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2599,6 +2637,10 @@
 				2C774A3A175C8CBE00FF722E /* CCProgressLayer.cpp in Sources */,
 				2C774A40175C9F7400FF722E /* GlobalData.cpp in Sources */,
 				2081D0E3175F73C60000414C /* TaskDetailScene.cpp in Sources */,
+				20A260E51760D5450031D482 /* TaskRewardScene.cpp in Sources */,
+				20B54331176D4E45004A03D8 /* EllipseActionInterval.cpp in Sources */,
+				20950DC01771F8CD00160DD6 /* MainInnerLayer.cpp in Sources */,
+				20FE6B8A17735600005D96E7 /* RegisterScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2670,6 +2712,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: XiaoMin Yu (PL2W28CYYJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: XiaoMin Yu (PL2W28CYYJ)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2698,7 +2741,8 @@
 					"-lsqlite3",
 				);
 				PRODUCT_NAME = mengdou;
-				PROVISIONING_PROFILE = "AA1E329E-B283-4521-9889-B5F25985D50D";
+				PROVISIONING_PROFILE = "2606B81D-BB3E-42ED-8345-9CD9F3EB47B6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2606B81D-BB3E-42ED-8345-9CD9F3EB47B6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2708,6 +2752,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: XiaoMin Yu (PL2W28CYYJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: XiaoMin Yu (PL2W28CYYJ)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mengdou/Prefix.pch;
@@ -2735,7 +2780,8 @@
 					"-lsqlite3",
 				);
 				PRODUCT_NAME = mengdou;
-				PROVISIONING_PROFILE = "AA1E329E-B283-4521-9889-B5F25985D50D";
+				PROVISIONING_PROFILE = "2606B81D-BB3E-42ED-8345-9CD9F3EB47B6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2606B81D-BB3E-42ED-8345-9CD9F3EB47B6";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
