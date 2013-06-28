@@ -580,8 +580,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>ccbResources/ccbDefaultImages.plist</string>
-							<string>ccbButtonDisabled.png</string>
+							<string>Image/login.plist</string>
+							<string>ok_2.png</string>
 						</array>
 					</dict>
 					<dict>

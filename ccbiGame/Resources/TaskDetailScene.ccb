@@ -508,8 +508,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>ccbResources/ccbDefaultImages.plist</string>
-							<string>ccbButtonDisabled.png</string>
+							<string>Image/login.plist</string>
+							<string>discover_truth_clicked.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -725,6 +725,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
