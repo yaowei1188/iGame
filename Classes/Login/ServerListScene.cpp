@@ -64,13 +64,17 @@ bool ServerListScene::init()
         mArrayList = CCArray::create(dict0,dict1,dict2,dict3,NULL);
         mArrayList->retain();
 
+		mHasCreatedRole = false;
+
+		//this->retrieveUserGameRole();
+
         bRet = true;
     } while (0);
 
     return bRet;
 }
 
-void ServerListScene::doSearch()
+void ServerListScene::retrieveUserGameRole()
 {
 	this->ShowLoadingIndicator("");
 
@@ -79,7 +83,7 @@ void ServerListScene::doSearch()
 	request->setResponseCallback(this,callfuncND_selector(ServerListScene::requestFinishedCallback));
 	request->setTag("101");
 
-    string _strUrl = CompleteUrl(URL_FRIEND_LIST);
+    string _strUrl = CompleteUrl(URL_USER_ROLE);
     _strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
 
 	request->setUrl(_strUrl.c_str());
@@ -113,17 +117,33 @@ void ServerListScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
 	std::string requestTag(response->getHttpRequest()->getTag());
 
 	if (requestTag == "101") {
-		mArrayList = dynamic_cast<CCArray *>(dictionary->objectForKey("friendList"));
-		if (mArrayList==NULL)
+		CCString *strUserId = (CCString *)dictionary->objectForKey("userId");
+		if (strUserId== NULL || strUserId->length()==0)
 		{
-			return;
+			mHasCreatedRole = false;
+		} else {
+			mHasCreatedRole = true;
+
+			CCString *strGameRoleId = (CCString *)dictionary->objectForKey("gameRoleId");
+			CCString *strNickName = (CCString *)dictionary->objectForKey("nickName");
+
+			CCUserDefault::sharedUserDefault()->setStringForKey("userId", strUserId->getCString());
+			CCUserDefault::sharedUserDefault()->setStringForKey("gameRoleId", strGameRoleId->getCString());
+			CCUserDefault::sharedUserDefault()->setStringForKey("nickName", strNickName->getCString());
 		}
 
-		selectedindex = -1;
-		mTableView->reloadData();
+		//CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", strEncryptedUser->getCString());
+		//CCUserDefault::sharedUserDefault()->setStringForKey("username", strName->getCString());
+
+		//mArrayList = dynamic_cast<CCArray *>(dictionary->objectForKey("friendList"));
+		//if (mArrayList==NULL)
+		//{
+		//	return;
+		//}
+
+		//selectedindex = -1;
+		//mTableView->reloadData();
 	} else if (requestTag == "102"){
-		this->doSearch();
-		CCMessageBox("delete friend successfully","Success");
 	}
 }
 
@@ -155,8 +175,6 @@ void ServerListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     mTableView->setPosition(ccp(160, 220));
     mTableView->setDelegate(this);
     mTableView->reloadData();
-
-	//doSearchFriend();
 }
 
 //void ServerListScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
@@ -360,8 +378,7 @@ void ServerListScene::submitSelectedServer()
         return;
     }
 
-	string character = CCUserDefault::sharedUserDefault()->getStringForKey("Character");
-	if (character.length()>0) {
+	if (mHasCreatedRole) {
 		this->OpenNewScene("MainGameScene");
 	} else {
 		this->OpenNewScene("CharacterScene");

@@ -68,6 +68,9 @@
     <Filter Include="Resources\Task">
       <UniqueIdentifier>{21f2be3e-3e94-44b1-b594-0171ae7fae47}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Chat">
+      <UniqueIdentifier>{80ed73fe-bef9-49ce-8a1b-53d02e3c6b90}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\iGame.ico">
@@ -448,6 +451,12 @@
     <ClInclude Include="..\Classes\Login\RegisterSceneLoader.h">
       <Filter>Classes\Login</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Chat\ChatLayer.h">
+      <Filter>Classes\Chat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Chat\ChatLayerLoader.h">
+      <Filter>Classes\Chat</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -582,6 +591,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Login\RegisterScene.cpp">
       <Filter>Classes\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Chat\ChatLayer.cpp">
+      <Filter>Classes\Chat</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

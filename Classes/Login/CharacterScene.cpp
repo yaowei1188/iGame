@@ -77,6 +77,7 @@ bool CharacterScene::init()
 
 
 		selectedIndex = 0;
+		m_strSelectedRoleId = "5";
         
         bRet = true;
     } while (0);
@@ -88,27 +89,32 @@ void CharacterScene::doSubmit()
 {
 	std::string sAccount(m_txtAccount->getText());
 
-	//if (trimRight(sAccount).empty() ) {
-	//	CCMessageBox(GlobalData::getLocalString("character_name_empty")->getCString(),"ERROR");
-	//	return;
-	//}
+	if (trimRight(sAccount).empty() ) {
+		CCMessageBox(GlobalData::getLocalString("character_name_empty")->getCString(),"ERROR");
+		return;
+	}
 
 	 this->OpenNewScene("MainGameScene");
+	return;
 
-	//CCHttpRequest *request = new CCHttpRequest();
-	//request->setRequestType(CCHttpRequest::kHttpGet);
-	//request->setResponseCallback(this,callfuncND_selector(CharacterScene::requestFinishedCallback));
-	//request->setTag("103");
- //   
-	//string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
-	//_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
- //   
-	//request->setUrl(_strUrl.c_str());
- //   
-	//CCHttpClient *client = CCHttpClient::getInstance();
-	//client->send(request);
- //   
-	//request->release();
+	this->ShowLoadingIndicator("");
+
+	CCHttpRequest *request = new CCHttpRequest();
+	request->setRequestType(CCHttpRequest::kHttpGet);
+	request->setResponseCallback(this,callfuncND_selector(CharacterScene::requestFinishedCallback));
+	request->setTag("101");
+
+	string _strUrl = CompleteUrl(URL_USER_CREATE_ROLE);
+
+	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+	_strUrl.append("/" + m_strSelectedRoleId + "/");
+	_strUrl.append( m_txtAccount->getText());
+	request->setUrl(_strUrl.c_str());
+
+	CCHttpClient *client = CCHttpClient::getInstance();
+	client->send(request);
+
+	request->release();
 }
 
 void CharacterScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
