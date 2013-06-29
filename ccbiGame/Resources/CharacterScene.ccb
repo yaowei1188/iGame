@@ -39,6 +39,18 @@
 				<array>
 					<dict>
 						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>0.0</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>anchorPoint</string>
 						<key>type</key>
 						<string>Point</string>
@@ -1359,9 +1371,9 @@ ASDFASFDASDFASDFASDFSADFASD
 				<key>displayName</key>
 				<string>CCSprite</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>m_sValueBg</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1371,7 +1383,7 @@ ASDFASFDASDFASDFASDFSADFASD
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>158</real>
+							<real>160</real>
 							<real>209</real>
 							<integer>0</integer>
 						</array>
@@ -1394,7 +1406,7 @@ ASDFASFDASDFASDFASDFSADFASD
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>0.89999997615814209</real>
 							<real>1</real>
 							<false/>
 							<integer>0</integer>
@@ -1443,7 +1455,7 @@ ASDFASFDASDFASDFASDFSADFASD
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>154</real>
+							<real>155</real>
 							<real>216</real>
 							<integer>0</integer>
 						</array>
@@ -1699,7 +1711,7 @@ ASDFASFDASDFASDFASDFSADFASD
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>154</real>
+							<real>155</real>
 							<real>202</real>
 							<integer>0</integer>
 						</array>

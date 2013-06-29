@@ -41,6 +41,7 @@ public:
 
     void animateEndCallBack(CCNode *node);
 	void menuItemCallback(CCObject* pSender);
+    void setValueByIndex();
 
 	void doSubmit();
 	void doEllipse();
@@ -53,6 +54,8 @@ public:
 	CCEditBox *m_txtAccount;
     CCSprite *m_sCharacterBelow;
     
+    CCSprite *m_sValueBg;
+    
     CCLabelTTF *m_lblCharacterName;
     CCLabelTTF *m_lblCharacterDesc;
     
@@ -61,21 +64,12 @@ public:
     CCLabelTTF *m_lblAttack;
     CCLabelTTF *m_lblAvoid;
 
-	//CCMenuItemSprite *spritFou;
-	//CCMenuItemSprite *spriteXian;
-	//CCMenuItemSprite *spriteYao;
-
-	//lrEllipseConfig config1;
-	//lrEllipseConfig config2;
-	//lrEllipseConfig config3;
-
 	CCArray *mCardList;
 	CCArray *mCardNameList;
 
 	int selectedIndex;
 	float angleStep;
 
-	std::string m_strSelectedRoleId;
 	std::vector<lrEllipseConfig*> *m_configs;
 };
 

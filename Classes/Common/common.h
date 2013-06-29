@@ -73,7 +73,7 @@
 #define URL_USER_LOGIN                              "/user/login/"
 #define URL_USER_REGISTER                           "/user/register/"
 
-#define URL_USER_ROLE                               "/userRole/retrieveUserGameRole/"
+#define URL_USER_ROLE                               "/userRole/retrieveUserGameRole.do?encryptedUserInfo="
 #define URL_USER_CREATE_ROLE                        "/userRole/createUserGameRole/"
 
 //Friends

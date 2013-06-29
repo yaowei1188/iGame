@@ -106,6 +106,10 @@ void ServerListScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespon
     CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
 	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
     if (code != 200) {
+        if (code == 500) {
+            CCMessageBox("Internal Error 500","ERROR");
+            return;
+        }
         CCMessageBox("invoke web api failed!","ERROR");
         return;
     }

@@ -79,7 +79,6 @@ bool CharacterScene::init()
         }
 
 		selectedIndex = 0;
-		m_strSelectedRoleId = "5";
         
         bRet = true;
     } while (0);
@@ -96,7 +95,7 @@ void CharacterScene::doSubmit()
 		return;
 	}
 
-	 this->OpenNewScene("MainGameScene");
+    this->OpenNewScene("MainGameScene");
 	return;
 
 	this->ShowLoadingIndicator("");
@@ -106,10 +105,12 @@ void CharacterScene::doSubmit()
 	request->setResponseCallback(this,httpresponse_selector(CharacterScene::requestFinishedCallback));
 	request->setTag("101");
 
+    CCDictionary *dict = (CCDictionary *)mCardNameList->objectAtIndex(selectedIndex);
+    CCString *strCardId = (CCString *)dict->objectForKey("CardId");
 	string _strUrl = CompleteUrl(URL_USER_CREATE_ROLE);
 
 	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-	_strUrl.append("/" + m_strSelectedRoleId + "/");
+	_strUrl.append("/" + strCardId->m_sString + "/");
 	_strUrl.append( m_txtAccount->getText());
 	request->setUrl(_strUrl.c_str());
 
@@ -125,12 +126,12 @@ std::string CharacterScene::addReturnForName(CCString *cardName)
     std::string result;
     for(int i=0;i<text.length();i++)
     {
-        result.append(&text[i]);
+        result.append(1,text[i]);
         result.append("\n");
     }
-    text[0];
-    return cardName->getCString();
+    return result;
 }
+
 std::string CharacterScene::determineGroup(CCString* number)
 {
     if (number->intValue()==1) {
@@ -181,6 +182,8 @@ void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     m_txtAccount->setFontColor(ccc3(255,255,153));
     m_txtAccount->setFont("Arial", 16);
     m_txtAccount->setPosition(ccp(148, 40));
+    
+    m_lblCharacterDesc->setDimensions(CCSizeMake(300, 50));
 
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	CCObject *object;
@@ -256,6 +259,14 @@ void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 		CCMenuItemSprite *sprite = (CCMenuItemSprite *)mCardList->objectAtIndex(i);
 		sprite->setScale(config->scale);
 	}
+    
+    setValueByIndex();
+    
+    m_sValueBg->setZOrder(99);
+    m_lblAttack->setZOrder(98);
+    m_lblDefence->setZOrder(98);
+    m_lblAvoid->setZOrder(98);
+    m_lblHp->setZOrder(98);
 }
 
 void CharacterScene::resetZorder()
@@ -327,6 +338,22 @@ void CharacterScene::resetZorder()
 	}
 }
 
+void CharacterScene::setValueByIndex()
+{
+    CCDictionary *dict = (CCDictionary *)mCardNameList->objectAtIndex(selectedIndex);
+    
+    m_lblCharacterName->setString(((CCString *)dict->objectForKey("CardName"))->getCString());
+    CCString *strDesc = (CCString *)dict->objectForKey("Desc");
+    std::string desc = strDesc->m_sString;
+    std::replace(desc.begin(), desc.end(), '|', '\\');
+//    desc.re
+    m_lblCharacterDesc->setString(desc.c_str());
+    m_lblHp->setString(((CCString *)dict->objectForKey("Hp"))->getCString());
+    m_lblDefence->setString(((CCString *)dict->objectForKey("Dp"))->getCString());
+    m_lblAttack->setString(((CCString *)dict->objectForKey("Ap"))->getCString());
+    m_lblAvoid->setString(((CCString *)dict->objectForKey("Dd"))->getCString());
+}
+
 void CharacterScene::doEllipse()
 {
 	int cardLength = mCardList->count();
@@ -350,7 +377,7 @@ bool CharacterScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pM
 {
 
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCharacterBelow", CCSprite*, this->m_sCharacterBelow);
-    
+     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sValueBg", CCSprite*, this->m_sValueBg);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblCharacterName", CCLabelTTF*, this->m_lblCharacterName);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblCharacterDesc", CCLabelTTF*, this->m_lblCharacterDesc);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblHp", CCLabelTTF*, this->m_lblHp);
@@ -405,6 +432,8 @@ void CharacterScene::menuItemCallback(CCObject* pSender)
 
 	this->resetZorder();
 	this->doEllipse();
+    
+    setValueByIndex();
 }
 
 void CharacterScene::animateEndCallBack(CCNode *node)
