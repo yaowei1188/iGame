@@ -100,11 +100,12 @@ public:
     virtual void closeKeyboard();
 	
 	virtual void onEndEditing();
-            void adjustTextFieldPosition();
     
 private:
 	void			initInactiveLabels(const CCSize& size);
 	void			setInactiveText(const char* pText);
+	void			adjustTextFieldPosition();
+    void            placeInactiveLabels();
 	
     CCLabelTTF*     m_pLabel;
     CCLabelTTF*     m_pLabelPlaceHolder;

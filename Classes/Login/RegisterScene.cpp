@@ -58,7 +58,7 @@ bool RegisterScene::init()
 //{
 //	CCHttpRequest *request = new CCHttpRequest();
 //	request->setRequestType(CCHttpRequest::kHttpPost);
-//	request->setResponseCallback(this,callfuncND_selector(RegisterScene::requestFinishedCallback));
+//	request->setResponseCallback(this,httpresponse_selector(RegisterScene::requestFinishedCallback));
 //	request->setTag("post testing!!!");
 //	request->setUrl("http://223.4.10.91/andon_service/ANDON_EX_USER.asmx/GetList");
 //
@@ -84,7 +84,7 @@ void RegisterScene::doSubmit()
     
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(RegisterScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(RegisterScene::requestFinishedCallback));
 	request->setTag("101");
 
 	string _strUrl = CompleteUrl(URL_USER_REGISTER);
@@ -98,16 +98,12 @@ void RegisterScene::doSubmit()
 	request->release();
 }
 
-void RegisterScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
+void RegisterScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
 {
-    this->HideLoadingIndicator();
-    
-    if (!this->ValidateResponseData(pSender,Rspdata))
+	if (!this->ValidateResponseData(client,response))
 	{
 		return;
 	}
-    
-    CCHttpResponse *response =  (CCHttpResponse*)Rspdata;
     
     std::vector<char> *buffer = response->getResponseData();
 	std::string content(buffer->begin(),buffer->end());

@@ -10,6 +10,7 @@
 
 static CCDictionary *dictLanguage;
 static CCArray *arrayTasks;
+static CCArray *arrayCards;
 
 CCString* GlobalData::getLocalString(std::string name)
 {
@@ -28,3 +29,30 @@ CCDictionary* GlobalData::getTasks(std::string name)
     }
     return (CCDictionary*)arrayTasks->objectAtIndex(0);
 };
+
+CCArray* GlobalData::getAllCards(std::string name)
+{
+    if (arrayCards==NULL) {
+        arrayCards = CCArray::createWithContentsOfFile("Card.plist");
+		arrayCards->retain();
+    }
+    return arrayCards;
+};
+
+CCDictionary* GlobalData::getCardById(std::string cardId)
+{
+    if (arrayCards==NULL) {
+        arrayCards = CCArray::createWithContentsOfFile("Card.plist");
+		arrayCards->retain();
+    }
+    CCObject *obj = NULL;
+    CCARRAY_FOREACH(arrayCards, obj)
+    {
+        CCDictionary *dict = (CCDictionary *)obj;
+        CCString *strCardId = (CCString *)dict->objectForKey("CardId");
+        if (cardId == strCardId->getCString()) {
+            return dict;
+        }
+    }
+    return NULL;
+}

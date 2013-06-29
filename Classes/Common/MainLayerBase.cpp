@@ -120,6 +120,28 @@ bool MainLayerBase::ValidateResponseData(CCNode* pSender,void *data)
 	return true;
 }
 
+bool MainLayerBase::ValidateResponseData(CCHttpClient* client, CCHttpResponse* response)
+{
+	this->HideLoadingIndicator();
+
+	if(response == NULL)
+	{
+		return false;
+	}
+
+	int statusCode = response->getResponseCode();
+	CCLOG("HTTP Status Code: %d, tag = %s", statusCode, response->getHttpRequest()->getTag());
+
+	if (!response->isSucceed())
+	{
+		CCLog("error buffer: %s", response->getErrorBuffer());
+		CCMessageBox("ERROR", response->getErrorBuffer());
+		return false;
+	}
+
+	return true;
+}
+
 std::string MainLayerBase::CompleteUrl(std::string function_url)
 {
     std::string url(API_URL);

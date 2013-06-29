@@ -69,12 +69,11 @@ void NewMailScene::doSubmit()
     
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(NewMailScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(NewMailScene::requestFinishedCallback));
 	request->setTag("1");
     
     char url[150] = {0};
     sprintf(url,"%s/user/login/%s/%s/%s",API_URL,sReceiver.c_str(),sSubject.c_str(),sContent.c_str());
-    CCLOG(url);
 	request->setUrl(url);
     
 	CCHttpClient *client = CCHttpClient::getInstance();
@@ -83,15 +82,13 @@ void NewMailScene::doSubmit()
 	request->release();
 }
 
-void NewMailScene::requestFinishedCallback(CCNode* pSender,void *data)
+void NewMailScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
 {
-    this->HideLoadingIndicator();
-    
-    CCHttpResponse *response =  (CCHttpResponse*)data;
-	if(response == NULL)
+	if (!this->ValidateResponseData(client,response))
 	{
 		return;
 	}
+
 	int statusCode = response->getResponseCode();
 	char statusString[64] = {};
 	CCLOG(statusString, "HTTP Status Code: %d, tag = %s", statusCode, response->getHttpRequest()->getTag());
@@ -106,7 +103,6 @@ void NewMailScene::requestFinishedCallback(CCNode* pSender,void *data)
 	std::vector<char> *buffer = response->getResponseData(); 
 
 	std::string content(buffer->begin(),buffer->end());
-	CCLog(content.c_str());
 
 	parseJson(content);
 }

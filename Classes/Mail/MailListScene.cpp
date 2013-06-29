@@ -82,7 +82,7 @@ void MailListScene::doSearch()
 
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(MailListScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(MailListScene::requestFinishedCallback));
 	request->setTag("101");
 
     string _strUrl = CompleteUrl(URL_FRIEND_LIST);
@@ -96,18 +96,16 @@ void MailListScene::doSearch()
 	request->release();
 }
 
-void MailListScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
+void MailListScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
 {
-	if (!this->ValidateResponseData(pSender,Rspdata))
+	if (!this->ValidateResponseData(client,response))
 	{
 		return;
 	}
 
-	CCHttpResponse *response =  (CCHttpResponse*)Rspdata;
 	std::vector<char> *buffer = response->getResponseData();
 
 	std::string content(buffer->begin(),buffer->end());
-	CCLog(content.c_str());
 
     CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
 	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
@@ -167,15 +165,15 @@ CCSize MailListScene::cellSizeForTable(CCTableView *table)
 	return CCSizeMake(312, 50);
 }
 
-CCSize MailListScene::cellSizeForIndex(CCTableView *table, unsigned int idx)
+CCSize MailListScene::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
 {
     return CCSizeMake(312, 50);
 }
 
-bool MailListScene::hasFixedCellSize()
-{
-    return false;
-}
+//bool MailListScene::hasFixedCellSize()
+//{
+//    return false;
+//}
 
 void MailListScene::callbackSwitch(CCObject* pSender){
     
@@ -228,7 +226,7 @@ CCMenu* MailListScene::generateCheckBox()
 CCTableViewCell* MailListScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
 	CCString *string = (CCString *)mArrayList->objectAtIndex(idx);
-    CCSize size = this->cellSizeForIndex(table, idx);
+    CCSize size = this->tableCellSizeForIndex(table, idx);
 	CCTableViewCell *cell = table->dequeueCell();
 	if (!cell) {
 		cell = new CCTableViewCell();
@@ -328,7 +326,7 @@ void MailListScene::deleteEntry(std::string &targetUser)
 {
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(MailListScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(MailListScene::requestFinishedCallback));
 	request->setTag("103");
 
 	string _strUrl = CompleteUrl(URL_FRIEND_DELETE);

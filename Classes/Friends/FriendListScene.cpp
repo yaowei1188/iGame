@@ -53,7 +53,7 @@ void FriendListScene::doSearchFriend()
 
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(FriendListScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(FriendListScene::requestFinishedCallback));
 	request->setTag("101");
 
     string _strUrl = CompleteUrl(URL_FRIEND_LIST);
@@ -67,18 +67,15 @@ void FriendListScene::doSearchFriend()
 	request->release();
 }
 
-void FriendListScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
+void FriendListScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
 {
-	if (!this->ValidateResponseData(pSender,Rspdata))
+	if (!this->ValidateResponseData(client,response))
 	{
 		return;
 	}
 
-	CCHttpResponse *response =  (CCHttpResponse*)Rspdata;
 	std::vector<char> *buffer = response->getResponseData();
-
 	std::string content(buffer->begin(),buffer->end());
-	CCLog(content.c_str());
 
     CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
 	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
@@ -157,6 +154,8 @@ void FriendListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell
     }
 
     table->refreshData();
+//    table->_updateContentSize();
+//    table->_updateCellPositions();
 }
 
 unsigned int FriendListScene::numberOfCellsInTableView(CCTableView *table)
@@ -169,7 +168,7 @@ CCSize FriendListScene::cellSizeForTable(CCTableView *table)
 	return CCSizeMake(312, 50);
 }
 
-CCSize FriendListScene::cellSizeForIndex(CCTableView *table, unsigned int idx)
+CCSize FriendListScene::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
 {
     if (selectedindex == idx ) {
         return CCSizeMake(312, 80);
@@ -177,10 +176,10 @@ CCSize FriendListScene::cellSizeForIndex(CCTableView *table, unsigned int idx)
     return CCSizeMake(312, 44);
 }
 
-bool FriendListScene::hasFixedCellSize()
-{
-    return false;
-}
+//bool FriendListScene::hasFixedCellSize()
+//{
+//    return false;
+//}
 
 CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
@@ -191,7 +190,7 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 		cell = new CCTableViewCell();
 		cell->autorelease();
         
-        CCSize size = this->cellSizeForIndex(table, idx);
+        CCSize size = this->tableCellSizeForIndex(table, idx);
         
         CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_cellhighlight.png"));
         sSelected->setVisible(false);
@@ -286,12 +285,13 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
         deleteBtn->setTag(130);
 		deleteBtn->setPreferredSize(CCSizeMake(74,34));
         deleteBtn->setVisible(selected);
+        deleteBtn->setTouchPriority(100);
         deleteBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
         cell->addChild(deleteBtn);
 	}
 	else
 	{
-        CCSize size = this->cellSizeForIndex(table, idx);
+        CCSize size = this->tableCellSizeForIndex(table, idx);
         
         CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
         sSelected->setPosition(ccp(13,size.height - 39));
@@ -398,7 +398,7 @@ void FriendListScene::deleteFriend(std::string &targetUser)
 {
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(FriendListScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(FriendListScene::requestFinishedCallback));
 	request->setTag("103");
 
 	string _strUrl = CompleteUrl(URL_FRIEND_DELETE);

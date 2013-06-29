@@ -69,12 +69,14 @@ bool CharacterScene::init()
 		mCardNameList = CCArray::create();
 		mCardNameList->retain();
 
-		mCardNameList->addObject(CCString::create("card_rulaifo.png"));
-		mCardNameList->addObject(CCString::create("Card_Level5.png"));
-		mCardNameList->addObject(CCString::create("Card_Level6.png"));
-		mCardNameList->addObject(CCString::create("Card_Level3.png"));
-		mCardNameList->addObject(CCString::create("Card_Level4.png"));
+        CCArray *allCardArray = GlobalData::getAllCards("");
 
+        CCObject *obj = NULL;
+        CCARRAY_FOREACH(allCardArray,obj)
+        {
+            CCDictionary *dict = (CCDictionary *)obj;
+            mCardNameList->addObject(dict);
+        }
 
 		selectedIndex = 0;
 		m_strSelectedRoleId = "5";
@@ -101,7 +103,7 @@ void CharacterScene::doSubmit()
 
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(CharacterScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(CharacterScene::requestFinishedCallback));
 	request->setTag("101");
 
 	string _strUrl = CompleteUrl(URL_USER_CREATE_ROLE);
@@ -117,18 +119,39 @@ void CharacterScene::doSubmit()
 	request->release();
 }
 
-void CharacterScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
+std::string CharacterScene::addReturnForName(CCString *cardName)
 {
-	if (!this->ValidateResponseData(pSender,Rspdata))
+    std::string text = cardName->m_sString;
+    std::string result;
+    for(int i=0;i<text.length();i++)
+    {
+        result.append(&text[i]);
+        result.append("\n");
+    }
+    text[0];
+    return cardName->getCString();
+}
+std::string CharacterScene::determineGroup(CCString* number)
+{
+    if (number->intValue()==1) {
+        return "friends_dairy.png";
+    } else if (number->intValue()==2) {
+        return "friends_fo.png";
+    } else if (number->intValue()==3) {
+        return "friends_wizard.png";
+    }
+    return "";
+}
+
+void CharacterScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
+{
+	if (!this->ValidateResponseData(client,response))
 	{
 		return;
 	}
     
-	CCHttpResponse *response =  (CCHttpResponse*)Rspdata;
 	std::vector<char> *buffer = response->getResponseData();
-    
 	std::string content(buffer->begin(),buffer->end());
-	CCLog(content.c_str());
     
     CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
 	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
@@ -168,9 +191,36 @@ void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 
 	CCARRAY_FOREACH(mCardNameList,object)
 	{
-		CCString *strCardName = (CCString*)object; 
-		CCSprite *fou = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardName->getCString()));
-		CCMenuItemSprite *spritCard = CCMenuItemSprite::create(fou, fou, fou, this, menu_selector(CharacterScene::menuItemCallback));
+        CCDictionary *dict = (CCDictionary *)object;
+        
+        CCSprite *sCardBg = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("Card_Level4.png"));
+        CCSize bgSize = sCardBg->getContentSize();
+        
+        CCString *strCardName = (CCString *)dict->objectForKey("CardName");
+        std::string strCardName1 = this->addReturnForName(strCardName);
+        
+        CCLabelTTF *lblCardName = CCLabelTTF::create(strCardName->getCString(), "Arial", 14.0);
+        lblCardName->setAnchorPoint(ccp(1,1));
+        lblCardName->setPosition(ccp(bgSize.width - 10,bgSize.height - 50));
+
+        CCLabelTTF *lblCardLevel = CCLabelTTF::create(((CCString *)dict->objectForKey("Level"))->getCString(), "Arial", 14.0);
+        lblCardLevel->setAnchorPoint(ccp(0,1));
+        lblCardLevel->setPosition(ccp(10,bgSize.height - 10));
+
+        std::string strGroup = determineGroup((CCString *)dict->objectForKey("formation"));
+        CCSprite *sCardGroup = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strGroup.c_str()));
+        sCardGroup->setAnchorPoint(ccp(1,1));
+        sCardGroup->setPosition(ccp(bgSize.width - 5,bgSize.height - 10));
+
+		CCSprite *sCard = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(((CCString *)dict->objectForKey("CardImage"))->getCString()));
+        
+        sCardBg->addChild(sCard);
+        sCardBg->addChild(lblCardName);
+        sCardBg->addChild(lblCardLevel);
+        sCardBg->addChild(sCardGroup);
+        
+        sCard->setPosition(ccp(bgSize.width * 0.5,bgSize.height * 0.5));
+		CCMenuItemSprite *spritCard = CCMenuItemSprite::create(sCardBg, sCardBg, sCardBg, this, menu_selector(CharacterScene::menuItemCallback));
 		mCardList->addObject(spritCard);
 		menu->addChild(spritCard);
 	}

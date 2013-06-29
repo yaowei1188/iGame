@@ -56,7 +56,7 @@ void MailMainScene::doSearchFriend()
 
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(MailMainScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(MailMainScene::requestFinishedCallback));
 	request->setTag("101");
 
     string _strUrl = CompleteUrl(URL_FRIEND_LIST);
@@ -70,18 +70,15 @@ void MailMainScene::doSearchFriend()
 	request->release();
 }
 
-void MailMainScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
+void MailMainScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
 {
-	if (!this->ValidateResponseData(pSender,Rspdata))
+	if (!this->ValidateResponseData(client,response))
 	{
 		return;
 	}
-
-	CCHttpResponse *response =  (CCHttpResponse*)Rspdata;
+    
 	std::vector<char> *buffer = response->getResponseData();
-
 	std::string content(buffer->begin(),buffer->end());
-	CCLog(content.c_str());
 
     CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
 	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
@@ -190,7 +187,7 @@ CCSize MailMainScene::cellSizeForTable(CCTableView *table)
 	return CCSizeMake(312, 50);
 }
 
-CCSize MailMainScene::cellSizeForIndex(CCTableView *table, unsigned int idx)
+CCSize MailMainScene::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
 {
     if (selectedindex == idx ) {
         return CCSizeMake(312, 80);
@@ -198,10 +195,10 @@ CCSize MailMainScene::cellSizeForIndex(CCTableView *table, unsigned int idx)
     return CCSizeMake(312, 44);
 }
 
-bool MailMainScene::hasFixedCellSize()
-{
-    return false;
-}
+//bool MailMainScene::hasFixedCellSize()
+//{
+//    return false;
+//}
 
 CCTableViewCell* MailMainScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
@@ -212,7 +209,7 @@ CCTableViewCell* MailMainScene::tableCellAtIndex(CCTableView *table, unsigned in
 		cell = new CCTableViewCell();
 		cell->autorelease();
         
-        CCSize size = this->cellSizeForIndex(table, idx);
+        CCSize size = this->tableCellSizeForIndex(table, idx);
         
         CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_cellhighlight.png"));
         sSelected->setVisible(false);
@@ -312,7 +309,7 @@ CCTableViewCell* MailMainScene::tableCellAtIndex(CCTableView *table, unsigned in
 	}
 	else
 	{
-        CCSize size = this->cellSizeForIndex(table, idx);
+        CCSize size = this->tableCellSizeForIndex(table, idx);
         
         CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
         sSelected->setPosition(ccp(13,size.height - 39));
@@ -419,7 +416,7 @@ void MailMainScene::deleteFriend(std::string &targetUser)
 {
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(MailMainScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(MailMainScene::requestFinishedCallback));
 	request->setTag("103");
 
 	string _strUrl = CompleteUrl(URL_FRIEND_DELETE);

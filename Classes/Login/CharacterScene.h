@@ -27,7 +27,7 @@ public:
     static cocos2d::CCScene* scene();
     
     // a selector callback
-    void requestFinishedCallback(CCNode* pSender,void *p);
+    void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
 
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(CharacterScene, create);
     
@@ -46,6 +46,10 @@ public:
 	void doEllipse();
 	void resetZorder();
 	void createUserGameRole();
+
+    std::string addReturnForName(CCString*);
+    std::string determineGroup(CCString*);
+    
 	CCEditBox *m_txtAccount;
     CCSprite *m_sCharacterBelow;
     

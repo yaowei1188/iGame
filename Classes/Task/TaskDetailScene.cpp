@@ -54,7 +54,7 @@ void TaskDetailScene::doSearch()
 
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(TaskDetailScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(TaskDetailScene::requestFinishedCallback));
 	request->setTag("101");
 
 	string _strUrl = CompleteUrl(URL_FRIEND_LIST);
@@ -68,18 +68,16 @@ void TaskDetailScene::doSearch()
 	request->release();
 }
 
-void TaskDetailScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
+void TaskDetailScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
 {
-	if (!this->ValidateResponseData(pSender,Rspdata))
+	if (!this->ValidateResponseData(client,response))
 	{
 		return;
 	}
-
-	CCHttpResponse *response =  (CCHttpResponse*)Rspdata;
+    
 	std::vector<char> *buffer = response->getResponseData();
 
 	std::string content(buffer->begin(),buffer->end());
-	CCLog(content.c_str());
 
 	CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
 	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
@@ -212,7 +210,7 @@ void TaskDetailScene::executeTask(std::string index,std::string subIndex)
 {
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(TaskDetailScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(TaskDetailScene::requestFinishedCallback));
 	request->setTag("102");
 
 	string _strUrl = CompleteUrl(URL_TASK_EXPLORE);

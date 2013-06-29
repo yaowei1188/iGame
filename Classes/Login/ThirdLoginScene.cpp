@@ -83,7 +83,7 @@ void ThirdLoginScene::doSubmit()
 {
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpPost);
-	request->setResponseCallback(this,callfuncND_selector(ThirdLoginScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(ThirdLoginScene::requestFinishedCallback));
 	request->setTag("post testing!!!");
 	request->setUrl("http://223.4.10.91/andon_service/ANDON_EX_USER.asmx/GetList");
 
@@ -95,10 +95,9 @@ void ThirdLoginScene::doSubmit()
 	request->release();
 }
 
-void ThirdLoginScene::requestFinishedCallback(CCNode* pSender,void *data)
+void ThirdLoginScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
 {
-    CCHttpResponse *response =  (CCHttpResponse*)data;
-	if(response==NULL)
+	if (!this->ValidateResponseData(client,response))
 	{
 		return;
 	}

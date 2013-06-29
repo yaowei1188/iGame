@@ -66,7 +66,7 @@ bool ServerListScene::init()
 
 		mHasCreatedRole = false;
 
-		//this->retrieveUserGameRole();
+		this->retrieveUserGameRole();
 
         bRet = true;
     } while (0);
@@ -80,7 +80,7 @@ void ServerListScene::retrieveUserGameRole()
 
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(ServerListScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(ServerListScene::requestFinishedCallback));
 	request->setTag("101");
 
     string _strUrl = CompleteUrl(URL_USER_ROLE);
@@ -94,18 +94,14 @@ void ServerListScene::retrieveUserGameRole()
 	request->release();
 }
 
-void ServerListScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
+void ServerListScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
 {
-	if (!this->ValidateResponseData(pSender,Rspdata))
+	if (!this->ValidateResponseData(client,response))
 	{
 		return;
 	}
-
-	CCHttpResponse *response =  (CCHttpResponse*)Rspdata;
 	std::vector<char> *buffer = response->getResponseData();
-
 	std::string content(buffer->begin(),buffer->end());
-	CCLog(content.c_str());
 
     CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
 	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
@@ -118,8 +114,7 @@ void ServerListScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
 
 	if (requestTag == "101") {
 		CCString *strUserId = (CCString *)dictionary->objectForKey("userId");
-		if (strUserId== NULL || strUserId->length()==0)
-		{
+		if (strUserId== NULL || strUserId->length() == 0) {
 			mHasCreatedRole = false;
 		} else {
 			mHasCreatedRole = true;
@@ -386,7 +381,7 @@ void ServerListScene::submitSelectedServer()
     
 	//CCHttpRequest *request = new CCHttpRequest();
 	//request->setRequestType(CCHttpRequest::kHttpGet);
-	//request->setResponseCallback(this,callfuncND_selector(ServerListScene::requestFinishedCallback));
+	//request->setResponseCallback(this,httpresponse_selector(ServerListScene::requestFinishedCallback));
 	//request->setTag("103");
 
 	//string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
@@ -403,7 +398,7 @@ void ServerListScene::submitSelectedServer()
 
 void ServerListScene::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
 {
-	MainGameScene *mainScene = (MainGameScene *)this->getParent();
+//	MainGameScene *mainScene = (MainGameScene *)this->getParent();
 	CCControlButton *button = (CCControlButton *)sender;
 	switch (button->getTag()) {
 	//case 101:

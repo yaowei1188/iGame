@@ -23,6 +23,10 @@ public:
     static CCString* getLocalString(std::string name);
     
     static CCDictionary* getTasks(std::string name);
+
+    static CCArray* getAllCards(std::string name);
+
+    static CCDictionary* getCardById(std::string cardId);
 };
 
 #endif /* defined(__mengdou__GlobalData__) */

@@ -107,15 +107,15 @@ CCSize MainInnerLayer::cellSizeForTable(CCTableView *table)
 	return CCSizeMake(66.5, 65);
 }
 
-CCSize MainInnerLayer::cellSizeForIndex(CCTableView *table, unsigned int idx)
+CCSize MainInnerLayer::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
 {
 	return CCSizeMake(66.5, 65);
 }
 
-bool MainInnerLayer::hasFixedCellSize()
-{
-	return true;
-}
+//bool MainInnerLayer::hasFixedCellSize()
+//{
+//	return true;
+//}
 
 CCTableViewCell* MainInnerLayer::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
@@ -128,7 +128,7 @@ CCTableViewCell* MainInnerLayer::tableCellAtIndex(CCTableView *table, unsigned i
 		cell = new CCTableViewCell();
 		cell->autorelease();
 
-//		CCSize size = this->cellSizeForIndex(table, idx);
+//		CCSize size = this->tableCellSizeForIndex(table, idx);
 
 		sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_selected.png"));
 		sSelected->setVisible(false);

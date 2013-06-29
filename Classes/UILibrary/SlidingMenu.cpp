@@ -249,7 +249,6 @@ void SlidingMenuGrid::ccTouchEnded(CCTouch* touch, CCEvent* event)
 
 void SlidingMenuGrid::moveToCurrentPage()
 {
-	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	// Perform the action
 	CCEaseBounce* action =CCEaseBounce::create(CCMoveTo::create(fAnimSpeed*0.3f, GetPositionOfCurrentPage()));
 	runAction(action);

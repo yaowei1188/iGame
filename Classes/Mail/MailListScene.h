@@ -8,7 +8,7 @@
 #include "XmlParser.h"
 
 //#include "CCMessageDialog.h"
-#include "MainGameScene.h"S
+#include "MainGameScene.h"
 #include "MainSceneTemplate.h"
 #include "MainLayerBase.h"
 
@@ -34,7 +34,7 @@ public:
     static cocos2d::CCScene* scene();
     
     // a selector callback
-    void requestFinishedCallback(CCNode* pSender,void *p);
+    void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
 	void doSearch();
     
     CCMenu *generateCheckBox();
@@ -50,8 +50,8 @@ public:
 	virtual cocos2d::CCSize cellSizeForTable(cocos2d::extension::CCTableView *table);
 	virtual CCTableViewCell* tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx);
 	virtual unsigned int numberOfCellsInTableView(CCTableView *table);
-    virtual bool hasFixedCellSize();
-    virtual CCSize cellSizeForIndex(CCTableView *table, unsigned int idx);
+//    virtual bool hasFixedCellSize();
+    virtual CCSize tableCellSizeForIndex(CCTableView *table, unsigned int idx);
     virtual void tableCellHighlight(CCTableView* table, CCTableViewCell* cell);
     virtual void tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell);
     

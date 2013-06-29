@@ -4,14 +4,14 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 
-#include "SimpleAudioEngine.h"
-#include "XmlParser.h"
-#include "common.h"
+#include "MainGameScene.h"
+#include "MainSceneTemplate.h"
+#include "MainLayerBase.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class ThirdLoginScene : public cocos2d::CCLayer,
+class ThirdLoginScene : public MainLayerBase,
 public CCBSelectorResolver,
 public CCBMemberVariableAssigner,
 public CCNodeLoaderListener
@@ -26,7 +26,7 @@ public:
     static cocos2d::CCScene* scene();
     
     // a selector callback
-    void requestFinishedCallback(CCNode* pSender,void *p);
+    void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
 
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(ThirdLoginScene, create);
     

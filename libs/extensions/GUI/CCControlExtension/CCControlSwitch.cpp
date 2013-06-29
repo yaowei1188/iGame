@@ -170,7 +170,12 @@ void CCControlSwitchSprite::draw()
     glUniform1i(m_uMaskLocation, 1);
 
 #define kQuadSize sizeof(m_sQuad.bl)
+#ifdef EMSCRIPTEN
+    long offset = 0;
+    setGLBufferData(&m_sQuad, 4 * kQuadSize, 0);
+#else
     long offset = (long)&m_sQuad;
+#endif // EMSCRIPTEN
 
     // vertex
     int diff = offsetof( ccV3F_C4B_T2F, vertices);
@@ -327,29 +332,6 @@ CCControlSwitch* CCControlSwitch::create(CCSprite *maskSprite, CCSprite * onSpri
 {
     CCControlSwitch* pRet = new CCControlSwitch();
     if (pRet && pRet->initWithMaskSprite(maskSprite, onSprite, offSprite, thumbSprite, onLabel, offLabel))
-    {
-        pRet->autorelease();
-    }
-    else
-    {
-        CC_SAFE_DELETE(pRet);
-    }
-    return pRet;
-}
-
-//add by ivan
-CCControlSwitch* CCControlSwitch::create()
-{
-    CCControlSwitch* pRet = new CCControlSwitch();
-//    if (pRet && pRet->initWithMaskSprite(NULL, NULL, NULL, NULL, NULL, NULL))
-//    {
-//        pRet->autorelease();
-//    }
-//    else
-//    {
-//        CC_SAFE_DELETE(pRet);
-//    }
-    if (pRet)
     {
         pRet->autorelease();
     }

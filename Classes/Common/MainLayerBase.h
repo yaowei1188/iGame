@@ -35,6 +35,7 @@ protected:
     void ShowLoadingIndicator(const char *pCCBFileName);
     void HideLoadingIndicator();
 	bool ValidateResponseData(CCNode* pSender,void *data);
+    bool ValidateResponseData(CCHttpClient* client, CCHttpResponse* response);
     std::string CompleteUrl(std::string url);
     std::string getLocalString(std::string name);
 	std::string showUTF8String(std::string name);

@@ -36,7 +36,7 @@ public:
     static cocos2d::CCScene* scene();
     
     // a selector callback
-    void requestFinishedCallback(CCNode* pSender,void *p);
+    void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
 	void doSearchFriend();
 
     // implement the "static node()" method manually
@@ -50,10 +50,13 @@ public:
     
 	virtual void tableCellTouched(cocos2d::extension::CCTableView* table, CCTableViewCell* cell);
 	virtual cocos2d::CCSize cellSizeForTable(cocos2d::extension::CCTableView *table);
+    virtual CCSize tableCellSizeForIndex(CCTableView *table, unsigned int idx);
+//    virtual bool hasFixedCellSize();
+
 	virtual CCTableViewCell* tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx);
 	virtual unsigned int numberOfCellsInTableView(CCTableView *table);
-    virtual bool hasFixedCellSize();
-    virtual CCSize cellSizeForIndex(CCTableView *table, unsigned int idx);
+    
+    
     virtual void tableCellHighlight(CCTableView* table, CCTableViewCell* cell);
     virtual void tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell);
     

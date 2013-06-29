@@ -31,7 +31,7 @@ public:
 	static cocos2d::CCScene* scene();
 
 	// a selector callback
-	void requestFinishedCallback(CCNode* pSender,void *p);
+	void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
 	void retrieveCurrentTask();
 
 	// implement the "static node()" method manually

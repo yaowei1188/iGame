@@ -187,7 +187,7 @@ public:
     virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
 
     virtual void setContentSize(const CCSize & size);
-    virtual const CCSize& getContentSize();
+    virtual const CCSize& getContentSize() const;
 
 	void updateInset();
     /**
@@ -202,13 +202,6 @@ public:
     virtual void addChild(CCNode * child);
     void setTouchEnabled(bool e);
 private:
-    /**
-     * Init this object with a given size to clip its content.
-     *
-     * @param size view size
-     * @return initialized scroll view object
-     */
-    bool initWithViewSize(CCSize size);
     /**
      * Relocates the container at the proper offset, in bounds of max/min offsets.
      *
@@ -324,6 +317,11 @@ protected:
      * max and min scale
      */
     float m_fMinScale, m_fMaxScale;
+    /**
+     * scissor rect for parent, just for restoring GL_SCISSOR_BOX
+     */
+    CCRect m_tParentScissorRect;
+    bool m_bScissorRestored;
 };
 
 // end of GUI group

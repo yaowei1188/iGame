@@ -56,7 +56,7 @@ void TaskListScene::retrieveCurrentTask()
 
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(TaskListScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(TaskListScene::requestFinishedCallback));
 	request->setTag("101");
 
 	string _strUrl = CompleteUrl(URL_TASK_RETRIEVE_CURRENT);
@@ -73,7 +73,7 @@ void TaskListScene::retrieveCurrentTask()
 
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpPost);
-	request->setResponseCallback(this,callfuncND_selector(TaskListScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(TaskListScene::requestFinishedCallback));
 	request->setTag("101");
 
 	string _strUrl = CompleteUrl(URL_TASK_RETRIEVE_CURRENT);
@@ -89,18 +89,15 @@ void TaskListScene::retrieveCurrentTask()
 	request->release();*/
 }
 
-void TaskListScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
+void TaskListScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
 {
-	if (!this->ValidateResponseData(pSender,Rspdata))
+	if (!this->ValidateResponseData(client,response))
 	{
 		return;
 	}
-
-	CCHttpResponse *response =  (CCHttpResponse*)Rspdata;
+    
 	std::vector<char> *buffer = response->getResponseData();
-
 	std::string content(buffer->begin(),buffer->end());
-	CCLog(content.c_str());
 
 	CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
 	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
@@ -214,7 +211,7 @@ void TaskListScene::executeTask(std::string &targetUser)
 {
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(TaskListScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(TaskListScene::requestFinishedCallback));
 	request->setTag("103");
 
 	string _strUrl = CompleteUrl(URL_FRIEND_DELETE);

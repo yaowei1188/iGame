@@ -82,15 +82,13 @@ void AddFriendScene::doSearchFriend()
 
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(AddFriendScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(AddFriendScene::requestFinishedCallback));
 	request->setTag("101");
     
 	string _strUrl = CompleteUrl(URL_FRIEND_SEARCH);
 	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
 	_strUrl.append("/");
 	_strUrl.append(sSearchField);
-
-	CCLOG(_strUrl.c_str());
 
 	request->setUrl(_strUrl.c_str());
 
@@ -104,7 +102,7 @@ void AddFriendScene::addFriendRequest(std::string &targetUser)
 {
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,callfuncND_selector(AddFriendScene::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(AddFriendScene::requestFinishedCallback));
 	request->setTag("102");
     
 	string _strUrl = CompleteUrl(URL_FRIEND_ADD_NEW);
@@ -119,14 +117,12 @@ void AddFriendScene::addFriendRequest(std::string &targetUser)
 	request->release();
 }
 
-void AddFriendScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
+void AddFriendScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
 {
-	if (!this->ValidateResponseData(pSender,Rspdata))
+	if (!this->ValidateResponseData(client,response))
 	{
 		return;
 	}
-
-    CCHttpResponse *response =  (CCHttpResponse*)Rspdata;
     
     std::vector<char> *buffer = response->getResponseData();
 	std::string content(buffer->begin(),buffer->end());
@@ -257,7 +253,7 @@ CCSize AddFriendScene::cellSizeForTable(CCTableView *table)
 	return CCSizeMake(312, 50);
 }
 
-CCSize AddFriendScene::cellSizeForIndex(CCTableView *table, unsigned int idx)
+CCSize AddFriendScene::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
 {
     if (selectedindex == idx ) {
         return CCSizeMake(312, 80);
@@ -265,10 +261,10 @@ CCSize AddFriendScene::cellSizeForIndex(CCTableView *table, unsigned int idx)
     return CCSizeMake(312, 50);
 }
 
-bool AddFriendScene::hasFixedCellSize()
-{
-    return false;
-}
+//bool AddFriendScene::hasFixedCellSize()
+//{
+//    return false;
+//}
 
 CCTableViewCell* AddFriendScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
@@ -279,7 +275,7 @@ CCTableViewCell* AddFriendScene::tableCellAtIndex(CCTableView *table, unsigned i
 		cell = new CCTableViewCell();
 		cell->autorelease();
 
-		CCSize size = this->cellSizeForIndex(table, idx);
+		CCSize size = this->tableCellSizeForIndex(table, idx);
 
 		CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_cellhighlight.png"));
 		sSelected->setVisible(false);
@@ -373,7 +369,7 @@ CCTableViewCell* AddFriendScene::tableCellAtIndex(CCTableView *table, unsigned i
 	}
 	else
 	{
-		CCSize size = this->cellSizeForIndex(table, idx);
+		CCSize size = this->tableCellSizeForIndex(table, idx);
 
 		CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
 		sSelected->setPosition(ccp(13,size.height - 39));
