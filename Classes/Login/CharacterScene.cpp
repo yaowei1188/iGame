@@ -345,8 +345,7 @@ void CharacterScene::setValueByIndex()
     m_lblCharacterName->setString(((CCString *)dict->objectForKey("CardName"))->getCString());
     CCString *strDesc = (CCString *)dict->objectForKey("Desc");
     std::string desc = strDesc->m_sString;
-    std::replace(desc.begin(), desc.end(), '|', '\\');
-//    desc.re
+//    std::replace(desc.begin(), desc.end(), '|', '\\');
     m_lblCharacterDesc->setString(desc.c_str());
     m_lblHp->setString(((CCString *)dict->objectForKey("Hp"))->getCString());
     m_lblDefence->setString(((CCString *)dict->objectForKey("Dp"))->getCString());

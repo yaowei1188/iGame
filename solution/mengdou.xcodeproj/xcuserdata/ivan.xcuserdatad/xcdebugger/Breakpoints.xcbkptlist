@@ -8,12 +8,64 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "mengdou/Classes/Common/MainLayerBase.cpp"
-         timestampString = "391945849.637913"
+         timestampString = "394077091.016067"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "132"
-         endingLineNumber = "132"
+         startingLineNumber = "154"
+         endingLineNumber = "154"
          landmarkName = "MainLayerBase::getLocalString(std::string name)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "mengdou/Classes/Friends/FriendListScene.cpp"
+         timestampString = "394083248.45813"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "151"
+         endingLineNumber = "151"
+         landmarkName = "FriendListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "mengdou/Classes/Friends/FriendListScene.cpp"
+         timestampString = "394083248.45813"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "360"
+         endingLineNumber = "360"
+         landmarkName = "FriendListScene::toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "mengdou/Classes/Login/CharacterScene.cpp"
+         timestampString = "394106528.241078"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "202"
+         endingLineNumber = "202"
+         landmarkName = "CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "mengdou/Classes/Login/CharacterScene.cpp"
+         timestampString = "394106530.249293"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "128"
+         endingLineNumber = "128"
+         landmarkName = "CharacterScene::determineGroup(CCNumber* number)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
