@@ -92,28 +92,35 @@ void CharacterScene::doSubmit()
 {
 	std::string sAccount(m_txtAccount->getText());
 
-	if (trimRight(sAccount).empty() ) {
-		CCMessageBox(GlobalData::getLocalString("character_name_empty")->getCString(),"ERROR");
-		return;
-	}
+	//if (trimRight(sAccount).empty() ) {
+	//	CCMessageBox(GlobalData::getLocalString("character_name_empty")->getCString(),"ERROR");
+	//	return;
+	//}
 
-    this->OpenNewScene("MainGameScene");
-	return;
+ //   this->OpenNewScene("MainGameScene");
+	//return;
 
 	this->ShowLoadingIndicator("");
 
 	CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpGet);
+	request->setRequestType(CCHttpRequest::kHttpPost);
 	request->setResponseCallback(this,httpresponse_selector(CharacterScene::requestFinishedCallback));
 	request->setTag("101");
 
-    CCDictionary *dict = (CCDictionary *)mCardNameList->objectAtIndex(selectedIndex);
-    CCString *strCardId = (CCString *)dict->objectForKey("CardId");
-	string _strUrl = CompleteUrl(URL_USER_CREATE_ROLE);
+	std::string strPostData = "encryptedUserInfo=";
+	strPostData.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+	strPostData.append("&gameRoleId=");
 
-	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-	_strUrl.append("/" + strCardId->m_sString + "/");
-	_strUrl.append( m_txtAccount->getText());
+	CCDictionary *dict = (CCDictionary *)mCardNameList->objectAtIndex(selectedIndex);
+	CCString *strCardId = (CCString *)dict->objectForKey("CardId");
+
+	strPostData.append(strCardId->getCString());
+	strPostData.append("&nickname=");
+	strPostData.append(sAccount);
+
+	request->setRequestData(strPostData.c_str(), strPostData.length()); 
+	
+	string _strUrl = CompleteUrl(URL_USER_CREATE_ROLE);
 	request->setUrl(_strUrl.c_str());
 
 	CCHttpClient *client = CCHttpClient::getInstance();
@@ -159,6 +166,9 @@ void CharacterScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespons
     CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
 	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
     if (code != 200) {
+		if (code == 104) {
+			CCMessageBox("invalid nickname","ERROR");
+		}
         CCMessageBox("invoke web api failed!","ERROR");
         return;
     }
@@ -166,14 +176,21 @@ void CharacterScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespons
 	std::string requestTag(response->getHttpRequest()->getTag());
     
 	if (requestTag == "101") {
-//		mArrayList = dynamic_cast<CCArray *>(dictionary->objectForKey("friendList"));
-//		if (mArrayList==NULL)
-//		{
-//			return;
-//		}
-//        
-//		selectedindex = -1;
-//		mTableView->reloadData();
+		CCNumber *strGameRoleId = (CCNumber *)dictionary->objectForKey("gameRoleId");
+		//CCString *strNickName = (CCString *)dict->objectForKey("nickName");
+		//CCNumber *strUserId = (CCNumber *)dict->objectForKey("userId");
+
+		char gameRoleid[10];
+		//char UserId[10];
+
+		sprintf(gameRoleid,"%d",strGameRoleId->getIntValue());
+		//sprintf(UserId,"%d",strUserId->getIntValue());
+
+		std::string sAccount(m_txtAccount->getText());
+
+		//CCUserDefault::sharedUserDefault()->setStringForKey("userId", UserId);
+		CCUserDefault::sharedUserDefault()->setStringForKey("gameRoleId", gameRoleid);
+		CCUserDefault::sharedUserDefault()->setStringForKey("nickName", m_txtAccount->getText());
 	}
 }
 

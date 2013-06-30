@@ -54,7 +54,7 @@ void TaskListScene::retrieveCurrentTask()
 {
 	this->ShowLoadingIndicator("");
 
-	CCHttpRequest *request = new CCHttpRequest();
+	/*CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
 	request->setResponseCallback(this,httpresponse_selector(TaskListScene::requestFinishedCallback));
 	request->setTag("101");
@@ -67,9 +67,9 @@ void TaskListScene::retrieveCurrentTask()
 	CCHttpClient *client = CCHttpClient::getInstance();
 	client->send(request);
 
-	request->release();
+	request->release();*/
 
-	/*this->ShowLoadingIndicator("");
+	this->ShowLoadingIndicator("");
 
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpPost);
@@ -86,7 +86,7 @@ void TaskListScene::retrieveCurrentTask()
 	CCHttpClient *client = CCHttpClient::getInstance();
 	client->send(request);
 
-	request->release();*/
+	request->release();
 }
 
 void TaskListScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)

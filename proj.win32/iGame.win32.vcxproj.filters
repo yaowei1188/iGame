@@ -265,6 +265,12 @@
     <None Include="..\Resources\MailMainScene.ccbi">
       <Filter>Resources\Scene</Filter>
     </None>
+    <None Include="..\Resources\Task\Card.plist">
+      <Filter>Resources\Task</Filter>
+    </None>
+    <None Include="..\Resources\ChatLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="iGame.rc">

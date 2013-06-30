@@ -130,12 +130,13 @@ bool MainLayerBase::ValidateResponseData(CCHttpClient* client, CCHttpResponse* r
 	}
 
 	int statusCode = response->getResponseCode();
+	char strStatusCode[50];
+	sprintf(strStatusCode,"ERROR:HTTP Status Code: %d",statusCode);
 	CCLOG("HTTP Status Code: %d, tag = %s", statusCode, response->getHttpRequest()->getTag());
 
 	if (!response->isSucceed())
 	{
-		CCLog("error buffer: %s", response->getErrorBuffer());
-		CCMessageBox("ERROR", response->getErrorBuffer());
+		CCMessageBox(strStatusCode, "error");
 		return false;
 	}
 

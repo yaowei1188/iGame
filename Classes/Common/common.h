@@ -73,8 +73,8 @@
 #define URL_USER_LOGIN                              "/user/login/"
 #define URL_USER_REGISTER                           "/user/register/"
 
-#define URL_USER_ROLE                               "/userRole/retrieveUserGameRole.do?encryptedUserInfo="
-#define URL_USER_CREATE_ROLE                        "/userRole/createUserGameRole/"
+#define URL_USER_ROLE                               "/userRole/retrieveUserGameRole.do"
+#define URL_USER_CREATE_ROLE                        "/userRole/createUserGameRole.do"
 
 //Friends
 #define URL_FRIEND_LIST                             "/friend/list/"
@@ -85,8 +85,8 @@
 #define URL_FRIEND_CONFIRM                          "/friend/confirm/"
 
 //Tasks
-#define URL_TASK_RETRIEVE_CURRENT                   "/task/retrieveTask.do/"
-#define URL_TASK_EXPLORE                            "/task/explore.do/"
+#define URL_TASK_RETRIEVE_CURRENT                   "/task/retrieveTask.do"
+#define URL_TASK_EXPLORE                            "/task/explore.do"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #define ShowString(text)  WStrToUTF8(L##text)

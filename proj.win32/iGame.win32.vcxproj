@@ -139,6 +139,7 @@
     <None Include="..\Resources\account.png" />
     <None Include="..\Resources\AddFriendScene.ccbi" />
     <None Include="..\Resources\CharacterScene.ccbi" />
+    <None Include="..\Resources\ChatLayer.ccbi" />
     <None Include="..\Resources\Default.png" />
     <None Include="..\Resources\FriendListScene.ccbi" />
     <None Include="..\Resources\HeadScene.ccbi" />
@@ -181,6 +182,7 @@
     <None Include="..\Resources\TaskDetailScene.ccbi" />
     <None Include="..\Resources\TaskListScene.ccbi" />
     <None Include="..\Resources\TaskRewardScene.ccbi" />
+    <None Include="..\Resources\Task\Card.plist" />
     <None Include="..\Resources\Task\Task1.plist" />
     <None Include="..\Resources\ThirdLoginScene.ccbi" />
     <None Include="..\Resources\transparent.png" />

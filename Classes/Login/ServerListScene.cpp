@@ -79,13 +79,15 @@ void ServerListScene::retrieveUserGameRole()
 	this->ShowLoadingIndicator("");
 
 	CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpGet);
+	request->setRequestType(CCHttpRequest::kHttpPost);
 	request->setResponseCallback(this,httpresponse_selector(ServerListScene::requestFinishedCallback));
 	request->setTag("101");
 
-    string _strUrl = CompleteUrl(URL_USER_ROLE);
-    _strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+	std::string strPostData = "encryptedUserInfo=";
+	strPostData.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+	request->setRequestData(strPostData.c_str(), strPostData.length()); 
 
+	string _strUrl = CompleteUrl(URL_USER_ROLE);
 	request->setUrl(_strUrl.c_str());
 
 	CCHttpClient *client = CCHttpClient::getInstance();
@@ -110,6 +112,10 @@ void ServerListScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespon
             CCMessageBox("Internal Error 500","ERROR");
             return;
         }
+		else if (code == 105) {
+			mHasCreatedRole = false;
+			return;
+		}
         CCMessageBox("invoke web api failed!","ERROR");
         return;
     }
@@ -117,17 +123,24 @@ void ServerListScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespon
 	std::string requestTag(response->getHttpRequest()->getTag());
 
 	if (requestTag == "101") {
-		CCString *strUserId = (CCString *)dictionary->objectForKey("userId");
-		if (strUserId== NULL || strUserId->length() == 0) {
+		CCDictionary *dict = (CCDictionary *)dictionary->objectForKey("userGameRoleVo");
+		if (dict== NULL) {
 			mHasCreatedRole = false;
 		} else {
 			mHasCreatedRole = true;
 
-			CCString *strGameRoleId = (CCString *)dictionary->objectForKey("gameRoleId");
-			CCString *strNickName = (CCString *)dictionary->objectForKey("nickName");
+			CCNumber *strGameRoleId = (CCNumber *)dict->objectForKey("gameRoleId");
+			CCString *strNickName = (CCString *)dict->objectForKey("nickName");
+			CCNumber *strUserId = (CCNumber *)dict->objectForKey("userId");
 
-			CCUserDefault::sharedUserDefault()->setStringForKey("userId", strUserId->getCString());
-			CCUserDefault::sharedUserDefault()->setStringForKey("gameRoleId", strGameRoleId->getCString());
+			char gameRoleid[10];
+			char UserId[10];
+
+			sprintf(gameRoleid,"%d",strGameRoleId->getIntValue());
+			sprintf(UserId,"%d",strUserId->getIntValue());
+
+			CCUserDefault::sharedUserDefault()->setStringForKey("userId", UserId);
+			CCUserDefault::sharedUserDefault()->setStringForKey("gameRoleId", gameRoleid);
 			CCUserDefault::sharedUserDefault()->setStringForKey("nickName", strNickName->getCString());
 		}
 
@@ -315,7 +328,6 @@ CCTableViewCell* ServerListScene::tableCellAtIndex(CCTableView *table, unsigned 
 		{
 			lblStatus->setColor(convertColor("#cc3333"));
 		}
-		
     }
 	else
 	{
@@ -349,15 +361,15 @@ CCTableViewCell* ServerListScene::tableCellAtIndex(CCTableView *table, unsigned 
 			lblTitle->setVisible(false);
 		}
         
-        if (strcmp(status->getCString(),"1")==0)
+        if (status->compare("1")==0)
 		{
 			lblStatus->setColor(ccc3(51, 153, 00));
 		}
-		else if (strcmp(status->getCString(),"2")==0)
+		else if (status->compare("2")==0)
 		{
 			lblStatus->setColor(convertColor("#0099cc"));
 		}
-        else if (strcmp(status->getCString(),"3")==0)
+        else if (status->compare("3")==0)
 		{
 			lblStatus->setColor(convertColor("#cc3333"));
 		}
