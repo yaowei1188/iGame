@@ -578,7 +578,7 @@ ASDFASFDASDFASDFASDFSADFASD
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>TrebuchetMS</string>
+						<string>Verdana-Bold</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -587,7 +587,7 @@ ASDFASFDASDFASDFASDFSADFASD
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>12</real>
+							<real>16</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -598,9 +598,9 @@ ASDFASFDASDFASDFASDFSADFASD
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>207</integer>
-							<integer>254</integer>
 							<integer>255</integer>
+							<integer>253</integer>
+							<integer>208</integer>
 						</array>
 					</dict>
 					<dict>
@@ -640,6 +640,8 @@ ASDFASFDASDFASDFASDFSADFASD
 						<string>Sample Text</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -1455,7 +1457,7 @@ ASDFASFDASDFASDFASDFSADFASD
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>155</real>
+							<real>158</real>
 							<real>216</real>
 							<integer>0</integer>
 						</array>
@@ -1584,7 +1586,7 @@ ASDFASFDASDFASDFASDFSADFASD
 						<key>value</key>
 						<array>
 							<real>215</real>
-							<real>216</real>
+							<real>215</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1711,7 +1713,7 @@ ASDFASFDASDFASDFASDFSADFASD
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>155</real>
+							<real>158</real>
 							<real>202</real>
 							<integer>0</integer>
 						</array>

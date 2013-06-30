@@ -44,11 +44,10 @@ public:
 	virtual void scrollViewDidZoom(cocos2d::extension::CCScrollView* view) {}
     
 	virtual void tableCellTouched(cocos2d::extension::CCTableView* table, CCTableViewCell* cell);
-	virtual cocos2d::CCSize cellSizeForTable(cocos2d::extension::CCTableView *table);
 	virtual CCTableViewCell* tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx);
 	virtual unsigned int numberOfCellsInTableView(CCTableView *table);
-    virtual bool hasFixedCellSize();
-    virtual CCSize cellSizeForIndex(CCTableView *table, unsigned int idx);
+    virtual cocos2d::CCSize cellSizeForTable(cocos2d::extension::CCTableView *table);
+    virtual CCSize tableCellSizeForIndex(CCTableView *table, unsigned int idx);
     //virtual void tableCellHighlight(CCTableView* table, CCTableViewCell* cell);
     //virtual void tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell);
     

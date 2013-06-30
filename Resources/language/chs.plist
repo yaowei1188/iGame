@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>login_wrongnameorpassword</key>
+	<string>用户名或者密码不正确！</string>
 	<key>register_have_sameuser</key>
 	<string>该用户名已经被他人注册！</string>
 	<key>register_successfully</key>

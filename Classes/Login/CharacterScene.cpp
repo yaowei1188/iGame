@@ -17,6 +17,7 @@ CharacterScene::CharacterScene()
     m_lblDefence = NULL;
     m_lblAttack = NULL;
     m_lblAvoid = NULL;
+    m_sValueBg = NULL;
 }
 
 CharacterScene::~CharacterScene()
@@ -28,6 +29,7 @@ CharacterScene::~CharacterScene()
     CC_SAFE_RELEASE(m_lblDefence);
     CC_SAFE_RELEASE(m_lblAttack);
     CC_SAFE_RELEASE(m_lblAvoid);
+    CC_SAFE_RELEASE(m_sValueBg);
 }
 
 CCScene* CharacterScene::scene()
@@ -319,11 +321,10 @@ void CharacterScene::resetZorder()
 
 	for(int i=1;i<=number;i++)
 	{
-		if(low<0) {
+		if(low < 0) {
 			low = cardLength-1;
 		}
-		if (high>=cardLength)
-		{
+		if (high >= cardLength) {
 			high = 0;
 		}
 
@@ -343,14 +344,59 @@ void CharacterScene::setValueByIndex()
     CCDictionary *dict = (CCDictionary *)mCardNameList->objectAtIndex(selectedIndex);
     
     m_lblCharacterName->setString(((CCString *)dict->objectForKey("CardName"))->getCString());
+//    m_lblCharacterName->setString("SUNWUKONG");
+//    m_lblCharacterName->setColor(ccc3(0, 0, 0));
+    m_lblCharacterName->setFontName("Courier-Bold");
+    m_lblCharacterName->setFontSize(20);
+    m_lblCharacterName->setFontFillColor(ccc3(255, 255, 205));
+//    m_lblCharacterName->enableShadow(CCSizeMake(-1, -1), 1.0, 0.5,true);
+    m_lblCharacterName->enableStroke(ccc3(50, 11, 1), 0.8);
+    
+
+//    CCLabelTTF *test = CCLabelTTF::create("ivan yaoweiwei", "Courier-Bold", 20);
+//    test->setPosition(ccp(170, 80));
+//    test->enableStroke(ccc3(50, 11, 1), 0.8);
+//    this->addChild(test);
+    
     CCString *strDesc = (CCString *)dict->objectForKey("Desc");
     std::string desc = strDesc->m_sString;
+    
+    ccFontDefinition fontDef;
+    fontDef.m_fontFillColor = ccc3(255, 255, 205);
+    fontDef.m_fontName = "Courier";
+    fontDef.m_fontSize = 12;
+    fontDef.m_alignment = kCCTextAlignmentLeft;
+
+    ccFontStroke fontStroke;
+    fontStroke.m_strokeColor = ccc3(50, 11, 1);
+    fontStroke.m_strokeEnabled = true;
+    fontStroke.m_strokeSize = 0.5;
+    fontDef.m_stroke = fontStroke;
+//    fontDef.m_dimensions = CCSizeMake(250, 250);
+    
 //    std::replace(desc.begin(), desc.end(), '|', '\\');
+//    m_lblCharacterDesc->setFontSize(14);
+//    m_lblCharacterDesc->setFontName("Courier");
+//    m_lblCharacterDesc->setFontFillColor(ccc3(255, 255, 205));
+    //    m_lblCharacterDesc->enableStroke(ccc3(50, 11, 1), 0.4);
     m_lblCharacterDesc->setString(desc.c_str());
+    m_lblCharacterDesc->setTextDefinition(&fontDef);
+
+
+    
     m_lblHp->setString(((CCString *)dict->objectForKey("Hp"))->getCString());
+//    m_lblHp->setColor(ccc3(255,255,255));
+//    m_lblHp->setFontFillColor(ccc3(255,0,0));
+    m_lblHp->enableStroke(ccc3(50, 11, 1), 0.8);
+    
     m_lblDefence->setString(((CCString *)dict->objectForKey("Dp"))->getCString());
+    m_lblDefence->enableStroke(ccc3(51, 11, 1), 0.7);
+    
     m_lblAttack->setString(((CCString *)dict->objectForKey("Ap"))->getCString());
+    m_lblAttack->enableStroke(ccc3(51, 11, 1), 0.6);
+    
     m_lblAvoid->setString(((CCString *)dict->objectForKey("Dd"))->getCString());
+    m_lblAvoid->enableStroke(ccc3(51, 11, 1), 0.5);
 }
 
 void CharacterScene::doEllipse()
@@ -376,7 +422,7 @@ bool CharacterScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pM
 {
 
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCharacterBelow", CCSprite*, this->m_sCharacterBelow);
-     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sValueBg", CCSprite*, this->m_sValueBg);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sValueBg", CCSprite*, this->m_sValueBg);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblCharacterName", CCLabelTTF*, this->m_lblCharacterName);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblCharacterDesc", CCLabelTTF*, this->m_lblCharacterDesc);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblHp", CCLabelTTF*, this->m_lblHp);
@@ -400,8 +446,6 @@ void CharacterScene::menuItemCallback(CCObject* pSender)
 	{
 		return;
 	}
-
-	float x = sprite->getPositionX();
 
 	int cardLength = mCardList->count();
 	for(int i=0;i<cardLength;i++)
@@ -432,7 +476,7 @@ void CharacterScene::menuItemCallback(CCObject* pSender)
 	this->resetZorder();
 	this->doEllipse();
     
-    setValueByIndex();
+    this->setValueByIndex();
 }
 
 void CharacterScene::animateEndCallBack(CCNode *node)

@@ -152,24 +152,23 @@ void AddFriendScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespons
 
 void AddFriendScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-
-    m_txtSearchField = CCEditBox::create(CCSizeMake(210, 35), CCScale9Sprite::create("transparent.png"));
-    this->addChild(m_txtSearchField);
-    m_txtSearchField->setPosition(ccp(138, 348));
-    m_txtSearchField->setFontColor(ccc3(0,0,0));
-    m_txtSearchField->setFont(FONT_LOGIN, 16);
-    
     mTableViewFriend->setDirection(kCCScrollViewDirectionVertical);
     mTableViewFriend->setVerticalFillOrder(kCCTableViewFillTopDown);
     mTableViewFriend->setDataSource(this);
     mTableViewFriend->setViewSize(CCSizeMake(312, 300));
     mTableViewFriend->setDelegate(this);
     //mTableViewFriend->reloadData();
+    
+    m_txtSearchField = CCEditBox::create(CCSizeMake(210, 35), CCScale9Sprite::create("transparent.png"));
+    m_txtSearchField->setPosition(ccp(138, 348));
+    m_txtSearchField->setFontColor(ccc3(0,0,0));
+    m_txtSearchField->setFont(FONT_LOGIN, 16);
+    m_txtSearchField->setZOrder(99);
+    this->addChild(m_txtSearchField);
 }
 
 bool AddFriendScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtSearchField", CCEditBox*, this->m_txtSearchField);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableViewFriend", CCTableView*, this->mTableViewFriend);
     return true;
 }

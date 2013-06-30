@@ -114,8 +114,8 @@ void LoginScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* r
 	CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
 	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
 	if (code != 200) {
-		if (code == 121) {
-			CCMessageBox(GlobalData::getLocalString("register_have_sameuser")->getCString(),"");
+		if (code == 112) {
+			CCMessageBox(GlobalData::getLocalString("login_wrongnameorpassword")->getCString(),"");
 		} else {
 			CCMessageBox(response->getErrorBuffer(),"error");
 		}

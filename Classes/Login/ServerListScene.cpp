@@ -211,7 +211,7 @@ CCSize ServerListScene::cellSizeForTable(CCTableView *table)
 	return CCSizeMake(290, 40);
 }
 
-CCSize ServerListScene::cellSizeForIndex(CCTableView *table, unsigned int idx)
+CCSize ServerListScene::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
 {
 	CCDictionary *dict = (CCDictionary *)mArrayList->objectAtIndex(idx);
 	CCString *category = (CCString *)dict->objectForKey("Category");
@@ -228,17 +228,13 @@ CCSize ServerListScene::cellSizeForIndex(CCTableView *table, unsigned int idx)
     return CCSizeMake(290, 40);
 }
 
-bool ServerListScene::hasFixedCellSize()
-{
-    return false;
-}
 
 CCTableViewCell* ServerListScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
 	CCDictionary *dict = (CCDictionary *)mArrayList->objectAtIndex(idx);
     bool selected = (idx==selectedindex);
 	CCTableViewCell *cell = table->dequeueCell();
-    CCSize size = this->cellSizeForIndex(table, idx);
+    CCSize size = this->tableCellSizeForIndex(table, idx);
 	CCString *category = (CCString *)dict->objectForKey("Category");
     CCString *status = (CCString *)dict->objectForKey("Status");
 	if (!cell) {
