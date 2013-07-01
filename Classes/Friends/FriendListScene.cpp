@@ -36,9 +36,11 @@ bool FriendListScene::init()
         //////////////////////////////////////////////////////////////////////////
 
         CC_BREAK_IF(! CCLayer::init());
+
+		btnTouched = false;
         
 		mFriendList =  CCArray::create();
-//        mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
+        //mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
         mFriendList->retain();
 
         bRet = true;
@@ -128,7 +130,7 @@ void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     mTableViewFriend->reloadData();
     mTableViewFriend->retain();
 
-    this->LoadFriends();
+    //this->LoadFriends();
 }
 
 void FriendListScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
@@ -146,6 +148,10 @@ void FriendListScene::tableCellUnhighlight(CCTableView* table, CCTableViewCell* 
 void FriendListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
     CCLOG("cell touched at index: %i", cell->getIdx());
+	if (btnTouched)
+	{
+		return;
+	}
     if (selectedindex == cell->getIdx()) {
         selectedindex = -1;
     } else {
@@ -250,6 +256,7 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
         chatBtn->setVisible(selected);
 		chatBtn->setPreferredSize(CCSizeMake(74,34));
         chatBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
+		chatBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchDown);
         cell->addChild(chatBtn);
         
         CCControlButton * msgBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_emailbtn.png")));
@@ -259,6 +266,7 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 		msgBtn->setPreferredSize(CCSizeMake(74,34));
         msgBtn->setVisible(selected);
         msgBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
+		msgBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchDown);
         cell->addChild(msgBtn);
         
         CCControlButton * formationBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_formation.png")));
@@ -267,6 +275,7 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
         formationBtn->setTag(129);
 		formationBtn->setPreferredSize(CCSizeMake(74,34));
         formationBtn->setVisible(selected);
+		formationBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchDown);
         formationBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
         cell->addChild(formationBtn);
         
@@ -277,6 +286,7 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 		deleteBtn->setPreferredSize(CCSizeMake(74,34));
         deleteBtn->setVisible(selected);
         deleteBtn->setTouchPriority(100);
+		deleteBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchDown);
         deleteBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
         cell->addChild(deleteBtn);
 	}
@@ -344,33 +354,44 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 }
 
 //    按下按钮事件回调
-void FriendListScene::toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent)
+void FriendListScene::toolBarTouchDownAction(CCObject * sender , CCControlEvent pCCControlEvent)
 {
 	CCControlButton *button = (CCControlButton *)sender;
-	switch (button->getTag()) 
+	if (pCCControlEvent==CCControlEventTouchDown)
 	{
-	case 127:
+		btnTouched = true;
+	}
+	else if (pCCControlEvent==CCControlEventTouchUpInside)
+	{
+		switch (button->getTag()) 
 		{
-			break;
-		}
-	case 128:
-		{
-			MainGameScene *mainScene = (MainGameScene *)this->getParent();
-			mainScene->PushLayer((CCLayer *)this->GetLayer("NewMailScene"));
-			break;
-		}
-	case 129:
-		{
-			break;
-		}
-	case 130:
-		{
-			CCMessageDialog *box = CCMessageDialog::create();
-			box->setTitle(GlobalData::getLocalString("friend_delete_confirm")->getCString());
-			box->setDelegate(this);
-			this->addChild(box);
+		case 127:
+			{
+				btnTouched = false;
+				break;
+			}
+		case 128:
+			{
+				btnTouched = false;
+				MainGameScene *mainScene = (MainGameScene *)this->getParent();
+				mainScene->PushLayer((CCLayer *)this->GetLayer("NewMailScene"));
+				break;
+			}
+		case 129:
+			{
+				btnTouched = false;
+				break;
+			}
+		case 130:
+			{
+				btnTouched = false;
+				CCMessageDialog *box = CCMessageDialog::create();
+				box->setTitle(GlobalData::getLocalString("friend_delete_confirm")->getCString());
+				box->setDelegate(this);
+				this->addChild(box);
 
-			break;
+				break;
+			}
 		}
 	}
 }

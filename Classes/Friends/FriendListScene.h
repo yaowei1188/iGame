@@ -70,6 +70,7 @@ public:
     unsigned int selectedindex;
     
     CCArray *mFriendList;
+	bool btnTouched;
 };
 
 #endif  // __HELLOWORLD_SCENE_H__

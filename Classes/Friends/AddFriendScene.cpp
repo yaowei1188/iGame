@@ -131,7 +131,10 @@ void AddFriendScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespons
 	CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
 	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
 	if (code != 200) {
-		CCMessageBox("invoke web api failed!","ERROR");
+		if (code == 121) {
+			 CCMessageBox(GlobalData::getLocalString("friend_add_exist")->getCString(),"Success");
+		}
+		
 		return;
 	}
     
@@ -147,7 +150,7 @@ void AddFriendScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespons
 		selectedindex = -1;
 		this->mTableViewFriend->reloadData();
     } else if (requestTag == "102"){
-       CCMessageBox("add new friend successfully","Success");
+       CCMessageBox(GlobalData::getLocalString("friend_add_success")->getCString(),"Success");
     }
 }
 
@@ -194,7 +197,7 @@ void AddFriendScene::toolBarTouchDownAction(CCObject *pSender, CCControlEvent pC
 			{
 				btnTouched = false;
 				CCMessageDialog *box = CCMessageDialog::create();
-				box->setTitle("Are you sure add this guy as your friends?");
+				box->setTitle(GlobalData::getLocalString("friend_add_confirm")->getCString());
 				box->setDelegate(this);
 				this->addChild(box);
 			}

@@ -198,8 +198,6 @@ void MailListScene::callbackSwitch(CCObject* pSender){
 			*idx = 1;
 		}
 	}
-
-
 }
 
 CCMenu* MailListScene::generateCheckBox()

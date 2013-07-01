@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+  <key>friend_add_exist</key>
+  <string>不能重复添加相同的好友！</string>
+  <key>friend_add_success</key>
+  <string>添加好友成功！</string>
+  <key>friend_add_confirm</key>
+  <string>确实要添加该好友吗？</string>
 	<key>friend_delete_confirm</key>
 	<string>确实要删除该好友吗？</string>
 	<key>login_wrongnameorpassword</key>

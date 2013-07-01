@@ -433,11 +433,11 @@ void MailMainScene::buttonClicked(CCObject * sender , CCControlEvent controlEven
 	switch (button->getTag()) {
 	case 101:
 		CCLOG("11111");
-		mainScene->PopLayer();
+		mainScene->PushLayer((CCLayer *)this->GetLayer("NewMailScene"));
 		break;
 	case 102:
 		CCLOG("22222");
-		mainScene->PushLayer((CCLayer *)this->GetLayer("AddFriendScene"));
+		mainScene->PopLayer();
 		break;
 	case 103:
 		CCLOG("33333");
