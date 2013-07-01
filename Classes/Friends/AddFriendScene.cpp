@@ -37,6 +37,7 @@ bool AddFriendScene::init()
         CC_BREAK_IF(! CCLayer::init());
         
         selectedindex = -1;
+		btnTouched = false;
 
 		mFriendList= CCArray::create();
         //mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("Li2"),CCString::create("Li3"),CCString::create("Li1"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
@@ -175,24 +176,33 @@ bool AddFriendScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pM
 
 void AddFriendScene::toolBarTouchDownAction(CCObject *pSender, CCControlEvent pCCControlEvent) {
 	CCControlButton *button = (CCControlButton *)pSender;
-    switch (button->getTag()) {
-        case 128:
-        {
-			MainGameScene *mainScene = (MainGameScene *)this->getParent();
-			mainScene->PushLayer((CCLayer *)this->GetLayer("NewMailScene"));
-        }
+	if (pCCControlEvent==CCControlEventTouchDown)
+	{
+		btnTouched = true;
+	}
+	else if (pCCControlEvent==CCControlEventTouchUpInside)
+	{
+		switch (button->getTag()) {
+		case 128:
+			{
+				btnTouched = false;
+				MainGameScene *mainScene = (MainGameScene *)this->getParent();
+				mainScene->PushLayer((CCLayer *)this->GetLayer("NewMailScene"));
+			}
 			break;
 		case 129:
-        {
-			CCMessageDialog *box = CCMessageDialog::create();
-			box->setTitle("Are you sure add this guy as your friends?");
-			box->setDelegate(this);
-			this->addChild(box);
-        }
+			{
+				btnTouched = false;
+				CCMessageDialog *box = CCMessageDialog::create();
+				box->setTitle("Are you sure add this guy as your friends?");
+				box->setDelegate(this);
+				this->addChild(box);
+			}
 			break;
-        default:
-            break;
-    }
+		default:
+			break;
+		}
+	}
 }
 
 void AddFriendScene::didClickButton(CCMessageDialog* dialog,unsigned int index)
@@ -233,6 +243,10 @@ void AddFriendScene::tableCellUnhighlight(CCTableView* table, CCTableViewCell* c
 void AddFriendScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
     CCLOG("cell touched at index: %i", cell->getIdx());
+	if (btnTouched)
+	{
+		return;
+	}
     if (selectedindex == cell->getIdx()) {
         selectedindex = -1;
     } else {
@@ -324,22 +338,13 @@ CCTableViewCell* AddFriendScene::tableCellAtIndex(CCTableView *table, unsigned i
 			layer->addChild(sFriendheart);
 		}
 
-
-		//CCControlButton * chatBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_chat.png")));
-		//chatBtn->setPosition(ccp(4,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
-		//chatBtn->setAnchorPoint(ccp(0,0.5));
-		//chatBtn->setTag(127);
-		//chatBtn->setVisible(selected);
-		//chatBtn->setPreferredSize(CCSizeMake(74,34));
-		//chatBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(AddFriendScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
-		//cell->addChild(chatBtn);
-
 		CCControlButton * msgBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_emailbtn.png")));
 		msgBtn->setPosition(ccp(81,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
 		msgBtn->setAnchorPoint(ccp(0,0.5));
 		msgBtn->setTag(128);
 		msgBtn->setPreferredSize(CCSizeMake(74,34));
 		msgBtn->setVisible(selected);
+		msgBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(AddFriendScene::toolBarTouchDownAction), CCControlEventTouchDown);
 		msgBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(AddFriendScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
 		cell->addChild(msgBtn);
 
@@ -349,17 +354,9 @@ CCTableViewCell* AddFriendScene::tableCellAtIndex(CCTableView *table, unsigned i
 		formationBtn->setTag(129);
 		formationBtn->setPreferredSize(CCSizeMake(74,34));
 		formationBtn->setVisible(selected);
+		formationBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(AddFriendScene::toolBarTouchDownAction), CCControlEventTouchDown);
 		formationBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(AddFriendScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
 		cell->addChild(formationBtn);
-
-		//CCControlButton * deleteBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_delete.png")));
-		//deleteBtn->setPosition(ccp(235,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
-		//deleteBtn->setAnchorPoint(ccp(0,0.5));
-		//deleteBtn->setTag(130);
-		//deleteBtn->setPreferredSize(CCSizeMake(74,34));
-		//deleteBtn->setVisible(selected);
-		//deleteBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(AddFriendScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
-		//cell->addChild(deleteBtn);
 	}
 	else
 	{

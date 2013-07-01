@@ -18,8 +18,7 @@ class TaskListScene : public MainLayerBase,
 //	public CCTableViewDelegate,
 	public CCBSelectorResolver,
 	public CCNodeLoaderListener,
-	public CCBMemberVariableAssigner,
-	public CCMessageDialogDelegate
+	public CCBMemberVariableAssigner
 {
 public:
 	TaskListScene();
@@ -44,16 +43,19 @@ public:
 	virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
 
 	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
-	void didClickButton(CCMessageDialog* dialog,unsigned int index);
-	void executeTask(std::string &targetUser);
+	//void didClickButton(CCMessageDialog* dialog,unsigned int index);
+	//void executeTask(std::string &targetUser);
     void showTaskLists();
     void menuItemCallback(CCObject* pSender);
-	CCTableView* mTableView;
+	//CCTableView* mTableView;
 	unsigned int selectedindex;
     CCLabelTTF *m_lblTitle;
     SlidingMenuGrid* sliderMenu;
 	CCArray *mArrayList;
     CCDictionary *mTaskDict;
+
+	int upperIndex;
+	int subIndex;
 };
 
 #endif  // __TASK_LIST_SCENE_H__

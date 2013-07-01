@@ -38,62 +38,10 @@ bool TaskDetailScene::init()
 
 		CC_BREAK_IF(! CCLayer::init());
 
-		//mTaskList =  CCArray::create();
-//		mTaskList = CCArray::create(CCString::create("Li1"),CCString::create("’≈»˝"),CCString::create("Li3"),CCString::create("¿ÓÀƒ"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
-		//mTaskList->retain();
-
 		bRet = true;
 	} while (0);
 
 	return bRet;
-}
-
-void TaskDetailScene::doSearch()
-{
-	this->ShowLoadingIndicator("");
-
-	CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpPost);
-	request->setResponseCallback(this,httpresponse_selector(TaskDetailScene::requestFinishedCallback));
-	request->setTag("101");
-
-	string _strUrl = CompleteUrl(URL_FRIEND_LIST);
-	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-
-	request->setUrl(_strUrl.c_str());
-
-	CCHttpClient *client = CCHttpClient::getInstance();
-	client->send(request);
-
-	request->release();
-}
-
-void TaskDetailScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
-{
-	if (!this->ValidateResponseData(client,response))
-	{
-		return;
-	}
-    
-	std::vector<char> *buffer = response->getResponseData();
-
-	std::string content(buffer->begin(),buffer->end());
-
-	CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
-	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
-	if (code != 200) {
-		CCMessageBox("invoke web api failed!","ERROR");
-		return;
-	}
-
-	std::string requestTag(response->getHttpRequest()->getTag());
-
-	if (requestTag == "101") {
-
-	} else if (requestTag == "102"){
-		
-		CCMessageBox("invoke api sucessfully","Success");
-	}
 }
 
 bool TaskDetailScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
@@ -178,51 +126,55 @@ void TaskDetailScene::showTaskInfo()
     lblSubTitle->setString(((CCString *)task->objectForKey("Title"))->getCString());
     
 	string strCoins("游戏币+");
-	strCoins += ((CCString *)task->objectForKey("Coins"))->getCString();
+	//strCoins += ((CCString *)task->objectForKey("Coins"))->getCString();
+	char strGainedPoins[20];
+	sprintf(strGainedPoins,"%d",gainedCoin);
+	strCoins += strGainedPoins;
 	lblCoins->setString(strCoins.c_str());
 
 	string strExperience("经验+");
-	strExperience += ((CCString *)task->objectForKey("Experience"))->getCString();
+	char strGainedExperience[20];
+	sprintf(strGainedExperience,"%d",gainedEmpiricalValue);
+	strExperience += strGainedExperience;
+	//strExperience += ((CCString *)task->objectForKey("Experience"))->getCString();
 	lblExperience->setString(strExperience.c_str());
 }
 
 void TaskDetailScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-	//doSearchFriend();
-    
 	mTaskList = GlobalData::getTasks("");
 	mTaskList->retain();
-
-	//showTaskInfo();
 }
 
-//void TaskDetailScene::didClickButton(CCMessageDialog* dialog,unsigned int index)
-//{
-//	if (index == 0)
-//	{
-//		CCDictionary *dict = (CCDictionary *)mArrayList->objectAtIndex(selectedindex);
-//		string encryptedUserInfo(dict->valueForKey("encryptedUserInfo")->getCString());
-//		this->executeTask(encryptedUserInfo);
-//	}
-//}
-
-void TaskDetailScene::executeTask(std::string index,std::string subIndex)
+void TaskDetailScene::executeTask(int index,int subIndex)
 {
+	subIndex++;
+
+	if (subIndex==10)
+	{
+		subIndex==1;
+		upperIndex++;
+	}
+
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpPost);
 	request->setResponseCallback(this,httpresponse_selector(TaskDetailScene::requestFinishedCallback));
 	request->setTag("102");
 
 	string _strUrl = CompleteUrl(URL_TASK_EXPLORE);
-//	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-//	_strUrl.append("/" + index);
-//	_strUrl.append("/" + subIndex);
     
     string _strPostData("encryptedUserInfo=");
 	_strPostData.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+	_strPostData.append("&userGameRoleId=" + CCUserDefault::sharedUserDefault()->getStringForKey("gameRoleId"));
+
+	char strIndex[20];
+	char strSubIndex[20];
+
+	sprintf(strIndex,"&index=%d",index);
+	sprintf(strSubIndex,"&subIndex=%d",subIndex);
     
-    _strPostData.append("&index=" + index);
-    _strPostData.append("&subIndex=" + subIndex);
+    _strPostData.append(strIndex);
+    _strPostData.append(strSubIndex);
     
 	request->setRequestData(_strPostData.c_str(), _strPostData.length());
 
@@ -232,24 +184,64 @@ void TaskDetailScene::executeTask(std::string index,std::string subIndex)
 	client->send(request);
 
 	request->release();
+
+	selectedindex++;
+}
+
+void TaskDetailScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
+{
+	if (!this->ValidateResponseData(client,response))
+	{
+		return;
+	}
+
+	std::vector<char> *buffer = response->getResponseData();
+	std::string content(buffer->begin(),buffer->end());
+
+	CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
+	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
+	if (code != 200) 
+	{
+		CCMessageBox("invoke web api failed!","ERROR");
+		return;
+	}
+
+	std::string requestTag(response->getHttpRequest()->getTag());
+
+	if (requestTag == "102")
+	{
+		mTaskDict = dynamic_cast<CCDictionary *>(dictionary->objectForKey("exploreResponse"));
+		if (mTaskDict == NULL)
+		{
+			return;
+		}
+		upperIndex = ((CCNumber*)mTaskDict->objectForKey("index"))->getIntValue();
+		subIndex = ((CCNumber*)mTaskDict->objectForKey("subIndex"))->getIntValue();
+		card = (CCString*)mTaskDict->objectForKey("card");
+		//code = ((CCNumber*)mTaskDict->objectForKey("code"))->getIntValue();
+		gainedCoin = ((CCNumber*)mTaskDict->objectForKey("gainedCoin"))->getIntValue();
+		gainedEmpiricalValue = ((CCNumber*)mTaskDict->objectForKey("gainedEmpiricalValue"))->getIntValue();
+
+		this->showTaskInfo();
+	}
 }
 
 void TaskDetailScene::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
 {
-	MainGameScene *mainScene = (MainGameScene *)this->getParent();
 	CCControlButton *button = (CCControlButton *)sender;
 	switch (button->getTag()) {
 	case 101:
         {
-		mainScene->PopLayer();
-		break;
+			MainGameScene *mainScene = (MainGameScene *)this->getParent();
+			mainScene->PopLayer();
+			break;
         }
 	case 102:
         {
-		CCLOG("22222");
-			executeTask("0","0");
-            selectedindex++;
-            showTaskInfo();
+			CCLOG("22222");
+			executeTask(upperIndex,subIndex);
+            //selectedindex++;
+            //showTaskInfo();
         }
 		break;
 	}

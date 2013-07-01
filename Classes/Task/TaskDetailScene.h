@@ -31,7 +31,7 @@ public:
 
 	// a selector callback
 	void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
-	void doSearch();
+	//void doSearch();
 
 	// implement the "static node()" method manually
 	CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(TaskDetailScene,create);
@@ -43,8 +43,8 @@ public:
 	virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
 
 	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
-//	void didClickButton(CCMessageDialog* dialog,unsigned int index);
-	void executeTask(std::string index,std::string subIndex);
+
+	void executeTask(int index,int subIndex);
     void showTaskInfo();
     void menuItemCallback(CCObject* pSender);
 	unsigned int selectedindex;
@@ -53,6 +53,16 @@ public:
 	CCDictionary *mTaskList;
     
     CCLabelTTF *lblSubTitle;
+
+	CCDictionary *mTaskDict;
+
+	int upperIndex;
+	int subIndex;
+
+	CCString* card;
+	//int code;
+	int gainedCoin;
+	int gainedEmpiricalValue;
 };
 
 #endif  // __TASK_DETAIL_SCENE_H__

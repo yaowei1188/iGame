@@ -1,4 +1,5 @@
 #include "TaskListScene.h"
+#include "TaskDetailScene.h"
 
 #define TASK_COLUMN  3
 #define TASK_ROW  3
@@ -38,12 +39,6 @@ bool TaskListScene::init()
 
 		CC_BREAK_IF(! CCLayer::init());
 
-		this->retrieveCurrentTask();
-
-		//mArrayList =  CCArray::create();
-		//mArrayList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
-		//mArrayList->retain();
-
 		bRet = true;
 	} while (0);
 
@@ -62,6 +57,7 @@ void TaskListScene::retrieveCurrentTask()
 	string _strUrl = CompleteUrl(URL_TASK_RETRIEVE_CURRENT);
 	string _strPostData("encryptedUserInfo=");
 	_strPostData.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+	_strPostData.append("&userGameRoleId=" + CCUserDefault::sharedUserDefault()->getStringForKey("gameRoleId"));
 	request->setRequestData(_strPostData.c_str(), _strPostData.length());
 
 	request->setUrl(_strUrl.c_str());
@@ -91,16 +87,36 @@ void TaskListScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse
 
 	std::string requestTag(response->getHttpRequest()->getTag());
 
-	if (requestTag == "101") {
-		mTaskDict = dynamic_cast<CCDictionary *>(dictionary->objectForKey("exploreResponse"));
+	if (requestTag == "101") 
+	{
+		mTaskDict = dynamic_cast<CCDictionary *>(dictionary->objectForKey("gameRoleCurrentTaskResponse"));
 		if (mTaskDict == NULL)
 		{
 			return;
 		}
+		upperIndex = ((CCNumber*)mTaskDict->objectForKey("index"))->getIntValue();
+		subIndex = ((CCNumber*)mTaskDict->objectForKey("subIndex"))->getIntValue();
 
-		selectedindex = -1;
-//		mTableView->reloadData();
-	} else if (requestTag == "102"){
+		if (upperIndex==0)
+		{
+			upperIndex++;
+		}
+
+		if (subIndex==0)
+		{
+			subIndex++;
+		}
+
+		if (subIndex==10)
+		{
+			upperIndex++;
+			subIndex=0;
+		}
+
+		this->showTaskLists();
+
+	} else if (requestTag == "102")
+	{
 
 	}
 }
@@ -122,25 +138,28 @@ SEL_CCControlHandler TaskListScene::onResolveCCBCCControlSelector(CCObject *pTar
 	return NULL;
 }
 
-
 void TaskListScene::showTaskLists()
 {
-    mArrayList = CCArray::createWithCapacity(24);
+    mArrayList = CCArray::create();
+	mArrayList->retain();
 
-    CCSize windowSize = CCDirector::sharedDirector()->getOpenGLView()->getDesignResolutionSize();
+    CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
 
-    for (int i = 0;i<24;i++)
+    for (int i = 1;i<= 24 ;i++)
     {
         CCMenuItemSprite* itmspr = NULL;
         CCSprite *sNormal = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_normal.png"));
         CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_progress.png"));
         CCSprite *sLocked = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_locked.png"));
+		CCSprite *sPassed = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_passed.png"));
 
-        if (i > 3) {
-            itmspr = CCMenuItemSprite::create(sLocked, NULL, NULL, this, NULL);
-        } else {
+        if (i > upperIndex) {
+            itmspr = CCMenuItemSprite::create(sLocked, NULL, NULL, NULL, NULL);
+        } else if (i == upperIndex) {
             itmspr = CCMenuItemSprite::create(sNormal, sSelected, sLocked, this, menu_selector(TaskListScene::menuItemCallback));
-        }
+		} else if (i < upperIndex) { 
+			itmspr = CCMenuItemSprite::create(sPassed, NULL, NULL, NULL, NULL);
+		}
         itmspr->setTag(i);
         mArrayList->addObject(itmspr);
     }
@@ -150,8 +169,7 @@ void TaskListScene::showTaskLists()
     float eWidth =  (TASK_COLUMN-1)*(p.x);
 //    float eHeight = (TASK_ROW-1)*(p.y);
 
-    CCPoint menuPosition = ccp(windowSize.width/2.0f -eWidth/2.0f ,
-                               windowSize.height/2.0f + 30);
+    CCPoint menuPosition = ccp(windowSize.width/2.0f -eWidth/2.0f , windowSize.height/2.0f + 30);
 
     sliderMenu = SlidingMenuGrid::menuWithArray(mArrayList,TASK_COLUMN,TASK_ROW,menuPosition,p );
     sliderMenu->setAnchorPoint(ccp(0.5, 0.5));
@@ -162,50 +180,18 @@ void TaskListScene::showTaskLists()
 
 void TaskListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-	//doSearchFriend();
-    showTaskLists();
+	this->retrieveCurrentTask();
 }
 
 void TaskListScene::menuItemCallback(CCObject* pSender)
 {
     CCLOG ("Item CLICKED: %d",  ((CCMenuItemSprite*)pSender)->getTag());
 
-//    CCMessageDialog *box = CCMessageDialog::create();
-//    box->setTitle("Are you sure add this guy as your friends?");
-//    box->setDelegate(this);
-//    this->addChild(box);
-    
     MainGameScene *mainScene = (MainGameScene *)this->getParent();
-    mainScene->PushLayer((CCLayer *)this->GetLayer("TaskDetailScene"));
-}
-
-void TaskListScene::didClickButton(CCMessageDialog* dialog,unsigned int index)
-{
-	if (index == 0)
-	{
-		CCDictionary *dict = (CCDictionary *)mArrayList->objectAtIndex(selectedindex);
-		string encryptedUserInfo(dict->valueForKey("encryptedUserInfo")->getCString());
-		this->executeTask(encryptedUserInfo);
-	}
-}
-
-void TaskListScene::executeTask(std::string &targetUser)
-{
-	CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,httpresponse_selector(TaskListScene::requestFinishedCallback));
-	request->setTag("103");
-
-	string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
-	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-	_strUrl.append("/" + targetUser);
-
-	request->setUrl(_strUrl.c_str());
-
-	CCHttpClient *client = CCHttpClient::getInstance();
-	client->send(request);
-
-	request->release();
+	TaskDetailScene *detailScene = (TaskDetailScene *)this->GetLayer("TaskDetailScene");
+	detailScene->upperIndex = this->upperIndex;
+	detailScene->subIndex = this->subIndex;
+    mainScene->PushLayer(detailScene);
 }
 
 void TaskListScene::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
@@ -226,16 +212,12 @@ void TaskListScene::buttonClicked(CCObject * sender , CCControlEvent controlEven
 
 TaskListScene::TaskListScene()
 {
-//	mTableView = NULL;
-	//    mMainSceneTemp = NULL;
 	mArrayList = NULL;
     m_lblTitle = NULL;
 }
 
 TaskListScene::~TaskListScene()
 {
-	//    mTableViewMail->release();
-	//    mMainSceneTemp->release();
-	//    mArrayList->release();
+	m_lblTitle->release();
 }
 

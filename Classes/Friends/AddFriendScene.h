@@ -66,6 +66,8 @@ public:
     CCTableView* mTableViewFriend;
     unsigned int selectedindex;
     CCArray *mFriendList;
+
+	bool btnTouched;
 };
 
 #endif  // __LOGINSCENE_SCENE_H__

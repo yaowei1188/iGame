@@ -92,10 +92,10 @@ void CharacterScene::doSubmit()
 {
 	std::string sAccount(m_txtAccount->getText());
 
-	//if (trimRight(sAccount).empty() ) {
-	//	CCMessageBox(GlobalData::getLocalString("character_name_empty")->getCString(),"ERROR");
-	//	return;
-	//}
+	if (trimRight(sAccount).empty() ) {
+		CCMessageBox(GlobalData::getLocalString("character_name_empty")->getCString(),"ERROR");
+		return;
+	}
 
  //   this->OpenNewScene("MainGameScene");
 	//return;
@@ -166,10 +166,12 @@ void CharacterScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespons
     CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
 	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
     if (code != 200) {
-		if (code == 104) {
+		if (code == 103) {
+			CCMessageBox("exist nickname","ERROR");
+		}
+		else if (code == 104) {
 			CCMessageBox("invalid nickname","ERROR");
 		}
-        CCMessageBox("invoke web api failed!","ERROR");
         return;
     }
     
@@ -191,6 +193,8 @@ void CharacterScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespons
 		//CCUserDefault::sharedUserDefault()->setStringForKey("userId", UserId);
 		CCUserDefault::sharedUserDefault()->setStringForKey("gameRoleId", gameRoleid);
 		CCUserDefault::sharedUserDefault()->setStringForKey("nickName", m_txtAccount->getText());
+
+		this->OpenNewScene("MainGameScene");
 	}
 }
 
