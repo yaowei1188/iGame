@@ -1,5 +1,5 @@
 #include "ChatLayer.h"
-//#include "JsonBox.h"
+#include "MainGameScene.h"
 
 using namespace cocos2d;
 
@@ -146,31 +146,24 @@ void ChatLayer::parseJson()
 
 void ChatLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    m_txtAccount = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
+    m_txtAccount = CCEditBox::create(CCSizeMake(134, 30), CCScale9Sprite::create("transparent.png"));
     this->addChild(m_txtAccount);
-    m_txtAccount->setPosition(ccp(177, 368));
+    m_txtAccount->setPosition(ccp(215, 24));
     
-    m_txtPassword = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
-    this->addChild(m_txtPassword);
-    m_txtPassword->setPosition(ccp(177, 320));
-    
-    m_txtAccount->setFontColor(ccc3(0,0,0));
+    m_txtAccount->setFontColor(ccc3(255,255,255));
     m_txtAccount->setFont("Arial", 16);
-    m_txtPassword->setInputFlag(kEditBoxInputFlagPassword);
-    m_txtPassword->setFontColor(ccc3(0,0,0));
-    m_txtPassword->setFont("Arial", 16);
     
-	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
-	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
-    
-    CCMenu* m_auto_op_menu = CCMenu::create();
-    CCMenuItemSprite* auto_op_btn = CCMenuItemSprite::create(spriteOn, NULL);
-    CCMenuItemSprite* auto_op_btn2 = CCMenuItemSprite::create(spriteOff, NULL);
-    CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(ChatLayer::callbackSwitch),auto_op_btn,auto_op_btn2,NULL);
-    
-    m_auto_op_menu->addChild(item);
-    m_auto_op_menu->setPosition(ccp(116, 268));
-    this->addChild(m_auto_op_menu);
+//	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
+//	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
+//    
+//    CCMenu* m_auto_op_menu = CCMenu::create();
+//    CCMenuItemSprite* auto_op_btn = CCMenuItemSprite::create(spriteOn, NULL);
+//    CCMenuItemSprite* auto_op_btn2 = CCMenuItemSprite::create(spriteOff, NULL);
+//    CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(ChatLayer::callbackSwitch),auto_op_btn,auto_op_btn2,NULL);
+//    
+//    m_auto_op_menu->addChild(item);
+//    m_auto_op_menu->setPosition(ccp(116, 268));
+//    this->addChild(m_auto_op_menu);
 }
 
 void ChatLayer::callbackSwitch(CCObject* pSender){
@@ -194,22 +187,21 @@ bool ChatLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMember
 void ChatLayer::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
     
     CCControlButton *button = (CCControlButton*) pSender;
-//	char sAccount[20];
-//	char sPassword[20];
-//	sprintf(sAccount,m_txtAccount->getText());
-//	sprintf(sPassword,m_txtAccount->getText());
     
     switch (button->getTag()) {
-        case LOGIN_BUTTON_ACTION_SIGNIN_TAG:
-            CCLOG("signin");
+        case 1:
+        {
+            CCLOG("chat");
+            MainGameScene *mainScene = (MainGameScene *)this->getParent();
+            mainScene->RemoveChatLayer();
             break;
-        case LOGIN_BUTTON_ACTION_SIGNUP_TAG:
-            CCLOG("signup");
+        }
+        case 2:
+        {
+            CCLOG("face");
             break;
-            break;
+        }
     }
-    
-    CCDirector::sharedDirector()->popScene();
 }
 
 SEL_MenuHandler ChatLayer::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)

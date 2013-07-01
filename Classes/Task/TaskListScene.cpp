@@ -54,23 +54,6 @@ void TaskListScene::retrieveCurrentTask()
 {
 	this->ShowLoadingIndicator("");
 
-	/*CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,httpresponse_selector(TaskListScene::requestFinishedCallback));
-	request->setTag("101");
-
-	string _strUrl = CompleteUrl(URL_TASK_RETRIEVE_CURRENT);
-	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-
-	request->setUrl(_strUrl.c_str());
-
-	CCHttpClient *client = CCHttpClient::getInstance();
-	client->send(request);
-
-	request->release();*/
-
-	this->ShowLoadingIndicator("");
-
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpPost);
 	request->setResponseCallback(this,httpresponse_selector(TaskListScene::requestFinishedCallback));
@@ -109,8 +92,8 @@ void TaskListScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse
 	std::string requestTag(response->getHttpRequest()->getTag());
 
 	if (requestTag == "101") {
-		mArrayList = dynamic_cast<CCArray *>(dictionary->objectForKey("friendList"));
-		if (mArrayList==NULL)
+		mTaskDict = dynamic_cast<CCDictionary *>(dictionary->objectForKey("exploreResponse"));
+		if (mTaskDict == NULL)
 		{
 			return;
 		}
@@ -124,7 +107,6 @@ void TaskListScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse
 
 bool TaskListScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-//	CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableView", CCTableView*, this->mTableView);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblTitle", CCLabelTTF*, this->m_lblTitle);
 	return true;
 }
@@ -166,7 +148,7 @@ void TaskListScene::showTaskLists()
     CCPoint p = ccp(100,80);
 
     float eWidth =  (TASK_COLUMN-1)*(p.x);
-    float eHeight = (TASK_ROW-1)*(p.y);
+//    float eHeight = (TASK_ROW-1)*(p.y);
 
     CCPoint menuPosition = ccp(windowSize.width/2.0f -eWidth/2.0f ,
                                windowSize.height/2.0f + 30);

@@ -50,7 +50,6 @@ public:
 	virtual cocos2d::CCSize cellSizeForTable(cocos2d::extension::CCTableView *table);
 	virtual CCTableViewCell* tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx);
 	virtual unsigned int numberOfCellsInTableView(CCTableView *table);
-//    virtual bool hasFixedCellSize();
     virtual CCSize tableCellSizeForIndex(CCTableView *table, unsigned int idx);
     virtual void tableCellHighlight(CCTableView* table, CCTableViewCell* cell);
     virtual void tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell);

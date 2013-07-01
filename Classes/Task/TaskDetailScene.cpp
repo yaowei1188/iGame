@@ -53,7 +53,7 @@ void TaskDetailScene::doSearch()
 	this->ShowLoadingIndicator("");
 
 	CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpGet);
+	request->setRequestType(CCHttpRequest::kHttpPost);
 	request->setResponseCallback(this,httpresponse_selector(TaskDetailScene::requestFinishedCallback));
 	request->setTag("101");
 
@@ -209,14 +209,22 @@ void TaskDetailScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 void TaskDetailScene::executeTask(std::string index,std::string subIndex)
 {
 	CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpGet);
+	request->setRequestType(CCHttpRequest::kHttpPost);
 	request->setResponseCallback(this,httpresponse_selector(TaskDetailScene::requestFinishedCallback));
 	request->setTag("102");
 
 	string _strUrl = CompleteUrl(URL_TASK_EXPLORE);
-	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-	_strUrl.append("/" + index);
-	_strUrl.append("/" + subIndex);
+//	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+//	_strUrl.append("/" + index);
+//	_strUrl.append("/" + subIndex);
+    
+    string _strPostData("encryptedUserInfo=");
+	_strPostData.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+    
+    _strPostData.append("&index=" + index);
+    _strPostData.append("&subIndex=" + subIndex);
+    
+	request->setRequestData(_strPostData.c_str(), _strPostData.length());
 
 	request->setUrl(_strUrl.c_str());
 

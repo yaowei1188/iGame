@@ -170,11 +170,6 @@ CCSize MailListScene::tableCellSizeForIndex(CCTableView *table, unsigned int idx
     return CCSizeMake(312, 50);
 }
 
-//bool MailListScene::hasFixedCellSize()
-//{
-//    return false;
-//}
-
 void MailListScene::callbackSwitch(CCObject* pSender){
     
 	CCMenuItemToggle* pSwitch = (CCMenuItemToggle*)pSender;

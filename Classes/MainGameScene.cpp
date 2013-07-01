@@ -12,6 +12,7 @@ MainGameScene::MainGameScene()
 {
     mMainSceneTemp = NULL;
     mMainLayer = NULL;
+    mChatLayer = NULL;
     mlayArray = CCArray::create();
     mlayArray->retain();
 }
@@ -32,6 +33,7 @@ bool MainGameScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMe
 {
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainSceneTemp", MainSceneTemplate*, this->mMainSceneTemp);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainLayer", MainInnerLayer*, this->mMainLayer);
+//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mChatLayer", ChatLayer*, this->mChatLayer);
     
     return true;
 }
@@ -62,29 +64,72 @@ void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
         case TOOLBAR_BTN_SETTING_TAG:
             CCLOG("77777");
             break;
+        case 8:
+            CCLOG("8888");
+            this->AddChatLayer();
+            break;
     }
 }
 
-void MainGameScene::PushLayer(CCLayer *subLayer)
+void MainGameScene::PushLayer(CCLayer *subLayer,bool fromRight)
 {
+    this->RemoveChatLayer();
+    
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     
     CCLayer *prevLayer = (CCLayer *)mlayArray->objectAtIndex(mlayArray->count()-1);
     
-    CCSequence *sequence = CCSequence::create(CCMoveBy::create(0.2, CCPointMake(-CCDirector::sharedDirector()->getWinSize().width,0)),CCCallFuncN::create(this, callfuncN_selector(MainGameScene::removeNodeCallBack)),NULL);
-    
-    prevLayer->runAction(sequence);
-    
-    subLayer->setPosition(ccp(0 + winSize.width,38));
-    this->addChild(subLayer);
-    subLayer->runAction(CCMoveTo::create(0.2, ccp(0,38)));
+    if (fromRight) {
+        CCSequence *sequence = CCSequence::create(CCMoveBy::create(0.2, CCPointMake(-CCDirector::sharedDirector()->getWinSize().width,0)),CCCallFuncN::create(this, callfuncN_selector(MainGameScene::removeNodeCallBack)),NULL);
+        
+        prevLayer->runAction(sequence);
+        
+        subLayer->setPosition(ccp(0 + winSize.width,38));
+        this->addChild(subLayer);
+        subLayer->runAction(CCMoveTo::create(0.2, ccp(0,38)));
+        
+        this->mlayArray->addObject(subLayer);
+    }
+}
 
-    this->mlayArray->addObject(subLayer);
+void MainGameScene::AddChatLayer()
+{
+//    mChatLayer = (ChatLayer *)this->GetLayer("ChatLayer.ccbi");
+    
+    if (mChatLayer== NULL) {
+        mChatLayer = (ChatLayer *)this->GetLayer("ChatLayer.ccbi");
+    } else {
+        return;
+    }
+    
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    
+    mChatLayer->setPosition(ccp(0 - winSize.width,38));
+    this->addChild(mChatLayer);
+    mChatLayer->runAction(CCMoveTo::create(0.2, ccp(0,38)));
+}
+
+void MainGameScene::RemoveChatLayer()
+{
+    if (mChatLayer==NULL) {
+        return;
+    }
+    
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    
+    CCSequence *sequence = CCSequence::create(CCMoveBy::create(0.2, ccp(0 - winSize.width,0)),CCCallFuncN::create(this, callfuncN_selector(MainGameScene::removeNodeCallBack)),CCCallFunc::create(this, callfunc_selector(MainGameScene::SetNull)),NULL);
+    
+    mChatLayer->runAction(sequence);
+}
+
+void MainGameScene::SetNull()
+{
+    mChatLayer = NULL;
 }
 
 void MainGameScene::removeNodeCallBack(CCNode* pNode)
 {
-    pNode->removeFromParent();
+    pNode->removeFromParentAndCleanup(true);
 }
 
 void MainGameScene::removeAndCleanNodeCallBack(CCNode* pNode)
@@ -95,6 +140,8 @@ void MainGameScene::removeAndCleanNodeCallBack(CCNode* pNode)
 
 void MainGameScene::PopToRoot()
 {
+      this->RemoveChatLayer();
+    
     if (mlayArray->count()<=1) {
         return;
     }

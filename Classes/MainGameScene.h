@@ -16,6 +16,7 @@
 #include "MainLayerBase.h"
 #include "MainSceneTemplate.h"
 #include "MainInnerLayer.h"
+#include "ChatLayer.h"
 #include "common.h"
 
 using namespace cocos2d;
@@ -47,7 +48,7 @@ public:
     virtual bool init();
     
     MainSceneTemplate *mMainSceneTemp;
-    
+    ChatLayer *mChatLayer;
     MainInnerLayer *mMainLayer;
     
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainGameScene, create);
@@ -60,7 +61,10 @@ public:
     void removeAndCleanNodeCallBack(CCNode *pNode);
     
 public:
-    void PushLayer(CCLayer *layer);
+    void AddChatLayer();
+    void RemoveChatLayer();
+    void SetNull();
+    void PushLayer(CCLayer *layer,bool fromRight = true);
     void PopLayer();
     void PopToRoot();
 private:

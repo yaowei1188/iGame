@@ -37,8 +37,8 @@ bool FriendListScene::init()
 
         CC_BREAK_IF(! CCLayer::init());
         
-		//mFriendList =  CCArray::create();
-        mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
+		mFriendList =  CCArray::create();
+//        mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
         mFriendList->retain();
 
         bRet = true;
@@ -47,7 +47,7 @@ bool FriendListScene::init()
     return bRet;
 }
 
-void FriendListScene::doSearchFriend()
+void FriendListScene::LoadFriends()
 {
 	this->ShowLoadingIndicator("");
 
@@ -92,11 +92,11 @@ void FriendListScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespon
 		{
 			return;
 		}
-
+        mFriendList->retain();
 		selectedindex = -1;
 		mTableViewFriend->reloadData();
 	} else if (requestTag == "102"){
-		this->doSearchFriend();
+		this->LoadFriends();
 		CCMessageBox("delete friend successfully","Success");
 	}
 }
@@ -104,13 +104,11 @@ void FriendListScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespon
 bool FriendListScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableViewFriend", CCTableView*, this->mTableViewFriend);
-//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainSceneTemp", MainSceneTemplate*, this->mMainSceneTemp);
     return true;
 }
 
 SEL_MenuHandler FriendListScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
 {
-//	CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "menuBarBtnClicked:", FriendListScene::menuBarBtnClicked);
 	return NULL;
 }
 
@@ -128,8 +126,9 @@ void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     mTableViewFriend->setViewSize(CCSizeMake(312, 300));
     mTableViewFriend->setDelegate(this);
     mTableViewFriend->reloadData();
+    mTableViewFriend->retain();
 
-	//doSearchFriend();
+    this->LoadFriends();
 }
 
 void FriendListScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
@@ -154,8 +153,6 @@ void FriendListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell
     }
 
     table->refreshData();
-//    table->_updateContentSize();
-//    table->_updateCellPositions();
 }
 
 unsigned int FriendListScene::numberOfCellsInTableView(CCTableView *table)
@@ -175,11 +172,6 @@ CCSize FriendListScene::tableCellSizeForIndex(CCTableView *table, unsigned int i
     }
     return CCSizeMake(312, 44);
 }
-
-//bool FriendListScene::hasFixedCellSize()
-//{
-//    return false;
-//}
 
 CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
@@ -251,7 +243,6 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
             layer->addChild(sFriendheart);
         }
         
-		
         CCControlButton * chatBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_chat.png")));
         chatBtn->setPosition(ccp(4,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
         chatBtn->setAnchorPoint(ccp(0,0.5));
@@ -375,7 +366,7 @@ void FriendListScene::toolBarTouchDownAction(CCObject * sender , CCControlEvent 
 	case 130:
 		{
 			CCMessageDialog *box = CCMessageDialog::create();
-			box->setTitle("Are you sure add this guy as your friends?");
+			box->setTitle(GlobalData::getLocalString("friend_delete_confirm")->getCString());
 			box->setDelegate(this);
 			this->addChild(box);
 
@@ -435,14 +426,11 @@ void FriendListScene::buttonClicked(CCObject * sender , CCControlEvent controlEv
 FriendListScene::FriendListScene()
 {
     mTableViewFriend = NULL;
-//    mMainSceneTemp = NULL;
     mFriendList = NULL;
 }
 
 FriendListScene::~FriendListScene()
 {
-//    mTableViewFriend->release();
-//    mMainSceneTemp->release();
-//    mFriendList->release();
+    mTableViewFriend->release();
 }
 

@@ -112,11 +112,6 @@ CCSize MainInnerLayer::tableCellSizeForIndex(CCTableView *table, unsigned int id
 	return CCSizeMake(66.5, 65);
 }
 
-//bool MainInnerLayer::hasFixedCellSize()
-//{
-//	return true;
-//}
-
 CCTableViewCell* MainInnerLayer::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
 	CCString *string = (CCString *)mCardList->objectAtIndex(idx);

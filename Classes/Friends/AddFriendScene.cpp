@@ -260,11 +260,6 @@ CCSize AddFriendScene::tableCellSizeForIndex(CCTableView *table, unsigned int id
     return CCSizeMake(312, 50);
 }
 
-//bool AddFriendScene::hasFixedCellSize()
-//{
-//    return false;
-//}
-
 CCTableViewCell* AddFriendScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
 	CCDictionary *dict = (CCDictionary *)mFriendList->objectAtIndex(idx);

@@ -37,7 +37,7 @@ public:
     
     // a selector callback
     void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
-	void doSearchFriend();
+	void LoadFriends();
 
     // implement the "static node()" method manually
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(FriendListScene,create);
@@ -51,7 +51,6 @@ public:
 	virtual void tableCellTouched(cocos2d::extension::CCTableView* table, CCTableViewCell* cell);
 	virtual cocos2d::CCSize cellSizeForTable(cocos2d::extension::CCTableView *table);
     virtual CCSize tableCellSizeForIndex(CCTableView *table, unsigned int idx);
-//    virtual bool hasFixedCellSize();
 
 	virtual CCTableViewCell* tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx);
 	virtual unsigned int numberOfCellsInTableView(CCTableView *table);
@@ -68,7 +67,6 @@ public:
 	void didClickButton(CCMessageDialog* dialog,unsigned int index);
 	void deleteFriend(std::string &targetUser);
     CCTableView* mTableViewFriend;
-//    MainSceneTemplate *mMainSceneTemp;
     unsigned int selectedindex;
     
     CCArray *mFriendList;

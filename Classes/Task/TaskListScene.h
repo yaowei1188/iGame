@@ -53,6 +53,7 @@ public:
     CCLabelTTF *m_lblTitle;
     SlidingMenuGrid* sliderMenu;
 	CCArray *mArrayList;
+    CCDictionary *mTaskDict;
 };
 
 #endif  // __TASK_LIST_SCENE_H__

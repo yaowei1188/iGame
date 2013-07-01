@@ -195,11 +195,6 @@ CCSize MailMainScene::tableCellSizeForIndex(CCTableView *table, unsigned int idx
     return CCSizeMake(312, 44);
 }
 
-//bool MailMainScene::hasFixedCellSize()
-//{
-//    return false;
-//}
-
 CCTableViewCell* MailMainScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
 	CCString *string = (CCString *)mFriendList->objectAtIndex(idx);
