@@ -224,6 +224,7 @@
     <ClInclude Include="..\Classes\Mail\MailMainSceneLoader.h" />
     <ClInclude Include="..\Classes\Mail\NewMailScene.h" />
     <ClInclude Include="..\Classes\Mail\NewMailSceneLoader.h" />
+    <ClInclude Include="..\Classes\Mail\SysMailListScene.h" />
     <ClInclude Include="..\Classes\MainGameScene.h" />
     <ClInclude Include="..\Classes\MainGameSceneLoader.h" />
     <ClInclude Include="..\Classes\Other\AboutScene.h" />
@@ -274,6 +275,7 @@
     <ClCompile Include="..\Classes\Mail\MailListScene.cpp" />
     <ClCompile Include="..\Classes\Mail\MailMainScene.cpp" />
     <ClCompile Include="..\Classes\Mail\NewMailScene.cpp" />
+    <ClCompile Include="..\Classes\Mail\SysMailListScene.cpp" />
     <ClCompile Include="..\Classes\MainGameScene.cpp" />
     <ClCompile Include="..\Classes\Other\AboutScene.cpp" />
     <ClCompile Include="..\Classes\Task\TaskDetailScene.cpp" />

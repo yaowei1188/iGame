@@ -463,6 +463,9 @@
     <ClInclude Include="..\Classes\Chat\ChatLayerLoader.h">
       <Filter>Classes\Chat</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Mail\SysMailListScene.h">
+      <Filter>Classes\Mail</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -600,6 +603,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Chat\ChatLayer.cpp">
       <Filter>Classes\Chat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Mail\SysMailListScene.cpp">
+      <Filter>Classes\Mail</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

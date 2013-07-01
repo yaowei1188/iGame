@@ -35,12 +35,7 @@ bool MailListScene::init()
 
         CC_BREAK_IF(! CCLayer::init());
         
-		//mArrayList =  CCArray::create();
-        mArrayList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
-        mArrayList->retain();
-        
-        vUserData = new int[mArrayList->count()]();
-        memset(vUserData, sizeof(int) * mArrayList->count(), 0);
+
 
 		CCSprite *mailListBg = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_list_bg.png"));
 		mailListBg->setAnchorPoint(CCPointZero);
@@ -62,18 +57,36 @@ bool MailListScene::init()
         menuCheckAll->setAnchorPoint(CCPointMake(0, 0.5));
         menuCheckAll->setPosition(CCPointMake(240, 275));
 
+		//doSearch();
+
+		loadTableView();
+
+        bRet = true;
+    } while (0);
+
+    return bRet;
+}
+
+void MailListScene::loadTableView()
+{
+	//mArrayList =  CCArray::create();
+	mArrayList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
+	mArrayList->retain();
+
+	vUserData = new int[mArrayList->count()]();
+	memset(vUserData, sizeof(int) * mArrayList->count(), 0);
+
+	if (mTableViewMail==NULL)
+	{
 		mTableViewMail = CCTableView::create(this,CCSizeMake(300,240));
 		mTableViewMail->setPosition(CCPointMake(0, 15));
 		this->addChild(mTableViewMail);
 		mTableViewMail->setDirection(kCCScrollViewDirectionVertical);
 		mTableViewMail->setVerticalFillOrder(kCCTableViewFillTopDown);
 		mTableViewMail->setDelegate(this);
-		mTableViewMail->reloadData();
+	}
 
-        bRet = true;
-    } while (0);
-
-    return bRet;
+	mTableViewMail->reloadData();
 }
 
 void MailListScene::doSearch()
@@ -85,7 +98,7 @@ void MailListScene::doSearch()
 	request->setResponseCallback(this,httpresponse_selector(MailListScene::requestFinishedCallback));
 	request->setTag("101");
 
-    string _strUrl = CompleteUrl(URL_FRIEND_LIST);
+    string _strUrl = CompleteUrl(URL_FRIEND_INVITATION_LIST);
     _strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
 
 	request->setUrl(_strUrl.c_str());
@@ -104,7 +117,6 @@ void MailListScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse
 	}
 
 	std::vector<char> *buffer = response->getResponseData();
-
 	std::string content(buffer->begin(),buffer->end());
 
     CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
@@ -124,10 +136,11 @@ void MailListScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse
 		}
 
 		selectedindex = -1;
-		mTableViewMail->reloadData();
+
+		loadTableView();
 	} else if (requestTag == "102"){
 		this->doSearch();
-		CCMessageBox("delete friend successfully","Success");
+		//CCMessageBox("delete friend successfully","Success");
 	}
 }
 
@@ -355,7 +368,7 @@ void MailListScene::buttonClicked(CCObject * sender , CCControlEvent controlEven
 
 MailListScene::MailListScene()
 {
-    //mTableViewMail = NULL;
+    mTableViewMail = NULL;
 //    mMainSceneTemp = NULL;
     mArrayList = NULL;
 }

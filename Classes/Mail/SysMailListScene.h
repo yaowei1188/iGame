@@ -1,5 +1,5 @@
-#ifndef __MAIL_LIST_SCENE_H__
-#define __MAIL_LIST_SCENE_H__
+#ifndef __SYS_MAIL_LIST_SCENE_H__
+#define __SYS_MAIL_LIST_SCENE_H__
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
@@ -16,7 +16,7 @@ using namespace cocos2d;
 using namespace cocos2d::extension;
 using namespace std;
 
-class MailListScene : public MainLayerBase,
+class SysMailListScene : public MainLayerBase,
 public CCTableViewDataSource,
 public CCTableViewDelegate,
 //public CCBSelectorResolver,
@@ -25,8 +25,8 @@ public CCTableViewDelegate,
 public CCMessageDialogDelegate
 {
 public:
-    MailListScene();
-    ~MailListScene();
+    SysMailListScene();
+    ~SysMailListScene();
     
     virtual bool init();  
 
@@ -41,7 +41,7 @@ public:
     void callbackSwitch(CCObject* pSender);
 
     // implement the "static node()" method manually
-    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MailListScene,create);
+    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(SysMailListScene,create);
     
 	virtual void scrollViewDidScroll(cocos2d::extension::CCScrollView* view) {};
 	virtual void scrollViewDidZoom(cocos2d::extension::CCScrollView* view) {}
@@ -60,7 +60,7 @@ public:
     void toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent);
     void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
 	void didClickButton(CCMessageDialog* dialog,unsigned int index);
-	void deleteEntry(std::string &targetUser);
+	void confirmRequest(std::string &targetUser,bool accept);
 	void loadTableView();
 	CCTableView* mTableViewMail;
     unsigned int selectedindex;

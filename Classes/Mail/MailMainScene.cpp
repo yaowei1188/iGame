@@ -142,7 +142,7 @@ void MailMainScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	//lbl->setPosition(ccp(50,50));
 	//_layMail->addChild(lbl);
 
-	MailListScene * _laySysMail = MailListScene::create();
+	SysMailListScene * _laySysMail = SysMailListScene::create();
 	_laySysMail->retain();
 	//CCLabelTTF * lbl1 = CCLabelTTF::create("tab2","Thonburi",18);
 	//lbl1->setPosition(ccp(50,50));
