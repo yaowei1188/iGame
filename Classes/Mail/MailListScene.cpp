@@ -241,6 +241,7 @@ CCTableViewCell* MailListScene::tableCellAtIndex(CCTableView *table, unsigned in
 		CCLabelTTF *lblFriendName = CCLabelTTF::create(string->getCString(), "Arial", 14.0);
 		lblFriendName->setPosition(ccp(40,size.height * 0.5));
         lblFriendName->setColor(ccc3(255, 255, 204));
+        lblFriendName->enableStroke(ccc3(51, 0, 0), 0.6);
 		lblFriendName->setTag(121);
         lblFriendName->setString(string->getCString());
 		cell->addChild(lblFriendName);
@@ -248,6 +249,7 @@ CCTableViewCell* MailListScene::tableCellAtIndex(CCTableView *table, unsigned in
 		CCLabelTTF *lblSubject = CCLabelTTF::create("100", "Arial", 14.0);
 		lblSubject->setPosition(ccp(130,size.height * 0.5));
         lblSubject->setColor(ccc3(255, 255, 204));
+        lblSubject->enableStroke(ccc3(51, 0, 0), 0.6);
         lblSubject->setTag(122);
         lblSubject->setString(string->getCString());
 		cell->addChild(lblSubject);

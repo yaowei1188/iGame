@@ -135,9 +135,8 @@ void SysMailListScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespo
 
 		loadTableView();
 
-	} else if (requestTag == "102"){
+	} else if (requestTag == "103"){
 		this->doSearch();
-		//CCMessageBox("delete friend successfully","Success");
 	}
 }
 
@@ -156,14 +155,16 @@ void SysMailListScene::tableCellUnhighlight(CCTableView* table, CCTableViewCell*
 void SysMailListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
     CCLOG("cell touched at index: %i", cell->getIdx());
-    if (selectedindex == cell->getIdx()) {
-        selectedindex = -1;
-    } else {
-        selectedindex = cell->getIdx();
-    }
+//    if (selectedindex == cell->getIdx()) {
+//        selectedindex = -1;
+//    } else {
+//        selectedindex = cell->getIdx();
+//    }
+
+    selectedindex = cell->getIdx();
 
 	CCMessageDialog *box = CCMessageDialog::create();
-	box->setTitle("Are you sure add this guy as your friends?");
+	box->setTitle(GlobalData::getLocalString("friend_request_cofirm")->getCString());
 	box->setDelegate(this);
 	this->addChild(box);
 
@@ -244,18 +245,18 @@ CCTableViewCell* SysMailListScene::tableCellAtIndex(CCTableView *table, unsigned
 		lblFriendName->setPosition(ccp(40,size.height * 0.5));
         lblFriendName->setColor(ccc3(255, 255, 204));
 		lblFriendName->setTag(121);
-        //lblFriendName->setString(string->getCString());
+        lblFriendName->enableStroke(ccc3(51, 0, 0), 0.6);
 		cell->addChild(lblFriendName);
 
 		CCLabelTTF *lblSubject = CCLabelTTF::create(GlobalData::getLocalString("friend_request_add")->getCString(), "Arial", 14.0);
 		lblSubject->setPosition(ccp(130,size.height * 0.5));
         lblSubject->setColor(ccc3(255, 255, 204));
         lblSubject->setTag(122);
-        //lblSubject->setString(string->getCString());
+        lblSubject->enableStroke(ccc3(51, 0, 0), 0.6);
 		cell->addChild(lblSubject);
         
         CCScale9Sprite *sline = CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_line.png"));
-        sline->setPreferredSize(CCSizeMake(290, 1));
+        sline->setPreferredSize(CCSizeMake(285, 1));
         sline->setPosition(ccp(5,size.height-2));
         sline->setAnchorPoint(CCPointZero);
         cell->addChild(sline);
@@ -299,25 +300,25 @@ CCTableViewCell* SysMailListScene::tableCellAtIndex(CCTableView *table, unsigned
 //    按下按钮事件回调
 void SysMailListScene::toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent)
 {
-	CCControlButton *button = (CCControlButton *)sender;
-	switch (button->getTag()) 
-	{
-	case 128:
-		{
-			MainGameScene *mainScene = (MainGameScene *)this->getParent();
-			mainScene->PushLayer((CCLayer *)this->GetLayer("NewMailScene"));
-			break;
-		}
-	case 130:
-		{
-			CCMessageDialog *box = CCMessageDialog::create();
-			box->setTitle("Are you sure add this guy as your friends?");
-			box->setDelegate(this);
-			this->addChild(box);
-
-			break;
-		}
-	}
+//	CCControlButton *button = (CCControlButton *)sender;
+//	switch (button->getTag()) 
+//	{
+//	case 128:
+//		{
+//			MainGameScene *mainScene = (MainGameScene *)this->getParent();
+//			mainScene->PushLayer((CCLayer *)this->GetLayer("NewMailScene"));
+//			break;
+//		}
+//	case 130:
+//		{
+//			CCMessageDialog *box = CCMessageDialog::create();
+//			box->setTitle(GlobalData::getLocalString("friend_add_confirm")->getCString());
+//			box->setDelegate(this);
+//			this->addChild(box);
+//
+//			break;
+//		}
+//	}
 }
 
 void SysMailListScene::didClickButton(CCMessageDialog* dialog,unsigned int index)

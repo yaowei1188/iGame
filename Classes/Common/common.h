@@ -9,6 +9,13 @@
 #ifndef iGame_common_h
 #define iGame_common_h
 
+typedef enum _FACTION_TYPE
+{
+    FACTION_FAIRY = 0,
+    FACTION_BUDDHA = 1,
+    FACTION_DEMON = 2
+} FACTION_TYPE;
+
 #define API_URL "http://www.runapk.com/dzxy"
 
 #define CELL_ITEMS_Y 25
@@ -101,4 +108,11 @@
 
 //font
 #define FONT_LOGIN "Helvetica-Bold"
+
+//SPRITE
+#define SPRITE_FACTION_FAIRY_CONTAINER "main_play_xian.png"
+#define SPRITE_FACTION_BUDDHA_CONTAINER "main_play_fo.png"
+#define SPRITE_FACTION_DEMON_CONTAINER "main_play_yao.png.png"
+
+
 

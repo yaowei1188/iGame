@@ -39,9 +39,8 @@ bool FriendListScene::init()
 
 		btnTouched = false;
         
-		mFriendList =  CCArray::create();
         //mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
-        mFriendList->retain();
+//        mFriendList->retain();
 
         bRet = true;
     } while (0);
@@ -90,14 +89,14 @@ void FriendListScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespon
 
 	if (requestTag == "101") {
 		mFriendList = dynamic_cast<CCArray *>(dictionary->objectForKey("friendList"));
-		if (mFriendList==NULL)
+		if (mFriendList== NULL)
 		{
-			return;
+			mFriendList = CCArray::create();
 		}
         mFriendList->retain();
 		selectedindex = -1;
 		mTableViewFriend->reloadData();
-	} else if (requestTag == "102"){
+	} else if (requestTag == "103"){
 		this->LoadFriends();
 		CCMessageBox("delete friend successfully","Success");
 	}
@@ -127,10 +126,8 @@ void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     mTableViewFriend->setDataSource(this);
     mTableViewFriend->setViewSize(CCSizeMake(312, 300));
     mTableViewFriend->setDelegate(this);
-    mTableViewFriend->reloadData();
-    mTableViewFriend->retain();
 
-    //this->LoadFriends();
+    this->LoadFriends();
 }
 
 void FriendListScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
@@ -181,7 +178,7 @@ CCSize FriendListScene::tableCellSizeForIndex(CCTableView *table, unsigned int i
 
 CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
-	CCString *string = (CCString *)mFriendList->objectAtIndex(idx);
+	CCDictionary *dict = (CCDictionary *)mFriendList->objectAtIndex(idx);
     bool selected = (idx==selectedindex);
 	CCTableViewCell *cell = table->dequeueCell();
 	if (!cell) {
@@ -203,7 +200,7 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 		sGroup->setAnchorPoint(CCPointZero);
 		cell->addChild(sGroup);
 
-		CCLabelTTF *lblName = CCLabelTTF::create(string->getCString(), "Arial", 14.0);
+		CCLabelTTF *lblName = CCLabelTTF::create(((CCString*)dict->objectForKey("username"))->getCString(), "Arial", 14.0);
 		lblName->setPosition(ccp(51,size.height - CELL_ITEMS_Y));
 		lblName->setAnchorPoint(CCPointZero);
         lblName->setColor(ccc3(248, 255, 38));
@@ -306,7 +303,7 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
         sGroup->setPosition(ccp(sGroup->getPosition().x,size.height - CELL_ITEMS_Y - 10));
         
 		CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);
-		lblName->setString(string->getCString());
+		lblName->setString(((CCString*)dict->objectForKey("username"))->getCString());
         lblName->setPosition(ccp(lblName->getPosition().x,size.height - CELL_ITEMS_Y));
         
         CCLabelTTF *lblLevel = (CCLabelTTF*)cell->getChildByTag(124);

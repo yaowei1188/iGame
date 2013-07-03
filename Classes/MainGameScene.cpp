@@ -40,7 +40,6 @@ bool MainGameScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMe
 
 void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
 
-//    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     switch (pSender->getTag()) {
         case TOOLBAR_BTN_COMPETITION_TAG:
             CCLOG("11111");
