@@ -129,6 +129,10 @@ void LoginScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* r
 		CCString *strName = (CCString *)dictionary->objectForKey("username");
 		if(strEncryptedUser->length() > 0)
 		{
+			CCDictionary *userInfo = CCDictionary::create();
+			userInfo->setObject(CCNumber::create(1),"fraction");
+			GlobalData::setUserinfo(userInfo);
+
 			CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", strEncryptedUser->getCString());
 			CCUserDefault::sharedUserDefault()->setStringForKey("username", strName->getCString());
 
@@ -140,51 +144,6 @@ void LoginScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* r
 //			}
 
             this->OpenNewScene("ServerListScene");
-		}
-	}
-}
-
-void LoginScene::requestFinishedCallback(CCNode* pSender,void *Rspdata)
-{
-    this->HideLoadingIndicator();
-
-	if (!this->ValidateResponseData(pSender,Rspdata))
-	{
-		return;
-	}
-    
-    CCHttpResponse *response =  (CCHttpResponse*)Rspdata;
-
-	std::vector<char> *buffer = response->getResponseData();
-	std::string content(buffer->begin(),buffer->end());
-
-	CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
-	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
-	if (code != 200) {
-		if (code == 121) {
-			CCMessageBox(GlobalData::getLocalString("register_have_sameuser")->getCString(),"");
-		} else {
-			CCMessageBox(response->getErrorBuffer(),"error");
-		}
-		return;
-	}
-
-	std::string requestTag(response->getHttpRequest()->getTag());
-
-	if (requestTag == "1") {
-		CCString *strEncryptedUser = (CCString *)dictionary->objectForKey("encryptedUserInfo");
-		CCString *strName = (CCString *)dictionary->objectForKey("username");
-		if(strEncryptedUser->length() > 0)
-		{
-			CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", strEncryptedUser->getCString());
-			CCUserDefault::sharedUserDefault()->setStringForKey("username", strName->getCString());
-
-			string selectedServer = CCUserDefault::sharedUserDefault()->getStringForKey("SelectedServer");
-			if (selectedServer.length()>0) {
-				this->OpenNewScene("MainGameScene");
-			} else {
-				this->OpenNewScene("ServerListScene");
-			}
 		}
 	}
 }

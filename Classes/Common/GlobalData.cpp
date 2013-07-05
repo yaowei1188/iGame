@@ -11,6 +11,7 @@
 static CCDictionary *dictLanguage;
 static CCArray *arrayTasks;
 static CCArray *arrayCards;
+static CCDictionary* userinfo;
 
 CCString* GlobalData::getLocalString(std::string name)
 {
@@ -55,4 +56,15 @@ CCDictionary* GlobalData::getCardById(std::string cardId)
         }
     }
     return NULL;
+}
+
+CCDictionary* GlobalData::getUserinfo()
+{
+	return userinfo;
+}
+
+void GlobalData::setUserinfo(CCDictionary* p_userInfo)
+{
+	userinfo = p_userInfo;
+	userinfo->retain();
 }

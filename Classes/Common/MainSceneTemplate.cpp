@@ -72,8 +72,21 @@ void MainSceneTemplate::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     batchNode->addChild(lpCap);
     this->addChild(mpCap);
     batchNode->addChild(rpCap);
-    
-//    this->createStroke(mlblHealth, 2, ccc3(255,0,0));
+
+	//CCDictionary *userInfo = GlobalData::getUserinfo();
+	//CCNumber* fraction = (CCNumber*)userInfo->objectForKey("fraction");
+	//if(fraction->getIntValue()==FACTION_FAIRY)
+	//{
+	//	msPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_FAIRY_CONTAINER));
+	//}
+	//else if (fraction->getIntValue()==FACTION_BUDDHA)
+	//{
+	//	msPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_BUDDHA_CONTAINER));
+	//}
+	//else if (fraction->getIntValue()==FACTION_DEMON)
+	//{
+	//	msPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_DEMON_CONTAINER));
+	//}
 }
 
 bool MainSceneTemplate::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)

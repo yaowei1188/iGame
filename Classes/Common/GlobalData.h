@@ -27,6 +27,9 @@ public:
     static CCArray* getAllCards(std::string name);
 
     static CCDictionary* getCardById(std::string cardId);
+
+	static CCDictionary* getUserinfo();
+	static void setUserinfo(CCDictionary* p_userInfo);
 };
 
 #endif /* defined(__mengdou__GlobalData__) */
