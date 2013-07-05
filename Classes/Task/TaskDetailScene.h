@@ -44,10 +44,11 @@ public:
 
 	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
 
-	void executeTask(int index,int subIndex);
+	void executeTask();
     void showTaskInfo();
     void menuItemCallback(CCObject* pSender);
-	unsigned int selectedindex;
+    void moveProgress();
+//	unsigned int selectedindex;
     CCLabelTTF *m_lblTitle;
     CCSprite *m_sProgress;
 	CCDictionary *mTaskList;

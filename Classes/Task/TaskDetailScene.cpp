@@ -24,10 +24,17 @@ CCScene* TaskDetailScene::scene()
 	return scene;
 }
 
+void TaskDetailScene::moveProgress()
+{
+   CCPoint position = this->m_sProgress->getPosition();
+    position.x = subIndex * 30;
+    this->m_sProgress->runAction(CCMoveTo::create(0.2, position));
+}
+
 // on "init" you need to initialize your instance
 bool TaskDetailScene::init()
 {
-	selectedindex = 0;
+//	selectedindex = 0;
 
 	bool bRet = false;
 	do 
@@ -68,13 +75,13 @@ void TaskDetailScene::showTaskInfo()
     CCString *str = (CCString *)mTaskList->objectForKey("TaskName");
     CCArray *subTasks = (CCArray *)mTaskList->objectForKey("SubTasks");
     
-    if (selectedindex>=subTasks->count()) {
-        MainGameScene *mainScene = (MainGameScene *)this->getParent();
-        mainScene->PushLayer((CCLayer *)this->GetLayer("TaskRewardScene"));
-        return;
-    }
+//    if (selectedindex>=subTasks->count()) {
+//        MainGameScene *mainScene = (MainGameScene *)this->getParent();
+//        mainScene->PushLayer((CCLayer *)this->GetLayer("TaskRewardScene"));
+//        return;
+//    }
     
-    CCDictionary *task = (CCDictionary *)subTasks->objectAtIndex(selectedindex);
+    CCDictionary *task = (CCDictionary *)subTasks->objectAtIndex(subIndex-1);
     
     CCLabelTTF *lblCoins = NULL;
     CCLabelTTF *lblExperience = NULL;
@@ -146,16 +153,15 @@ void TaskDetailScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	mTaskList->retain();
 }
 
-void TaskDetailScene::executeTask(int index,int subIndex)
+void TaskDetailScene::executeTask()
 {
-	subIndex++;
-
-	if (subIndex==10)
+    subIndex++;
+    if (subIndex>10)
 	{
-		subIndex==1;
+		subIndex = 1;
 		upperIndex++;
 	}
-
+    
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpPost);
 	request->setResponseCallback(this,httpresponse_selector(TaskDetailScene::requestFinishedCallback));
@@ -170,7 +176,7 @@ void TaskDetailScene::executeTask(int index,int subIndex)
 	char strIndex[20];
 	char strSubIndex[20];
 
-	sprintf(strIndex,"&index=%d",index);
+	sprintf(strIndex,"&index=%d",upperIndex);
 	sprintf(strSubIndex,"&subIndex=%d",subIndex);
     
     _strPostData.append(strIndex);
@@ -184,8 +190,10 @@ void TaskDetailScene::executeTask(int index,int subIndex)
 	client->send(request);
 
 	request->release();
+    
 
-	selectedindex++;
+    
+
 }
 
 void TaskDetailScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
@@ -223,6 +231,7 @@ void TaskDetailScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespon
 		gainedEmpiricalValue = ((CCNumber*)mTaskDict->objectForKey("gainedEmpiricalValue"))->getIntValue();
 
 		this->showTaskInfo();
+        this->moveProgress();
 	}
 }
 
@@ -239,7 +248,7 @@ void TaskDetailScene::buttonClicked(CCObject * sender , CCControlEvent controlEv
 	case 102:
         {
 			CCLOG("22222");
-			executeTask(upperIndex,subIndex);
+			executeTask();
             //selectedindex++;
             //showTaskInfo();
         }

@@ -17,11 +17,19 @@ MainSceneTemplate::MainSceneTemplate()
     this->mlblGold = NULL;
     this->mlblBronze = NULL;
     this->mlblGrade = NULL;
+    this->msPlayerContainer = NULL;
 }
 
 MainSceneTemplate::~MainSceneTemplate()
 {
+    CC_SAFE_RELEASE(mlblName);
+    CC_SAFE_RELEASE(mlblHealth);
+    CC_SAFE_RELEASE(mlblPower);
+    CC_SAFE_RELEASE(mlblGold);
+    CC_SAFE_RELEASE(mlblBronze);
+    CC_SAFE_RELEASE(mlblGrade);
     
+    CC_SAFE_RELEASE(msPlayerContainer);
 }
 
 void MainSceneTemplate::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
@@ -76,6 +84,7 @@ bool MainSceneTemplate::onAssignCCBMemberVariable(CCObject* pTarget, const char*
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mlblBronze", CCLabelTTF*, this->mlblBronze);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mlblGold", CCLabelTTF*, this->mlblGold);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mlblGrade", CCLabelTTF*, this->mlblGrade);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "msPlayerContainer", CCSprite*, this->msPlayerContainer);
     
     return true;
 }
