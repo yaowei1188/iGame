@@ -186,11 +186,37 @@ void MainGameScene::PopLayer()
 
 void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
 {
-    if (pItem->getTag() == MENUBAR_MAINPAGE_TAG) {
-        this->PopToRoot();
-    } else if (pItem->getTag() == MENUBAR_TASK_TAG) {
-        this->PushLayer((CCLayer *)this->GetLayer("TaskListScene"));
+    if (intSelectedMenu==pItem->getTag()) {
+        if(mlayArray->count()>1) {
+            this->PopToRoot();
+        }
+         return;
     }
+    
+    intSelectedMenu = pItem->getTag();
+    
+    CCLayer *layer = NULL;
+    if (pItem->getTag() == MENUBAR_MAINPAGE_TAG) {
+        layer = mMainLayer;
+    } else if (pItem->getTag() == MENUBAR_TASK_TAG) {
+        layer = (CCLayer *)this->GetLayer("TaskListScene");
+    } else {
+        return;
+    }
+    
+    this->RemoveChatLayer();
+    
+    for (int i=mlayArray->count()-1; i>=0; i--) {
+        CCLayer *layer = (CCLayer *)mlayArray->objectAtIndex(i);
+        layer->removeFromParentAndCleanup(true);
+        mlayArray->removeObjectAtIndex(i);
+    }
+    
+    mlayArray->addObject(layer);
+//    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    
+    layer->setPosition(ccp(0, 38));
+    this->addChild(layer);
 }
 
 SEL_MenuHandler MainGameScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)

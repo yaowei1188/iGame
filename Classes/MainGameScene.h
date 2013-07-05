@@ -69,6 +69,7 @@ public:
     void PopToRoot();
 private:
     CCArray *mlayArray;
+    int intSelectedMenu;
 };
 
 #endif /* defined(__cctest__MainMenuScene__) */

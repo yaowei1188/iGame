@@ -66,8 +66,6 @@ bool ServerListScene::init()
 
 		mHasCreatedRole = false;
 
-		this->retrieveUserGameRole();
-
         bRet = true;
     } while (0);
 
@@ -143,19 +141,8 @@ void ServerListScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespon
 			CCUserDefault::sharedUserDefault()->setStringForKey("gameRoleId", gameRoleid);
 			CCUserDefault::sharedUserDefault()->setStringForKey("nickName", strNickName->getCString());
 		}
-
-		//CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", strEncryptedUser->getCString());
-		//CCUserDefault::sharedUserDefault()->setStringForKey("username", strName->getCString());
-
-		//mArrayList = dynamic_cast<CCArray *>(dictionary->objectForKey("friendList"));
-		//if (mArrayList==NULL)
-		//{
-		//	return;
-		//}
-
-		//selectedindex = -1;
-		//mTableView->reloadData();
 	} else if (requestTag == "102"){
+        
 	}
 }
 
@@ -180,6 +167,8 @@ SEL_CCControlHandler ServerListScene::onResolveCCBCCControlSelector(CCObject *pT
 
 void ServerListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
+    this->retrieveUserGameRole();
+    
     mTableView->setDirection(kCCScrollViewDirectionVertical);
     mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
     mTableView->setDataSource(this);

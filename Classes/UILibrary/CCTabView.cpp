@@ -111,6 +111,8 @@ void CCTabView::tabClicked(CCObject * obj)
         subView->setPosition(ccp(2,-36));
 		subView->setAnchorPoint(CCPointZero);
         _tabView->addChild(subView);
+    } else {
+        pMenu->selected(); 
     }
 }
 
