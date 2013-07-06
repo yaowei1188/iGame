@@ -22,6 +22,8 @@
 	<string>注册成功！</string>
 	<key>character_name_empty</key>
 	<string>请输入用户名称！</string>
+	<key>character_name_length</key>
+	<string>用户名称最大长度不能超过16字符！</string>
 	<key>account_pwd_empty</key>
 	<string>用户名或密码不能为空！</string>
 </dict>

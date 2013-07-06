@@ -19,10 +19,17 @@
 #include "ChatLayer.h"
 #include "common.h"
 
+#include "client.h"
+#include "messagehandler.h"
+
+
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
 class MainGameScene : public MainLayerBase,
+//  public gloox::MessageHandler,public gloox::ConnectionListener,public gloox::PresenceHandler,
+//  public gloox::ConnectionListener,
+//  public gloox::PresenceHandler,
   public CCBSelectorResolver,
   public CCBMemberVariableAssigner,
   public CCNodeLoaderListener,
@@ -70,6 +77,15 @@ public:
 private:
     CCArray *mlayArray;
     int intSelectedMenu;
+    
+private:
+    virtual void handleMessage(const gloox::Message& stanza,gloox::MessageSession* session = 0 );
+    virtual void onConnect();
+    virtual void onDisconnect(gloox::ConnectionError e );
+    virtual bool onTLSConnect(const gloox::CertInfo& info);
+    virtual void handlePresence( const gloox::Presence& presence);
+    
+    gloox::Client* j;
 };
 
 #endif /* defined(__cctest__MainMenuScene__) */

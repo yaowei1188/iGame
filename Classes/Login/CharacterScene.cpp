@@ -90,10 +90,14 @@ bool CharacterScene::init()
 
 void CharacterScene::doSubmit()
 {
-	std::string sAccount(m_txtAccount->getText());
+	std::string sAccount(trimRight(m_txtAccount->getText()));
 
-	if (trimRight(sAccount).empty() ) {
+	if (sAccount.empty() ) {
 		CCMessageBox(GlobalData::getLocalString("character_name_empty")->getCString(),"ERROR");
+		return;
+	}
+    if (sAccount.length()>16 ) {
+		CCMessageBox(GlobalData::getLocalString("character_name_length")->getCString(),"ERROR");
 		return;
 	}
 
@@ -317,6 +321,7 @@ void CharacterScene::resetZorder()
 	maxZorder = 2 * cardLength;
 
 	currentSprite->setZOrder(maxZorder);
+//    currentSprite->setTouchPriority(-129);
 
 	for(int i=selectedIndex+1;i<cardLength;i++)
 	{
