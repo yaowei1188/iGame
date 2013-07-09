@@ -17,7 +17,7 @@ MainSceneTemplate::MainSceneTemplate()
     this->mlblGold = NULL;
     this->mlblBronze = NULL;
     this->mlblGrade = NULL;
-    this->msPlayerContainer = NULL;
+    this->m_sPlayerContainer = NULL;
 }
 
 MainSceneTemplate::~MainSceneTemplate()
@@ -29,7 +29,7 @@ MainSceneTemplate::~MainSceneTemplate()
     CC_SAFE_RELEASE(mlblBronze);
     CC_SAFE_RELEASE(mlblGrade);
     
-    CC_SAFE_RELEASE(msPlayerContainer);
+    CC_SAFE_RELEASE(m_sPlayerContainer);
 }
 
 void MainSceneTemplate::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
@@ -77,15 +77,15 @@ void MainSceneTemplate::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	CCNumber* fraction = (CCNumber*)userInfo->objectForKey("fraction");
 	if(fraction->getIntValue()==FACTION_FAIRY)
 	{
-		msPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_FAIRY_CONTAINER));
+		m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_FAIRY_CONTAINER));
 	}
 	else if (fraction->getIntValue()==FACTION_BUDDHA)
 	{
-		msPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_BUDDHA_CONTAINER));
+		m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_BUDDHA_CONTAINER));
 	}
 	else if (fraction->getIntValue()==FACTION_DEMON)
 	{
-		msPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_DEMON_CONTAINER));
+		m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_DEMON_CONTAINER));
 	}
 }
 
@@ -97,7 +97,7 @@ bool MainSceneTemplate::onAssignCCBMemberVariable(CCObject* pTarget, const char*
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mlblBronze", CCLabelTTF*, this->mlblBronze);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mlblGold", CCLabelTTF*, this->mlblGold);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mlblGrade", CCLabelTTF*, this->mlblGrade);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "msPlayerContainer", CCSprite*, this->msPlayerContainer);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sPlayerContainer", CCSprite*, this->m_sPlayerContainer);
     
     return true;
 }

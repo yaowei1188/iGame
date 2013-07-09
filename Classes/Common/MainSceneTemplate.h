@@ -61,10 +61,9 @@ public:
     CCLabelTTF *mlblGold;
     CCLabelTTF *mlblBronze;
     CCLabelTTF *mlblGrade;
-    CCSprite *msPlayerContainer;
+    CCSprite   *m_sPlayerContainer;
     
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainSceneTemplate, create);
-    
     CC_SYNTHESIZE(MainSceneTemplateDelegate*, m_delegate, Delegate);
 
 };
