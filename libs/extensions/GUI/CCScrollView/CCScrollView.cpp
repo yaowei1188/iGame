@@ -409,6 +409,8 @@ void CCScrollView::deaccelerateScrolling(float dt)
         this->unschedule(schedule_selector(CCScrollView::deaccelerateScrolling));
         this->relocateContainer(true);
     }
+
+    this->setPositionByPaged();
 }
 
 void CCScrollView::stoppedAnimatedScroll(CCNode * node)

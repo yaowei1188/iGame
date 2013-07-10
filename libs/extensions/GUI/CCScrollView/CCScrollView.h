@@ -186,6 +186,8 @@ public:
     virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
 
+    virtual void setPositionByPaged(){};
+
     virtual void setContentSize(const CCSize & size);
     virtual const CCSize& getContentSize() const;
 
