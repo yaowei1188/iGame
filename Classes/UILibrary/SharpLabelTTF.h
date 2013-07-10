@@ -20,11 +20,12 @@ class SharpLabelTTF : public cocos2d::CCLabelTTF {
 
 	CCPoint intendedPosition_;
 	void fixPosition ();
-	void onEnter();
-	void setPosition(CCPoint position);
-	void setString(const char * str);
-	void setParent(CCNode * parent);
-	void setRotation(float rotation);
+public:
+//	virtual void onEnter();
+//	virtual void setPosition(CCPoint position);
+	virtual void setString(const char * str);
+//	virtual void setParent(CCNode * parent);
+//	void setRotation(float rotation);
 };
 
 #endif /* defined(__cctest__SharpLabelTTF__) */

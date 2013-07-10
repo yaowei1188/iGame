@@ -17,8 +17,9 @@ void SharpLabelTTF::fixPosition () {
 
 	CCSize dim = this->getTexture()->getContentSize();
 
-	this->setPosition(intendedPosition_);
-	
+//	this->setPosition(intendedPosition_);
+    this->setPosition(ccp(200, 200));
+
 	if (this->getScaleX() < 0.3 || this->getScaleY() < 0.3) return;
 
 	// compute world (= screen) coordinate of top left position of label  
@@ -41,17 +42,17 @@ void SharpLabelTTF::fixPosition () {
 }
 
 // capture modification calls to adjust position
-void SharpLabelTTF::onEnter() 
-{
-	this->fixPosition();
-	CCLabelTTF::onEnter();
-}
-
-void SharpLabelTTF::setParent(CCNode * parent) 
-{
-	CCLabelTTF::setParent(parent);
-	this->fixPosition();
-}
+//void SharpLabelTTF::onEnter() 
+//{
+//	this->fixPosition();
+//	CCLabelTTF::onEnter();
+//}
+//
+//void SharpLabelTTF::setParent(CCNode * parent) 
+//{
+//	CCLabelTTF::setParent(parent);
+//	this->fixPosition();
+//}
 
 void SharpLabelTTF::setString(const char * str)
 {
@@ -59,14 +60,14 @@ void SharpLabelTTF::setString(const char * str)
 	this->fixPosition();
 }
 
-void SharpLabelTTF::setPosition(CCPoint position)
-{
-	intendedPosition_ = position;
-	this->fixPosition();
-}
-
-
-void SharpLabelTTF::setRotation(float rotation) {
-	CCLabelTTF::setRotation(rotation);
-	this->fixPosition();
-}
+//void SharpLabelTTF::setPosition(CCPoint position)
+//{
+//	intendedPosition_ = position;
+////	this->fixPosition();
+//}
+//
+//
+//void SharpLabelTTF::setRotation(float rotation) {
+//	CCLabelTTF::setRotation(rotation);
+//	this->fixPosition();
+//}

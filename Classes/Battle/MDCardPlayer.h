@@ -21,21 +21,36 @@ class MDCardPlayer
 {
 public:
 
-private:s
+private:
 	CCString *m_strCardName;
 	CCSprite *m_sCardPlayer;
 
-	float m_fltPowerPoint;//Á¦-ÎïÀí¹¥»÷
-	float m_fltMagicPoint;//·¨-·¨Êõ¹¥»÷
-	float m_fltDefencePoint;//·À-¿¨ÅÆ·ÀÓù
+    float m_fltTotalHp;//è¡€é‡
+    float m_fltCurrentHp;//å½“å‰è¡€é‡
 
-	float m_fltSuperAttackPoint;//±©»÷-¿¨ÅÆ±©»÷
-	float m_fltDodgePoint;//¶ãÉÁ-¿¨ÅÆÉÁ±Ü
-	float m_fltSpiritPoint;//Éñ-¿¨ÅÆÈ«ÊôĞÔ
+	float m_fltAttackPoint;//åŠ›-å¡ç‰Œç‰©ç†æ”»å‡»
+	float m_fltMagicPoint;//æ³•-å¡ç‰Œæ³•æœ¯æ”»å‡»
+	float m_fltDefencePoint;//é˜²å¾¡-å¡ç‰Œé˜²å¾¡
 
-	int battleMode;//Ä¬ÈÏÊÖ¶¯Ä£Ê½0£¬×Ô¶¯Ä£Ê½1
+	float m_fltSuperAttackPoint;//æš´-å¡ç‰Œæš´å‡»
+	float m_fltDodgePoint;//é—ªé¿-å¡ç‰Œé—ªé¿
+	float m_fltSpiritPoint;//ç¥-å¡ç‰Œå…¨å±æ€§
+
+
+
+    float m_fltGroupBUFF; //ç»„é˜ŸBUFF
+    float m_fltActivateBUFF; //æ¿€æ´»BUFF
+    float m_fltSmallGameBUFF;//å°æ¸¸æˆBUFF
+    float m_fltVipBUFF;   //VIP BUFF
+
+    int battleMode;//æˆ˜æ–—æ¨¡å¼
+    int position; //å¡ç‰Œæ‰€åœ¨ä½ç½®
+    bool isDead;
 public:
-	void forwardAnnimation();
+	void playParadeAnnimation();//æ’­æ”¾å‰è¿›åŠ¨ç”»
+    void playAttackAnnimation();//æ’­æ”¾æ”»å‡»åŠ¨ç”»
+    void playMistreatAnnimation();//æ’­æ”¾è¢«æ”»å‡»åŠ¨ç”»
+    void playDeadAnnimation();//æ’­æ”¾æ­»äº¡åŠ¨ç”»
 };
 
 #endif /* defined(__mengdou__MDCardPlayer__) */

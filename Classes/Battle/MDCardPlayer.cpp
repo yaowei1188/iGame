@@ -8,9 +8,23 @@
 
 #include "MDCardPlayer.h"
 
-//
-//void MDCardPlayer::setUserinfo(CCDictionary* p_userInfo)
-//{
-//	userinfo = p_userInfo;
-//	userinfo->retain();
-//}
+
+void MDCardPlayer::playParadeAnnimation()
+{
+
+}
+
+void MDCardPlayer::playAttackAnnimation()
+{
+
+}
+
+void MDCardPlayer::playMistreatAnnimation()
+{
+
+}
+
+void MDCardPlayer::playDeadAnnimation()
+{
+
+}
