@@ -162,6 +162,8 @@ static const int CC_EDIT_BOX_PADDING = 5;
         cocos2d::CCScriptEngineProtocol* pEngine = cocos2d::CCScriptEngineManager::sharedManager()->getScriptEngine();
         pEngine->executeEvent(pEditBox->getScriptEditBoxHandler(), "began",pEditBox);
     }
+//    adjustTextFieldPosition();
+//    [self adjustTextFieldPosition];
     return YES;
 }
 
@@ -591,6 +593,7 @@ void CCEditBoxImplIOS::openKeyboard()
 	m_pLabelPlaceHolder->setVisible(false);
 
 	m_systemControl.textField.hidden = NO;
+    adjustTextFieldPosition();
     [m_systemControl openKeyboard];
 }
 

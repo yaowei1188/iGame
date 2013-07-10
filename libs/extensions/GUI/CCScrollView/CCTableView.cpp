@@ -692,4 +692,40 @@ void CCTableView::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)
     }
 }
 
+void CCTableView::setPositionByPaged()
+{
+    if (isPagingEnableX)
+    {
+        const CCSize cellSize = m_pDataSource->cellSizeForTable(this);
+        unsigned int uCountOfItems = m_pDataSource->numberOfCellsInTableView(this);
+        if (0 == uCountOfItems)
+        {
+            return;
+        }
+
+        int eachnumber = this->getContentOffset().x / cellSize.width;
+        float part = fmod(this->getContentOffset().x,cellSize.width);
+
+        if (this->getContentOffset().x >= 0)
+        {
+            eachnumber =0;
+        }
+        else
+        {
+            if (fabs(part)  > cellSize.width * 0.2)
+            {
+                eachnumber--;
+            }
+            
+//            if (eachnumber < -1 * (uCountOfItems-1))
+//            {
+//                eachnumber= -1 * (uCountOfItems-1);
+//            }
+        }
+        
+        this->setContentOffsetInDuration(CCPoint(eachnumber * cellSize.width, 0), 0.2);
+        //this->setContentOffset(CCPoint(eachnumber * cellSize.width, 0),false);
+    }
+}
+
 NS_CC_EXT_END

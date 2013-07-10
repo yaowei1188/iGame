@@ -279,6 +279,8 @@ public:
     //add by ivan
     void refreshData();
     float Orgoffset;
+    void setPositionByPaged();
+    bool isPagingEnableX;
 
 };
 
