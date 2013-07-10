@@ -17,35 +17,13 @@ MainInnerLayer::MainInnerLayer()
     mCardList->addObject(CCString::create("head_rulaifo.png"));
     mCardList->addObject(CCString::create("head_sunwukong.png"));
     mCardList->addObject(CCString::create("head_erlangsheng.png"));
-//    mCardList->addObject(CCString::create("test3"));
-//    mCardList->addObject(CCString::create("test"));
-//    mCardList->addObject(CCString::create("test1"));
-//    mCardList->addObject(CCString::create("test2"));
-//    mCardList->addObject(CCString::create("test3"));
-//    mCardList->addObject(CCString::create("test"));
-//    mCardList->addObject(CCString::create("test1"));
-//    mCardList->addObject(CCString::create("test2"));
-//    mCardList->addObject(CCString::create("test3"));
-//    mCardList->addObject(CCString::create("test"));
-//    mCardList->addObject(CCString::create("test1"));
-//    mCardList->addObject(CCString::create("test2"));
-//    mCardList->addObject(CCString::create("test3"));
-//    mCardList->addObject(CCString::create("test"));
-//    mCardList->addObject(CCString::create("test1"));
-//    mCardList->addObject(CCString::create("test2"));
-//    mCardList->addObject(CCString::create("test3"));
-//    mCardList->addObject(CCString::create("test"));
-//    mCardList->addObject(CCString::create("test1"));
-//    mCardList->addObject(CCString::create("test2"));
-//    mCardList->addObject(CCString::create("test3"));
-//    mCardList->addObject(CCString::create("test"));
-//    mCardList->addObject(CCString::create("test1"));
-//    mCardList->addObject(CCString::create("test2"));
-//    mCardList->addObject(CCString::create("test3"));
-//    mCardList->addObject(CCString::create("test"));
-//    mCardList->addObject(CCString::create("test1"));
-//    mCardList->addObject(CCString::create("test2"));
-//    mCardList->addObject(CCString::create("test3"));
+	mCardList->addObject(CCString::create("head_rulaifo.png"));
+	mCardList->addObject(CCString::create("head_sunwukong.png"));
+	mCardList->addObject(CCString::create("head_erlangsheng.png"));
+	mCardList->addObject(CCString::create("head_rulaifo.png"));
+	mCardList->addObject(CCString::create("head_sunwukong.png"));
+	mCardList->addObject(CCString::create("head_erlangsheng.png"));
+
     mCardList->retain();
 
 }
@@ -61,6 +39,8 @@ void MainInnerLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
 	mTableView->setDataSource(this);
 	mTableView->setViewSize(CCSizeMake(262, 65));
+	mTableView->isPagingEnableX = true;
+	mTableView->setBounceable(false);
 	mTableView->setDelegate(this);
     
     mTableView->reloadData();

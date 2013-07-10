@@ -21,6 +21,8 @@
 #include "messageeventhandler.h"
 #include "messageeventfilter.h"
 #include "presencehandler.h"
+#include "clientbase.h"
+#include "disco.h"
 #include "message.h"
 
 using namespace std;

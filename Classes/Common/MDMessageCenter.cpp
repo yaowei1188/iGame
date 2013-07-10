@@ -14,10 +14,18 @@ MDMessageCenter::MDMessageCenter()
 {
 	gloox::JID jid( "bot@server/resource" );
 	_client = new gloox::Client( jid, "password" );
+
+	_client->disco()->setVersion( "messageTest", gloox::GLOOX_VERSION, "Linux" );              
+	_client->disco()->setIdentity( "client", "bot" );
+
+	gloox::StringList ca;
+	ca.push_back( "/path/to/cacert.crt" );
+	_client->setCACerts( ca );
+
 	_client->registerMessageHandler(this);
 	_client->registerConnectionListener(this);
 	_client->registerPresenceHandler(this);
-	_client->connect();
+	_client->connect(false);
 }
 
 MDMessageCenter* MDMessageCenter::sharedInstance()
@@ -43,11 +51,12 @@ void MDMessageCenter::handleMessage( const gloox::Message& msg,gloox::MessageSes
 
 void MDMessageCenter::onConnect()
 {
-	CCLOG( "connected!!!\n" );
+	CCLOG( "connected!!!" );
 }
 void MDMessageCenter::onDisconnect(gloox::ConnectionError e )
 {
-	CCLOG( "message_test: disconnected: %d\n", e );
+	CCLOG( "message_test: disconnected: %d", e );
+	delete(_client);
 }
 bool MDMessageCenter::onTLSConnect(const gloox::CertInfo& info)
 {

@@ -940,6 +940,9 @@
     <ClInclude Include="..\Classes\Common\MDMessageCenter.H">
       <Filter>Classes\Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\SharpLabelTTF.h">
+      <Filter>Classes\UILibrary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -1383,6 +1386,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Common\MDMessageCenter.cpp">
       <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\SharpLabelTTF.cpp">
+      <Filter>Classes\UILibrary</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
