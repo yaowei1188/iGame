@@ -1,5 +1,6 @@
 #include "MDBattleLayer.h"
 #include "SharpLabelTTF.h"
+#include "MDCardPlayer.h"
 
 CCScene* MDBattleLayer::scene()
 {
@@ -39,26 +40,54 @@ bool MDBattleLayer::init()
 		mArrayList= CCArray::create();
         mArrayList->retain();
 
-        
+		//CCSprite* background = CCSprite::create("background.png");
+		//// scale the image (optional)
+		//background->setScale( 1.5f );
+		//// change the transform anchor point (optional)
+		//background->setAnchorPoint( ccp(0,0) );
+
+		//// create a void node, a parent node
+		//CCParallaxNode* voidNode = CCParallaxNode::create();
+
+		//// background image is moved at a ratio of 0.4x, 0.5y
+		//voidNode->addChild(background, -1, ccp(0.4f,0.5f), CCPointZero);
+
+		//CCActionInterval* goUp = CCMoveBy::create(4, ccp(0,-500) );
+		//CCActionInterval* goDown = goUp->reverse();
+		//CCActionInterval* go = CCMoveBy::create(8, ccp(-1000,0) );
+		//CCActionInterval* goBack = go->reverse();
+		//CCSequence* seq = CCSequence::create(goUp, goDown, NULL);
+		//voidNode->runAction( (CCRepeatForever::create(seq) ));
+
+		//addChild( voidNode );
 
         //CCLabelTTF *lblTest = SharpLabelTTF::create("TEST", "Arial", 30);
-        SharpLabelTTF *pRet = new SharpLabelTTF();
-        pRet->initWithString(CCString::create("姚伟\n伟")->getCString(), "Verdana-BoldItalic", 20);
-        pRet->setDimensions(CCSizeMake(200, 100));
-        this->addChild(pRet);
-        pRet->setPosition(ccp(200, 200));
-        pRet->setFontFillColor(ccc3(255,255,0));
-//        pRet->enableStroke(ccc3(255, 0, 0), 0.3);
-        pRet->enableShadow(CCSizeMake(0, 1), 0.5f, 5);
+        //SharpLabelTTF *pRet = new SharpLabelTTF();
+        //pRet->initWithString(CCString::create("YAOWEIWEI")->getCString(), "Verdana-BoldItalic", 20);
+        //pRet->setDimensions(CCSizeMake(200, 100));
+        //this->addChild(pRet);
+        //pRet->setPosition(ccp(200, 200));
+        //pRet->setFontFillColor(ccc3(255,255,0));
+        //pRet->enableStroke(ccc3(255, 0, 0), 0.3);
+        //pRet->enableShadow(CCSizeMake(0, 1), 0.5f, 5);
 
 //        CC_SAFE_DELETE(pRet);
 
-        
+        prepareFormation();
         
         bRet = true;
     } while (0);
 
     return bRet;
+}
+
+void MDBattleLayer::prepareFormation()
+{
+	MDCardPlayer *cardPlayer = MDCardPlayer::create();
+	this->addChild(cardPlayer->m_sCardPlayer);
+	//cardPlayer->setPosition(ccp(winSize.width/2,winSize.height/2 - 100));
+	cardPlayer->playParadeAnnimation();
+	
 }
 
 void MDBattleLayer::buttonClicked(CCObject *pSender,CCControlEvent event)

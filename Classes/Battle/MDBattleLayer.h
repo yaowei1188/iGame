@@ -44,7 +44,8 @@ public:
     virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
 
 	virtual void didClickButton(CCMessageDialog* dialog,unsigned int index);
-    
+	void prepareFormation();
+
     CCArray *mArrayList;
 
 	bool btnTouched;
