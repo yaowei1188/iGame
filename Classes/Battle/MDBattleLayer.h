@@ -10,7 +10,7 @@
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class MDBattleLayer : public MainLayerBase,
+class MDBattleLayer : public CCLayerColor,
 public CCBSelectorResolver,
 public CCNodeLoaderListener,
 public CCBMemberVariableAssigner,
@@ -48,6 +48,14 @@ public:
     CCArray *mArrayList;
 
 	bool btnTouched;
+    void onUpdate(float delta);
+
+    CCRenderTexture* createStroke(cocos2d::CCLabelTTF *label, float size, cocos2d::ccColor3B color);
+
+protected:
+    CCNode*        m_root;
+    CCNode*        m_target;
+    CCMotionStreak *streak;
 };
 
 #endif  // __LOGINSCENE_SCENE_H__
