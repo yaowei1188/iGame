@@ -74,6 +74,9 @@
     <Filter Include="Library\gloox">
       <UniqueIdentifier>{87833b64-c556-4e08-b0c6-4305d181a49f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Battle">
+      <UniqueIdentifier>{ff225b4d-ef2e-4a97-981c-3147d62b059d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\iGame.ico">
@@ -943,6 +946,18 @@
     <ClInclude Include="..\Classes\UILibrary\SharpLabelTTF.h">
       <Filter>Classes\UILibrary</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Battle\MDCardPlayer.h">
+      <Filter>Classes\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Battle\MDBattleLayer.h">
+      <Filter>Classes\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Battle\MDBattleLayerLoader.h">
+      <Filter>Classes\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\CCShake.h">
+      <Filter>Classes\UILibrary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -1388,6 +1403,15 @@
       <Filter>Classes\Common</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\UILibrary\SharpLabelTTF.cpp">
+      <Filter>Classes\UILibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Battle\MDCardPlayer.cpp">
+      <Filter>Classes\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Battle\MDBattleLayer.cpp">
+      <Filter>Classes\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\CCShake.cpp">
       <Filter>Classes\UILibrary</Filter>
     </ClCompile>
   </ItemGroup>
