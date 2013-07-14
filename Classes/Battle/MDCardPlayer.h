@@ -60,7 +60,8 @@ public:
 	//CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MDCardPlayer,create);
 
 	static MDCardPlayer * create(std::string p_cardName);
-	void playGalaxy();
+	void playGalaxyEffect();
+	void playMeteorEffect();
 };
 
 #endif /* defined(__mengdou__MDCardPlayer__) */

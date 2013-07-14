@@ -1,4 +1,4 @@
-APPNAME="цх╤╥нВсн"
+APPNAME="mengdou"
 
 # options
 

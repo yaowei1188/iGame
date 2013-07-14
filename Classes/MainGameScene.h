@@ -16,11 +16,12 @@
 #include "MainLayerBase.h"
 #include "MainSceneTemplate.h"
 #include "MainInnerLayer.h"
+#include "MDBattleLayer.h"
 #include "ChatLayer.h"
 #include "common.h"
 
-#include "client.h"
-#include "messagehandler.h"
+//#include "client.h"
+//#include "messagehandler.h"
 
 
 using namespace cocos2d;
@@ -79,13 +80,13 @@ private:
     int intSelectedMenu;
     
 private:
-    virtual void handleMessage(const gloox::Message& stanza,gloox::MessageSession* session = 0 );
-    virtual void onConnect();
-    virtual void onDisconnect(gloox::ConnectionError e );
-    virtual bool onTLSConnect(const gloox::CertInfo& info);
-    virtual void handlePresence( const gloox::Presence& presence);
-    
-    gloox::Client* j;
+    //virtual void handleMessage(const gloox::Message& stanza,gloox::MessageSession* session = 0 );
+    //virtual void onConnect();
+    //virtual void onDisconnect(gloox::ConnectionError e );
+    //virtual bool onTLSConnect(const gloox::CertInfo& info);
+    //virtual void handlePresence( const gloox::Presence& presence);
+    //
+    //gloox::Client* j;
 };
 
 #endif /* defined(__cctest__MainMenuScene__) */

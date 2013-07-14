@@ -189,7 +189,7 @@ void MDBattleLayer::prepareFormation()
 		cardPlayer->m_location = ccp(leftcap + CARD_H_MARGIN * col + col * CARD_WIDTH + CARD_WIDTH * 0.5,CARD_V_MARGIN + CARD_MARGIN * row + row * CARD_WIDTH + CARD_WIDTH * 0.5);
 		cardPlayer->m_sCardPlayer->setPosition(cardPlayer->m_location);
 
-		cardPlayer->playWiggleAnnimation();
+		cardPlayer->playParadeAnnimation();
 	}
 }
 
@@ -444,7 +444,7 @@ void MDBattleLayer::ccTouchEnded(CCTouch* touch, CCEvent* event)
 		if (_nearCardPlayer==NULL)
 		{
 			_cardPlayer->MoveToPosition();
-			_cardPlayer->playFireEffect();
+			_cardPlayer->playMeteorEffect();
 			return;
 		}
 
@@ -452,7 +452,7 @@ void MDBattleLayer::ccTouchEnded(CCTouch* touch, CCEvent* event)
 
 		_cardPlayer->MoveToPosition();
 		_nearCardPlayer->MoveToPosition();
-		_cardPlayer->playGalaxy();
+		_cardPlayer->playGalaxyEffect();
 	}
 }
 

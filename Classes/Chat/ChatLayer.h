@@ -8,7 +8,7 @@
 #include "XmlParser.h"
 #include "common.h"
 
-#include "net.h"
+//#include "net.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;

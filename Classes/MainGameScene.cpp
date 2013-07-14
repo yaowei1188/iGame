@@ -24,31 +24,31 @@ MainGameScene::MainGameScene()
 //    j->connect();
 }
 
-void MainGameScene::handleMessage( const gloox::Message& stanza,gloox::MessageSession* session)
-{
-//    stanza.subject();
-//    CCLOG("%s",stanza.suboptarg);
-//    const gloox::JID from(stanza.from());
-//    gloox::Message msg(stanza.from(), "hello world","test" );
-//    j->send( msg );
-}
+//void MainGameScene::handleMessage( const gloox::Message& stanza,gloox::MessageSession* session)
+//{
+////    stanza.subject();
+////    CCLOG("%s",stanza.suboptarg);
+////    const gloox::JID from(stanza.from());
+////    gloox::Message msg(stanza.from(), "hello world","test" );
+////    j->send( msg );
+//}
 
-void MainGameScene::onConnect()
-{
-    
-}
-void MainGameScene::onDisconnect(gloox::ConnectionError e )
-{
-    
-}
-bool MainGameScene::onTLSConnect(const gloox::CertInfo& info)
-{
-    return true;
-}
-void MainGameScene::handlePresence( const gloox::Presence& presence)
-{
-    
-}
+//void MainGameScene::onConnect()
+//{
+//    
+//}
+//void MainGameScene::onDisconnect(gloox::ConnectionError e )
+//{
+//    
+//}
+//bool MainGameScene::onTLSConnect(const gloox::CertInfo& info)
+//{
+//    return true;
+//}
+//void MainGameScene::handlePresence( const gloox::Presence& presence)
+//{
+//    
+//}
 
 MainGameScene::~MainGameScene()
 {
@@ -233,7 +233,10 @@ void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
         layer = mMainLayer;
     } else if (pItem->getTag() == MENUBAR_TASK_TAG) {
         layer = (CCLayer *)this->GetLayer("TaskListScene");
-    } else {
+	} else if (pItem->getTag() == MENUBAR_COPY_TAG) {
+		//layer = (CCLayer *)this->GetLayer("MDBattleLayer");
+		layer = (CCLayer *)MDBattleLayer::create();
+	} else {
         return;
     }
     

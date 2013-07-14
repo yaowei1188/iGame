@@ -18,14 +18,38 @@
 					<folderInfo id="0.870998433." name="/" resourcePath="">
 						<toolChain id="org.eclipse.cdt.build.core.prefbase.toolchain.1049416596" name="No ToolChain" resourceTypeBasedDiscovery="false" superClass="org.eclipse.cdt.build.core.prefbase.toolchain">
 							<targetPlatform id="org.eclipse.cdt.build.core.prefbase.toolchain.1049416596.436232297" name=""/>
-							<builder arguments="${workspace_loc:/test2}/build_native.sh" autoBuildTarget="all" cleanBuildTarget="clean" command="bash" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="org.eclipse.cdt.build.core.settings.default.builder.714860039" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" parallelBuildOn="false" superClass="org.eclipse.cdt.build.core.settings.default.builder">
+							<builder arguments="${workspace_loc:/mengdou}/build_native.sh" autoBuildTarget="all" cleanBuildTarget="clean" command="bash" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="org.eclipse.cdt.build.core.settings.default.builder.714860039" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" parallelBuildOn="false" superClass="org.eclipse.cdt.build.core.settings.default.builder">
 								<outputEntries>
 									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name=""/>
 								</outputEntries>
 							</builder>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.libs.49153338" name="holder for library settings" superClass="org.eclipse.cdt.build.core.settings.holder.libs"/>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.1948052590" name="Assembly" superClass="org.eclipse.cdt.build.core.settings.holder">
-								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1857464650" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath"/>
+								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1857464650" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
+									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/platforms/android-9/arch-arm/usr/include"/>
+									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/system/include"/>
+									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/gnu-libstdc++/4.6/include"/>
+									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/gnu-libstdc++/4.6/libs/armeabi-v7a/include"/>
+									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows-x86_64/lib/gcc/arm-linux-androideabi/4.4.3/include"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/cocos2dx"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/cocos2dx/include"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/CocosDenshion/include"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/cocos2dx/platform/android"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/extensions"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/cocos2dx/platform"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/library/jsonconverter"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/library/XmlParser"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Friends"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/UILibrary"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Task"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Other"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Mail"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Login"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Common"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Chat"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Battle"/>
+								</option>
 								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.1255464099" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;COCOS2DX_ROOT=${ProjDirPath}/../../../&quot;"/>
 								</option>
@@ -34,26 +58,28 @@
 							<tool id="org.eclipse.cdt.build.core.settings.holder.1531432748" name="GNU C++" superClass="org.eclipse.cdt.build.core.settings.holder">
 								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1669418074" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
 									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/platforms/android-9/arch-arm/usr/include"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/cocos2dx"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/cocos2dx/include"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/CocosDenshion/include"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/cocos2dx/platform/android"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/extensions"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/cocos2dx/platform"/>
 									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/system/include"/>
 									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/gnu-libstdc++/4.6/include"/>
 									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/gnu-libstdc++/4.6/libs/armeabi-v7a/include"/>
 									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows-x86_64/lib/gcc/arm-linux-androideabi/4.4.3/include"/>
-									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\library\jsonconverter&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\library\XmlParser&quot;"/>
-									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-2.1rc0-x-2.1.2/iGame/Classes/Friends"/>
-									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\Classes&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\Classes\UILibrary&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\Classes\Task&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\Classes\Other&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\Classes\Mail&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\Classes\Login&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;F:\cocos2d-x\cocos2d-2.1rc0-x-2.1.2\iGame\Classes\Common&quot;"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/cocos2dx"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/cocos2dx/include"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/CocosDenshion/include"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/cocos2dx/platform/android"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/extensions"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/cocos2dx/platform"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/library/jsonconverter"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/library/XmlParser"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Friends"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/UILibrary"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Task"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Other"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Mail"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Login"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Common"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Chat"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Battle"/>
 								</option>
 								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.656762238" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;COCOS2DX_ROOT=${ProjDirPath}/../../../&quot;"/>
@@ -61,7 +87,31 @@
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.1229650612" languageId="org.eclipse.cdt.core.g++" languageName="GNU C++" sourceContentType="org.eclipse.cdt.core.cxxSource,org.eclipse.cdt.core.cxxHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.657615967" name="GNU C" superClass="org.eclipse.cdt.build.core.settings.holder">
-								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1426385637" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath"/>
+								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1426385637" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
+									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/platforms/android-9/arch-arm/usr/include"/>
+									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/system/include"/>
+									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/gnu-libstdc++/4.6/include"/>
+									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/sources/cxx-stl/gnu-libstdc++/4.6/libs/armeabi-v7a/include"/>
+									<listOptionValue builtIn="false" value="F:/Android/android-ndk-r8e/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows-x86_64/lib/gcc/arm-linux-androideabi/4.4.3/include"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/cocos2dx"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/cocos2dx/include"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/CocosDenshion/include"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/cocos2dx/platform/android"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/extensions"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/cocos2dx/platform"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/library/jsonconverter"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/library/XmlParser"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Friends"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/UILibrary"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Task"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Other"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Mail"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Login"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Common"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Chat"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Battle"/>
+								</option>
 								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.451334047" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;COCOS2DX_ROOT=${ProjDirPath}/../../../&quot;"/>
 								</option>
@@ -88,5 +138,10 @@
 		</scannerConfigBuildInfo>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Default">
+			<resource resourceType="PROJECT" workspacePath="/mengdou"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>

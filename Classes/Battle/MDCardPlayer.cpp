@@ -82,9 +82,20 @@ void MDCardPlayer::playFireEffect()
 	m_emitter->setAutoRemoveOnFinish(true);
 }
 
-void MDCardPlayer::playGalaxy()
+void MDCardPlayer::playGalaxyEffect()
 {
 	CCParticleGalaxy *m_emitter = CCParticleGalaxy::create();
+	//m_emitter->setDuration(1);
+	m_emitter->retain();
+	m_sCardPlayer->addChild(m_emitter);
+	m_emitter->setTexture( CCTextureCache::sharedTextureCache()->addImage("particle-fire.png") );
+	m_emitter->setPosition(30,30);
+	m_emitter->setAutoRemoveOnFinish(true);
+}
+
+void MDCardPlayer::playMeteorEffect()
+{
+	CCParticleMeteor *m_emitter = CCParticleMeteor::create();
 	//m_emitter->setDuration(1);
 	m_emitter->retain();
 	m_sCardPlayer->addChild(m_emitter);
