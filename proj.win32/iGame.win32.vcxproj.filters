@@ -77,6 +77,9 @@
     <Filter Include="Classes\Battle">
       <UniqueIdentifier>{ff225b4d-ef2e-4a97-981c-3147d62b059d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Library\ccnet">
+      <UniqueIdentifier>{2ac11a61-6b49-44f8-b8df-d0298e95cf29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\iGame.ico">
@@ -285,6 +288,18 @@
     </None>
     <None Include="..\library\gloox\Makefile.in">
       <Filter>Library\gloox</Filter>
+    </None>
+    <None Include="..\Resources\particle-fire.png">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\particle-smoke.png">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\particle-snow.png">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\particle-stars.png">
+      <Filter>Resources\Image</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -958,6 +973,24 @@
     <ClInclude Include="..\Classes\UILibrary\CCShake.h">
       <Filter>Classes\UILibrary</Filter>
     </ClInclude>
+    <ClInclude Include="..\library\ccnet\inetaddress.h">
+      <Filter>Library\ccnet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\library\ccnet\inetpredef.h">
+      <Filter>Library\ccnet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\library\ccnet\net.h">
+      <Filter>Library\ccnet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\library\ccnet\netbean.h">
+      <Filter>Library\ccnet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\library\ccnet\socket.h">
+      <Filter>Library\ccnet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\library\ccnet\stream.h">
+      <Filter>Library\ccnet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -1413,6 +1446,18 @@
     </ClCompile>
     <ClCompile Include="..\Classes\UILibrary\CCShake.cpp">
       <Filter>Classes\UILibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\ccnet\inetaddress.cpp">
+      <Filter>Library\ccnet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\ccnet\netbean.cpp">
+      <Filter>Library\ccnet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\ccnet\socket.cpp">
+      <Filter>Library\ccnet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\library\ccnet\stream.cpp">
+      <Filter>Library\ccnet</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

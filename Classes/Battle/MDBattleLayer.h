@@ -6,11 +6,12 @@
 
 #include "SimpleAudioEngine.h"
 #include "MainGameScene.h"
+#include "MDCardPlayer.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class MDBattleLayer : public MainLayerBase,
+class MDBattleLayer : public CCLayerColor,
 public CCBSelectorResolver,
 public CCNodeLoaderListener,
 public CCBMemberVariableAssigner,
@@ -32,6 +33,12 @@ public:
     void addFriendRequest(std::string &userinfo);
 
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MDBattleLayer, create);
+
+	virtual void registerWithTouchDispatcher();
+	virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
+	virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
+	virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
+	virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
     
 	void buttonClicked(CCObject *pSender,CCControlEvent event);
     
@@ -45,10 +52,21 @@ public:
 
 	virtual void didClickButton(CCMessageDialog* dialog,unsigned int index);
 	void prepareFormation();
-
-    CCArray *mArrayList;
-
+	void prepareBackGround();
+	void selectSpriteForTouch(CCPoint touchLocation);
+	void panForTranslation(CCPoint translation);
+	void exchangeCard(MDCardPlayer *p_cardOne,MDCardPlayer *p_cardTwo);
 	bool btnTouched;
+
+protected:
+    CCNode*        m_root;
+    CCNode*        m_target;
+    CCMotionStreak *streak;
+
+private:
+	CCArray *mCardNameList;
+	CCArray *mCardList;
+	CCSprite *m_sSelectedSprite;
 };
 
 #endif  // __LOGINSCENE_SCENE_H__

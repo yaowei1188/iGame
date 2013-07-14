@@ -21,6 +21,8 @@ class MDCardPlayer : public CCObject
 {
 public:
 	CCSprite *m_sCardPlayer;
+	CCPoint m_location; //卡牌所在坐标
+	int position; //卡牌所在位置
 
 private:
 	CCString *m_strCardName;
@@ -43,7 +45,6 @@ private:
     float m_fltVipBUFF;   //VIP BUFF
 
     int battleMode;//战斗模式
-    int position; //卡牌所在位置
     bool isDead;
 
 	
@@ -52,8 +53,14 @@ public:
     void playAttackAnnimation();//播放攻击动画
     void playMistreatAnnimation();//播放被攻击动画
     void playDeadAnnimation();//播放死亡动画
-	bool init();
-	CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MDCardPlayer,create);
+	void playWiggleAnnimation();//播放死亡动画
+	void MoveToPosition();//返回原来位置
+	bool init(std::string p_cardName);
+	void playFireEffect();
+	//CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MDCardPlayer,create);
+
+	static MDCardPlayer * create(std::string p_cardName);
+	void playGalaxy();
 };
 
 #endif /* defined(__mengdou__MDCardPlayer__) */

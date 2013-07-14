@@ -29,6 +29,7 @@
 #include "MailListScene.h"
 #include "ChatLayer.h"
 #include "ChatLayerLoader.h"
+#include "MDBattleLayer.h"
 
 
 using namespace CocosDenshion;
@@ -161,10 +162,10 @@ bool AppDelegate::applicationDidFinishLaunching()
 	//SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
 #endif
     
-    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
+    //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
 
 
-	//CCScene *pScene = MailListScene::scene();
+	CCScene *pScene = MDBattleLayer::scene();
 	//CCScene *pScene = MailListScene::scene();
     //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("ServerListScene.ccbi");
     //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("CharacterScene.ccbi");
