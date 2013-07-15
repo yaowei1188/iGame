@@ -14,8 +14,8 @@ using namespace cocos2d;
 using namespace cocos2d::extension;
 
 class TaskListScene : public MainLayerBase,
-//	public CCTableViewDataSource,
-//	public CCTableViewDelegate,
+	public CCTableViewDataSource,
+	public CCTableViewDelegate,
 	public CCBSelectorResolver,
 	public CCNodeLoaderListener,
 	public CCBMemberVariableAssigner
@@ -26,8 +26,7 @@ public:
 
 	virtual bool init();  
 
-	// there's no 'id' in cpp, so we recommand to return the exactly class pointer
-	static cocos2d::CCScene* scene();
+//	static cocos2d::CCScene* scene();
 
 	// a selector callback
 	void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
@@ -38,24 +37,31 @@ public:
 
 	virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
 	virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
-
 	virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
 	virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
 
 	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
-	//void didClickButton(CCMessageDialog* dialog,unsigned int index);
-	//void executeTask(std::string &targetUser);
     void showTaskLists();
     void menuItemCallback(CCObject* pSender);
-	//CCTableView* mTableView;
-	unsigned int selectedindex;
-    CCLabelTTF *m_lblTitle;
+private:
+    
+    virtual void scrollViewDidScroll(cocos2d::extension::CCScrollView* view) {};
+	virtual void scrollViewDidZoom(cocos2d::extension::CCScrollView* view) {}
+    
+    virtual void tableCellTouched(cocos2d::extension::CCTableView* table, CCTableViewCell* cell);
+	virtual cocos2d::CCSize cellSizeForTable(cocos2d::extension::CCTableView *table);
+	virtual CCTableViewCell* tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx);
+	virtual unsigned int numberOfCellsInTableView(CCTableView *table);
+	virtual CCSize tableCellSizeForIndex(CCTableView *table, unsigned int idx);
+    
+	int upperIndex;
+	int subIndex;
+    CCTableView* mTableView;
+    CCArray *mTaskList;
+    unsigned int selectedindex;
     SlidingMenuGrid* sliderMenu;
 	CCArray *mArrayList;
     CCDictionary *mTaskDict;
-
-	int upperIndex;
-	int subIndex;
 };
 
 #endif  // __TASK_LIST_SCENE_H__

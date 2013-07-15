@@ -4,31 +4,31 @@
 #define TASK_COLUMN  3
 #define TASK_ROW  3
 
-CCScene* TaskListScene::scene()
-{
-	CCScene * scene = NULL;
-	do 
-	{
-		// 'scene' is an autorelease object
-		scene = CCScene::create();
-		CC_BREAK_IF(! scene);
-
-		// 'layer' is an autorelease object
-		TaskListScene *layer = TaskListScene::create();
-		CC_BREAK_IF(! layer);
-
-		// add layer as a child to scene
-		scene->addChild(layer);
-	} while (0);
-
-	// return the scene
-	return scene;
-}
+//CCScene* TaskListScene::scene()
+//{
+//	CCScene * scene = NULL;
+//	do 
+//	{
+//		// 'scene' is an autorelease object
+//		scene = CCScene::create();
+//		CC_BREAK_IF(! scene);
+//
+//		// 'layer' is an autorelease object
+//		TaskListScene *layer = TaskListScene::create();
+//		CC_BREAK_IF(! layer);
+//
+//		// add layer as a child to scene
+//		scene->addChild(layer);
+//	} while (0);
+//
+//	// return the scene
+//	return scene;
+//}
 
 // on "init" you need to initialize your instance
 bool TaskListScene::init()
 {
-	selectedindex = -1;
+	selectedindex = 2;
 
 	bool bRet = false;
 	do 
@@ -37,6 +37,16 @@ bool TaskListScene::init()
 		// super init first
 		//////////////////////////////////////////////////////////////////////////
 
+        mTaskList = CCArray::create();
+        mTaskList->retain();
+        
+        mTaskList->addObject(CCString::create("test1"));
+        mTaskList->addObject(CCString::create("test2"));
+        mTaskList->addObject(CCString::create("test3"));
+        mTaskList->addObject(CCString::create("test4"));
+        mTaskList->addObject(CCString::create("test5"));
+        mTaskList->addObject(CCString::create("test6"));
+        
 		CC_BREAK_IF(! CCLayer::init());
 
 		bRet = true;
@@ -123,7 +133,7 @@ void TaskListScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse
 
 bool TaskListScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblTitle", CCLabelTTF*, this->m_lblTitle);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableView", CCTableView*, this->mTableView);
 	return true;
 }
 
@@ -136,6 +146,72 @@ SEL_CCControlHandler TaskListScene::onResolveCCBCCControlSelector(CCObject *pTar
 
 	CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "buttonClicked:", TaskListScene::buttonClicked);
 	return NULL;
+}
+
+unsigned int TaskListScene::numberOfCellsInTableView(CCTableView *table)
+{
+	return mTaskList->count();
+}
+
+CCSize TaskListScene::cellSizeForTable(CCTableView *table)
+{
+	return CCSizeMake(60, 38);
+}
+
+CCSize TaskListScene::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
+{
+	return CCSizeMake(60, 38);
+}
+
+void TaskListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
+{
+    
+}
+
+CCTableViewCell* TaskListScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
+{
+	CCString *string = (CCString *)mTaskList->objectAtIndex(idx);
+    CCSprite *sSelected = NULL;
+	CCTableViewCell *cell = table->dequeueCell();
+    CCLabelTTF *_lblTaskName = NULL;
+    
+    CCSize size = this->tableCellSizeForIndex(table,idx);
+    
+	if (!cell) {
+		cell = new CCTableViewCell();
+		cell->autorelease();
+        
+		sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_selected.png"));
+		sSelected->setTag(122);
+		sSelected->setPosition(ccp(size.width * 0.5,size.height * 0.5));
+        if (selectedindex == idx) {
+            sSelected->setVisible(true);
+        } else {
+            sSelected->setVisible(false);
+        }
+
+		cell->addChild(sSelected);
+        
+        _lblTaskName = CCLabelTTF::create(string->getCString(), "Arial", 14);
+        _lblTaskName->setTag(123);
+		_lblTaskName->setPosition(ccp(size.width * 0.5,size.height * 0.5));
+		cell->addChild(_lblTaskName);
+	}
+	else
+	{
+		sSelected = (CCSprite*)cell->getChildByTag(122);
+        if (selectedindex == idx) {
+            sSelected->setVisible(true);
+        } else {
+            sSelected->setVisible(false);
+        }
+        
+        _lblTaskName = (CCLabelTTF*)cell->getChildByTag(123);
+        _lblTaskName->setString(string->getCString());
+	}
+    
+    
+	return cell;
 }
 
 void TaskListScene::showTaskLists()
@@ -180,6 +256,16 @@ void TaskListScene::showTaskLists()
 
 void TaskListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
+    mTableView->setDirection(kCCScrollViewDirectionHorizontal);
+	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
+	mTableView->setDataSource(this);
+	mTableView->setViewSize(CCSizeMake(300, 38));
+	mTableView->isPagingEnableX = true;
+	mTableView->setBounceable(false);
+	mTableView->setDelegate(this);
+    
+    mTableView->reloadData();
+    
 	this->retrieveCurrentTask();
 }
 
@@ -213,11 +299,11 @@ void TaskListScene::buttonClicked(CCObject * sender , CCControlEvent controlEven
 TaskListScene::TaskListScene()
 {
 	mArrayList = NULL;
-    m_lblTitle = NULL;
+    mTableView = NULL;
 }
 
 TaskListScene::~TaskListScene()
 {
-	m_lblTitle->release();
+    CC_SAFE_RELEASE(mTableView);
 }
 
