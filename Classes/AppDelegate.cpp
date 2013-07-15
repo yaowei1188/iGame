@@ -21,15 +21,18 @@
 #include "TaskRewardSceneLoader.h"
 #include "NewMailSceneLoader.h"
 #include "MainInnerLayerLoader.h"
-#include "MailMainScene.h"
-#include "RegisterScene.h"
 #include "RegisterSceneLoader.h"
-#include "MailMainScene.h"
 #include "MailMainSceneLoader.h"
-#include "MailListScene.h"
-#include "ChatLayer.h"
 #include "ChatLayerLoader.h"
-#include "MDBattleLayer.h"
+//#include "MDBattleLayer.h"
+
+#include "MDCardAlchemyLayerLoader.h"
+#include "MDHeroDetailLayerLoader.h"
+#include "MDHeroListLayerLoader.h"
+#include "MDHeroMainLayerLoader.h"
+#include "MDHeroPromoLayerLoader.h"
+#include "MDHeroPrePromoLayerLoader.h"
+#include "MDHerosFormationLayerLoader.h"
 
 
 using namespace CocosDenshion;
