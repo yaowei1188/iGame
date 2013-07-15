@@ -377,8 +377,6 @@
 						<string>10</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -619,7 +617,7 @@
 						<key>value</key>
 						<array>
 							<real>160</real>
-							<real>400</real>
+							<real>403</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -667,6 +665,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
