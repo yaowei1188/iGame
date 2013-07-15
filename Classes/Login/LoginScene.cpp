@@ -55,22 +55,6 @@ bool LoginScene::init()
     return bRet;
 }
 
-//void LoginScene::doSubmit()
-//{
-//	CCHttpRequest *request = new CCHttpRequest();
-//	request->setRequestType(CCHttpRequest::kHttpPost);
-//	request->setResponseCallback(this,httpresponse_selector(LoginScene::requestFinishedCallback));
-//	request->setTag("post testing!!!");
-//	request->setUrl("http://223.4.10.91/andon_service/ANDON_EX_USER.asmx/GetList");
-//
-//	const char* postData = "cid=120000&date=";
-//	request->setRequestData(postData,strlen(postData));
-//	CCHttpClient *client = CCHttpClient::getInstance();
-//	client->send(request);
-//
-//	request->release();
-//}
-
 void LoginScene::doSubmit()
 {
     std::string sAccount(m_txtAccount->getText());
@@ -150,8 +134,6 @@ void LoginScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* r
 
 void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    CCLOG("TEST");
-    
     m_txtAccount = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
     m_txtAccount->setText("yaowei");
     m_txtAccount->setPosition(ccp(177, 247));
@@ -160,12 +142,12 @@ void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     this->addChild(m_txtAccount);
 
     m_txtPassword = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
-    m_txtPassword->setText("123456");
     this->addChild(m_txtPassword);
     m_txtPassword->setPosition(ccp(177, 201));
     m_txtPassword->setInputFlag(kEditBoxInputFlagPassword);
     m_txtPassword->setFontColor(ccc3(0,0,0));
     m_txtPassword->setFont(FONT_LOGIN, 16);
+	m_txtPassword->setText("123456");
     
 	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
 	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
@@ -194,8 +176,6 @@ void LoginScene::callbackSwitch(CCObject* pSender){
 bool LoginScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
 //    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtAccount", CCEditBox*, this->m_txtAccount);
-//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_txtPassword", CCEditBox*, this->m_txtPassword);
-    
     return true;
 }
 

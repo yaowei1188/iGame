@@ -301,6 +301,12 @@
     <None Include="..\Resources\particle-stars.png">
       <Filter>Resources\Image</Filter>
     </None>
+    <None Include="..\Resources\ccactivityindicator.plist">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\ccactivityindicator.png">
+      <Filter>Resources</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="iGame.rc">

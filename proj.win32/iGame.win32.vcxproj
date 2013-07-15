@@ -141,6 +141,8 @@
     <None Include="..\library\gloox\Makefile.in" />
     <None Include="..\Resources\account.png" />
     <None Include="..\Resources\AddFriendScene.ccbi" />
+    <None Include="..\Resources\ccactivityindicator.plist" />
+    <None Include="..\Resources\ccactivityindicator.png" />
     <None Include="..\Resources\CharacterScene.ccbi" />
     <None Include="..\Resources\ChatLayer.ccbi" />
     <None Include="..\Resources\Default.png" />
