@@ -46,7 +46,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)CocosDenshion\include;$(SolutionDir)extensions;$(ProjectDir)..\library\jsoncpp\include;$(ProjectDir)..\library\JsonBox\include;$(ProjectDir)..\library\jsonconverter;$(ProjectDir)..\Classes\Common;$(ProjectDir)..\library\XmlParser;$(ProjectDir)..\Classes\UILibrary;$(ProjectDir)..\Classes\UILibrary\CCActivityIndicator;$(ProjectDir)..\Classes\Task;$(ProjectDir)..\Classes\Other;$(ProjectDir)..\Classes\Mail;$(ProjectDir)..\Classes\Login;$(ProjectDir)..\Classes\Friends;$(ProjectDir)..\Classes\Chat;$(ProjectDir)..\library\gloox;$(ProjectDir)..\Classes\Battle;$(ProjectDir)..\library\ccnet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)CocosDenshion\include;$(SolutionDir)extensions;$(ProjectDir)..\library\jsoncpp\include;$(ProjectDir)..\library\JsonBox\include;$(ProjectDir)..\library\jsonconverter;$(ProjectDir)..\Classes\Common;$(ProjectDir)..\library\XmlParser;$(ProjectDir)..\Classes\UILibrary;$(ProjectDir)..\Classes\UILibrary\CCActivityIndicator;$(ProjectDir)..\Classes\Task;$(ProjectDir)..\Classes\Other;$(ProjectDir)..\Classes\Mail;$(ProjectDir)..\Classes\Login;$(ProjectDir)..\Classes\Friends;$(ProjectDir)..\Classes\Chat;$(ProjectDir)..\library\gloox;$(ProjectDir)..\Classes\Battle;$(ProjectDir)..\library\ccnet;$(ProjectDir)..\Classes\Card;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
@@ -173,8 +173,19 @@
     <None Include="..\Resources\language\chs.plist" />
     <None Include="..\Resources\LoginScene.ccbi" />
     <None Include="..\Resources\MailMainScene.ccbi" />
+    <None Include="..\Resources\MainGameScene copy.ccbi" />
     <None Include="..\Resources\MainGameScene.ccbi" />
+    <None Include="..\Resources\MainInner1Layer.ccbi" />
+    <None Include="..\Resources\MainInnerLayer.ccbi" />
+    <None Include="..\Resources\MainOuterLlayer.ccbi" />
     <None Include="..\Resources\MainSceneTemplate.ccbi" />
+    <None Include="..\Resources\MDCardAlchemyLayer.ccbi" />
+    <None Include="..\Resources\MDHeroDetailLayer.ccbi" />
+    <None Include="..\Resources\MDHeroListLayer.ccbi" />
+    <None Include="..\Resources\MDHeroMainLayer.ccbi" />
+    <None Include="..\Resources\MDHeroPrePromoLayer.ccbi" />
+    <None Include="..\Resources\MDHeroPromoLayer.ccbi" />
+    <None Include="..\Resources\MDHerosFormationLayer.ccbi" />
     <None Include="..\Resources\NewMailScene.ccbi" />
     <None Include="..\Resources\particle-fire.png" />
     <None Include="..\Resources\particle-smoke.png" />
@@ -206,6 +217,20 @@
     <ClInclude Include="..\Classes\Battle\MDBattleLayer.h" />
     <ClInclude Include="..\Classes\Battle\MDBattleLayerLoader.h" />
     <ClInclude Include="..\Classes\Battle\MDCardPlayer.h" />
+    <ClInclude Include="..\Classes\Card\MDCardAlchemyLayer.h" />
+    <ClInclude Include="..\Classes\Card\MDCardAlchemyLayerLoader.h" />
+    <ClInclude Include="..\Classes\Card\MDHeroDetailLayer.h" />
+    <ClInclude Include="..\Classes\Card\MDHeroDetailLayerLoader.h" />
+    <ClInclude Include="..\Classes\Card\MDHeroListLayer.h" />
+    <ClInclude Include="..\Classes\Card\MDHeroListLayerLoader.h" />
+    <ClInclude Include="..\Classes\Card\MDHeroMainLayer.h" />
+    <ClInclude Include="..\Classes\Card\MDHeroMainLayerLoader.h" />
+    <ClInclude Include="..\Classes\Card\MDHeroPrePromoLayer.h" />
+    <ClInclude Include="..\Classes\Card\MDHeroPrePromoLayerLoader.h" />
+    <ClInclude Include="..\Classes\Card\MDHeroPromoLayer.h" />
+    <ClInclude Include="..\Classes\Card\MDHeroPromoLayerLoader.h" />
+    <ClInclude Include="..\Classes\Card\MDHerosFormationLayer.h" />
+    <ClInclude Include="..\Classes\Card\MDHerosFormationLayerLoader.h" />
     <ClInclude Include="..\Classes\Chat\ChatLayer.h" />
     <ClInclude Include="..\Classes\Chat\ChatLayerLoader.h" />
     <ClInclude Include="..\Classes\Common\common.h" />
@@ -436,6 +461,13 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Battle\MDBattleLayer.cpp" />
     <ClCompile Include="..\Classes\Battle\MDCardPlayer.cpp" />
+    <ClCompile Include="..\Classes\Card\MDCardAlchemyLayer.cpp" />
+    <ClCompile Include="..\Classes\Card\MDHeroDetailLayer.cpp" />
+    <ClCompile Include="..\Classes\Card\MDHeroListLayer.cpp" />
+    <ClCompile Include="..\Classes\Card\MDHeroMainLayer.cpp" />
+    <ClCompile Include="..\Classes\Card\MDHeroPrePromoLayer.cpp" />
+    <ClCompile Include="..\Classes\Card\MDHeroPromoLayer.cpp" />
+    <ClCompile Include="..\Classes\Card\MDHerosFormationLayer.cpp" />
     <ClCompile Include="..\Classes\Chat\ChatLayer.cpp" />
     <ClCompile Include="..\Classes\Common\GlobalData.cpp" />
     <ClCompile Include="..\Classes\Common\MainInnerLayer.cpp" />

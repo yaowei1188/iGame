@@ -210,7 +210,6 @@ CCTableViewCell* TaskListScene::tableCellAtIndex(CCTableView *table, unsigned in
         _lblTaskName->setString(string->getCString());
 	}
     
-    
 	return cell;
 }
 
@@ -243,7 +242,6 @@ void TaskListScene::showTaskLists()
     CCPoint p = ccp(100,80);
 
     float eWidth =  (TASK_COLUMN-1)*(p.x);
-//    float eHeight = (TASK_ROW-1)*(p.y);
 
     CCPoint menuPosition = ccp(windowSize.width/2.0f -eWidth/2.0f , windowSize.height/2.0f + 30);
 
@@ -287,7 +285,7 @@ void TaskListScene::buttonClicked(CCObject * sender , CCControlEvent controlEven
 	switch (button->getTag()) {
 	case 101:
 		CCLOG("11111");
-		mainScene->PopLayer();
+		mainScene->returnToMainLayer();
 		break;
 	case 102:
 		CCLOG("22222");

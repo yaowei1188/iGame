@@ -221,7 +221,20 @@ void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
 
 void MainGameScene::returnToMainLayer()
 {
+	intSelectedMenu = MENUBAR_MAINPAGE_TAG;
 
+	this->RemoveChatLayer();
+
+	for (int i=mlayArray->count()-1; i>=0; i--) {
+		CCLayer *layer = (CCLayer *)mlayArray->objectAtIndex(i);
+		layer->removeFromParentAndCleanup(true);
+		mlayArray->removeObjectAtIndex(i);
+	}
+
+	mlayArray->addObject(mMainLayer);
+
+	mMainLayer->setPosition(ccp(0, 38));
+	this->addChild(mMainLayer);
 }
 
 SEL_MenuHandler MainGameScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)

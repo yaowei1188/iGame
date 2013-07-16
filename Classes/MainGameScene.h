@@ -20,17 +20,10 @@
 #include "ChatLayer.h"
 #include "common.h"
 
-//#include "client.h"
-//#include "messagehandler.h"
-
-
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
 class MainGameScene : public MainLayerBase,
-//  public gloox::MessageHandler,public gloox::ConnectionListener,public gloox::PresenceHandler,
-//  public gloox::ConnectionListener,
-//  public gloox::PresenceHandler,
   public CCBSelectorResolver,
   public CCBMemberVariableAssigner,
   public CCNodeLoaderListener,

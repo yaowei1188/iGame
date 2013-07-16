@@ -133,7 +133,7 @@ void MailMainScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 
 	//doSearchFriend();
 
-	CCTabView * _mailTab = new CCTabView(CCRectMake(20, 80, 320, 300));
+	CCTabView * _mailTab = new CCTabView(CCRectMake(0, 80, 320, 300));
 	_mailTab->autorelease();
 
 	MailListScene * _layMail = MailListScene::create();

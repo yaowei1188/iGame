@@ -35,25 +35,25 @@ bool SysMailListScene::init()
 
         CC_BREAK_IF(! CCLayer::init());
 
-		CCSprite *mailListBg = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_list_bg.png"));
-		mailListBg->setAnchorPoint(CCPointZero);
-		mailListBg->setPosition(CCPointZero);
-		this->addChild(mailListBg);
+		//CCSprite *mailListBg = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_list_bg.png"));
+		//mailListBg->setAnchorPoint(CCPointZero);
+		//mailListBg->setPosition(CCPointZero);
+		//this->addChild(mailListBg);
         
-        CCSprite *sFriend = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_lblFriend.png"));
-		sFriend->setAnchorPoint(CCPointMake(0, 0.5));
-		sFriend->setPosition(CCPointMake(30, 275));
-		this->addChild(sFriend);
-        
-        CCSprite *sSubject = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_lblsubject.png"));
-		sSubject->setAnchorPoint(CCPointMake(0, 0.5));
-		sSubject->setPosition(CCPointMake(120, 275));
-		this->addChild(sSubject);
+  //      CCSprite *sFriend = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_lblFriend.png"));
+		//sFriend->setAnchorPoint(CCPointMake(0, 0.5));
+		//sFriend->setPosition(CCPointMake(30, 275));
+		//this->addChild(sFriend);
+  //      
+  //      CCSprite *sSubject = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_lblsubject.png"));
+		//sSubject->setAnchorPoint(CCPointMake(0, 0.5));
+		//sSubject->setPosition(CCPointMake(120, 275));
+		//this->addChild(sSubject);
         
         menuCheckAll = this->generateCheckBox();
         this->addChild(menuCheckAll);
         menuCheckAll->setAnchorPoint(CCPointMake(0, 0.5));
-        menuCheckAll->setPosition(CCPointMake(240, 275));
+        menuCheckAll->setPosition(CCPointMake(280, 310));
 
 		doSearch();
 
@@ -74,7 +74,7 @@ void SysMailListScene::loadTableView()
 
 	if (mTableViewMail==NULL)
 	{
-		mTableViewMail = CCTableView::create(this,CCSizeMake(300,240));
+		mTableViewMail = CCTableView::create(this,CCSizeMake(320,270));
 		mTableViewMail->setPosition(CCPointMake(0, 15));
 		this->addChild(mTableViewMail);
 		mTableViewMail->setDirection(kCCScrollViewDirectionVertical);
@@ -178,12 +178,12 @@ unsigned int SysMailListScene::numberOfCellsInTableView(CCTableView *table)
 
 CCSize SysMailListScene::cellSizeForTable(CCTableView *table)
 {
-	return CCSizeMake(312, 50);
+	return CCSizeMake(320, 50);
 }
 
 CCSize SysMailListScene::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
 {
-    return CCSizeMake(312, 50);
+    return CCSizeMake(320, 50);
 }
 
 void SysMailListScene::callbackSwitch(CCObject* pSender){
@@ -257,7 +257,7 @@ CCTableViewCell* SysMailListScene::tableCellAtIndex(CCTableView *table, unsigned
         
         CCScale9Sprite *sline = CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_line.png"));
         sline->setPreferredSize(CCSizeMake(285, 1));
-        sline->setPosition(ccp(5,size.height-2));
+        sline->setPosition(ccp(0,size.height-2));
         sline->setAnchorPoint(CCPointZero);
         cell->addChild(sline);
         

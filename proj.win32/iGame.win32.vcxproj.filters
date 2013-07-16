@@ -80,6 +80,9 @@
     <Filter Include="Library\ccnet">
       <UniqueIdentifier>{2ac11a61-6b49-44f8-b8df-d0298e95cf29}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Card">
+      <UniqueIdentifier>{992afd09-1ee9-4a27-b356-9054babb3d88}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\iGame.ico">
@@ -306,6 +309,39 @@
     </None>
     <None Include="..\Resources\ccactivityindicator.png">
       <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\MainGameScene copy.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\MainInner1Layer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\MainInnerLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\MainOuterLlayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\MDCardAlchemyLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\MDHeroDetailLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\MDHeroListLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\MDHeroMainLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\MDHeroPrePromoLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\MDHeroPromoLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\MDHerosFormationLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -997,6 +1033,48 @@
     <ClInclude Include="..\library\ccnet\stream.h">
       <Filter>Library\ccnet</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDCardAlchemyLayer.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDCardAlchemyLayerLoader.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroDetailLayer.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroDetailLayerLoader.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroListLayer.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroListLayerLoader.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroMainLayer.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroMainLayerLoader.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroPrePromoLayer.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroPrePromoLayerLoader.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroPromoLayer.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroPromoLayerLoader.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHerosFormationLayer.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHerosFormationLayerLoader.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -1464,6 +1542,27 @@
     </ClCompile>
     <ClCompile Include="..\library\ccnet\stream.cpp">
       <Filter>Library\ccnet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Card\MDCardAlchemyLayer.cpp">
+      <Filter>Classes\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Card\MDHeroDetailLayer.cpp">
+      <Filter>Classes\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Card\MDHeroListLayer.cpp">
+      <Filter>Classes\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Card\MDHeroMainLayer.cpp">
+      <Filter>Classes\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Card\MDHeroPrePromoLayer.cpp">
+      <Filter>Classes\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Card\MDHeroPromoLayer.cpp">
+      <Filter>Classes\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Card\MDHerosFormationLayer.cpp">
+      <Filter>Classes\Card</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

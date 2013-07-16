@@ -166,16 +166,15 @@ void NewMailScene::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEve
     switch (button->getTag()) {
         case 101:
         {
-            MainGameScene *mainScene = (MainGameScene *)this->getParent();
-            mainScene->PopLayer();
-        }
-            break;
+			this->doSubmit();
+			break;
+        }  
         case 102:
         {
-            CCLOG("popup");
-            this->doSubmit();
-        }
-            break;
+			MainGameScene *mainScene = (MainGameScene *)this->getParent();
+			mainScene->PopLayer();
+			break;
+        } 
     }
 }
 

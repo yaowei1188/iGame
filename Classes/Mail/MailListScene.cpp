@@ -37,25 +37,25 @@ bool MailListScene::init()
         
 
 
-		CCSprite *mailListBg = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_list_bg.png"));
-		mailListBg->setAnchorPoint(CCPointZero);
-		mailListBg->setPosition(CCPointZero);
-		this->addChild(mailListBg);
+		//CCSprite *mailListBg = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_list_bg.png"));
+		//mailListBg->setAnchorPoint(CCPointZero);
+		//mailListBg->setPosition(CCPointZero);
+		//this->addChild(mailListBg);
         
-        CCSprite *sFriend = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_lblFriend.png"));
-		sFriend->setAnchorPoint(CCPointMake(0, 0.5));
-		sFriend->setPosition(CCPointMake(30, 275));
-		this->addChild(sFriend);
-        
-        CCSprite *sSubject = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_lblsubject.png"));
-		sSubject->setAnchorPoint(CCPointMake(0, 0.5));
-		sSubject->setPosition(CCPointMake(120, 275));
-		this->addChild(sSubject);
+  //      CCSprite *sFriend = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_lblFriend.png"));
+		//sFriend->setAnchorPoint(CCPointMake(0, 0.5));
+		//sFriend->setPosition(CCPointMake(30, 275));
+		//this->addChild(sFriend);
+  //      
+  //      CCSprite *sSubject = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_lblsubject.png"));
+		//sSubject->setAnchorPoint(CCPointMake(0, 0.5));
+		//sSubject->setPosition(CCPointMake(120, 275));
+		//this->addChild(sSubject);
         
         menuCheckAll = this->generateCheckBox();
         this->addChild(menuCheckAll);
         menuCheckAll->setAnchorPoint(CCPointMake(0, 0.5));
-        menuCheckAll->setPosition(CCPointMake(240, 275));
+        menuCheckAll->setPosition(CCPointMake(280, 310));
 
 		//doSearch();
 
@@ -78,7 +78,7 @@ void MailListScene::loadTableView()
 
 	if (mTableViewMail==NULL)
 	{
-		mTableViewMail = CCTableView::create(this,CCSizeMake(300,240));
+		mTableViewMail = CCTableView::create(this,CCSizeMake(320,270));
 		mTableViewMail->setPosition(CCPointMake(0, 15));
 		this->addChild(mTableViewMail);
 		mTableViewMail->setDirection(kCCScrollViewDirectionVertical);
@@ -175,12 +175,12 @@ unsigned int MailListScene::numberOfCellsInTableView(CCTableView *table)
 
 CCSize MailListScene::cellSizeForTable(CCTableView *table)
 {
-	return CCSizeMake(312, 50);
+	return CCSizeMake(320, 50);
 }
 
 CCSize MailListScene::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
 {
-    return CCSizeMake(312, 50);
+    return CCSizeMake(320, 50);
 }
 
 void MailListScene::callbackSwitch(CCObject* pSender){
@@ -255,8 +255,8 @@ CCTableViewCell* MailListScene::tableCellAtIndex(CCTableView *table, unsigned in
 		cell->addChild(lblSubject);
         
         CCScale9Sprite *sline = CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_line.png"));
-        sline->setPreferredSize(CCSizeMake(290, 1));
-        sline->setPosition(ccp(5,size.height-2));
+        sline->setPreferredSize(CCSizeMake(310, 1));
+        sline->setPosition(ccp(0,size.height-2));
         sline->setAnchorPoint(CCPointZero);
         cell->addChild(sline);
         
@@ -272,7 +272,7 @@ CCTableViewCell* MailListScene::tableCellAtIndex(CCTableView *table, unsigned in
 
         menuCheck->setTag(123);
         menuCheck->setAnchorPoint(CCPointMake(0, 0.5));
-        menuCheck->setPosition(CCPointMake(240, size.height * 0.5));
+        menuCheck->setPosition(CCPointMake(280, size.height * 0.5));
 	}
 	else
 	{

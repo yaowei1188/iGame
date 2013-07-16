@@ -81,8 +81,9 @@ void TaskDetailScene::showTaskInfo()
 //        return;
 //    }
     
-    CCDictionary *task = (CCDictionary *)subTasks->objectAtIndex(subIndex-1);
-    
+    //CCDictionary *task = (CCDictionary *)subTasks->objectAtIndex(subIndex-1);
+    CCDictionary *task = (CCDictionary *)subTasks->objectAtIndex(subIndex);
+
     CCLabelTTF *lblCoins = NULL;
     CCLabelTTF *lblExperience = NULL;
 
@@ -190,9 +191,6 @@ void TaskDetailScene::executeTask()
 	client->send(request);
 
 	request->release();
-    
-
-    
 
 }
 
