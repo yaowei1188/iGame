@@ -9,3 +9,5 @@ assets
 /proj.android/obj/local/armeabi/libgame.so
 /proj.android/obj/local/armeabi/libbox2d.a
 /proj.android/obj/local/armeabi/libchipmunk.a
+/proj.android/bin/resources.ap_
+/proj.android/bin/dexedLibs
