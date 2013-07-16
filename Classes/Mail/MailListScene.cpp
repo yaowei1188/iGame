@@ -238,18 +238,25 @@ CCTableViewCell* MailListScene::tableCellAtIndex(CCTableView *table, unsigned in
 		cell = new CCTableViewCell();
 		cell->autorelease();
 
+		CCSprite *sState = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_state_read.png"));
+		sState->setAnchorPoint(CCPointMake(0, 0.5));
+		sState->setPosition(ccp(10,size.height * 0.5));
+		sState->setTag(120);
+		cell->addChild(sState);
+
 		CCLabelTTF *lblFriendName = CCLabelTTF::create(string->getCString(), "Arial", 14.0);
-		lblFriendName->setPosition(ccp(40,size.height * 0.5));
+		lblFriendName->setPosition(ccp(55,size.height * 0.5));
         lblFriendName->setColor(ccc3(255, 255, 204));
-        lblFriendName->enableStroke(ccc3(51, 0, 0), 0.6);
+        //lblFriendName->enableStroke(ccc3(51, 0, 0), 0.6);
 		lblFriendName->setTag(121);
+		lblFriendName->setHorizontalAlignment(CCTextAlignment::kCCTextAlignmentLeft);
         lblFriendName->setString(string->getCString());
 		cell->addChild(lblFriendName);
 
 		CCLabelTTF *lblSubject = CCLabelTTF::create("100", "Arial", 14.0);
 		lblSubject->setPosition(ccp(130,size.height * 0.5));
         lblSubject->setColor(ccc3(255, 255, 204));
-        lblSubject->enableStroke(ccc3(51, 0, 0), 0.6);
+        //lblSubject->enableStroke(ccc3(51, 0, 0), 0.6);
         lblSubject->setTag(122);
         lblSubject->setString(string->getCString());
 		cell->addChild(lblSubject);
