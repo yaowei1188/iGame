@@ -15,40 +15,7 @@ MainGameScene::MainGameScene()
     mChatLayer = NULL;
     mlayArray = CCArray::create();
     mlayArray->retain();
-    
-//    gloox::JID jid( "bot@server/resource" );
-//    j = new gloox::Client( jid, "password" );
-//    j->registerMessageHandler(this);
-//    j->registerConnectionListener(this);
-//    j->registerPresenceHandler(this);
-//    j->connect();
 }
-
-//void MainGameScene::handleMessage( const gloox::Message& stanza,gloox::MessageSession* session)
-//{
-////    stanza.subject();
-////    CCLOG("%s",stanza.suboptarg);
-////    const gloox::JID from(stanza.from());
-////    gloox::Message msg(stanza.from(), "hello world","test" );
-////    j->send( msg );
-//}
-
-//void MainGameScene::onConnect()
-//{
-//    
-//}
-//void MainGameScene::onDisconnect(gloox::ConnectionError e )
-//{
-//    
-//}
-//bool MainGameScene::onTLSConnect(const gloox::CertInfo& info)
-//{
-//    return true;
-//}
-//void MainGameScene::handlePresence( const gloox::Presence& presence)
-//{
-//    
-//}
 
 MainGameScene::~MainGameScene()
 {
@@ -126,8 +93,6 @@ void MainGameScene::PushLayer(CCLayer *subLayer,bool fromRight)
 
 void MainGameScene::AddChatLayer()
 {
-//    mChatLayer = (ChatLayer *)this->GetLayer("ChatLayer.ccbi");
-    
     if (mChatLayer== NULL) {
         mChatLayer = (ChatLayer *)this->GetLayer("ChatLayer.ccbi");
     } else {
@@ -249,10 +214,14 @@ void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
     }
     
     mlayArray->addObject(layer);
-//    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     
     layer->setPosition(ccp(0, 38));
     this->addChild(layer);
+}
+
+void MainGameScene::returnToMainLayer()
+{
+
 }
 
 SEL_MenuHandler MainGameScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)

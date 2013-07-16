@@ -71,6 +71,8 @@ public:
     
     CCArray *mFriendList;
 	bool btnTouched;
+private:
+    CCLabelTTF *m_lblFriendCount;
 };
 
-#endif  // __HELLOWORLD_SCENE_H__
+#endif  // __FRIEND_LIST_SCENE_H__

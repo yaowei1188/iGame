@@ -637,11 +637,9 @@ ASDFASFDASDFASDFASDFSADFASD
 						<key>type</key>
 						<string>Text</string>
 						<key>value</key>
-						<string>Sample Text</string>
+						<string></string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

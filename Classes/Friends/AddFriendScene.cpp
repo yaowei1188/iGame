@@ -147,6 +147,10 @@ void AddFriendScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespons
 		{
 			  mFriendList->addObject(friendDictionary);
 		}
+        char strCount[20];
+        sprintf(strCount,"%d",mFriendList->count());
+        m_lblSearchCount->setString(strCount);
+        
 		selectedindex = -1;
 		this->mTableViewFriend->reloadData();
     } else if (requestTag == "102"){
@@ -169,12 +173,6 @@ void AddFriendScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     m_txtSearchField->setFont(FONT_LOGIN, 16);
     m_txtSearchField->setZOrder(99);
     this->addChild(m_txtSearchField);
-}
-
-bool AddFriendScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
-{
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableViewFriend", CCTableView*, this->mTableViewFriend);
-    return true;
 }
 
 void AddFriendScene::toolBarTouchDownAction(CCObject *pSender, CCControlEvent pCCControlEvent) {
@@ -220,9 +218,14 @@ void AddFriendScene::didClickButton(CCMessageDialog* dialog,unsigned int index)
 
 SEL_MenuHandler AddFriendScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
 {
-//	CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "menuBarBtnClicked:", LoginScene::menuBarBtnClicked);
-    
 	return NULL;
+}
+
+bool AddFriendScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
+{
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableViewFriend", CCTableView*, this->mTableViewFriend);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblSearchCount", CCLabelTTF*, this->m_lblSearchCount);
+    return true;
 }
 
 SEL_CCControlHandler AddFriendScene::onResolveCCBCCControlSelector(CCObject *pTarget, const char * pSelectorName) {
@@ -429,10 +432,14 @@ AddFriendScene::AddFriendScene()
     mTableViewFriend = NULL;
     mFriendList = NULL;
     m_txtSearchField = NULL;
+    m_lblSearchCount = NULL;
 }
 
 AddFriendScene::~AddFriendScene()
 {
     mFriendList->release();
+    CC_SAFE_RELEASE(mTableViewFriend);
+    CC_SAFE_RELEASE(m_lblSearchCount);
+//    CC_SAFE_RELEASE(m_txtSearchField);
 }
 

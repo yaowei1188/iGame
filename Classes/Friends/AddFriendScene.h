@@ -68,6 +68,8 @@ public:
     CCArray *mFriendList;
 
 	bool btnTouched;
+private:
+    CCLabelTTF *m_lblSearchCount;
 };
 
 #endif  // __LOGINSCENE_SCENE_H__

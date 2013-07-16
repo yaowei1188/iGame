@@ -93,6 +93,10 @@ void FriendListScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespon
 		{
 			mFriendList = CCArray::create();
 		}
+        char strCount[20];
+        sprintf(strCount,"%d",mFriendList->count());
+        m_lblFriendCount->setString(strCount);
+        
         mFriendList->retain();
 		selectedindex = -1;
 		mTableViewFriend->reloadData();
@@ -104,6 +108,7 @@ void FriendListScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespon
 
 bool FriendListScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblFriendCount", CCLabelTTF*, this->m_lblFriendCount);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableViewFriend", CCTableView*, this->mTableViewFriend);
     return true;
 }
@@ -445,10 +450,13 @@ FriendListScene::FriendListScene()
 {
     mTableViewFriend = NULL;
     mFriendList = NULL;
+    m_lblFriendCount = NULL;
 }
 
 FriendListScene::~FriendListScene()
 {
     mTableViewFriend->release();
+    //CC_SAFE_RELEASE(mTableViewFriend);
+    CC_SAFE_RELEASE(m_lblFriendCount);
 }
 
