@@ -117,14 +117,12 @@ void MainSceneTemplate::menuBarBtnClicked(CCObject *pSender)
 SEL_MenuHandler MainSceneTemplate::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
 {
 	CCB_SELECTORRESOLVER_CCMENUITEM_GLUE(this, "menuBarBtnClicked:", MainSceneTemplate::menuBarBtnClicked);
-    
 	return NULL;
 }
 
 SEL_CCControlHandler MainSceneTemplate::onResolveCCBCCControlSelector(CCObject *pTarget, const char * pSelectorName) {
     
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "toolBarBtnClicked:", MainSceneTemplate::toolBarBtnClicked);
-    
 	return NULL;
 }
 

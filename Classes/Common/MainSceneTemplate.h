@@ -54,18 +54,18 @@ public:
     
     virtual bool init();
     
-    CCLabelTTF *mlblName;
-    CCLabelTTF *mlblHealth;
-    CCLabelTTF *mlblPower;
-    
-    CCLabelTTF *mlblGold;
-    CCLabelTTF *mlblBronze;
-    CCLabelTTF *mlblGrade;
-    CCSprite   *m_sPlayerContainer;
-    
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainSceneTemplate, create);
     CC_SYNTHESIZE(MainSceneTemplateDelegate*, m_delegate, Delegate);
 
+private:
+	CCLabelTTF *mlblName;
+	CCLabelTTF *mlblHealth;
+	CCLabelTTF *mlblPower;
+
+	CCLabelTTF *mlblGold;
+	CCLabelTTF *mlblBronze;
+	CCLabelTTF *mlblGrade;
+	CCSprite   *m_sPlayerContainer;
 };
 
 #endif

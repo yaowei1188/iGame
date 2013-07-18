@@ -54,6 +54,8 @@ private:
 	virtual unsigned int numberOfCellsInTableView(CCTableView *table);
 	virtual CCSize tableCellSizeForIndex(CCTableView *table, unsigned int idx);
     
+	int listUpperIndex;
+	int listSubIndex;
 	int upperIndex;
 	int subIndex;
     CCTableView* mTableView;

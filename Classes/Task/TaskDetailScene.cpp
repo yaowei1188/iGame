@@ -154,8 +154,12 @@ void TaskDetailScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	mTaskList->retain();
 }
 
-void TaskDetailScene::executeTask()
+void TaskDetailScene::discoverTruth()
 {
+	if (upperIndex==0)
+	{
+		upperIndex++;
+	}
     subIndex++;
     if (subIndex>10)
 	{
@@ -184,14 +188,12 @@ void TaskDetailScene::executeTask()
     _strPostData.append(strSubIndex);
     
 	request->setRequestData(_strPostData.c_str(), _strPostData.length());
-
 	request->setUrl(_strUrl.c_str());
 
 	CCHttpClient *client = CCHttpClient::getInstance();
 	client->send(request);
 
 	request->release();
-
 }
 
 void TaskDetailScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
@@ -224,7 +226,6 @@ void TaskDetailScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespon
 		upperIndex = ((CCNumber*)mTaskDict->objectForKey("index"))->getIntValue();
 		subIndex = ((CCNumber*)mTaskDict->objectForKey("subIndex"))->getIntValue();
 		card = (CCString*)mTaskDict->objectForKey("card");
-		//code = ((CCNumber*)mTaskDict->objectForKey("code"))->getIntValue();
 		gainedCoin = ((CCNumber*)mTaskDict->objectForKey("gainedCoin"))->getIntValue();
 		gainedEmpiricalValue = ((CCNumber*)mTaskDict->objectForKey("gainedEmpiricalValue"))->getIntValue();
 
@@ -245,12 +246,9 @@ void TaskDetailScene::buttonClicked(CCObject * sender , CCControlEvent controlEv
         }
 	case 102:
         {
-			CCLOG("22222");
-			executeTask();
-            //selectedindex++;
-            //showTaskInfo();
+			discoverTruth();
+			break;
         }
-		break;
 	}
 }
 

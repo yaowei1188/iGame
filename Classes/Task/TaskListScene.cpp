@@ -104,23 +104,24 @@ void TaskListScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse
 		{
 			return;
 		}
-		upperIndex = ((CCNumber*)mTaskDict->objectForKey("index"))->getIntValue();
-		subIndex = ((CCNumber*)mTaskDict->objectForKey("subIndex"))->getIntValue();
+
+		listUpperIndex = upperIndex = ((CCNumber*)mTaskDict->objectForKey("index"))->getIntValue();
+		listSubIndex = subIndex = ((CCNumber*)mTaskDict->objectForKey("subIndex"))->getIntValue();
 
 		if (upperIndex==0)
 		{
-			upperIndex++;
+			listUpperIndex++;
 		}
 
 		if (subIndex==0)
 		{
-			subIndex++;
+			listSubIndex++;
 		}
 
 		if (subIndex==10)
 		{
-			upperIndex++;
-			subIndex=0;
+			listUpperIndex++;
+			listSubIndex=0;
 		}
 
 		this->showTaskLists();
@@ -228,11 +229,11 @@ void TaskListScene::showTaskLists()
         CCSprite *sLocked = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_locked.png"));
 		CCSprite *sPassed = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_passed.png"));
 
-        if (i > upperIndex) {
+        if (i > listUpperIndex) {
             itmspr = CCMenuItemSprite::create(sLocked, NULL, NULL, NULL, NULL);
-        } else if (i == upperIndex) {
+        } else if (i == listUpperIndex) {
             itmspr = CCMenuItemSprite::create(sNormal, sSelected, sLocked, this, menu_selector(TaskListScene::menuItemCallback));
-		} else if (i < upperIndex) { 
+		} else if (i < listUpperIndex) { 
 			itmspr = CCMenuItemSprite::create(sPassed, NULL, NULL, NULL, NULL);
 		}
         itmspr->setTag(i);
@@ -269,8 +270,6 @@ void TaskListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 
 void TaskListScene::menuItemCallback(CCObject* pSender)
 {
-    CCLOG ("Item CLICKED: %d",  ((CCMenuItemSprite*)pSender)->getTag());
-
     MainGameScene *mainScene = (MainGameScene *)this->getParent();
 	TaskDetailScene *detailScene = (TaskDetailScene *)this->GetLayer("TaskDetailScene");
 	detailScene->upperIndex = this->upperIndex;
@@ -284,11 +283,9 @@ void TaskListScene::buttonClicked(CCObject * sender , CCControlEvent controlEven
 	CCControlButton *button = (CCControlButton *)sender;
 	switch (button->getTag()) {
 	case 101:
-		CCLOG("11111");
 		mainScene->returnToMainLayer();
 		break;
 	case 102:
-		CCLOG("22222");
         sliderMenu->gotoNextPage();
 		break;
 	}

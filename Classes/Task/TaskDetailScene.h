@@ -44,7 +44,7 @@ public:
 
 	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
 
-	void executeTask();
+	void discoverTruth();
     void showTaskInfo();
     void menuItemCallback(CCObject* pSender);
     void moveProgress();
