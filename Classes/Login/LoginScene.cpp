@@ -135,7 +135,7 @@ void LoginScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* r
 void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     m_txtAccount = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
-    m_txtAccount->setText("yaowei");
+    m_txtAccount->setText("yaowei4");
     m_txtAccount->setPosition(ccp(177, 247));
     m_txtAccount->setFontColor(ccc3(0,0,0));
     m_txtAccount->setFont(FONT_LOGIN, 16);

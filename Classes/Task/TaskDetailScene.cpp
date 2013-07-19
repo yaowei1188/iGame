@@ -111,18 +111,18 @@ void TaskDetailScene::showTaskInfo()
 		addChild(lblCoins);
 
 		CCSprite *sBao = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("yuanbao.png"));
-		sBao->setPosition(ccp(100, 200));
+		sBao->setPosition(ccp(118, 196));
 		sBao->setAnchorPoint(CCPointZero);
 		addChild(sBao);
 
 		lblExperience = CCLabelTTF::create("", "Arial", 14);
 		lblExperience->setAnchorPoint(CCPointZero);
 		lblExperience->setTag(3);
-		lblExperience->setPosition(ccp(150, 200));
+		lblExperience->setPosition(ccp(156, 200));
 		addChild(lblExperience);
 
 		CCSprite *sStar = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("shuangxin.png"));
-		sStar->setPosition(ccp(240, 200));
+		sStar->setPosition(ccp(246, 197));
 		sStar->setAnchorPoint(CCPointZero);											
 		addChild(sStar);
     } else {

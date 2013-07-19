@@ -249,7 +249,7 @@ CCTableViewCell* MailListScene::tableCellAtIndex(CCTableView *table, unsigned in
         lblFriendName->setColor(ccc3(255, 255, 204));
         //lblFriendName->enableStroke(ccc3(51, 0, 0), 0.6);
 		lblFriendName->setTag(121);
-		lblFriendName->setHorizontalAlignment(CCTextAlignment::kCCTextAlignmentLeft);
+		lblFriendName->setHorizontalAlignment(kCCTextAlignmentLeft);
         lblFriendName->setString(string->getCString());
 		cell->addChild(lblFriendName);
 

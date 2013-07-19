@@ -88,8 +88,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/login.plist</string>
-							<string>talk_bg.png</string>
+							<string>Image/friends.plist</string>
+							<string>main_talk_bg.png</string>
 						</array>
 					</dict>
 				</array>
@@ -684,8 +684,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>12</real>
-							<real>165</real>
+							<real>8</real>
+							<real>169</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -877,8 +877,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
