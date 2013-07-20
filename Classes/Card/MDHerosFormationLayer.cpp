@@ -27,8 +27,6 @@ CCScene* MDHerosFormationLayer::scene()
 // on "init" you need to initialize your instance
 bool MDHerosFormationLayer::init()
 {
-	selectedindex = 0;
-
 	bool bRet = false;
 	do 
 	{
@@ -37,10 +35,6 @@ bool MDHerosFormationLayer::init()
 		//////////////////////////////////////////////////////////////////////////
 
 		CC_BREAK_IF(! CCLayer::init());
-
-		//mArrayList =  CCArray::create();
-//		mTaskList = CCArray::create(CCString::create("Li1"),CCString::create("’≈»˝"),CCString::create("Li3"),CCString::create("¿ÓÀƒ"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
-//		mTaskList->retain();
 
 		bRet = true;
 	} while (0);
@@ -88,25 +82,13 @@ void MDHerosFormationLayer::requestFinishedCallback(CCHttpClient* client, CCHttp
 	std::string requestTag(response->getHttpRequest()->getTag());
 
 	if (requestTag == "101") {
-//		mArrayList = dynamic_cast<CCArray *>(dictionary->objectForKey("friendList"));
-//		if (mArrayList==NULL)
-//		{
-//			return;
-//		}
-//
-//		selectedindex = -1;
-//		mTableView->reloadData();
 	} else if (requestTag == "102"){
-		this->doSearch();
-		CCMessageBox("delete friend successfully","Success");
 	}
 }
 
 bool MDHerosFormationLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-	CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCard", CCSprite*, this->m_sCard);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblTitle", CCLabelTTF*, this->m_lblTitle);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblLife", CCLabelTTF*, this->m_lblLife);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblFightCapacity", CCLabelTTF*, this->m_lblFightCapacity);
 	return true;
 }
 
@@ -121,71 +103,31 @@ SEL_CCControlHandler MDHerosFormationLayer::onResolveCCBCCControlSelector(CCObje
 	return NULL;
 }
 
-
-void MDHerosFormationLayer::showTaskInfo()
-{
-
-
-    
-//    CCString *str = (CCString *)mTaskList->objectForKey("TaskName");
-//    CCArray *subTasks = (CCArray *)mTaskList->objectForKey("SubTasks");
-    
-//    m_lblTitle->setString("大唐西行(1)  河边放生");
-    
-
-    
-}
-
 void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-	//doSearchFriend();
-    
-    mTaskList = GlobalData::getTasks("");
-    mTaskList->retain();
-    
-    showTaskInfo();
+
 }
 
 void MDHerosFormationLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
 {
 	MainGameScene *mainScene = (MainGameScene *)this->getParent();
 	CCControlButton *button = (CCControlButton *)sender;
-	switch (button->getTag()) {
-	case 101:
+    switch (button->getTag()) {
+        case 101:
         {
-		mainScene->PopLayer();
-		break;
+            mainScene->PopLayer();
+            break;
         }
-	case 102:
-        {
-		CCLOG("22222");
-//            string test("test");
-//            executeTask(test);
-            selectedindex++;
-            showTaskInfo();
-        }
-		break;
-//	case 103:
-//		CCLOG("33333");
-//		break;
 	}
 }
 
 MDHerosFormationLayer::MDHerosFormationLayer()
 {
-//	mTableView = NULL;
-	//    mMainSceneTemp = NULL;
-	mTaskList = NULL;
-    m_lblTitle = NULL;
-    m_sCard = NULL;
-    m_lblLife = NULL;
+	m_lblFightCapacity = NULL;
 }
 
 MDHerosFormationLayer::~MDHerosFormationLayer()
 {
-	m_sCard->release();
-	m_lblTitle->release();
-//	mTaskList->release();
-    m_lblLife->release();
+	CC_SAFE_RELEASE(m_lblFightCapacity);
 }
 

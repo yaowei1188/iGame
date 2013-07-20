@@ -39,23 +39,22 @@ public:
     ~MainInnerLayer();
     MainInnerLayer();
     
-//    void menuBarBtnClicked(CCObject *pSender);
-    
-    void buttonClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
-    void toolBarBtnClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
-
 	CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainInnerLayer, create);
     CC_SYNTHESIZE(MainInnerLayerDelegate*, m_delegate, Delegate);
     
+    void showTooBar(bool show);
+    
+    
+private:
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
     virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
     
     virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
     virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
-
+    
 	virtual void scrollViewDidScroll(cocos2d::extension::CCScrollView* view) {};
 	virtual void scrollViewDidZoom(cocos2d::extension::CCScrollView* view) {}
-
+    
 	virtual void tableCellTouched(cocos2d::extension::CCTableView* table, CCTableViewCell* cell);
 	virtual cocos2d::CCSize cellSizeForTable(cocos2d::extension::CCTableView *table);
 	virtual CCTableViewCell* tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx);
@@ -66,9 +65,13 @@ public:
     
     virtual bool init();
     
+    void buttonClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
+    void toolBarBtnClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
+    
 	unsigned int selectedindex;
 	CCTableView* mTableView;
 	CCArray *mCardList;
+    CCLayer *m_layToolBar;
 
 };
 

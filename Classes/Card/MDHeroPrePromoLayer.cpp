@@ -48,7 +48,7 @@ bool MDHeroPrePromoLayer::init()
 	return bRet;
 }
 
-void MDHeroPrePromoLayer::doSearch()
+void MDHeroPrePromoLayer::showTaskInfo()
 {
 	this->ShowLoadingIndicator("");
 
@@ -88,25 +88,29 @@ void MDHeroPrePromoLayer::requestFinishedCallback(CCHttpClient* client, CCHttpRe
 	std::string requestTag(response->getHttpRequest()->getTag());
 
 	if (requestTag == "101") {
-//		mArrayList = dynamic_cast<CCArray *>(dictionary->objectForKey("friendList"));
-//		if (mArrayList==NULL)
-//		{
-//			return;
-//		}
-//
-//		selectedindex = -1;
-//		mTableView->reloadData();
 	} else if (requestTag == "102"){
-		this->doSearch();
-		CCMessageBox("delete friend successfully","Success");
 	}
 }
 
 bool MDHeroPrePromoLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-	CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCard", CCSprite*, this->m_sCard);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblTitle", CCLabelTTF*, this->m_lblTitle);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblLife", CCLabelTTF*, this->m_lblLife);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblPreQuality", CCLabelTTF*, this->m_lblPreQuality);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAftQuality", CCLabelTTF*, this->m_lblAftQuality);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblCardName", CCLabelTTF*, this->m_lblCardName);
+    
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblRank", CCLabelTTF*, this->m_lblRank);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lbExp", CCLabelTTF*, this->m_lbExp);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lbHP", CCLabelTTF*, this->m_lbHP);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAttack", CCLabelTTF*, this->m_lblAttack);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblDefence", CCLabelTTF*, this->m_lblDefence);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblSuper", CCLabelTTF*, this->m_lblSuper);
+    
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAftRank", CCLabelTTF*, this->m_lblAftRank);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lbAftExp", CCLabelTTF*, this->m_lbAftExp);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lbAftHP", CCLabelTTF*, this->m_lbAftHP);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAftAttack", CCLabelTTF*, this->m_lblAftAttack);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAftDefence", CCLabelTTF*, this->m_lblAftDefence);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAftSuper", CCLabelTTF*, this->m_lblAftSuper);
 	return true;
 }
 
@@ -121,29 +125,12 @@ SEL_CCControlHandler MDHeroPrePromoLayer::onResolveCCBCCControlSelector(CCObject
 	return NULL;
 }
 
-
-void MDHeroPrePromoLayer::showTaskInfo()
-{
-
-
-    
-//    CCString *str = (CCString *)mTaskList->objectForKey("TaskName");
-//    CCArray *subTasks = (CCArray *)mTaskList->objectForKey("SubTasks");
-    
-//    m_lblTitle->setString("大唐西行(1)  河边放生");
-    
-
-    
-}
-
 void MDHeroPrePromoLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-	//doSearchFriend();
+//    mTaskList = GlobalData::getTasks("");
+//    mTaskList->retain();
     
-    mTaskList = GlobalData::getTasks("");
-    mTaskList->retain();
-    
-    showTaskInfo();
+//    showTaskInfo();
 }
 
 void MDHeroPrePromoLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
@@ -153,39 +140,62 @@ void MDHeroPrePromoLayer::buttonClicked(CCObject * sender , CCControlEvent contr
 	switch (button->getTag()) {
 	case 101:
         {
-		mainScene->PopLayer();
-		break;
+//            mainScene->PopLayer();
+            break;
         }
 	case 102:
         {
-		CCLOG("22222");
-//            string test("test");
-//            executeTask(test);
-            selectedindex++;
-            showTaskInfo();
+            mainScene->PopLayer();
+            break;
         }
 		break;
-//	case 103:
-//		CCLOG("33333");
-//		break;
 	}
 }
 
 MDHeroPrePromoLayer::MDHeroPrePromoLayer()
 {
-//	mTableView = NULL;
-	//    mMainSceneTemp = NULL;
 	mTaskList = NULL;
-    m_lblTitle = NULL;
-    m_sCard = NULL;
-    m_lblLife = NULL;
+    
+    m_lblPreQuality = NULL;
+    m_lblAftQuality = NULL;
+    m_lblCardName = NULL;
+    
+    m_lblRank = NULL;
+    m_lbExp = NULL;
+    m_lbHP = NULL;
+    m_lblAttack = NULL;
+    m_lblDefence = NULL;
+    m_lblSuper = NULL;
+    
+    m_lblAftRank = NULL;
+    m_lbAftExp = NULL;
+    m_lbAftHP = NULL;
+    m_lblAftAttack = NULL;
+    m_lblAftDefence = NULL;
+    m_lblAftSuper = NULL;
+
+    m_sCardBefore = NULL;
+    m_sCardAfter = NULL;
 }
 
 MDHeroPrePromoLayer::~MDHeroPrePromoLayer()
 {
-	m_sCard->release();
-	m_lblTitle->release();
-//	mTaskList->release();
-    m_lblLife->release();
+	CC_SAFE_RELEASE(m_lblPreQuality);
+    CC_SAFE_RELEASE(m_lblAftQuality);
+    CC_SAFE_RELEASE(m_lblCardName);
+    
+    CC_SAFE_RELEASE(m_lblRank);
+    CC_SAFE_RELEASE(m_lbExp);
+    CC_SAFE_RELEASE(m_lbHP);
+    CC_SAFE_RELEASE(m_lblAttack);
+    CC_SAFE_RELEASE(m_lblDefence);
+    CC_SAFE_RELEASE(m_lblSuper);
+    
+    CC_SAFE_RELEASE(m_lblAftRank);
+    CC_SAFE_RELEASE(m_lbAftExp);
+    CC_SAFE_RELEASE(m_lbAftHP);
+    CC_SAFE_RELEASE(m_lblAftAttack);
+    CC_SAFE_RELEASE(m_lblDefence);
+    CC_SAFE_RELEASE(m_lblAftSuper);
 }
 

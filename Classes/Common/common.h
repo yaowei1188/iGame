@@ -108,6 +108,11 @@ typedef enum _FACTION_TYPE
 
 //font
 #define FONT_LOGIN "Helvetica-Bold"
+#define FONT_VERDANA "Verdana-Bold"
+
+#define FONT_SIZE_NORMAL 14.0
+#define FONT_SIZE_MEDIUM 16.0
+#define FONT_SIZE_BIG 18.0
 
 //SPRITE
 #define SPRITE_FACTION_FAIRY_CONTAINER "main_play_xian.png"

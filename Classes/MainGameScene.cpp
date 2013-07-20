@@ -70,6 +70,65 @@ void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
     }
 }
 
+void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
+{
+    int number=1;
+    if (intSelectedMenu==pItem->getTag()) {
+        if (MENUBAR_HERO_TAG == intSelectedMenu) {
+            this->PopToNLayer(2);
+        } else {
+            this->PopToRoot();
+        }
+        return;
+    }
+    
+    intSelectedMenu = pItem->getTag();
+    
+    CCLayer *layer = NULL;
+    if (intSelectedMenu == MENUBAR_MAINPAGE_TAG) {
+        layer = mMainLayer;
+        mMainLayer->showTooBar(true);
+    } else if (intSelectedMenu == MENUBAR_TASK_TAG) {
+        layer = (CCLayer *)this->GetLayer("TaskListScene");
+	} else if (intSelectedMenu == MENUBAR_COPY_TAG) {
+		//layer = (CCLayer *)this->GetLayer("MDBattleLayer");
+		layer = (CCLayer *)MDBattleLayer::create();
+	} else if (intSelectedMenu == MENUBAR_HERO_TAG) {
+		layer = (CCLayer *)this->GetLayer("MDHeroMainLayer");
+	} else {
+        return;
+    }
+    
+    if (MENUBAR_HERO_TAG == intSelectedMenu) {
+        if ((CCLayer *)mlayArray->objectAtIndex(0)==mMainLayer) {
+            number = 2;
+            mMainLayer->showTooBar(false);
+        }
+    }
+    
+    this->RemoveChatLayer();
+    
+    for (int i=mlayArray->count()-1; i>=number-1; i--) {
+        CCLayer *layer = (CCLayer *)mlayArray->objectAtIndex(i);
+        layer->removeFromParentAndCleanup(true);
+        mlayArray->removeObjectAtIndex(i);
+    }
+    
+    if (pItem->getTag() == MENUBAR_HERO_TAG) {
+        if (number == 1) {
+            mlayArray->addObject(mMainLayer);
+            mMainLayer->setPosition(ccp(0, 38));
+            mMainLayer->showTooBar(false);
+            this->addChild(mMainLayer);
+        }
+    }
+    
+    mlayArray->addObject(layer);
+    
+    layer->setPosition(ccp(0, 38));
+    this->addChild(layer);
+}
+
 void MainGameScene::PushLayer(CCLayer *subLayer,bool fromRight)
 {
     this->RemoveChatLayer();
@@ -137,13 +196,18 @@ void MainGameScene::removeAndCleanNodeCallBack(CCNode* pNode)
 
 void MainGameScene::PopToRoot()
 {
-      this->RemoveChatLayer();
+    this->PopToNLayer(1);
+}
+
+void MainGameScene::PopToNLayer(int nLayer)
+{
+    this->RemoveChatLayer();
     
-    if (mlayArray->count()<=1) {
+    if (mlayArray->count()<=nLayer) {
         return;
     }
     
-    for (int i=mlayArray->count()-2; i>=1; i--) {
+    for (int i=mlayArray->count()-2; i>=nLayer; i--) {
         CCLayer *layer = (CCLayer *)mlayArray->objectAtIndex(i);
         layer->removeFromParentAndCleanup(true);
         mlayArray->removeObjectAtIndex(i);
@@ -156,67 +220,16 @@ void MainGameScene::PopToRoot()
     
     current->runAction(sequence);
     
-    CCLayer *root = (CCLayer *)mlayArray->objectAtIndex(0);
+    CCLayer *layer = (CCLayer *)mlayArray->objectAtIndex(nLayer-1);
     
-    root->setPosition(ccp(-320, root->getPosition().y));
-    this->addChild(root);
-    root->runAction(CCMoveTo::create(0.2, ccp(0,root->getPosition().y)));
+    layer->setPosition(ccp(-320, layer->getPosition().y));
+    this->addChild(layer);
+    layer->runAction(CCMoveTo::create(0.2, ccp(0,layer->getPosition().y)));
 }
 
 void MainGameScene::PopLayer()
 {
-    if (mlayArray->count()<=1) {
-        return;
-    }
-    
-    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    CCLayer *current = (CCLayer *)mlayArray->objectAtIndex(mlayArray->count()-1);
-    
-    CCSequence *sequence = CCSequence::create(CCMoveBy::create(0.2, CCPointMake(winSize.width,0)),CCCallFuncN::create(this, callfuncN_selector(MainGameScene::removeAndCleanNodeCallBack)),NULL);
-    
-    current->runAction(sequence);
-    
-    CCLayer *prev = (CCLayer *)mlayArray->objectAtIndex(mlayArray->count()-2);
-    prev->setPosition(ccp(-160, prev->getPosition().y));
-    this->addChild(prev);
-    prev->runAction(CCMoveTo::create(0.2, ccp(0,prev->getPosition().y)));
-}
-
-void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
-{
-    if (intSelectedMenu==pItem->getTag()) {
-        if(mlayArray->count()>1) {
-            this->PopToRoot();
-        }
-         return;
-    }
-    
-    intSelectedMenu = pItem->getTag();
-    
-    CCLayer *layer = NULL;
-    if (pItem->getTag() == MENUBAR_MAINPAGE_TAG) {
-        layer = mMainLayer;
-    } else if (pItem->getTag() == MENUBAR_TASK_TAG) {
-        layer = (CCLayer *)this->GetLayer("TaskListScene");
-	} else if (pItem->getTag() == MENUBAR_COPY_TAG) {
-		//layer = (CCLayer *)this->GetLayer("MDBattleLayer");
-		layer = (CCLayer *)MDBattleLayer::create();
-	} else {
-        return;
-    }
-    
-    this->RemoveChatLayer();
-    
-    for (int i=mlayArray->count()-1; i>=0; i--) {
-        CCLayer *layer = (CCLayer *)mlayArray->objectAtIndex(i);
-        layer->removeFromParentAndCleanup(true);
-        mlayArray->removeObjectAtIndex(i);
-    }
-    
-    mlayArray->addObject(layer);
-    
-    layer->setPosition(ccp(0, 38));
-    this->addChild(layer);
+    this->PopToNLayer(mlayArray->count()-1);
 }
 
 void MainGameScene::returnToMainLayer()
@@ -232,7 +245,7 @@ void MainGameScene::returnToMainLayer()
 	}
 
 	mlayArray->addObject(mMainLayer);
-
+    mMainLayer->showTooBar(true);
 	mMainLayer->setPosition(ccp(0, 38));
 	this->addChild(mMainLayer);
 }

@@ -31,7 +31,6 @@ public:
 
 	// a selector callback
 	void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
-	void doSearch();
 
 	// implement the "static node()" method manually
 	CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MDHeroPrePromoLayer,create);
@@ -43,16 +42,32 @@ public:
 	virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
 
 	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
-//	void didClickButton(CCMessageDialog* dialog,unsigned int index);
-	void executeTask(std::string &targetUser);
     void showTaskInfo();
-    void menuItemCallback(CCObject* pSender);
+    
+private:
 	unsigned int selectedindex;
-    CCLabelTTF *m_lblTitle;
-    CCSprite *m_sCard;
+
+    CCSprite *m_sCardBefore;
+    CCSprite *m_sCardAfter;
 	CCDictionary *mTaskList;
     
-    CCLabelTTF *m_lblLife;
+    CCLabelTTF *m_lblPreQuality;
+    CCLabelTTF *m_lblAftQuality;
+    CCLabelTTF *m_lblCardName;
+    
+    CCLabelTTF *m_lblRank;
+    CCLabelTTF *m_lbExp;
+    CCLabelTTF *m_lbHP;
+    CCLabelTTF *m_lblAttack;
+    CCLabelTTF *m_lblDefence;
+    CCLabelTTF *m_lblSuper;
+    
+    CCLabelTTF *m_lblAftRank;
+    CCLabelTTF *m_lbAftExp;
+    CCLabelTTF *m_lbAftHP;
+    CCLabelTTF *m_lblAftAttack;
+    CCLabelTTF *m_lblAftDefence;
+    CCLabelTTF *m_lblAftSuper;
 };
 
 #endif  // __TASK_DETAIL_SCENE_H__

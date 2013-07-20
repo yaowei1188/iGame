@@ -5,13 +5,10 @@
 #include "cocos-ext.h"
 
 #include "SimpleAudioEngine.h"
-#include "XmlParser.h"
-
 //#include "CCMessageDialog.h"
 #include "MainGameScene.h"
 #include "MainSceneTemplate.h"
 #include "MainLayerBase.h"
-//#include "common.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -37,7 +34,6 @@ public:
     
     // a selector callback
     void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
-	void LoadFriends();
 
     // implement the "static node()" method manually
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MDHeroListLayer,create);
@@ -55,7 +51,6 @@ public:
 	virtual CCTableViewCell* tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx);
 	virtual unsigned int numberOfCellsInTableView(CCTableView *table);
     
-    
     virtual void tableCellHighlight(CCTableView* table, CCTableViewCell* cell);
     virtual void tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell);
     
@@ -65,12 +60,17 @@ public:
     void toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent);
     void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
 	void didClickButton(CCMessageDialog* dialog,unsigned int index);
-	void deleteFriend(std::string &targetUser);
-    CCTableView* mTableViewFriend;
-    unsigned int selectedindex;
+    void LoadHeros();
     
-    CCArray *mFriendList;
+//	void deleteFriend(std::string &targetUser);
+private:
+    CCTableView* mTableView;
+    unsigned int selectedindex;
+    CCSprite *m_sTitle;
+    CCArray *mHeroList;
 	bool btnTouched;
+public:
+    int category;
 };
 
-#endif  // __HELLOWORLD_SCENE_H__
+#endif  // __HERO_LIST_SCENE_H__

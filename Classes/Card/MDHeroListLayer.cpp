@@ -39,8 +39,8 @@ bool MDHeroListLayer::init()
 
 		btnTouched = false;
         
-        //mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
-//        mFriendList->retain();
+        mHeroList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
+        mHeroList->retain();
 
         bRet = true;
     } while (0);
@@ -48,7 +48,7 @@ bool MDHeroListLayer::init()
     return bRet;
 }
 
-void MDHeroListLayer::LoadFriends()
+void MDHeroListLayer::LoadHeros()
 {
 	this->ShowLoadingIndicator("");
 
@@ -88,23 +88,24 @@ void MDHeroListLayer::requestFinishedCallback(CCHttpClient* client, CCHttpRespon
 	std::string requestTag(response->getHttpRequest()->getTag());
 
 	if (requestTag == "101") {
-		mFriendList = dynamic_cast<CCArray *>(dictionary->objectForKey("friendList"));
-		if (mFriendList== NULL)
+		mHeroList = dynamic_cast<CCArray *>(dictionary->objectForKey("friendList"));
+		if (mHeroList== NULL)
 		{
-			mFriendList = CCArray::create();
+			mHeroList = CCArray::create();
 		}
-        mFriendList->retain();
+        mHeroList->retain();
 		selectedindex = -1;
-		mTableViewFriend->reloadData();
+		mTableView->reloadData();
 	} else if (requestTag == "103"){
-		this->LoadFriends();
+		this->LoadHeros();
 		CCMessageBox("delete friend successfully","Success");
 	}
 }
 
 bool MDHeroListLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableViewFriend", CCTableView*, this->mTableViewFriend);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableView", CCTableView*, this->mTableView);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sTitle", CCSprite*, this->m_sTitle);
     return true;
 }
 
@@ -121,13 +122,19 @@ SEL_CCControlHandler MDHeroListLayer::onResolveCCBCCControlSelector(CCObject *pT
 
 void MDHeroListLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    mTableViewFriend->setDirection(kCCScrollViewDirectionVertical);
-    mTableViewFriend->setVerticalFillOrder(kCCTableViewFillTopDown);
-    mTableViewFriend->setDataSource(this);
-    mTableViewFriend->setViewSize(CCSizeMake(312, 300));
-    mTableViewFriend->setDelegate(this);
+    if (category == 1) {
+        m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_choosehero.png"));
+    } else {
+        m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_heropalace.png"));
+    }
+    mTableView->setDirection(kCCScrollViewDirectionVertical);
+    mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
+    mTableView->setDataSource(this);
+    mTableView->setViewSize(CCSizeMake(312, 314));
+    mTableView->setDelegate(this);
 
-    this->LoadFriends();
+    mTableView->reloadData();
+//    this->LoadHeros();
 }
 
 void MDHeroListLayer::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
@@ -144,48 +151,46 @@ void MDHeroListLayer::tableCellUnhighlight(CCTableView* table, CCTableViewCell* 
 
 void MDHeroListLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
-    CCLOG("cell touched at index: %i", cell->getIdx());
-	if (btnTouched)
-	{
-		return;
-	}
-    if (selectedindex == cell->getIdx()) {
-        selectedindex = -1;
-    } else {
-        selectedindex = cell->getIdx();
-    }
-
-    table->refreshData();
+//    CCLOG("cell touched at index: %i", cell->getIdx());
+//	if (btnTouched)
+//	{
+//		return;
+//	}
+//    if (selectedindex == cell->getIdx()) {
+//        selectedindex = -1;
+//    } else {
+//        selectedindex = cell->getIdx();
+//    }
+//
+//    table->refreshData();
+    MainGameScene *mainScene = (MainGameScene *)this->getParent();
+    mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroDetailLayer"));
 }
 
 unsigned int MDHeroListLayer::numberOfCellsInTableView(CCTableView *table)
 {
-	return mFriendList->count();
+	return mHeroList->count();
 }
 
 CCSize MDHeroListLayer::cellSizeForTable(CCTableView *table)
 {
-	return CCSizeMake(312, 50);
+	return CCSizeMake(312, 68);
 }
 
 CCSize MDHeroListLayer::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
 {
-    if (selectedindex == idx ) {
-        return CCSizeMake(312, 80);
-    }
-    return CCSizeMake(312, 44);
+    return CCSizeMake(312, 68);
 }
 
 CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
-	CCDictionary *dict = (CCDictionary *)mFriendList->objectAtIndex(idx);
-    bool selected = (idx==selectedindex);
+//	CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(idx);
+//    bool selected = (idx==selectedindex);
 	CCTableViewCell *cell = table->dequeueCell();
+    CCSize size = this->tableCellSizeForIndex(table, idx);
 	if (!cell) {
 		cell = new CCTableViewCell();
 		cell->autorelease();
-        
-        CCSize size = this->tableCellSizeForIndex(table, idx);
         
         CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_cellhighlight.png"));
         sSelected->setVisible(false);
@@ -194,103 +199,42 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
 		sSelected->setAnchorPoint(CCPointZero);
 		cell->addChild(sSelected);
         
-        CCSprite *sGroup = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_dairy.png"));
-        sGroup->setTag(122);
-		sGroup->setPosition(ccp(11,size.height - CELL_ITEMS_Y - 10));
-		sGroup->setAnchorPoint(CCPointZero);
-		cell->addChild(sGroup);
+        CCSprite *sHead = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_rulaifo.png"));
+        sHead->setTag(122);
+        sHead->setPosition(ccp(10,size.height * 0.5));
+		sHead->setAnchorPoint(ccp(0, 0.5));
+		cell->addChild(sHead);
 
-		CCLabelTTF *lblName = CCLabelTTF::create(((CCString*)dict->objectForKey("username"))->getCString(), "Arial", 14.0);
-		lblName->setPosition(ccp(51,size.height - CELL_ITEMS_Y));
-		lblName->setAnchorPoint(CCPointZero);
-        lblName->setColor(ccc3(248, 255, 38));
+		CCLabelTTF *lblName = CCLabelTTF::create("如来佛", FONT_VERDANA, FONT_SIZE_BIG);
+		lblName->setPosition(ccp(80,size.height - CELL_ITEMS_Y));
+		lblName->setAnchorPoint(ccp(0, 0.5));
+        lblName->setColor(ccc3(235, 234, 181));
+        lblName->enableStroke(ccc3(16, 6, 9), 0.8);
 		lblName->setTag(123);
 		cell->addChild(lblName);
 
-		CCLabelTTF *lblLevel = CCLabelTTF::create("LV. 3", "Arial", 14.0);
-		lblLevel->setPosition(ccp(165,size.height - CELL_ITEMS_Y));
-		lblLevel->setAnchorPoint(CCPointZero);
-        lblLevel->setColor(ccc3(248, 255, 38));
+		CCLabelTTF *lblLevel = CCLabelTTF::create("LV. 3", FONT_VERDANA, FONT_SIZE_MEDIUM);
+		lblLevel->setPosition(ccp(80,size.height - 2 * CELL_ITEMS_Y));
+		lblLevel->setAnchorPoint(ccp(0, 0.5));
+        lblLevel->setColor(ccc3(235, 234, 181));
+        lblLevel->enableStroke(ccc3(16, 6, 9), 0.8);
 		lblLevel->setTag(124);
 		cell->addChild(lblLevel);
-
-		CCLabelTTF *lblFriend = CCLabelTTF::create("生死不弃", "Arial", 14.0);
-		lblFriend->setPosition(ccp(218,size.height - CELL_ITEMS_Y));
-		lblFriend->setAnchorPoint(CCPointZero);
-        lblFriend->setColor(ccc3(248, 255, 38));
-        lblFriend->setTag(125);
-		cell->addChild(lblFriend);
-
-		CCLabelTTF *lblStatus = CCLabelTTF::create("100", "Arial", 14.0);
-		lblStatus->setPosition(ccp(283,size.height - CELL_ITEMS_Y));
-		lblStatus->setAnchorPoint(CCPointZero);
-        lblStatus->setColor(ccc3(248, 255, 38));
-        lblStatus->setTag(126);
-		cell->addChild(lblStatus);
         
         CCScale9Sprite *sline = CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("line.png"));
         sline->setPreferredSize(CCSizeMake(290, 1));
-        sline->setPosition(ccp(15,size.height - CELL_ITEMS_Y - 20));
+        sline->setPosition(ccp(15,size.height));
         sline->setAnchorPoint(CCPointZero);
         cell->addChild(sline);
         
-        int length = rand()%5;
-        CCLayer *layer = CCLayer::create();
-        layer->setTag(131);
-        cell->addChild(layer);
-
-        for (int i=0; i<5; i++) {
-            CCSprite *sFriendheart = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_love.png"));
-            sFriendheart->setPosition(ccp(218 + CELL_LOVE_XGAP * i,size.height - CELL_ITEMS_Y - 15));
-            sFriendheart->setAnchorPoint(CCPointZero);
-            layer->addChild(sFriendheart);
-        }
+        CCSprite *sFriendheart = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_l_star5.png"));
+        sFriendheart->setPosition(ccp(218 ,size.height * 0.5));
+        sFriendheart->setAnchorPoint(ccp(0, 0.5));
+        cell->addChild(sFriendheart);
         
-        CCControlButton * chatBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_chat.png")));
-        chatBtn->setPosition(ccp(4,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
-        chatBtn->setAnchorPoint(ccp(0,0.5));
-        chatBtn->setTag(127);
-        chatBtn->setVisible(selected);
-		chatBtn->setPreferredSize(CCSizeMake(74,34));
-        chatBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(MDHeroListLayer::toolBarTouchDownAction), CCControlEventTouchUpInside);
-		chatBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(MDHeroListLayer::toolBarTouchDownAction), CCControlEventTouchDown);
-        cell->addChild(chatBtn);
-        
-        CCControlButton * msgBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_emailbtn.png")));
-        msgBtn->setPosition(ccp(81,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
-        msgBtn->setAnchorPoint(ccp(0,0.5));
-        msgBtn->setTag(128);
-		msgBtn->setPreferredSize(CCSizeMake(74,34));
-        msgBtn->setVisible(selected);
-        msgBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(MDHeroListLayer::toolBarTouchDownAction), CCControlEventTouchUpInside);
-		msgBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(MDHeroListLayer::toolBarTouchDownAction), CCControlEventTouchDown);
-        cell->addChild(msgBtn);
-        
-        CCControlButton * formationBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_formation.png")));
-        formationBtn->setPosition(ccp(158,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
-        formationBtn->setAnchorPoint(ccp(0,0.5));
-        formationBtn->setTag(129);
-		formationBtn->setPreferredSize(CCSizeMake(74,34));
-        formationBtn->setVisible(selected);
-		formationBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(MDHeroListLayer::toolBarTouchDownAction), CCControlEventTouchDown);
-        formationBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(MDHeroListLayer::toolBarTouchDownAction), CCControlEventTouchUpInside);
-        cell->addChild(formationBtn);
-        
-        CCControlButton * deleteBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_delete.png")));
-        deleteBtn->setPosition(ccp(235,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
-        deleteBtn->setAnchorPoint(ccp(0,0.5));
-        deleteBtn->setTag(130);
-		deleteBtn->setPreferredSize(CCSizeMake(74,34));
-        deleteBtn->setVisible(selected);
-        deleteBtn->setTouchPriority(100);
-		deleteBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(MDHeroListLayer::toolBarTouchDownAction), CCControlEventTouchDown);
-        deleteBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(MDHeroListLayer::toolBarTouchDownAction), CCControlEventTouchUpInside);
-        cell->addChild(deleteBtn);
 	}
 	else
 	{
-        CCSize size = this->tableCellSizeForIndex(table, idx);
-        
         CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
         sSelected->setPosition(ccp(13,size.height - 39));
         if (selectedindex == idx ) {
@@ -299,52 +243,16 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
             sSelected->setVisible(false);
         }
         
-        CCSprite *sGroup = (CCSprite*)cell->getChildByTag(122);
-        sGroup->setPosition(ccp(sGroup->getPosition().x,size.height - CELL_ITEMS_Y - 10));
+        CCSprite *sHead = (CCSprite*)cell->getChildByTag(122);
         
 		CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);
-		lblName->setString(((CCString*)dict->objectForKey("username"))->getCString());
-        lblName->setPosition(ccp(lblName->getPosition().x,size.height - CELL_ITEMS_Y));
+		lblName->setString("weiweiyao");
         
         CCLabelTTF *lblLevel = (CCLabelTTF*)cell->getChildByTag(124);
 		//lblLevel->setString(string->getCString());
-        lblLevel->setPosition(ccp(lblLevel->getPosition().x,size.height - CELL_ITEMS_Y));
-        
-        CCLabelTTF *lblFriend = (CCLabelTTF*)cell->getChildByTag(125);
-//		lblFriend->setString(string->getCString());
-        lblFriend->setPosition(ccp(lblFriend->getPosition().x,size.height - CELL_ITEMS_Y));
-        
-        CCLabelTTF *lblStatus = (CCLabelTTF*)cell->getChildByTag(126);
-//		lblStatus->setString(string->getCString());
-        lblStatus->setPosition(ccp(lblStatus->getPosition().x,size.height - CELL_ITEMS_Y));
         
 //        CCScale9Sprite *background = (CCScale9Sprite *)cell->getChildByTag(121);
 //        background->setContentSize(size);
-        
-        CCControlButton *chatBtn = (CCControlButton *)cell->getChildByTag(127);
-        chatBtn->setPosition(ccp(chatBtn->getPosition().x,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
-        chatBtn->setVisible(selected);
-        
-        CCControlButton *msgBtn = (CCControlButton *)cell->getChildByTag(128);
-        msgBtn->setPosition(ccp(msgBtn->getPosition().x,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
-        msgBtn->setVisible(selected);
-        
-        CCControlButton *formationBtn = (CCControlButton *)cell->getChildByTag(129);
-        formationBtn->setPosition(ccp(formationBtn->getPosition().x,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
-        formationBtn->setVisible(selected);
-        
-        CCControlButton *deleteBtn = (CCControlButton *)cell->getChildByTag(130);
-        deleteBtn->setPosition(ccp(deleteBtn->getPosition().x,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
-        deleteBtn->setVisible(selected);
-        
-        CCLayer *heartLayer = (CCLayer *)cell->getChildByTag(131);
-        CCArray *array = heartLayer->getChildren();
-        if (array!=NULL) {
-            for (int i=0; i<array->count(); i++) {
-                CCSprite *sprite = (CCSprite *)array->objectAtIndex(i);
-                sprite->setPosition(ccp(sprite->getPosition().x,size.height - CELL_ITEMS_Y - 15));
-            }
-        }
 	}
 
 	return cell;
@@ -397,30 +305,30 @@ void MDHeroListLayer::didClickButton(CCMessageDialog* dialog,unsigned int index)
 {
 	if (index == 0)
 	{
-		CCDictionary *dict = (CCDictionary *)mFriendList->objectAtIndex(selectedindex);
+		CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(selectedindex);
         string encryptedUserInfo(dict->valueForKey("encryptedUserInfo")->getCString());
-		this->deleteFriend(encryptedUserInfo);
+//		this->deleteFriend(encryptedUserInfo);
 	}
 }
 
-void MDHeroListLayer::deleteFriend(std::string &targetUser)
-{
-	CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,httpresponse_selector(MDHeroListLayer::requestFinishedCallback));
-	request->setTag("103");
-
-	string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
-	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-	_strUrl.append("/" + targetUser);
-
-	request->setUrl(_strUrl.c_str());
-
-	CCHttpClient *client = CCHttpClient::getInstance();
-	client->send(request);
-
-	request->release();
-}
+//void MDHeroListLayer::deleteFriend(std::string &targetUser)
+//{
+//	CCHttpRequest *request = new CCHttpRequest();
+//	request->setRequestType(CCHttpRequest::kHttpGet);
+//	request->setResponseCallback(this,httpresponse_selector(MDHeroListLayer::requestFinishedCallback));
+//	request->setTag("103");
+//
+//	string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
+//	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+//	_strUrl.append("/" + targetUser);
+//
+//	request->setUrl(_strUrl.c_str());
+//
+//	CCHttpClient *client = CCHttpClient::getInstance();
+//	client->send(request);
+//
+//	request->release();
+//}
 
 void MDHeroListLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
 {
@@ -428,27 +336,28 @@ void MDHeroListLayer::buttonClicked(CCObject * sender , CCControlEvent controlEv
 	CCControlButton *button = (CCControlButton *)sender;
 	switch (button->getTag()) {
 	case 101:
-		CCLOG("11111");
-		mainScene->PopLayer();
-		break;
+        {
+            mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroDetailLayer"));
+            break;
+        }
 	case 102:
-		CCLOG("22222");
-		mainScene->PushLayer((CCLayer *)this->GetLayer("AddFriendScene"));
-		break;
-	case 103:
-		CCLOG("33333");
-		break;
+        {
+            mainScene->PopLayer();
+            break;
+        }
 	}
 }
 
 MDHeroListLayer::MDHeroListLayer()
 {
-    mTableViewFriend = NULL;
-    mFriendList = NULL;
+    mTableView = NULL;
+    mHeroList = NULL;
+    m_sTitle = NULL;
 }
 
 MDHeroListLayer::~MDHeroListLayer()
 {
-    mTableViewFriend->release();
+    CC_SAFE_RELEASE(mTableView);
+    CC_SAFE_RELEASE(m_sTitle);
 }
 

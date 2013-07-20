@@ -31,7 +31,6 @@ public:
 
 	// a selector callback
 	void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
-	void doSearch();
 
 	// implement the "static node()" method manually
 	CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MDHeroDetailLayer,create);
@@ -43,16 +42,21 @@ public:
 	virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
 
 	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
-//	void didClickButton(CCMessageDialog* dialog,unsigned int index);
-	void executeTask(std::string &targetUser);
-    void showTaskInfo();
+    void doPromotion();
     void menuItemCallback(CCObject* pSender);
+private:
 	unsigned int selectedindex;
-    CCLabelTTF *m_lblTitle;
     CCSprite *m_sCard;
 	CCDictionary *mTaskList;
     
-    CCLabelTTF *m_lblLife;
+    CCLabelTTF *m_lblLevel;
+    CCLabelTTF *m_lblCardName;
+    CCLabelTTF *m_lblHeroName;
+    CCLabelTTF *m_lblHp;
+    CCLabelTTF *m_lblDefence;
+    CCLabelTTF *m_lblAttack;
+    CCLabelTTF *m_lblAvoid;
+    CCLabelTTF *m_lblDesc;
 };
 
-#endif  // __TASK_DETAIL_SCENE_H__
+#endif  // __HERO_DETAIL_LAYER_H__

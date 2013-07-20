@@ -12,6 +12,7 @@
 MainInnerLayer::MainInnerLayer()
 {
     mTableView = NULL;
+    m_layToolBar = NULL;
      
     mCardList =  CCArray::create();
     mCardList->addObject(CCString::create("head_rulaifo.png"));
@@ -31,6 +32,7 @@ MainInnerLayer::MainInnerLayer()
 MainInnerLayer::~MainInnerLayer()
 {
     CC_SAFE_RELEASE(mTableView);
+    CC_SAFE_RELEASE(m_layToolBar);
 }
 
 void MainInnerLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
@@ -44,13 +46,6 @@ void MainInnerLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	mTableView->setDelegate(this);
     
     mTableView->reloadData();
-}
-
-bool MainInnerLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
-{
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableView", CCTableView*, this->mTableView);
-    
-    return true;
 }
 
 void MainInnerLayer::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
@@ -141,6 +136,13 @@ void MainInnerLayer::buttonClicked(CCObject *pSender, CCControlEvent pCCControlE
 	CCLOG("button clicked");
 }
 
+bool MainInnerLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
+{
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableView", CCTableView*, this->mTableView);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_layToolBar", CCLayer*, this->m_layToolBar);
+    return true;
+}
+
 SEL_MenuHandler MainInnerLayer::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
 {
 	return NULL;
@@ -157,4 +159,9 @@ SEL_CCControlHandler MainInnerLayer::onResolveCCBCCControlSelector(CCObject *pTa
 bool MainInnerLayer::init()
 {
     return true;
+}
+
+void MainInnerLayer::showTooBar(bool show)
+{
+    this->m_layToolBar->setVisible(show);
 }

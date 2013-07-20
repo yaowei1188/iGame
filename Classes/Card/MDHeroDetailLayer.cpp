@@ -48,7 +48,7 @@ bool MDHeroDetailLayer::init()
 	return bRet;
 }
 
-void MDHeroDetailLayer::doSearch()
+void MDHeroDetailLayer::doPromotion()
 {
 	this->ShowLoadingIndicator("");
 
@@ -97,16 +97,21 @@ void MDHeroDetailLayer::requestFinishedCallback(CCHttpClient* client, CCHttpResp
 //		selectedindex = -1;
 //		mTableView->reloadData();
 	} else if (requestTag == "102"){
-		this->doSearch();
-		CCMessageBox("delete friend successfully","Success");
+
 	}
 }
 
 bool MDHeroDetailLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
 	CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCard", CCSprite*, this->m_sCard);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblTitle", CCLabelTTF*, this->m_lblTitle);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblLife", CCLabelTTF*, this->m_lblLife);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblCardName", CCLabelTTF*, this->m_lblCardName);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblLevel", CCLabelTTF*, this->m_lblLevel);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblHeroName", CCLabelTTF*, this->m_lblHeroName);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblHp", CCLabelTTF*, this->m_lblHp);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblDefence", CCLabelTTF*, this->m_lblDefence);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAttack", CCLabelTTF*, this->m_lblAttack);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAvoid", CCLabelTTF*, this->m_lblAvoid);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblDesc", CCLabelTTF*, this->m_lblDesc);
 	return true;
 }
 
@@ -121,71 +126,54 @@ SEL_CCControlHandler MDHeroDetailLayer::onResolveCCBCCControlSelector(CCObject *
 	return NULL;
 }
 
-
-void MDHeroDetailLayer::showTaskInfo()
-{
-
-
-    
-//    CCString *str = (CCString *)mTaskList->objectForKey("TaskName");
-//    CCArray *subTasks = (CCArray *)mTaskList->objectForKey("SubTasks");
-    
-//    m_lblTitle->setString("大唐西行(1)  河边放生");
-    
-
-    
-}
-
 void MDHeroDetailLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-	//doSearchFriend();
-    
-    mTaskList = GlobalData::getTasks("");
-    mTaskList->retain();
-    
-    showTaskInfo();
+
 }
 
 void MDHeroDetailLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
 {
-	MainGameScene *mainScene = (MainGameScene *)this->getParent();
 	CCControlButton *button = (CCControlButton *)sender;
 	switch (button->getTag()) {
 	case 101:
         {
-		mainScene->PopLayer();
-		break;
+            doPromotion();
+            break;
         }
 	case 102:
         {
-		CCLOG("22222");
-//            string test("test");
-//            executeTask(test);
-            selectedindex++;
-            showTaskInfo();
+            MainGameScene *mainScene = (MainGameScene *)this->getParent();
+            mainScene->PopLayer();
+            break;
         }
-		break;
-//	case 103:
-//		CCLOG("33333");
-//		break;
 	}
 }
 
 MDHeroDetailLayer::MDHeroDetailLayer()
 {
-//	mTableView = NULL;
-	//    mMainSceneTemp = NULL;
 	mTaskList = NULL;
-    m_lblTitle = NULL;
     m_sCard = NULL;
-    m_lblLife = NULL;
+    m_lblLevel = NULL;
+    m_lblCardName = NULL;
+    m_lblHeroName = NULL;
+    
+    m_lblHp = NULL;
+    m_lblDefence = NULL;
+    m_lblAttack = NULL;
+    m_lblAvoid = NULL;
+    m_lblDesc = NULL;
 }
 
 MDHeroDetailLayer::~MDHeroDetailLayer()
 {
-	m_sCard->release();
-	m_lblTitle->release();
-//	mTaskList->release();
-    m_lblLife->release();
+	CC_SAFE_RELEASE(m_sCard);
+    CC_SAFE_RELEASE(m_lblLevel);
+    CC_SAFE_RELEASE(m_lblCardName);
+    CC_SAFE_RELEASE(m_lblHeroName);
+    CC_SAFE_RELEASE(m_lblHp);
+    CC_SAFE_RELEASE(m_lblDefence);
+    CC_SAFE_RELEASE(m_lblAttack);
+    CC_SAFE_RELEASE(m_lblAvoid);
+    CC_SAFE_RELEASE(m_lblDesc);
 }
 

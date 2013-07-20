@@ -68,6 +68,7 @@ public:
     void PushLayer(CCLayer *layer,bool fromRight = true);
     void PopLayer();
     void PopToRoot();
+    void PopToNLayer(int nLayer);
     void returnToMainLayer();
 private:
     CCArray *mlayArray;
