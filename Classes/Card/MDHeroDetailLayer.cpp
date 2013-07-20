@@ -50,22 +50,25 @@ bool MDHeroDetailLayer::init()
 
 void MDHeroDetailLayer::doPromotion()
 {
-	this->ShowLoadingIndicator("");
-
-	CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,httpresponse_selector(MDHeroDetailLayer::requestFinishedCallback));
-	request->setTag("101");
-
-	string _strUrl = CompleteUrl(URL_FRIEND_LIST);
-	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-
-	request->setUrl(_strUrl.c_str());
-
-	CCHttpClient *client = CCHttpClient::getInstance();
-	client->send(request);
-
-	request->release();
+    MainGameScene *mainScene = (MainGameScene *)this->getParent();
+    mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroPrePromoLayer"));
+    
+//	this->ShowLoadingIndicator("");
+//
+//	CCHttpRequest *request = new CCHttpRequest();
+//	request->setRequestType(CCHttpRequest::kHttpGet);
+//	request->setResponseCallback(this,httpresponse_selector(MDHeroDetailLayer::requestFinishedCallback));
+//	request->setTag("101");
+//
+//	string _strUrl = CompleteUrl(URL_FRIEND_LIST);
+//	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+//
+//	request->setUrl(_strUrl.c_str());
+//
+//	CCHttpClient *client = CCHttpClient::getInstance();
+//	client->send(request);
+//
+//	request->release();
 }
 
 void MDHeroDetailLayer::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)

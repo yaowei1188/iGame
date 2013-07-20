@@ -140,7 +140,7 @@ void MDHeroPrePromoLayer::buttonClicked(CCObject * sender , CCControlEvent contr
 	switch (button->getTag()) {
 	case 101:
         {
-//            mainScene->PopLayer();
+            mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroPromoLayer"));
             break;
         }
 	case 102:
@@ -195,7 +195,7 @@ MDHeroPrePromoLayer::~MDHeroPrePromoLayer()
     CC_SAFE_RELEASE(m_lbAftExp);
     CC_SAFE_RELEASE(m_lbAftHP);
     CC_SAFE_RELEASE(m_lblAftAttack);
-    CC_SAFE_RELEASE(m_lblDefence);
+    CC_SAFE_RELEASE(m_lblAftDefence);
     CC_SAFE_RELEASE(m_lblAftSuper);
 }
 

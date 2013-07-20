@@ -126,28 +126,28 @@ void MDHeroPromoLayer::buttonClicked(CCObject * sender , CCControlEvent controlE
 	switch (button->getTag()) {
         case 101:
         {
-            mainScene->PopLayer();
             break;
         }
         case 102:
         {
-
+            break;
         }
         case 103:
         {
-            
+            break;
         }
         case 104:
         {
-            
+            break;
         }
         case 105:
         {
-            
+            break;
         }
         case 106:
         {
-            
+            mainScene->PopLayer();
+            break;
         }
     }
 }

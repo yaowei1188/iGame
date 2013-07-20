@@ -78,7 +78,7 @@ bool MDHeroMainLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* p
 void MDHeroMainLayer::buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent) {
     
     CCControlButton *button = (CCControlButton*) pSender;
-    
+    MainGameScene *mainScene = (MainGameScene *)this->getParent();
     switch (button->getTag()) {
         case 101:
         {
@@ -87,13 +87,11 @@ void MDHeroMainLayer::buttonClicked(CCObject *pSender, CCControlEvent pCCControl
         }
         case 102:
         {
-            CCLOG("buzhen");
+            mainScene->PushLayer((CCLayer *)this->GetLayer("MDHerosFormationLayer"));
             break;
         }
         case 103:
         {
-            CCLOG("yingxiongdian");
-            MainGameScene *mainScene = (MainGameScene *)this->getParent();
             mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroListLayer"));
             break;
         }
@@ -104,7 +102,7 @@ void MDHeroMainLayer::buttonClicked(CCObject *pSender, CCControlEvent pCCControl
         }
         case 105:
         {
-            CCLOG("feishengge");
+            mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroPromoLayer"));
             break;
         }
     }
