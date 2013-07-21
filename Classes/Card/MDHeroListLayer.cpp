@@ -205,7 +205,7 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
 		sHead->setAnchorPoint(ccp(0, 0.5));
 		cell->addChild(sHead);
 
-		CCLabelTTF *lblName = CCLabelTTF::create("如来佛", FONT_VERDANA, FONT_SIZE_BIG);
+		CCLabelTTF *lblName = CCLabelTTF::create("rulaifo", FONT_VERDANA, FONT_SIZE_BIG);
 		lblName->setPosition(ccp(80,size.height - CELL_ITEMS_Y));
 		lblName->setAnchorPoint(ccp(0, 0.5));
         lblName->setColor(ccc3(235, 234, 181));

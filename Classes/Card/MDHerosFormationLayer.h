@@ -42,7 +42,9 @@ public:
 	virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
 
 	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
+	void menuItemCallback(CCObject* pSender);
 	void doSearch();
+	std::string determineGroup(CCString* number);
 private:
     CCLabelTTF *m_lblFightCapacity;
 };
