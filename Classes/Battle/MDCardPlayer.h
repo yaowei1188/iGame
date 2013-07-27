@@ -62,6 +62,7 @@ public:
 	static MDCardPlayer * create(std::string p_cardName);
 	void playGalaxyEffect();
 	void playMeteorEffect();
+	void stopAllAction();
 };
 
 #endif /* defined(__mengdou__MDCardPlayer__) */

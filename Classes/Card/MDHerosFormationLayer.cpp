@@ -129,29 +129,53 @@ void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoa
 		{
 			CCLabelTTF *lblCardName = CCLabelTTF::create("erlangsheng", "Arial", 14.0);
 			lblCardName->setAnchorPoint(ccp(0.5,1));
+			lblCardName->setTag(99);
 			lblCardName->setPosition(ccp(spriteSize.width * 0.5,spriteSize.height - 10));
 
 			CCLabelTTF *lblCardLevel = CCLabelTTF::create("Lv.100", "Arial", 14.0);
 			lblCardLevel->setAnchorPoint(ccp(0.5,1));
-			lblCardLevel->setPosition(ccp(spriteSize.width * 0.5,spriteSize.height - 100));
+			lblCardLevel->setTag(100);
+			lblCardLevel->setPosition(ccp(spriteSize.width * 0.5,spriteSize.height - 76));
 
 			std::string strGroup = determineGroup(CCString::create("1"));
 			CCSprite *sCardGroup = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strGroup.c_str()));
 			sCardGroup->setAnchorPoint(ccp(1,1));
 			sCardGroup->setPosition(ccp(spriteSize.width - 5,spriteSize.height - 10));
-
+			sCardGroup->setScale(0.71);
+			
+			
 			CCSprite *sCard = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_erlangsheng.png"));
 			sCard->setAnchorPoint(ccp(0.5,1));
-			sCard->setPosition(ccp(spriteSize.width * 0.5,spriteSize.height - 36));
+			sCard->setTag(101);
+			sCard->setPosition(ccp(spriteSize.width * 0.5,spriteSize.height - 30));
+			sCard->setScale(0.71);
+
+			CCLabelTTF *lblAttack = CCLabelTTF::create("攻+2500点", "Arial", 14.0);
+			lblAttack->setAnchorPoint(ccp(0.5,1));
+			lblAttack->setTag(102);
+			lblAttack->setPosition(ccp(spriteSize.width * 0.5,35));
+			lblAttack->setFontFillColor(ccc3(255,0,0));
+
+			CCLabelTTF *lblHP = CCLabelTTF::create("血+2650点", "Arial", 14.0);
+			lblHP->setAnchorPoint(ccp(0.5,1));
+			lblHP->setTag(103);
+			lblHP->setPosition(ccp(spriteSize.width * 0.5,50));
+			lblHP->setFontFillColor(ccc3(0,255,0));
 
 			scaleSprite->addChild(sCard);
 			scaleSprite->addChild(lblCardName);
 			scaleSprite->addChild(lblCardLevel);
+			scaleSprite->addChild(lblAttack);
+			scaleSprite->addChild(lblHP);
+
+
 			scaleSprite->addChild(sCardGroup);
 
 			CCControlButton *dropup = CCControlButton::create(CCScale9Sprite::createWithSpriteFrameName("card_embattle_dropup.png"));
 			dropup->setBackgroundSpriteForState(CCScale9Sprite::createWithSpriteFrameName("card_embattle_dropup_highlight.png"),CCControlStateHighlighted);
+			dropup->addTargetWithActionForControlEvents(this,cccontrol_selector(MDHerosFormationLayer::touchUpInside), CCControlEventTouchUpInside);
 			scaleSprite->addChild(dropup);
+			dropup->setTag(1);
 			dropup->setPreferredSize(CCSizeMake(96,15));
 			dropup->setAnchorPoint(ccp(0.5,0));
 			dropup->setPosition(ccp(spriteSize.width * 0.5,7));
@@ -167,6 +191,81 @@ void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoa
 		}
 	}
 	
+}
+
+void MDHerosFormationLayer::touchUpInside(CCObject* pSender, CCControlEvent event)
+{
+	CCControlButton *btn = (CCControlButton *)pSender;
+	CCNode *parent = btn->getParent();
+
+	CCSize spriteSize = parent->getContentSize();
+
+	if (btn->getTag()==1)
+	{
+		CCLabelTTF *lblCardName = (CCLabelTTF *)parent->getChildByTag(99);
+		lblCardName->setVisible(false);
+
+		CCLabelTTF *lblCardLevel = (CCLabelTTF *)parent->getChildByTag(100);
+		lblCardLevel->setVisible(false);
+
+		CCSprite *sCard = (CCSprite *)parent->getChildByTag(101);
+		sCard->setVisible(false);
+
+		CCLabelTTF *lblAttack = (CCLabelTTF *)parent->getChildByTag(102);
+		lblAttack->setPosition(ccpAdd(lblAttack->getPosition(),ccp(0,50)));
+
+		CCLabelTTF *lblHP = (CCLabelTTF *)parent->getChildByTag(103);
+		lblHP->setPosition(ccpAdd(lblHP->getPosition(),ccp(0,50)));
+
+		CCLabelTTF *lblDefence = CCLabelTTF::create("血+2650点", "Arial", 14.0);
+		lblDefence->setAnchorPoint(ccp(0.5,1));
+		lblDefence->setPosition(ccp(spriteSize.width * 0.5,30));
+		lblDefence->setFontFillColor(ccc3(0,255,0));
+		lblDefence->setTag(105);
+		parent->addChild(lblDefence);
+
+		CCLabelTTF *lblSuper = CCLabelTTF::create("攻+2500点", "Arial", 14.0);
+		lblSuper->setAnchorPoint(ccp(0.5,1));
+		lblSuper->setPosition(ccp(spriteSize.width * 0.5,60));
+		lblSuper->setFontFillColor(ccc3(255,0,0));
+		lblSuper->setTag(106);
+		parent->addChild(lblSuper);
+
+		CCLabelTTF *lblDodge = CCLabelTTF::create("攻+2500点", "Arial", 14.0);
+		lblDodge->setAnchorPoint(ccp(0.5,1));
+		lblDodge->setPosition(ccp(spriteSize.width * 0.5,85));
+		lblDodge->setFontFillColor(ccc3(255,0,0));
+		lblDodge->setTag(107);
+		parent->addChild(lblDodge);
+
+		btn->setTag(2);
+	} else {
+		CCLabelTTF *lblDefence = (CCLabelTTF *)parent->getChildByTag(105);
+		lblDefence->removeFromParentAndCleanup(true);
+
+		CCLabelTTF *lblSuper = (CCLabelTTF *)parent->getChildByTag(106);
+		lblSuper->removeFromParentAndCleanup(true);
+
+		CCLabelTTF *lblDodge = (CCLabelTTF *)parent->getChildByTag(107);
+		lblDodge->removeFromParentAndCleanup(true);
+
+		CCLabelTTF *lblCardName = (CCLabelTTF *)parent->getChildByTag(99);
+		lblCardName->setVisible(true);
+
+		CCLabelTTF *lblCardLevel = (CCLabelTTF *)parent->getChildByTag(100);
+		lblCardLevel->setVisible(true);
+
+		CCSprite *sCard = (CCSprite *)parent->getChildByTag(101);
+		sCard->setVisible(true);
+
+		CCLabelTTF *lblAttack = (CCLabelTTF *)parent->getChildByTag(102);
+		lblAttack->setPosition(ccpAdd(lblAttack->getPosition(),ccp(0,-50)));
+
+		CCLabelTTF *lblHP = (CCLabelTTF *)parent->getChildByTag(103);
+		lblHP->setPosition(ccpAdd(lblHP->getPosition(),ccp(0,-50)));
+
+		btn->setTag(1);
+	}
 }
 
 void MDHerosFormationLayer::menuItemCallback(CCObject* pSender)

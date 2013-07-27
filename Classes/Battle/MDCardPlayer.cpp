@@ -38,6 +38,11 @@ void MDCardPlayer::playParadeAnnimation()
 	m_sCardPlayer->runAction(repeat);
 }
 
+void MDCardPlayer::stopAllAction()
+{
+	m_sCardPlayer->stopAllActions();
+}
+
 void MDCardPlayer::playAttackAnnimation()
 {
 
@@ -51,7 +56,16 @@ void MDCardPlayer::playMistreatAnnimation()
 
 void MDCardPlayer::playDeadAnnimation()
 {
-
+	CCActionInterval *colorAction = CCRepeatForever::create(CCSequence::create(
+		CCTintTo::create(0.2f, 255, 0, 0),
+		CCTintTo::create(0.2f, 0, 255, 0),
+		CCTintTo::create(0.2f, 0, 0, 255),
+		CCTintTo::create(0.2f, 0, 255, 255),
+		CCTintTo::create(0.2f, 255, 255, 0),
+		CCTintTo::create(0.2f, 255, 0, 255),
+		CCTintTo::create(0.2f, 255, 255, 255),
+		NULL));
+	m_sCardPlayer->runAction(colorAction);
 }
 
 void MDCardPlayer::playWiggleAnnimation()

@@ -170,6 +170,8 @@
     <None Include="..\Resources\Image\resources-iphonehd\login.png" />
     <None Include="..\Resources\Image\resources-iphonehd\main.plist" />
     <None Include="..\Resources\Image\resources-iphonehd\main.png" />
+    <None Include="..\Resources\Image\test.fnt" />
+    <None Include="..\Resources\Image\test.png" />
     <None Include="..\Resources\language\chs.plist" />
     <None Include="..\Resources\LoginScene.ccbi" />
     <None Include="..\Resources\MailMainScene.ccbi" />

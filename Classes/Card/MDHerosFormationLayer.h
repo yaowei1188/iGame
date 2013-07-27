@@ -45,6 +45,7 @@ public:
 	void menuItemCallback(CCObject* pSender);
 	void doSearch();
 	std::string determineGroup(CCString* number);
+	void touchUpInside(CCObject* pSender, CCControlEvent event);
 private:
     CCLabelTTF *m_lblFightCapacity;
 };

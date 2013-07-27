@@ -52,10 +52,17 @@ public:
 
 	virtual void didClickButton(CCMessageDialog* dialog,unsigned int index);
 	void prepareFormation();
+	void prepareEnemyFormation();
 	void prepareBackGround();
 	void selectSpriteForTouch(CCPoint touchLocation);
 	void panForTranslation(CCPoint translation);
 	void exchangeCard(MDCardPlayer *p_cardOne,MDCardPlayer *p_cardTwo);
+	void menuCallback(CCObject* sender);
+	void startPuzzle();
+	void onUpdate(float time);
+	void cardMoveForward();
+	void backgroundMoveForward();
+	void cardMoveFinished(CCNode* sender);
 	bool btnTouched;
 
 protected:
@@ -66,7 +73,10 @@ protected:
 private:
 	CCArray *mCardNameList;
 	CCArray *mCardList;
+	CCArray *mEnemyCardNameList;
+	CCArray *mEnemyCardList;
 	CCSprite *m_sSelectedSprite;
+	int enemyCount;
 };
 
 #endif  // __LOGINSCENE_SCENE_H__

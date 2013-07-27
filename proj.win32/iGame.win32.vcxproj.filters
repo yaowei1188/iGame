@@ -343,6 +343,12 @@
     <None Include="..\Resources\MDHerosFormationLayer.ccbi">
       <Filter>Resources\Scene</Filter>
     </None>
+    <None Include="..\Resources\Image\test.fnt">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\test.png">
+      <Filter>Resources\Image</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="iGame.rc">

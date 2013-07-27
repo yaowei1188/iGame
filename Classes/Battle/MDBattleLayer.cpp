@@ -28,6 +28,44 @@ CCScene* MDBattleLayer::scene()
     return scene;
 }
 
+void MDBattleLayer::startPuzzle()
+{
+	    CCSize s = CCDirector::sharedDirector()->getWinSize();
+	    CCSprite *m_root = CCSprite::create("Icon.png");
+	    addChild(m_root, 1);
+	    m_root->setPosition(ccp(s.width/2, s.height/2));
+	
+	    // create the streak object and add it to the scene
+	    CCMotionStreak *streak = CCMotionStreak::create(2, 3, 32, ccGREEN, "particle-snow.png");
+	    addChild(streak);
+	    // schedule an update on each frame so we can syncronize the streak with the target
+	    //schedule(schedule_selector(MDBattleLayer::onUpdate));
+	
+	    //CCActionInterval* a1 = CCRotateBy::create(2, 360);
+	
+	    //CCAction* action1 = CCRepeatForever::create(a1);
+	    CCActionInterval* motion = CCMoveBy::create(2, ccp(100,0) );
+	    m_root->runAction( CCRepeatForever::create(CCSequence::create(motion, motion->reverse(), NULL) ) );
+	    //m_root->runAction( action1 );
+	
+	    CCActionInterval *colorAction = CCRepeatForever::create(CCSequence::create(
+	                                                                                CCTintTo::create(0.2f, 255, 0, 0),
+	                                                                                CCTintTo::create(0.2f, 0, 255, 0),
+	                                                                                CCTintTo::create(0.2f, 0, 0, 255),
+	                                                                                CCTintTo::create(0.2f, 0, 255, 255),
+	                                                                                CCTintTo::create(0.2f, 255, 255, 0),
+	                                                                                CCTintTo::create(0.2f, 255, 0, 255),
+	                                                                                CCTintTo::create(0.2f, 255, 255, 255),
+	                                                                                NULL));
+	
+	    streak->runAction(CCSpawn::create(colorAction, CCRepeatForever::create(CCSequence::create(motion, motion->reverse(), NULL) ),NULL));
+}
+
+void MDBattleLayer::onUpdate(float time)
+{
+
+}
+
 // on "init" you need to initialize your instance
 bool MDBattleLayer::init()
 {
@@ -45,6 +83,9 @@ bool MDBattleLayer::init()
 		mCardList= CCArray::create();
 		mCardList->retain();
 
+		mEnemyCardList= CCArray::create();
+		mEnemyCardList->retain();
+
 		mCardNameList= CCArray::create();
 		mCardNameList->addObject(CCString::create("head_rulaifo.png"));
 		mCardNameList->addObject(CCString::create("head_sunwukong.png"));
@@ -54,93 +95,20 @@ bool MDBattleLayer::init()
 		mCardNameList->addObject(CCString::create("head_erlangsheng.png"));
 		mCardNameList->retain();
 
+		mEnemyCardNameList = CCArray::create();
+		mEnemyCardNameList->addObject(CCString::create("head_rulaifo.png"));
+		mEnemyCardNameList->addObject(CCString::create(""));
+		mEnemyCardNameList->addObject(CCString::create("head_erlangsheng.png"));
+		mEnemyCardNameList->addObject(CCString::create(""));
+		mEnemyCardNameList->addObject(CCString::create("head_sunwukong.png"));
+		mEnemyCardNameList->addObject(CCString::create(""));
+		mEnemyCardNameList->retain();
+
 		prepareBackGround();
 
 		prepareFormation();
 
-
-
-//        CCSize s = CCDirector::sharedDirector()->getWinSize();
-//        m_root = CCSprite::create("r1.png");
-//        addChild(m_root, 1);
-//        m_root->setPosition(ccp(s.width/2, s.height/2));
-//
-//        m_target = CCSprite::create("r1.png");
-//        m_root->addChild(m_target);
-//        m_target->setPosition(ccp(s.width/4, 0));
-//
-//        // create the streak object and add it to the scene
-//        streak = CCMotionStreak::create(2, 3, 32, ccGREEN, "streak.png");
-//        addChild(streak);
-//        // schedule an update on each frame so we can syncronize the streak with the target
-//        schedule(schedule_selector(MDBattleLayer::onUpdate));
-//
-//        CCActionInterval* a1 = CCRotateBy::create(2, 360);
-//
-//        CCAction* action1 = CCRepeatForever::create(a1);
-//        CCActionInterval* motion = CCMoveBy::create(2, ccp(100,0) );
-//        m_root->runAction( CCRepeatForever::create(CCSequence::create(motion, motion->reverse(), NULL) ) );
-//        m_root->runAction( action1 );
-//
-//        CCActionInterval *colorAction = CCRepeatForever::create(CCSequence::create(
-//                                                                                   CCTintTo::create(0.2f, 255, 0, 0),
-//                                                                                   CCTintTo::create(0.2f, 0, 255, 0),
-//                                                                                   CCTintTo::create(0.2f, 0, 0, 255),
-//                                                                                   CCTintTo::create(0.2f, 0, 255, 255),
-//                                                                                   CCTintTo::create(0.2f, 255, 255, 0),
-//                                                                                   CCTintTo::create(0.2f, 255, 0, 255),
-//                                                                                   CCTintTo::create(0.2f, 255, 255, 255),
-//                                                                                   NULL));
-//
-//        streak->runAction(colorAction);
-
-
-        //SharpLabelTTF *pRet1 = new SharpLabelTTF();
-        //pRet1->initWithString(CCString::create("地")->getCString(), "JDJYCHAO.TTF", 50);
-        //pRet1->setDimensions(CCSizeMake(200, 180));
-        //this->addChild(pRet1);
-        //pRet1->setPosition(ccp(200, 300));
-        //pRet1->setFontFillColor(ccc3(255,255,205));
-        //pRet1->enableStroke(ccc3(50, 11, 1), 0.8);
-
-        ////CCLabelTTF *lblTest = SharpLabelTTF::create("TEST", "Arial", 30);
-        //SharpLabelTTF *pRet = new SharpLabelTTF();
-        //pRet->initWithString(CCString::create("地")->getCString(), "Verdana-BoldItalic", 50);
-        //pRet->setDimensions(CCSizeMake(200, 180));
-        //this->addChild(pRet);
-        //pRet->setPosition(ccp(200, 200));
-        //pRet->setFontFillColor(ccc3(255,255,205));
-        //pRet->enableStroke(ccc3(50, 11, 1), 0.8);
-        ////        pRet->enableShadow(CCSizeMake(0, 1), 0.5f, 5);
-
-        //SharpLabelTTF *pRet2 = new SharpLabelTTF();
-        //pRet2->initWithString(CCString::create("地")->getCString(), "Marker Felt.ttf", 50);
-        //pRet2->setDimensions(CCSizeMake(200, 180));
-        //this->addChild(pRet2);
-        //pRet2->setPosition(ccp(200, 100));
-        //pRet2->setFontFillColor(ccc3(255,255,205));
-        //pRet2->enableStroke(ccc3(50, 11, 1), 0.8);
-        ////        pRet1->enableShadow(CCSizeMake(0, 1), 0.5f, 2);
-
-        //SharpLabelTTF *pRet3 = new SharpLabelTTF();
-        //pRet3->initWithString(CCString::create("地")->getCString(), "simhei.ttf", 50);
-        //pRet3->setDimensions(CCSizeMake(200, 180));
-        //this->addChild(pRet3);
-        //pRet3->setPosition(ccp(200, 50));
-        //pRet3->setFontFillColor(ccc3(255,255,205));
-        //pRet3->enableStroke(ccc3(50, 11, 1), 0.8);
-
-//        CC_SAFE_DELETE(pRet);
-
-//        CCLabelTTF *lblTest2 = CCLabelTTF::create("姚伟", "Arial", 20);
-//        lblTest2->setFontFillColor(ccc3(255,255,205));
-//        lblTest2->setAnchorPoint(ccp(0.5,0.5));
-//        lblTest2->setColor(ccc3(255,255,205));
-//        lblTest2->setPosition(ccp(250, 300));
-//
-//        CCRenderTexture* stroke = this->createStroke(lblTest2, 1, ccc3(50, 11, 1));
-//        this->addChild(lblTest2);
-//        this->addChild(stroke);
+		//startPuzzle();
 
         bRet = true;
     } while (0);
@@ -151,25 +119,65 @@ bool MDBattleLayer::init()
 void MDBattleLayer::prepareBackGround()
 {
 	CCSprite* background = CCSprite::create("background.png");
-	// scale the image (optional)
+
 	background->setScale( 1.5f );
-	// change the transform anchor point (optional)
-	background->setAnchorPoint( ccp(0,0) );
+	background->setAnchorPoint(ccp(0.5,0));
 
-	// create a void node, a parent node
-	CCParallaxNode* voidNode = CCParallaxNode::create();
+	CCParallaxNode* backgroundNode = CCParallaxNode::create();
+	backgroundNode->setTag(103);
+	backgroundNode->addChild(background, -1, ccp(0.0f,2.0f), ccp(0,-75));
+	addChild( backgroundNode );
 
-	// background image is moved at a ratio of 0.4x, 0.5y
-	voidNode->addChild(background, -1, ccp(0.4f,0.5f), CCPointZero);
+	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 
-	CCActionInterval* goUp = CCMoveBy::create(4, ccp(0,-500) );
-	CCActionInterval* goDown = goUp->reverse();
-	CCActionInterval* go = CCMoveBy::create(8, ccp(-1000,0) );
-	CCActionInterval* goBack = go->reverse();
-	CCSequence* seq = CCSequence::create(goUp, goDown, NULL);
-	voidNode->runAction( (CCRepeatForever::create(seq) ));
+	CCMenu *menu = CCMenu::create();
+	menu->setTag(2);
+	this->addChild(menu);
 
-	addChild( voidNode );
+	//CCMenuItemFont *menuFont = CCMenuItemFont::create("逃跑",this,menu_selector(MDBattleLayer::menuCallback));
+	CCLabelBMFont* label = CCLabelBMFont::create("Leave", "test.fnt");
+	CCMenuItemLabel* menuFont = CCMenuItemLabel::create(label, this, menu_selector(MDBattleLayer::menuCallback));
+	menuFont->setPosition(winSize.width * 0.5 - 60,winSize.height * 0.5 - 60);
+	menuFont->setTag(101);
+	menu->addChild(menuFont);
+
+	CCLabelBMFont* MoveLabel = CCLabelBMFont::create("Move", "test.fnt");
+	CCMenuItemLabel* menuMove = CCMenuItemLabel::create(MoveLabel, this, menu_selector(MDBattleLayer::menuCallback));
+	menuMove->setPosition(0,-40);
+	menuMove->setTag(102);
+	menu->addChild(menuMove);
+}
+
+void MDBattleLayer::menuCallback(CCObject* sender) 
+{
+	MainGameScene *mainScene = (MainGameScene *)this->getParent();
+	CCMenuItemFont *button = (CCMenuItemFont *)sender;
+	switch (button->getTag()) {
+	case 101:
+		{
+			mainScene->returnToMainLayer();
+			break;
+		}
+	case 102:
+		{
+			CCMenu *menu = (CCMenu *)this->getChildByTag(2);
+			CCMenuItemFont *menuLeave = (CCMenuItemFont *)menu->getChildByTag(101);
+			menuLeave->setVisible(false);
+			CCMenuItemFont *menuMove = (CCMenuItemFont *)menu->getChildByTag(102);
+			menuMove->setVisible(false);
+
+			for(int i=0;i<mEnemyCardList->count();i++)
+			{
+				MDCardPlayer *cardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(i);
+
+				cardPlayer->m_sCardPlayer->setVisible(false);
+			}
+
+			this->backgroundMoveForward();
+			this->cardMoveForward();
+			break;
+		}
+	}
 }
 
 void MDBattleLayer::prepareFormation()
@@ -186,12 +194,99 @@ void MDBattleLayer::prepareFormation()
 		MDCardPlayer *cardPlayer = MDCardPlayer::create(strCardName->getCString());
 		mCardList->addObject(cardPlayer);
 		this->addChild(cardPlayer->m_sCardPlayer);
-		cardPlayer->m_location = ccp(leftcap + CARD_H_MARGIN * col + col * CARD_WIDTH + CARD_WIDTH * 0.5,CARD_V_MARGIN + CARD_MARGIN * row + row * CARD_WIDTH + CARD_WIDTH * 0.5);
+		cardPlayer->m_location = ccp(leftcap + CARD_H_MARGIN * col + col * CARD_WIDTH + CARD_WIDTH * 0.5,0 + CARD_MARGIN * row + row * CARD_WIDTH + CARD_WIDTH * 0.5);
 		cardPlayer->m_sCardPlayer->setPosition(cardPlayer->m_location);
+	}
+}
+
+void MDBattleLayer::prepareEnemyFormation()
+{
+	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+	float leftcap = (winSize.width - 3 * CARD_WIDTH - 2 * CARD_H_MARGIN) * 0.5;
+	int row,col;
+
+	if (mEnemyCardList->count()>0)
+	{
+		for(int i=0;i<mEnemyCardList->count();i++)
+		{
+			MDCardPlayer *cardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(i);
+
+			cardPlayer->m_sCardPlayer->setVisible(true);
+		}
+		return;
+	}
+
+	for(int i=0;i<mEnemyCardNameList->count();i++)
+	{
+		row = i / 3;
+		col = i % 3;
+		CCString *strCardName = (CCString *)mEnemyCardNameList->objectAtIndex(i);
+		if(strCardName->length()==0)
+		{
+			continue;
+		}
+		MDCardPlayer *cardPlayer = MDCardPlayer::create(strCardName->getCString());
+		mEnemyCardList->addObject(cardPlayer);
+		this->addChild(cardPlayer->m_sCardPlayer);
+		cardPlayer->m_location = ccp(leftcap + CARD_H_MARGIN * col + col * CARD_WIDTH + CARD_WIDTH * 0.5,250 + CARD_MARGIN * row + row * CARD_WIDTH + CARD_WIDTH * 0.5);
+		cardPlayer->m_sCardPlayer->setPosition(cardPlayer->m_location);
+	}
+}
+
+void MDBattleLayer::cardMoveFinished(CCNode* sender)
+{
+	CCSprite *sprite = (CCSprite *)sender;
+
+	CCMenu *menu = (CCMenu *)this->getChildByTag(2);
+
+	CCMenuItemFont *menuLeave = (CCMenuItemFont *)menu->getChildByTag(101);
+	if (menuLeave->isVisible())
+	{
+		return;
+	}
+	menuLeave->setVisible(true);
+	CCMenuItemFont *menuMove = (CCMenuItemFont *)menu->getChildByTag(102);
+	menuMove->setVisible(true);
+
+	this->prepareEnemyFormation();
+
+	for(int i=0;i<mCardList->count();i++)
+	{
+		MDCardPlayer *cardPlayer = (MDCardPlayer *)mCardList->objectAtIndex(i);
+
+		cardPlayer->stopAllAction();
+	}
+
+	//for(int i=0;i<mEnemyCardList->count();i++)
+	//{
+	//	MDCardPlayer *cardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(i);
+
+	//	cardPlayer->m_sCardPlayer->setVisible(true);
+	//}
+	
+}
+
+void MDBattleLayer::backgroundMoveForward()
+{
+	CCParallaxNode* backgroundNode = (CCParallaxNode*)this->getChildByTag(103);
+	CCActionInterval* goUp = CCMoveBy::create(4, ccp(0,-100) );
+
+	CCFiniteTimeAction* actionMoveDone = CCCallFuncN::create( this, callfuncN_selector(MDBattleLayer::cardMoveFinished));
+
+	CCSequence* seq = CCSequence::create(goUp, actionMoveDone,NULL);
+	backgroundNode->runAction(seq);
+}
+
+void MDBattleLayer::cardMoveForward()
+{
+	for(int i=0;i<mCardList->count();i++)
+	{
+		MDCardPlayer *cardPlayer = (MDCardPlayer *)mCardList->objectAtIndex(i);
 
 		cardPlayer->playParadeAnnimation();
 	}
 }
+
 
 void MDBattleLayer::buttonClicked(CCObject *pSender,CCControlEvent event)
 {
