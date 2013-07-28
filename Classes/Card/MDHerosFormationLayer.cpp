@@ -150,13 +150,13 @@ void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoa
 			sCard->setPosition(ccp(spriteSize.width * 0.5,spriteSize.height - 30));
 			sCard->setScale(0.71);
 
-			CCLabelTTF *lblAttack = CCLabelTTF::create("¹¥+2500µã", "Arial", 14.0);
+			CCLabelTTF *lblAttack = CCLabelTTF::create("æ”»å‡»+2500ç‚¹", "Arial", 12.0);
 			lblAttack->setAnchorPoint(ccp(0.5,1));
 			lblAttack->setTag(102);
 			lblAttack->setPosition(ccp(spriteSize.width * 0.5,35));
 			lblAttack->setFontFillColor(ccc3(255,0,0));
 
-			CCLabelTTF *lblHP = CCLabelTTF::create("Ñª+2650µã", "Arial", 14.0);
+			CCLabelTTF *lblHP = CCLabelTTF::create("è¡€å€¼+2650ç‚¹", "Arial", 12.0);
 			lblHP->setAnchorPoint(ccp(0.5,1));
 			lblHP->setTag(103);
 			lblHP->setPosition(ccp(spriteSize.width * 0.5,50));
@@ -217,21 +217,21 @@ void MDHerosFormationLayer::touchUpInside(CCObject* pSender, CCControlEvent even
 		CCLabelTTF *lblHP = (CCLabelTTF *)parent->getChildByTag(103);
 		lblHP->setPosition(ccpAdd(lblHP->getPosition(),ccp(0,50)));
 
-		CCLabelTTF *lblDefence = CCLabelTTF::create("Ñª+2650µã", "Arial", 14.0);
+		CCLabelTTF *lblDefence = CCLabelTTF::create("é˜²å®ˆ+2650ç‚¹", "Arial", 12.0);
 		lblDefence->setAnchorPoint(ccp(0.5,1));
 		lblDefence->setPosition(ccp(spriteSize.width * 0.5,30));
 		lblDefence->setFontFillColor(ccc3(0,255,0));
 		lblDefence->setTag(105);
 		parent->addChild(lblDefence);
 
-		CCLabelTTF *lblSuper = CCLabelTTF::create("¹¥+2500µã", "Arial", 14.0);
+		CCLabelTTF *lblSuper = CCLabelTTF::create("æš´å‡»+2500ç‚¹", "Arial", 12.0);
 		lblSuper->setAnchorPoint(ccp(0.5,1));
 		lblSuper->setPosition(ccp(spriteSize.width * 0.5,60));
 		lblSuper->setFontFillColor(ccc3(255,0,0));
 		lblSuper->setTag(106);
 		parent->addChild(lblSuper);
 
-		CCLabelTTF *lblDodge = CCLabelTTF::create("¹¥+2500µã", "Arial", 14.0);
+		CCLabelTTF *lblDodge = CCLabelTTF::create("èº²é¿+2500ç‚¹", "Arial", 12.0);
 		lblDodge->setAnchorPoint(ccp(0.5,1));
 		lblDodge->setPosition(ccp(spriteSize.width * 0.5,85));
 		lblDodge->setFontFillColor(ccc3(255,0,0));

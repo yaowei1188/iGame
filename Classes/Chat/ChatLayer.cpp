@@ -14,26 +14,26 @@ ChatLayer::~ChatLayer()
     
 }
 
-CCScene* ChatLayer::scene()
-{
-    CCScene * scene = NULL;
-    do 
-    {
-        // 'scene' is an autorelease object
-        scene = CCScene::create();
-        CC_BREAK_IF(! scene);
-
-        // 'layer' is an autorelease object
-        ChatLayer *layer = ChatLayer::create();
-        CC_BREAK_IF(! layer);
-
-        // add layer as a child to scene
-        scene->addChild(layer);
-    } while (0);
-
-    // return the scene
-    return scene;
-}
+//CCScene* ChatLayer::scene()
+//{
+//    CCScene * scene = NULL;
+//    do 
+//    {
+//        // 'scene' is an autorelease object
+//        scene = CCScene::create();
+//        CC_BREAK_IF(! scene);
+//
+//        // 'layer' is an autorelease object
+//        ChatLayer *layer = ChatLayer::create();
+//        CC_BREAK_IF(! layer);
+//
+//        // add layer as a child to scene
+//        scene->addChild(layer);
+//    } while (0);
+//
+//    // return the scene
+//    return scene;
+//}
 
 // on "init" you need to initialize your instance
 bool ChatLayer::init()
@@ -81,18 +81,18 @@ bool ChatLayer::init()
 
 void ChatLayer::doSubmit()
 {
-	CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpPost);
-	request->setResponseCallback(this,callfuncND_selector(ChatLayer::requestFinishedCallback));
-	request->setTag("post testing!!!");
-	request->setUrl("http://223.4.10.91/andon_service/ANDON_EX_USER.asmx/GetList");
-
-	const char* postData = "cid=120000&date=";
-	request->setRequestData(postData,strlen(postData));
-	CCHttpClient *client = CCHttpClient::getInstance();
-	client->send(request);
-
-	request->release();
+//	CCHttpRequest *request = new CCHttpRequest();
+//	request->setRequestType(CCHttpRequest::kHttpPost);
+//	request->setResponseCallback(this,callfuncND_selector(ChatLayer::requestFinishedCallback));
+//	request->setTag("post testing!!!");
+//	request->setUrl("http://223.4.10.91/andon_service/ANDON_EX_USER.asmx/GetList");
+//
+//	const char* postData = "cid=120000&date=";
+//	request->setRequestData(postData,strlen(postData));
+//	CCHttpClient *client = CCHttpClient::getInstance();
+//	client->send(request);
+//
+//	request->release();
 }
 
 void ChatLayer::requestFinishedCallback(CCNode* pSender,void *data)
@@ -114,56 +114,90 @@ void ChatLayer::requestFinishedCallback(CCNode* pSender,void *data)
 	}
 	std::vector<char> *buffer = response->getResponseData(); 
 
-	//for (unsigned int i = 0; i < buffer->size(); i++)  
-	//{
-	//	CCLog("%c", (*buffer)[i]);
-	//}
 	std::string content(buffer->begin(),buffer->end());
-	//CCLog(content.c_str());
 
 	XMLParser *xmlParser = XMLParser::parseWithString(content.c_str());
-	//xmlParser->getString("content");
-	//CCString *content = CCString::create(xmlParser->getString("content")->getCString());
 	CCLOG("%s",xmlParser->getString("content")->getCString());
 
-	parseJson();
+//	parseJson();
 }
 
-void ChatLayer::parseJson()
-{
-//    JsonBox::Value v2;
-//	v2.loadFromString(content);
-//    
-//    int code = v2["code"].getInt();
-//    if (code!=200) {
-//        
-//        CCMessageBox("invoke web api failed!","ERROR");
-//        return;
-//    }else {
-//    	CCLOG("douzhan:login successfully!");
-//    }
-}
+//void ChatLayer::parseJson()
+//{
+//
+//}
 
 void ChatLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     m_txtAccount = CCEditBox::create(CCSizeMake(134, 30), CCScale9Sprite::create("transparent.png"));
     this->addChild(m_txtAccount);
     m_txtAccount->setPosition(ccp(215, 24));
-    
     m_txtAccount->setFontColor(ccc3(255,255,255));
     m_txtAccount->setFont("Arial", 16);
     
-//	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
-//	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
-//    
-//    CCMenu* m_auto_op_menu = CCMenu::create();
-//    CCMenuItemSprite* auto_op_btn = CCMenuItemSprite::create(spriteOn, NULL);
-//    CCMenuItemSprite* auto_op_btn2 = CCMenuItemSprite::create(spriteOff, NULL);
-//    CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(ChatLayer::callbackSwitch),auto_op_btn,auto_op_btn2,NULL);
-//    
-//    m_auto_op_menu->addChild(item);
-//    m_auto_op_menu->setPosition(ccp(116, 268));
-//    this->addChild(m_auto_op_menu);
+    CCMenu *menu = CCMenu::create();
+    this->addChild(menu);
+    menu->setPosition(ccp(33, 119));
+    
+//    CCLabelBMFont* lblName = CCLabelBMFont::create("阵营", "test.fnt");
+    
+    CCLabelTTF *lblShout = CCLabelTTF::create("喊话", FONT_VERDANA, FONT_SIZE_MEDIUM);
+    lblShout->setColor(ccc3(197, 255, 255));
+    lblShout->enableStroke(ccc3(69, 20, 21), 1);
+	CCMenuItemLabel* menuShout = CCMenuItemLabel::create(lblShout, this, menu_selector(ChatLayer::menuCallback));
+	menuShout->setPosition(ccp(4,80));
+	menuShout->setTag(101);
+	menu->addChild(menuShout);
+    
+    CCLabelTTF *lblWorld = CCLabelTTF::create("世界", FONT_VERDANA, FONT_SIZE_MEDIUM);
+    lblWorld->setColor(ccc3(197, 255, 255));
+    lblWorld->enableStroke(ccc3(69, 20, 21), 1);
+	CCMenuItemLabel* menuWorld = CCMenuItemLabel::create(lblWorld, this, menu_selector(ChatLayer::menuCallback));
+	menuWorld->setPosition(ccp(4,50));
+	menuWorld->setTag(102);
+	menu->addChild(menuWorld);
+    
+    CCLabelTTF *lblFaction = CCLabelTTF::create("阵营", FONT_VERDANA, FONT_SIZE_MEDIUM);
+    lblFaction->setColor(ccc3(197, 255, 255));
+    lblFaction->enableStroke(ccc3(69, 20, 21), 1);
+	CCMenuItemLabel* menuFaction = CCMenuItemLabel::create(lblFaction, this, menu_selector(ChatLayer::menuCallback));
+	menuFaction->setPosition(ccp(4,20));
+	menuFaction->setTag(103);
+	menu->addChild(menuFaction);
+    
+    CCLabelTTF *lblGroup = CCLabelTTF::create("公会", FONT_VERDANA, FONT_SIZE_MEDIUM);
+    lblGroup->setColor(ccc3(197, 255, 255));
+    lblGroup->enableStroke(ccc3(69, 20, 21), 1);
+	CCMenuItemLabel* menuGroup = CCMenuItemLabel::create(lblGroup, this, menu_selector(ChatLayer::menuCallback));
+	menuGroup->setPosition(ccp(4,-10));
+	menuGroup->setTag(104);
+	menu->addChild(menuGroup);
+    
+    CCLabelTTF *lblPrivate = CCLabelTTF::create("蜜语", FONT_VERDANA, FONT_SIZE_MEDIUM);
+    lblPrivate->setColor(ccc3(197, 255, 255));
+    lblPrivate->enableStroke(ccc3(69, 20, 21), 1);
+	CCMenuItemLabel* menuPrivate = CCMenuItemLabel::create(lblPrivate, this, menu_selector(ChatLayer::menuCallback));
+	menuPrivate->setPosition(ccp(4,-40));
+	menuPrivate->setTag(105);
+	menu->addChild(menuPrivate);
+
+}
+
+void ChatLayer::menuCallback(CCObject* sender)
+{
+//	MainGameScene *mainScene = (MainGameScene *)this->getParent();
+	CCMenuItemFont *button = (CCMenuItemFont *)sender;
+	switch (button->getTag()) {
+        case 101:
+		{
+
+			break;
+		}
+        case 102:
+		{
+			break;
+		}
+	}
 }
 
 void ChatLayer::callbackSwitch(CCObject* pSender){

@@ -25,7 +25,7 @@ public:
     virtual bool init();  
 
     // there's no 'id' in cpp, so we recommand to return the exactly class pointer
-    static cocos2d::CCScene* scene();
+//    static cocos2d::CCScene* scene();
     
     // a selector callback
     void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
@@ -66,17 +66,22 @@ public:
 	bool btnTouched;
 
 protected:
-    CCNode*        m_root;
-    CCNode*        m_target;
-    CCMotionStreak *streak;
+//    CCNode*        m_root;
+//    CCNode*        m_target;
+//    CCMotionStreak *streak;
 
 private:
+    
+    void AttackEnemy();
+    
 	CCArray *mCardNameList;
 	CCArray *mCardList;
 	CCArray *mEnemyCardNameList;
 	CCArray *mEnemyCardList;
 	CCSprite *m_sSelectedSprite;
+    CCArray *mParticle;
 	int enemyCount;
+    int intCurrentCard;
 };
 
 #endif  // __LOGINSCENE_SCENE_H__

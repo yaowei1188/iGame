@@ -4,16 +4,14 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 
-#include "SimpleAudioEngine.h"
-#include "XmlParser.h"
 #include "common.h"
-
-//#include "net.h"
+#include "MainLayerBase.h"
+//#include "MainGameScene.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class ChatLayer : public cocos2d::CCLayer,
+class ChatLayer : public MainLayerBase,
 public CCBSelectorResolver,
 public CCBMemberVariableAssigner,
 public CCNodeLoaderListener
@@ -24,12 +22,18 @@ public:
     
     virtual bool init();  
 
-    static cocos2d::CCScene* scene();
+//    static cocos2d::CCScene* scene();
     
     // a selector callback
-    void requestFinishedCallback(CCNode* pSender,void *p);
+
 
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(ChatLayer, create);
+    
+
+//	void parseJson();
+private:
+    
+    void requestFinishedCallback(CCNode* pSender,void *p);
     
     void buttonClicked(CCObject *pSender, CCControlEvent pCCControlEvent);
     
@@ -39,9 +43,10 @@ public:
     virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
     virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
     void callbackSwitch(CCObject* pSender);
-
+    
 	void doSubmit();
-	void parseJson();
+    
+    void menuCallback(CCObject* sender);
 
 	CCEditBox *m_txtAccount;
 	CCEditBox *m_txtPassword;

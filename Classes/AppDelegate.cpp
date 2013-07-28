@@ -76,6 +76,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	searchPaths.push_back("Language");
 	searchPaths.push_back("Image");
 	searchPaths.push_back("sound");
+    searchPaths.push_back("particle");
 	//searchPaths.push_back("ccbResources");
 
     TargetPlatform platform = CCApplication::sharedApplication()->getTargetPlatform();

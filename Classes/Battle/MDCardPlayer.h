@@ -17,7 +17,7 @@ using namespace std;
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class MDCardPlayer : public CCObject
+class MDCardPlayer : public CCScheduler
 {
 public:
 	CCSprite *m_sCardPlayer;
@@ -50,8 +50,8 @@ private:
 	
 public:
 	void playParadeAnnimation();//播放前进动画
-    void playAttackAnnimation();//播放攻击动画
-    void playMistreatAnnimation();//播放被攻击动画
+    void playAttackAnnimation(CCArray *enemyList);//播放攻击动画
+    void playShakeAnnimation();//播放被攻击动画
     void playDeadAnnimation();//播放死亡动画
 	void playWiggleAnnimation();//播放死亡动画
 	void MoveToPosition();//返回原来位置
@@ -61,8 +61,20 @@ public:
 
 	static MDCardPlayer * create(std::string p_cardName);
 	void playGalaxyEffect();
-	void playMeteorEffect();
+	void playMeteorEffect(MDCardPlayer *target);
+    void playFireEffect(MDCardPlayer *target);
+    void playEcllipseEffect(MDCardPlayer *target);
 	void stopAllAction();
+    void playExploreEffect(MDCardPlayer *target);
+    
+
+    
+private:
+    void actionFinished(CCNode* sender);
+    void allEnemyUnderAttack(float dt);
+    
+    CCArray *m_EnemyList;
+
 };
 
 #endif /* defined(__mengdou__MDCardPlayer__) */

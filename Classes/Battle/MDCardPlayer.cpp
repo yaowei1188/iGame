@@ -23,11 +23,7 @@ MDCardPlayer * MDCardPlayer::create(std::string p_cardName)
 bool MDCardPlayer::init(std::string p_cardName)
 {
 	m_sCardPlayer = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(p_cardName.c_str()));
-	//m_sCardPlayer->setAnchorPoint(ccp(0.5,0.5));
-	////m_sCardPlayer->setAnchorPoint(CCPointZero);
-	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	m_sCardPlayer->setUserObject(this);
-	//m_sCardPlayer->setPosition(ccp(winSize.width/2,winSize.height/2 - 100));
 	return true;
 }
 
@@ -43,28 +39,44 @@ void MDCardPlayer::stopAllAction()
 	m_sCardPlayer->stopAllActions();
 }
 
-void MDCardPlayer::playAttackAnnimation()
+void MDCardPlayer::playAttackAnnimation(CCArray *enemyList)
 {
-
+    string attack("myAttack1.plist");
+    CCParticleSystem *_particle = CCParticleSystemQuad::create(attack.c_str());
+    m_sCardPlayer->getParent()->addChild(_particle);
+    CCPoint point = m_sCardPlayer->getPosition();
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    point.x = winSize.width * 0.5;
+    _particle->setPosition(point);
+    _particle->setAutoRemoveOnFinish(true);
+    
+//    m_EnemyList = CC_SAFE_RETAIN(enemyList);
+    m_EnemyList = enemyList;
+    
+//    this->scheduleSelector(schedule_selector(MDCardPlayer::allEnemyUnderAttack), this, 2,false);
+    
+    CCDirector::sharedDirector()->getScheduler()->scheduleSelector(
+                                                                   schedule_selector(MDCardPlayer::allEnemyUnderAttack), this, 0.3, false);
+    
 }
 
-void MDCardPlayer::playMistreatAnnimation()
+void MDCardPlayer::playShakeAnnimation()
 {
-	CCShake *shake = CCShake::create(1,6,2);
+	CCShake *shake = CCShake::create(0.5,4,2);
 	m_sCardPlayer->runAction(shake);
 }
 
 void MDCardPlayer::playDeadAnnimation()
 {
-	CCActionInterval *colorAction = CCRepeatForever::create(CCSequence::create(
+	CCActionInterval *colorAction = CCSequence::create(
 		CCTintTo::create(0.2f, 255, 0, 0),
 		CCTintTo::create(0.2f, 0, 255, 0),
 		CCTintTo::create(0.2f, 0, 0, 255),
-		CCTintTo::create(0.2f, 0, 255, 255),
-		CCTintTo::create(0.2f, 255, 255, 0),
-		CCTintTo::create(0.2f, 255, 0, 255),
+//		CCTintTo::create(0.2f, 0, 255, 255),
+//		CCTintTo::create(0.2f, 255, 255, 0),
+//		CCTintTo::create(0.2f, 255, 0, 255),
 		CCTintTo::create(0.2f, 255, 255, 255),
-		NULL));
+		NULL);
 	m_sCardPlayer->runAction(colorAction);
 }
 
@@ -75,7 +87,7 @@ void MDCardPlayer::playWiggleAnnimation()
 	CCRotateBy * rotCenter = CCRotateBy::create(0.1,0.0);
 	CCRotateBy * rotRight = CCRotateBy::create(0.1,4.0);
 	CCSequence * rotSeq = CCSequence::create(rotLeft, rotCenter, rotRight, rotCenter, NULL);
-	m_sCardPlayer->runAction(CCRepeatForever::create(rotSeq));  
+	m_sCardPlayer->runAction(CCRepeatForever::create(rotSeq));
 }
 
 void MDCardPlayer::MoveToPosition()
@@ -88,7 +100,7 @@ void MDCardPlayer::MoveToPosition()
 void MDCardPlayer::playFireEffect()
 {
 	CCParticleFire *m_emitter = CCParticleFire::create();
-	m_emitter->setDuration(1);
+	m_emitter->setDuration(0.5);
 	m_emitter->retain();
 	m_sCardPlayer->addChild(m_emitter);
 	m_emitter->setTexture( CCTextureCache::sharedTextureCache()->addImage("particle-fire.png") );
@@ -107,14 +119,76 @@ void MDCardPlayer::playGalaxyEffect()
 	m_emitter->setAutoRemoveOnFinish(true);
 }
 
-void MDCardPlayer::playMeteorEffect()
+void MDCardPlayer::playMeteorEffect(MDCardPlayer *target)
 {
 	CCParticleMeteor *m_emitter = CCParticleMeteor::create();
-	//m_emitter->setDuration(1);
+    m_emitter->setGravity(ccp(0,-10));
+	m_emitter->setDuration(0.3);
 	m_emitter->retain();
-	m_sCardPlayer->addChild(m_emitter);
+	m_sCardPlayer->getParent()->addChild(m_emitter);
 	m_emitter->setTexture( CCTextureCache::sharedTextureCache()->addImage("particle-fire.png") );
-	m_emitter->setPosition(30,30);
+	m_emitter->setPosition(m_sCardPlayer->getPosition());
 	m_emitter->setAutoRemoveOnFinish(true);
+    m_emitter->setUserObject(target);
+    
+    
+    CCMoveTo *_moveAction = CCMoveTo::create(0.3, target->m_sCardPlayer->getPosition());
+    CCFiniteTimeAction* _actionMoveDone = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::actionFinished));
+    
+    m_emitter->runAction(CCSequence::create(_moveAction,_actionMoveDone,NULL));
+}
+
+void MDCardPlayer::playFireEffect(MDCardPlayer *target)
+{
+    CCParticleSystem *_particle = CCParticleSystemQuad::create("fire.plist");
+    _particle->setDuration(0.3);
+    m_sCardPlayer->getParent()->addChild(_particle);
+    _particle->setPosition(m_sCardPlayer->getPosition());
+    _particle->setAutoRemoveOnFinish(true);
+    _particle->setUserObject(target);
+    
+    CCMoveTo *_moveAction = CCMoveTo::create(0.3, target->m_sCardPlayer->getPosition());
+    CCFiniteTimeAction* _actionMoveDone = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::actionFinished));
+    
+    _particle->runAction(CCSequence::create(_moveAction,_actionMoveDone,NULL));
+}
+
+void MDCardPlayer::playEcllipseEffect(MDCardPlayer *target)
+{
+    CCParticleSystem *_particle = CCParticleSystemQuad::create("ellipse.plist");
+    _particle->setDuration(0.3);
+    target->m_sCardPlayer->addChild(_particle);
+    _particle->setPosition(ccp(30,0));
+    _particle->setAutoRemoveOnFinish(true);
+    _particle->setUserObject(target);
+    
+    CCDelayTime *_delayTime = CCDelayTime::create(0.3);
+    CCFiniteTimeAction* _actionMoveDone = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::actionFinished));
+    _particle->runAction(CCSequence::create(_delayTime,_actionMoveDone,NULL));
+}
+
+void MDCardPlayer::actionFinished(CCNode* sender)
+{
+    MDCardPlayer *target = (MDCardPlayer *)sender->getUserObject();
+    target->playShakeAnnimation();
+    target->playFireEffect();
+}
+
+void MDCardPlayer::allEnemyUnderAttack(float dt)
+{
+    CCDirector::sharedDirector()->getScheduler()->unscheduleSelector(schedule_selector(MDCardPlayer::allEnemyUnderAttack), this);
+    for (int i=0; i<m_EnemyList->count(); i++) {
+        MDCardPlayer *enemyPlayer = (MDCardPlayer *)m_EnemyList->objectAtIndex(i);
+        enemyPlayer->playShakeAnnimation();
+        enemyPlayer->playDeadAnnimation();
+    }
+}
+
+void MDCardPlayer::playExploreEffect(MDCardPlayer *target)
+{
+    CCParticleSystem *_particle = CCParticleSystemQuad::create("explore1.plist");
+    m_sCardPlayer->addChild(_particle);
+    _particle->setPosition(30,30);
+    _particle->setAutoRemoveOnFinish(true);
 }
 

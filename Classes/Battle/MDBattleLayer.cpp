@@ -7,26 +7,26 @@
 #define CARD_H_MARGIN 30
 #define CARD_V_MARGIN 30
 
-CCScene* MDBattleLayer::scene()
-{
-    CCScene * scene = NULL;
-    do 
-    {
-        // 'scene' is an autorelease object
-        scene = CCScene::create();
-        CC_BREAK_IF(! scene);
-
-        // 'layer' is an autorelease object
-        MDBattleLayer *layer = MDBattleLayer::create();
-        CC_BREAK_IF(! layer);
-
-        // add layer as a child to scene
-        scene->addChild(layer);
-    } while (0);
-
-    // return the scene
-    return scene;
-}
+//CCScene* MDBattleLayer::scene()
+//{
+//    CCScene * scene = NULL;
+//    do 
+//    {
+//        // 'scene' is an autorelease object
+//        scene = CCScene::create();
+//        CC_BREAK_IF(! scene);
+//
+//        // 'layer' is an autorelease object
+//        MDBattleLayer *layer = MDBattleLayer::create();
+//        CC_BREAK_IF(! layer);
+//
+//        // add layer as a child to scene
+//        scene->addChild(layer);
+//    } while (0);
+//
+//    // return the scene
+//    return scene;
+//}
 
 void MDBattleLayer::startPuzzle()
 {
@@ -85,6 +85,23 @@ bool MDBattleLayer::init()
 
 		mEnemyCardList= CCArray::create();
 		mEnemyCardList->retain();
+        
+        mParticle = CCArray::create();
+		mParticle->retain();
+        
+        CCDictionary *dict = CCDictionary::create();
+        dict->setObject(CCString::create("myAttack1.plist"), "pname");
+        dict->setObject(CCString::create("0"), "target");
+        dict->setObject(CCString::create("0"), "position");
+        mParticle->addObject(dict);
+        
+        dict = CCDictionary::create();
+        dict->setObject(CCString::create("galaxy"), "pname");
+        dict->setObject(CCString::create("1"), "target");
+        dict->setObject(CCString::create("1"), "position");
+        mParticle->addObject(dict);
+        
+        intCurrentCard = 0;
 
 		mCardNameList= CCArray::create();
 		mCardNameList->addObject(CCString::create("head_rulaifo.png"));
@@ -97,16 +114,18 @@ bool MDBattleLayer::init()
 
 		mEnemyCardNameList = CCArray::create();
 		mEnemyCardNameList->addObject(CCString::create("head_rulaifo.png"));
-		mEnemyCardNameList->addObject(CCString::create(""));
-		mEnemyCardNameList->addObject(CCString::create("head_erlangsheng.png"));
-		mEnemyCardNameList->addObject(CCString::create(""));
 		mEnemyCardNameList->addObject(CCString::create("head_sunwukong.png"));
-		mEnemyCardNameList->addObject(CCString::create(""));
+		mEnemyCardNameList->addObject(CCString::create("head_erlangsheng.png"));
+		mEnemyCardNameList->addObject(CCString::create("head_rulaifo.png"));
+		mEnemyCardNameList->addObject(CCString::create("head_sunwukong.png"));
+		mEnemyCardNameList->addObject(CCString::create("head_erlangsheng.png"));
 		mEnemyCardNameList->retain();
 
 		prepareBackGround();
 
 		prepareFormation();
+        
+        prepareEnemyFormation();
 
 		//startPuzzle();
 
@@ -118,14 +137,14 @@ bool MDBattleLayer::init()
 
 void MDBattleLayer::prepareBackGround()
 {
-	CCSprite* background = CCSprite::create("background.png");
+	CCSprite* background = CCSprite::create("background.jpeg");
 
-	background->setScale( 1.5f );
+//	background->setScale( 1.5f );
 	background->setAnchorPoint(ccp(0.5,0));
 
 	CCParallaxNode* backgroundNode = CCParallaxNode::create();
 	backgroundNode->setTag(103);
-	backgroundNode->addChild(background, -1, ccp(0.0f,2.0f), ccp(0,-75));
+	backgroundNode->addChild(background, -1, ccp(0.0f,2.0f), ccp(0,-78));
 	addChild( backgroundNode );
 
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
@@ -146,6 +165,12 @@ void MDBattleLayer::prepareBackGround()
 	menuMove->setPosition(0,-40);
 	menuMove->setTag(102);
 	menu->addChild(menuMove);
+    
+    CCLabelBMFont* lblFightLabel = CCLabelBMFont::create("Fight", "test.fnt");
+	CCMenuItemLabel* menuFight = CCMenuItemLabel::create(lblFightLabel, this, menu_selector(MDBattleLayer::menuCallback));
+	menuFight->setPosition(winSize.width * 0.5 - 60,0-winSize.height * 0.5 - 12);
+	menuFight->setTag(103);
+	menu->addChild(menuFight);
 }
 
 void MDBattleLayer::menuCallback(CCObject* sender) 
@@ -177,7 +202,50 @@ void MDBattleLayer::menuCallback(CCObject* sender)
 			this->cardMoveForward();
 			break;
 		}
+    case 103:
+        {
+            this->AttackEnemy();
+            break;
+        }
 	}
+}
+
+void MDBattleLayer::AttackEnemy()
+{
+    srand(time(NULL));
+    int enemyNum = rand()%6;
+    int attackCategory = rand()%4;
+    MDCardPlayer *enmeyCardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(enemyNum);
+    
+    MDCardPlayer *cardPlayer = (MDCardPlayer *)mCardList->objectAtIndex(intCurrentCard++);
+    switch (attackCategory) {
+        case 0:
+        {
+            cardPlayer->playMeteorEffect(enmeyCardPlayer);
+            break;
+        }
+        case 1:
+        {
+            cardPlayer->playAttackAnnimation(mEnemyCardList);
+            break;
+        }
+        case 2:
+        {
+            cardPlayer->playFireEffect(enmeyCardPlayer);
+            break;
+        }
+        case 3:
+        {
+            cardPlayer->playEcllipseEffect(enmeyCardPlayer);
+            break;
+        }
+        default:
+            break;
+    }
+    
+    if (intCurrentCard==6) {
+        intCurrentCard = 0;
+    }
 }
 
 void MDBattleLayer::prepareFormation()
@@ -235,7 +303,7 @@ void MDBattleLayer::prepareEnemyFormation()
 
 void MDBattleLayer::cardMoveFinished(CCNode* sender)
 {
-	CCSprite *sprite = (CCSprite *)sender;
+//	CCSprite *sprite = (CCSprite *)sender;
 
 	CCMenu *menu = (CCMenu *)this->getChildByTag(2);
 
@@ -256,20 +324,12 @@ void MDBattleLayer::cardMoveFinished(CCNode* sender)
 
 		cardPlayer->stopAllAction();
 	}
-
-	//for(int i=0;i<mEnemyCardList->count();i++)
-	//{
-	//	MDCardPlayer *cardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(i);
-
-	//	cardPlayer->m_sCardPlayer->setVisible(true);
-	//}
-	
 }
 
 void MDBattleLayer::backgroundMoveForward()
 {
 	CCParallaxNode* backgroundNode = (CCParallaxNode*)this->getChildByTag(103);
-	CCActionInterval* goUp = CCMoveBy::create(4, ccp(0,-100) );
+	CCActionInterval* goUp = CCMoveBy::create(4, ccp(0,-80) );
 
 	CCFiniteTimeAction* actionMoveDone = CCCallFuncN::create( this, callfuncN_selector(MDBattleLayer::cardMoveFinished));
 
@@ -539,7 +599,6 @@ void MDBattleLayer::ccTouchEnded(CCTouch* touch, CCEvent* event)
 		if (_nearCardPlayer==NULL)
 		{
 			_cardPlayer->MoveToPosition();
-			_cardPlayer->playMeteorEffect();
 			return;
 		}
 
@@ -547,7 +606,6 @@ void MDBattleLayer::ccTouchEnded(CCTouch* touch, CCEvent* event)
 
 		_cardPlayer->MoveToPosition();
 		_nearCardPlayer->MoveToPosition();
-		_cardPlayer->playGalaxyEffect();
 	}
 }
 
