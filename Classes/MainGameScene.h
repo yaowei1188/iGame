@@ -35,9 +35,10 @@ public:
     MainGameScene();
     
     static cocos2d::CCScene* scene();
-    
-//    void toolBarBtnClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
-    
+
+    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainGameScene, create);
+
+private:
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
     
     virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
@@ -52,7 +53,7 @@ public:
     ChatLayer *mChatLayer;
     MainInnerLayer *mMainLayer;
     
-    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainGameScene, create);
+
     bool mblnIsHomePage;
     
     virtual void menuItemClickedCallBack(CCMenuItem *pItem);
@@ -70,6 +71,8 @@ public:
     void PopToRoot();
     void PopToNLayer(int nLayer);
     void returnToMainLayer();
+
+    void updateUserInfo(float hp,float maxhp,float exp,float maxExp);
 private:
     CCArray *mlayArray;
     int intSelectedMenu;

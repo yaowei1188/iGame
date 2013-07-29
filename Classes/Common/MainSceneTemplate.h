@@ -16,6 +16,7 @@
 #include "MainSceneTemplate.h"
 #include "MainLayerBase.h"
 #include "StringExt.h"
+#include "MDProgressBar.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -39,11 +40,11 @@ class MainSceneTemplate : public MainLayerBase,
 public:
     ~MainSceneTemplate();
     MainSceneTemplate();
-    
-    static cocos2d::CCScene* scene();
-    
+
+    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainSceneTemplate, create);
+    CC_SYNTHESIZE(MainSceneTemplateDelegate*, m_delegate, Delegate);
+private:
     void menuBarBtnClicked(CCObject *pSender);
-    
     void toolBarBtnClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
     
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
@@ -53,11 +54,7 @@ public:
     virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
     
     virtual bool init();
-    
-    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainSceneTemplate, create);
-    CC_SYNTHESIZE(MainSceneTemplateDelegate*, m_delegate, Delegate);
 
-private:
 	CCLabelTTF *mlblName;
 	CCLabelTTF *mlblHealth;
 	CCLabelTTF *mlblPower;
@@ -66,6 +63,11 @@ private:
 	CCLabelTTF *mlblBronze;
 	CCLabelTTF *mlblGrade;
 	CCSprite   *m_sPlayerContainer;
+
+    MDProgressBar *hpBar;
+    MDProgressBar *expBar;
+public:
+    void updateUserInfo(float hp,float maxhp,float exp,float maxExp);
 };
 
 #endif

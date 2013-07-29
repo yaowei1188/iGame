@@ -9,6 +9,7 @@
 #include "MainSceneTemplate.h"
 
 
+
 MainSceneTemplate::MainSceneTemplate()
 {
     this->mlblName = NULL;
@@ -32,6 +33,12 @@ MainSceneTemplate::~MainSceneTemplate()
     CC_SAFE_RELEASE(m_sPlayerContainer);
 }
 
+void MainSceneTemplate::updateUserInfo(float hp,float maxhp,float exp,float maxExp)
+{
+    hpBar->setPercent(0.8);
+    expBar->setPercent(0.8);
+}
+
 void MainSceneTemplate::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
 	std::string text = ShowString("sun");
@@ -39,39 +46,47 @@ void MainSceneTemplate::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     this->mlblName->setString(text.c_str());
     this->mlblHealth->setZOrder(20);
     this->mlblPower->setZOrder(10);
+
+    hpBar = MDProgressBar::create("x1.png","x2.png","x3.png",84,0.5);
+    hpBar->setPosition(ccp(43, 398));
+    this->addChild(hpBar);
+
+    expBar = MDProgressBar::create("t1.png","t2.png","t3.png",84,1.0);
+    expBar->setPosition(ccp(201, 398));
+    this->addChild(expBar);
     
-    CCSpriteBatchNode *batchNode = CCSpriteBatchNode::create("main.png");
-    this->addChild(batchNode);
-    
-    CCSprite *lhCap = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("x1.png"));
-	CCScale9Sprite *mhCap = CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("x2.png"));
-    CCSprite *rhCap = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("x3.png"));
-    lhCap->setAnchorPoint(ccp(0,0.5));
-    lhCap->setPosition(ccp(43,399));
-    mhCap->setPosition(ccp(48,399));
-    mhCap->setAnchorPoint(ccp(0,0.5));
-    mhCap->setContentSize(CCSizeMake(82, 9));
-    rhCap->setAnchorPoint(ccp(0,0.5));
-    rhCap->setPosition(ccp(130,399));
-    
-    batchNode->addChild(lhCap);
-    this->addChild(mhCap);
-    batchNode->addChild(rhCap);
-    
-    CCSprite *lpCap = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("t1.png"));
-	CCScale9Sprite *mpCap = CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("t2.png"));
-    CCSprite *rpCap = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("t3.png"));
-    lpCap->setAnchorPoint(ccp(0,0.5));
-    lpCap->setPosition(ccp(201,399));
-    mpCap->setPosition(ccp(206,399));
-    mpCap->setAnchorPoint(ccp(0,0.5));
-    mpCap->setContentSize(CCSizeMake(83, 9));
-    rpCap->setAnchorPoint(ccp(0,0.5));
-    rpCap->setPosition(ccp(289,399));
-    
-    batchNode->addChild(lpCap);
-    this->addChild(mpCap);
-    batchNode->addChild(rpCap);
+//    CCSpriteBatchNode *batchNode = CCSpriteBatchNode::create("main.png");
+//    this->addChild(batchNode);
+
+//    CCSprite *lhCap = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("x1.png"));
+//	CCScale9Sprite *mhCap = CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("x2.png"));
+//    CCSprite *rhCap = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("x3.png"));
+//    lhCap->setAnchorPoint(ccp(0,0.5));
+//    lhCap->setPosition(ccp(43,399));
+//    mhCap->setPosition(ccp(48,399));
+//    mhCap->setAnchorPoint(ccp(0,0.5));
+//    mhCap->setContentSize(CCSizeMake(82, 9));
+//    rhCap->setAnchorPoint(ccp(0,0.5));
+//    rhCap->setPosition(ccp(130,399));
+//    
+//    batchNode->addChild(lhCap);
+//    this->addChild(mhCap);
+//    batchNode->addChild(rhCap);
+
+//    CCSprite *lpCap = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("t1.png"));
+//	CCScale9Sprite *mpCap = CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("t2.png"));
+//    CCSprite *rpCap = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("t3.png"));
+//    lpCap->setAnchorPoint(ccp(0,0.5));
+//    lpCap->setPosition(ccp(201,399));
+//    mpCap->setPosition(ccp(206,399));
+//    mpCap->setAnchorPoint(ccp(0,0.5));
+//    mpCap->setContentSize(CCSizeMake(83, 9));
+//    rpCap->setAnchorPoint(ccp(0,0.5));
+//    rpCap->setPosition(ccp(289,399));
+//    
+//    batchNode->addChild(lpCap);
+//    this->addChild(mpCap);
+//    batchNode->addChild(rpCap);
 
 	CCDictionary *userInfo = GlobalData::getUserinfo();
 	CCNumber* fraction = (CCNumber*)userInfo->objectForKey("fraction");
@@ -129,17 +144,4 @@ SEL_CCControlHandler MainSceneTemplate::onResolveCCBCCControlSelector(CCObject *
 bool MainSceneTemplate::init()
 {
     return true;
-}
-
-CCScene* MainSceneTemplate::scene()
-{
-    // 'scene' is an autorelease object
-    CCScene *scene = CCScene::create();
-    
-    // add layer as a child to scene
-    CCLayer* layer = new MainSceneTemplate();
-    scene->addChild(layer);
-    layer->release();
-    
-    return scene;
 }

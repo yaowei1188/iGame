@@ -16,27 +16,6 @@ LoginScene::~LoginScene()
     
 }
 
-CCScene* LoginScene::scene()
-{
-    CCScene * scene = NULL;
-    do 
-    {
-        // 'scene' is an autorelease object
-        scene = CCScene::create();
-        CC_BREAK_IF(! scene);
-
-        // 'layer' is an autorelease object
-        LoginScene *layer = LoginScene::create();
-        CC_BREAK_IF(! layer);
-
-        // add layer as a child to scene
-        scene->addChild(layer);
-    } while (0);
-
-    // return the scene
-    return scene;
-}
-
 // on "init" you need to initialize your instance
 bool LoginScene::init()
 {
@@ -119,13 +98,15 @@ void LoginScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* r
 
 			CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", strEncryptedUser->getCString());
 			CCUserDefault::sharedUserDefault()->setStringForKey("username", strName->getCString());
+            
+            if (m_blnRememberMe) {
+                std::string sPassword(m_txtPassword->getText());
+                CCUserDefault::sharedUserDefault()->setStringForKey("userpwd", sPassword.c_str());
+            } else {
+                CCUserDefault::sharedUserDefault()->setStringForKey("userpwd", "");
+            }
 
-//			string selectedServer = CCUserDefault::sharedUserDefault()->getStringForKey("SelectedServer");
-//			if (selectedServer.length()>0) {
-//				this->OpenNewScene("MainGameScene");
-//			} else {
-//				this->OpenNewScene("ServerListScene");
-//			}
+            CCUserDefault::sharedUserDefault()->setBoolForKey("rememberPwd", m_blnRememberMe);
 
             this->OpenNewScene("ServerListScene");
 		}
@@ -135,7 +116,7 @@ void LoginScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* r
 void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     m_txtAccount = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
-    m_txtAccount->setText("yaowei4");
+//    m_txtAccount->setText("yaowei4");
     m_txtAccount->setPosition(ccp(177, 247));
     m_txtAccount->setFontColor(ccc3(0,0,0));
     m_txtAccount->setFont(FONT_LOGIN, 16);
@@ -147,22 +128,37 @@ void LoginScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     m_txtPassword->setInputFlag(kEditBoxInputFlagPassword);
     m_txtPassword->setFontColor(ccc3(0,0,0));
     m_txtPassword->setFont(FONT_LOGIN, 16);
-	m_txtPassword->setText("123456");
+//	m_txtPassword->setText("123456");
+
+    std::string _strUserAccount = CCUserDefault::sharedUserDefault()->getStringForKey("username");
+    m_blnRememberMe = CCUserDefault::sharedUserDefault()->getBoolForKey("rememberPwd");
     
+    if (_strUserAccount.length()>0) {
+        m_txtAccount->setText(_strUserAccount.c_str());
+    }
+    if (m_blnRememberMe) {
+        std::string _strUserPwd = CCUserDefault::sharedUserDefault()->getStringForKey("userpwd");
+        m_txtPassword->setText(_strUserPwd.c_str());
+    }
+
 	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_1.png"));
 	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("gou_2.png"));
     
     CCMenu* m_auto_op_menu = CCMenu::create();
     CCMenuItemSprite* auto_op_btn = CCMenuItemSprite::create(spriteOff, NULL);
     CCMenuItemSprite* auto_op_btn2 = CCMenuItemSprite::create(spriteOn, NULL);
-    CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(LoginScene::callbackSwitch),auto_op_btn,auto_op_btn2,NULL);
+    CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(LoginScene::switchCallback),auto_op_btn,auto_op_btn2,NULL);
     
     m_auto_op_menu->addChild(item);
     m_auto_op_menu->setPosition(ccp(85, 148));
     this->addChild(m_auto_op_menu);
+
+    if (m_blnRememberMe) {
+        item->setSelectedIndex(1);
+    }
 }
 
-void LoginScene::callbackSwitch(CCObject* pSender){
+void LoginScene::switchCallback(CCObject* pSender){
 
 	CCMenuItemToggle* pSwitch = (CCMenuItemToggle*)pSender;
     

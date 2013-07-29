@@ -264,6 +264,11 @@ SEL_CCControlHandler MainGameScene::onResolveCCBCCControlSelector(CCObject *pTar
 	return NULL;
 }
 
+void MainGameScene::updateUserInfo(float hp,float maxhp,float exp,float maxExp)
+{
+    mMainSceneTemp->updateUserInfo(hp, maxhp, exp, maxExp);
+}
+
 bool MainGameScene::init()
 {
     return true;
