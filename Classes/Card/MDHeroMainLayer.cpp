@@ -83,6 +83,7 @@ void MDHeroMainLayer::buttonClicked(CCObject *pSender, CCControlEvent pCCControl
         case 101:
         {
             CCLOG("hunji");
+            mainScene->PushLayer((CCLayer *)this->GetLayer("MDCardAlchemyLayer"));
             break;
         }
         case 102:

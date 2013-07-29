@@ -104,9 +104,9 @@ void MDCardAlchemyLayer::requestFinishedCallback(CCHttpClient* client, CCHttpRes
 
 bool MDCardAlchemyLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-	CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCard", CCSprite*, this->m_sCard);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblTitle", CCLabelTTF*, this->m_lblTitle);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblLife", CCLabelTTF*, this->m_lblLife);
+//	CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCard", CCSprite*, this->m_sCard);
+//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblTitle", CCLabelTTF*, this->m_lblTitle);
+//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblLife", CCLabelTTF*, this->m_lblLife);
 	return true;
 }
 
@@ -122,19 +122,19 @@ SEL_CCControlHandler MDCardAlchemyLayer::onResolveCCBCCControlSelector(CCObject 
 }
 
 
-void MDCardAlchemyLayer::showTaskInfo()
-{
-
-
-    
-//    CCString *str = (CCString *)mTaskList->objectForKey("TaskName");
-//    CCArray *subTasks = (CCArray *)mTaskList->objectForKey("SubTasks");
-    
-//    m_lblTitle->setString("大唐西行(1)  河边放生");
-    
-
-    
-}
+//void MDCardAlchemyLayer::showTaskInfo()
+//{
+//
+//
+//    
+////    CCString *str = (CCString *)mTaskList->objectForKey("TaskName");
+////    CCArray *subTasks = (CCArray *)mTaskList->objectForKey("SubTasks");
+//    
+////    m_lblTitle->setString("大唐西行(1)  河边放生");
+//    
+//
+//    
+//}
 
 void MDCardAlchemyLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
@@ -142,8 +142,6 @@ void MDCardAlchemyLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader
     
     mTaskList = GlobalData::getTasks("");
     mTaskList->retain();
-    
-    showTaskInfo();
 }
 
 void MDCardAlchemyLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
@@ -153,21 +151,14 @@ void MDCardAlchemyLayer::buttonClicked(CCObject * sender , CCControlEvent contro
 	switch (button->getTag()) {
 	case 101:
         {
-		mainScene->PopLayer();
-		break;
+//            mainScene->PopLayer();
+            break;
         }
 	case 102:
         {
-		CCLOG("22222");
-//            string test("test");
-//            executeTask(test);
-            selectedindex++;
-            showTaskInfo();
+            mainScene->PopLayer();
+            break;
         }
-		break;
-//	case 103:
-//		CCLOG("33333");
-//		break;
 	}
 }
 
@@ -176,16 +167,16 @@ MDCardAlchemyLayer::MDCardAlchemyLayer()
 //	mTableView = NULL;
 	//    mMainSceneTemp = NULL;
 	mTaskList = NULL;
-    m_lblTitle = NULL;
-    m_sCard = NULL;
-    m_lblLife = NULL;
+//    m_lblTitle = NULL;
+//    m_sCard = NULL;
+//    m_lblLife = NULL;
 }
 
 MDCardAlchemyLayer::~MDCardAlchemyLayer()
 {
-	m_sCard->release();
-	m_lblTitle->release();
+//	m_sCard->release();
+//	m_lblTitle->release();
 //	mTaskList->release();
-    m_lblLife->release();
+//    m_lblLife->release();
 }
 

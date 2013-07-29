@@ -45,14 +45,10 @@ public:
 	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
 //	void didClickButton(CCMessageDialog* dialog,unsigned int index);
 	void executeTask(std::string &targetUser);
-    void showTaskInfo();
+
     void menuItemCallback(CCObject* pSender);
 	unsigned int selectedindex;
-    CCLabelTTF *m_lblTitle;
-    CCSprite *m_sCard;
 	CCDictionary *mTaskList;
-    
-    CCLabelTTF *m_lblLife;
 };
 
-#endif  // __TASK_DETAIL_SCENE_H__
+#endif  // __CARD_ALCHEMY_LAYER_H__
