@@ -102,6 +102,15 @@ void MDCardAlchemyLayer::requestFinishedCallback(CCHttpClient* client, CCHttpRes
 	}
 }
 
+void MDCardAlchemyLayer::didSelectedItems(CCArray *pItems)
+{
+	//CCLOG("items:%d",pItems->count());
+	CCControlButton *btn = (CCControlButton *)this->getChildByTag(selectedButton);
+	CCSprite *sHead = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_rulaifo.png"));
+	btn->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_rulaifo.png"),CCControlStateNormal);
+	btn->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_rulaifo.png"),CCControlStateHighlighted);
+}
+
 bool MDCardAlchemyLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
 //	CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCard", CCSprite*, this->m_sCard);
@@ -151,7 +160,7 @@ void MDCardAlchemyLayer::buttonClicked(CCObject * sender , CCControlEvent contro
 	switch (button->getTag()) {
 	case 101:
         {
-//            mainScene->PopLayer();
+            //mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroListLayer"));
             break;
         }
 	case 102:
@@ -159,6 +168,21 @@ void MDCardAlchemyLayer::buttonClicked(CCObject * sender , CCControlEvent contro
             mainScene->PopLayer();
             break;
         }
+	case 103:
+	case 104:
+	case 105:
+	case 106:
+	case 107:
+	case 108:
+		{
+			selectedButton = button->getTag();
+			MDHeroListLayer *_heroListLayer = (MDHeroListLayer *)this->GetLayer("MDHeroListLayer");
+			_heroListLayer->category=1;
+			_heroListLayer->setDelegate(this);
+			_heroListLayer->reloadDataSource();
+			mainScene->PushLayer(_heroListLayer);
+			break;
+		}
 	}
 }
 

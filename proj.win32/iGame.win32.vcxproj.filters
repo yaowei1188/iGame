@@ -83,6 +83,9 @@
     <Filter Include="Classes\Card">
       <UniqueIdentifier>{992afd09-1ee9-4a27-b356-9054babb3d88}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\particle">
+      <UniqueIdentifier>{b4ad7c21-c991-476d-ac93-b6ab6f5b8393}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\iGame.ico">
@@ -112,30 +115,6 @@
     <None Include="..\Resources\Icon-Small-50.png">
       <Filter>Resources</Filter>
     </None>
-    <None Include="..\Resources\FriendListScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\HeadScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\LoginScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\MainGameScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\TaskListScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\MainSceneTemplate.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\AddFriendScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\ThirdLoginScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
     <None Include="..\Resources\transparent.png">
       <Filter>Resources</Filter>
     </None>
@@ -156,15 +135,6 @@
     </None>
     <None Include="..\Resources\Image\friends.png">
       <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\NewMailScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\SysMailScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\UserMailScene.ccbi">
-      <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\Image\Arial.fnt">
       <Filter>Resources\Image</Filter>
@@ -250,38 +220,14 @@
     <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator_12.gif">
       <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
     </None>
-    <None Include="..\Resources\TaskRewardScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\TaskDetailScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\TaskBoxScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\ServerListScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\CharacterScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
     <None Include="..\Resources\language\chs.plist">
       <Filter>Resources\Language</Filter>
     </None>
     <None Include="..\Resources\Task\Task1.plist">
       <Filter>Resources\Task</Filter>
     </None>
-    <None Include="..\Resources\RegisterScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\MailMainScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
     <None Include="..\Resources\Task\Card.plist">
       <Filter>Resources\Task</Filter>
-    </None>
-    <None Include="..\Resources\ChatLayer.ccbi">
-      <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\library\gloox\config.h.unix">
       <Filter>Library\gloox</Filter>
@@ -310,44 +256,146 @@
     <None Include="..\Resources\ccactivityindicator.png">
       <Filter>Resources</Filter>
     </None>
-    <None Include="..\Resources\MainGameScene copy.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\MainInner1Layer.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\MainInnerLayer.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\MainOuterLlayer.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\MDCardAlchemyLayer.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\MDHeroDetailLayer.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\MDHeroListLayer.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\MDHeroMainLayer.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\MDHeroPrePromoLayer.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\MDHeroPromoLayer.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\MDHerosFormationLayer.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
     <None Include="..\Resources\Image\test.fnt">
       <Filter>Resources\Image</Filter>
     </None>
     <None Include="..\Resources\Image\test.png">
       <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\card.plist">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\card.png">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\simhei.ttf">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\card.plist">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\card.png">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\background.jpeg">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\particle\ellipse.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\ellipse.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\explore1.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\fire.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\fire.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\line.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\myAttack1.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\particleTexture.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\flash.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\flash.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\scene\AddFriendScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\CharacterScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\ChatLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\FriendListScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\LoginScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MailMainScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MainGameScene copy.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MainGameScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MainInner1Layer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MainInnerL2ayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MainInnerLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MainOuterLlayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MainSceneTemplate.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MDCardAlchemyLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MDHeroDetailLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MDHeroListLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MDHeroMainLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MDHeroPrePromoLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MDHeroPromoLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MDHerosFormationLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\NewMailScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\RegisterScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\ServerListScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\TaskBoxScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\TaskDetailScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\TaskListScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\TaskRewardScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\ThirdLoginScene.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\UserMailScene.ccbi">
+      <Filter>Resources\Scene</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -1081,6 +1129,9 @@
     <ClInclude Include="..\Classes\Card\MDHerosFormationLayerLoader.h">
       <Filter>Classes\Card</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\MDProgressBar.h">
+      <Filter>Classes\UILibrary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -1569,6 +1620,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Card\MDHerosFormationLayer.cpp">
       <Filter>Classes\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\MDProgressBar.cpp">
+      <Filter>Classes\UILibrary</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

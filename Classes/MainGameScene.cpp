@@ -95,6 +95,12 @@ void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
 		layer = (CCLayer *)MDBattleLayer::create();
 	} else if (intSelectedMenu == MENUBAR_HERO_TAG) {
 		layer = (CCLayer *)this->GetLayer("MDHeroMainLayer");
+	} else if (intSelectedMenu == MENUBAR_GROUP_TAG) {
+		this->updateUserInfo(80,100,150,200,5,900);
+		return;
+		//layer = (CCLayer *)this->GetLayer("MDHeroMainLayer");
+	} else if (intSelectedMenu == MENUBAR_SHOP_TAG) {
+		//layer = (CCLayer *)this->GetLayer("MDHeroMainLayer");
 	} else {
         return;
     }
@@ -136,6 +142,7 @@ void MainGameScene::PushLayer(CCLayer *subLayer,bool fromRight)
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     
     CCLayer *prevLayer = (CCLayer *)mlayArray->objectAtIndex(mlayArray->count()-1);
+	prevLayer->setTouchPriority(-129);
     
     if (fromRight) {
         CCSequence *sequence = CCSequence::create(CCMoveBy::create(0.2, CCPointMake(-CCDirector::sharedDirector()->getWinSize().width,0)),CCCallFuncN::create(this, callfuncN_selector(MainGameScene::removeNodeCallBack)),NULL);
@@ -264,9 +271,9 @@ SEL_CCControlHandler MainGameScene::onResolveCCBCCControlSelector(CCObject *pTar
 	return NULL;
 }
 
-void MainGameScene::updateUserInfo(float hp,float maxhp,float exp,float maxExp)
+void MainGameScene::updateUserInfo(int hp,int maxhp,int exp,int maxExp,int grade,int gold)
 {
-    mMainSceneTemp->updateUserInfo(hp, maxhp, exp, maxExp);
+	mMainSceneTemp->updateUserInfo(hp, maxhp, exp, maxExp,grade,gold);
 }
 
 bool MainGameScene::init()

@@ -8,12 +8,13 @@
 #include "MainGameScene.h"
 #include "MainSceneTemplate.h"
 #include "MainLayerBase.h"
+#include "MDHeroListLayer.h"
 #include "SlidingMenu.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class MDCardAlchemyLayer : public MainLayerBase,
+class MDCardAlchemyLayer : public MainLayerBase,MDHeroListLayerDelegate,
 //	public CCTableViewDataSource,
 //	public CCTableViewDelegate,
 	public CCBSelectorResolver,
@@ -36,6 +37,8 @@ public:
 	// implement the "static node()" method manually
 	CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MDCardAlchemyLayer,create);
 
+private:
+
 	virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
 	virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
 
@@ -45,10 +48,12 @@ public:
 	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
 //	void didClickButton(CCMessageDialog* dialog,unsigned int index);
 	void executeTask(std::string &targetUser);
+	virtual void didSelectedItems(CCArray *pItems);
 
     void menuItemCallback(CCObject* pSender);
 	unsigned int selectedindex;
 	CCDictionary *mTaskList;
+	int selectedButton;
 };
 
 #endif  // __CARD_ALCHEMY_LAYER_H__

@@ -1,5 +1,6 @@
 #include "MDHeroMainLayer.h"
 #include "MainGameScene.h"
+#include "MDHeroListLayer.h"
 
 using namespace cocos2d;
 
@@ -93,7 +94,10 @@ void MDHeroMainLayer::buttonClicked(CCObject *pSender, CCControlEvent pCCControl
         }
         case 103:
         {
-            mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroListLayer"));
+			MDHeroListLayer *_heroListLayer = (MDHeroListLayer *)this->GetLayer("MDHeroListLayer");
+			_heroListLayer->category=0;
+			_heroListLayer->reloadDataSource();
+			mainScene->PushLayer(_heroListLayer);
             break;
         }
         case 104:

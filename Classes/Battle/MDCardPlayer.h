@@ -66,7 +66,7 @@ public:
     void playEcllipseEffect(MDCardPlayer *target);
 	void stopAllAction();
     void playExploreEffect(MDCardPlayer *target);
-    
+    void playAnnimateFrame(std::string p_name,int count);
 
     
 private:

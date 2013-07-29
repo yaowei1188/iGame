@@ -77,6 +77,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	searchPaths.push_back("Image");
 	searchPaths.push_back("sound");
     searchPaths.push_back("particle");
+	searchPaths.push_back("scene");
 	//searchPaths.push_back("ccbResources");
 
     TargetPlatform platform = CCApplication::sharedApplication()->getTargetPlatform();
@@ -166,7 +167,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	//SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
 #endif
     
-    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
+    //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
 
 
 //	CCScene *pScene = MDBattleLayer::scene();
@@ -174,8 +175,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("ServerListScene.ccbi");
     //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("CharacterScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskListScene.ccbi");
-    //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
-//    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MDHerosFormationLayer");
+    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
+    //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MDHerosFormationLayer");
     pDirector->runWithScene(pScene);
 
     return true;

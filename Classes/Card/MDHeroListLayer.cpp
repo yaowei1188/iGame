@@ -42,6 +42,9 @@ bool MDHeroListLayer::init()
         mHeroList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
         mHeroList->retain();
 
+		vUserData = new int[mHeroList->count()]();
+		memset(vUserData, sizeof(int) * mHeroList->count(), 0);
+
         bRet = true;
     } while (0);
 
@@ -122,19 +125,35 @@ SEL_CCControlHandler MDHeroListLayer::onResolveCCBCCControlSelector(CCObject *pT
 
 void MDHeroListLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    if (category == 1) {
-        m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_choosehero.png"));
-    } else {
-        m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_heropalace.png"));
-    }
-    mTableView->setDirection(kCCScrollViewDirectionVertical);
-    mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
-    mTableView->setDataSource(this);
-    mTableView->setViewSize(CCSizeMake(312, 314));
-    mTableView->setDelegate(this);
+    //if (category == 1) {
+    //    m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_choosehero.png"));
+    //} else {
+    //    m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_heropalace.png"));
+    //}
+    //mTableView->setDirection(kCCScrollViewDirectionVertical);
+    //mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
+    //mTableView->setDataSource(this);
+    //mTableView->setViewSize(CCSizeMake(312, 314));
+    //mTableView->setDelegate(this);
 
-    mTableView->reloadData();
+    //mTableView->reloadData();
 //    this->LoadHeros();
+}
+
+void MDHeroListLayer::reloadDataSource()
+{
+	if (category == 1) {
+		m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_choosehero.png"));
+	} else {
+		m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_heropalace.png"));
+	}
+	mTableView->setDirection(kCCScrollViewDirectionVertical);
+	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
+	mTableView->setDataSource(this);
+	mTableView->setViewSize(CCSizeMake(312, 314));
+	mTableView->setDelegate(this);
+
+	mTableView->reloadData();
 }
 
 void MDHeroListLayer::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
@@ -227,11 +246,34 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
         sline->setAnchorPoint(CCPointZero);
         cell->addChild(sline);
         
-        CCSprite *sFriendheart = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_l_star5.png"));
-        sFriendheart->setPosition(ccp(218 ,size.height * 0.5));
-        sFriendheart->setAnchorPoint(ccp(0, 0.5));
-        cell->addChild(sFriendheart);
-        
+		CCPoint point = ccp(218 ,size.height * 0.5);
+		if (category==1)
+		{
+			point = ccp(170 ,size.height * 0.5);
+		}
+
+        CCSprite *sStarGrade = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_l_star5.png"));
+        sStarGrade->setPosition(point);
+		lblLevel->setTag(125);
+        sStarGrade->setAnchorPoint(ccp(0, 0.5));
+        cell->addChild(sStarGrade);
+
+		if (category==1)
+		{
+			CCMenu *menuCheck = this->generateCheckBox();
+			cell->addChild(menuCheck);
+			CCMenuItemToggle *toggle= (CCMenuItemToggle *)menuCheck->getChildByTag(1);
+			toggle->setUserData(&vUserData[idx]);
+			if (vUserData[idx] == 1) {
+				toggle->setSelectedIndex(1);
+			} else {
+				toggle->setSelectedIndex(0);
+			}
+
+			menuCheck->setTag(126);
+			menuCheck->setAnchorPoint(CCPointMake(0, 0.5));
+			menuCheck->setPosition(CCPointMake(280, size.height * 0.5));
+		}
 	}
 	else
 	{
@@ -253,9 +295,68 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
         
 //        CCScale9Sprite *background = (CCScale9Sprite *)cell->getChildByTag(121);
 //        background->setContentSize(size);
+
+		if (category==1)
+		{
+			CCMenu *menuCheck = (CCMenu *)cell->getChildByTag(126);
+			CCMenuItemToggle *toggle= (CCMenuItemToggle *)menuCheck->getChildByTag(1);
+			toggle->setUserData(&vUserData[idx]);
+
+			if (vUserData[idx] == 1) {
+				toggle->setSelectedIndex(1);
+			} else {
+				toggle->setSelectedIndex(0);
+			}
+		}
 	}
 
 	return cell;
+}
+
+void MDHeroListLayer::callbackSwitch(CCObject* pSender){
+
+	CCMenuItemToggle* pSwitch = (CCMenuItemToggle*)pSender;
+
+	int *idx = (int *)pSwitch->getUserData();
+	if (idx==NULL)
+	{
+		if (pSwitch->getSelectedIndex()==0) {
+			for(int i=0;i<mHeroList->count();i++)
+			{
+				vUserData[i]=0;
+			}
+		} else {
+			for(int i=0;i<mHeroList->count();i++)
+			{
+				vUserData[i]=1;
+			}
+		}
+		mTableView->refreshData();
+	}
+	else
+	{
+		if (pSwitch->getSelectedIndex()==0) {
+			*idx = 0;
+		} else {
+			*idx = 1;
+		}
+	}
+}
+
+CCMenu* MDHeroListLayer::generateCheckBox()
+{
+	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox_checked.png"));
+	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox.png"));
+
+	CCMenu* m_auto_op_menu = CCMenu::create();
+	CCMenuItemSprite* menuOff = CCMenuItemSprite::create(spriteOff, NULL);
+	CCMenuItemSprite* menuOn = CCMenuItemSprite::create(spriteOn, NULL);
+	CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(MDHeroListLayer::callbackSwitch),menuOff,menuOn,NULL);
+	item->setTag(1);
+
+	m_auto_op_menu->addChild(item);
+
+	return m_auto_op_menu;
 }
 
 //    按下按钮事件回调
@@ -342,6 +443,18 @@ void MDHeroListLayer::buttonClicked(CCObject * sender , CCControlEvent controlEv
         }
 	case 102:
         {
+			if(m_delegate != NULL) {
+				CCArray *_array = CCArray::create();
+				for(int i=0;i<mHeroList->count();i++)
+				{
+					if(vUserData[i]==1)
+					{
+						_array->addObject(mHeroList->objectAtIndex(i)->copy());
+					}
+				}
+				m_delegate->didSelectedItems(_array);
+			}
+
             mainScene->PopLayer();
             break;
         }

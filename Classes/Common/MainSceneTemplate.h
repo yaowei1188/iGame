@@ -67,7 +67,7 @@ private:
     MDProgressBar *hpBar;
     MDProgressBar *expBar;
 public:
-    void updateUserInfo(float hp,float maxhp,float exp,float maxExp);
+    void updateUserInfo(int hp,int maxhp,int exp,int maxExp,int grade,int gold);
 };
 
 #endif

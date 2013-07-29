@@ -33,10 +33,31 @@ MainSceneTemplate::~MainSceneTemplate()
     CC_SAFE_RELEASE(m_sPlayerContainer);
 }
 
-void MainSceneTemplate::updateUserInfo(float hp,float maxhp,float exp,float maxExp)
+void MainSceneTemplate::updateUserInfo(int hp,int maxhp,int exp,int maxExp,int grade,int gold)
 {
-    hpBar->setPercent(0.8);
-    expBar->setPercent(0.8);
+	if (maxhp!=0.0)
+	{
+		hpBar->setPercent((float)hp / (float)maxhp);
+		string _result = IntToString(hp)+"/" + IntToString(maxhp);
+		this->mlblHealth->setString(_result.c_str());
+	}
+    
+	if (maxExp!=0.0)
+	{
+		expBar->setPercent((float)exp / (float)maxExp);
+		string _result = IntToString(exp)+"/" + IntToString(maxExp);
+		this->mlblPower->setString(_result.c_str());
+	}
+
+	if (grade>0)
+	{
+		this->mlblGrade->setString(IntToString(grade).c_str());
+	}
+	
+	if (gold>0)
+	{
+		this->mlblGold->setString(IntToString(gold).c_str());
+	}
 }
 
 void MainSceneTemplate::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
@@ -88,20 +109,20 @@ void MainSceneTemplate::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 //    this->addChild(mpCap);
 //    batchNode->addChild(rpCap);
 
-	CCDictionary *userInfo = GlobalData::getUserinfo();
-	CCNumber* fraction = (CCNumber*)userInfo->objectForKey("fraction");
-	if(fraction->getIntValue()==FACTION_FAIRY)
-	{
-		m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_FAIRY_CONTAINER));
-	}
-	else if (fraction->getIntValue()==FACTION_BUDDHA)
-	{
-		m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_BUDDHA_CONTAINER));
-	}
-	else if (fraction->getIntValue()==FACTION_DEMON)
-	{
-		m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_DEMON_CONTAINER));
-	}
+	//CCDictionary *userInfo = GlobalData::getUserinfo();
+	//CCNumber* fraction = (CCNumber*)userInfo->objectForKey("fraction");
+	//if(fraction->getIntValue()==FACTION_FAIRY)
+	//{
+	//	m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_FAIRY_CONTAINER));
+	//}
+	//else if (fraction->getIntValue()==FACTION_BUDDHA)
+	//{
+	//	m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_BUDDHA_CONTAINER));
+	//}
+	//else if (fraction->getIntValue()==FACTION_DEMON)
+	//{
+	//	m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_DEMON_CONTAINER));
+	//}
 }
 
 bool MainSceneTemplate::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)

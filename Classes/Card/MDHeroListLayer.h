@@ -14,6 +14,12 @@ using namespace cocos2d;
 using namespace cocos2d::extension;
 using namespace std;
 
+class MDHeroListLayerDelegate
+{
+public:
+	virtual void didSelectedItems(CCArray *pItems) = 0;
+};
+
 class MDHeroListLayer : public MainLayerBase,
 public CCTableViewDataSource,
 public CCTableViewDelegate,
@@ -31,12 +37,14 @@ public:
 
     // there's no 'id' in cpp, so we recommand to return the exactly class pointer
     static cocos2d::CCScene* scene();
-    
-    // a selector callback
-    void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
 
     // implement the "static node()" method manually
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MDHeroListLayer,create);
+	CC_SYNTHESIZE(MDHeroListLayerDelegate*, m_delegate, Delegate);
+
+	void reloadDataSource();
+
+private:
     
     virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
     virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
@@ -57,11 +65,17 @@ public:
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
     virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
     
+	// a selector callback
+	void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
+
     void toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent);
     void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
 	void didClickButton(CCMessageDialog* dialog,unsigned int index);
     void LoadHeros();
-    
+	void callbackSwitch(CCObject* pSender);
+	CCMenu* generateCheckBox();
+
+
 //	void deleteFriend(std::string &targetUser);
 private:
     CCTableView* mTableView;
@@ -69,6 +83,7 @@ private:
     CCSprite *m_sTitle;
     CCArray *mHeroList;
 	bool btnTouched;
+	   int *vUserData;
 public:
     int category;
 };

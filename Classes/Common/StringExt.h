@@ -104,6 +104,20 @@ inline std::wstring StringToWString(const std::string &s)
 	return wsTmp;
 }
 
+inline std::string floatToString(float number)
+{
+	std::ostringstream buff;
+	buff<<number;
+	return buff.str();
+}
+
+inline std::string IntToString (int number)
+{
+	std::ostringstream buff;
+	buff<<number;
+	return buff.str();
+}
+
 inline ccColor3B convertColor(const std::string &str)
 {
 	long color;
@@ -119,11 +133,7 @@ inline ccColor3B convertColor(const std::string &str)
     int R = (color & 0xFF0000 )>>16;
     int G = (color & 0x00FF00 )>>8;
     int B =  color & 0x0000FF;
-    
-    
-    
     return ccc3(R, G, B);
-
 }
 
 #endif /* defined(__iGame__StringExt__) */

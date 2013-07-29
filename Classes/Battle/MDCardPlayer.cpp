@@ -27,6 +27,36 @@ bool MDCardPlayer::init(std::string p_cardName)
 	return true;
 }
 
+void MDCardPlayer::playAnnimateFrame(std::string p_name,int count)
+{
+	CCSpriteFrameCache* cache = CCSpriteFrameCache::sharedSpriteFrameCache();  
+	cache->addSpriteFramesWithFile("flash.plist");
+	CCArray* animFrames = CCArray::createWithCapacity(count);
+
+
+	for(int i=1;i<=count;i++)
+	{
+		string prefix(p_name);
+		char strPlist[64] = {0};
+		if(i<10)
+		{
+			prefix.append("0");
+		}
+		sprintf(strPlist,"%s%d.png",prefix.c_str(),i); 
+		CCSpriteFrame *spriteFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strPlist);
+		animFrames->addObject(spriteFrame);
+	}
+
+	CCAnimation *animation = CCAnimation::createWithSpriteFrames(animFrames, 0.1f);
+	CCAnimate *animate = CCAnimate::create(animation);
+	//CCActionInterval* seq = CCSequence::create(animate,NULL);
+		//CCFlipX::create(true),
+		//animate->copy()->autorelease(),
+		//CCFlipX::create(false),
+		//NULL);
+	m_sCardPlayer->runAction(animate);
+}
+
 void MDCardPlayer::playParadeAnnimation()
 {
 	CCJumpBy *jump = CCJumpBy::create(2.0,ccp(0,0),15,4);

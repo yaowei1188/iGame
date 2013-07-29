@@ -7,6 +7,7 @@
 //
 
 #include "MainInnerLayer.h"
+#include "MainGameScene.h"
 
 
 MainInnerLayer::MainInnerLayer()
@@ -70,6 +71,9 @@ void MainInnerLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 	//}
 
 	//table->reloadData();
+
+	MainGameScene *mainScene = (MainGameScene *)this->getParent();
+	mainScene->PushLayer((CCLayer *)this->GetLayer("MDHerosFormationLayer"));
 }
 
 unsigned int MainInnerLayer::numberOfCellsInTableView(CCTableView *table)

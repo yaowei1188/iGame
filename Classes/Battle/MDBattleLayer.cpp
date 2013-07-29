@@ -214,7 +214,7 @@ void MDBattleLayer::AttackEnemy()
 {
     srand(time(NULL));
     int enemyNum = rand()%6;
-    int attackCategory = rand()%4;
+    int attackCategory = 4;//;rand()%5;
     MDCardPlayer *enmeyCardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(enemyNum);
     
     MDCardPlayer *cardPlayer = (MDCardPlayer *)mCardList->objectAtIndex(intCurrentCard++);
@@ -239,6 +239,11 @@ void MDBattleLayer::AttackEnemy()
             cardPlayer->playEcllipseEffect(enmeyCardPlayer);
             break;
         }
+		case 4:
+			{
+				enmeyCardPlayer->playAnnimateFrame("2200",18);
+				break;
+			}
         default:
             break;
     }

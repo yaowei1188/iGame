@@ -72,7 +72,7 @@ public:
     void PopToNLayer(int nLayer);
     void returnToMainLayer();
 
-    void updateUserInfo(float hp,float maxhp,float exp,float maxExp);
+    void updateUserInfo(int hp,int maxhp,int exp,int maxExp,int grade,int gold);
 private:
     CCArray *mlayArray;
     int intSelectedMenu;
