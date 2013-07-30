@@ -463,6 +463,7 @@ MDHeroListLayer::MDHeroListLayer()
     mTableView = NULL;
     mHeroList = NULL;
     m_sTitle = NULL;
+	m_delegate = NULL;
 }
 
 MDHeroListLayer::~MDHeroListLayer()
