@@ -59,10 +59,6 @@ bool CharacterScene::init()
     bool bRet = false;
     do 
     {
-        //////////////////////////////////////////////////////////////////////////
-        // super init first
-        //////////////////////////////////////////////////////////////////////////
-
         CC_BREAK_IF(! CCLayer::init());
 
 		mCardList = CCArray::create();
@@ -143,18 +139,6 @@ std::string CharacterScene::addReturnForName(CCString *cardName)
         result.append("\n");
     }
     return result;
-}
-
-std::string CharacterScene::determineGroup(CCString* number)
-{
-    if (number->intValue()==1) {
-        return "friends_dairy.png";
-    } else if (number->intValue()==2) {
-        return "friends_fo.png";
-    } else if (number->intValue()==3) {
-        return "friends_wizard.png";
-    }
-    return "";
 }
 
 void CharacterScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)

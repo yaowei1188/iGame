@@ -10,6 +10,7 @@
 #include "MainLayerBase.h"
 #include "MDHeroListLayer.h"
 #include "SlidingMenu.h"
+#include "MDProgressBar.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -30,9 +31,6 @@ public:
 	// there's no 'id' in cpp, so we recommand to return the exactly class pointer
 	static cocos2d::CCScene* scene();
 
-	// a selector callback
-	void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
-	void doSearch();
 
 	// implement the "static node()" method manually
 	CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MDCardAlchemyLayer,create);
@@ -41,7 +39,6 @@ private:
 
 	virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
 	virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
-
 	virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
 	virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
 
@@ -51,9 +48,22 @@ private:
 	virtual void didSelectedItems(CCArray *pItems);
 
     void menuItemCallback(CCObject* pSender);
+    void startAlchemy();
+    void step(float dt);
+
+    // a selector callback
+	void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
+	void doSearch();
+    
 	unsigned int selectedindex;
 	CCDictionary *mTaskList;
 	int selectedButton;
+
+    MDProgressBar *barBg;
+    MDProgressBar *barFront;
+    CCLabelBMFont* lblTime;
+    float waitTime;
+    float remainTime;
 };
 
 #endif  // __CARD_ALCHEMY_LAYER_H__

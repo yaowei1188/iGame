@@ -39,6 +39,7 @@ protected:
     std::string CompleteUrl(std::string url);
     std::string getLocalString(std::string name);
 	std::string showUTF8String(std::string name);
+    std::string determineGroup(CCString* number);
 
 private:
     LoadingScene *loading;

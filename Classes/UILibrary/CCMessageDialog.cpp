@@ -35,10 +35,6 @@ bool CCMessageDialog::init()
     bool bRet = false;
     do 
     {
-        //////////////////////////////////////////////////////////////////////////
-        // super init first
-        //////////////////////////////////////////////////////////////////////////
-
         CC_BREAK_IF(! CCLayer::init());
         
         this->setTouchEnabled(true);

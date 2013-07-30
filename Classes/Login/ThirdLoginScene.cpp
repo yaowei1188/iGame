@@ -41,43 +41,15 @@ bool ThirdLoginScene::init()
     bool bRet = false;
     do 
     {
-        //////////////////////////////////////////////////////////////////////////
-        // super init first
-        //////////////////////////////////////////////////////////////////////////
 
         CC_BREAK_IF(! CCLayer::init());
 
-        ////////////////////////////////////////////////////////////////////////////
-        //// add your codes below...
-        ////////////////////////////////////////////////////////////////////////////
         
         bRet = true;
     } while (0);
 
     return bRet;
 }
-
-//void ThirdLoginScene::submitClicked(CCObject *pSender,CCControlEvent event)
-//{
-//	CCLOG("i was clicked");
-//	char sAccount[20];
-//	char sPassword[20];
-//	sprintf(sAccount,m_txtAccount->getText());
-//	sprintf(sPassword,m_txtAccount->getText());
-//
-//	//this->doSubmit();
-//    
-//    
-////    CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::sharedCCNodeLoaderLibrary();
-////    //ccNodeLoaderLibrary->registerCCNodeLoader("AboutScene", AboutSceneLoader::loader());
-////    
-////    cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
-////    ccbReader->autorelease();
-////    
-////    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
-////    CCDirector::sharedDirector()->replaceScene(CCTransitionFlipAngular::create(1.0, pScene));
-//
-//}
 
 void ThirdLoginScene::doSubmit()
 {

@@ -32,15 +32,8 @@ bool MDCardAlchemyLayer::init()
 	bool bRet = false;
 	do 
 	{
-		//////////////////////////////////////////////////////////////////////////
-		// super init first
-		//////////////////////////////////////////////////////////////////////////
 
 		CC_BREAK_IF(! CCLayer::init());
-
-		//mArrayList =  CCArray::create();
-//		mTaskList = CCArray::create(CCString::create("Li1"),CCString::create("’≈»˝"),CCString::create("Li3"),CCString::create("¿ÓÀƒ"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
-//		mTaskList->retain();
 
 		bRet = true;
 	} while (0);
@@ -106,14 +99,14 @@ void MDCardAlchemyLayer::didSelectedItems(CCArray *pItems)
 {
 	//CCLOG("items:%d",pItems->count());
 	CCControlButton *btn = (CCControlButton *)this->getChildByTag(selectedButton);
-	CCSprite *sHead = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_rulaifo.png"));
-	btn->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_rulaifo.png"),CCControlStateNormal);
-	btn->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_rulaifo.png"),CCControlStateHighlighted);
+	CCSpriteFrame *sHeadFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_rulaifo.png");
+	btn->setBackgroundSpriteFrameForState(sHeadFrame,CCControlStateNormal);
+	btn->setBackgroundSpriteFrameForState(sHeadFrame,CCControlStateHighlighted);
 }
 
 bool MDCardAlchemyLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-//	CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCard", CCSprite*, this->m_sCard);
+//	  CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCard", CCSprite*, this->m_sCard);
 //    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblTitle", CCLabelTTF*, this->m_lblTitle);
 //    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblLife", CCLabelTTF*, this->m_lblLife);
 	return true;
@@ -130,27 +123,49 @@ SEL_CCControlHandler MDCardAlchemyLayer::onResolveCCBCCControlSelector(CCObject 
 	return NULL;
 }
 
+void MDCardAlchemyLayer::step(float dt)
+{
+    remainTime -=dt;
+    string stime(secondsToString((int)(remainTime + 0.5)));
+    lblTime->setString(stime.c_str());
+    barFront->setPercent(remainTime/waitTime);
+    if (remainTime<=0) {
+        this->unschedule(schedule_selector(MDCardAlchemyLayer::step));
+    }
+}
 
-//void MDCardAlchemyLayer::showTaskInfo()
-//{
-//
-//
-//    
-////    CCString *str = (CCString *)mTaskList->objectForKey("TaskName");
-////    CCArray *subTasks = (CCArray *)mTaskList->objectForKey("SubTasks");
-//    
-////    m_lblTitle->setString("大唐西行(1)  河边放生");
-//    
-//
-//    
-//}
+void MDCardAlchemyLayer::startAlchemy()
+{
+    if (lblTime==NULL) {
+        CCLabelBMFont* lblTimeTile = CCLabelBMFont::create("Remain", "test.fnt");
+        this->addChild(lblTimeTile);
+        lblTimeTile->setPosition(ccp(50, 70));
+
+        lblTime = CCLabelBMFont::create("", "test.fnt");
+        this->addChild(lblTime);
+        lblTime->setPosition(ccp(150, 70));
+
+        barBg = MDProgressBar::create("lod_1_03.png","lod_1_04.png","lod_1_05.png",290,1.0);
+        barBg->setPosition(ccp(10, 50));
+        this->addChild(barBg);
+
+        barFront = MDProgressBar::create("lod_2_03.png","lod_2_04.png","lod_2_05.png",290,1.0);
+        barFront->setPosition(ccp(10, 50));
+        this->addChild(barFront);
+    }
+    
+    waitTime = 60.0;
+    remainTime = 60.0;
+    lblTime->setString(secondsToString(waitTime).c_str());
+    this->schedule(schedule_selector(MDCardAlchemyLayer::step), 1.0f);
+}
 
 void MDCardAlchemyLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
 	//doSearchFriend();
-    
-    mTaskList = GlobalData::getTasks("");
-    mTaskList->retain();
+
+
+
 }
 
 void MDCardAlchemyLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
@@ -160,7 +175,7 @@ void MDCardAlchemyLayer::buttonClicked(CCObject * sender , CCControlEvent contro
 	switch (button->getTag()) {
 	case 101:
         {
-            //mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroListLayer"));
+            this->startAlchemy();
             break;
         }
 	case 102:
@@ -188,7 +203,7 @@ void MDCardAlchemyLayer::buttonClicked(CCObject * sender , CCControlEvent contro
 
 MDCardAlchemyLayer::MDCardAlchemyLayer()
 {
-//	mTableView = NULL;
+	lblTime = NULL;
 	//    mMainSceneTemp = NULL;
 	mTaskList = NULL;
 //    m_lblTitle = NULL;

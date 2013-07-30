@@ -30,6 +30,8 @@
 #include "MDHeroPrePromoLayerLoader.h"
 #include "MDHerosFormationLayerLoader.h"
 
+#include "MDBattleLayer.h"
+
 using namespace CocosDenshion;
 
 USING_NS_CC;
@@ -167,7 +169,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	//SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
 #endif
     
-    //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
+//    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
 
 
 //	CCScene *pScene = MDBattleLayer::scene();

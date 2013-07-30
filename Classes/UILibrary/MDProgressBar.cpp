@@ -23,11 +23,10 @@ void MDProgressBar::setPercent(float percent)
     if (percent==m_percent) {
         return;
     }
+    if (percent<=0) {
+        percent = 0;
+    }
     m_percent = percent;
-//    if (m_percent < percent) {
-//        m_mCap->setContentSize(CCSizeMake(m_barWidth * m_percent, m_mCap->getContentSize().height));
-//        m_rCap->setPosition(ccp(m_lCap->getContentSize().width + m_mCap->getContentSize().width - 2,0));
-//    }
 
     m_mCap->setContentSize(CCSizeMake(m_barWidth * m_percent, m_mCap->getContentSize().height));
     m_rCap->setPosition(ccp(m_lCap->getContentSize().width + m_mCap->getContentSize().width - 2,0));
@@ -49,9 +48,6 @@ bool MDProgressBar::init(const char *lcap,const char *mcap,const char *rcap,floa
     bool bRet = false;
     do
     {
-        //////////////////////////////////////////////////////////////////////////
-        // super init first
-        //////////////////////////////////////////////////////////////////////////
         
         CC_BREAK_IF(! CCNode::init());
 

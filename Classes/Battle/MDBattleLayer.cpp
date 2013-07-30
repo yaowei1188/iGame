@@ -7,58 +7,77 @@
 #define CARD_H_MARGIN 30
 #define CARD_V_MARGIN 30
 
-//CCScene* MDBattleLayer::scene()
-//{
-//    CCScene * scene = NULL;
-//    do 
-//    {
-//        // 'scene' is an autorelease object
-//        scene = CCScene::create();
-//        CC_BREAK_IF(! scene);
-//
-//        // 'layer' is an autorelease object
-//        MDBattleLayer *layer = MDBattleLayer::create();
-//        CC_BREAK_IF(! layer);
-//
-//        // add layer as a child to scene
-//        scene->addChild(layer);
-//    } while (0);
-//
-//    // return the scene
-//    return scene;
-//}
+CCScene* MDBattleLayer::scene()
+{
+    CCScene * scene = NULL;
+    do 
+    {
+        // 'scene' is an autorelease object
+        scene = CCScene::create();
+        CC_BREAK_IF(! scene);
+
+        // 'layer' is an autorelease object
+        MDBattleLayer *layer = MDBattleLayer::create();
+        CC_BREAK_IF(! layer);
+
+        // add layer as a child to scene
+        scene->addChild(layer);
+    } while (0);
+
+    // return the scene
+    return scene;
+}
 
 void MDBattleLayer::startPuzzle()
 {
-	    CCSize s = CCDirector::sharedDirector()->getWinSize();
-	    CCSprite *m_root = CCSprite::create("Icon.png");
-	    addChild(m_root, 1);
-	    m_root->setPosition(ccp(s.width/2, s.height/2));
-	
-	    // create the streak object and add it to the scene
-	    CCMotionStreak *streak = CCMotionStreak::create(2, 3, 32, ccGREEN, "particle-snow.png");
-	    addChild(streak);
-	    // schedule an update on each frame so we can syncronize the streak with the target
-	    //schedule(schedule_selector(MDBattleLayer::onUpdate));
-	
-	    //CCActionInterval* a1 = CCRotateBy::create(2, 360);
-	
-	    //CCAction* action1 = CCRepeatForever::create(a1);
-	    CCActionInterval* motion = CCMoveBy::create(2, ccp(100,0) );
-	    m_root->runAction( CCRepeatForever::create(CCSequence::create(motion, motion->reverse(), NULL) ) );
-	    //m_root->runAction( action1 );
-	
-	    CCActionInterval *colorAction = CCRepeatForever::create(CCSequence::create(
-	                                                                                CCTintTo::create(0.2f, 255, 0, 0),
-	                                                                                CCTintTo::create(0.2f, 0, 255, 0),
-	                                                                                CCTintTo::create(0.2f, 0, 0, 255),
-	                                                                                CCTintTo::create(0.2f, 0, 255, 255),
-	                                                                                CCTintTo::create(0.2f, 255, 255, 0),
-	                                                                                CCTintTo::create(0.2f, 255, 0, 255),
-	                                                                                CCTintTo::create(0.2f, 255, 255, 255),
-	                                                                                NULL));
-	
-	    streak->runAction(CCSpawn::create(colorAction, CCRepeatForever::create(CCSequence::create(motion, motion->reverse(), NULL) ),NULL));
+//	    CCSize s = CCDirector::sharedDirector()->getWinSize();
+//	    CCSprite *m_root = CCSprite::create("Icon.png");
+//	    addChild(m_root, 1);
+//	    m_root->setPosition(ccp(s.width/2, s.height/2));
+//	
+//	    // create the streak object and add it to the scene
+//	    CCMotionStreak *streak = CCMotionStreak::create(2, 3, 32, ccGREEN, "particle-snow.png");
+//	    addChild(streak);
+//	    // schedule an update on each frame so we can syncronize the streak with the target
+//	    //schedule(schedule_selector(MDBattleLayer::onUpdate));
+//	
+//	    //CCActionInterval* a1 = CCRotateBy::create(2, 360);
+//	
+//	    //CCAction* action1 = CCRepeatForever::create(a1);
+//	    CCActionInterval* motion = CCMoveBy::create(2, ccp(100,0) );
+//	    m_root->runAction( CCRepeatForever::create(CCSequence::create(motion, motion->reverse(), NULL) ) );
+//	    //m_root->runAction( action1 );
+//	
+//	    CCActionInterval *colorAction = CCRepeatForever::create(CCSequence::create(
+//	                                                                                CCTintTo::create(0.2f, 255, 0, 0),
+//	                                                                                CCTintTo::create(0.2f, 0, 255, 0),
+//	                                                                                CCTintTo::create(0.2f, 0, 0, 255),
+//	                                                                                CCTintTo::create(0.2f, 0, 255, 255),
+//	                                                                                CCTintTo::create(0.2f, 255, 255, 0),
+//	                                                                                CCTintTo::create(0.2f, 255, 0, 255),
+//	                                                                                CCTintTo::create(0.2f, 255, 255, 255),
+//	                                                                                NULL));
+//	
+//	    streak->runAction(CCSpawn::create(colorAction, CCRepeatForever::create(CCSequence::create(motion, motion->reverse(), NULL) ),NULL));
+
+        CCSize size = CCDirector::sharedDirector()->getWinSize();
+    
+    CCLabelTTF *label0 = CCLabelTTF::create("方正行楷繁体0123456789","MarkerFelt-Wide",12);
+
+    label0->setPosition(ccp( size.width /2 , size.height/2 + 100 ));
+    label0->setColor(ccc3(250, 249, 198));
+//    label0->setFontFillColor(ccc3(252, 250, 198));
+    label0->enableStroke(ccc3(23, 12, 1), 0.3);
+    this->addChild(label0);
+    
+
+//    CCLabelTTF *label1 = CCLabelTTF::create("方正行楷繁体0123456789","Arial",24);
+//    label1->setPosition(ccp( size.width /2 , size.height/2 - 100 ));
+//    this->addChild(label1);
+//
+//    CCLabelTTF *label2 = CCLabelTTF::create("方正行楷繁体0123456789","SimHei",24);
+//    label2->setPosition(ccp( size.width /2 , size.height/2 ));
+//    this->addChild(label2);
 }
 
 void MDBattleLayer::onUpdate(float time)
@@ -72,11 +91,8 @@ bool MDBattleLayer::init()
     bool bRet = false;
     do 
     {
-        //////////////////////////////////////////////////////////////////////////
-        // super init first
-        //////////////////////////////////////////////////////////////////////////
 
-        CC_BREAK_IF(! CCLayerColor::initWithColor(ccc4(254, 254, 254,255)));
+        CC_BREAK_IF(! CCLayerColor::initWithColor(ccc4(255, 255, 255,255)));
 
 		setTouchEnabled(true);
 
@@ -127,7 +143,7 @@ bool MDBattleLayer::init()
         
         prepareEnemyFormation();
 
-		//startPuzzle();
+//		startPuzzle();
 
         bRet = true;
     } while (0);

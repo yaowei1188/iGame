@@ -49,7 +49,6 @@ public:
 	void createUserGameRole();
 
     std::string addReturnForName(CCString*);
-    std::string determineGroup(CCString*);
     
 	CCEditBox *m_txtAccount;
     CCSprite *m_sCharacterBelow;

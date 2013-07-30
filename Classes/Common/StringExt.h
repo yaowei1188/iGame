@@ -136,4 +136,32 @@ inline ccColor3B convertColor(const std::string &str)
     return ccc3(R, G, B);
 }
 
+inline std::string secondsToString(int seconds)
+{
+    int time = seconds;
+    int hour;
+    int min;
+    int sec;
+    string result;
+
+    hour=time/3600;
+    time=time%3600;
+    min=time/60;
+    time=time%60;
+    sec=time;
+    if (hour < 10) {
+        result.append("0");
+    }
+    result.append(IntToString(hour) + ":");
+    if (min < 10) {
+        result.append("0");
+    }
+    result.append(IntToString(min) + ":");
+    if (sec < 10) {
+        result.append("0");
+    }
+    result.append(IntToString(sec));
+    return result;
+}
+
 #endif /* defined(__iGame__StringExt__) */

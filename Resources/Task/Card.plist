@@ -25,7 +25,7 @@
 		<integer>20</integer>
 		<key>Desc</key>
 		<string>齐天大圣孙悟空，技能：72变，金箍棒，增加攻击80%，特效：腾云驾雾，拥有气血增加17%</string>
-		<key>Level</key>
+		<key>StarGrade</key>
 		<string>SSS</string>
 	</dict>
 	<dict>
@@ -51,7 +51,7 @@
 		<integer>35</integer>
 		<key>Desc</key>
 		<string>佛下弟子，拥有灵气，技能：解说禅理，增加攻击20%，特效：于小菩萨一起，出门游玩，拥有气血增加11%</string>
-		<key>Level</key>
+		<key>StarGrade</key>
 		<string>SS</string>
 	</dict>
 	<dict>
@@ -77,7 +77,7 @@
 		<integer>78</integer>
 		<key>Desc</key>
 		<string>拥有哮天犬，技能：无极二宫，增加攻击71%，特效：神兵天降，拥有气血增加12%</string>
-		<key>Level</key>
+		<key>StarGrade</key>
 		<string>SSSS</string>
 	</dict>
 </array>
