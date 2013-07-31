@@ -68,6 +68,7 @@
 									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/cocos2dx/platform/android"/>
 									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/extensions"/>
 									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/cocos2dx/platform"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/external/sqlite3/include"/>
 									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/library/jsonconverter"/>
 									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/library/XmlParser"/>
 									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Friends"/>
@@ -80,6 +81,9 @@
 									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Common"/>
 									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Chat"/>
 									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Battle"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/main"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Package"/>
+									<listOptionValue builtIn="false" value="F:/cocos2d-x/cocos2d-x-2.1.4/iGame/Classes/Card"/>
 								</option>
 								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.656762238" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;COCOS2DX_ROOT=${ProjDirPath}/../../../&quot;"/>

@@ -46,7 +46,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)CocosDenshion\include;$(SolutionDir)extensions;$(ProjectDir)..\library\jsoncpp\include;$(ProjectDir)..\library\JsonBox\include;$(ProjectDir)..\library\jsonconverter;$(ProjectDir)..\Classes\Common;$(ProjectDir)..\library\XmlParser;$(ProjectDir)..\Classes\UILibrary;$(ProjectDir)..\Classes\UILibrary\CCActivityIndicator;$(ProjectDir)..\Classes\Task;$(ProjectDir)..\Classes\Other;$(ProjectDir)..\Classes\Mail;$(ProjectDir)..\Classes\Login;$(ProjectDir)..\Classes\Friends;$(ProjectDir)..\Classes\Chat;$(ProjectDir)..\library\gloox;$(ProjectDir)..\Classes\Battle;$(ProjectDir)..\library\ccnet;$(ProjectDir)..\Classes\Card;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)CocosDenshion\include;$(SolutionDir)extensions;$(SolutionDir)external\sqlite3\include;$(ProjectDir)..\library\jsoncpp\include;$(ProjectDir)..\library\JsonBox\include;$(ProjectDir)..\library\jsonconverter;$(ProjectDir)..\Classes\Common;$(ProjectDir)..\library\XmlParser;$(ProjectDir)..\Classes\UILibrary;$(ProjectDir)..\Classes\UILibrary\CCActivityIndicator;$(ProjectDir)..\Classes\Task;$(ProjectDir)..\Classes\Other;$(ProjectDir)..\Classes\Mail;$(ProjectDir)..\Classes\Login;$(ProjectDir)..\Classes\Friends;$(ProjectDir)..\Classes\Chat;$(ProjectDir)..\library\gloox;$(ProjectDir)..\Classes\Battle;$(ProjectDir)..\library\ccnet;$(ProjectDir)..\Classes\Card;$(ProjectDir)..\Classes\main;$(ProjectDir)..\Classes\Package;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
@@ -63,7 +63,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libcocos2d.lib;opengl32.lib;glew32.lib;libCocosDenshion.lib;libExtensions.lib;libcurl_imp.lib;pthreadVCE2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libcocos2d.lib;opengl32.lib;glew32.lib;libCocosDenshion.lib;libExtensions.lib;libcurl_imp.lib;pthreadVCE2.lib;sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -139,11 +139,19 @@
     <None Include="..\library\gloox\config.h.unix" />
     <None Include="..\library\gloox\config.h.win" />
     <None Include="..\library\gloox\Makefile.in" />
-    <None Include="..\Resources\account.png" />
     <None Include="..\Resources\background.jpeg" />
     <None Include="..\Resources\ccactivityindicator.plist" />
     <None Include="..\Resources\ccactivityindicator.png" />
     <None Include="..\Resources\Default.png" />
+    <None Include="..\Resources\font\Arial.fnt" />
+    <None Include="..\Resources\font\Arial.png" />
+    <None Include="..\Resources\font\btn.fnt" />
+    <None Include="..\Resources\font\btn.png" />
+    <None Include="..\Resources\font\JDJYCHAO.TTF" />
+    <None Include="..\Resources\font\Marker Felt.ttf" />
+    <None Include="..\Resources\font\simhei.ttf" />
+    <None Include="..\Resources\font\test.fnt" />
+    <None Include="..\Resources\font\test.png" />
     <None Include="..\Resources\Icon%402x.png" />
     <None Include="..\Resources\Icon-72.png" />
     <None Include="..\Resources\Icon-Small%402x.png" />
@@ -217,10 +225,6 @@
     <None Include="..\Resources\scene\TaskRewardScene.ccbi" />
     <None Include="..\Resources\scene\ThirdLoginScene.ccbi" />
     <None Include="..\Resources\scene\UserMailScene.ccbi" />
-    <None Include="..\Resources\tab_active.png" />
-    <None Include="..\Resources\tab_kuan.9.png" />
-    <None Include="..\Resources\tab_line.png" />
-    <None Include="..\Resources\tab_normal.png" />
     <None Include="..\Resources\Task\Card.plist" />
     <None Include="..\Resources\Task\Task1.plist" />
     <None Include="..\Resources\transparent.png" />
@@ -252,12 +256,8 @@
     <ClInclude Include="..\Classes\Chat\ChatLayerLoader.h" />
     <ClInclude Include="..\Classes\Common\common.h" />
     <ClInclude Include="..\Classes\Common\GlobalData.h" />
-    <ClInclude Include="..\Classes\Common\MainInnerLayer.h" />
-    <ClInclude Include="..\Classes\Common\MainInnerLayerLoader.h" />
     <ClInclude Include="..\Classes\Common\MainLayerBase.h" />
-    <ClInclude Include="..\Classes\Common\MainSceneTemplate.h" />
-    <ClInclude Include="..\Classes\Common\MainSceneTemplateLoader.h" />
-    <ClInclude Include="..\Classes\Common\MDMessageCenter.H" />
+    <ClInclude Include="..\Classes\Common\MDMessageCenter.h" />
     <ClInclude Include="..\Classes\Common\StringExt.h" />
     <ClInclude Include="..\Classes\Friends\AddFriendScene.h" />
     <ClInclude Include="..\Classes\Friends\AddFriendSceneLoader.h" />
@@ -282,11 +282,23 @@
     <ClInclude Include="..\Classes\Mail\SysMailListScene.h" />
     <ClInclude Include="..\Classes\MainGameScene.h" />
     <ClInclude Include="..\Classes\MainGameSceneLoader.h" />
+    <ClInclude Include="..\Classes\main\MainInnerLayer.h" />
+    <ClInclude Include="..\Classes\main\MainInnerLayerLoader.h" />
+    <ClInclude Include="..\Classes\main\MainSceneTemplate.h" />
+    <ClInclude Include="..\Classes\main\MainSceneTemplateLoader.h" />
     <ClInclude Include="..\Classes\Other\AboutScene.h" />
     <ClInclude Include="..\Classes\Other\AboutSceneLoader.h" />
     <ClInclude Include="..\Classes\Other\CCControlSwitchLoader.h" />
     <ClInclude Include="..\Classes\Other\CCEditBoxLoader.h" />
     <ClInclude Include="..\Classes\Other\CCTableViewLoader.h" />
+    <ClInclude Include="..\Classes\Other\MDCatalogueLayer.h" />
+    <ClInclude Include="..\Classes\Other\MDCatalogueLayerLoader.h" />
+    <ClInclude Include="..\Classes\Other\MDSettingLayer.h" />
+    <ClInclude Include="..\Classes\Other\MDSettingLayerLoader.h" />
+    <ClInclude Include="..\Classes\Package\MDPackageLayer.h" />
+    <ClInclude Include="..\Classes\Package\MDPackageLayerLoader.h" />
+    <ClInclude Include="..\Classes\Task\MDTaskBoxLayer.h" />
+    <ClInclude Include="..\Classes\Task\MDTaskBoxLayerLoader.h" />
     <ClInclude Include="..\Classes\Task\TaskDetailScene.h" />
     <ClInclude Include="..\Classes\Task\TaskDetailSceneLoader.h" />
     <ClInclude Include="..\Classes\Task\TaskListScene.h" />
@@ -488,9 +500,7 @@
     <ClCompile Include="..\Classes\Card\MDHerosFormationLayer.cpp" />
     <ClCompile Include="..\Classes\Chat\ChatLayer.cpp" />
     <ClCompile Include="..\Classes\Common\GlobalData.cpp" />
-    <ClCompile Include="..\Classes\Common\MainInnerLayer.cpp" />
     <ClCompile Include="..\Classes\Common\MainLayerBase.cpp" />
-    <ClCompile Include="..\Classes\Common\MainSceneTemplate.cpp" />
     <ClCompile Include="..\Classes\Common\MDMessageCenter.cpp" />
     <ClCompile Include="..\Classes\Friends\AddFriendScene.cpp" />
     <ClCompile Include="..\Classes\Friends\FriendListScene.cpp" />
@@ -504,7 +514,13 @@
     <ClCompile Include="..\Classes\Mail\NewMailScene.cpp" />
     <ClCompile Include="..\Classes\Mail\SysMailListScene.cpp" />
     <ClCompile Include="..\Classes\MainGameScene.cpp" />
+    <ClCompile Include="..\Classes\main\MainInnerLayer.cpp" />
+    <ClCompile Include="..\Classes\main\MainSceneTemplate.cpp" />
     <ClCompile Include="..\Classes\Other\AboutScene.cpp" />
+    <ClCompile Include="..\Classes\Other\MDCatalogueLayer.cpp" />
+    <ClCompile Include="..\Classes\Other\MDSettingLayer.cpp" />
+    <ClCompile Include="..\Classes\Package\MDPackageLayer.cpp" />
+    <ClCompile Include="..\Classes\Task\MDTaskBoxLayer.cpp" />
     <ClCompile Include="..\Classes\Task\TaskDetailScene.cpp" />
     <ClCompile Include="..\Classes\Task\TaskListScene.cpp" />
     <ClCompile Include="..\Classes\Task\TaskRewardScene.cpp" />

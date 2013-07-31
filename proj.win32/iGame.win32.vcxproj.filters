@@ -86,12 +86,18 @@
     <Filter Include="Resources\particle">
       <UniqueIdentifier>{b4ad7c21-c991-476d-ac93-b6ab6f5b8393}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Main">
+      <UniqueIdentifier>{c493e430-9e31-4c08-9ed6-25aa568c799c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Package">
+      <UniqueIdentifier>{a213938a-af37-45c7-b544-7ee97c1ef85c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\font">
+      <UniqueIdentifier>{431cc1b3-d003-4392-b183-81c8442d77df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\iGame.ico">
-      <Filter>Resources</Filter>
-    </None>
-    <None Include="..\Resources\account.png">
       <Filter>Resources</Filter>
     </None>
     <None Include="..\Resources\Default.png">
@@ -165,18 +171,6 @@
     </None>
     <None Include="..\Resources\Image\resources-iphonehd\main.png">
       <Filter>Resources\Image\resources-iphonehd</Filter>
-    </None>
-    <None Include="..\Resources\tab_normal.png">
-      <Filter>Resources</Filter>
-    </None>
-    <None Include="..\Resources\tab_line.png">
-      <Filter>Resources</Filter>
-    </None>
-    <None Include="..\Resources\tab_kuan.9.png">
-      <Filter>Resources</Filter>
-    </None>
-    <None Include="..\Resources\tab_active.png">
-      <Filter>Resources</Filter>
     </None>
     <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator.plist">
       <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
@@ -397,6 +391,33 @@
     <None Include="..\Resources\scene\UserMailScene.ccbi">
       <Filter>Resources\Scene</Filter>
     </None>
+    <None Include="..\Resources\font\Arial.fnt">
+      <Filter>Resources\font</Filter>
+    </None>
+    <None Include="..\Resources\font\Arial.png">
+      <Filter>Resources\font</Filter>
+    </None>
+    <None Include="..\Resources\font\btn.fnt">
+      <Filter>Resources\font</Filter>
+    </None>
+    <None Include="..\Resources\font\btn.png">
+      <Filter>Resources\font</Filter>
+    </None>
+    <None Include="..\Resources\font\JDJYCHAO.TTF">
+      <Filter>Resources\font</Filter>
+    </None>
+    <None Include="..\Resources\font\Marker Felt.ttf">
+      <Filter>Resources\font</Filter>
+    </None>
+    <None Include="..\Resources\font\simhei.ttf">
+      <Filter>Resources\font</Filter>
+    </None>
+    <None Include="..\Resources\font\test.fnt">
+      <Filter>Resources\font</Filter>
+    </None>
+    <None Include="..\Resources\font\test.png">
+      <Filter>Resources\font</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="iGame.rc">
@@ -466,39 +487,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Friends\FriendListSceneLoader.h">
       <Filter>Classes\Friends</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Common\common.h">
-      <Filter>Classes\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Common\GlobalData.h">
-      <Filter>Classes\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Common\MainLayerBase.h">
-      <Filter>Classes\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Common\MainSceneTemplate.h">
-      <Filter>Classes\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Common\MainSceneTemplateLoader.h">
-      <Filter>Classes\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Common\StringExt.h">
-      <Filter>Classes\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Other\AboutScene.h">
-      <Filter>Classes\Other</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Other\AboutSceneLoader.h">
-      <Filter>Classes\Other</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Other\CCControlSwitchLoader.h">
-      <Filter>Classes\Other</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Other\CCEditBoxLoader.h">
-      <Filter>Classes\Other</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Other\CCTableViewLoader.h">
-      <Filter>Classes\Other</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Task\TaskListScene.h">
       <Filter>Classes\Task</Filter>
@@ -570,12 +558,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\UILibrary\EllipseActionInterval.h">
       <Filter>Classes\UILibrary</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Common\MainInnerLayer.h">
-      <Filter>Classes\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Common\MainInnerLayerLoader.h">
-      <Filter>Classes\Common</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Login\RegisterScene.h">
       <Filter>Classes\Login</Filter>
@@ -1051,9 +1033,6 @@
     <ClInclude Include="..\library\gloox\xhtmlim.h">
       <Filter>Library\gloox</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Common\MDMessageCenter.H">
-      <Filter>Classes\Common</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\UILibrary\SharpLabelTTF.h">
       <Filter>Classes\UILibrary</Filter>
     </ClInclude>
@@ -1132,6 +1111,72 @@
     <ClInclude Include="..\Classes\UILibrary\MDProgressBar.h">
       <Filter>Classes\UILibrary</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Other\AboutScene.h">
+      <Filter>Classes\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Other\AboutSceneLoader.h">
+      <Filter>Classes\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Other\CCControlSwitchLoader.h">
+      <Filter>Classes\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Other\CCEditBoxLoader.h">
+      <Filter>Classes\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Other\CCTableViewLoader.h">
+      <Filter>Classes\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Other\MDCatalogueLayer.h">
+      <Filter>Classes\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Other\MDCatalogueLayerLoader.h">
+      <Filter>Classes\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Other\MDSettingLayer.h">
+      <Filter>Classes\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Other\MDSettingLayerLoader.h">
+      <Filter>Classes\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\common.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\GlobalData.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\MainLayerBase.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\MDMessageCenter.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\StringExt.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\main\MainInnerLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\main\MainInnerLayerLoader.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\main\MainSceneTemplate.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\main\MainSceneTemplateLoader.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Package\MDPackageLayer.h">
+      <Filter>Classes\Package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Package\MDPackageLayerLoader.h">
+      <Filter>Classes\Package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Task\MDTaskBoxLayer.h">
+      <Filter>Classes\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Task\MDTaskBoxLayerLoader.h">
+      <Filter>Classes\Task</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -1166,18 +1211,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Friends\FriendListScene.cpp">
       <Filter>Classes\Friends</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Common\GlobalData.cpp">
-      <Filter>Classes\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Common\MainLayerBase.cpp">
-      <Filter>Classes\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Common\MainSceneTemplate.cpp">
-      <Filter>Classes\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Other\AboutScene.cpp">
-      <Filter>Classes\Other</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Task\TaskListScene.cpp">
       <Filter>Classes\Task</Filter>
@@ -1260,9 +1293,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\UILibrary\EllipseActionInterval.cpp">
       <Filter>Classes\UILibrary</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Common\MainInnerLayer.cpp">
-      <Filter>Classes\Common</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Login\RegisterScene.cpp">
       <Filter>Classes\Login</Filter>
@@ -1573,9 +1603,6 @@
     <ClCompile Include="..\library\gloox\xhtmlim.cpp">
       <Filter>Library\gloox</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Common\MDMessageCenter.cpp">
-      <Filter>Classes\Common</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\UILibrary\SharpLabelTTF.cpp">
       <Filter>Classes\UILibrary</Filter>
     </ClCompile>
@@ -1623,6 +1650,36 @@
     </ClCompile>
     <ClCompile Include="..\Classes\UILibrary\MDProgressBar.cpp">
       <Filter>Classes\UILibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Other\AboutScene.cpp">
+      <Filter>Classes\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Other\MDCatalogueLayer.cpp">
+      <Filter>Classes\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Other\MDSettingLayer.cpp">
+      <Filter>Classes\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\GlobalData.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\MainLayerBase.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\MDMessageCenter.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\main\MainInnerLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\main\MainSceneTemplate.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Package\MDPackageLayer.cpp">
+      <Filter>Classes\Package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Task\MDTaskBoxLayer.cpp">
+      <Filter>Classes\Task</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
