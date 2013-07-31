@@ -2192,7 +2192,7 @@
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string>MDCardAlchemyLayer</string>
+		<string>MDSettingLayer</string>
 		<key>displayName</key>
 		<string>CCLayer</string>
 		<key>memberVarAssignmentName</key>

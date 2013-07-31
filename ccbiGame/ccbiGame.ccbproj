@@ -27,7 +27,7 @@
 	<key>onlyPublishCCBs</key>
 	<false/>
 	<key>publishDirectory</key>
-	<string>../Resources</string>
+	<string>../Resources/scene</string>
 	<key>publishDirectoryAndroid</key>
 	<string>Published-Android</string>
 	<key>publishDirectoryHTML5</key>

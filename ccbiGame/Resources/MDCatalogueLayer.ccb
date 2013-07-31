@@ -188,7 +188,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>253</real>
+							<real>255</real>
 							<real>26</real>
 							<integer>0</integer>
 						</array>
@@ -2192,7 +2192,7 @@
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string>MDCardAlchemyLayer</string>
+		<string>MDCatalogueLayer</string>
 		<key>displayName</key>
 		<string>CCLayer</string>
 		<key>memberVarAssignmentName</key>
