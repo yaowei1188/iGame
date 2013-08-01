@@ -35,10 +35,6 @@ bool MDHeroPrePromoLayer::init()
 
 		CC_BREAK_IF(! CCLayer::init());
 
-		//mArrayList =  CCArray::create();
-//		mTaskList = CCArray::create(CCString::create("Li1"),CCString::create("’≈»˝"),CCString::create("Li3"),CCString::create("¿ÓÀƒ"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
-//		mTaskList->retain();
-
 		bRet = true;
 	} while (0);
 
@@ -108,6 +104,9 @@ bool MDHeroPrePromoLayer::onAssignCCBMemberVariable(CCObject* pTarget, const cha
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAftAttack", CCLabelTTF*, this->m_lblAftAttack);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAftDefence", CCLabelTTF*, this->m_lblAftDefence);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAftSuper", CCLabelTTF*, this->m_lblAftSuper);
+
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCardBefore", CCSprite*, this->m_sCardBefore);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCardAfter", CCSprite*, this->m_sCardAfter);
 	return true;
 }
 
@@ -124,10 +123,26 @@ SEL_CCControlHandler MDHeroPrePromoLayer::onResolveCCBCCControlSelector(CCObject
 
 void MDHeroPrePromoLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-//    mTaskList = GlobalData::getTasks("");
-//    mTaskList->retain();
-    
-//    showTaskInfo();
+    CCSize bgSize = m_sCardBefore->getContentSize();
+
+    std::string strGroup = determineGroup(CCString::create("1"));
+    CCSprite *sCardGroupBefore = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strGroup.c_str()));
+    sCardGroupBefore->setAnchorPoint(ccp(1,1));
+    sCardGroupBefore->setPosition(ccp(bgSize.width - 5,bgSize.height - 10));
+    m_sCardBefore->addChild(sCardGroupBefore);
+
+    CCSprite *sPeopleBefore = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("character_rulaifo.png"));
+    sPeopleBefore->setPosition(ccp(bgSize.width * 0.5,bgSize.height * 0.5));
+    m_sCardBefore->addChild(sPeopleBefore);
+
+    CCSprite *sCardGroupAfter = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strGroup.c_str()));
+    sCardGroupAfter->setAnchorPoint(ccp(1,1));
+    sCardGroupAfter->setPosition(ccp(bgSize.width - 5,bgSize.height - 10));
+    m_sCardAfter->addChild(sCardGroupAfter);
+
+    CCSprite *sPeopleAfter = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("character_rulaifo.png"));
+    sPeopleAfter->setPosition(ccp(bgSize.width * 0.5,bgSize.height * 0.5));
+    m_sCardAfter->addChild(sPeopleAfter);
 }
 
 void MDHeroPrePromoLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)

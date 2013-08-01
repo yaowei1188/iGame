@@ -1,5 +1,5 @@
-#ifndef __HERO_LIST_SCENE_H__
-#define __HERO_LIST_SCENE_H__
+#ifndef __MDPACKAGE_LAYER_H__
+#define __MDPACKAGE_LAYER_H__
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
@@ -14,18 +14,7 @@ using namespace cocos2d;
 using namespace cocos2d::extension;
 using namespace std;
 
-class MDHeroListLayerDelegate
-{
-public:
-	virtual void didSelectedItems(CCArray *pItems) = 0;
-};
-
-typedef enum _MD_HEROLIST_CATEGORY {
-    MD_HEROLIST_DEFAULT,
-    MD_HEROLIST_CHOOSE
-} MDHeroListCategory;
-
-class MDHeroListLayer : public MainLayerBase,
+class MDPackageLayer : public MainLayerBase,
 public CCTableViewDataSource,
 public CCTableViewDelegate,
 public CCBSelectorResolver,
@@ -34,8 +23,8 @@ public CCBMemberVariableAssigner,
 public CCMessageDialogDelegate
 {
 public:
-    MDHeroListLayer();
-    ~MDHeroListLayer();
+    MDPackageLayer();
+    ~MDPackageLayer();
     
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();  
@@ -44,8 +33,7 @@ public:
     static cocos2d::CCScene* scene();
 
     // implement the "static node()" method manually
-    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MDHeroListLayer,create);
-	CC_SYNTHESIZE(MDHeroListLayerDelegate*, m_delegate, Delegate);
+    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MDPackageLayer,create);
 
 	void reloadDataSource();
 
@@ -73,7 +61,7 @@ private:
 	// a selector callback
 	void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
 
-//    void toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent);
+    void toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent);
     void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
 	void didClickButton(CCMessageDialog* dialog,unsigned int index);
     void LoadHeros();
@@ -88,11 +76,9 @@ private:
     CCSprite *m_sTitle;
     CCArray *mHeroList;
 	bool btnTouched;
-    int *vUserData;
-    CCControlButton *m_btnLeft;
-    CCControlButton *m_btnRight;
+	   int *vUserData;
 public:
-    MDHeroListCategory category;
+    int category;
 };
 
-#endif  // __HERO_LIST_SCENE_H__
+#endif  // __MDPACKAGE_LAYER_H__

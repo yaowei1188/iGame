@@ -35,10 +35,6 @@ bool MDHeroDetailLayer::init()
 
 		CC_BREAK_IF(! CCLayer::init());
 
-		//mArrayList =  CCArray::create();
-//		mTaskList = CCArray::create(CCString::create("Li1"),CCString::create("’≈»˝"),CCString::create("Li3"),CCString::create("¿ÓÀƒ"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
-//		mTaskList->retain();
-
 		bRet = true;
 	} while (0);
 
@@ -128,7 +124,19 @@ SEL_CCControlHandler MDHeroDetailLayer::onResolveCCBCCControlSelector(CCObject *
 
 void MDHeroDetailLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
+    CCSize bgSize = m_sCard->getContentSize();
 
+    std::string strGroup = determineGroup(CCString::create("1"));
+    CCSprite *sCardGroup = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strGroup.c_str()));
+    sCardGroup->setAnchorPoint(ccp(1,1));
+    sCardGroup->setPosition(ccp(bgSize.width - 5,bgSize.height - 10));
+    m_sCard->addChild(sCardGroup);
+
+    CCSprite *sPeople = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("character_rulaifo.png"));
+    sPeople->setPosition(ccp(bgSize.width * 0.5,bgSize.height * 0.5));
+    m_sCard->addChild(sPeople);
+
+    m_lblDesc->setColor(ccc3(0, 255, 0));
 }
 
 void MDHeroDetailLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)

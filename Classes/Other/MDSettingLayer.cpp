@@ -1,8 +1,7 @@
-#include "MDHeroListLayer.h"
+#include "MDSettingLayer.h"
 
-using namespace cocos2d;
 
-CCScene* MDHeroListLayer::scene()
+CCScene* MDSettingLayer::scene()
 {
     CCScene * scene = NULL;
     do 
@@ -12,7 +11,7 @@ CCScene* MDHeroListLayer::scene()
         CC_BREAK_IF(! scene);
 
         // 'layer' is an autorelease object
-        MDHeroListLayer *layer = MDHeroListLayer::create();
+        MDSettingLayer *layer = MDSettingLayer::create();
         CC_BREAK_IF(! layer);
 
         // add layer as a child to scene
@@ -24,7 +23,7 @@ CCScene* MDHeroListLayer::scene()
 }
 
 // on "init" you need to initialize your instance
-bool MDHeroListLayer::init()
+bool MDSettingLayer::init()
 {
     selectedindex = -1;
     
@@ -48,13 +47,13 @@ bool MDHeroListLayer::init()
     return bRet;
 }
 
-void MDHeroListLayer::LoadHeros()
+void MDSettingLayer::LoadHeros()
 {
 	this->ShowLoadingIndicator("");
 
 	CCHttpRequest *request = new CCHttpRequest();
 	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,httpresponse_selector(MDHeroListLayer::requestFinishedCallback));
+	request->setResponseCallback(this,httpresponse_selector(MDSettingLayer::requestFinishedCallback));
 	request->setTag("101");
 
     string _strUrl = CompleteUrl(URL_FRIEND_LIST);
@@ -68,7 +67,7 @@ void MDHeroListLayer::LoadHeros()
 	request->release();
 }
 
-void MDHeroListLayer::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
+void MDSettingLayer::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
 {
 	if (!this->ValidateResponseData(client,response))
 	{
@@ -102,28 +101,25 @@ void MDHeroListLayer::requestFinishedCallback(CCHttpClient* client, CCHttpRespon
 	}
 }
 
-bool MDHeroListLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
+bool MDSettingLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableView", CCTableView*, this->mTableView);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sTitle", CCSprite*, this->m_sTitle);
-
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_btnLeft", CCControlButton*, this->m_btnLeft);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_btnRight", CCControlButton*, this->m_btnRight);
     return true;
 }
 
-SEL_MenuHandler MDHeroListLayer::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
+SEL_MenuHandler MDSettingLayer::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
 {
 	return NULL;
 }
 
-SEL_CCControlHandler MDHeroListLayer::onResolveCCBCCControlSelector(CCObject *pTarget, const char * pSelectorName) {
+SEL_CCControlHandler MDSettingLayer::onResolveCCBCCControlSelector(CCObject *pTarget, const char * pSelectorName) {
     
-    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "buttonClicked:", MDHeroListLayer::buttonClicked);
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "buttonClicked:", MDSettingLayer::buttonClicked);
 	return NULL;
 }
 
-void MDHeroListLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
+void MDSettingLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     //if (category == 1) {
     //    m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_choosehero.png"));
@@ -140,19 +136,12 @@ void MDHeroListLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 //    this->LoadHeros();
 }
 
-void MDHeroListLayer::reloadDataSource()
+void MDSettingLayer::reloadDataSource()
 {
-	if (category == MD_HEROLIST_CHOOSE) {
+	if (category == 1) {
 		m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_choosehero.png"));
-
-//        m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("ok_1.png"), CCControlStateNormal);
-//        m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("ok_2.png"), CCControlStateHighlighted);
-//
-//        m_btnRight->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("btn_back_normal.png"), CCControlStateNormal);
-//        m_btnRight->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("btn_back_clicked.png"), CCControlStateHighlighted);
 	} else {
 		m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_heropalace.png"));
-        m_btnLeft->setVisible(false);
 	}
 	mTableView->setDirection(kCCScrollViewDirectionVertical);
 	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
@@ -163,19 +152,19 @@ void MDHeroListLayer::reloadDataSource()
 	mTableView->reloadData();
 }
 
-void MDHeroListLayer::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
+void MDSettingLayer::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
 {
     CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
     sSelected->setVisible(true);
 }
 
-void MDHeroListLayer::tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell)
+void MDSettingLayer::tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell)
 {
     CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
     sSelected->setVisible(false);
 }
 
-void MDHeroListLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
+void MDSettingLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
 //    CCLOG("cell touched at index: %i", cell->getIdx());
 //	if (btnTouched)
@@ -193,22 +182,22 @@ void MDHeroListLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cell
     mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroDetailLayer"));
 }
 
-unsigned int MDHeroListLayer::numberOfCellsInTableView(CCTableView *table)
+unsigned int MDSettingLayer::numberOfCellsInTableView(CCTableView *table)
 {
 	return mHeroList->count();
 }
 
-CCSize MDHeroListLayer::cellSizeForTable(CCTableView *table)
+CCSize MDSettingLayer::cellSizeForTable(CCTableView *table)
 {
 	return CCSizeMake(312, 68);
 }
 
-CCSize MDHeroListLayer::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
+CCSize MDSettingLayer::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
 {
     return CCSizeMake(312, 68);
 }
 
-CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned int idx)
+CCTableViewCell* MDSettingLayer::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
 //	CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(idx);
 //    bool selected = (idx==selectedindex);
@@ -254,7 +243,7 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
         cell->addChild(sline);
         
 		CCPoint point = ccp(218 ,size.height * 0.5);
-		if (category == MD_HEROLIST_CHOOSE)
+		if (category==1)
 		{
 			point = ccp(170 ,size.height * 0.5);
 		}
@@ -265,7 +254,7 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
         sStarGrade->setAnchorPoint(ccp(0, 0.5));
         cell->addChild(sStarGrade);
 
-		if (category==MD_HEROLIST_CHOOSE)
+		if (category==1)
 		{
 			CCMenu *menuCheck = this->generateCheckBox();
 			cell->addChild(menuCheck);
@@ -303,7 +292,7 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
 //        CCScale9Sprite *background = (CCScale9Sprite *)cell->getChildByTag(121);
 //        background->setContentSize(size);
 
-		if (category==MD_HEROLIST_CHOOSE)
+		if (category==1)
 		{
 			CCMenu *menuCheck = (CCMenu *)cell->getChildByTag(126);
 			CCMenuItemToggle *toggle= (CCMenuItemToggle *)menuCheck->getChildByTag(1);
@@ -320,7 +309,7 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
 	return cell;
 }
 
-void MDHeroListLayer::callbackSwitch(CCObject* pSender){
+void MDSettingLayer::callbackSwitch(CCObject* pSender){
 
 	CCMenuItemToggle* pSwitch = (CCMenuItemToggle*)pSender;
 
@@ -350,7 +339,7 @@ void MDHeroListLayer::callbackSwitch(CCObject* pSender){
 	}
 }
 
-CCMenu* MDHeroListLayer::generateCheckBox()
+CCMenu* MDSettingLayer::generateCheckBox()
 {
 	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox_checked.png"));
 	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox.png"));
@@ -358,7 +347,7 @@ CCMenu* MDHeroListLayer::generateCheckBox()
 	CCMenu* m_auto_op_menu = CCMenu::create();
 	CCMenuItemSprite* menuOff = CCMenuItemSprite::create(spriteOff, NULL);
 	CCMenuItemSprite* menuOn = CCMenuItemSprite::create(spriteOn, NULL);
-	CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(MDHeroListLayer::callbackSwitch),menuOff,menuOn,NULL);
+	CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(MDSettingLayer::callbackSwitch),menuOff,menuOn,NULL);
 	item->setTag(1);
 
 	m_auto_op_menu->addChild(item);
@@ -366,50 +355,50 @@ CCMenu* MDHeroListLayer::generateCheckBox()
 	return m_auto_op_menu;
 }
 
-////    按下按钮事件回调
-//void MDHeroListLayer::toolBarTouchDownAction(CCObject * sender , CCControlEvent pCCControlEvent)
-//{
-//	CCControlButton *button = (CCControlButton *)sender;
-//	if (pCCControlEvent==CCControlEventTouchDown)
-//	{
-//		btnTouched = true;
-//	}
-//	else if (pCCControlEvent==CCControlEventTouchUpInside)
-//	{
-//		switch (button->getTag()) 
-//		{
-//		case 127:
-//			{
-//				btnTouched = false;
-//				break;
-//			}
-//		case 128:
-//			{
-//				btnTouched = false;
-//				MainGameScene *mainScene = (MainGameScene *)this->getParent();
-//				mainScene->PushLayer((CCLayer *)this->GetLayer("NewMailScene"));
-//				break;
-//			}
-//		case 129:
-//			{
-//				btnTouched = false;
-//				break;
-//			}
-//		case 130:
-//			{
-//				btnTouched = false;
-//				CCMessageDialog *box = CCMessageDialog::create();
-//				box->setTitle(GlobalData::getLocalString("friend_delete_confirm")->getCString());
-//				box->setDelegate(this);
-//				this->addChild(box);
-//
-//				break;
-//			}
-//		}
-//	}
-//}
+//    按下按钮事件回调
+void MDSettingLayer::toolBarTouchDownAction(CCObject * sender , CCControlEvent pCCControlEvent)
+{
+	CCControlButton *button = (CCControlButton *)sender;
+	if (pCCControlEvent==CCControlEventTouchDown)
+	{
+		btnTouched = true;
+	}
+	else if (pCCControlEvent==CCControlEventTouchUpInside)
+	{
+		switch (button->getTag()) 
+		{
+		case 127:
+			{
+				btnTouched = false;
+				break;
+			}
+		case 128:
+			{
+				btnTouched = false;
+				MainGameScene *mainScene = (MainGameScene *)this->getParent();
+				mainScene->PushLayer((CCLayer *)this->GetLayer("NewMailScene"));
+				break;
+			}
+		case 129:
+			{
+				btnTouched = false;
+				break;
+			}
+		case 130:
+			{
+				btnTouched = false;
+				CCMessageDialog *box = CCMessageDialog::create();
+				box->setTitle(GlobalData::getLocalString("friend_delete_confirm")->getCString());
+				box->setDelegate(this);
+				this->addChild(box);
 
-void MDHeroListLayer::didClickButton(CCMessageDialog* dialog,unsigned int index)
+				break;
+			}
+		}
+	}
+}
+
+void MDSettingLayer::didClickButton(CCMessageDialog* dialog,unsigned int index)
 {
 	if (index == 0)
 	{
@@ -419,11 +408,11 @@ void MDHeroListLayer::didClickButton(CCMessageDialog* dialog,unsigned int index)
 	}
 }
 
-//void MDHeroListLayer::deleteFriend(std::string &targetUser)
+//void MDSettingLayer::deleteFriend(std::string &targetUser)
 //{
 //	CCHttpRequest *request = new CCHttpRequest();
 //	request->setRequestType(CCHttpRequest::kHttpGet);
-//	request->setResponseCallback(this,httpresponse_selector(MDHeroListLayer::requestFinishedCallback));
+//	request->setResponseCallback(this,httpresponse_selector(MDSettingLayer::requestFinishedCallback));
 //	request->setTag("103");
 //
 //	string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
@@ -438,26 +427,14 @@ void MDHeroListLayer::didClickButton(CCMessageDialog* dialog,unsigned int index)
 //	request->release();
 //}
 
-void MDHeroListLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
+void MDSettingLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
 {
 	MainGameScene *mainScene = (MainGameScene *)this->getParent();
 	CCControlButton *button = (CCControlButton *)sender;
 	switch (button->getTag()) {
 	case 101:
         {
-            if(category == MD_HEROLIST_CHOOSE && m_delegate != NULL) {
-				CCArray *_array = CCArray::create();
-				for(int i=0;i<mHeroList->count();i++)
-				{
-					if(vUserData[i]==1)
-					{
-						_array->addObject(mHeroList->objectAtIndex(i)->copy());
-					}
-				}
-				m_delegate->didSelectedItems(_array);
-			}
-            
-            mainScene->PopLayer();
+            mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroDetailLayer"));
             break;
         }
 	case 102:
@@ -468,17 +445,14 @@ void MDHeroListLayer::buttonClicked(CCObject * sender , CCControlEvent controlEv
 	}
 }
 
-MDHeroListLayer::MDHeroListLayer()
+MDSettingLayer::MDSettingLayer()
 {
     mTableView = NULL;
     mHeroList = NULL;
     m_sTitle = NULL;
-	m_delegate = NULL;
-    m_btnLeft = NULL;
-    m_btnRight = NULL;
 }
 
-MDHeroListLayer::~MDHeroListLayer()
+MDSettingLayer::~MDSettingLayer()
 {
     CC_SAFE_RELEASE(mTableView);
     CC_SAFE_RELEASE(m_sTitle);

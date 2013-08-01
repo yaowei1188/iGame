@@ -88,7 +88,7 @@ void MDHeroMainLayer::buttonClicked(CCObject *pSender, CCControlEvent pCCControl
         case 103:
         {
 			MDHeroListLayer *_heroListLayer = (MDHeroListLayer *)this->GetLayer("MDHeroListLayer");
-			_heroListLayer->category=0;
+			_heroListLayer->category = MD_HEROLIST_DEFAULT;
 			_heroListLayer->reloadDataSource();
 			mainScene->PushLayer(_heroListLayer);
             break;

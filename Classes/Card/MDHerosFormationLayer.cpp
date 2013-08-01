@@ -105,21 +105,23 @@ void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoa
 	CCSize winSize = this->getContentSize();
 	int row = 0;
 	int col = 0;
+    float scale = 0.71;
 
 	for(int i=0;i<6;i++)
 	{
 		CCScale9Sprite *scaleSprite = NULL;
-		if (i<4)
+		if (i<1)
 		{
 			scaleSprite = CCScale9Sprite::createWithSpriteFrameName("card_embattle_bg.png");
 		} else {
 			scaleSprite = CCScale9Sprite::createWithSpriteFrameName("card_upgrade_hero_bg.png");
+
+            scaleSprite->setInsetLeft(5);
+            scaleSprite->setInsetRight(5);
 		}
-        scaleSprite->setInsetLeft(5);
-        scaleSprite->setInsetRight(5);
 
 		CCControlButton *btn = CCControlButton::create(scaleSprite);
-		btn->setPreferredSize(CCSizeMake(150 * 0.71,205 * 0.71));
+		btn->setPreferredSize(CCSizeMake(150 * scale,205 * scale));
 		btn->setAnchorPoint(ccp(0.5,0.5));
 		CCSize spriteSize = scaleSprite->getContentSize();
 		btn->setPosition(ccp(spriteSize.width * 0.5 + col++ * spriteSize.width,winSize.height - spriteSize.height * 0.5  - 45 - row * spriteSize.height));
@@ -187,7 +189,17 @@ void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoa
 			col = 0;
 		}
 	}
-	
+
+//    CCScale9Sprite *scaleSprite = CCScale9Sprite::createWithSpriteFrameName("add_in.png");
+////    CCLabelBMFont* label = CCLabelBMFont::create("确定", "btn.fnt");
+//    CCControlButton *testbtn = CCControlButton::create(scaleSprite);
+//    testbtn->setTitleBMFontForState("btn.fnt", CCControlStateNormal);
+//    testbtn->setTitleForState(CCString::create("确定"),CCControlStateNormal);
+//    testbtn->setPreferredSize(CCSizeMake(75, 35));
+//    this->addChild(testbtn);
+//    testbtn->setPosition(100,100);
+
+
 }
 
 void MDHerosFormationLayer::touchUpInside(CCObject* pSender, CCControlEvent event)

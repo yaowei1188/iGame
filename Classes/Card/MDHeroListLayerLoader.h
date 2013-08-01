@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef cctest_MDHeroListLayerLoader_h
-#define cctest_MDHeroListLayerLoader_h
+#ifndef _MDHeroListLayerLoader_h
+#define _MDHeroListLayerLoader_h
 
 #include <iostream>
 #include "cocos2d.h"

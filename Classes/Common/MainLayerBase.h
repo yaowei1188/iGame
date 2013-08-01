@@ -31,7 +31,7 @@ protected:
     void OpenNewScene(const char *pCCBFileName);
     void PushScene(const char *pCCBFileName);
     CCNode* GetLayer(const char *pCCBFileName);
-    CCRenderTexture* createStroke(cocos2d::CCLabelTTF *label, float size, cocos2d::ccColor3B color);
+//    CCRenderTexture* createStroke(cocos2d::CCLabelTTF *label, float size, cocos2d::ccColor3B color);
     void ShowLoadingIndicator(const char *pCCBFileName);
     void HideLoadingIndicator();
 	bool ValidateResponseData(CCNode* pSender,void *data);

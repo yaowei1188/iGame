@@ -62,6 +62,7 @@ void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
             break;
         case TOOLBAR_BTN_SETTING_TAG:
             CCLOG("77777");
+            queryDB();
             break;
         case 8:
             CCLOG("8888");
@@ -255,6 +256,57 @@ void MainGameScene::returnToMainLayer()
     mMainLayer->showTooBar(true);
 	mMainLayer->setPosition(ccp(0, 38));
 	this->addChild(mMainLayer);
+}
+
+int LoadMyInfo( void * para, int n_column, char ** column_value, char ** column_name )
+{
+    int i;
+    printf("记录包含 %d 个字段/n", n_column );
+    for( i = 0 ; i < n_column; i ++ )
+    {
+        printf( "字段名:%s  ß> 字段值:%s/n",  column_name[i], column_value[i] );
+    }
+    printf( "------------------/n");
+    return 0;
+}
+
+void MainGameScene::queryDB()
+{
+    sqlite3 *pDB = NULL;
+    char* errMsg = NULL;
+    std::string sqlstr;
+    int result;
+    std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("Settings.db");
+//    dbPath.append("Settings.db");
+    result = sqlite3_open(dbPath.c_str(),&pDB);
+
+    std::string szSql="select * from MyTable_1";
+
+    int rc = sqlite3_exec(pDB,szSql.c_str(), LoadMyInfo, NULL, &errMsg);
+    
+//    sqlite3 *pDB = NULL;
+//    char* errMsg = NULL;
+//    std::string sqlstr;
+//    int result;
+//    std::string dbPath = CCFileUtils::sharedFileUtils()->getWritablePath();
+//    dbPath.append("Settings.db");
+//    result = sqlite3_open(dbPath.c_str(),&pDB);
+
+//    //make table
+//    result=sqlite3_exec( pDB, "create table MyTable_1( ID integer primary key autoincrement, name nvarchar(32),password nvarchar(32) ) " , NULL, NULL, &errMsg );
+//
+//    //insert name column
+//    sqlstr=" insert into MyTable_1( name ) values ( 'Takashi' ) ";
+//    result = sqlite3_exec( pDB, sqlstr.c_str() , NULL, NULL, &errMsg );
+//
+//    //insert password column(Here's my Problem)
+//    //I want to insert string variable into password column.
+//    string pass;
+//    pass = "aaaaaaa";
+//    sqlstr="insert into MyTable_1( password ) values('pass')";
+//
+//    //closing sqlite
+//    sqlite3_close(pDB);
 }
 
 SEL_MenuHandler MainGameScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)

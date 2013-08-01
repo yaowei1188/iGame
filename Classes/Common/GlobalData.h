@@ -12,6 +12,7 @@
 #include <iostream>
 #include "cocos2d.h"
 #include "cocos-ext.h"
+#include "LocalStorage.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -23,6 +24,8 @@ public:
     static CCString* getLocalString(std::string name);
     
     static CCDictionary* getTasks(std::string name);
+
+    static CCDictionary* getFraction(std::string name);
 
     static CCArray* getAllCards(std::string name);
 

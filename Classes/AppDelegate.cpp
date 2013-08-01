@@ -2,26 +2,38 @@
 #include "CCEGLView.h"
 #include "AppDelegate.h"
 #include "SimpleAudioEngine.h"
-#include "FriendListScene.h"
-#include "LoginScene.h"
-#include "MainGameScene.h"
-#include "MainGameSceneLoader.h"
-#include "LoginSceneLoader.h"
-#include "FriendListSceneLoader.h"
+
+
+
 #include "CCTableViewLoader.h"
+
 #include "TaskListSceneLoader.h"
-#include "AddFriendSceneLoader.h"
-#include "MainSceneTemplateLoader.h"
-#include "ThirdLoginSceneLoader.h"
-#include "CharacterSceneLoader.h"
-#include "ServerListSceneLoader.h"
 #include "TaskDetailSceneLoader.h"
 #include "TaskRewardSceneLoader.h"
-#include "NewMailSceneLoader.h"
+#include "MDTaskBoxLayerLoader.h"
+
+#include "FriendListSceneLoader.h"
+#include "AddFriendSceneLoader.h"
+
+#include "MainGameSceneLoader.h"
+#include "MainSceneTemplateLoader.h"
 #include "MainInnerLayerLoader.h"
-#include "RegisterSceneLoader.h"
-#include "MailMainSceneLoader.h"
 #include "ChatLayerLoader.h"
+
+#include "MDCatalogueLayerLoader.h"
+#include "MDPackageLayerLoader.h"
+#include "MDSettingLayerLoader.h"
+
+#include "LoginSceneLoader.h"
+#include "ThirdLoginSceneLoader.h"
+#include "RegisterSceneLoader.h"
+#include "CharacterSceneLoader.h"
+#include "ServerListSceneLoader.h"
+
+#include "NewMailSceneLoader.h"
+#include "MailMainSceneLoader.h"
+
+
 #include "MDCardAlchemyLayerLoader.h"
 #include "MDHeroDetailLayerLoader.h"
 #include "MDHeroListLayerLoader.h"
@@ -30,7 +42,7 @@
 #include "MDHeroPrePromoLayerLoader.h"
 #include "MDHerosFormationLayerLoader.h"
 
-#include "MDBattleLayer.h"
+//#include "MDBattleLayer.h"
 
 using namespace CocosDenshion;
 
@@ -80,6 +92,8 @@ bool AppDelegate::applicationDidFinishLaunching()
 	searchPaths.push_back("sound");
     searchPaths.push_back("particle");
 	searchPaths.push_back("scene");
+    searchPaths.push_back("font");
+    searchPaths.push_back("data");
 	//searchPaths.push_back("ccbResources");
 
     TargetPlatform platform = CCApplication::sharedApplication()->getTargetPlatform();
@@ -158,6 +172,11 @@ bool AppDelegate::applicationDidFinishLaunching()
     ccNodeLoaderLibrary->registerCCNodeLoader("MDHeroPrePromoLayer", MDHeroPrePromoLayerLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("MDHerosFormationLayer", MDHerosFormationLayerLoader::loader());
 
+    ccNodeLoaderLibrary->registerCCNodeLoader("MDPackageLayer", MDPackageLayerLoader::loader());
+    ccNodeLoaderLibrary->registerCCNodeLoader("MDCatalogueLayer", MDCatalogueLayerLoader::loader());
+    ccNodeLoaderLibrary->registerCCNodeLoader("MDSettingLayer", MDSettingLayerLoader::loader());
+    ccNodeLoaderLibrary->registerCCNodeLoader("MDTaskBoxLayer", MDTaskBoxLayerLoader::loader());
+
     cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
     ccbReader->autorelease();
     
@@ -178,7 +197,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("CharacterScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskListScene.ccbi");
     CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
-    //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MDHerosFormationLayer");
+//    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MDHerosFormationLayer");
     pDirector->runWithScene(pScene);
 
     return true;

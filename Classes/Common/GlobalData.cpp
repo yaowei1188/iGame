@@ -31,6 +31,14 @@ CCDictionary* GlobalData::getTasks(std::string name)
     return (CCDictionary*)arrayTasks->objectAtIndex(0);
 };
 
+CCDictionary* GlobalData::getFraction(std::string name)
+{
+    if (arrayTasks==NULL) {
+        localStorageInit("");
+    }
+    return (CCDictionary*)arrayTasks->objectAtIndex(0);
+};
+
 CCArray* GlobalData::getAllCards(std::string name)
 {
     if (arrayCards==NULL) {
