@@ -4,19 +4,6 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>CancelBtn.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{1837,1174},{140,80}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{140,80}}</string>
-                <key>sourceSize</key>
-                <string>{140,80}</string>
-            </dict>
             <key>add_in.png</key>
             <dict>
                 <key>frame</key>
@@ -69,7 +56,20 @@
                 <key>sourceSize</key>
                 <string>{79,46}</string>
             </dict>
-            <key>bt3.png</key>
+            <key>bt_bg.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1837,1174},{140,80}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{140,80}}</string>
+                <key>sourceSize</key>
+                <string>{140,80}</string>
+            </dict>
+            <key>btn_cancel.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1755,1134},{140,80}}</string>
@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{140,80}</string>
             </dict>
-            <key>bt_1.png</key>
+            <key>btn_login.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1837,1032},{140,80}}</string>
@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{140,80}</string>
             </dict>
-            <key>bt_2.png</key>
+            <key>btn_reg.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1755,992},{140,80}}</string>
@@ -108,7 +108,7 @@
                 <key>sourceSize</key>
                 <string>{140,80}</string>
             </dict>
-            <key>bt_bg.png</key>
+            <key>btn_tourist.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1837,890},{140,80}}</string>
@@ -924,7 +924,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:e70ba94e6716d8b7554e3c50afad720b$</string>
+            <string>$TexturePacker:SmartUpdate:d54e9ffd3fd01af137a0dbf23e46d7be$</string>
             <key>textureFileName</key>
             <string>login.png</string>
         </dict>
