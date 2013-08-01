@@ -123,6 +123,9 @@ SEL_CCControlHandler MDHeroPrePromoLayer::onResolveCCBCCControlSelector(CCObject
 
 void MDHeroPrePromoLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
+    this->setFntTitle(101);
+    this->setFntTitle(102);
+    
     CCSize bgSize = m_sCardBefore->getContentSize();
 
     std::string strGroup = determineGroup(CCString::create("1"));
@@ -143,6 +146,7 @@ void MDHeroPrePromoLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoade
     CCSprite *sPeopleAfter = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("character_rulaifo.png"));
     sPeopleAfter->setPosition(ccp(bgSize.width * 0.5,bgSize.height * 0.5));
     m_sCardAfter->addChild(sPeopleAfter);
+
 }
 
 void MDHeroPrePromoLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)

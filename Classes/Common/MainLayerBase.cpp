@@ -143,6 +143,21 @@ bool MainLayerBase::ValidateResponseData(CCHttpClient* client, CCHttpResponse* r
 	return true;
 }
 
+void MainLayerBase::setFntTitle(int tag,string font)
+{
+    CCControlButton *btn = (CCControlButton *)this->getChildByTag(tag);
+    btn->setTitleBMFontForState(font.c_str(), CCControlStateNormal);
+
+    //        CCScale9Sprite *scaleSprite = CCScale9Sprite::createWithSpriteFrameName("btn_bg.png");
+    //    //    CCLabelBMFont* label = CCLabelBMFont::create("确定", "btn.fnt");
+    //        CCControlButton *testbtn = CCControlButton::create(scaleSprite);
+    //        testbtn->setTitleBMFontForState("btn.fnt", CCControlStateNormal);
+    //        testbtn->setTitleForState(CCString::create("确定"),CCControlStateNormal);
+    //        testbtn->setPreferredSize(CCSizeMake(75, 35));
+    //        this->addChild(testbtn);
+    //        testbtn->setPosition(100,100);
+}
+
 std::string MainLayerBase::CompleteUrl(std::string function_url)
 {
     std::string url(API_URL);

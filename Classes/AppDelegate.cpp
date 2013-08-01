@@ -94,7 +94,6 @@ bool AppDelegate::applicationDidFinishLaunching()
 	searchPaths.push_back("scene");
     searchPaths.push_back("font");
     searchPaths.push_back("data");
-	//searchPaths.push_back("ccbResources");
 
     TargetPlatform platform = CCApplication::sharedApplication()->getTargetPlatform();
     if (platform == kTargetIphone || platform == kTargetIpad)
@@ -193,10 +192,10 @@ bool AppDelegate::applicationDidFinishLaunching()
 
 //	CCScene *pScene = MDBattleLayer::scene();
 	//CCScene *pScene = MailListScene::scene();
-    //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("ServerListScene.ccbi");
+    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MDHeroPrePromoLayer.ccbi");
     //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("CharacterScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskListScene.ccbi");
-    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
+//    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MDHerosFormationLayer");
     pDirector->runWithScene(pScene);
 
