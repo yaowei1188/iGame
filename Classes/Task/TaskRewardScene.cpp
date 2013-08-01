@@ -135,6 +135,7 @@ void TaskRewardScene::showTaskInfo()
 
 void TaskRewardScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
+    this->setFntTitle(102);
 	//doSearchFriend();
     
     mTaskList = GlobalData::getTasks("");

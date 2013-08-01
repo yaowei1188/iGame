@@ -125,6 +125,8 @@ SEL_CCControlHandler MDHeroListLayer::onResolveCCBCCControlSelector(CCObject *pT
 
 void MDHeroListLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
+    this->setFntTitle(101);
+    this->setFntTitle(102);
     //if (category == 1) {
     //    m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_choosehero.png"));
     //} else {
@@ -138,6 +140,7 @@ void MDHeroListLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 
     //mTableView->reloadData();
 //    this->LoadHeros();
+    
 }
 
 void MDHeroListLayer::reloadDataSource()

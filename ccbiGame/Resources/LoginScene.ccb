@@ -1713,7 +1713,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>bt_1.png</string>
+							<string>btn_login.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1736,7 +1736,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>bt_1.png</string>
+							<string>btn_login.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1759,7 +1759,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>bt_1.png</string>
+							<string>btn_login.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1988,7 +1988,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>bt_2.png</string>
+							<string>btn_reg.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2011,7 +2011,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>bt_2.png</string>
+							<string>btn_reg.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2034,7 +2034,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>bt_2.png</string>
+							<string>btn_reg.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2263,7 +2263,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>bt3.png</string>
+							<string>btn_tourist.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2286,7 +2286,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>bt3.png</string>
+							<string>btn_tourist.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2309,7 +2309,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>bt3.png</string>
+							<string>btn_tourist.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2455,8 +2455,6 @@
 						<string>第三方账号登陆</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

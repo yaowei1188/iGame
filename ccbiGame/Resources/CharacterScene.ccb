@@ -187,7 +187,7 @@
 						<key>type</key>
 						<string>String</string>
 						<key>value</key>
-						<string></string>
+						<string>加入</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -246,8 +246,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/login.plist</string>
-							<string>add_in.png</string>
+							<string>Image/card.plist</string>
+							<string>btn_bg.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -269,8 +269,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/login.plist</string>
-							<string>add_in_clicked.png</string>
+							<string>Image/card.plist</string>
+							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -292,8 +292,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/login.plist</string>
-							<string>add_in_clicked.png</string>
+							<string>Image/card.plist</string>
+							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -309,6 +309,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

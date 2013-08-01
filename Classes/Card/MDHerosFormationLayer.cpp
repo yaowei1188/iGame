@@ -102,6 +102,8 @@ SEL_CCControlHandler MDHerosFormationLayer::onResolveCCBCCControlSelector(CCObje
 
 void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
+    this->setFntTitle(101);
+    
 	CCSize winSize = this->getContentSize();
 	int row = 0;
 	int col = 0;
@@ -110,14 +112,14 @@ void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoa
 	for(int i=0;i<6;i++)
 	{
 		CCScale9Sprite *scaleSprite = NULL;
-		if (i<1)
+		if (i<4)
 		{
 			scaleSprite = CCScale9Sprite::createWithSpriteFrameName("card_embattle_bg.png");
 		} else {
 			scaleSprite = CCScale9Sprite::createWithSpriteFrameName("card_upgrade_hero_bg.png");
 
-            scaleSprite->setInsetLeft(5);
-            scaleSprite->setInsetRight(5);
+//            scaleSprite->setInsetLeft(5);
+//            scaleSprite->setInsetRight(5);
 		}
 
 		CCControlButton *btn = CCControlButton::create(scaleSprite);

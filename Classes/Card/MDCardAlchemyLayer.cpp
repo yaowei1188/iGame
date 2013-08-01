@@ -143,9 +143,10 @@ void MDCardAlchemyLayer::cancelAlchemy()
     lblTime->removeFromParentAndCleanup(true);
     lblTime = NULL;
     
-    m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_btn_start.png"), CCControlStateNormal);
-    m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_btn_start_highlight.png"), CCControlStateHighlighted);
-    m_btnLeft->setTag(111);
+    m_btnLeft->setTitleForState(CCString::create("开始"), CCControlStateNormal);
+//    m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_btn_start.png"), CCControlStateNormal);
+//    m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_btn_start_highlight.png"), CCControlStateHighlighted);
+    m_btnLeft->setTag(101);
     m_btnRight->setVisible(true);
     m_btnDone->setVisible(false);
 }
@@ -170,13 +171,18 @@ void MDCardAlchemyLayer::startAlchemy()
         barFront->setPosition(ccp(10, 50));
         this->addChild(barFront);
 
-        m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("no_1.png"), CCControlStateNormal);
-        m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("no_2.png"), CCControlStateHighlighted);
-        m_btnLeft->setTag(109);
+//        m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("no_1.png"), CCControlStateNormal);
+//        m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("no_2.png"), CCControlStateHighlighted);
+        
 
-        m_btnRight->setVisible(false);
-        m_btnDone->setVisible(true);
+        
     }
+    
+    m_btnLeft->setTitleForState(CCString::create("取消"), CCControlStateNormal);
+    m_btnLeft->setTag(109);
+    
+    m_btnRight->setVisible(false);
+    m_btnDone->setVisible(true);
     
     waitTime = 60.0;
     remainTime = 60.0;
@@ -218,14 +224,16 @@ void MDCardAlchemyLayer::finishAlchemy()
     this->addChild(m_spriteResult);
     m_spriteResult->setPosition(ccp(winSize.width * 0.5,winSize.height * 0.5 - 30));
 
-    m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_btn_absorption.png"), CCControlStateNormal);
-    m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_btn_absorption_highlight.png"), CCControlStateHighlighted);
-    m_btnLeft->setTag(109);
+//    m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_btn_absorption.png"), CCControlStateNormal);
+    m_btnLeft->setTitleForState(CCString::create("吸收"), CCControlStateNormal);
+//    m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_btn_absorption_highlight.png"), CCControlStateHighlighted);
+    m_btnLeft->setTag(111);
 }
 
 void MDCardAlchemyLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-
+    this->setFntTitle(101);
+    this->setFntTitle(102);
     //doSearchFriend();
 }
 

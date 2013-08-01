@@ -387,7 +387,7 @@
 						<key>type</key>
 						<string>String</string>
 						<key>value</key>
-						<string></string>
+						<string>关闭</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -446,8 +446,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/main.plist</string>
-							<string>btn_close1.png</string>
+							<string>Image/card.plist</string>
+							<string>btn_bg.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -469,8 +469,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/main.plist</string>
-							<string>btn_close2.png</string>
+							<string>Image/card.plist</string>
+							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -492,8 +492,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/main.plist</string>
-							<string>btn_close2.png</string>
+							<string>Image/card.plist</string>
+							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -675,7 +675,7 @@
 						<key>type</key>
 						<string>String</string>
 						<key>value</key>
-						<string></string>
+						<string>写信</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -734,8 +734,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/main.plist</string>
-							<string>mail_btn_compose.png</string>
+							<string>Image/card.plist</string>
+							<string>btn_bg.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -757,8 +757,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/main.plist</string>
-							<string>mail_btn_compose_clicked.png</string>
+							<string>Image/card.plist</string>
+							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -780,8 +780,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/main.plist</string>
-							<string>mail_btn_compose_clicked.png</string>
+							<string>Image/card.plist</string>
+							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -891,7 +891,7 @@
 						<key>type</key>
 						<string>String</string>
 						<key>value</key>
-						<string></string>
+						<string>删除</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -950,8 +950,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/friends.plist</string>
-							<string>friends_delete.png</string>
+							<string>Image/card.plist</string>
+							<string>btn_bg.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -973,8 +973,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/friends.plist</string>
-							<string>friends_delete_clicked.png</string>
+							<string>Image/card.plist</string>
+							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -996,8 +996,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/friends.plist</string>
-							<string>friends_delete_clicked.png</string>
+							<string>Image/card.plist</string>
+							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1013,6 +1013,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

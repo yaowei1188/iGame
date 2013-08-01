@@ -252,6 +252,8 @@ void TaskListScene::showTaskLists()
 
 void TaskListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
+    this->setFntTitle(101);
+    
     mTableView->setDirection(kCCScrollViewDirectionHorizontal);
 	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
 	mTableView->setDataSource(this);

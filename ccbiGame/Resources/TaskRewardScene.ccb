@@ -165,8 +165,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -458,8 +456,8 @@
 						<string>BlockCCControl</string>
 						<key>value</key>
 						<array>
-							<string></string>
-							<integer>0</integer>
+							<string>buttonClicked:</string>
+							<integer>1</integer>
 							<integer>32</integer>
 						</array>
 					</dict>
@@ -477,7 +475,7 @@
 						<key>type</key>
 						<string>String</string>
 						<key>value</key>
-						<string></string>
+						<string>确定</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -536,8 +534,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/login.plist</string>
-							<string>ok_1.png</string>
+							<string>Image/card.plist</string>
+							<string>btn_bg.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -559,8 +557,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/login.plist</string>
-							<string>ok_2.png</string>
+							<string>Image/card.plist</string>
+							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -582,8 +580,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/login.plist</string>
-							<string>ok_2.png</string>
+							<string>Image/card.plist</string>
+							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
 					<dict>

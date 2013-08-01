@@ -124,7 +124,9 @@ void NewMailScene::parseJson(std::string &content)
 
 void NewMailScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    CCLOG("TEST");
+    this->setFntTitle(101);
+    this->setFntTitle(102);
+//    this->setFntTitle(103);
     
     m_txtReceiver = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
     this->addChild(m_txtReceiver);

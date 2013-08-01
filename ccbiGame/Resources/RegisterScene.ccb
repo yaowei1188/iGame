@@ -1339,7 +1339,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>bt_2.png</string>
+							<string>btn_reg.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1362,7 +1362,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>bt_2.png</string>
+							<string>btn_reg.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1385,7 +1385,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>bt_2.png</string>
+							<string>btn_reg.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1555,7 +1555,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>CancelBtn.png</string>
+							<string>btn_cancel.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1578,7 +1578,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>CancelBtn.png</string>
+							<string>btn_cancel.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1601,7 +1601,7 @@
 						<key>value</key>
 						<array>
 							<string>Image/login.plist</string>
-							<string>CancelBtn.png</string>
+							<string>btn_cancel.png</string>
 						</array>
 					</dict>
 					<dict>

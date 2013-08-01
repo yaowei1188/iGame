@@ -188,6 +188,8 @@ void CharacterScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespons
 
 void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
+    this->setFntTitle(101);
+    
     m_txtAccount = CCEditBox::create(CCSizeMake(150, 34), CCScale9Sprite::create("transparent.png"));
     addChild(m_txtAccount);
     m_txtAccount->setFontColor(ccc3(255,255,153));

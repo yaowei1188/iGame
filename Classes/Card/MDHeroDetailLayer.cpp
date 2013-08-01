@@ -124,6 +124,9 @@ SEL_CCControlHandler MDHeroDetailLayer::onResolveCCBCCControlSelector(CCObject *
 
 void MDHeroDetailLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
+    this->setFntTitle(101);
+    this->setFntTitle(102);
+    
     CCSize bgSize = m_sCard->getContentSize();
 
     std::string strGroup = determineGroup(CCString::create("1"));

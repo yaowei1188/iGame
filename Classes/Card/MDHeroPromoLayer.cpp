@@ -110,6 +110,8 @@ SEL_CCControlHandler MDHeroPromoLayer::onResolveCCBCCControlSelector(CCObject *p
 
 void MDHeroPromoLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
+    this->setFntTitle(105);
+    this->setFntTitle(106);
 //    mTaskList = GlobalData::getTasks("");
 //    mTaskList->retain();
 //    

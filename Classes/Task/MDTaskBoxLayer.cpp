@@ -137,6 +137,8 @@ void MDTaskBoxLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
 	//doSearchFriend();
     
+    this->setFntTitle(101);
+    
     mTaskList = GlobalData::getTasks("");
     mTaskList->retain();
     

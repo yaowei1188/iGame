@@ -121,14 +121,9 @@ SEL_CCControlHandler MailMainScene::onResolveCCBCCControlSelector(CCObject *pTar
 
 void MailMainScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    //mTableViewFriend->setDirection(kCCScrollViewDirectionVertical);
-    //mTableViewFriend->setVerticalFillOrder(kCCTableViewFillTopDown);
-    //mTableViewFriend->setDataSource(this);
-    //mTableViewFriend->setViewSize(CCSizeMake(312, 250));
-    //mTableViewFriend->setDelegate(this);
-    //mTableViewFriend->reloadData();
-
-	//doSearchFriend();
+    this->setFntTitle(101);
+    this->setFntTitle(102);
+    this->setFntTitle(103);
 
 	CCTabView * _mailTab = new CCTabView(CCRectMake(0, 80, 320, 300));
 	_mailTab->autorelease();
