@@ -35,9 +35,6 @@ bool FriendListScene::init()
         CC_BREAK_IF(! CCLayer::init());
 
 		btnTouched = false;
-        
-        //mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
-//        mFriendList->retain();
 
         bRet = true;
     } while (0);
@@ -128,7 +125,7 @@ void FriendListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     mTableViewFriend->setDataSource(this);
     mTableViewFriend->setViewSize(CCSizeMake(312, 300));
     mTableViewFriend->setDelegate(this);
-
+    
     this->LoadFriends();
 }
 
@@ -248,7 +245,12 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
             layer->addChild(sFriendheart);
         }
         
-        CCControlButton * chatBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_chat.png")));
+//        CCControlButton * chatBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_chat.png")));
+        
+        CCControlButton * chatBtn =  CCControlButton::create(CCScale9Sprite::createWithSpriteFrameName("btn_bg.png"));
+        chatBtn->setTitleBMFontForState("btn.fnt", CCControlStateNormal);
+        chatBtn->setTitleForState(CCString::create("密语"),CCControlStateNormal);
+        
         chatBtn->setPosition(ccp(4,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
         chatBtn->setAnchorPoint(ccp(0,0.5));
         chatBtn->setTag(127);
@@ -258,7 +260,11 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 		chatBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchDown);
         cell->addChild(chatBtn);
         
-        CCControlButton * msgBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_emailbtn.png")));
+//        CCControlButton * msgBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_emailbtn.png")));
+        
+        CCControlButton * msgBtn =  CCControlButton::create(CCScale9Sprite::createWithSpriteFrameName("btn_bg.png"));
+        msgBtn->setTitleBMFontForState("btn.fnt", CCControlStateNormal);
+        msgBtn->setTitleForState(CCString::create("信件"),CCControlStateNormal);
         msgBtn->setPosition(ccp(81,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
         msgBtn->setAnchorPoint(ccp(0,0.5));
         msgBtn->setTag(128);
@@ -268,7 +274,11 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
 		msgBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchDown);
         cell->addChild(msgBtn);
         
-        CCControlButton * formationBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_formation.png")));
+//        CCControlButton * formationBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_formation.png")));
+        
+        CCControlButton * formationBtn =  CCControlButton::create(CCScale9Sprite::createWithSpriteFrameName("btn_bg.png"));
+        formationBtn->setTitleBMFontForState("btn.fnt", CCControlStateNormal);
+        formationBtn->setTitleForState(CCString::create("阵容"),CCControlStateNormal);
         formationBtn->setPosition(ccp(158,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
         formationBtn->setAnchorPoint(ccp(0,0.5));
         formationBtn->setTag(129);
@@ -278,7 +288,11 @@ CCTableViewCell* FriendListScene::tableCellAtIndex(CCTableView *table, unsigned 
         formationBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(FriendListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
         cell->addChild(formationBtn);
         
-        CCControlButton * deleteBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_delete.png")));
+//        CCControlButton * deleteBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_delete.png")));
+        
+        CCControlButton * deleteBtn =  CCControlButton::create(CCScale9Sprite::createWithSpriteFrameName("btn_bg.png"));
+        deleteBtn->setTitleBMFontForState("btn.fnt", CCControlStateNormal);
+        deleteBtn->setTitleForState(CCString::create("删除"),CCControlStateNormal);
         deleteBtn->setPosition(ccp(235,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
         deleteBtn->setAnchorPoint(ccp(0,0.5));
         deleteBtn->setTag(130);

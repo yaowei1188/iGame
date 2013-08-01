@@ -36,7 +36,6 @@ bool AddFriendScene::init()
 		btnTouched = false;
 
 		mFriendList= CCArray::create();
-        //mFriendList = CCArray::create(CCString::create("Li1"),CCString::create("Li2"),CCString::create("Li3"),CCString::create("Li1"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
         mFriendList->retain();
         
         bRet = true;
@@ -340,17 +339,24 @@ CCTableViewCell* AddFriendScene::tableCellAtIndex(CCTableView *table, unsigned i
 			layer->addChild(sFriendheart);
 		}
 
-		CCControlButton * msgBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_emailbtn.png")));
+//		CCControlButton * msgBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_emailbtn.png")));
+        CCControlButton * msgBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrameName("btn_bg.png"));
+        msgBtn->setTitleBMFontForState("btn.fnt", CCControlStateNormal);
+        msgBtn->setTitleForState(CCString::create("信件"),CCControlStateNormal);
 		msgBtn->setPosition(ccp(81,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
 		msgBtn->setAnchorPoint(ccp(0,0.5));
 		msgBtn->setTag(128);
-		msgBtn->setPreferredSize(CCSizeMake(74,34));
+		msgBtn->setPreferredSize(CCSizeMake(75,35));
 		msgBtn->setVisible(selected);
 		msgBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(AddFriendScene::toolBarTouchDownAction), CCControlEventTouchDown);
 		msgBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(AddFriendScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
 		cell->addChild(msgBtn);
 
-		CCControlButton * formationBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_cell_addfriend.png")));
+//		CCControlButton * formationBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_cell_addfriend.png")));
+        
+        CCControlButton * formationBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrameName("btn_bg.png"));
+        formationBtn->setTitleBMFontForState("btn.fnt", CCControlStateNormal);
+        formationBtn->setTitleForState(CCString::create("加好友"),CCControlStateNormal);
 		formationBtn->setPosition(ccp(158,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
 		formationBtn->setAnchorPoint(ccp(0,0.5));
 		formationBtn->setTag(129);
