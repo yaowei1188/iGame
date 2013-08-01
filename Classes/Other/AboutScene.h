@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __cctest__AboutScene__
-#define __cctest__AboutScene__
+#ifndef __AboutScene__
+#define __AboutScene__
 
 #include <iostream>
 #include "cocos2d.h"
@@ -38,4 +38,4 @@ public:
     
 };
 
-#endif /* defined(__cctest__AboutScene__) */
+#endif /* defined(__AboutScene__) */

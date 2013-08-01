@@ -8,10 +8,15 @@
 
 #include "GlobalData.h"
 
+#define QUERY_CATEGORY_FRACTION "1"
+#define QUERY_CATEGORY_CARDINFO "2"
+
 static CCDictionary *dictLanguage;
 static CCArray *arrayTasks;
 static CCArray *arrayCards;
 static CCDictionary* userinfo;
+static CCArray* arrayFraction;
+static CCDictionary* dictCard;
 
 CCString* GlobalData::getLocalString(std::string name)
 {
@@ -31,13 +36,90 @@ CCDictionary* GlobalData::getTasks(std::string name)
     return (CCDictionary*)arrayTasks->objectAtIndex(0);
 };
 
-CCDictionary* GlobalData::getFraction(std::string name)
+//CCDictionary* GlobalData::getFraction(std::string name)
+//{
+//    if (arrayTasks==NULL) {
+//        
+//    }
+//    return (CCDictionary*)arrayTasks->objectAtIndex(0);
+//};
+
+int GlobalData::sqliteExecCallBack( void * para, int n_column, char ** column_value, char ** column_name )
 {
-    if (arrayTasks==NULL) {
-        localStorageInit("");
+    const char *myPara = (const char *)para;
+    printf("para:%s",myPara);
+    if (strcmp(myPara, QUERY_CATEGORY_FRACTION)) {
+        CCDictionary *dict = CCDictionary::create();
+        for(int i = 0 ; i < n_column; i ++ )
+        {
+            //        str:string name = column_name[i];
+            //        std::string value = column_value[i];
+            dict->setObject(CCString::create(column_value[i]), column_name[i]);
+            //        printf( "字段名:%s 字段值:%s",  column_name[i], column_value[i] );
+        }
+        arrayFraction->addObject(dict);
+    } else if(strcmp(myPara, QUERY_CATEGORY_CARDINFO)) {
+        dictCard = CCDictionary::create();
+        for(int i = 0 ; i < n_column; i ++ )
+        {
+            dictCard->setObject(CCString::create(column_value[i]), column_name[i]);
+        }
     }
-    return (CCDictionary*)arrayTasks->objectAtIndex(0);
-};
+
+    return 0;
+}
+
+CCDictionary* GlobalData::getCardInfoById(std::string cardId)
+{
+    if (dictCard==NULL) {
+        dictCard = CCDictionary::create();
+    }
+
+    sqlite3 *pDB = NULL;
+    char* errMsg = NULL;
+    std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
+    int result = sqlite3_open_v2(dbPath.c_str(),&pDB,SQLITE_OPEN_READONLY, NULL);
+    if (result!=SQLITE_OK) {
+        return NULL;
+    }
+
+    std::string szSql = "select * from game_role where roleid = ";
+
+    const char *argc = QUERY_CATEGORY_CARDINFO;
+    result = sqlite3_exec(pDB,szSql.c_str(), sqliteExecCallBack, (void *)argc, &errMsg);
+    if (result != SQLITE_OK) {
+        return NULL;
+    }
+
+    return dictCard;
+}
+
+CCArray* GlobalData::getFraction(std::string name)
+{
+    if (arrayFraction!=NULL) {
+        return arrayFraction;
+    }
+
+    arrayFraction = CCArray::create();
+    
+    sqlite3 *pDB = NULL;
+    char* errMsg = NULL;
+    std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
+    int result = sqlite3_open_v2(dbPath.c_str(),&pDB,SQLITE_OPEN_READWRITE, NULL);
+    if (result!=SQLITE_OK) {
+        return NULL;
+    }
+
+    std::string szSql = "select * from game_group";
+    
+    const char *argc = QUERY_CATEGORY_FRACTION;
+    result = sqlite3_exec(pDB,szSql.c_str(), sqliteExecCallBack, (void *)argc, &errMsg);
+    if (result != SQLITE_OK) {
+        return NULL;
+    }
+
+    return arrayFraction;
+}
 
 CCArray* GlobalData::getAllCards(std::string name)
 {

@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __IGAME__SharpLabelTTF__
-#define __IGAME__SharpLabelTTF__
+#ifndef __SharpLabelTTF__
+#define __SharpLabelTTF__
 
 #include <iostream>
 #include "cocos2d.h"
@@ -28,4 +28,4 @@ public:
 //	void setRotation(float rotation);
 };
 
-#endif /* defined(__cctest__SharpLabelTTF__) */
+#endif /* defined(__SharpLabelTTF__) */

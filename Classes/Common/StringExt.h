@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __iGame__StringExt__
-#define __iGame__StringExt__
+#ifndef __StringExt__
+#define __StringExt__
 
 #include <iostream>
 
@@ -164,4 +164,4 @@ inline std::string secondsToString(int seconds)
     return result;
 }
 
-#endif /* defined(__iGame__StringExt__) */
+#endif /* defined(__StringExt__) */

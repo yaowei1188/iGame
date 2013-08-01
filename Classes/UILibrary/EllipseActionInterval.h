@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __IGAME__EllipseActionInterval__
-#define __IGAME__EllipseActionInterval__
+#ifndef __EllipseActionInterval__
+#define __EllipseActionInterval__
 
 #include <iostream>
 #include "cocos2d.h"

@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __cctest__MainGameScene__
-#define __cctest__MainGameScene__
+#ifndef __MainGameScene__
+#define __MainGameScene__
 
 #include <iostream>
 #include "cocos2d.h"
@@ -19,9 +19,7 @@
 #include "MDBattleLayer.h"
 #include "ChatLayer.h"
 #include "common.h"
-#include "LocalStorage.h"
-
-#include <sqlite3.h>
+#include "GlobalData.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -40,7 +38,6 @@ public:
     static cocos2d::CCScene* scene();
 
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainGameScene, create);
-//    int LoadMyInfo( void * para, int n_column, char ** column_value, char ** column_name );
     
 private:
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName);
@@ -76,11 +73,10 @@ public:
     void PopToRoot();
     void PopToNLayer(int nLayer);
     void returnToMainLayer();
-    void queryDB();
     void updateUserInfo(int hp,int maxhp,int exp,int maxExp,int grade,int gold);
 private:
     CCArray *mlayArray;
     int intSelectedMenu;
 };
 
-#endif /* defined(__cctest__MainMenuScene__) */
+#endif /* defined(__MainMenuScene__) */

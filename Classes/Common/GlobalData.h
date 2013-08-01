@@ -12,7 +12,8 @@
 #include <iostream>
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "LocalStorage.h"
+
+#include <sqlite3.h>
 
 using namespace std;
 using namespace cocos2d;
@@ -25,14 +26,18 @@ public:
     
     static CCDictionary* getTasks(std::string name);
 
-    static CCDictionary* getFraction(std::string name);
+    static CCArray* getFraction(std::string name);
 
     static CCArray* getAllCards(std::string name);
 
     static CCDictionary* getCardById(std::string cardId);
+    static CCDictionary* getCardInfoById(std::string cardId);
 
 	static CCDictionary* getUserinfo();
 	static void setUserinfo(CCDictionary* p_userInfo);
+
+private:
+    static int sqliteExecCallBack( void * para, int n_column, char ** column_value, char ** column_name );
 };
 
 #endif /* defined(__mengdou__GlobalData__) */

@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __cctest__MainGameSceneLoader__
-#define __cctest__MainGameSceneLoader__
+#ifndef __MainGameSceneLoader__
+#define __MainGameSceneLoader__
 
 #include <iostream>
 #include "cocos2d.h"
@@ -24,4 +24,4 @@ protected:
     CCB_VIRTUAL_NEW_AUTORELEASE_CREATECCNODE_METHOD(MainGameScene);
 };
 
-#endif /* defined(__cctest__MainGameSceneLoader__) */
+#endif /* defined(__MainGameSceneLoader__) */

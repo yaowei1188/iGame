@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __cctest__MainSceneTemplateLoader__
-#define __cctest__MainSceneTemplateLoader__
+#ifndef __MainSceneTemplateLoader__
+#define __MainSceneTemplateLoader__
 
 #include <iostream>
 #include "cocos2d.h"

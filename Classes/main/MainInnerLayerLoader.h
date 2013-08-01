@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __cctest__MainInnerLayerLoader__
-#define __cctest__MainInnerLayerLoader__
+#ifndef __MainInnerLayerLoader__
+#define __MainInnerLayerLoader__
 
 #include <iostream>
 #include "cocos2d.h"

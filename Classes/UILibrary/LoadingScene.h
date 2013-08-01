@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __IGAME__LoadingScene__
-#define __IGAME__LoadingScene__
+#ifndef __LoadingScene__
+#define __LoadingScene__
 
 #include <iostream>
 #include "cocos2d.h"
@@ -29,4 +29,4 @@ public:
     
 };
 
-#endif /* defined(__cctest__LoadingScene__) */
+#endif /* defined(__LoadingScene__) */

@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __IGAME__MainSceneTemplate__
-#define __IGAME__MainSceneTemplate__
+#ifndef __MainSceneTemplate__
+#define __MainSceneTemplate__
 
 #include <iostream>
 #include "cocos2d.h"

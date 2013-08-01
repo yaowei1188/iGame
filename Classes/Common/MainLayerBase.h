@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __iGame__MainLayerBase__
-#define __iGame__MainLayerBase__
+#ifndef __MainLayerBase__
+#define __MainLayerBase__
 
 #include <iostream>
 #include "cocos2d.h"

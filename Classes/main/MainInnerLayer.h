@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __IGAME__MainInnerLayer__
-#define __IGAME__MainInnerLayer__
+#ifndef __MainInnerLayer__
+#define __MainInnerLayer__
 
 #include <iostream>
 #include "cocos2d.h"
