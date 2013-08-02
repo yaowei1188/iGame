@@ -44,6 +44,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/UILibrary/SlidingMenu.cpp \
                    ../../Classes/UILibrary/SharpLabelTTF.cpp \
                    ../../library/XmlParser/XmlParser.cpp \
+                   ../../library/sqlite3/sqlite3.c \
                    ../../library/jsonconverter/cJSON.c \
                    ../../library/jsonconverter/CCJSONConverter.cpp \
                    ../../Classes/Card/MDCardAlchemyLayer.cpp \
@@ -67,13 +68,13 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes  \
 					$(LOCAL_PATH)/../../Classes/Package  \
 					$(LOCAL_PATH)/../../Classes/Task  \
 					$(LOCAL_PATH)/../../Classes/UILibrary  \
+                    $(LOCAL_PATH)/../../library/sqlite3  \
                     $(LOCAL_PATH)/../../library/jsonconverter  \
                     $(LOCAL_PATH)/../../library/XmlParser 
                     
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static cocosdenshion_static cocos_extension_static
             
 include $(BUILD_SHARED_LIBRARY)
-
 $(call import-module,CocosDenshion/android) \
 $(call import-module,cocos2dx) \
 $(call import-module,extensions)

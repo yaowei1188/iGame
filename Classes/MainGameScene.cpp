@@ -46,7 +46,11 @@ void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
             this->PushLayer((CCLayer *)this->GetLayer("MDCatalogueLayer"));
             break;
         case TOOLBAR_BTN_RANKLIST_TAG:
-            break;
+			{
+				CCArray *array = GlobalData::getFraction("");
+				break;
+			}
+
         case TOOLBAR_BTN_FRIENDS_TAG:
             this->PushLayer((CCLayer *)this->GetLayer("FriendListScene"));
             break;
@@ -59,7 +63,6 @@ void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
         case TOOLBAR_BTN_SETTING_TAG:
         {
             this->PushLayer((CCLayer *)this->GetLayer("MDSettingLayer"));
-//            CCArray *array = GlobalData::getFraction("");
             break;
         }
         case 8:

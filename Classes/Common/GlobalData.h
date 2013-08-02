@@ -14,6 +14,7 @@
 #include "cocos-ext.h"
 
 //#include <sqlite3.h>
+#include "sqlite3.h"
 
 using namespace std;
 using namespace cocos2d;

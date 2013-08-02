@@ -87,7 +87,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     std::vector<std::string> resDirOrders;
     
 	searchPaths.push_back("Task");
-	searchPaths.push_back("Language");
+	searchPaths.push_back("language");
 	searchPaths.push_back("Image");
 	searchPaths.push_back("sound");
     searchPaths.push_back("particle");
@@ -189,13 +189,13 @@ bool AppDelegate::applicationDidFinishLaunching()
 	//SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
 #endif
     
-    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
+    //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
 
 
 //	CCScene *pScene = MDBattleLayer::scene();
 	//CCScene *pScene = MailListScene::scene();
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MDHeroPrePromoLayer.ccbi");
-    //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("CharacterScene.ccbi");
+    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("CharacterScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskListScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MDHerosFormationLayer");

@@ -209,7 +209,7 @@ void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	{
         CCDictionary *dict = (CCDictionary *)object;
         
-        CCSprite *sCardBg = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("Card_Level4.png"));
+        CCSprite *sCardBg = CCSprite::createWithSpriteFrameName("Card_Level4.png");
         CCSize bgSize = sCardBg->getContentSize();
         
         CCString *strCardName = (CCString *)dict->objectForKey("CardName");
@@ -219,7 +219,7 @@ void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
         lblCardName->setAnchorPoint(ccp(1,1));
         lblCardName->setPosition(ccp(bgSize.width - 10,bgSize.height - 50));
 
-        CCLabelTTF *lblCardLevel = CCLabelTTF::create(((CCString *)dict->objectForKey("Level"))->getCString(), "Arial", 14.0);
+        CCLabelTTF *lblCardLevel = CCLabelTTF::create("1", "Arial", 14.0);
         lblCardLevel->setAnchorPoint(ccp(0,1));
         lblCardLevel->setPosition(ccp(10,bgSize.height - 10));
 
