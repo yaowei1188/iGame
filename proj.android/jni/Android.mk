@@ -12,7 +12,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Common/MainLayerBase.cpp \
                    ../../Classes/Common/GlobalData.cpp \
                    ../../Classes/main/MainInnerLayer.cpp \
-                   ../../Classes/main/MainSceneTemplate.cpp \
+                   ../../Classes/main/MainOuterLayer.cpp \
                    ../../Classes/Friends/FriendListScene.cpp \
                    ../../Classes/Friends/AddFriendScene.cpp \
                    ../../Classes/Login/CharacterScene.cpp \
@@ -27,6 +27,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Other/AboutScene.cpp \
                    ../../Classes/Other/MDCatalogueLayer.cpp \
                    ../../Classes/Other/MDSettingLayer.cpp \
+                   ../../Classes/Package/MDPackageLayer.cpp \
                    ../../Classes/Task/TaskDetailScene.cpp \
                    ../../Classes/Task/TaskListScene.cpp \
                    ../../Classes/Task/TaskRewardScene.cpp \

@@ -55,7 +55,7 @@ int GlobalData::sqliteExecCallBack( void * para, int n_column, char ** column_va
             //        str:string name = column_name[i];
             //        std::string value = column_value[i];
             dict->setObject(CCString::create(column_value[i]), column_name[i]);
-            //        printf( "字段名:%s 字段值:%s",  column_name[i], column_value[i] );
+            //        printf( "瀛楁鍚�%s 瀛楁鍊�%s",  column_name[i], column_value[i] );
         }
         arrayFraction->addObject(dict);
     } else if(strcmp(myPara, QUERY_CATEGORY_CARDINFO)) {
@@ -75,21 +75,21 @@ CCDictionary* GlobalData::getCardInfoById(std::string cardId)
         dictCard = CCDictionary::create();
     }
 
-    sqlite3 *pDB = NULL;
-    char* errMsg = NULL;
-    std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
-    int result = sqlite3_open_v2(dbPath.c_str(),&pDB,SQLITE_OPEN_READONLY, NULL);
-    if (result!=SQLITE_OK) {
-        return NULL;
-    }
-
-    std::string szSql = "select * from game_role where roleid = ";
-
-    const char *argc = QUERY_CATEGORY_CARDINFO;
-    result = sqlite3_exec(pDB,szSql.c_str(), sqliteExecCallBack, (void *)argc, &errMsg);
-    if (result != SQLITE_OK) {
-        return NULL;
-    }
+//    sqlite3 *pDB = NULL;
+//    char* errMsg = NULL;
+//    std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
+//    int result = sqlite3_open_v2(dbPath.c_str(),&pDB,SQLITE_OPEN_READONLY, NULL);
+//    if (result!=SQLITE_OK) {
+//        return NULL;
+//    }
+//
+//    std::string szSql = "select * from game_role where roleid = ";
+//
+//    const char *argc = QUERY_CATEGORY_CARDINFO;
+//    result = sqlite3_exec(pDB,szSql.c_str(), sqliteExecCallBack, (void *)argc, &errMsg);
+//    if (result != SQLITE_OK) {
+//        return NULL;
+//    }
 
     return dictCard;
 }
@@ -102,21 +102,21 @@ CCArray* GlobalData::getFraction(std::string name)
 
     arrayFraction = CCArray::create();
     
-    sqlite3 *pDB = NULL;
-    char* errMsg = NULL;
-    std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
-    int result = sqlite3_open_v2(dbPath.c_str(),&pDB,SQLITE_OPEN_READWRITE, NULL);
-    if (result!=SQLITE_OK) {
-        return NULL;
-    }
-
-    std::string szSql = "select * from game_group";
-    
-    const char *argc = QUERY_CATEGORY_FRACTION;
-    result = sqlite3_exec(pDB,szSql.c_str(), sqliteExecCallBack, (void *)argc, &errMsg);
-    if (result != SQLITE_OK) {
-        return NULL;
-    }
+//    sqlite3 *pDB = NULL;
+//    char* errMsg = NULL;
+//    std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
+//    int result = sqlite3_open_v2(dbPath.c_str(),&pDB,SQLITE_OPEN_READWRITE, NULL);
+//    if (result!=SQLITE_OK) {
+//        return NULL;
+//    }
+//
+//    std::string szSql = "select * from game_group";
+//
+//    const char *argc = QUERY_CATEGORY_FRACTION;
+//    result = sqlite3_exec(pDB,szSql.c_str(), sqliteExecCallBack, (void *)argc, &errMsg);
+//    if (result != SQLITE_OK) {
+//        return NULL;
+//    }
 
     return arrayFraction;
 }

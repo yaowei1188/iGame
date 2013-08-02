@@ -38,7 +38,7 @@ bool MDPackageLayer::init()
         mHeroList->retain();
 
 		vUserData = new int[mHeroList->count()]();
-		memset(vUserData, sizeof(int) * mHeroList->count(), 0);
+		//memset(vUserData, sizeof(int) * mHeroList->count(), 0);
 
         bRet = true;
     } while (0);
