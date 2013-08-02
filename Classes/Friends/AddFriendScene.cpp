@@ -342,7 +342,7 @@ CCTableViewCell* AddFriendScene::tableCellAtIndex(CCTableView *table, unsigned i
 //		CCControlButton * msgBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_emailbtn.png")));
         CCControlButton * msgBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrameName("btn_bg.png"));
         msgBtn->setTitleBMFontForState("btn.fnt", CCControlStateNormal);
-        msgBtn->setTitleForState(CCString::create("信件"),CCControlStateNormal);
+        msgBtn->setTitleForState(CCString::create(LITERAL_STRING_MAIL),CCControlStateNormal);
 		msgBtn->setPosition(ccp(81,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
 		msgBtn->setAnchorPoint(ccp(0,0.5));
 		msgBtn->setTag(128);
@@ -356,7 +356,7 @@ CCTableViewCell* AddFriendScene::tableCellAtIndex(CCTableView *table, unsigned i
         
         CCControlButton * formationBtn = CCControlButton::create(CCScale9Sprite::createWithSpriteFrameName("btn_bg.png"));
         formationBtn->setTitleBMFontForState("btn.fnt", CCControlStateNormal);
-        formationBtn->setTitleForState(CCString::create("加好友"),CCControlStateNormal);
+        formationBtn->setTitleForState(CCString::create(LITERAL_STRING_ADDFRIEND),CCControlStateNormal);
 		formationBtn->setPosition(ccp(158,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
 		formationBtn->setAnchorPoint(ccp(0,0.5));
 		formationBtn->setTag(129);

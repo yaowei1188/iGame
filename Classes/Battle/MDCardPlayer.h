@@ -72,7 +72,7 @@ public:
 private:
     void actionFinished(CCNode* sender);
     void allEnemyUnderAttack(float dt);
-    
+    void removeNodeCallBack(CCNode* pNode);
     CCArray *m_EnemyList;
 
 };

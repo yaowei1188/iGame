@@ -124,7 +124,7 @@ CCArray* GlobalData::getFraction(std::string name)
 CCArray* GlobalData::getAllCards(std::string name)
 {
     if (arrayCards==NULL) {
-        arrayCards = CCArray::createWithContentsOfFile("Card.plist");
+        arrayCards = CCArray::createWithContentsOfFile("Card1.plist");
 		arrayCards->retain();
     }
     return arrayCards;
@@ -133,7 +133,7 @@ CCArray* GlobalData::getAllCards(std::string name)
 CCDictionary* GlobalData::getCardById(std::string cardId)
 {
     if (arrayCards==NULL) {
-        arrayCards = CCArray::createWithContentsOfFile("Card.plist");
+        arrayCards = CCArray::createWithContentsOfFile("Card1.plist");
 		arrayCards->retain();
     }
     CCObject *obj = NULL;

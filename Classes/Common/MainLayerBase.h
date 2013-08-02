@@ -18,6 +18,7 @@
 #include "CCJSONConverter.h"
 #include "GlobalData.h"
 #include "StringExt.h"
+#include "MDDefine.h"
 
 using namespace std;
 using namespace cocos2d;

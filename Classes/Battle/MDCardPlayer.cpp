@@ -33,7 +33,7 @@ void MDCardPlayer::playAnnimateFrame(std::string p_name,int count)
 	cache->addSpriteFramesWithFile("flash.plist");
 	CCArray* animFrames = CCArray::createWithCapacity(count);
 
-
+	char firstFrame[64] = {0};
 	for(int i=1;i<=count;i++)
 	{
 		string prefix(p_name);
@@ -43,6 +43,10 @@ void MDCardPlayer::playAnnimateFrame(std::string p_name,int count)
 			prefix.append("0");
 		}
 		sprintf(strPlist,"%s%d.png",prefix.c_str(),i); 
+		if (i==1)
+		{
+			strcpy(firstFrame,strPlist);
+		}
 		CCSpriteFrame *spriteFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strPlist);
 		animFrames->addObject(spriteFrame);
 	}
@@ -54,7 +58,16 @@ void MDCardPlayer::playAnnimateFrame(std::string p_name,int count)
 		//animate->copy()->autorelease(),
 		//CCFlipX::create(false),
 		//NULL);
-	m_sCardPlayer->runAction(animate);
+
+	CCSequence *sequence = CCSequence::create(animate,CCCallFuncN::create(this, callfuncN_selector(MDCardPlayer::removeNodeCallBack)),NULL);
+
+	CCSprite *sprite = CCSprite::createWithSpriteFrameName(firstFrame);
+	this->m_sCardPlayer->getParent()->addChild(sprite);
+	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+	sprite->setPosition(ccp(winSize.width * 0.1,winSize.height * 0.5));
+
+	sprite->runAction(sequence);
+	//m_sCardPlayer->runAction(animate);
 }
 
 void MDCardPlayer::playParadeAnnimation()
@@ -220,5 +233,10 @@ void MDCardPlayer::playExploreEffect(MDCardPlayer *target)
     m_sCardPlayer->addChild(_particle);
     _particle->setPosition(30,30);
     _particle->setAutoRemoveOnFinish(true);
+}
+
+void MDCardPlayer::removeNodeCallBack(CCNode* pNode)
+{
+	pNode->removeFromParentAndCleanup(true);
 }
 

@@ -116,10 +116,8 @@ void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoa
 		{
 			scaleSprite = CCScale9Sprite::createWithSpriteFrameName("card_embattle_bg.png");
 		} else {
-			scaleSprite = CCScale9Sprite::createWithSpriteFrameName("card_upgrade_hero_bg.png");
-
-//            scaleSprite->setInsetLeft(5);
-//            scaleSprite->setInsetRight(5);
+			CCRect rect = CCRectMake(0,0,150,205);
+			scaleSprite = CCScale9Sprite::createWithSpriteFrameName("card_upgrade_hero_bg.png",rect);
 		}
 
 		CCControlButton *btn = CCControlButton::create(scaleSprite);
@@ -153,13 +151,19 @@ void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoa
 			sCard->setPosition(ccp(spriteSize.width * 0.5,spriteSize.height - 25));
 			sCard->setScale(0.71);
 
-			CCLabelTTF *lblAttack = CCLabelTTF::create("攻+60点", "Arial", 12.0);
+			std::string _attackStr(LITERAL_STRING_ATTACK);
+			_attackStr.append("+60").append(LITERAL_STRING_POINT);
+
+			CCLabelTTF *lblAttack = CCLabelTTF::create(_attackStr.c_str(), "Arial", 12.0);
 			lblAttack->setAnchorPoint(ccp(0.5,1));
 			lblAttack->setTag(102);
 			lblAttack->setPosition(ccp(spriteSize.width * 0.5,38));
 			lblAttack->setColor(ccc3(252,255,56));
 
-			CCLabelTTF *lblHP = CCLabelTTF::create("血+125点", "Arial", 12.0);
+			std::string _bloodStr(LITERAL_STRING_BLOOD);
+			_bloodStr.append("+125").append(LITERAL_STRING_POINT);
+
+			CCLabelTTF *lblHP = CCLabelTTF::create(_bloodStr.c_str(), "Arial", 12.0);
 			lblHP->setAnchorPoint(ccp(0.5,1));
 			lblHP->setTag(103);
 			lblHP->setPosition(ccp(spriteSize.width * 0.5,55));
@@ -191,17 +195,6 @@ void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoa
 			col = 0;
 		}
 	}
-
-//    CCScale9Sprite *scaleSprite = CCScale9Sprite::createWithSpriteFrameName("add_in.png");
-////    CCLabelBMFont* label = CCLabelBMFont::create("确定", "btn.fnt");
-//    CCControlButton *testbtn = CCControlButton::create(scaleSprite);
-//    testbtn->setTitleBMFontForState("btn.fnt", CCControlStateNormal);
-//    testbtn->setTitleForState(CCString::create("确定"),CCControlStateNormal);
-//    testbtn->setPreferredSize(CCSizeMake(75, 35));
-//    this->addChild(testbtn);
-//    testbtn->setPosition(100,100);
-
-
 }
 
 void MDHerosFormationLayer::touchUpInside(CCObject* pSender, CCControlEvent event)
@@ -238,19 +231,28 @@ void MDHerosFormationLayer::touchUpInside(CCObject* pSender, CCControlEvent even
 		CCLabelTTF *lblHP = (CCLabelTTF *)parent->getChildByTag(103);
 		lblHP->setPosition(ccpAdd(lblHP->getPosition(),ccp(0,40)));
 
-		CCLabelTTF *lblDefence = CCLabelTTF::create("防+20点", "Arial", 12.0);
+		std::string _defenceStr(LITERAL_STRING_DEFENCE);
+		_defenceStr.append("+20").append(LITERAL_STRING_POINT);
+
+		CCLabelTTF *lblDefence = CCLabelTTF::create(_defenceStr.c_str(), "Arial", 12.0);
 		lblDefence->setAnchorPoint(ccp(0.5,1));
 		lblDefence->setPosition(ccp(spriteSize.width * 0.5,61));
 		lblDefence->setColor(ccc3(59,243,67));
 		lblDefence->setTag(105);
 		parent->addChild(lblDefence);
 
-		CCLabelTTF *lblSuper = CCLabelTTF::create("暴+100%", "Arial", 12.0);
-		lblSuper->setAnchorPoint(ccp(0.5,1));
-		lblSuper->setPosition(ccp(spriteSize.width * 0.5,44));
-		lblSuper->setColor(ccc3(238,45,197));
-		lblSuper->setTag(106);
-		parent->addChild(lblSuper);
+		std::string _critStr(LITERAL_STRING_CRIT);
+		_critStr.append("+100").append(LITERAL_STRING_POINT);
+
+		CCLabelTTF *lblCrit = CCLabelTTF::create(_critStr.c_str(), "Arial", 12.0);
+		lblCrit->setAnchorPoint(ccp(0.5,1));
+		lblCrit->setPosition(ccp(spriteSize.width * 0.5,44));
+		lblCrit->setColor(ccc3(238,45,197));
+		lblCrit->setTag(106);
+		parent->addChild(lblCrit);
+
+		std::string _dodgeStr(LITERAL_STRING_DODGE);
+		_dodgeStr.append("+15%");
 
 		CCLabelTTF *lblDodge = CCLabelTTF::create("闪+15%", "Arial", 12.0);
 		lblDodge->setAnchorPoint(ccp(0.5,1));

@@ -143,7 +143,7 @@ void MDCardAlchemyLayer::cancelAlchemy()
     lblTime->removeFromParentAndCleanup(true);
     lblTime = NULL;
     
-    m_btnLeft->setTitleForState(CCString::create("开始"), CCControlStateNormal);
+    m_btnLeft->setTitleForState(CCString::create(LITERAL_STRING_START), CCControlStateNormal);
 //    m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_btn_start.png"), CCControlStateNormal);
 //    m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_btn_start_highlight.png"), CCControlStateHighlighted);
     m_btnLeft->setTag(101);

@@ -230,7 +230,7 @@ void MDBattleLayer::AttackEnemy()
 {
     srand(time(NULL));
     int enemyNum = rand()%6;
-    int attackCategory = 4;//;rand()%5;
+    int attackCategory = rand()%5;
     MDCardPlayer *enmeyCardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(enemyNum);
     
     MDCardPlayer *cardPlayer = (MDCardPlayer *)mCardList->objectAtIndex(intCurrentCard++);

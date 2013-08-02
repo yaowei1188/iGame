@@ -95,6 +95,15 @@
     <Filter Include="Resources\font">
       <UniqueIdentifier>{431cc1b3-d003-4392-b183-81c8442d77df}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\font\resources-iphone">
+      <UniqueIdentifier>{c953c5aa-3711-4aad-bb92-d361650b90d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\font\resources-iphonehd">
+      <UniqueIdentifier>{9d89a150-27ad-4905-b9d7-d840f0a42a2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\data">
+      <UniqueIdentifier>{b34b8223-3a16-40ec-b348-532f7bb8a8b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\iGame.ico">
@@ -123,54 +132,6 @@
     </None>
     <None Include="..\Resources\transparent.png">
       <Filter>Resources</Filter>
-    </None>
-    <None Include="..\Resources\Image\main.png">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\login.plist">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\login.png">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\main.plist">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\friends.plist">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\friends.png">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\Arial.fnt">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\Arial.png">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\resources-iphonehd\Arial.fnt">
-      <Filter>Resources\Image\resources-iphonehd</Filter>
-    </None>
-    <None Include="..\Resources\Image\resources-iphonehd\Arial.png">
-      <Filter>Resources\Image\resources-iphonehd</Filter>
-    </None>
-    <None Include="..\Resources\Image\resources-iphonehd\friends.plist">
-      <Filter>Resources\Image\resources-iphonehd</Filter>
-    </None>
-    <None Include="..\Resources\Image\resources-iphonehd\friends.png">
-      <Filter>Resources\Image\resources-iphonehd</Filter>
-    </None>
-    <None Include="..\Resources\Image\resources-iphonehd\login.plist">
-      <Filter>Resources\Image\resources-iphonehd</Filter>
-    </None>
-    <None Include="..\Resources\Image\resources-iphonehd\login.png">
-      <Filter>Resources\Image\resources-iphonehd</Filter>
-    </None>
-    <None Include="..\Resources\Image\resources-iphonehd\main.plist">
-      <Filter>Resources\Image\resources-iphonehd</Filter>
-    </None>
-    <None Include="..\Resources\Image\resources-iphonehd\main.png">
-      <Filter>Resources\Image\resources-iphonehd</Filter>
     </None>
     <None Include="..\Classes\UILibrary\CCActivityIndicator\Resources\ccactivityindicator.plist">
       <Filter>Classes\UILibrary\CCActivityIndicator\Resources</Filter>
@@ -217,12 +178,6 @@
     <None Include="..\Resources\language\chs.plist">
       <Filter>Resources\Language</Filter>
     </None>
-    <None Include="..\Resources\Task\Task1.plist">
-      <Filter>Resources\Task</Filter>
-    </None>
-    <None Include="..\Resources\Task\Card.plist">
-      <Filter>Resources\Task</Filter>
-    </None>
     <None Include="..\library\gloox\config.h.unix">
       <Filter>Library\gloox</Filter>
     </None>
@@ -232,77 +187,8 @@
     <None Include="..\library\gloox\Makefile.in">
       <Filter>Library\gloox</Filter>
     </None>
-    <None Include="..\Resources\particle-fire.png">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\particle-smoke.png">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\particle-snow.png">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\particle-stars.png">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\ccactivityindicator.plist">
-      <Filter>Resources</Filter>
-    </None>
-    <None Include="..\Resources\ccactivityindicator.png">
-      <Filter>Resources</Filter>
-    </None>
-    <None Include="..\Resources\Image\test.fnt">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\test.png">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\card.plist">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\card.png">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\simhei.ttf">
-      <Filter>Resources\Image</Filter>
-    </None>
-    <None Include="..\Resources\Image\resources-iphonehd\card.plist">
-      <Filter>Resources\Image\resources-iphonehd</Filter>
-    </None>
-    <None Include="..\Resources\Image\resources-iphonehd\card.png">
-      <Filter>Resources\Image\resources-iphonehd</Filter>
-    </None>
     <None Include="..\Resources\background.jpeg">
       <Filter>Resources</Filter>
-    </None>
-    <None Include="..\Resources\particle\ellipse.plist">
-      <Filter>Resources\particle</Filter>
-    </None>
-    <None Include="..\Resources\particle\ellipse.png">
-      <Filter>Resources\particle</Filter>
-    </None>
-    <None Include="..\Resources\particle\explore1.plist">
-      <Filter>Resources\particle</Filter>
-    </None>
-    <None Include="..\Resources\particle\fire.plist">
-      <Filter>Resources\particle</Filter>
-    </None>
-    <None Include="..\Resources\particle\fire.png">
-      <Filter>Resources\particle</Filter>
-    </None>
-    <None Include="..\Resources\particle\line.png">
-      <Filter>Resources\particle</Filter>
-    </None>
-    <None Include="..\Resources\particle\myAttack1.plist">
-      <Filter>Resources\particle</Filter>
-    </None>
-    <None Include="..\Resources\particle\particleTexture.png">
-      <Filter>Resources\particle</Filter>
-    </None>
-    <None Include="..\Resources\particle\flash.plist">
-      <Filter>Resources\particle</Filter>
-    </None>
-    <None Include="..\Resources\particle\flash.png">
-      <Filter>Resources\particle</Filter>
     </None>
     <None Include="..\Resources\scene\AddFriendScene.ccbi">
       <Filter>Resources\Scene</Filter>
@@ -322,28 +208,19 @@
     <None Include="..\Resources\scene\MailMainScene.ccbi">
       <Filter>Resources\Scene</Filter>
     </None>
-    <None Include="..\Resources\scene\MainGameScene copy.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
     <None Include="..\Resources\scene\MainGameScene.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\scene\MainInner1Layer.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\scene\MainInnerL2ayer.ccbi">
       <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\scene\MainInnerLayer.ccbi">
       <Filter>Resources\Scene</Filter>
     </None>
-    <None Include="..\Resources\scene\MainOuterLlayer.ccbi">
-      <Filter>Resources\Scene</Filter>
-    </None>
-    <None Include="..\Resources\scene\MainSceneTemplate.ccbi">
+    <None Include="..\Resources\scene\MainOuterLayer.ccbi">
       <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\scene\MDCardAlchemyLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MDCatalogueLayer.ccbi">
       <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\scene\MDHeroDetailLayer.ccbi">
@@ -362,6 +239,12 @@
       <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\scene\MDHerosFormationLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MDPackageLayer.ccbi">
+      <Filter>Resources\Scene</Filter>
+    </None>
+    <None Include="..\Resources\scene\MDSettingLayer.ccbi">
       <Filter>Resources\Scene</Filter>
     </None>
     <None Include="..\Resources\scene\NewMailScene.ccbi">
@@ -391,17 +274,98 @@
     <None Include="..\Resources\scene\UserMailScene.ccbi">
       <Filter>Resources\Scene</Filter>
     </None>
-    <None Include="..\Resources\font\Arial.fnt">
-      <Filter>Resources\font</Filter>
+    <None Include="..\Resources\Image\card.plist">
+      <Filter>Resources\Image</Filter>
     </None>
-    <None Include="..\Resources\font\Arial.png">
-      <Filter>Resources\font</Filter>
+    <None Include="..\Resources\Image\card.png">
+      <Filter>Resources\Image</Filter>
     </None>
-    <None Include="..\Resources\font\btn.fnt">
-      <Filter>Resources\font</Filter>
+    <None Include="..\Resources\Image\friends.plist">
+      <Filter>Resources\Image</Filter>
     </None>
-    <None Include="..\Resources\font\btn.png">
-      <Filter>Resources\font</Filter>
+    <None Include="..\Resources\Image\friends.png">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\login.plist">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\login.png">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\main.plist">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\main.png">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\card.plist">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\card.png">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\friends.plist">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\friends.png">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\login.plist">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\login.png">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\main.plist">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\main.png">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\particle\ccbParticleStars.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\ellipse.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\ellipse.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\explore1.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\fire.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\fire.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\flash.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\flash.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\line.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\myAttack1.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\particle-fire.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\particle-smoke.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\particle-snow.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\particle-stars.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\particleTexture.png">
+      <Filter>Resources\particle</Filter>
     </None>
     <None Include="..\Resources\font\JDJYCHAO.TTF">
       <Filter>Resources\font</Filter>
@@ -417,6 +381,27 @@
     </None>
     <None Include="..\Resources\font\test.png">
       <Filter>Resources\font</Filter>
+    </None>
+    <None Include="..\Resources\font\resources-iphone\btn.fnt">
+      <Filter>Resources\font\resources-iphone</Filter>
+    </None>
+    <None Include="..\Resources\font\resources-iphone\btn.png">
+      <Filter>Resources\font\resources-iphone</Filter>
+    </None>
+    <None Include="..\Resources\font\resources-iphonehd\btn.fnt">
+      <Filter>Resources\font\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\font\resources-iphonehd\btn.png">
+      <Filter>Resources\font\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\data\card.s3db">
+      <Filter>Resources\data</Filter>
+    </None>
+    <None Include="..\Resources\Task\Card1.plist">
+      <Filter>Resources\Task</Filter>
+    </None>
+    <None Include="..\Resources\Task\Task1.plist">
+      <Filter>Resources\Task</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -1066,48 +1051,6 @@
     <ClInclude Include="..\library\ccnet\stream.h">
       <Filter>Library\ccnet</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Card\MDCardAlchemyLayer.h">
-      <Filter>Classes\Card</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Card\MDCardAlchemyLayerLoader.h">
-      <Filter>Classes\Card</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Card\MDHeroDetailLayer.h">
-      <Filter>Classes\Card</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Card\MDHeroDetailLayerLoader.h">
-      <Filter>Classes\Card</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Card\MDHeroListLayer.h">
-      <Filter>Classes\Card</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Card\MDHeroListLayerLoader.h">
-      <Filter>Classes\Card</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Card\MDHeroMainLayer.h">
-      <Filter>Classes\Card</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Card\MDHeroMainLayerLoader.h">
-      <Filter>Classes\Card</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Card\MDHeroPrePromoLayer.h">
-      <Filter>Classes\Card</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Card\MDHeroPrePromoLayerLoader.h">
-      <Filter>Classes\Card</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Card\MDHeroPromoLayer.h">
-      <Filter>Classes\Card</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Card\MDHeroPromoLayerLoader.h">
-      <Filter>Classes\Card</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Card\MDHerosFormationLayer.h">
-      <Filter>Classes\Card</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Card\MDHerosFormationLayerLoader.h">
-      <Filter>Classes\Card</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\UILibrary\MDProgressBar.h">
       <Filter>Classes\UILibrary</Filter>
     </ClInclude>
@@ -1153,18 +1096,6 @@
     <ClInclude Include="..\Classes\Common\StringExt.h">
       <Filter>Classes\Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\main\MainInnerLayer.h">
-      <Filter>Classes\Main</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\main\MainInnerLayerLoader.h">
-      <Filter>Classes\Main</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\main\MainSceneTemplate.h">
-      <Filter>Classes\Main</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\main\MainSceneTemplateLoader.h">
-      <Filter>Classes\Main</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Package\MDPackageLayer.h">
       <Filter>Classes\Package</Filter>
     </ClInclude>
@@ -1176,6 +1107,63 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Task\MDTaskBoxLayerLoader.h">
       <Filter>Classes\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDCardAlchemyLayer.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDCardAlchemyLayerLoader.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroDetailLayer.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroDetailLayerLoader.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroListLayer.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroListLayerLoader.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroMainLayer.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroMainLayerLoader.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroPrePromoLayer.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroPrePromoLayerLoader.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroPromoLayer.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHeroPromoLayerLoader.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHerosFormationLayer.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Card\MDHerosFormationLayerLoader.h">
+      <Filter>Classes\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\main\MainInnerLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\main\MainInnerLayerLoader.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\main\MainOuterLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\main\MainOuterLayerLoader.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\MDDefine.h">
+      <Filter>Classes\Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1627,27 +1615,6 @@
     <ClCompile Include="..\library\ccnet\stream.cpp">
       <Filter>Library\ccnet</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Card\MDCardAlchemyLayer.cpp">
-      <Filter>Classes\Card</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Card\MDHeroDetailLayer.cpp">
-      <Filter>Classes\Card</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Card\MDHeroListLayer.cpp">
-      <Filter>Classes\Card</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Card\MDHeroMainLayer.cpp">
-      <Filter>Classes\Card</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Card\MDHeroPrePromoLayer.cpp">
-      <Filter>Classes\Card</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Card\MDHeroPromoLayer.cpp">
-      <Filter>Classes\Card</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Card\MDHerosFormationLayer.cpp">
-      <Filter>Classes\Card</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\UILibrary\MDProgressBar.cpp">
       <Filter>Classes\UILibrary</Filter>
     </ClCompile>
@@ -1669,17 +1636,38 @@
     <ClCompile Include="..\Classes\Common\MDMessageCenter.cpp">
       <Filter>Classes\Common</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\main\MainInnerLayer.cpp">
-      <Filter>Classes\Main</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\main\MainSceneTemplate.cpp">
-      <Filter>Classes\Main</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Package\MDPackageLayer.cpp">
       <Filter>Classes\Package</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Task\MDTaskBoxLayer.cpp">
       <Filter>Classes\Task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Card\MDCardAlchemyLayer.cpp">
+      <Filter>Classes\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Card\MDHeroDetailLayer.cpp">
+      <Filter>Classes\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Card\MDHeroListLayer.cpp">
+      <Filter>Classes\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Card\MDHeroMainLayer.cpp">
+      <Filter>Classes\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Card\MDHeroPrePromoLayer.cpp">
+      <Filter>Classes\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Card\MDHeroPromoLayer.cpp">
+      <Filter>Classes\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Card\MDHerosFormationLayer.cpp">
+      <Filter>Classes\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\main\MainInnerLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\main\MainOuterLayer.cpp">
+      <Filter>Classes\Main</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
