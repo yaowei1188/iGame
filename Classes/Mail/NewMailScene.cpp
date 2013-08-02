@@ -57,7 +57,7 @@ void NewMailScene::doSubmit()
 	std::string sSubject(m_txtSubject->getText());
     std::string sContent(m_txtContent->getText());
     
-    if (trimRight(sReceiver).empty() || trimRight(sSubject).empty() || trimRight(sContent).empty()) {
+    if (trimRight(sReceiver).empty() || trimRight(sSubject).empty()) {
         CCMessageBox("field can not be empty","ERROR");
         return;
     }
@@ -100,53 +100,30 @@ void NewMailScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse*
 	std::vector<char> *buffer = response->getResponseData(); 
 
 	std::string content(buffer->begin(),buffer->end());
-
-	parseJson(content);
-}
-
-void NewMailScene::parseJson(std::string &content)
-{
-//    JsonBox::Value v2;
-//	v2.loadFromString(content);
-//    
-//    int code = v2["code"].getInt();
-//    if (code!=200) {
-//        
-//        CCMessageBox("invoke web api failed!","ERROR");
-//        return;
-//    }else {
-//    	CCLOG("douzhan:login successfully!");
-//    }
-//    
-//    CCUserDefault::sharedUserDefault()->setStringForKey("username", v2["username"].getString());
-//    CCUserDefault::sharedUserDefault()->setStringForKey("userinfo", v2["encryptedUserInfo"].getString());
 }
 
 void NewMailScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     this->setFntTitle(101);
     this->setFntTitle(102);
-//    this->setFntTitle(103);
     
     m_txtReceiver = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
     this->addChild(m_txtReceiver);
-    m_txtReceiver->setPosition(ccp(187, 343));
+    m_txtReceiver->setPosition(ccp(172, 357));
     m_txtReceiver->setFontColor(ccc3(251,255,33));
     m_txtReceiver->setFont("Arial", 14);
  
-    m_txtSubject = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
+    m_txtSubject = CCEditBox::create(CCSizeMake(216, 35), CCScale9Sprite::create("transparent.png"));
     this->addChild(m_txtSubject);
-    m_txtSubject->setPosition(ccp(187, 297));
+    m_txtSubject->setPosition(ccp(180, 316));
     m_txtSubject->setFontColor(ccc3(251,255,33));
     m_txtSubject->setFont("Arial", 14);
     
-    m_txtContent = CCEditBox::create(CCSizeMake(200, 35), CCScale9Sprite::create("transparent.png"));
+    m_txtContent = CCEditBox::create(CCSizeMake(255, 35), CCScale9Sprite::create("transparent.png"));
     this->addChild(m_txtContent);
-    m_txtContent->setPosition(ccp(187, 248));
+    m_txtContent->setPosition(ccp(155, 245));
     m_txtContent->setFontColor(ccc3(251,255,33));
     m_txtContent->setFont("Arial", 14);
-//    m_txtContent->setContentSize(CCSizeMake(200, 85));
-//    m_txtContent->setPreferredSize(CCSizeMake(200, 85));
 }
 
 bool NewMailScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)

@@ -5,7 +5,6 @@
 #include "cocos-ext.h"
 
 #include "MainGameScene.h"
-#include "MainSceneTemplate.h"
 #include "MainLayerBase.h"
 
 using namespace cocos2d;

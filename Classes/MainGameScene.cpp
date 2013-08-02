@@ -10,8 +10,8 @@
 
 MainGameScene::MainGameScene()
 {
-    mMainSceneTemp = NULL;
-    mMainLayer = NULL;
+    mMainOutScene = NULL;
+    mMainInnerLayer = NULL;
     mChatLayer = NULL;
     mlayArray = CCArray::create();
     mlayArray->retain();
@@ -24,16 +24,15 @@ MainGameScene::~MainGameScene()
 
 void MainGameScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    this->mMainSceneTemp->setDelegate(this);
-    this->mMainLayer->setDelegate(this);
-    this->mlayArray->addObject(mMainLayer);
+    this->mMainOutScene->setDelegate(this);
+    this->mMainInnerLayer->setDelegate(this);
+    this->mlayArray->addObject(mMainInnerLayer);
 }
 
 bool MainGameScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainSceneTemp", MainSceneTemplate*, this->mMainSceneTemp);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainLayer", MainInnerLayer*, this->mMainLayer);
-//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mChatLayer", ChatLayer*, this->mChatLayer);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainOutScene", MainOuterLayer*, this->mMainOutScene);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mMainInnerLayer", MainInnerLayer*, this->mMainInnerLayer);
     
     return true;
 }
@@ -42,32 +41,28 @@ void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
 
     switch (pSender->getTag()) {
         case TOOLBAR_BTN_COMPETITION_TAG:
-            CCLOG("11111");
             break;
         case TOOLBAR_BTN_GOD_DEMON_TAG:
-            CCLOG("22222");
+            this->PushLayer((CCLayer *)this->GetLayer("MDCatalogueLayer"));
             break;
         case TOOLBAR_BTN_RANKLIST_TAG:
-            CCLOG("33333");
             break;
         case TOOLBAR_BTN_FRIENDS_TAG:
             this->PushLayer((CCLayer *)this->GetLayer("FriendListScene"));
             break;
         case TOOLBAR_BTN_ITEMS_TAG:
-            CCLOG("55555");
+            this->PushLayer((CCLayer *)this->GetLayer("MDPackageLayer"));
             break;
         case TOOLBAR_BTN_MAIL_TAG:
-            CCLOG("66666");
             this->PushLayer((CCLayer *)this->GetLayer("MailMainScene"));
             break;
         case TOOLBAR_BTN_SETTING_TAG:
         {
-            CCLOG("77777");
-            CCArray *array = GlobalData::getFraction("");
+            this->PushLayer((CCLayer *)this->GetLayer("MDSettingLayer"));
+//            CCArray *array = GlobalData::getFraction("");
             break;
         }
         case 8:
-            CCLOG("8888");
             this->AddChatLayer();
             break;
     }
@@ -89,8 +84,8 @@ void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
     
     CCLayer *layer = NULL;
     if (intSelectedMenu == MENUBAR_MAINPAGE_TAG) {
-        layer = mMainLayer;
-        mMainLayer->showTooBar(true);
+        layer = mMainInnerLayer;
+        mMainInnerLayer->showTooBar(true);
     } else if (intSelectedMenu == MENUBAR_TASK_TAG) {
         layer = (CCLayer *)this->GetLayer("TaskListScene");
 	} else if (intSelectedMenu == MENUBAR_COPY_TAG) {
@@ -98,20 +93,22 @@ void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
 		layer = (CCLayer *)MDBattleLayer::create();
 	} else if (intSelectedMenu == MENUBAR_HERO_TAG) {
 		layer = (CCLayer *)this->GetLayer("MDHeroMainLayer");
+        layer->setUserObject(mMainInnerLayer);
 	} else if (intSelectedMenu == MENUBAR_GROUP_TAG) {
 		this->updateUserInfo(80,100,150,200,5,900);
 		return;
 		//layer = (CCLayer *)this->GetLayer("MDHeroMainLayer");
 	} else if (intSelectedMenu == MENUBAR_SHOP_TAG) {
 		//layer = (CCLayer *)this->GetLayer("MDHeroMainLayer");
+        return;
 	} else {
         return;
     }
     
     if (MENUBAR_HERO_TAG == intSelectedMenu) {
-        if ((CCLayer *)mlayArray->objectAtIndex(0)==mMainLayer) {
+        if ((CCLayer *)mlayArray->objectAtIndex(0)==mMainInnerLayer) {
             number = 2;
-            mMainLayer->showTooBar(false);
+            mMainInnerLayer->showTooBar(false);
         }
     }
     
@@ -125,10 +122,10 @@ void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
     
     if (pItem->getTag() == MENUBAR_HERO_TAG) {
         if (number == 1) {
-            mlayArray->addObject(mMainLayer);
-            mMainLayer->setPosition(ccp(0, 38));
-            mMainLayer->showTooBar(false);
-            this->addChild(mMainLayer);
+            mlayArray->addObject(mMainInnerLayer);
+            mMainInnerLayer->setPosition(ccp(0, 38));
+            mMainInnerLayer->showTooBar(false);
+            this->addChild(mMainInnerLayer);
         }
     }
     
@@ -138,6 +135,50 @@ void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
     this->addChild(layer);
 }
 
+void MainGameScene::PopToRoot()
+{
+    this->PopToNLayer(1);
+}
+
+void MainGameScene::PopToNLayer(int nLayer)
+{
+    this->RemoveChatLayer();
+
+    if (mlayArray->count()<=nLayer) {
+        return;
+    }
+
+    for (int i=mlayArray->count()-2; i>=nLayer; i--) {
+        CCLayer *layer = (CCLayer *)mlayArray->objectAtIndex(i);
+        layer->removeFromParentAndCleanup(true);
+        mlayArray->removeObjectAtIndex(i);
+    }
+
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    CCLayer *current = (CCLayer *)mlayArray->objectAtIndex(mlayArray->count()-1);
+
+    CCSequence *sequence = CCSequence::create(CCMoveBy::create(0.2, CCPointMake(winSize.width,0)),CCCallFuncN::create(this, callfuncN_selector(MainGameScene::removeAndCleanNodeCallBack)),NULL);
+
+    current->runAction(sequence);
+
+    CCLayer *layer = (CCLayer *)mlayArray->objectAtIndex(nLayer-1);
+
+    if (layer->getUserObject()!= NULL && layer->getUserObject()==mMainInnerLayer) {
+        mMainInnerLayer->setPosition(ccp(-320, layer->getPosition().y));
+        this->addChild(mMainInnerLayer);
+        mMainInnerLayer->runAction(CCMoveTo::create(0.2, ccp(0,layer->getPosition().y)));
+    }
+
+    layer->setPosition(ccp(-320, layer->getPosition().y));
+    this->addChild(layer);
+    layer->runAction(CCMoveTo::create(0.2, ccp(0,layer->getPosition().y)));
+}
+
+void MainGameScene::PopLayer()
+{
+    this->PopToNLayer(mlayArray->count()-1);
+}
+
 void MainGameScene::PushLayer(CCLayer *subLayer,bool fromRight)
 {
     this->RemoveChatLayer();
@@ -145,12 +186,15 @@ void MainGameScene::PushLayer(CCLayer *subLayer,bool fromRight)
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     
     CCLayer *prevLayer = (CCLayer *)mlayArray->objectAtIndex(mlayArray->count()-1);
-	prevLayer->setTouchPriority(-129);
-    
+//	prevLayer->setTouchPriority(-129);
+
     if (fromRight) {
         CCSequence *sequence = CCSequence::create(CCMoveBy::create(0.2, CCPointMake(-CCDirector::sharedDirector()->getWinSize().width,0)),CCCallFuncN::create(this, callfuncN_selector(MainGameScene::removeNodeCallBack)),NULL);
-        
         prevLayer->runAction(sequence);
+        if (prevLayer->getUserObject()!= NULL && prevLayer->getUserObject()==mMainInnerLayer) {
+            CCSequence *sequence1 = CCSequence::create(CCMoveBy::create(0.2, CCPointMake(-CCDirector::sharedDirector()->getWinSize().width,0)),CCCallFuncN::create(this, callfuncN_selector(MainGameScene::removeNodeCallBack)),NULL);
+            mMainInnerLayer->runAction(sequence1);
+        }
         
         subLayer->setPosition(ccp(0 + winSize.width,38));
         this->addChild(subLayer);
@@ -204,44 +248,6 @@ void MainGameScene::removeAndCleanNodeCallBack(CCNode* pNode)
     mlayArray->removeLastObject();
 }
 
-void MainGameScene::PopToRoot()
-{
-    this->PopToNLayer(1);
-}
-
-void MainGameScene::PopToNLayer(int nLayer)
-{
-    this->RemoveChatLayer();
-    
-    if (mlayArray->count()<=nLayer) {
-        return;
-    }
-    
-    for (int i=mlayArray->count()-2; i>=nLayer; i--) {
-        CCLayer *layer = (CCLayer *)mlayArray->objectAtIndex(i);
-        layer->removeFromParentAndCleanup(true);
-        mlayArray->removeObjectAtIndex(i);
-    }
-    
-    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    CCLayer *current = (CCLayer *)mlayArray->objectAtIndex(mlayArray->count()-1);
-    
-    CCSequence *sequence = CCSequence::create(CCMoveBy::create(0.2, CCPointMake(winSize.width,0)),CCCallFuncN::create(this, callfuncN_selector(MainGameScene::removeAndCleanNodeCallBack)),NULL);
-    
-    current->runAction(sequence);
-    
-    CCLayer *layer = (CCLayer *)mlayArray->objectAtIndex(nLayer-1);
-    
-    layer->setPosition(ccp(-320, layer->getPosition().y));
-    this->addChild(layer);
-    layer->runAction(CCMoveTo::create(0.2, ccp(0,layer->getPosition().y)));
-}
-
-void MainGameScene::PopLayer()
-{
-    this->PopToNLayer(mlayArray->count()-1);
-}
-
 void MainGameScene::returnToMainLayer()
 {
 	intSelectedMenu = MENUBAR_MAINPAGE_TAG;
@@ -254,10 +260,10 @@ void MainGameScene::returnToMainLayer()
 		mlayArray->removeObjectAtIndex(i);
 	}
 
-	mlayArray->addObject(mMainLayer);
-    mMainLayer->showTooBar(true);
-	mMainLayer->setPosition(ccp(0, 38));
-	this->addChild(mMainLayer);
+	mlayArray->addObject(mMainInnerLayer);
+    mMainInnerLayer->showTooBar(true);
+	mMainInnerLayer->setPosition(ccp(0, 38));
+	this->addChild(mMainInnerLayer);
 }
 
 SEL_MenuHandler MainGameScene::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
@@ -276,7 +282,7 @@ SEL_CCControlHandler MainGameScene::onResolveCCBCCControlSelector(CCObject *pTar
 
 void MainGameScene::updateUserInfo(int hp,int maxhp,int exp,int maxExp,int grade,int gold)
 {
-	mMainSceneTemp->updateUserInfo(hp, maxhp, exp, maxExp,grade,gold);
+	mMainInnerLayer->updateUserInfo(hp, maxhp, exp, maxExp,grade,gold);
 }
 
 bool MainGameScene::init()

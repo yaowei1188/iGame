@@ -6,7 +6,6 @@
 
 #include "SimpleAudioEngine.h"
 #include "MainGameScene.h"
-#include "MainSceneTemplate.h"
 #include "MainLayerBase.h"
 #include "SlidingMenu.h"
 

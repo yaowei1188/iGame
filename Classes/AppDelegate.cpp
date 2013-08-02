@@ -16,7 +16,7 @@
 #include "AddFriendSceneLoader.h"
 
 #include "MainGameSceneLoader.h"
-#include "MainSceneTemplateLoader.h"
+#include "MainOuterLayerLoader.h"
 #include "MainInnerLayerLoader.h"
 #include "ChatLayerLoader.h"
 
@@ -149,7 +149,9 @@ bool AppDelegate::applicationDidFinishLaunching()
     ccNodeLoaderLibrary->registerCCNodeLoader("MainGameScene", MainGameSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("LoginScene", LoginSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("CCTableView", CCTableViewLoader::loader());
-    ccNodeLoaderLibrary->registerCCNodeLoader("MainSceneTemplate", MainSceneTemplateLoader::loader());    
+//    ccNodeLoaderLibrary->registerCCNodeLoader("MainOuterLayer", MainOuterLayerLoader::loader());
+    ccNodeLoaderLibrary->registerCCNodeLoader("MainInnerLayer", MainInnerLayerLoader::loader());
+    ccNodeLoaderLibrary->registerCCNodeLoader("MainOuterLayer", MainOuterLayerLoader::loader());   
     ccNodeLoaderLibrary->registerCCNodeLoader("FriendListScene", FriendListSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("AddFriendScene", AddFriendSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("ThirdLoginScene", ThirdLoginSceneLoader::loader());
@@ -159,7 +161,6 @@ bool AppDelegate::applicationDidFinishLaunching()
     ccNodeLoaderLibrary->registerCCNodeLoader("TaskListScene", TaskListSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("TaskDetailScene", TaskDetailSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("TaskRewardScene", TaskRewardSceneLoader::loader());
-	ccNodeLoaderLibrary->registerCCNodeLoader("MainInnerLayer", MainInnerLayerLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("RegisterScene", RegisterSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("MailMainScene", MailMainSceneLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("ChatLayer", ChatLayerLoader::loader());

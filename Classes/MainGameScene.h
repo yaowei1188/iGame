@@ -12,9 +12,9 @@
 #include <iostream>
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "MainSceneTemplate.h"
+#include "MainOuterLayer.h"
 #include "MainLayerBase.h"
-#include "MainSceneTemplate.h"
+#include "MainOuterLayer.h"
 #include "MainInnerLayer.h"
 #include "MDBattleLayer.h"
 #include "ChatLayer.h"
@@ -28,7 +28,7 @@ class MainGameScene : public MainLayerBase,
   public CCBSelectorResolver,
   public CCBMemberVariableAssigner,
   public CCNodeLoaderListener,
-  public MainSceneTemplateDelegate,
+  public MainOuterLayerDelegate,
   public MainInnerLayerDelegate
 {
 public:
@@ -50,10 +50,9 @@ private:
     
     virtual bool init();
     
-    MainSceneTemplate *mMainSceneTemp;
+    MainOuterLayer *mMainOutScene;
+    MainInnerLayer *mMainInnerLayer;
     ChatLayer *mChatLayer;
-    MainInnerLayer *mMainLayer;
-    
 
     bool mblnIsHomePage;
     

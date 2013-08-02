@@ -8,7 +8,6 @@
 #include "XmlParser.h"
 
 #include "MainGameScene.h"
-#include "MainSceneTemplate.h"
 #include "MainLayerBase.h"
 #include "common.h"
 #include "MailListScene.h"

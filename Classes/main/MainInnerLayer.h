@@ -15,6 +15,7 @@
 #include "common.h"
 #include "MainLayerBase.h"
 #include "StringExt.h"
+#include "MDProgressBar.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -72,6 +73,20 @@ private:
 	CCTableView* mTableView;
 	CCArray *mCardList;
     CCLayer *m_layToolBar;
+
+    CCLabelTTF *mlblName;
+	CCLabelTTF *mlblHealth;
+	CCLabelTTF *mlblPower;
+
+	CCLabelTTF *mlblGold;
+	CCLabelTTF *mlblBronze;
+	CCLabelTTF *mlblGrade;
+	CCSprite   *m_sPlayerContainer;
+
+    MDProgressBar *hpBar;
+    MDProgressBar *expBar;
+public:
+    void updateUserInfo(int hp,int maxhp,int exp,int maxExp,int grade,int gold);
 
 };
 

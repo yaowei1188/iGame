@@ -6,17 +6,16 @@
 //
 //
 
-#ifndef __MainSceneTemplate__
-#define __MainSceneTemplate__
+#ifndef __MainOuterLayer__
+#define __MainOuterLayer__
 
 #include <iostream>
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "common.h"
-#include "MainSceneTemplate.h"
 #include "MainLayerBase.h"
 #include "StringExt.h"
-#include "MDProgressBar.h"
+//#include "MDProgressBar.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -24,7 +23,7 @@ using namespace cocos2d::extension;
 /**
  * Data source that governs table backend data.
  */
-class MainSceneTemplateDelegate
+class MainOuterLayerDelegate
 {
 public:
 
@@ -32,17 +31,17 @@ public:
 
 };
 
-class MainSceneTemplate : public MainLayerBase,
+class MainOuterLayer : public MainLayerBase,
   public CCBSelectorResolver,
   public CCBMemberVariableAssigner,
   public CCNodeLoaderListener
 {
 public:
-    ~MainSceneTemplate();
-    MainSceneTemplate();
+    ~MainOuterLayer();
+    MainOuterLayer();
 
-    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainSceneTemplate, create);
-    CC_SYNTHESIZE(MainSceneTemplateDelegate*, m_delegate, Delegate);
+    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainOuterLayer, create);
+    CC_SYNTHESIZE(MainOuterLayerDelegate*, m_delegate, Delegate);
 private:
     void menuBarBtnClicked(CCObject *pSender);
     void toolBarBtnClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
@@ -55,19 +54,19 @@ private:
     
     virtual bool init();
 
-	CCLabelTTF *mlblName;
-	CCLabelTTF *mlblHealth;
-	CCLabelTTF *mlblPower;
-
-	CCLabelTTF *mlblGold;
-	CCLabelTTF *mlblBronze;
-	CCLabelTTF *mlblGrade;
-	CCSprite   *m_sPlayerContainer;
-
-    MDProgressBar *hpBar;
-    MDProgressBar *expBar;
-public:
-    void updateUserInfo(int hp,int maxhp,int exp,int maxExp,int grade,int gold);
+//	CCLabelTTF *mlblName;
+//	CCLabelTTF *mlblHealth;
+//	CCLabelTTF *mlblPower;
+//
+//	CCLabelTTF *mlblGold;
+//	CCLabelTTF *mlblBronze;
+//	CCLabelTTF *mlblGrade;
+//	CCSprite   *m_sPlayerContainer;
+//
+//    MDProgressBar *hpBar;
+//    MDProgressBar *expBar;
+//public:
+//    void updateUserInfo(int hp,int maxhp,int exp,int maxExp,int grade,int gold);
 };
 
 #endif
