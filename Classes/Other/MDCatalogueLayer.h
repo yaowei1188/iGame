@@ -4,10 +4,9 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 
-#include "SimpleAudioEngine.h"
-//#include "CCMessageDialog.h"
 #include "MainGameScene.h"
 #include "MainLayerBase.h"
+#include "CCMultiColumnTableView.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -18,8 +17,7 @@ public CCTableViewDataSource,
 public CCTableViewDelegate,
 public CCBSelectorResolver,
 public CCNodeLoaderListener,
-public CCBMemberVariableAssigner,
-public CCMessageDialogDelegate
+public CCBMemberVariableAssigner
 {
 public:
     MDCatalogueLayer();
@@ -60,22 +58,18 @@ private:
 	// a selector callback
 	void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
 
-    void toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent);
     void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
-	void didClickButton(CCMessageDialog* dialog,unsigned int index);
     void LoadHeros();
-	void callbackSwitch(CCObject* pSender);
-	CCMenu* generateCheckBox();
 
 
 //	void deleteFriend(std::string &targetUser);
 private:
-    CCTableView* mTableView;
+    CCMultiColumnTableView* mTableView;
     unsigned int selectedindex;
     CCSprite *m_sTitle;
     CCArray *mHeroList;
 	bool btnTouched;
-	   int *vUserData;
+	int *vUserData;
 public:
     int category;
 };

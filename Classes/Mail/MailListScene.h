@@ -31,16 +31,19 @@ public:
 
     // there's no 'id' in cpp, so we recommand to return the exactly class pointer
     static cocos2d::CCScene* scene();
+
+	// implement the "static node()" method manually
+	CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MailListScene,create);
+
+	void deleteEntrys();
+
+private:
     
     // a selector callback
     void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
 	void doSearch();
     
-    CCMenu *generateCheckBox();
     void callbackSwitch(CCObject* pSender);
-
-    // implement the "static node()" method manually
-    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MailListScene,create);
     
 	virtual void scrollViewDidScroll(cocos2d::extension::CCScrollView* view) {};
 	virtual void scrollViewDidZoom(cocos2d::extension::CCScrollView* view) {}
@@ -57,9 +60,9 @@ public:
     //virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
     
     void toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent);
-    void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
+    //void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
 	void didClickButton(CCMessageDialog* dialog,unsigned int index);
-	void deleteEntry(std::string &targetUser);
+
 	void loadTableView();
 	CCTableView* mTableViewMail;
     unsigned int selectedindex;

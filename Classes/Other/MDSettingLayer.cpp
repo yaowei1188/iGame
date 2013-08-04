@@ -30,7 +30,6 @@ bool MDSettingLayer::init()
     bool bRet = false;
     do 
     {
-
         CC_BREAK_IF(! CCLayer::init());
 
 		btnTouched = false;
@@ -104,7 +103,6 @@ void MDSettingLayer::requestFinishedCallback(CCHttpClient* client, CCHttpRespons
 bool MDSettingLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableView", CCTableView*, this->mTableView);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sTitle", CCSprite*, this->m_sTitle);
     return true;
 }
 
@@ -121,28 +119,11 @@ SEL_CCControlHandler MDSettingLayer::onResolveCCBCCControlSelector(CCObject *pTa
 
 void MDSettingLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    //if (category == 1) {
-    //    m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_choosehero.png"));
-    //} else {
-    //    m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_heropalace.png"));
-    //}
-    //mTableView->setDirection(kCCScrollViewDirectionVertical);
-    //mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
-    //mTableView->setDataSource(this);
-    //mTableView->setViewSize(CCSizeMake(312, 314));
-    //mTableView->setDelegate(this);
 
-    //mTableView->reloadData();
-//    this->LoadHeros();
 }
 
 void MDSettingLayer::reloadDataSource()
 {
-	if (category == 1) {
-		m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_choosehero.png"));
-	} else {
-		m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_heropalace.png"));
-	}
 	mTableView->setDirection(kCCScrollViewDirectionVertical);
 	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
 	mTableView->setDataSource(this);
@@ -243,33 +224,12 @@ CCTableViewCell* MDSettingLayer::tableCellAtIndex(CCTableView *table, unsigned i
         cell->addChild(sline);
         
 		CCPoint point = ccp(218 ,size.height * 0.5);
-		if (category==1)
-		{
-			point = ccp(170 ,size.height * 0.5);
-		}
 
         CCSprite *sStarGrade = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_l_star5.png"));
         sStarGrade->setPosition(point);
 		lblLevel->setTag(125);
         sStarGrade->setAnchorPoint(ccp(0, 0.5));
         cell->addChild(sStarGrade);
-
-		if (category==1)
-		{
-			CCMenu *menuCheck = this->generateCheckBox();
-			cell->addChild(menuCheck);
-			CCMenuItemToggle *toggle= (CCMenuItemToggle *)menuCheck->getChildByTag(1);
-			toggle->setUserData(&vUserData[idx]);
-			if (vUserData[idx] == 1) {
-				toggle->setSelectedIndex(1);
-			} else {
-				toggle->setSelectedIndex(0);
-			}
-
-			menuCheck->setTag(126);
-			menuCheck->setAnchorPoint(CCPointMake(0, 0.5));
-			menuCheck->setPosition(CCPointMake(280, size.height * 0.5));
-		}
 	}
 	else
 	{
@@ -291,68 +251,9 @@ CCTableViewCell* MDSettingLayer::tableCellAtIndex(CCTableView *table, unsigned i
         
 //        CCScale9Sprite *background = (CCScale9Sprite *)cell->getChildByTag(121);
 //        background->setContentSize(size);
-
-		if (category==1)
-		{
-			CCMenu *menuCheck = (CCMenu *)cell->getChildByTag(126);
-			CCMenuItemToggle *toggle= (CCMenuItemToggle *)menuCheck->getChildByTag(1);
-			toggle->setUserData(&vUserData[idx]);
-
-			if (vUserData[idx] == 1) {
-				toggle->setSelectedIndex(1);
-			} else {
-				toggle->setSelectedIndex(0);
-			}
-		}
 	}
 
 	return cell;
-}
-
-void MDSettingLayer::callbackSwitch(CCObject* pSender){
-
-	CCMenuItemToggle* pSwitch = (CCMenuItemToggle*)pSender;
-
-	int *idx = (int *)pSwitch->getUserData();
-	if (idx==NULL)
-	{
-		if (pSwitch->getSelectedIndex()==0) {
-			for(int i=0;i<mHeroList->count();i++)
-			{
-				vUserData[i]=0;
-			}
-		} else {
-			for(int i=0;i<mHeroList->count();i++)
-			{
-				vUserData[i]=1;
-			}
-		}
-		mTableView->refreshData();
-	}
-	else
-	{
-		if (pSwitch->getSelectedIndex()==0) {
-			*idx = 0;
-		} else {
-			*idx = 1;
-		}
-	}
-}
-
-CCMenu* MDSettingLayer::generateCheckBox()
-{
-	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox_checked.png"));
-	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox.png"));
-
-	CCMenu* m_auto_op_menu = CCMenu::create();
-	CCMenuItemSprite* menuOff = CCMenuItemSprite::create(spriteOff, NULL);
-	CCMenuItemSprite* menuOn = CCMenuItemSprite::create(spriteOn, NULL);
-	CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(MDSettingLayer::callbackSwitch),menuOff,menuOn,NULL);
-	item->setTag(1);
-
-	m_auto_op_menu->addChild(item);
-
-	return m_auto_op_menu;
 }
 
 //    按下按钮事件回调
@@ -387,45 +288,16 @@ void MDSettingLayer::toolBarTouchDownAction(CCObject * sender , CCControlEvent p
 		case 130:
 			{
 				btnTouched = false;
-				CCMessageDialog *box = CCMessageDialog::create();
-				box->setTitle(GlobalData::getLocalString("friend_delete_confirm")->getCString());
-				box->setDelegate(this);
-				this->addChild(box);
+				//CCMessageDialog *box = CCMessageDialog::create();
+				//box->setTitle(GlobalData::getLocalString("friend_delete_confirm")->getCString());
+				//box->setDelegate(this);
+				//this->addChild(box);
 
 				break;
 			}
 		}
 	}
 }
-
-void MDSettingLayer::didClickButton(CCMessageDialog* dialog,unsigned int index)
-{
-	if (index == 0)
-	{
-		CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(selectedindex);
-        string encryptedUserInfo(dict->valueForKey("encryptedUserInfo")->getCString());
-//		this->deleteFriend(encryptedUserInfo);
-	}
-}
-
-//void MDSettingLayer::deleteFriend(std::string &targetUser)
-//{
-//	CCHttpRequest *request = new CCHttpRequest();
-//	request->setRequestType(CCHttpRequest::kHttpGet);
-//	request->setResponseCallback(this,httpresponse_selector(MDSettingLayer::requestFinishedCallback));
-//	request->setTag("103");
-//
-//	string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
-//	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-//	_strUrl.append("/" + targetUser);
-//
-//	request->setUrl(_strUrl.c_str());
-//
-//	CCHttpClient *client = CCHttpClient::getInstance();
-//	client->send(request);
-//
-//	request->release();
-//}
 
 void MDSettingLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
 {
@@ -449,12 +321,10 @@ MDSettingLayer::MDSettingLayer()
 {
     mTableView = NULL;
     mHeroList = NULL;
-    m_sTitle = NULL;
 }
 
 MDSettingLayer::~MDSettingLayer()
 {
     CC_SAFE_RELEASE(mTableView);
-    CC_SAFE_RELEASE(m_sTitle);
 }
 

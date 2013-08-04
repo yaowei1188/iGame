@@ -42,6 +42,8 @@ protected:
 	std::string showUTF8String(std::string name);
     std::string determineGroup(CCString* number);
     void setFntTitle(int tag,string font="btn.fnt");
+	CCMenu* generateCheckBox();
+	virtual void callbackSwitch(CCObject* pSender){};
 
 private:
     LoadingScene *loading;

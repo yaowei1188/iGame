@@ -220,21 +220,21 @@ void TaskListScene::showTaskLists()
 
     for (int i = 1;i<= 24 ;i++)
     {
-        CCMenuItemSprite* itmspr = NULL;
+        CCMenuItemSprite* itemSprite = NULL;
         CCSprite *sNormal = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_normal.png"));
         CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_progress.png"));
         CCSprite *sLocked = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_locked.png"));
 		CCSprite *sPassed = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_passed.png"));
 
         if (i > listUpperIndex) {
-            itmspr = CCMenuItemSprite::create(sLocked, NULL, NULL, NULL, NULL);
+            itemSprite = CCMenuItemSprite::create(sLocked, NULL, NULL, NULL, NULL);
         } else if (i == listUpperIndex) {
-            itmspr = CCMenuItemSprite::create(sNormal, sSelected, sLocked, this, menu_selector(TaskListScene::menuItemCallback));
+            itemSprite = CCMenuItemSprite::create(sNormal, sSelected, sLocked, this, menu_selector(TaskListScene::menuItemCallback));
 		} else if (i < listUpperIndex) { 
-			itmspr = CCMenuItemSprite::create(sPassed, NULL, NULL, NULL, NULL);
+			itemSprite = CCMenuItemSprite::create(sPassed, NULL, NULL, NULL, NULL);
 		}
-        itmspr->setTag(i);
-        mArrayList->addObject(itmspr);
+        itemSprite->setTag(i);
+        mArrayList->addObject(itemSprite);
     }
 
     CCPoint p = ccp(100,80);

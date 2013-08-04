@@ -66,7 +66,6 @@ bool MailListScene::init()
 
 void MailListScene::loadTableView()
 {
-	//mArrayList =  CCArray::create();
 	mArrayList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
 	mArrayList->retain();
 
@@ -210,22 +209,6 @@ void MailListScene::callbackSwitch(CCObject* pSender){
 	}
 }
 
-CCMenu* MailListScene::generateCheckBox()
-{
-    CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox_checked.png"));
-	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox.png"));
-    
-    CCMenu* m_auto_op_menu = CCMenu::create();
-    CCMenuItemSprite* menuOff = CCMenuItemSprite::create(spriteOff, NULL);
-    CCMenuItemSprite* menuOn = CCMenuItemSprite::create(spriteOn, NULL);
-    CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(MailListScene::callbackSwitch),menuOff,menuOn,NULL);
-    item->setTag(1);
-    
-    m_auto_op_menu->addChild(item);
-    
-    return m_auto_op_menu;
-}
-
 CCTableViewCell* MailListScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
 	CCString *string = (CCString *)mArrayList->objectAtIndex(idx);
@@ -241,14 +224,14 @@ CCTableViewCell* MailListScene::tableCellAtIndex(CCTableView *table, unsigned in
 		sState->setTag(120);
 		cell->addChild(sState);
 
-		CCLabelTTF *lblFriendName = CCLabelTTF::create(string->getCString(), "Arial", 14.0);
-		lblFriendName->setPosition(ccp(55,size.height * 0.5));
-        lblFriendName->setColor(ccc3(255, 255, 204));
-        //lblFriendName->enableStroke(ccc3(51, 0, 0), 0.6);
-		lblFriendName->setTag(121);
-		lblFriendName->setHorizontalAlignment(kCCTextAlignmentLeft);
-        lblFriendName->setString(string->getCString());
-		cell->addChild(lblFriendName);
+		CCLabelTTF *lblName = CCLabelTTF::create(string->getCString(), "Arial", 14.0);
+		lblName->setPosition(ccp(65,size.height * 0.5));
+        lblName->setColor(ccc3(255, 255, 204));
+        //lblName->enableStroke(ccc3(51, 0, 0), 0.6);
+		lblName->setTag(121);
+		lblName->setHorizontalAlignment(kCCTextAlignmentLeft);
+        lblName->setString(string->getCString());
+		cell->addChild(lblName);
 
 		CCLabelTTF *lblSubject = CCLabelTTF::create("100", "Arial", 14.0);
 		lblSubject->setPosition(ccp(130,size.height * 0.5));
@@ -280,8 +263,8 @@ CCTableViewCell* MailListScene::tableCellAtIndex(CCTableView *table, unsigned in
 	}
 	else
 	{
-		CCLabelTTF *lblFriendName = (CCLabelTTF*)cell->getChildByTag(121);
-		lblFriendName->setString(string->getCString());
+		CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(121);
+		lblName->setString(string->getCString());
         
         CCLabelTTF *lblSubject = (CCLabelTTF*)cell->getChildByTag(122);
 		lblSubject->setString(string->getCString());
@@ -330,47 +313,61 @@ void MailListScene::didClickButton(CCMessageDialog* dialog,unsigned int index)
 	{
 		CCDictionary *dict = (CCDictionary *)mArrayList->objectAtIndex(selectedindex);
         string encryptedUserInfo(dict->valueForKey("encryptedUserInfo")->getCString());
-		this->deleteEntry(encryptedUserInfo);
+		this->deleteEntrys();
 	}
 }
 
-void MailListScene::deleteEntry(std::string &targetUser)
+void MailListScene::deleteEntrys()
 {
-	CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,httpresponse_selector(MailListScene::requestFinishedCallback));
-	request->setTag("103");
-
-	string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
-	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-	_strUrl.append("/" + targetUser);
-
-	request->setUrl(_strUrl.c_str());
-
-	CCHttpClient *client = CCHttpClient::getInstance();
-	client->send(request);
-
-	request->release();
-}
-
-void MailListScene::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
-{
-	MainGameScene *mainScene = (MainGameScene *)this->getParent();
-	CCControlButton *button = (CCControlButton *)sender;
-	switch (button->getTag()) {
-	case 101:
-		CCLOG("11111");
-		mainScene->PopLayer();
-		break;
-	case 102:
-		CCLOG("22222");
-		mainScene->PushLayer((CCLayer *)this->GetLayer("AddFriendScene"));
-		break;
-	case 103:
-		CCLOG("33333");
-		break;
+	bool selected = false;
+	for(int i=0;i<mArrayList->count();i++)
+	{
+		if (vUserData[i]==1)
+		{
+			selected = true;
+		}
 	}
+
+	if (!selected)
+	{
+		CCMessageBox("no selected any items","ERROR");
+	}
+
+	//CCHttpRequest *request = new CCHttpRequest();
+	//request->setRequestType(CCHttpRequest::kHttpGet);
+	//request->setResponseCallback(this,httpresponse_selector(MailListScene::requestFinishedCallback));
+	//request->setTag("103");
+
+	//string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
+	//_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+	//_strUrl.append("/" + targetUser);
+
+	//request->setUrl(_strUrl.c_str());
+
+	//CCHttpClient *client = CCHttpClient::getInstance();
+	//client->send(request);
+
+	//request->release();
 }
+
+//void MailListScene::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
+//{
+//	MainGameScene *mainScene = (MainGameScene *)this->getParent();
+//	CCControlButton *button = (CCControlButton *)sender;
+//	switch (button->getTag()) {
+//	case 101:
+//		CCLOG("11111");
+//		mainScene->PopLayer();
+//		break;
+//	case 102:
+//		CCLOG("22222");
+//		mainScene->PushLayer((CCLayer *)this->GetLayer("AddFriendScene"));
+//		break;
+//	case 103:
+//		CCLOG("33333");
+//		break;
+//	}
+//}
 
 MailListScene::MailListScene()
 {

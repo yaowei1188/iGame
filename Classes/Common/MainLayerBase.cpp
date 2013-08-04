@@ -194,3 +194,19 @@ std::string MainLayerBase::determineGroup(CCString* number)
     }
     return "";
 }
+
+CCMenu* MainLayerBase::generateCheckBox()
+{
+	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox_checked.png"));
+	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox.png"));
+
+	CCMenu* m_auto_op_menu = CCMenu::create();
+	CCMenuItemSprite* menuOff = CCMenuItemSprite::create(spriteOff, NULL);
+	CCMenuItemSprite* menuOn = CCMenuItemSprite::create(spriteOn, NULL);
+	CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(MainLayerBase::callbackSwitch),menuOff,menuOn,NULL);
+	item->setTag(1);
+
+	m_auto_op_menu->addChild(item);
+
+	return m_auto_op_menu;
+}

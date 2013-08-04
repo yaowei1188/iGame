@@ -7,6 +7,8 @@
 //
 
 #include "MainGameScene.h"
+#include "MDCatalogueLayer.h"
+#include "MDPackageLayer.h"
 
 MainGameScene::MainGameScene()
 {
@@ -43,7 +45,8 @@ void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
         case TOOLBAR_BTN_COMPETITION_TAG:
             break;
         case TOOLBAR_BTN_GOD_DEMON_TAG:
-            this->PushLayer((CCLayer *)this->GetLayer("MDCatalogueLayer"));
+            /*this->PushLayer((CCLayer *)this->GetLayer("MDCatalogueLayer"));*/
+			this->PushLayer(MDCatalogueLayer::create());
             break;
         case TOOLBAR_BTN_RANKLIST_TAG:
 			{
@@ -55,7 +58,8 @@ void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
             this->PushLayer((CCLayer *)this->GetLayer("FriendListScene"));
             break;
         case TOOLBAR_BTN_ITEMS_TAG:
-            this->PushLayer((CCLayer *)this->GetLayer("MDPackageLayer"));
+            //this->PushLayer((CCLayer *)this->GetLayer("MDPackageLayer"));
+			this->PushLayer(MDPackageLayer::create());
             break;
         case TOOLBAR_BTN_MAIL_TAG:
             this->PushLayer((CCLayer *)this->GetLayer("MailMainScene"));
@@ -168,6 +172,7 @@ void MainGameScene::PopToNLayer(int nLayer)
 
     if (layer->getUserObject()!= NULL && layer->getUserObject()==mMainInnerLayer) {
         mMainInnerLayer->setPosition(ccp(-320, layer->getPosition().y));
+		mMainInnerLayer->showTooBar(true);
         this->addChild(mMainInnerLayer);
         mMainInnerLayer->runAction(CCMoveTo::create(0.2, ccp(0,layer->getPosition().y)));
     }

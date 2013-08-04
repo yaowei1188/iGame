@@ -1165,6 +1165,9 @@
     <ClInclude Include="..\Classes\Common\MDDefine.h">
       <Filter>Classes\Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\CCMultiColumnTableView.h">
+      <Filter>Classes\UILibrary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -1668,6 +1671,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\main\MainOuterLayer.cpp">
       <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\CCMultiColumnTableView.cpp">
+      <Filter>Classes\UILibrary</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -51,6 +51,11 @@ CCTabView::CCTabView(CCRect rect)
 
 }
 
+CCLayer * CCTabView::getSelectedLayer()
+{
+	return (CCLayer *)_tabViewArray->objectAtIndex(_selectedTab);
+}
+
 CCTabView::~CCTabView()
 {
     CC_SAFE_DELETE(_tabNameArray);
@@ -103,6 +108,7 @@ void CCTabView::tabClicked(CCObject * obj)
         
         // showing related tab view
         int tabIndex = pMenu->getTag();
+		_selectedTab = pMenu->getTag();
         
         // remove previous tab view
         _tabView->removeAllChildrenWithCleanup(true);

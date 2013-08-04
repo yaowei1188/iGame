@@ -40,6 +40,8 @@ bool MDCatalogueLayer::init()
 		vUserData = new int[mHeroList->count()]();
 		memset(vUserData, sizeof(int) * mHeroList->count(), 0);
 
+		this->reloadDataSource();
+
         bRet = true;
     } while (0);
 
@@ -102,7 +104,7 @@ void MDCatalogueLayer::requestFinishedCallback(CCHttpClient* client, CCHttpRespo
 
 bool MDCatalogueLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableView", CCTableView*, this->mTableView);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableView", CCMultiColumnTableView*, this->mTableView);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sTitle", CCSprite*, this->m_sTitle);
     return true;
 }
@@ -120,34 +122,20 @@ SEL_CCControlHandler MDCatalogueLayer::onResolveCCBCCControlSelector(CCObject *p
 
 void MDCatalogueLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-    //if (category == 1) {
-    //    m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_choosehero.png"));
-    //} else {
-    //    m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_heropalace.png"));
-    //}
-    //mTableView->setDirection(kCCScrollViewDirectionVertical);
-    //mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
-    //mTableView->setDataSource(this);
-    //mTableView->setViewSize(CCSizeMake(312, 314));
-    //mTableView->setDelegate(this);
 
-    //mTableView->reloadData();
-//    this->LoadHeros();
 }
 
 void MDCatalogueLayer::reloadDataSource()
 {
-	if (category == 1) {
-		m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_choosehero.png"));
-	} else {
-		m_sTitle->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_heropalace.png"));
-	}
+	mTableView = CCMultiColumnTableView::create(this,CCSizeMake(300,150),NULL);
+	this->addChild(mTableView);
+	mTableView->setPosition(ccp(0,70));
 	mTableView->setDirection(kCCScrollViewDirectionVertical);
 	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
 	mTableView->setDataSource(this);
-	mTableView->setViewSize(CCSizeMake(312, 314));
+	mTableView->setViewSize(CCSizeMake(312, 300));
 	mTableView->setDelegate(this);
-
+	mTableView->setColCount(4);
 	mTableView->reloadData();
 }
 
@@ -159,8 +147,8 @@ void MDCatalogueLayer::tableCellHighlight(CCTableView* table, CCTableViewCell* c
 
 void MDCatalogueLayer::tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell)
 {
-    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-    sSelected->setVisible(false);
+	CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
+	sSelected->setVisible(false);
 }
 
 void MDCatalogueLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
@@ -177,8 +165,8 @@ void MDCatalogueLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cel
 //    }
 //
 //    table->refreshData();
-    MainGameScene *mainScene = (MainGameScene *)this->getParent();
-    mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroDetailLayer"));
+	MainGameScene *mainScene = (MainGameScene *)this->getParent();
+	mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroDetailLayer"));
 }
 
 unsigned int MDCatalogueLayer::numberOfCellsInTableView(CCTableView *table)
@@ -188,12 +176,12 @@ unsigned int MDCatalogueLayer::numberOfCellsInTableView(CCTableView *table)
 
 CCSize MDCatalogueLayer::cellSizeForTable(CCTableView *table)
 {
-	return CCSizeMake(312, 68);
+	return CCSizeMake(68, 68);
 }
 
 CCSize MDCatalogueLayer::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
 {
-    return CCSizeMake(312, 68);
+    return CCSizeMake(68, 68);
 }
 
 CCTableViewCell* MDCatalogueLayer::tableCellAtIndex(CCTableView *table, unsigned int idx)
@@ -206,69 +194,28 @@ CCTableViewCell* MDCatalogueLayer::tableCellAtIndex(CCTableView *table, unsigned
 		cell = new CCTableViewCell();
 		cell->autorelease();
         
-        CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_cellhighlight.png"));
-        sSelected->setVisible(false);
-        sSelected->setTag(121);
-		sSelected->setPosition(ccp(13,size.height - 39));
-		sSelected->setAnchorPoint(CCPointZero);
+		CCSprite *sSelected = CCSprite::createWithSpriteFrameName("card_selected.png");
+		sSelected->setVisible(false);
+		sSelected->setTag(121);
+		sSelected->setPosition(ccp(size.width * 0.5,size.height * 0.5));
+		sSelected->setAnchorPoint(ccp(0.5, 0.5));
 		cell->addChild(sSelected);
         
-        CCSprite *sHead = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_rulaifo.png"));
+        CCSprite *sHead = CCSprite::createWithSpriteFrameName("head_rulaifo.png");
         sHead->setTag(122);
-        sHead->setPosition(ccp(10,size.height * 0.5));
-		sHead->setAnchorPoint(ccp(0, 0.5));
+        sHead->setPosition(ccp(size.width * 0.5,size.height * 0.5));
+		sHead->setAnchorPoint(ccp(0.5, 0.5));
 		cell->addChild(sHead);
 
-		CCLabelTTF *lblName = CCLabelTTF::create("rulaifo", FONT_VERDANA, FONT_SIZE_BIG);
+		/*CCLabelTTF *lblName = CCLabelTTF::create("rulaifo", FONT_VERDANA, FONT_SIZE_BIG);
 		lblName->setPosition(ccp(80,size.height - CELL_ITEMS_Y));
 		lblName->setAnchorPoint(ccp(0, 0.5));
-        lblName->setColor(ccc3(235, 234, 181));
-        lblName->enableStroke(ccc3(16, 6, 9), 0.8);
+		lblName->setColor(ccc3(235, 234, 181));
+		lblName->enableStroke(ccc3(16, 6, 9), 0.8);
 		lblName->setTag(123);
 		cell->addChild(lblName);
 
-		CCLabelTTF *lblLevel = CCLabelTTF::create("LV. 3", FONT_VERDANA, FONT_SIZE_MEDIUM);
-		lblLevel->setPosition(ccp(80,size.height - 2 * CELL_ITEMS_Y));
-		lblLevel->setAnchorPoint(ccp(0, 0.5));
-        lblLevel->setColor(ccc3(235, 234, 181));
-        lblLevel->enableStroke(ccc3(16, 6, 9), 0.8);
-		lblLevel->setTag(124);
-		cell->addChild(lblLevel);
-        
-        CCScale9Sprite *sline = CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("line.png"));
-        sline->setPreferredSize(CCSizeMake(290, 1));
-        sline->setPosition(ccp(15,size.height));
-        sline->setAnchorPoint(CCPointZero);
-        cell->addChild(sline);
-        
-		CCPoint point = ccp(218 ,size.height * 0.5);
-		if (category==1)
-		{
-			point = ccp(170 ,size.height * 0.5);
-		}
-
-        CCSprite *sStarGrade = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_l_star5.png"));
-        sStarGrade->setPosition(point);
-		lblLevel->setTag(125);
-        sStarGrade->setAnchorPoint(ccp(0, 0.5));
-        cell->addChild(sStarGrade);
-
-		if (category==1)
-		{
-			CCMenu *menuCheck = this->generateCheckBox();
-			cell->addChild(menuCheck);
-			CCMenuItemToggle *toggle= (CCMenuItemToggle *)menuCheck->getChildByTag(1);
-			toggle->setUserData(&vUserData[idx]);
-			if (vUserData[idx] == 1) {
-				toggle->setSelectedIndex(1);
-			} else {
-				toggle->setSelectedIndex(0);
-			}
-
-			menuCheck->setTag(126);
-			menuCheck->setAnchorPoint(CCPointMake(0, 0.5));
-			menuCheck->setPosition(CCPointMake(280, size.height * 0.5));
-		}
+		}*/
 	}
 	else
 	{
@@ -282,149 +229,12 @@ CCTableViewCell* MDCatalogueLayer::tableCellAtIndex(CCTableView *table, unsigned
         
         CCSprite *sHead = (CCSprite*)cell->getChildByTag(122);
         
-		CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);
-		lblName->setString("weiweiyao");
-        
-        CCLabelTTF *lblLevel = (CCLabelTTF*)cell->getChildByTag(124);
-		//lblLevel->setString(string->getCString());
-        
-//        CCScale9Sprite *background = (CCScale9Sprite *)cell->getChildByTag(121);
-//        background->setContentSize(size);
-
-		if (category==1)
-		{
-			CCMenu *menuCheck = (CCMenu *)cell->getChildByTag(126);
-			CCMenuItemToggle *toggle= (CCMenuItemToggle *)menuCheck->getChildByTag(1);
-			toggle->setUserData(&vUserData[idx]);
-
-			if (vUserData[idx] == 1) {
-				toggle->setSelectedIndex(1);
-			} else {
-				toggle->setSelectedIndex(0);
-			}
-		}
+		//CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);
+		//lblName->setString("weiweiyao");
 	}
 
 	return cell;
 }
-
-void MDCatalogueLayer::callbackSwitch(CCObject* pSender){
-
-	CCMenuItemToggle* pSwitch = (CCMenuItemToggle*)pSender;
-
-	int *idx = (int *)pSwitch->getUserData();
-	if (idx==NULL)
-	{
-		if (pSwitch->getSelectedIndex()==0) {
-			for(int i=0;i<mHeroList->count();i++)
-			{
-				vUserData[i]=0;
-			}
-		} else {
-			for(int i=0;i<mHeroList->count();i++)
-			{
-				vUserData[i]=1;
-			}
-		}
-		mTableView->refreshData();
-	}
-	else
-	{
-		if (pSwitch->getSelectedIndex()==0) {
-			*idx = 0;
-		} else {
-			*idx = 1;
-		}
-	}
-}
-
-CCMenu* MDCatalogueLayer::generateCheckBox()
-{
-	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox_checked.png"));
-	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox.png"));
-
-	CCMenu* m_auto_op_menu = CCMenu::create();
-	CCMenuItemSprite* menuOff = CCMenuItemSprite::create(spriteOff, NULL);
-	CCMenuItemSprite* menuOn = CCMenuItemSprite::create(spriteOn, NULL);
-	CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(MDCatalogueLayer::callbackSwitch),menuOff,menuOn,NULL);
-	item->setTag(1);
-
-	m_auto_op_menu->addChild(item);
-
-	return m_auto_op_menu;
-}
-
-//    按下按钮事件回调
-void MDCatalogueLayer::toolBarTouchDownAction(CCObject * sender , CCControlEvent pCCControlEvent)
-{
-	CCControlButton *button = (CCControlButton *)sender;
-	if (pCCControlEvent==CCControlEventTouchDown)
-	{
-		btnTouched = true;
-	}
-	else if (pCCControlEvent==CCControlEventTouchUpInside)
-	{
-		switch (button->getTag()) 
-		{
-		case 127:
-			{
-				btnTouched = false;
-				break;
-			}
-		case 128:
-			{
-				btnTouched = false;
-				MainGameScene *mainScene = (MainGameScene *)this->getParent();
-				mainScene->PushLayer((CCLayer *)this->GetLayer("NewMailScene"));
-				break;
-			}
-		case 129:
-			{
-				btnTouched = false;
-				break;
-			}
-		case 130:
-			{
-				btnTouched = false;
-				CCMessageDialog *box = CCMessageDialog::create();
-				box->setTitle(GlobalData::getLocalString("friend_delete_confirm")->getCString());
-				box->setDelegate(this);
-				this->addChild(box);
-
-				break;
-			}
-		}
-	}
-}
-
-void MDCatalogueLayer::didClickButton(CCMessageDialog* dialog,unsigned int index)
-{
-	if (index == 0)
-	{
-		CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(selectedindex);
-        string encryptedUserInfo(dict->valueForKey("encryptedUserInfo")->getCString());
-//		this->deleteFriend(encryptedUserInfo);
-	}
-}
-
-//void MDCatalogueLayer::deleteFriend(std::string &targetUser)
-//{
-//	CCHttpRequest *request = new CCHttpRequest();
-//	request->setRequestType(CCHttpRequest::kHttpGet);
-//	request->setResponseCallback(this,httpresponse_selector(MDCatalogueLayer::requestFinishedCallback));
-//	request->setTag("103");
-//
-//	string _strUrl = CompleteUrl(URL_FRIEND_DELETE);
-//	_strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-//	_strUrl.append("/" + targetUser);
-//
-//	request->setUrl(_strUrl.c_str());
-//
-//	CCHttpClient *client = CCHttpClient::getInstance();
-//	client->send(request);
-//
-//	request->release();
-//}
 
 void MDCatalogueLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
 {
@@ -433,8 +243,8 @@ void MDCatalogueLayer::buttonClicked(CCObject * sender , CCControlEvent controlE
 	switch (button->getTag()) {
 	case 101:
         {
-            mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroDetailLayer"));
-            break;
+            //mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroDetailLayer"));
+            //break;
         }
 	case 102:
         {

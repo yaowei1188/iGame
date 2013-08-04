@@ -188,6 +188,8 @@ void CharacterScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespons
 
 void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
+	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+
     this->setFntTitle(101);
     
     m_txtAccount = CCEditBox::create(CCSizeMake(150, 34), CCScale9Sprite::create("transparent.png"));
@@ -196,9 +198,32 @@ void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     m_txtAccount->setFont("Arial", 16);
     m_txtAccount->setPosition(ccp(148, 40));
     
-    m_lblCharacterDesc->setDimensions(CCSizeMake(300, 50));
+	m_lblCharacterName->setFontName("Courier-Bold");
+	m_lblCharacterName->setFontSize(20);
+	m_lblCharacterName->setFontFillColor(ccc3(255, 255, 205));
+	//    m_lblCharacterName->enableShadow(CCSizeMake(-1, -1), 1.0, 0.5,true);
+	m_lblCharacterName->enableStroke(ccc3(50, 11, 1), 0.8);
 
-	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+	m_lblCharacterDesc->setHorizontalAlignment(kCCTextAlignmentLeft);
+	m_lblCharacterDesc->setVerticalAlignment(kCCVerticalTextAlignmentTop);
+    m_lblCharacterDesc->setDimensions(CCSizeMake(280, 50));
+	m_lblCharacterDesc->setPosition(ccp(winSize.width * 0.5,120));
+	m_lblCharacterDesc->setFontSize(12);
+
+	//ccFontDefinition fontDef;
+	//fontDef.m_fontFillColor = ccc3(255, 255, 205);
+	////fontDef.m_fontName = "Courier";
+	//fontDef.m_fontSize = 12;
+	//fontDef.m_alignment = kCCTextAlignmentLeft;
+
+	//ccFontStroke fontStroke;
+	//fontStroke.m_strokeColor = ccc3(50, 11, 1);
+	//fontStroke.m_strokeEnabled = true;
+	//fontStroke.m_strokeSize = 0.5;
+	//fontDef.m_stroke = fontStroke;
+
+	//m_lblCharacterDesc->setTextDefinition(&fontDef);
+
 	CCObject *object;
 
 	CCMenu *menu = CCMenu::create();
@@ -215,11 +240,11 @@ void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
         CCString *strCardName = (CCString *)dict->objectForKey("CardName");
         std::string strCardName1 = this->addReturnForName(strCardName);
         
-        CCLabelTTF *lblCardName = CCLabelTTF::create(strCardName->getCString(), "Arial", 14.0);
-        lblCardName->setAnchorPoint(ccp(1,1));
-        lblCardName->setPosition(ccp(bgSize.width - 10,bgSize.height - 50));
+        //CCLabelTTF *lblCardName = CCLabelTTF::create(strCardName->getCString(), "Arial", 14.0);
+        //lblCardName->setAnchorPoint(ccp(1,1));
+        //lblCardName->setPosition(ccp(bgSize.width - 10,bgSize.height - 50));
 
-        CCLabelTTF *lblCardLevel = CCLabelTTF::create("1", "Arial", 14.0);
+        CCLabelTTF *lblCardLevel = CCLabelTTF::create(((CCString *)dict->objectForKey("StarGrade"))->getCString(), "Arial", 14.0);
         lblCardLevel->setAnchorPoint(ccp(0,1));
         lblCardLevel->setPosition(ccp(10,bgSize.height - 10));
 
@@ -231,7 +256,7 @@ void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 		CCSprite *sCard = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(((CCString *)dict->objectForKey("CardImage"))->getCString()));
         
         sCardBg->addChild(sCard);
-        sCardBg->addChild(lblCardName);
+        //sCardBg->addChild(lblCardName);
         sCardBg->addChild(lblCardLevel);
         sCardBg->addChild(sCardGroup);
         
@@ -356,58 +381,31 @@ void CharacterScene::setValueByIndex()
     CCDictionary *dict = (CCDictionary *)mCardNameList->objectAtIndex(selectedIndex);
     
     m_lblCharacterName->setString(((CCString *)dict->objectForKey("CardName"))->getCString());
-//    m_lblCharacterName->setString("SUNWUKONG");
-//    m_lblCharacterName->setColor(ccc3(0, 0, 0));
-    m_lblCharacterName->setFontName("Courier-Bold");
-    m_lblCharacterName->setFontSize(20);
-    m_lblCharacterName->setFontFillColor(ccc3(255, 255, 205));
-//    m_lblCharacterName->enableShadow(CCSizeMake(-1, -1), 1.0, 0.5,true);
-    m_lblCharacterName->enableStroke(ccc3(50, 11, 1), 0.8);
-    
-
-//    CCLabelTTF *test = CCLabelTTF::create("ivan yaoweiwei", "Courier-Bold", 20);
-//    test->setPosition(ccp(170, 80));
-//    test->enableStroke(ccc3(50, 11, 1), 0.8);
-//    this->addChild(test);
     
     CCString *strDesc = (CCString *)dict->objectForKey("Desc");
     std::string desc = strDesc->m_sString;
-    
-    ccFontDefinition fontDef;
-    fontDef.m_fontFillColor = ccc3(255, 255, 205);
-    fontDef.m_fontName = "Courier";
-    fontDef.m_fontSize = 12;
-    fontDef.m_alignment = kCCTextAlignmentLeft;
 
-    ccFontStroke fontStroke;
-    fontStroke.m_strokeColor = ccc3(50, 11, 1);
-    fontStroke.m_strokeEnabled = true;
-    fontStroke.m_strokeSize = 0.5;
-    fontDef.m_stroke = fontStroke;
-//    fontDef.m_dimensions = CCSizeMake(250, 250);
-    
-//    std::replace(desc.begin(), desc.end(), '|', '\\');
-//    m_lblCharacterDesc->setFontSize(14);
-//    m_lblCharacterDesc->setFontName("Courier");
-//    m_lblCharacterDesc->setFontFillColor(ccc3(255, 255, 205));
-    //    m_lblCharacterDesc->enableStroke(ccc3(50, 11, 1), 0.4);
     m_lblCharacterDesc->setString(desc.c_str());
-    m_lblCharacterDesc->setTextDefinition(&fontDef);
-
 
     
     m_lblHp->setString(((CCString *)dict->objectForKey("Hp"))->getCString());
-//    m_lblHp->setColor(ccc3(255,255,255));
-//    m_lblHp->setFontFillColor(ccc3(255,0,0));
+    m_lblHp->setColor(ccc3(255,255,255));
+    m_lblHp->setFontFillColor(ccc3(255,255,255));
     m_lblHp->enableStroke(ccc3(50, 11, 1), 0.8);
     
     m_lblDefence->setString(((CCString *)dict->objectForKey("Dp"))->getCString());
+	m_lblDefence->setColor(ccc3(255,255,255));
+	m_lblDefence->setFontFillColor(ccc3(255,255,255));
     m_lblDefence->enableStroke(ccc3(51, 11, 1), 0.7);
     
     m_lblAttack->setString(((CCString *)dict->objectForKey("Ap"))->getCString());
+	m_lblAttack->setColor(ccc3(255,255,255));
+	m_lblAttack->setFontFillColor(ccc3(255,255,255));
     m_lblAttack->enableStroke(ccc3(51, 11, 1), 0.6);
     
     m_lblAvoid->setString(((CCString *)dict->objectForKey("Dd"))->getCString());
+	m_lblAvoid->setColor(ccc3(255,255,255));
+	m_lblAvoid->setFontFillColor(ccc3(255,255,255));
     m_lblAvoid->enableStroke(ccc3(51, 11, 1), 0.5);
 }
 

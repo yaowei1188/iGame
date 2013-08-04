@@ -306,6 +306,7 @@
     <ClInclude Include="..\Classes\UILibrary\CCGestureRecognizer\CCSwipeGestureRecognizer.h" />
     <ClInclude Include="..\Classes\UILibrary\CCGestureRecognizer\CCTapGestureRecognizer.h" />
     <ClInclude Include="..\Classes\UILibrary\CCMessageDialog.h" />
+    <ClInclude Include="..\Classes\UILibrary\CCMultiColumnTableView.h" />
     <ClInclude Include="..\Classes\UILibrary\CCProgressLayer\CCProgressLayer.h" />
     <ClInclude Include="..\Classes\UILibrary\CCShake.h" />
     <ClInclude Include="..\Classes\UILibrary\CCTabView.h" />
@@ -525,6 +526,7 @@
     <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCSwipeGestureRecognizer.cpp" />
     <ClCompile Include="..\Classes\UILibrary\CCGestureRecognizer\CCTapGestureRecognizer.cpp" />
     <ClCompile Include="..\Classes\UILibrary\CCMessageDialog.cpp" />
+    <ClCompile Include="..\Classes\UILibrary\CCMultiColumnTableView.cpp" />
     <ClCompile Include="..\Classes\UILibrary\CCProgressLayer\CCProgressLayer.cpp" />
     <ClCompile Include="..\Classes\UILibrary\CCShake.cpp" />
     <ClCompile Include="..\Classes\UILibrary\CCTabView.cpp" />

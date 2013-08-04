@@ -32,6 +32,9 @@ bool SysMailListScene::init()
 
         CC_BREAK_IF(! CCLayer::init());
 
+		selectedindex = -1;
+		btnTouched = false;
+
 		//CCSprite *mailListBg = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_list_bg.png"));
 		//mailListBg->setAnchorPoint(CCPointZero);
 		//mailListBg->setPosition(CCPointZero);
@@ -81,6 +84,12 @@ void SysMailListScene::loadTableView()
 
 	mTableViewMail->reloadData();
 }
+
+void SysMailListScene::deleteEntrys()
+{
+
+}
+
 
 void SysMailListScene::doSearch()
 {
@@ -139,33 +148,30 @@ void SysMailListScene::requestFinishedCallback(CCHttpClient* client, CCHttpRespo
 
 void SysMailListScene::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
 {
-//    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-//    sSelected->setVisible(true);
+	CCSprite *sSelected = (CCSprite*)cell->getChildByTag(119);
+	sSelected->setVisible(true);
 }
 
 void SysMailListScene::tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell)
 {
-//    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-//    sSelected->setVisible(false);
+    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(119);
+    sSelected->setVisible(false);
 }
 
 void SysMailListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
-    CCLOG("cell touched at index: %i", cell->getIdx());
-//    if (selectedindex == cell->getIdx()) {
-//        selectedindex = -1;
-//    } else {
-//        selectedindex = cell->getIdx();
-//    }
+	CCLOG("cell touched at index: %i", cell->getIdx());
+	if (btnTouched)
+	{
+		return;
+	}
+	if (selectedindex == cell->getIdx()) {
+		selectedindex = -1;
+	} else {
+		selectedindex = cell->getIdx();
+	}
 
-    selectedindex = cell->getIdx();
-
-	CCMessageDialog *box = CCMessageDialog::create();
-	box->setTitle(GlobalData::getLocalString("friend_request_cofirm")->getCString());
-	box->setDelegate(this);
-	this->addChild(box);
-
-    //table->refreshData();
+	table->refreshData();
 }
 
 unsigned int SysMailListScene::numberOfCellsInTableView(CCTableView *table)
@@ -213,46 +219,38 @@ void SysMailListScene::callbackSwitch(CCObject* pSender){
 	}
 }
 
-CCMenu* SysMailListScene::generateCheckBox()
-{
-    CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox_checked.png"));
-	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox.png"));
-    
-    CCMenu* m_auto_op_menu = CCMenu::create();
-    CCMenuItemSprite* menuOff = CCMenuItemSprite::create(spriteOff, NULL);
-    CCMenuItemSprite* menuOn = CCMenuItemSprite::create(spriteOn, NULL);
-    CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(SysMailListScene::callbackSwitch),menuOff,menuOn,NULL);
-    item->setTag(1);
-    
-    m_auto_op_menu->addChild(item);
-    
-    return m_auto_op_menu;
-}
-
 CCTableViewCell* SysMailListScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
 	CCDictionary *dict = (CCDictionary *)mArrayList->objectAtIndex(idx);
+	bool selected = (idx==selectedindex);
     CCSize size = this->tableCellSizeForIndex(table, idx);
 	CCTableViewCell *cell = table->dequeueCell();
 	if (!cell) {
 		cell = new CCTableViewCell();
 		cell->autorelease();
 
-		CCSprite *sState = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_state_read.png"));
+		CCSprite *sSelected = CCSprite::createWithSpriteFrameName("friends_cellhighlight.png");
+		sSelected->setVisible(false);
+		sSelected->setTag(119);
+		sSelected->setPosition(ccp(2,5));
+		sSelected->setAnchorPoint(CCPointZero);
+		cell->addChild(sSelected);
+
+		CCSprite *sState = CCSprite::createWithSpriteFrameName("mail_state_read.png");
 		sState->setAnchorPoint(CCPointMake(0, 0.5));
-		sState->setPosition(ccp(5,size.height * 0.5));
+		sState->setPosition(ccp(10,size.height * 0.5));
 		sState->setTag(120);
 		cell->addChild(sState);
 
 		CCLabelTTF *lblFriendName = CCLabelTTF::create(((CCString *)dict->objectForKey("username"))->getCString(), "Arial", 14.0);
-		lblFriendName->setPosition(ccp(40,size.height * 0.5));
+		lblFriendName->setPosition(ccp(65,size.height - CELL_ITEMS_Y));
         lblFriendName->setColor(ccc3(255, 255, 204));
 		lblFriendName->setTag(121);
         //lblFriendName->enableStroke(ccc3(51, 0, 0), 0.6);
 		cell->addChild(lblFriendName);
 
 		CCLabelTTF *lblSubject = CCLabelTTF::create(GlobalData::getLocalString("friend_request_add")->getCString(), "Arial", 14.0);
-		lblSubject->setPosition(ccp(130,size.height * 0.5));
+		lblSubject->setPosition(ccp(130,size.height - CELL_ITEMS_Y));
         lblSubject->setColor(ccc3(255, 255, 204));
         lblSubject->setTag(122);
         //lblSubject->enableStroke(ccc3(51, 0, 0), 0.6);
@@ -276,7 +274,32 @@ CCTableViewCell* SysMailListScene::tableCellAtIndex(CCTableView *table, unsigned
 
         menuCheck->setTag(123);
         menuCheck->setAnchorPoint(CCPointMake(0, 0.5));
-        menuCheck->setPosition(CCPointMake(240, size.height * 0.5));
+        menuCheck->setPosition(CCPointMake(280, size.height * 0.5));
+
+		CCControlButton * approveBtn =  CCControlButton::create(CCScale9Sprite::createWithSpriteFrameName("btn_bg.png"));
+		approveBtn->setTitleBMFontForState("btn.fnt", CCControlStateNormal);
+		approveBtn->setTitleForState(CCString::create("同意"),CCControlStateNormal);
+		approveBtn->setPosition(CCPointMake(140, size.height * 0.5));
+		approveBtn->setAnchorPoint(ccp(0,0.5));
+		approveBtn->setTag(129);
+		approveBtn->setPreferredSize(CCSizeMake(75,35));
+		approveBtn->setVisible(selected);
+		approveBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(SysMailListScene::toolBarTouchDownAction), CCControlEventTouchDown);
+		approveBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(SysMailListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
+		cell->addChild(approveBtn);
+
+		CCControlButton * declineBtn =  CCControlButton::create(CCScale9Sprite::createWithSpriteFrameName("btn_bg.png"));
+		declineBtn->setTitleBMFontForState("btn.fnt", CCControlStateNormal);
+		declineBtn->setTitleForState(CCString::create("拒绝"),CCControlStateNormal);
+		declineBtn->setPosition(CCPointMake(225, size.height * 0.5));
+		declineBtn->setAnchorPoint(ccp(0,0.5));
+		declineBtn->setTag(130);
+		declineBtn->setPreferredSize(CCSizeMake(75,35));
+		declineBtn->setVisible(selected);
+		declineBtn->setTouchPriority(100);
+		declineBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(SysMailListScene::toolBarTouchDownAction), CCControlEventTouchDown);
+		declineBtn->addTargetWithActionForControlEvents(this, cccontrol_selector(SysMailListScene::toolBarTouchDownAction), CCControlEventTouchUpInside);
+		cell->addChild(declineBtn);
 	}
 	else
 	{
@@ -285,16 +308,24 @@ CCTableViewCell* SysMailListScene::tableCellAtIndex(CCTableView *table, unsigned
         
         CCLabelTTF *lblSubject = (CCLabelTTF*)cell->getChildByTag(122);
 		lblSubject->setString(GlobalData::getLocalString("friend_request_add")->getCString());
-        
-        CCMenu *menuCheck = (CCMenu *)cell->getChildByTag(123);
-        CCMenuItemToggle *toggle= (CCMenuItemToggle *)menuCheck->getChildByTag(1);
+
+		CCMenu *menuCheck = (CCMenu *)cell->getChildByTag(123);
+		CCMenuItemToggle *toggle= (CCMenuItemToggle *)menuCheck->getChildByTag(1);
 		toggle->setUserData(&vUserData[idx]);
 
-        if (vUserData[idx] == 1) {
+		if (vUserData[idx] == 1) {
 			toggle->setSelectedIndex(1);
-        } else {
-            toggle->setSelectedIndex(0);
-        }
+		} else {
+			toggle->setSelectedIndex(0);
+		}
+
+		CCControlButton *approveBtn = (CCControlButton *)cell->getChildByTag(129);
+		//approveBtn->setPosition(ccp(approveBtn->getPosition().x,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+		approveBtn->setVisible(selected);
+
+		CCControlButton *declineBtn = (CCControlButton *)cell->getChildByTag(130);
+		//declineBtn->setPosition(ccp(declineBtn->getPosition().x,size.height - CELL_ITEMS_Y - CELL_ITEMS_GAP));
+		declineBtn->setVisible(selected);
 	}
 
 	return cell;
@@ -303,25 +334,36 @@ CCTableViewCell* SysMailListScene::tableCellAtIndex(CCTableView *table, unsigned
 //    按下按钮事件回调
 void SysMailListScene::toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent)
 {
-//	CCControlButton *button = (CCControlButton *)sender;
-//	switch (button->getTag()) 
-//	{
-//	case 128:
-//		{
-//			MainGameScene *mainScene = (MainGameScene *)this->getParent();
-//			mainScene->PushLayer((CCLayer *)this->GetLayer("NewMailScene"));
-//			break;
-//		}
-//	case 130:
-//		{
-//			CCMessageDialog *box = CCMessageDialog::create();
-//			box->setTitle(GlobalData::getLocalString("friend_add_confirm")->getCString());
-//			box->setDelegate(this);
-//			this->addChild(box);
-//
-//			break;
-//		}
-//	}
+	CCControlButton *button = (CCControlButton *)sender;
+	if (controlEvent==CCControlEventTouchDown)
+	{
+		btnTouched = true;
+	}
+	else if (controlEvent==CCControlEventTouchUpInside)
+	{
+		switch (button->getTag()) 
+		{
+		case 129:
+			{
+				CCDictionary *dict = (CCDictionary *)mArrayList->objectAtIndex(selectedindex);
+				string encryptedUserInfo(dict->valueForKey("encryptedUserInfo")->getCString());
+				this->confirmRequest(encryptedUserInfo,true);
+
+				btnTouched = false;
+				break;
+			}
+		case 130:
+			{
+				CCMessageDialog *box = CCMessageDialog::create();
+				box->setTitle(GlobalData::getLocalString("friend_delete_confirm")->getCString());
+				box->setDelegate(this);
+				this->addChild(box);
+
+				btnTouched = false;
+				break;
+			}
+		}
+	}
 }
 
 void SysMailListScene::didClickButton(CCMessageDialog* dialog,unsigned int index)
@@ -329,10 +371,6 @@ void SysMailListScene::didClickButton(CCMessageDialog* dialog,unsigned int index
 	CCDictionary *dict = (CCDictionary *)mArrayList->objectAtIndex(selectedindex);
 	string encryptedUserInfo(dict->valueForKey("encryptedUserInfo")->getCString());
 	if (index == 0)
-	{
-		this->confirmRequest(encryptedUserInfo,true);
-	}
-	else
 	{
 		this->confirmRequest(encryptedUserInfo,false);
 	}
@@ -365,24 +403,24 @@ void SysMailListScene::confirmRequest(std::string &targetUser,bool accept)
 	request->release();
 }
 
-void SysMailListScene::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
-{
-	MainGameScene *mainScene = (MainGameScene *)this->getParent();
-	CCControlButton *button = (CCControlButton *)sender;
-	switch (button->getTag()) {
-	case 101:
-		CCLOG("11111");
-		mainScene->PopLayer();
-		break;
-	case 102:
-		CCLOG("22222");
-		mainScene->PushLayer((CCLayer *)this->GetLayer("AddFriendScene"));
-		break;
-	case 103:
-		CCLOG("33333");
-		break;
-	}
-}
+//void SysMailListScene::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
+//{
+//	MainGameScene *mainScene = (MainGameScene *)this->getParent();
+//	CCControlButton *button = (CCControlButton *)sender;
+//	switch (button->getTag()) {
+//	case 101:
+//		CCLOG("11111");
+//		mainScene->PopLayer();
+//		break;
+//	case 102:
+//		CCLOG("22222");
+//		mainScene->PushLayer((CCLayer *)this->GetLayer("AddFriendScene"));
+//		break;
+//	case 103:
+//		CCLOG("33333");
+//		break;
+//	}
+//}
 
 SysMailListScene::SysMailListScene()
 {

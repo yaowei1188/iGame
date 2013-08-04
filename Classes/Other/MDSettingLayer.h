@@ -4,8 +4,6 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 
-#include "SimpleAudioEngine.h"
-//#include "CCMessageDialog.h"
 #include "MainGameScene.h"
 #include "MainLayerBase.h"
 
@@ -18,8 +16,7 @@ public CCTableViewDataSource,
 public CCTableViewDelegate,
 public CCBSelectorResolver,
 public CCNodeLoaderListener,
-public CCBMemberVariableAssigner,
-public CCMessageDialogDelegate
+public CCBMemberVariableAssigner
 {
 public:
     MDSettingLayer();
@@ -62,22 +59,14 @@ private:
 
     void toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent);
     void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
-	void didClickButton(CCMessageDialog* dialog,unsigned int index);
     void LoadHeros();
-	void callbackSwitch(CCObject* pSender);
-	CCMenu* generateCheckBox();
 
-
-//	void deleteFriend(std::string &targetUser);
 private:
     CCTableView* mTableView;
     unsigned int selectedindex;
-    CCSprite *m_sTitle;
     CCArray *mHeroList;
 	bool btnTouched;
-	   int *vUserData;
-public:
-    int category;
+	int *vUserData;
 };
 
 #endif  // __HERO_LIST_SCENE_H__

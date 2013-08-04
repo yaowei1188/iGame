@@ -64,6 +64,8 @@ public:
     // same tab title and related tab sub view
     CC_SYNTHESIZE(CCArray *,_tabNameArray,TabNameArray);
     CC_SYNTHESIZE(CCArray *,_tabViewArray,TabViewArray);
+
+	CCLayer * getSelectedLayer();
     
 private:
     void initTabData();

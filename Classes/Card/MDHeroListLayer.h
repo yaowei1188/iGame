@@ -77,8 +77,6 @@ private:
 	void didClickButton(CCMessageDialog* dialog,unsigned int index);
     void LoadHeros();
 	void callbackSwitch(CCObject* pSender);
-	CCMenu* generateCheckBox();
-
 
 //	void deleteFriend(std::string &targetUser);
 private:

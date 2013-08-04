@@ -353,21 +353,7 @@ void MDHeroListLayer::callbackSwitch(CCObject* pSender){
 	}
 }
 
-CCMenu* MDHeroListLayer::generateCheckBox()
-{
-	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox_checked.png"));
-	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("mail_checkbox.png"));
 
-	CCMenu* m_auto_op_menu = CCMenu::create();
-	CCMenuItemSprite* menuOff = CCMenuItemSprite::create(spriteOff, NULL);
-	CCMenuItemSprite* menuOn = CCMenuItemSprite::create(spriteOn, NULL);
-	CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(MDHeroListLayer::callbackSwitch),menuOff,menuOn,NULL);
-	item->setTag(1);
-
-	m_auto_op_menu->addChild(item);
-
-	return m_auto_op_menu;
-}
 
 ////    按下按钮事件回调
 //void MDHeroListLayer::toolBarTouchDownAction(CCObject * sender , CCControlEvent pCCControlEvent)
@@ -486,4 +472,3 @@ MDHeroListLayer::~MDHeroListLayer()
     CC_SAFE_RELEASE(mTableView);
     CC_SAFE_RELEASE(m_sTitle);
 }
-
