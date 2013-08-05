@@ -122,7 +122,7 @@ SEL_CCControlHandler MDCatalogueLayer::onResolveCCBCCControlSelector(CCObject *p
 
 void MDCatalogueLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-
+    this->reloadDataSource();
 }
 
 void MDCatalogueLayer::reloadDataSource()

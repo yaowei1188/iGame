@@ -45,8 +45,7 @@ void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
         case TOOLBAR_BTN_COMPETITION_TAG:
             break;
         case TOOLBAR_BTN_GOD_DEMON_TAG:
-            /*this->PushLayer((CCLayer *)this->GetLayer("MDCatalogueLayer"));*/
-			this->PushLayer(MDCatalogueLayer::create());
+            this->PushLayer((CCLayer *)this->GetLayer("MDCatalogueLayer"));
             break;
         case TOOLBAR_BTN_RANKLIST_TAG:
 			{
@@ -58,8 +57,7 @@ void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
             this->PushLayer((CCLayer *)this->GetLayer("FriendListScene"));
             break;
         case TOOLBAR_BTN_ITEMS_TAG:
-            //this->PushLayer((CCLayer *)this->GetLayer("MDPackageLayer"));
-			this->PushLayer(MDPackageLayer::create());
+            this->PushLayer((CCLayer *)this->GetLayer("MDPackageLayer"));
             break;
         case TOOLBAR_BTN_MAIL_TAG:
             this->PushLayer((CCLayer *)this->GetLayer("MailMainScene"));

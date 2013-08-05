@@ -121,7 +121,7 @@ SEL_CCControlHandler MDPackageLayer::onResolveCCBCCControlSelector(CCObject *pTa
 
 void MDPackageLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-
+    this->reloadDataSource();
 }
 
 void MDPackageLayer::reloadDataSource()
