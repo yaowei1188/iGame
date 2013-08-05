@@ -61,6 +61,8 @@ private:
     void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
     void LoadHeros();
 
+    void switchCallback(CCObject* pSender);
+
 
 //	void deleteFriend(std::string &targetUser);
 private:
@@ -70,6 +72,7 @@ private:
     CCArray *mHeroList;
 	bool btnTouched;
 	int *vUserData;
+    CCMenuItemSprite * _preSelectedTab;
 public:
     int category;
 };

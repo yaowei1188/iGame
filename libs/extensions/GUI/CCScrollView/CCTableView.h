@@ -263,9 +263,9 @@ protected:
 
 	CCScrollViewDirection m_eOldDirection;
 
-    int __indexFromOffset(CCPoint offset);
+    virtual int __indexFromOffset(CCPoint offset);
     unsigned int _indexFromOffset(CCPoint offset);
-    CCPoint __offsetFromIndex(unsigned int index);
+    virtual CCPoint __offsetFromIndex(unsigned int index);
     CCPoint _offsetFromIndex(unsigned int index);
 
     void _moveCellOutOfSight(CCTableViewCell *cell);

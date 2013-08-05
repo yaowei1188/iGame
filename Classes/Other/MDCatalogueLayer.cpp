@@ -104,8 +104,7 @@ void MDCatalogueLayer::requestFinishedCallback(CCHttpClient* client, CCHttpRespo
 
 bool MDCatalogueLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableView", CCMultiColumnTableView*, this->mTableView);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sTitle", CCSprite*, this->m_sTitle);
+//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableView", CCMultiColumnTableView*, this->mTableView);
     return true;
 }
 
@@ -122,21 +121,69 @@ SEL_CCControlHandler MDCatalogueLayer::onResolveCCBCCControlSelector(CCObject *p
 
 void MDCatalogueLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
+    this->setFntTitle(101);
+
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    CCMenu *menuTab = CCMenu::create();
+    menuTab->setPosition(ccp(winSize.width * 0.5, 355));
+    this->addChild(menuTab);
+
+    CCMenuItemSprite* itemFairy = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("catalogue_tab_bg.png"),CCSprite::createWithSpriteFrameName("catalogue_tab_bg_selected.png"),NULL,this,menu_selector(MDCatalogueLayer::switchCallback));
+    CCSize itemSize = itemFairy->getContentSize();
+    
+    CCSprite *_sFairy = CCSprite::createWithSpriteFrameName("catalogue_tab_dairy.png");
+    itemFairy->addChild(_sFairy);
+    _sFairy->setPosition(ccp(itemSize.width * 0.5,itemSize.height * 0.5));
+    menuTab->addChild(itemFairy);
+    itemFairy->setPosition(ccp(-itemSize.width, 0));
+
+    CCMenuItemSprite* itemBuddha = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("catalogue_tab_bg.png"),CCSprite::createWithSpriteFrameName("catalogue_tab_bg_selected.png"),NULL,this,menu_selector(MDCatalogueLayer::switchCallback));
+    CCSprite *_sBuhhda = CCSprite::createWithSpriteFrameName("catalogue_tab_fo.png");
+    itemBuddha->addChild(_sBuhhda);
+    _sBuhhda->setPosition(ccp(itemSize.width * 0.5,itemSize.height * 0.5));
+    menuTab->addChild(itemBuddha);
+    itemBuddha->setPosition(ccp(0, 0));
+
+    CCMenuItemSprite* itemDemon = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("catalogue_tab_bg.png"),CCSprite::createWithSpriteFrameName("catalogue_tab_bg_selected.png"),NULL,this,menu_selector(MDCatalogueLayer::switchCallback));
+    CCSprite *_sDemon = CCSprite::createWithSpriteFrameName("catalogue_tab_damon.png");
+    itemDemon->addChild(_sDemon);
+    _sDemon->setPosition(ccp(itemSize.width * 0.5,itemSize.height * 0.5));
+    menuTab->addChild(itemDemon);
+    itemDemon->setPosition(ccp(itemSize.width, 0));
+
     this->reloadDataSource();
+}
+
+void MDCatalogueLayer::switchCallback(CCObject* pSender){
+
+	CCMenuItemSprite * pItem = dynamic_cast<CCMenuItemSprite*>(pSender);
+
+    if ( pItem != _preSelectedTab ) {
+        if ( _preSelectedTab != NULL )
+		{
+			_preSelectedTab->unselected();
+		}
+
+        pItem->selected();
+
+        _preSelectedTab = pItem;
+    } else {
+        pItem->selected();
+    }
 }
 
 void MDCatalogueLayer::reloadDataSource()
 {
-	mTableView = CCMultiColumnTableView::create(this,CCSizeMake(300,150),NULL);
+	mTableView = CCMultiColumnTableView::create(this,CCSizeMake(320,276),NULL);
 	this->addChild(mTableView);
-	mTableView->setPosition(ccp(0,70));
+	mTableView->setPosition(ccp(0,66));
 	mTableView->setDirection(kCCScrollViewDirectionVertical);
 	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
 	mTableView->setDataSource(this);
-	mTableView->setViewSize(CCSizeMake(312, 300));
 	mTableView->setDelegate(this);
 	mTableView->setColCount(4);
 	mTableView->reloadData();
+
 }
 
 void MDCatalogueLayer::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
@@ -176,18 +223,16 @@ unsigned int MDCatalogueLayer::numberOfCellsInTableView(CCTableView *table)
 
 CCSize MDCatalogueLayer::cellSizeForTable(CCTableView *table)
 {
-	return CCSizeMake(68, 68);
+	return CCSizeMake(68, 70);
 }
 
 CCSize MDCatalogueLayer::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
 {
-    return CCSizeMake(68, 68);
+    return CCSizeMake(68, 70);
 }
 
 CCTableViewCell* MDCatalogueLayer::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
-//	CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(idx);
-//    bool selected = (idx==selectedindex);
 	CCTableViewCell *cell = table->dequeueCell();
     CCSize size = this->tableCellSizeForIndex(table, idx);
 	if (!cell) {
@@ -207,6 +252,11 @@ CCTableViewCell* MDCatalogueLayer::tableCellAtIndex(CCTableView *table, unsigned
 		sHead->setAnchorPoint(ccp(0.5, 0.5));
 		cell->addChild(sHead);
 
+        CCSprite *sLine = CCSprite::createWithSpriteFrameName("catalogue_row_line.png");
+        sLine->setPosition(ccp(0,0));
+		sLine->setAnchorPoint(ccp(0, 0));
+		cell->addChild(sLine);
+
 		/*CCLabelTTF *lblName = CCLabelTTF::create("rulaifo", FONT_VERDANA, FONT_SIZE_BIG);
 		lblName->setPosition(ccp(80,size.height - CELL_ITEMS_Y));
 		lblName->setAnchorPoint(ccp(0, 0.5));
@@ -220,7 +270,7 @@ CCTableViewCell* MDCatalogueLayer::tableCellAtIndex(CCTableView *table, unsigned
 	else
 	{
         CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-        sSelected->setPosition(ccp(13,size.height - 39));
+//        sSelected->setPosition(ccp(13,size.height - 39));
         if (selectedindex == idx ) {
             sSelected->setVisible(true);
         } else {
@@ -243,11 +293,6 @@ void MDCatalogueLayer::buttonClicked(CCObject * sender , CCControlEvent controlE
 	switch (button->getTag()) {
 	case 101:
         {
-            //mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroDetailLayer"));
-            //break;
-        }
-	case 102:
-        {
             mainScene->PopLayer();
             break;
         }
@@ -258,12 +303,11 @@ MDCatalogueLayer::MDCatalogueLayer()
 {
     mTableView = NULL;
     mHeroList = NULL;
-    m_sTitle = NULL;
+    _preSelectedTab = NULL;
 }
 
 MDCatalogueLayer::~MDCatalogueLayer()
 {
-    CC_SAFE_RELEASE(mTableView);
-    CC_SAFE_RELEASE(m_sTitle);
+//    CC_SAFE_RELEASE(mTableView);
 }
 
