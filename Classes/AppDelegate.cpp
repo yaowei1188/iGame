@@ -21,6 +21,7 @@
 #include "ChatLayerLoader.h"
 
 #include "MDCatalogueLayerLoader.h"
+#include "MDCatalogueDetailLayerLoader.h"
 #include "MDPackageLayerLoader.h"
 #include "MDSettingLayerLoader.h"
 
@@ -173,6 +174,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     ccNodeLoaderLibrary->registerCCNodeLoader("MDHerosFormationLayer", MDHerosFormationLayerLoader::loader());
 
     ccNodeLoaderLibrary->registerCCNodeLoader("MDPackageLayer", MDPackageLayerLoader::loader());
+    ccNodeLoaderLibrary->registerCCNodeLoader("MDCatalogueDetailLayer", MDCatalogueDetailLayerLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("MDCatalogueLayer", MDCatalogueLayerLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("MDSettingLayer", MDSettingLayerLoader::loader());
     ccNodeLoaderLibrary->registerCCNodeLoader("MDTaskBoxLayer", MDTaskBoxLayerLoader::loader());

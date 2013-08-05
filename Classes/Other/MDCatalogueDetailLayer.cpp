@@ -1,9 +1,6 @@
-#include "MDHeroDetailLayer.h"
+#include "MDCatalogueDetailLayer.h"
 
-#define TASK_COLUMN  3
-#define TASK_ROW  3
-
-CCScene* MDHeroDetailLayer::scene()
+CCScene* MDCatalogueDetailLayer::scene()
 {
 	CCScene * scene = NULL;
 	do 
@@ -13,7 +10,7 @@ CCScene* MDHeroDetailLayer::scene()
 		CC_BREAK_IF(! scene);
 
 		// 'layer' is an autorelease object
-		MDHeroDetailLayer *layer = MDHeroDetailLayer::create();
+		MDCatalogueDetailLayer *layer = MDCatalogueDetailLayer::create();
 		CC_BREAK_IF(! layer);
 
 		// add layer as a child to scene
@@ -25,7 +22,7 @@ CCScene* MDHeroDetailLayer::scene()
 }
 
 // on "init" you need to initialize your instance
-bool MDHeroDetailLayer::init()
+bool MDCatalogueDetailLayer::init()
 {
 	selectedindex = 0;
 
@@ -41,7 +38,7 @@ bool MDHeroDetailLayer::init()
 	return bRet;
 }
 
-void MDHeroDetailLayer::doPromotion()
+void MDCatalogueDetailLayer::doPromotion()
 {
     MainGameScene *mainScene = (MainGameScene *)this->getParent();
     mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroPrePromoLayer"));
@@ -50,7 +47,7 @@ void MDHeroDetailLayer::doPromotion()
 //
 //	CCHttpRequest *request = new CCHttpRequest();
 //	request->setRequestType(CCHttpRequest::kHttpGet);
-//	request->setResponseCallback(this,httpresponse_selector(MDHeroDetailLayer::requestFinishedCallback));
+//	request->setResponseCallback(this,httpresponse_selector(MDCatalogueDetailLayer::requestFinishedCallback));
 //	request->setTag("101");
 //
 //	string _strUrl = CompleteUrl(URL_FRIEND_LIST);
@@ -64,7 +61,7 @@ void MDHeroDetailLayer::doPromotion()
 //	request->release();
 }
 
-void MDHeroDetailLayer::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
+void MDCatalogueDetailLayer::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
 {
 	if (!this->ValidateResponseData(client,response))
 	{
@@ -97,12 +94,12 @@ void MDHeroDetailLayer::requestFinishedCallback(CCHttpClient* client, CCHttpResp
 	}
 }
 
-bool MDHeroDetailLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
+bool MDCatalogueDetailLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
 	CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCard", CCSprite*, this->m_sCard);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sFraction", CCSprite*, this->m_sFraction);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblCardName", CCLabelTTF*, this->m_lblCardName);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblLevel", CCLabelTTF*, this->m_lblLevel);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblHeroName", CCLabelTTF*, this->m_lblHeroName);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblHp", CCLabelTTF*, this->m_lblHp);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblDefence", CCLabelTTF*, this->m_lblDefence);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAttack", CCLabelTTF*, this->m_lblAttack);
@@ -111,47 +108,41 @@ bool MDHeroDetailLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char*
 	return true;
 }
 
-SEL_MenuHandler MDHeroDetailLayer::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
+SEL_MenuHandler MDCatalogueDetailLayer::onResolveCCBCCMenuItemSelector(CCObject * pTarget, const char* pSelectorName)
 {
 	return NULL;
 }
 
-SEL_CCControlHandler MDHeroDetailLayer::onResolveCCBCCControlSelector(CCObject *pTarget, const char * pSelectorName) {
+SEL_CCControlHandler MDCatalogueDetailLayer::onResolveCCBCCControlSelector(CCObject *pTarget, const char * pSelectorName) {
 
-	CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "buttonClicked:", MDHeroDetailLayer::buttonClicked);
+	CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "buttonClicked:", MDCatalogueDetailLayer::buttonClicked);
 	return NULL;
 }
 
-void MDHeroDetailLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
+void MDCatalogueDetailLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     this->setFntTitle(101);
-    this->setFntTitle(102);
     
     CCSize bgSize = m_sCard->getContentSize();
 
     std::string strGroup = determineGroup(CCString::create("1"));
     CCSprite *sCardGroup = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strGroup.c_str()));
     sCardGroup->setAnchorPoint(ccp(1,1));
-    sCardGroup->setPosition(ccp(bgSize.width - 5,bgSize.height - 10));
-    m_sCard->addChild(sCardGroup);
+    sCardGroup->setPosition(ccp(35,346));
+    this->addChild(sCardGroup);
 
     CCSprite *sPeople = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("character_rulaifo.png"));
-    sPeople->setPosition(ccp(bgSize.width * 0.5,bgSize.height * 0.5));
-    m_sCard->addChild(sPeople);
+    sPeople->setPosition(ccp(92,265));
+    this->addChild(sPeople);
 
     m_lblDesc->setColor(ccc3(0, 255, 0));
 }
 
-void MDHeroDetailLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
+void MDCatalogueDetailLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
 {
 	CCControlButton *button = (CCControlButton *)sender;
 	switch (button->getTag()) {
 	case 101:
-        {
-            doPromotion();
-            break;
-        }
-	case 102:
         {
             MainGameScene *mainScene = (MainGameScene *)this->getParent();
             mainScene->PopLayer();
@@ -160,14 +151,13 @@ void MDHeroDetailLayer::buttonClicked(CCObject * sender , CCControlEvent control
 	}
 }
 
-MDHeroDetailLayer::MDHeroDetailLayer()
+MDCatalogueDetailLayer::MDCatalogueDetailLayer()
 {
 	mTaskList = NULL;
     m_sCard = NULL;
+    m_sFraction= NULL;
     m_lblLevel = NULL;
     m_lblCardName = NULL;
-    m_lblHeroName = NULL;
-    
     m_lblHp = NULL;
     m_lblDefence = NULL;
     m_lblAttack = NULL;
@@ -175,12 +165,12 @@ MDHeroDetailLayer::MDHeroDetailLayer()
     m_lblDesc = NULL;
 }
 
-MDHeroDetailLayer::~MDHeroDetailLayer()
+MDCatalogueDetailLayer::~MDCatalogueDetailLayer()
 {
 	CC_SAFE_RELEASE(m_sCard);
+    CC_SAFE_RELEASE(m_sFraction);
     CC_SAFE_RELEASE(m_lblLevel);
     CC_SAFE_RELEASE(m_lblCardName);
-    CC_SAFE_RELEASE(m_lblHeroName);
     CC_SAFE_RELEASE(m_lblHp);
     CC_SAFE_RELEASE(m_lblDefence);
     CC_SAFE_RELEASE(m_lblAttack);

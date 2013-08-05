@@ -215,7 +215,7 @@ void MDCatalogueLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cel
 //
 //    table->refreshData();
 	MainGameScene *mainScene = (MainGameScene *)this->getParent();
-	mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroDetailLayer"));
+	mainScene->PushLayer((CCLayer *)this->GetLayer("MDCatalogueDetailLayer"));
 }
 
 unsigned int MDCatalogueLayer::numberOfCellsInTableView(CCTableView *table)
