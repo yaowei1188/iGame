@@ -136,6 +136,8 @@ void MDCatalogueLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     _sFairy->setPosition(ccp(itemSize.width * 0.5,itemSize.height * 0.5));
     menuTab->addChild(itemFairy);
     itemFairy->setPosition(ccp(-itemSize.width, 0));
+    itemFairy->selected();
+    _preSelectedTab = itemFairy;
 
     CCMenuItemSprite* itemBuddha = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("catalogue_tab_bg.png"),CCSprite::createWithSpriteFrameName("catalogue_tab_bg_selected.png"),NULL,this,menu_selector(MDCatalogueLayer::switchCallback));
     CCSprite *_sBuhhda = CCSprite::createWithSpriteFrameName("catalogue_tab_fo.png");
@@ -174,9 +176,9 @@ void MDCatalogueLayer::switchCallback(CCObject* pSender){
 
 void MDCatalogueLayer::reloadDataSource()
 {
-	mTableView = CCMultiColumnTableView::create(this,CCSizeMake(320,276),NULL);
+	mTableView = CCMultiColumnTableView::create(this,CCSizeMake(320,288),NULL);
 	this->addChild(mTableView);
-	mTableView->setPosition(ccp(0,66));
+	mTableView->setPosition(ccp(0,50));
 	mTableView->setDirection(kCCScrollViewDirectionVertical);
 	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
 	mTableView->setDataSource(this);
@@ -223,12 +225,12 @@ unsigned int MDCatalogueLayer::numberOfCellsInTableView(CCTableView *table)
 
 CCSize MDCatalogueLayer::cellSizeForTable(CCTableView *table)
 {
-	return CCSizeMake(68, 70);
+	return CCSizeMake(68, 72);
 }
 
 CCSize MDCatalogueLayer::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
 {
-    return CCSizeMake(68, 70);
+    return CCSizeMake(68, 72);
 }
 
 CCTableViewCell* MDCatalogueLayer::tableCellAtIndex(CCTableView *table, unsigned int idx)
@@ -242,14 +244,14 @@ CCTableViewCell* MDCatalogueLayer::tableCellAtIndex(CCTableView *table, unsigned
 		CCSprite *sSelected = CCSprite::createWithSpriteFrameName("card_selected.png");
 		sSelected->setVisible(false);
 		sSelected->setTag(121);
-		sSelected->setPosition(ccp(size.width * 0.5,size.height * 0.5));
-		sSelected->setAnchorPoint(ccp(0.5, 0.5));
+		sSelected->setPosition(ccp(size.width * 0.5,size.height * 1.0 - 2));
+		sSelected->setAnchorPoint(ccp(0.5, 1.0));
 		cell->addChild(sSelected);
         
         CCSprite *sHead = CCSprite::createWithSpriteFrameName("head_rulaifo.png");
         sHead->setTag(122);
-        sHead->setPosition(ccp(size.width * 0.5,size.height * 0.5));
-		sHead->setAnchorPoint(ccp(0.5, 0.5));
+        sHead->setPosition(ccp(size.width * 0.5,size.height * 1.0 - 2));
+		sHead->setAnchorPoint(ccp(0.5, 1));
 		cell->addChild(sHead);
 
         CCSprite *sLine = CCSprite::createWithSpriteFrameName("catalogue_row_line.png");

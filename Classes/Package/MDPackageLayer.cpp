@@ -121,33 +121,83 @@ SEL_CCControlHandler MDPackageLayer::onResolveCCBCCControlSelector(CCObject *pTa
 
 void MDPackageLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
+    this->setFntTitle(101);
+    this->setFntTitle(102);
+
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    CCMenu *menuTab = CCMenu::create();
+    menuTab->setPosition(ccp(winSize.width * 0.5, 366));
+    this->addChild(menuTab);
+    
+    CCMenuItemSprite* itemFairy = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("package_tab_normal.png"),CCSprite::createWithSpriteFrameName("package_tab_selected.png"),NULL,this,menu_selector(MDPackageLayer::switchCallback));
+    CCSize itemSize = itemFairy->getContentSize();
+    
+    CCLabelBMFont *lblPackage1 = CCLabelBMFont::create("背包一", "btn.fnt");
+    itemFairy->addChild(lblPackage1);
+    lblPackage1->setPosition(ccp(itemSize.width * 0.5,itemSize.height * 0.5));
+    menuTab->addChild(itemFairy);
+    itemFairy->setPosition(ccp(-itemSize.width - 4, 0));
+    itemFairy->selected();
+    _preSelectedTab = itemFairy;
+    
+    CCMenuItemSprite* itemBuddha = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("package_tab_normal.png"),CCSprite::createWithSpriteFrameName("package_tab_selected.png"),NULL,this,menu_selector(MDPackageLayer::switchCallback));
+    CCLabelBMFont *lblPackage2 = CCLabelBMFont::create("背包二", "btn.fnt");
+    itemBuddha->addChild(lblPackage2);
+    lblPackage2->setPosition(ccp(itemSize.width * 0.5,itemSize.height * 0.5));
+    menuTab->addChild(itemBuddha);
+    itemBuddha->setPosition(ccp(0, 0));
+    
+    CCMenuItemSprite* itemDemon = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("package_tab_normal.png"),CCSprite::createWithSpriteFrameName("package_tab_selected.png"),NULL,this,menu_selector(MDPackageLayer::switchCallback));
+    CCLabelBMFont *lblPackage3 = CCLabelBMFont::create("背包三", "btn.fnt");
+    itemDemon->addChild(lblPackage3);
+    lblPackage3->setPosition(ccp(itemSize.width * 0.5,itemSize.height * 0.5));
+    menuTab->addChild(itemDemon);
+    itemDemon->setPosition(ccp(itemSize.width + 4, 0));
+    
     this->reloadDataSource();
+}
+
+void MDPackageLayer::switchCallback(CCObject* pSender){
+    
+	CCMenuItemSprite * pItem = dynamic_cast<CCMenuItemSprite*>(pSender);
+    
+    if ( pItem != _preSelectedTab ) {
+        if ( _preSelectedTab != NULL )
+		{
+			_preSelectedTab->unselected();
+		}
+        
+        pItem->selected();
+        
+        _preSelectedTab = pItem;
+    } else {
+        pItem->selected();
+    }
 }
 
 void MDPackageLayer::reloadDataSource()
 {
-	mTableView = CCMultiColumnTableView::create(this,CCSizeMake(300,150),NULL);
+	mTableView = CCMultiColumnTableView::create(this,CCSizeMake(320,270),NULL);
 	this->addChild(mTableView);
-	mTableView->setPosition(ccp(0,70));
+	mTableView->setPosition(ccp(0,80));
 	mTableView->setDirection(kCCScrollViewDirectionVertical);
 	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
 	mTableView->setDataSource(this);
-	mTableView->setViewSize(CCSizeMake(312, 300));
 	mTableView->setDelegate(this);
-	mTableView->setColCount(4);
+	mTableView->setColCount(5);
 	mTableView->reloadData();
 }
 
 void MDPackageLayer::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
 {
-    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-    sSelected->setVisible(true);
+//    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
+//    sSelected->setVisible(true);
 }
 
 void MDPackageLayer::tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell)
 {
-    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-    sSelected->setVisible(false);
+//    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
+//    sSelected->setVisible(false);
 }
 
 void MDPackageLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
@@ -175,12 +225,12 @@ unsigned int MDPackageLayer::numberOfCellsInTableView(CCTableView *table)
 
 CCSize MDPackageLayer::cellSizeForTable(CCTableView *table)
 {
-	return CCSizeMake(68, 68);
+	return CCSizeMake(62, 64);
 }
 
 CCSize MDPackageLayer::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
 {
-    return CCSizeMake(68, 68);
+    return CCSizeMake(62, 64);
 }
 
 CCTableViewCell* MDPackageLayer::tableCellAtIndex(CCTableView *table, unsigned int idx)
@@ -193,26 +243,26 @@ CCTableViewCell* MDPackageLayer::tableCellAtIndex(CCTableView *table, unsigned i
 		cell = new CCTableViewCell();
 		cell->autorelease();
         
-		CCSprite *sSelected = CCSprite::createWithSpriteFrameName("card_selected.png");
-		sSelected->setVisible(false);
-		sSelected->setTag(121);
-		sSelected->setPosition(ccp(size.width * 0.5,size.height * 0.5));
-		sSelected->setAnchorPoint(ccp(0.5, 0.5));
-		cell->addChild(sSelected);
+//		CCSprite *sSelected = CCSprite::createWithSpriteFrameName("card_selected.png");
+//		sSelected->setVisible(false);
+//		sSelected->setTag(121);
+//		sSelected->setPosition(ccp(size.width * 0.5,size.height * 0.5));
+//		sSelected->setAnchorPoint(ccp(0.5, 0.5));
+//		cell->addChild(sSelected);
 
-		CCSprite *sHead = CCSprite::createWithSpriteFrameName("head_rulaifo.png");
+		CCSprite *sHead = CCSprite::createWithSpriteFrameName("package_cell_bg.png");
 		sHead->setTag(122);
 		sHead->setPosition(ccp(size.width * 0.5,size.height * 0.5));
 		sHead->setAnchorPoint(ccp(0.5, 0.5));
 		cell->addChild(sHead);
 
-		CCLabelTTF *lblName = CCLabelTTF::create("rulaifo", FONT_VERDANA, FONT_SIZE_BIG);
-		lblName->setPosition(ccp(80,size.height - CELL_ITEMS_Y));
-		lblName->setAnchorPoint(ccp(0, 0.5));
-        lblName->setColor(ccc3(235, 234, 181));
-        lblName->enableStroke(ccc3(16, 6, 9), 0.8);
-		lblName->setTag(123);
-		cell->addChild(lblName);
+//		CCLabelTTF *lblName = CCLabelTTF::create("rulaifo", FONT_VERDANA, FONT_SIZE_BIG);
+//		lblName->setPosition(ccp(80,size.height - CELL_ITEMS_Y));
+//		lblName->setAnchorPoint(ccp(0, 0.5));
+//        lblName->setColor(ccc3(235, 234, 181));
+//        lblName->enableStroke(ccc3(16, 6, 9), 0.8);
+//		lblName->setTag(123);
+//		cell->addChild(lblName);
 
 		//CCLabelTTF *lblLevel = CCLabelTTF::create("LV. 3", FONT_VERDANA, FONT_SIZE_MEDIUM);
 		//lblLevel->setPosition(ccp(80,size.height - 2 * CELL_ITEMS_Y));
@@ -224,18 +274,18 @@ CCTableViewCell* MDPackageLayer::tableCellAtIndex(CCTableView *table, unsigned i
 	}
 	else
 	{
-        CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-        sSelected->setPosition(ccp(13,size.height - 39));
-        if (selectedindex == idx ) {
-            sSelected->setVisible(true);
-        } else {
-            sSelected->setVisible(false);
-        }
+//        CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
+//        sSelected->setPosition(ccp(13,size.height - 39));
+//        if (selectedindex == idx ) {
+//            sSelected->setVisible(true);
+//        } else {
+//            sSelected->setVisible(false);
+//        }
         
         CCSprite *sHead = (CCSprite*)cell->getChildByTag(122);
         
-		CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);
-		lblName->setString("weiweiyao");
+//		CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);
+//		lblName->setString("weiweiyao");
         
         //CCLabelTTF *lblLevel = (CCLabelTTF*)cell->getChildByTag(124);
 		//lblLevel->setString(string->getCString());

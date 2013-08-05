@@ -61,6 +61,8 @@ private:
     void toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent);
     void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
     void LoadHeros();
+    
+    void switchCallback(CCObject* pSender);
 
 private:
     CCMultiColumnTableView* mTableView;
@@ -68,6 +70,7 @@ private:
     CCArray *mHeroList;
 	bool btnTouched;
 	int *vUserData;
+    CCMenuItemSprite *_preSelectedTab;
 };
 
 #endif  // __MDPACKAGE_LAYER_H__
