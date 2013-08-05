@@ -34,8 +34,53 @@ bool MDSettingLayer::init()
 
 		btnTouched = false;
         
-        mHeroList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
+        mHeroList = CCArray::createWithCapacity(7);
         mHeroList->retain();
+
+		CCDictionary *dict0 = CCDictionary::create();
+		dict0->setObject(CCString::create(""),"RowText");
+		dict0->setObject(CCString::create("0"),"Row");
+		dict0->setObject(CCString::create("1"),"Category");
+		dict0->setObject(CCString::create("背景音乐"),"CategoryText");
+		mHeroList->addObject(dict0);
+
+		CCDictionary *dict1 = CCDictionary::create();
+		dict1->setObject(CCString::create("1"),"Row");
+		dict1->setObject(CCString::create("QQ账号"),"RowText");
+		dict1->setObject(CCString::create("1"),"Category");
+		dict1->setObject(CCString::create("账号绑定"),"CategoryText");
+		mHeroList->addObject(dict1);
+
+		CCDictionary *dict2 = CCDictionary::create();
+		dict2->setObject(CCString::create("2"),"Row");
+		dict2->setObject(CCString::create("新浪账号"),"RowText");
+		dict2->setObject(CCString::create("1"),"Category");
+		mHeroList->addObject(dict2);
+
+		CCDictionary *dict3 = CCDictionary::create();
+		dict3->setObject(CCString::create("3"),"Row");
+		dict3->setObject(CCString::create("人人账号"),"RowText");
+		dict3->setObject(CCString::create("1"),"Category");
+		mHeroList->addObject(dict3);
+
+		CCDictionary *dict4 = CCDictionary::create();
+		dict4->setObject(CCString::create("4"),"Row");
+		dict4->setObject(CCString::create("修改密码"),"RowText");
+		dict4->setObject(CCString::create("2"),"Category");
+		dict4->setObject(CCString::create("账号设置"),"CategoryText");
+		mHeroList->addObject(dict4);
+
+		CCDictionary *dict5 = CCDictionary::create();
+		dict5->setObject(CCString::create("5"),"Row");
+		dict5->setObject(CCString::create("意义反馈"),"RowText");
+		dict5->setObject(CCString::create("2"),"Category");
+		mHeroList->addObject(dict5);
+
+		CCDictionary *dict6 = CCDictionary::create();
+		dict6->setObject(CCString::create("6"),"Row");
+		dict6->setObject(CCString::create("关于我们"),"RowText");
+		dict6->setObject(CCString::create("2"),"Category");
+		mHeroList->addObject(dict6);
 
 		vUserData = new int[mHeroList->count()]();
 		memset(vUserData, sizeof(int) * mHeroList->count(), 0);
@@ -102,7 +147,7 @@ void MDSettingLayer::requestFinishedCallback(CCHttpClient* client, CCHttpRespons
 
 bool MDSettingLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableView", CCTableView*, this->mTableView);
+    //CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableView", CCTableView*, this->mTableView);
     return true;
 }
 
@@ -119,30 +164,32 @@ SEL_CCControlHandler MDSettingLayer::onResolveCCBCCControlSelector(CCObject *pTa
 
 void MDSettingLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
-
+	reloadDataSource();
 }
 
 void MDSettingLayer::reloadDataSource()
 {
+	mTableView = CCTableView::create(this,CCSizeMake(320,288),NULL);
+	this->addChild(mTableView);
+	mTableView->setPosition(ccp(0,90));
 	mTableView->setDirection(kCCScrollViewDirectionVertical);
 	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
 	mTableView->setDataSource(this);
 	mTableView->setViewSize(CCSizeMake(312, 314));
 	mTableView->setDelegate(this);
-
 	mTableView->reloadData();
 }
 
 void MDSettingLayer::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
 {
-    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-    sSelected->setVisible(true);
+    //CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
+    //sSelected->setVisible(true);
 }
 
 void MDSettingLayer::tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell)
 {
-    CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-    sSelected->setVisible(false);
+    //CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
+    //sSelected->setVisible(false);
 }
 
 void MDSettingLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
@@ -159,8 +206,8 @@ void MDSettingLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 //    }
 //
 //    table->refreshData();
-    MainGameScene *mainScene = (MainGameScene *)this->getParent();
-    mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroDetailLayer"));
+    //MainGameScene *mainScene = (MainGameScene *)this->getParent();
+    //mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroDetailLayer"));
 }
 
 unsigned int MDSettingLayer::numberOfCellsInTableView(CCTableView *table)
@@ -170,83 +217,86 @@ unsigned int MDSettingLayer::numberOfCellsInTableView(CCTableView *table)
 
 CCSize MDSettingLayer::cellSizeForTable(CCTableView *table)
 {
-	return CCSizeMake(312, 68);
+	return CCSizeMake(312, 80);
 }
 
 CCSize MDSettingLayer::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
 {
-    return CCSizeMake(312, 68);
+    return CCSizeMake(312, 80);
 }
 
 CCTableViewCell* MDSettingLayer::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
-//	CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(idx);
-//    bool selected = (idx==selectedindex);
+	CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(idx);
+	bool selected = (idx==selectedindex);
 	CCTableViewCell *cell = table->dequeueCell();
+	CCString *strCategory = (CCString *)dict->objectForKey("Category");
+	//CCString *strCategoryText = (CCString *)dict->objectForKey("CategoryText");
+	CCString *strRowText = (CCString *)dict->objectForKey("RowText");
     CCSize size = this->tableCellSizeForIndex(table, idx);
 	if (!cell) {
 		cell = new CCTableViewCell();
 		cell->autorelease();
         
-        CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_cellhighlight.png"));
-        sSelected->setVisible(false);
-        sSelected->setTag(121);
-		sSelected->setPosition(ccp(13,size.height - 39));
-		sSelected->setAnchorPoint(CCPointZero);
-		cell->addChild(sSelected);
-        
-        CCSprite *sHead = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_rulaifo.png"));
-        sHead->setTag(122);
-        sHead->setPosition(ccp(10,size.height * 0.5));
-		sHead->setAnchorPoint(ccp(0, 0.5));
-		cell->addChild(sHead);
+  //      CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_cellhighlight.png"));
+  //      sSelected->setVisible(false);
+  //      sSelected->setTag(121);
+		//sSelected->setPosition(ccp(13,size.height - 39));
+		//sSelected->setAnchorPoint(CCPointZero);
+		//cell->addChild(sSelected);
+  //      
+  //      CCSprite *sHead = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_rulaifo.png"));
+  //      sHead->setTag(122);
+  //      sHead->setPosition(ccp(10,size.height * 0.5));
+		//sHead->setAnchorPoint(ccp(0, 0.5));
+		//cell->addChild(sHead);
 
-		CCLabelTTF *lblName = CCLabelTTF::create("rulaifo", FONT_VERDANA, FONT_SIZE_BIG);
+		CCLabelTTF *lblName = CCLabelTTF::create(strRowText->getCString(), FONT_VERDANA, FONT_SIZE_BIG);
 		lblName->setPosition(ccp(80,size.height - CELL_ITEMS_Y));
 		lblName->setAnchorPoint(ccp(0, 0.5));
-        lblName->setColor(ccc3(235, 234, 181));
-        lblName->enableStroke(ccc3(16, 6, 9), 0.8);
+		lblName->setColor(ccc3(235, 234, 181));
+		lblName->enableStroke(ccc3(16, 6, 9), 0.8);
 		lblName->setTag(123);
 		cell->addChild(lblName);
 
-		CCLabelTTF *lblLevel = CCLabelTTF::create("LV. 3", FONT_VERDANA, FONT_SIZE_MEDIUM);
-		lblLevel->setPosition(ccp(80,size.height - 2 * CELL_ITEMS_Y));
-		lblLevel->setAnchorPoint(ccp(0, 0.5));
-        lblLevel->setColor(ccc3(235, 234, 181));
-        lblLevel->enableStroke(ccc3(16, 6, 9), 0.8);
-		lblLevel->setTag(124);
-		cell->addChild(lblLevel);
-        
-        CCScale9Sprite *sline = CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("line.png"));
-        sline->setPreferredSize(CCSizeMake(290, 1));
-        sline->setPosition(ccp(15,size.height));
-        sline->setAnchorPoint(CCPointZero);
-        cell->addChild(sline);
-        
-		CCPoint point = ccp(218 ,size.height * 0.5);
+		//CCLabelTTF *lblLevel = CCLabelTTF::create("LV. 3", FONT_VERDANA, FONT_SIZE_MEDIUM);
+		//lblLevel->setPosition(ccp(80,size.height - 2 * CELL_ITEMS_Y));
+		//lblLevel->setAnchorPoint(ccp(0, 0.5));
+  //      lblLevel->setColor(ccc3(235, 234, 181));
+  //      lblLevel->enableStroke(ccc3(16, 6, 9), 0.8);
+		//lblLevel->setTag(124);
+		//cell->addChild(lblLevel);
 
-        CCSprite *sStarGrade = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_l_star5.png"));
-        sStarGrade->setPosition(point);
-		lblLevel->setTag(125);
-        sStarGrade->setAnchorPoint(ccp(0, 0.5));
-        cell->addChild(sStarGrade);
+		CCScale9Sprite *sline = CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("setting_cell_line.png"));
+		sline->setPreferredSize(CCSizeMake(290, 1));
+		sline->setPosition(ccp(15,size.height));
+		sline->setAnchorPoint(CCPointZero);
+		cell->addChild(sline);
+        
+		//CCPoint point = ccp(218 ,size.height * 0.5);
+
+  //      CCSprite *sStarGrade = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_l_star5.png"));
+  //      sStarGrade->setPosition(point);
+		//lblLevel->setTag(125);
+  //      sStarGrade->setAnchorPoint(ccp(0, 0.5));
+  //      cell->addChild(sStarGrade);
 	}
 	else
 	{
-        CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-        sSelected->setPosition(ccp(13,size.height - 39));
-        if (selectedindex == idx ) {
-            sSelected->setVisible(true);
-        } else {
-            sSelected->setVisible(false);
-        }
-        
-        CCSprite *sHead = (CCSprite*)cell->getChildByTag(122);
-        
+  //      CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
+  //      sSelected->setPosition(ccp(13,size.height - 39));
+  //      if (selectedindex == idx ) {
+  //          sSelected->setVisible(true);
+  //      } else {
+  //          sSelected->setVisible(false);
+  //      }
+  //      
+  //      CCSprite *sHead = (CCSprite*)cell->getChildByTag(122);
+  //      
 		CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);
-		lblName->setString("weiweiyao");
-        
-        CCLabelTTF *lblLevel = (CCLabelTTF*)cell->getChildByTag(124);
+		lblName->setString(strRowText->getCString());
+  //      
+  //      CCLabelTTF *lblLevel = (CCLabelTTF*)cell->getChildByTag(124);
 		//lblLevel->setString(string->getCString());
         
 //        CCScale9Sprite *background = (CCScale9Sprite *)cell->getChildByTag(121);
@@ -306,25 +356,20 @@ void MDSettingLayer::buttonClicked(CCObject * sender , CCControlEvent controlEve
 	switch (button->getTag()) {
 	case 101:
         {
-            mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroDetailLayer"));
-            break;
-        }
-	case 102:
-        {
-            mainScene->PopLayer();
-            break;
+			mainScene->PopLayer();
+			break;
         }
 	}
 }
 
 MDSettingLayer::MDSettingLayer()
 {
-    mTableView = NULL;
+    //mTableView = NULL;
     mHeroList = NULL;
 }
 
 MDSettingLayer::~MDSettingLayer()
 {
-    CC_SAFE_RELEASE(mTableView);
+    //CC_SAFE_RELEASE(mTableView);
 }
 

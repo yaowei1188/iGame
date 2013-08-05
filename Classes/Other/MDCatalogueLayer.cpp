@@ -1,5 +1,7 @@
 #include "MDCatalogueLayer.h"
 
+#define COLUMN_NUM 4
+
 CCScene* MDCatalogueLayer::scene()
 {
     CCScene * scene = NULL;
@@ -34,7 +36,7 @@ bool MDCatalogueLayer::init()
 
 		btnTouched = false;
         
-        mHeroList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
+        mHeroList = CCArray::create(CCString::create("Li1"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),NULL);
         mHeroList->retain();
 
 		vUserData = new int[mHeroList->count()]();
@@ -183,9 +185,8 @@ void MDCatalogueLayer::reloadDataSource()
 	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
 	mTableView->setDataSource(this);
 	mTableView->setDelegate(this);
-	mTableView->setColCount(4);
+	mTableView->setColCount(COLUMN_NUM);
 	mTableView->reloadData();
-
 }
 
 void MDCatalogueLayer::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
@@ -202,7 +203,7 @@ void MDCatalogueLayer::tableCellUnhighlight(CCTableView* table, CCTableViewCell*
 
 void MDCatalogueLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
-//    CCLOG("cell touched at index: %i", cell->getIdx());
+    CCLOG("cell touched at index: %i", cell->getIdx());
 //	if (btnTouched)
 //	{
 //		return;
@@ -221,6 +222,7 @@ void MDCatalogueLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cel
 unsigned int MDCatalogueLayer::numberOfCellsInTableView(CCTableView *table)
 {
 	return mHeroList->count();
+	//return mHeroList->count()/COLUMN_NUM + mHeroList->count() % COLUMN_NUM;
 }
 
 CCSize MDCatalogueLayer::cellSizeForTable(CCTableView *table)

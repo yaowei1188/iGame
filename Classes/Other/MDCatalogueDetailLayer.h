@@ -37,8 +37,7 @@ public:
 	virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
 
 	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
-    void doPromotion();
-    void menuItemCallback(CCObject* pSender);
+
 private:
 	unsigned int selectedindex;
     CCSprite *m_sCard;

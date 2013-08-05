@@ -142,20 +142,18 @@ void CCMultiColumnTableView::_updateContentSize(){
     this->setContentSize(size);
     
     //FIXME? unsure if that code makes sense
-	//if (m_eOldDirection != m_eDirection)
-	//{
-	//	if (m_eDirection == kCCScrollViewDirectionHorizontal)
-	//	{
-	//		this->setContentOffset(ccp(0,0));
-	//	}
-	//	else
-	//	{
-	//		this->setContentOffset(ccp(0,this->minContainerOffset().y));
-	//	}
-	//	m_eOldDirection = m_eDirection;
-	//}
-    
-    
+	if (m_eOldDirection != m_eDirection)
+	{
+		if (m_eDirection == kCCScrollViewDirectionHorizontal)
+		{
+			this->setContentOffset(ccp(0,0));
+		}
+		else
+		{
+			this->setContentOffset(ccp(0,this->minContainerOffset().y));
+		}
+		m_eOldDirection = m_eDirection;
+	}
 }
 
 NS_CC_EXT_END

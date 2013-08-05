@@ -199,6 +199,7 @@
     <None Include="..\Resources\scene\MainInnerLayer.ccbi" />
     <None Include="..\Resources\scene\MainOuterLayer.ccbi" />
     <None Include="..\Resources\scene\MDCardAlchemyLayer.ccbi" />
+    <None Include="..\Resources\scene\MDCatalogueDetailLayer.ccbi" />
     <None Include="..\Resources\scene\MDCatalogueLayer.ccbi" />
     <None Include="..\Resources\scene\MDHeroDetailLayer.ccbi" />
     <None Include="..\Resources\scene\MDHeroListLayer.ccbi" />
@@ -284,6 +285,8 @@
     <ClInclude Include="..\Classes\Other\CCControlSwitchLoader.h" />
     <ClInclude Include="..\Classes\Other\CCEditBoxLoader.h" />
     <ClInclude Include="..\Classes\Other\CCTableViewLoader.h" />
+    <ClInclude Include="..\Classes\Other\MDCatalogueDetailLayer.h" />
+    <ClInclude Include="..\Classes\Other\MDCatalogueDetailLayerLoader.h" />
     <ClInclude Include="..\Classes\Other\MDCatalogueLayer.h" />
     <ClInclude Include="..\Classes\Other\MDCatalogueLayerLoader.h" />
     <ClInclude Include="..\Classes\Other\MDSettingLayer.h" />
@@ -511,6 +514,7 @@
     <ClCompile Include="..\Classes\main\MainInnerLayer.cpp" />
     <ClCompile Include="..\Classes\main\MainOuterLayer.cpp" />
     <ClCompile Include="..\Classes\Other\AboutScene.cpp" />
+    <ClCompile Include="..\Classes\Other\MDCatalogueDetailLayer.cpp" />
     <ClCompile Include="..\Classes\Other\MDCatalogueLayer.cpp" />
     <ClCompile Include="..\Classes\Other\MDSettingLayer.cpp" />
     <ClCompile Include="..\Classes\Package\MDPackageLayer.cpp" />
