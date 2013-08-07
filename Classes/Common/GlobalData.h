@@ -37,6 +37,9 @@ public:
 	static CCDictionary* getUserinfo();
 	static void setUserinfo(CCDictionary* p_userInfo);
 
+	static CCArray* getCardProfile(std::string name);
+	static CCArray* getCardProfile(int group);
+
 private:
     static int sqliteExecCallBack( void * para, int n_column, char ** column_value, char ** column_name );
 };

@@ -52,7 +52,6 @@ void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
 				CCArray *array = GlobalData::getFraction("");
 				break;
 			}
-
         case TOOLBAR_BTN_FRIENDS_TAG:
             this->PushLayer((CCLayer *)this->GetLayer("FriendListScene"));
             break;
@@ -113,7 +112,7 @@ void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
     if (MENUBAR_HERO_TAG == intSelectedMenu) {
         if ((CCLayer *)mlayArray->objectAtIndex(0)==mMainInnerLayer) {
             number = 2;
-            mMainInnerLayer->showTooBar(false);
+            //mMainInnerLayer->showTooBar(false);
         }
     }
     
@@ -128,10 +127,14 @@ void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
     if (pItem->getTag() == MENUBAR_HERO_TAG) {
         if (number == 1) {
             mlayArray->addObject(mMainInnerLayer);
-            mMainInnerLayer->setPosition(ccp(0, 38));
-            mMainInnerLayer->showTooBar(false);
-            this->addChild(mMainInnerLayer);
         }
+
+		mMainInnerLayer->showTooBar(false);
+		if (mMainInnerLayer->getParent()==NULL)
+		{
+			mMainInnerLayer->setPosition(ccp(0, 38));
+			this->addChild(mMainInnerLayer);
+		}
     }
     
     mlayArray->addObject(layer);

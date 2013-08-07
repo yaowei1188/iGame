@@ -7,6 +7,7 @@
 #include "MainGameScene.h"
 #include "MainLayerBase.h"
 #include "CCMultiColumnTableView.h"
+#include "GlobalData.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -68,6 +69,7 @@ private:
 private:
     CCMultiColumnTableView* mTableView;
     unsigned int selectedindex;
+	unsigned int selectedTab;
     CCSprite *m_sTitle;
     CCArray *mHeroList;
 	bool btnTouched;

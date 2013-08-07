@@ -7,13 +7,16 @@
 //
 
 #include "GlobalData.h"
+#include "StringExt.h"
 
 #define QUERY_CATEGORY_FRACTION "1"
 #define QUERY_CATEGORY_CARDINFO "2"
+#define QUERY_CATEGORY_CARDBYGROUP "3"
 
 static CCDictionary *dictLanguage;
 static CCArray *arrayTasks;
 static CCArray *arrayCards;
+static CCArray *arrayCardProfile;
 static CCDictionary* userinfo;
 static CCArray* arrayFraction;
 static CCDictionary* dictCard;
@@ -48,7 +51,7 @@ int GlobalData::sqliteExecCallBack( void * para, int n_column, char ** column_va
 {
     const char *myPara = (const char *)para;
     printf("para:%s",myPara);
-    if (strcmp(myPara, QUERY_CATEGORY_FRACTION)) {
+    if (strcmp(myPara, QUERY_CATEGORY_FRACTION)==0) {
         CCDictionary *dict = CCDictionary::create();
         for(int i = 0 ; i < n_column; i ++ )
         {
@@ -57,13 +60,20 @@ int GlobalData::sqliteExecCallBack( void * para, int n_column, char ** column_va
             dict->setObject(CCString::create(column_value[i]), column_name[i]);
         }
         arrayFraction->addObject(dict);
-    } else if(strcmp(myPara, QUERY_CATEGORY_CARDINFO)) {
+    } else if(strcmp(myPara, QUERY_CATEGORY_CARDINFO)==0) {
         dictCard = CCDictionary::create();
         for(int i = 0 ; i < n_column; i ++ )
         {
             dictCard->setObject(CCString::create(column_value[i]), column_name[i]);
         }
-    }
+	} else if(strcmp(myPara, QUERY_CATEGORY_CARDBYGROUP)==0) {
+		CCDictionary *dict = CCDictionary::create();
+		for(int i = 0 ; i < n_column; i ++ )
+		{
+			dict->setObject(CCString::create(column_value[i]), column_name[i]);
+		}
+		arrayCardProfile->addObject(dict);
+	}
 
     return 0;
 }
@@ -118,6 +128,57 @@ CCArray* GlobalData::getFraction(std::string name)
     }
 
     return arrayFraction;
+}
+
+CCArray* GlobalData::getCardProfile(std::string name)
+{
+	if (arrayFraction!=NULL) {
+		return arrayFraction;
+	}
+
+	arrayFraction = CCArray::create();
+
+	sqlite3 *pDB = NULL;
+	char* errMsg = NULL;
+	std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
+	int result = sqlite3_open_v2(dbPath.c_str(),&pDB,SQLITE_OPEN_READWRITE, NULL);
+	if (result!=SQLITE_OK) {
+		return NULL;
+	}
+
+	std::string szSql = "select * from game_group";
+
+	const char *argc = QUERY_CATEGORY_FRACTION;
+	result = sqlite3_exec(pDB,szSql.c_str(), sqliteExecCallBack, (void *)argc, &errMsg);
+	if (result != SQLITE_OK) {
+		return NULL;
+	}
+
+	return arrayFraction;
+}
+
+CCArray* GlobalData::getCardProfile(int group)
+{
+	arrayCardProfile = CCArray::create();
+
+	sqlite3 *pDB = NULL;
+	char* errMsg = NULL;
+	std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
+	int result = sqlite3_open_v2(dbPath.c_str(),&pDB,SQLITE_OPEN_READWRITE, NULL);
+	if (result!=SQLITE_OK) {
+		return NULL;
+	}
+
+	std::string szSql = "select * from card where game_group_id = ";
+	szSql.append(IntToString(group));
+
+	const char *argc = QUERY_CATEGORY_CARDBYGROUP;
+	result = sqlite3_exec(pDB,szSql.c_str(), sqliteExecCallBack, (void *)argc, &errMsg);
+	if (result != SQLITE_OK) {
+		return NULL;
+	}
+
+	return arrayCardProfile;
 }
 
 CCArray* GlobalData::getAllCards(std::string name)

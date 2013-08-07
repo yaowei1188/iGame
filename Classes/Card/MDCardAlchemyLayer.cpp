@@ -173,9 +173,6 @@ void MDCardAlchemyLayer::startAlchemy()
 
 //        m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("no_1.png"), CCControlStateNormal);
 //        m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("no_2.png"), CCControlStateHighlighted);
-        
-
-        
     }
     
     m_btnLeft->setTitleForState(CCString::create("取消"), CCControlStateNormal);

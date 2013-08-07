@@ -22,9 +22,6 @@ MainInnerLayer::MainInnerLayer()
 	mCardList->addObject(CCString::create("head_rulaifo.png"));
 	mCardList->addObject(CCString::create("head_sunwukong.png"));
 	mCardList->addObject(CCString::create("head_erlangsheng.png"));
-	mCardList->addObject(CCString::create("head_rulaifo.png"));
-	mCardList->addObject(CCString::create("head_sunwukong.png"));
-	mCardList->addObject(CCString::create("head_erlangsheng.png"));
 
     mCardList->retain();
 

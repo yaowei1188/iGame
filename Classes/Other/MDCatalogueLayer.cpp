@@ -27,6 +27,7 @@ CCScene* MDCatalogueLayer::scene()
 bool MDCatalogueLayer::init()
 {
     selectedindex = -1;
+	selectedTab = 1;
     
     bool bRet = false;
     do 
@@ -35,14 +36,16 @@ bool MDCatalogueLayer::init()
         CC_BREAK_IF(! CCLayer::init());
 
 		btnTouched = false;
+
+		CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("art_head.plist");
         
-        mHeroList = CCArray::create(CCString::create("Li1"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),NULL);
-        mHeroList->retain();
+  //      mHeroList = CCArray::create(CCString::create("Li1"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),NULL);
+  //      mHeroList->retain();
 
-		vUserData = new int[mHeroList->count()]();
-		memset(vUserData, sizeof(int) * mHeroList->count(), 0);
+		//vUserData = new int[mHeroList->count()]();
+		//memset(vUserData, sizeof(int) * mHeroList->count(), 0);
 
-		this->reloadDataSource();
+		
 
         bRet = true;
     } while (0);
@@ -52,61 +55,14 @@ bool MDCatalogueLayer::init()
 
 void MDCatalogueLayer::LoadHeros()
 {
-	this->ShowLoadingIndicator("");
+	mHeroList = GlobalData::getCardProfile(selectedTab);
+	mHeroList->retain();
 
-	CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,httpresponse_selector(MDCatalogueLayer::requestFinishedCallback));
-	request->setTag("101");
-
-    string _strUrl = CompleteUrl(URL_FRIEND_LIST);
-    _strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-
-	request->setUrl(_strUrl.c_str());
-
-	CCHttpClient *client = CCHttpClient::getInstance();
-	client->send(request);
-
-	request->release();
-}
-
-void MDCatalogueLayer::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
-{
-	if (!this->ValidateResponseData(client,response))
-	{
-		return;
-	}
-
-	std::vector<char> *buffer = response->getResponseData();
-	std::string content(buffer->begin(),buffer->end());
-
-    CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
-	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
-    if (code != 200) {
-        CCMessageBox("invoke web api failed!","ERROR");
-        return;
-    }
-
-	std::string requestTag(response->getHttpRequest()->getTag());
-
-	if (requestTag == "101") {
-		mHeroList = dynamic_cast<CCArray *>(dictionary->objectForKey("friendList"));
-		if (mHeroList== NULL)
-		{
-			mHeroList = CCArray::create();
-		}
-        mHeroList->retain();
-		selectedindex = -1;
-		mTableView->reloadData();
-	} else if (requestTag == "103"){
-		this->LoadHeros();
-		CCMessageBox("delete friend successfully","Success");
-	}
+	this->reloadDataSource();
 }
 
 bool MDCatalogueLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
-//    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTableView", CCMultiColumnTableView*, this->mTableView);
     return true;
 }
 
@@ -139,6 +95,7 @@ void MDCatalogueLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     menuTab->addChild(itemFairy);
     itemFairy->setPosition(ccp(-itemSize.width, 0));
     itemFairy->selected();
+	itemFairy->setTag(1);
     _preSelectedTab = itemFairy;
 
     CCMenuItemSprite* itemBuddha = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("catalogue_tab_bg.png"),CCSprite::createWithSpriteFrameName("catalogue_tab_bg_selected.png"),NULL,this,menu_selector(MDCatalogueLayer::switchCallback));
@@ -147,6 +104,7 @@ void MDCatalogueLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     _sBuhhda->setPosition(ccp(itemSize.width * 0.5,itemSize.height * 0.5));
     menuTab->addChild(itemBuddha);
     itemBuddha->setPosition(ccp(0, 0));
+	itemBuddha->setTag(2);
 
     CCMenuItemSprite* itemDemon = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("catalogue_tab_bg.png"),CCSprite::createWithSpriteFrameName("catalogue_tab_bg_selected.png"),NULL,this,menu_selector(MDCatalogueLayer::switchCallback));
     CCSprite *_sDemon = CCSprite::createWithSpriteFrameName("catalogue_tab_damon.png");
@@ -154,8 +112,10 @@ void MDCatalogueLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     _sDemon->setPosition(ccp(itemSize.width * 0.5,itemSize.height * 0.5));
     menuTab->addChild(itemDemon);
     itemDemon->setPosition(ccp(itemSize.width, 0));
+	itemDemon->setTag(3);
 
-    this->reloadDataSource();
+    //this->reloadDataSource();
+	LoadHeros();
 }
 
 void MDCatalogueLayer::switchCallback(CCObject* pSender){
@@ -169,8 +129,11 @@ void MDCatalogueLayer::switchCallback(CCObject* pSender){
 		}
 
         pItem->selected();
-
+		selectedTab = pItem->getTag();
         _preSelectedTab = pItem;
+
+		this->LoadHeros();
+
     } else {
         pItem->selected();
     }
@@ -178,14 +141,18 @@ void MDCatalogueLayer::switchCallback(CCObject* pSender){
 
 void MDCatalogueLayer::reloadDataSource()
 {
-	mTableView = CCMultiColumnTableView::create(this,CCSizeMake(320,288),NULL);
-	this->addChild(mTableView);
-	mTableView->setPosition(ccp(0,50));
-	mTableView->setDirection(kCCScrollViewDirectionVertical);
-	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
-	mTableView->setDataSource(this);
-	mTableView->setDelegate(this);
-	mTableView->setColCount(COLUMN_NUM);
+	if (mTableView==NULL)
+	{
+		mTableView = CCMultiColumnTableView::create(this,CCSizeMake(320,288),NULL);
+		this->addChild(mTableView);
+		mTableView->setPosition(ccp(0,50));
+		mTableView->setDirection(kCCScrollViewDirectionVertical);
+		mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
+		mTableView->setDataSource(this);
+		mTableView->setDelegate(this);
+		mTableView->setColCount(COLUMN_NUM);
+	}
+
 	mTableView->reloadData();
 }
 
@@ -237,6 +204,7 @@ CCSize MDCatalogueLayer::tableCellSizeForIndex(CCTableView *table, unsigned int 
 
 CCTableViewCell* MDCatalogueLayer::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
+	CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(idx);
 	CCTableViewCell *cell = table->dequeueCell();
     CCSize size = this->tableCellSizeForIndex(table, idx);
 	if (!cell) {
@@ -250,7 +218,7 @@ CCTableViewCell* MDCatalogueLayer::tableCellAtIndex(CCTableView *table, unsigned
 		sSelected->setAnchorPoint(ccp(0.5, 1.0));
 		cell->addChild(sSelected);
         
-        CCSprite *sHead = CCSprite::createWithSpriteFrameName("head_rulaifo.png");
+        CCSprite *sHead = CCSprite::createWithSpriteFrameName(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
         sHead->setTag(122);
         sHead->setPosition(ccp(size.width * 0.5,size.height * 1.0 - 2));
 		sHead->setAnchorPoint(ccp(0.5, 1));
@@ -282,6 +250,7 @@ CCTableViewCell* MDCatalogueLayer::tableCellAtIndex(CCTableView *table, unsigned
         }
         
         CCSprite *sHead = (CCSprite*)cell->getChildByTag(122);
+		sHead->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(((CCString *)dict->objectForKey("cardHeadImg"))->getCString()));
         
 		//CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);
 		//lblName->setString("weiweiyao");
@@ -313,5 +282,6 @@ MDCatalogueLayer::MDCatalogueLayer()
 MDCatalogueLayer::~MDCatalogueLayer()
 {
 //    CC_SAFE_RELEASE(mTableView);
+	CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("art_head.plist");
 }
 
