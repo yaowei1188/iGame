@@ -111,6 +111,14 @@ inline std::string floatToString(float number)
 	return buff.str();
 }
 
+inline std::string floatToPercent(float number)
+{
+	number = number * 100;
+	std::string temp(floatToString(number));
+	temp.append("%");
+	return temp;
+}
+
 inline std::string IntToString (int number)
 {
 	std::ostringstream buff;

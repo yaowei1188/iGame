@@ -37,7 +37,7 @@ public:
 	static CCDictionary* getUserinfo();
 	static void setUserinfo(CCDictionary* p_userInfo);
 
-	static CCArray* getCardProfile(std::string name);
+	static CCDictionary* getCardProfile(std::string name);
 	static CCArray* getCardProfile(int group);
 
 private:

@@ -12,6 +12,7 @@
 #define QUERY_CATEGORY_FRACTION "1"
 #define QUERY_CATEGORY_CARDINFO "2"
 #define QUERY_CATEGORY_CARDBYGROUP "3"
+#define QUERY_CARD_PROFILE_BY_NAME "4"
 
 static CCDictionary *dictLanguage;
 static CCArray *arrayTasks;
@@ -73,6 +74,12 @@ int GlobalData::sqliteExecCallBack( void * para, int n_column, char ** column_va
 			dict->setObject(CCString::create(column_value[i]), column_name[i]);
 		}
 		arrayCardProfile->addObject(dict);
+	} else if(strcmp(myPara, QUERY_CARD_PROFILE_BY_NAME)==0) {
+		dictCard = CCDictionary::create();
+		for(int i = 0 ; i < n_column; i ++ )
+		{
+			dictCard->setObject(CCString::create(column_value[i]), column_name[i]);
+		}
 	}
 
     return 0;
@@ -130,13 +137,11 @@ CCArray* GlobalData::getFraction(std::string name)
     return arrayFraction;
 }
 
-CCArray* GlobalData::getCardProfile(std::string name)
+CCDictionary* GlobalData::getCardProfile(std::string name)
 {
-	if (arrayFraction!=NULL) {
-		return arrayFraction;
-	}
-
-	arrayFraction = CCArray::create();
+	//if (dictCard==NULL) {
+	//	dictCard = CCDictionary::create();
+	//}
 
 	sqlite3 *pDB = NULL;
 	char* errMsg = NULL;
@@ -146,15 +151,16 @@ CCArray* GlobalData::getCardProfile(std::string name)
 		return NULL;
 	}
 
-	std::string szSql = "select * from game_group";
-
-	const char *argc = QUERY_CATEGORY_FRACTION;
+	std::string szSql = "select c.cardHeadImg,c.cardBodyImg,c.cardProfileImg,c.game_group_id,r.roleName,r.starGrade,r.beginGrade,r.blood,r.attack,r.defence,r.crit,r.dodge,r.roleDescription from card c left join game_role r on c.cardProfileImg = r.roleImageId where c.cardProfileImg = '";
+	szSql.append(name);
+	szSql.append("'");
+	const char *argc = QUERY_CARD_PROFILE_BY_NAME;
 	result = sqlite3_exec(pDB,szSql.c_str(), sqliteExecCallBack, (void *)argc, &errMsg);
 	if (result != SQLITE_OK) {
 		return NULL;
 	}
 
-	return arrayFraction;
+	return dictCard;
 }
 
 CCArray* GlobalData::getCardProfile(int group)

@@ -105,28 +105,43 @@ void MDCatalogueDetailLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLo
 
 void MDCatalogueDetailLayer::setCardInfo(CCDictionary *dict)
 {
-    mDictInfo = dict;
+    //mDictInfo = dict;
 
     CCSize bgSize = m_sCard->getContentSize();
 
-    CCString *strGroupId = (CCString *)mDictInfo->objectForKey("game_group_id");
+	CCDictionary *dictCardProfile = GlobalData::getCardProfile(((CCString *)dict->objectForKey("cardProfileImg"))->getCString());
+
+    CCString *strGroupId = (CCString *)dictCardProfile->objectForKey("game_group_id");
     std::string strGroup = determineGroup(strGroupId);
     CCSprite *sCardGroup = CCSprite::createWithSpriteFrameName(strGroup.c_str());
     sCardGroup->setAnchorPoint(ccp(1,1));
-    sCardGroup->setPosition(ccp(35,346));
+    sCardGroup->setPosition(ccp(42,360));
     this->addChild(sCardGroup);
 
-//    CCString *strCardImg = (CCString *)mDictInfo->objectForKey("cardHeadImg");
-    std::string strCardImg("art/art_card/");
-    strCardImg.append(((CCString *)mDictInfo->objectForKey("cardBodyImg"))->getCString());
+    std::string strCardImg("art/art_profile/");
+    strCardImg.append(((CCString *)dictCardProfile->objectForKey("cardProfileImg"))->getCString());
+	strCardImg.append(".png");
 
-//    CCString *strCardImg = CCString::create("art/art_card/ft001_1.png");
     CCSprite *sPeople = CCSprite::create(strCardImg.c_str());
-    sPeople->setPosition(ccp(92,265));
+    sPeople->setPosition(ccp(98,280));
     sPeople->setScale(0.5f);
     this->addChild(sPeople);
 
     m_lblDesc->setColor(ccc3(0, 255, 0));
+	std::string strLevel("LV.");
+	strLevel.append(IntToString(((CCString *)dictCardProfile->objectForKey("beginGrade"))->intValue()));
+	m_lblLevel->setString(strLevel.c_str());
+	m_lblCardName->setString(((CCString *)dictCardProfile->objectForKey("roleName"))->getCString());
+	m_lblDesc->setString(((CCString *)dictCardProfile->objectForKey("roleDescription"))->getCString());
+
+	m_lblHp->setString(IntToString(((CCString *)dictCardProfile->objectForKey("blood"))->intValue()).c_str());
+	float fltDefence = ((CCString *)dictCardProfile->objectForKey("defence"))->floatValue();
+	m_lblDefence->setString(floatToPercent(fltDefence).c_str());
+
+	m_lblAttack->setString(IntToString(((CCString *)dictCardProfile->objectForKey("attack"))->intValue()).c_str());
+
+	float fltDodge = ((CCString *)dictCardProfile->objectForKey("dodge"))->floatValue();
+	m_lblAvoid->setString(floatToPercent(fltDodge).c_str());
 }
 
 void MDCatalogueDetailLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
