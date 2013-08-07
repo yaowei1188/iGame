@@ -61,6 +61,9 @@ private:
     void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
     void LoadHeros();
 
+    CCMenu* generateRadioButton(const char *menuName);
+    void radioButtonCallback(CCObject* pSender);
+
 private:
     CCTableView* mTableView;
     unsigned int selectedindex;

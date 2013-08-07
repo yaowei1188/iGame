@@ -40,7 +40,7 @@ bool MDSettingLayer::init()
 		CCDictionary *dict0 = CCDictionary::create();
 		dict0->setObject(CCString::create(""),"RowText");
 		dict0->setObject(CCString::create("0"),"Row");
-		dict0->setObject(CCString::create("1"),"Category");
+		dict0->setObject(CCString::create("0"),"Category");
 		dict0->setObject(CCString::create("背景音乐"),"CategoryText");
 		mHeroList->addObject(dict0);
 
@@ -55,12 +55,14 @@ bool MDSettingLayer::init()
 		dict2->setObject(CCString::create("2"),"Row");
 		dict2->setObject(CCString::create("新浪账号"),"RowText");
 		dict2->setObject(CCString::create("1"),"Category");
+//        dict2->setObject(CCString::create(""),"CategoryText");
 		mHeroList->addObject(dict2);
 
 		CCDictionary *dict3 = CCDictionary::create();
 		dict3->setObject(CCString::create("3"),"Row");
 		dict3->setObject(CCString::create("人人账号"),"RowText");
 		dict3->setObject(CCString::create("1"),"Category");
+//        dict3->setObject(CCString::create(""),"CategoryText");
 		mHeroList->addObject(dict3);
 
 		CCDictionary *dict4 = CCDictionary::create();
@@ -74,12 +76,14 @@ bool MDSettingLayer::init()
 		dict5->setObject(CCString::create("5"),"Row");
 		dict5->setObject(CCString::create("意义反馈"),"RowText");
 		dict5->setObject(CCString::create("2"),"Category");
+//        dict5->setObject(CCString::create(""),"CategoryText");
 		mHeroList->addObject(dict5);
 
 		CCDictionary *dict6 = CCDictionary::create();
 		dict6->setObject(CCString::create("6"),"Row");
 		dict6->setObject(CCString::create("关于我们"),"RowText");
 		dict6->setObject(CCString::create("2"),"Category");
+//        dict6->setObject(CCString::create(""),"CategoryText");
 		mHeroList->addObject(dict6);
 
 		vUserData = new int[mHeroList->count()]();
@@ -171,11 +175,11 @@ void MDSettingLayer::reloadDataSource()
 {
 	mTableView = CCTableView::create(this,CCSizeMake(320,288),NULL);
 	this->addChild(mTableView);
-	mTableView->setPosition(ccp(0,90));
+	mTableView->setPosition(ccp(0,60));
 	mTableView->setDirection(kCCScrollViewDirectionVertical);
 	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
 	mTableView->setDataSource(this);
-	mTableView->setViewSize(CCSizeMake(312, 314));
+	mTableView->setViewSize(CCSizeMake(320, 314));
 	mTableView->setDelegate(this);
 	mTableView->reloadData();
 }
@@ -225,82 +229,179 @@ CCSize MDSettingLayer::tableCellSizeForIndex(CCTableView *table, unsigned int id
     return CCSizeMake(312, 80);
 }
 
+void MDSettingLayer::radioButtonCallback(CCObject* pSender)
+{
+    
+}
+
+CCMenu* MDSettingLayer::generateRadioButton(const char *menuName)
+{
+	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("setting_checkbox_off.png"));
+	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("setting_checkbox_on.png"));
+
+	CCMenu* m_auto_op_menu = CCMenu::create();
+	CCMenuItemSprite* menuOff = CCMenuItemSprite::create(spriteOff, NULL);
+	CCMenuItemSprite* menuOn = CCMenuItemSprite::create(spriteOn, NULL);
+	CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(MDSettingLayer::radioButtonCallback),menuOff,menuOn,NULL);
+    CCLabelTTF *lblMenuName = CCLabelTTF::create(menuName, FONT_VERDANA, FONT_SIZE_BIG);
+    lblMenuName->setPosition(ccp(-24,item->getContentSize().height * 0.5));
+    lblMenuName->setColor(ccc3(254, 203, 27));
+    item->addChild(lblMenuName);
+
+	m_auto_op_menu->addChild(item);
+
+	return m_auto_op_menu;
+}
+
 CCTableViewCell* MDSettingLayer::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
 	CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(idx);
 	bool selected = (idx==selectedindex);
 	CCTableViewCell *cell = table->dequeueCell();
 	CCString *strCategory = (CCString *)dict->objectForKey("Category");
-	//CCString *strCategoryText = (CCString *)dict->objectForKey("CategoryText");
+	CCString *strCategoryText = (CCString *)dict->objectForKey("CategoryText");
 	CCString *strRowText = (CCString *)dict->objectForKey("RowText");
     CCSize size = this->tableCellSizeForIndex(table, idx);
 	if (!cell) {
 		cell = new CCTableViewCell();
 		cell->autorelease();
+
+        CCLabelTTF *lblName = NULL;
+
+        if (strCategory->compare("0")==0) {
+            CCMenu *menuMusic = generateRadioButton("音乐");
+            menuMusic->setTag(120);
+            menuMusic->setPosition(120,size.height * 0.5 - 5);
+            cell->addChild(menuMusic);
+
+            CCMenu *menuEffect = generateRadioButton("音效");
+            menuEffect->setTag(121);
+            menuEffect->setPosition(220,size.height * 0.5 - 5);
+            cell->addChild(menuEffect);
+        } else {
+            CCLabelTTF *lblName = CCLabelTTF::create(strRowText->getCString(), FONT_VERDANA, FONT_SIZE_MEDIUM);
+            lblName->setColor(ccc3(254, 203, 27));
+            //		lblName->enableStroke(ccc3(16, 6, 9), 0.8);
+            lblName->setTag(123);
+            cell->addChild(lblName);
+        }
         
-  //      CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("friends_cellhighlight.png"));
-  //      sSelected->setVisible(false);
-  //      sSelected->setTag(121);
-		//sSelected->setPosition(ccp(13,size.height - 39));
-		//sSelected->setAnchorPoint(CCPointZero);
-		//cell->addChild(sSelected);
-  //      
-  //      CCSprite *sHead = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_rulaifo.png"));
-  //      sHead->setTag(122);
-  //      sHead->setPosition(ccp(10,size.height * 0.5));
-		//sHead->setAnchorPoint(ccp(0, 0.5));
-		//cell->addChild(sHead);
+        if (strCategoryText!=NULL && strCategoryText->length()>0) {
+            CCScale9Sprite *sSectionLine = CCScale9Sprite::createWithSpriteFrameName("setting_cell_seperator.png");
+            sSectionLine->setPreferredSize(CCSizeMake(320, 18));
+            sSectionLine->setPosition(ccp(0,size.height));
+            sSectionLine->setAnchorPoint(ccp(0,1));
+            sSectionLine->setTag(124);
+            cell->addChild(sSectionLine);
 
-		CCLabelTTF *lblName = CCLabelTTF::create(strRowText->getCString(), FONT_VERDANA, FONT_SIZE_BIG);
-		lblName->setPosition(ccp(80,size.height - CELL_ITEMS_Y));
-		lblName->setAnchorPoint(ccp(0, 0.5));
-		lblName->setColor(ccc3(235, 234, 181));
-		lblName->enableStroke(ccc3(16, 6, 9), 0.8);
-		lblName->setTag(123);
-		cell->addChild(lblName);
+            CCLabelTTF *lblCategoryText = CCLabelTTF::create(strCategoryText->getCString(), FONT_VERDANA, FONT_SIZE_BIG);
+            lblCategoryText->setPosition(ccp(size.width * 0.5,size.height));
+            lblCategoryText->setAnchorPoint(ccp(0.5, 1));
+            lblCategoryText->setColor(ccc3(255, 144, 27));
+//            lblCategoryText->enableStroke(ccc3(16, 6, 9), 0.8);
+            lblCategoryText->setTag(125);
+            cell->addChild(lblCategoryText);
 
-		//CCLabelTTF *lblLevel = CCLabelTTF::create("LV. 3", FONT_VERDANA, FONT_SIZE_MEDIUM);
-		//lblLevel->setPosition(ccp(80,size.height - 2 * CELL_ITEMS_Y));
-		//lblLevel->setAnchorPoint(ccp(0, 0.5));
-  //      lblLevel->setColor(ccc3(235, 234, 181));
-  //      lblLevel->enableStroke(ccc3(16, 6, 9), 0.8);
-		//lblLevel->setTag(124);
-		//cell->addChild(lblLevel);
+            if(lblName!=NULL) {
+                lblName->setPosition(ccp(size.width * 0.5,size.height * 0.5 -10));
+            }
+        } else {
+            CCScale9Sprite *sline = CCScale9Sprite::createWithSpriteFrameName("setting_cell_line.png");
+            sline->setPreferredSize(CCSizeMake(320, 1));
+            sline->setPosition(ccp(0,size.height));
+            sline->setAnchorPoint(ccp(0, 1));
+            sline->setTag(122);
+            cell->addChild(sline);
 
-		CCScale9Sprite *sline = CCScale9Sprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("setting_cell_line.png"));
-		sline->setPreferredSize(CCSizeMake(290, 1));
-		sline->setPosition(ccp(15,size.height));
-		sline->setAnchorPoint(CCPointZero);
-		cell->addChild(sline);
-        
-		//CCPoint point = ccp(218 ,size.height * 0.5);
-
-  //      CCSprite *sStarGrade = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_l_star5.png"));
-  //      sStarGrade->setPosition(point);
-		//lblLevel->setTag(125);
-  //      sStarGrade->setAnchorPoint(ccp(0, 0.5));
-  //      cell->addChild(sStarGrade);
+            if(lblName!=NULL) {
+                lblName->setPosition(ccp(size.width * 0.5,size.height * 0.5));
+            }
+        }
 	}
 	else
-	{
-  //      CCSprite *sSelected = (CCSprite*)cell->getChildByTag(121);
-  //      sSelected->setPosition(ccp(13,size.height - 39));
-  //      if (selectedindex == idx ) {
-  //          sSelected->setVisible(true);
-  //      } else {
-  //          sSelected->setVisible(false);
-  //      }
-  //      
-  //      CCSprite *sHead = (CCSprite*)cell->getChildByTag(122);
-  //      
+	{    
 		CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);
 		lblName->setString(strRowText->getCString());
-  //      
-  //      CCLabelTTF *lblLevel = (CCLabelTTF*)cell->getChildByTag(124);
-		//lblLevel->setString(string->getCString());
-        
-//        CCScale9Sprite *background = (CCScale9Sprite *)cell->getChildByTag(121);
-//        background->setContentSize(size);
+
+        CCScale9Sprite *sSectionLine = (CCScale9Sprite *)cell->getChildByTag(124);
+        CCLabelTTF *lblCategoryText = (CCLabelTTF*)cell->getChildByTag(125);;
+        CCScale9Sprite *sline =  (CCScale9Sprite *)cell->getChildByTag(122);
+
+        CCMenu *menuMusic = (CCMenu *)cell->getChildByTag(120);
+        CCMenu *menuEffect = (CCMenu *)cell->getChildByTag(121);
+
+        if (strCategory->compare("0")==0) {
+            if (menuMusic == NULL) {
+                menuMusic = generateRadioButton("音乐");
+                menuMusic->setTag(120);
+                menuMusic->setPosition(120,size.height * 0.5 - 5);
+                cell->addChild(menuMusic);
+            }
+            
+            if (menuEffect == NULL) {
+                menuEffect = generateRadioButton("音效");
+                menuEffect->setTag(121);
+                menuEffect->setPosition(220,size.height * 0.5 - 5);
+                cell->addChild(menuEffect);
+            }
+        } else {
+            if (menuMusic != NULL) {
+                menuMusic->removeFromParentAndCleanup(true);
+            }
+            if (menuEffect != NULL) {
+                menuEffect->removeFromParentAndCleanup(true);
+            }
+        }
+
+        if (strCategoryText!=NULL && strCategoryText->length()>0) {
+            if (sSectionLine==NULL) {
+                sSectionLine = CCScale9Sprite::createWithSpriteFrameName("setting_cell_seperator.png");
+                sSectionLine->setPreferredSize(CCSizeMake(320, 18));
+                sSectionLine->setPosition(ccp(0,size.height));
+                sSectionLine->setAnchorPoint(ccp(0,1));
+                sSectionLine->setTag(124);
+                cell->addChild(sSectionLine);
+            }
+
+            if (lblCategoryText==NULL) {
+                lblCategoryText = CCLabelTTF::create(strCategoryText->getCString(), FONT_VERDANA, FONT_SIZE_BIG);
+                lblCategoryText->setPosition(ccp(size.width * 0.5,size.height));
+                lblCategoryText->setAnchorPoint(ccp(0.5, 1));
+                lblCategoryText->setColor(ccc3(255, 144, 27));
+//                lblCategoryText->enableStroke(ccc3(16, 6, 9), 0.8);
+                lblCategoryText->setTag(125);
+                cell->addChild(lblCategoryText);
+            } else {
+                lblCategoryText->setString(strCategoryText->getCString());
+            }
+
+            if (sline!=NULL) {
+                sline->removeFromParentAndCleanup(true);
+            }
+
+            lblName->setPosition(ccp(size.width * 0.5,size.height * 0.5 - 10));
+
+        } else {
+            if (sline==NULL) {
+                sline = CCScale9Sprite::createWithSpriteFrameName("setting_cell_line.png");
+                sline->setPreferredSize(CCSizeMake(320, 1));
+                sline->setPosition(ccp(0,size.height));
+                sline->setAnchorPoint(ccp(0, 1));
+                sline->setTag(122);
+                cell->addChild(sline);
+            }
+
+            if (sSectionLine!=NULL) {
+                sSectionLine->removeFromParentAndCleanup(true);
+            }
+
+            if (lblCategoryText!=NULL) {
+                lblCategoryText->removeFromParentAndCleanup(true);
+            }
+
+            lblName->setPosition(ccp(size.width * 0.5,size.height * 0.5));
+
+        }
 	}
 
 	return cell;

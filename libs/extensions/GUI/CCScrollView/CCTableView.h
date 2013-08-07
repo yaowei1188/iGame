@@ -275,7 +275,7 @@ protected:
 //    void _updateCellPositions();
 public:
     void _updateCellPositions();
-    void _updateContentSize();
+    virtual void _updateContentSize();
     //add by ivan
     void refreshData();
     float Orgoffset;
