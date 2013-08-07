@@ -100,16 +100,30 @@ void MDCatalogueDetailLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLo
 {
     this->setFntTitle(101);
     
+
+}
+
+void MDCatalogueDetailLayer::setCardInfo(CCDictionary *dict)
+{
+    mDictInfo = dict;
+
     CCSize bgSize = m_sCard->getContentSize();
 
-    std::string strGroup = determineGroup(CCString::create("1"));
-    CCSprite *sCardGroup = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strGroup.c_str()));
+    CCString *strGroupId = (CCString *)mDictInfo->objectForKey("game_group_id");
+    std::string strGroup = determineGroup(strGroupId);
+    CCSprite *sCardGroup = CCSprite::createWithSpriteFrameName(strGroup.c_str());
     sCardGroup->setAnchorPoint(ccp(1,1));
     sCardGroup->setPosition(ccp(35,346));
     this->addChild(sCardGroup);
 
-    CCSprite *sPeople = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("character_rulaifo.png"));
+//    CCString *strCardImg = (CCString *)mDictInfo->objectForKey("cardHeadImg");
+    std::string strCardImg("art/art_card/");
+    strCardImg.append(((CCString *)mDictInfo->objectForKey("cardBodyImg"))->getCString());
+
+//    CCString *strCardImg = CCString::create("art/art_card/ft001_1.png");
+    CCSprite *sPeople = CCSprite::create(strCardImg.c_str());
     sPeople->setPosition(ccp(92,265));
+    sPeople->setScale(0.5f);
     this->addChild(sPeople);
 
     m_lblDesc->setColor(ccc3(0, 255, 0));

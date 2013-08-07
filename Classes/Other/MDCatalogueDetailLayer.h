@@ -38,12 +38,17 @@ public:
 
 	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
 
+//    CC_SYNTHESIZE(CCDictionary*, mDictInfo, CardInfo);
+
+    void setCardInfo(CCDictionary *dict);
+
+
 private:
 	unsigned int selectedindex;
     CCSprite *m_sCard;
     CCSprite *m_sFraction;
 	CCDictionary *mTaskList;
-    
+    CCDictionary *mDictInfo;
     CCLabelTTF *m_lblLevel;
     CCLabelTTF *m_lblCardName;
     CCLabelTTF *m_lblHp;

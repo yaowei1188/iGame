@@ -1,4 +1,5 @@
 #include "MDCatalogueLayer.h"
+#include "MDCatalogueDetailLayer.h"
 
 #define COLUMN_NUM 4
 
@@ -171,6 +172,8 @@ void MDCatalogueLayer::tableCellUnhighlight(CCTableView* table, CCTableViewCell*
 void MDCatalogueLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
     CCLOG("cell touched at index: %i", cell->getIdx());
+
+    CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(cell->getIdx());
 //	if (btnTouched)
 //	{
 //		return;
@@ -181,15 +184,16 @@ void MDCatalogueLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cel
 //        selectedindex = cell->getIdx();
 //    }
 //
-//    table->refreshData();
+
 	MainGameScene *mainScene = (MainGameScene *)this->getParent();
-	mainScene->PushLayer((CCLayer *)this->GetLayer("MDCatalogueDetailLayer"));
+    MDCatalogueDetailLayer *catalogueDetail = (MDCatalogueDetailLayer *)this->GetLayer("MDCatalogueDetailLayer");
+    catalogueDetail->setCardInfo(dict);
+	mainScene->PushLayer(catalogueDetail);
 }
 
 unsigned int MDCatalogueLayer::numberOfCellsInTableView(CCTableView *table)
 {
 	return mHeroList->count();
-	//return mHeroList->count()/COLUMN_NUM + mHeroList->count() % COLUMN_NUM;
 }
 
 CCSize MDCatalogueLayer::cellSizeForTable(CCTableView *table)
