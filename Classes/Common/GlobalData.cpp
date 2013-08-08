@@ -51,13 +51,11 @@ CCDictionary* GlobalData::getTasks(std::string name)
 int GlobalData::sqliteExecCallBack( void * para, int n_column, char ** column_value, char ** column_name )
 {
     const char *myPara = (const char *)para;
-    printf("para:%s",myPara);
+//    printf("para:%s",myPara);
     if (strcmp(myPara, QUERY_CATEGORY_FRACTION)==0) {
         CCDictionary *dict = CCDictionary::create();
         for(int i = 0 ; i < n_column; i ++ )
         {
-            //        str:string name = column_name[i];
-            //        std::string value = column_value[i];
             dict->setObject(CCString::create(column_value[i]), column_name[i]);
         }
         arrayFraction->addObject(dict);
@@ -78,7 +76,17 @@ int GlobalData::sqliteExecCallBack( void * para, int n_column, char ** column_va
 		dictCard = CCDictionary::create();
 		for(int i = 0 ; i < n_column; i ++ )
 		{
+            str:string name = column_name[i];
+            std::string value = column_value[i];
+            CCLog("value:%s",column_value[i]);
+            if (name == "roleName") {
+//                wstring wstr = StringToWString(value);
+//                CCLog("value:%s",wstr.c_str());
+//                std::string result = WStrToUTF8(wstr);
+//                CCLog("value after unicode:%s",result.c_str());
+            }
 			dictCard->setObject(CCString::create(column_value[i]), column_name[i]);
+
 		}
 	}
 

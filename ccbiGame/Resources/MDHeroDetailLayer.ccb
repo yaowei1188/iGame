@@ -765,7 +765,7 @@
 						<key>value</key>
 						<array>
 							<real>162</real>
-							<real>139</real>
+							<real>145</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -836,8 +836,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>177</real>
-							<real>87</real>
+							<real>169</real>
+							<real>96</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1948,8 +1948,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>ccbResources/ccbDefaultImages.plist</string>
-							<string>ccbButtonHilite.png</string>
+							<string>Image/card.plist</string>
+							<string>card_detail_armor.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -3136,16 +3136,6 @@
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>accelerometerEnabled</string>
-				<key>platform</key>
-				<string>iOS</string>
-				<key>type</key>
-				<string>Check</string>
-				<key>value</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>name</key>
 				<string>mouseEnabled</string>
 				<key>platform</key>
 				<string>Mac</string>
@@ -3153,16 +3143,6 @@
 				<string>Check</string>
 				<key>value</key>
 				<true/>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>keyboardEnabled</string>
-				<key>platform</key>
-				<string>Mac</string>
-				<key>type</key>
-				<string>Check</string>
-				<key>value</key>
-				<false/>
 			</dict>
 		</array>
 	</dict>

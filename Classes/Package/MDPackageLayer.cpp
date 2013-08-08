@@ -132,7 +132,7 @@ void MDPackageLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     CCMenuItemSprite* itemFairy = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("package_tab_normal.png"),CCSprite::createWithSpriteFrameName("package_tab_selected.png"),NULL,this,menu_selector(MDPackageLayer::switchCallback));
     CCSize itemSize = itemFairy->getContentSize();
     
-    CCLabelBMFont *lblPackage1 = CCLabelBMFont::create("package1", "btn.fnt");
+    CCLabelBMFont *lblPackage1 = CCLabelBMFont::create("背包一", "btn.fnt");
     itemFairy->addChild(lblPackage1);
     lblPackage1->setPosition(ccp(itemSize.width * 0.5,itemSize.height * 0.5));
     menuTab->addChild(itemFairy);
@@ -141,14 +141,14 @@ void MDPackageLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     _preSelectedTab = itemFairy;
     
     CCMenuItemSprite* itemBuddha = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("package_tab_normal.png"),CCSprite::createWithSpriteFrameName("package_tab_selected.png"),NULL,this,menu_selector(MDPackageLayer::switchCallback));
-    CCLabelBMFont *lblPackage2 = CCLabelBMFont::create("package2", "btn.fnt");
+    CCLabelBMFont *lblPackage2 = CCLabelBMFont::create("背包二", "btn.fnt");
     itemBuddha->addChild(lblPackage2);
     lblPackage2->setPosition(ccp(itemSize.width * 0.5,itemSize.height * 0.5));
     menuTab->addChild(itemBuddha);
     itemBuddha->setPosition(ccp(0, 0));
     
     CCMenuItemSprite* itemDemon = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("package_tab_normal.png"),CCSprite::createWithSpriteFrameName("package_tab_selected.png"),NULL,this,menu_selector(MDPackageLayer::switchCallback));
-    CCLabelBMFont *lblPackage3 = CCLabelBMFont::create("package3", "btn.fnt");
+    CCLabelBMFont *lblPackage3 = CCLabelBMFont::create("背包三", "btn.fnt");
     itemDemon->addChild(lblPackage3);
     lblPackage3->setPosition(ccp(itemSize.width * 0.5,itemSize.height * 0.5));
     menuTab->addChild(itemDemon);

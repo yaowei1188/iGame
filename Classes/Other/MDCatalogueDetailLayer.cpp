@@ -99,8 +99,6 @@ SEL_CCControlHandler MDCatalogueDetailLayer::onResolveCCBCCControlSelector(CCObj
 void MDCatalogueDetailLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
     this->setFntTitle(101);
-    
-
 }
 
 void MDCatalogueDetailLayer::setCardInfo(CCDictionary *dict)

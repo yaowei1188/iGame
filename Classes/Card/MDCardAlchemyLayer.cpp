@@ -203,16 +203,16 @@ void MDCardAlchemyLayer::finishAlchemy()
 
     m_btnDone->setVisible(false);
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    m_spriteSuccess = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_title_success.png"));
+    m_spriteSuccess = CCSprite::createWithSpriteFrameName("card_title_success.png");
     this->addChild(m_spriteSuccess);
     m_spriteSuccess->setPosition(ccp(winSize.width * 0.5,130));
 
-    CCLabelTTF *lblName = CCLabelTTF::create("YUANHUNDAN", "Arial", 14);
+    CCLabelTTF *lblName = CCLabelTTF::create("元魂丹", "Arial", 14);
     this->addChild(lblName);
     lblName->setColor(ccc3(255, 255, 0));
     lblName->setPosition(ccp(winSize.width * 0.5,winSize.height * 0.5 + 40));
 
-    CCLabelTTF *lblDesc = CCLabelTTF::create("xishoudaliangjingyan", "Arial", 14);
+    CCLabelTTF *lblDesc = CCLabelTTF::create("吸收大量经验", "Arial", 14);
     this->addChild(lblDesc);
     lblDesc->setColor(ccc3(255, 255, 255));
     lblDesc->setPosition(ccp(winSize.width * 0.5,winSize.height * 0.5 + 20));
@@ -221,9 +221,7 @@ void MDCardAlchemyLayer::finishAlchemy()
     this->addChild(m_spriteResult);
     m_spriteResult->setPosition(ccp(winSize.width * 0.5,winSize.height * 0.5 - 30));
 
-//    m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_btn_absorption.png"), CCControlStateNormal);
     m_btnLeft->setTitleForState(CCString::create("吸收"), CCControlStateNormal);
-//    m_btnLeft->setBackgroundSpriteFrameForState(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_btn_absorption_highlight.png"), CCControlStateHighlighted);
     m_btnLeft->setTag(111);
 }
 
@@ -231,7 +229,7 @@ void MDCardAlchemyLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader
 {
     this->setFntTitle(101);
     this->setFntTitle(102);
-    //doSearchFriend();
+    this->setFntTitle(110);
 }
 
 void MDCardAlchemyLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
