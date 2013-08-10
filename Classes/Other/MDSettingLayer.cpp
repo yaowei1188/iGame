@@ -168,6 +168,7 @@ SEL_CCControlHandler MDSettingLayer::onResolveCCBCCControlSelector(CCObject *pTa
 
 void MDSettingLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
+    this->setFntTitle(101);
 	reloadDataSource();
 }
 
@@ -284,6 +285,7 @@ CCTableViewCell* MDSettingLayer::tableCellAtIndex(CCTableView *table, unsigned i
             //		lblName->enableStroke(ccc3(16, 6, 9), 0.8);
             lblName->setTag(123);
             cell->addChild(lblName);
+            lblName->setPosition(ccp(size.width * 0.5,size.height * 0.5 -10));
         }
         
         if (strCategoryText!=NULL && strCategoryText->length()>0) {
@@ -302,9 +304,6 @@ CCTableViewCell* MDSettingLayer::tableCellAtIndex(CCTableView *table, unsigned i
             lblCategoryText->setTag(125);
             cell->addChild(lblCategoryText);
 
-            if(lblName!=NULL) {
-                lblName->setPosition(ccp(size.width * 0.5,size.height * 0.5 -10));
-            }
         } else {
             CCScale9Sprite *sline = CCScale9Sprite::createWithSpriteFrameName("setting_cell_line.png");
             sline->setPreferredSize(CCSizeMake(320, 1));
@@ -312,10 +311,6 @@ CCTableViewCell* MDSettingLayer::tableCellAtIndex(CCTableView *table, unsigned i
             sline->setAnchorPoint(ccp(0, 1));
             sline->setTag(122);
             cell->addChild(sline);
-
-            if(lblName!=NULL) {
-                lblName->setPosition(ccp(size.width * 0.5,size.height * 0.5));
-            }
         }
 	}
 	else

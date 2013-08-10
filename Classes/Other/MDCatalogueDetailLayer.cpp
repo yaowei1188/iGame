@@ -121,15 +121,20 @@ void MDCatalogueDetailLayer::setCardInfo(CCDictionary *dict)
 	strCardImg.append(".png");
 
     CCSprite *sPeople = CCSprite::create(strCardImg.c_str());
-    sPeople->setPosition(ccp(98,280));
+    sPeople->setPosition(ccp(98,270));
     sPeople->setScale(0.5f);
     this->addChild(sPeople);
 
-    m_lblDesc->setColor(ccc3(0, 255, 0));
+    m_lblDesc->setColor(ccc3(51, 52, 50));
 	std::string strLevel("LV.");
 	strLevel.append(IntToString(((CCString *)dictCardProfile->objectForKey("beginGrade"))->intValue()));
+    m_lblLevel->setColor(ccc3(242, 179, 20));
+    m_lblLevel->enableStroke(ccc3(51, 1, 4), 0.3);
+    
 	m_lblLevel->setString(strLevel.c_str());
 	m_lblCardName->setString(((CCString *)dictCardProfile->objectForKey("roleName"))->getCString());
+    m_lblCardName->enableStroke(ccc3(45, 1, 2), 0.6);
+    
 	m_lblDesc->setString(((CCString *)dictCardProfile->objectForKey("roleDescription"))->getCString());
 
 	m_lblHp->setString(IntToString(((CCString *)dictCardProfile->objectForKey("blood"))->intValue()).c_str());
@@ -137,9 +142,11 @@ void MDCatalogueDetailLayer::setCardInfo(CCDictionary *dict)
 	m_lblDefence->setString(floatToPercent(fltDefence).c_str());
 
 	m_lblAttack->setString(IntToString(((CCString *)dictCardProfile->objectForKey("attack"))->intValue()).c_str());
-
+    m_lblAttack->enableStroke(ccc3(45, 1, 2), 0.2);
+    
 	float fltDodge = ((CCString *)dictCardProfile->objectForKey("dodge"))->floatValue();
 	m_lblAvoid->setString(floatToPercent(fltDodge).c_str());
+    m_lblAvoid->enableStroke(ccc3(45, 1, 2), 0.3);
 }
 
 void MDCatalogueDetailLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)

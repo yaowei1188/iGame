@@ -85,6 +85,8 @@ private:
 
     MDProgressBar *hpBar;
     MDProgressBar *expBar;
+    
+    CCSprite * m_sCharacter;
 public:
     void updateUserInfo(int hp,int maxhp,int exp,int maxExp,int grade,int gold);
 
