@@ -55,11 +55,11 @@ private:
     virtual SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject * pTarget, const char * pSelectorName);
     
 	// a selector callback
-	void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
+	//void requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response);
 
-    void toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent);
+    //void toolBarTouchDownAction(CCObject * sender , CCControlEvent controlEvent);
     void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
-    void LoadHeros();
+    //void LoadHeros();
 
     CCMenu* generateRadioButton(const char *menuName);
     void radioButtonCallback(CCObject* pSender);
@@ -67,9 +67,11 @@ private:
 private:
     CCTableView* mTableView;
     unsigned int selectedindex;
-    CCArray *mHeroList;
+    CCArray *mSettingList;
 	bool btnTouched;
-	int *vUserData;
+	//int *vUserData;
+	bool m_blnEffect;
+	bool m_blnMusic;
 };
 
 #endif  // __HERO_LIST_SCENE_H__

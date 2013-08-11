@@ -1,9 +1,6 @@
 #include "cocos2d.h"
 #include "CCEGLView.h"
 #include "AppDelegate.h"
-#include "SimpleAudioEngine.h"
-
-
 
 #include "CCTableViewLoader.h"
 
@@ -43,28 +40,20 @@
 #include "MDHeroPrePromoLayerLoader.h"
 #include "MDHerosFormationLayerLoader.h"
 
-//#include "MDBattleLayer.h"
+#include "MDSoundManager.h"
 
-using namespace CocosDenshion;
+//#include "MDBattleLayer.h"
 
 USING_NS_CC;
 
 AppDelegate::AppDelegate()
 {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-	// preload background music and effect
-	SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic( MUSIC_FILE );
-	SimpleAudioEngine::sharedEngine()->preloadEffect( EFFECT_FILE );
-
-	// set default volume
-	SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.5);
-	SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
-#endif
+	MDSoundManager::preLoadSound();
 }
 
 AppDelegate::~AppDelegate()
 {
-    SimpleAudioEngine::end();
+	MDSoundManager::end();
 }
 
 bool AppDelegate::applicationDidFinishLaunching()
@@ -187,11 +176,10 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("friends.plist");
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("card.plist");
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 	//SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE, true);
-#endif
+	MDSoundManager::playBackgroundMusic();
     
-    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
+    //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("LoginScene.ccbi");
 
 
 //	CCScene *pScene = MDBattleLayer::scene();
@@ -199,7 +187,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MDHeroPrePromoLayer.ccbi");
     //CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("CharacterScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("TaskListScene.ccbi");
-//    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
+    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MainGameScene.ccbi");
 //    CCScene *pScene = ccbReader->createSceneWithNodeGraphFromFile("MDHerosFormationLayer");
     pDirector->runWithScene(pScene);
 
@@ -211,7 +199,7 @@ void AppDelegate::applicationDidEnterBackground()
 {
     CCDirector::sharedDirector()->stopAnimation();
 
-    SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+	MDSoundManager::pauseBackgroundMusic();
 }
 
 // this function will be called when the app is active again
@@ -219,5 +207,5 @@ void AppDelegate::applicationWillEnterForeground()
 {
     CCDirector::sharedDirector()->startAnimation();
 
-    SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+    MDSoundManager::resumeBackgroundMusic();
 }

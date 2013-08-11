@@ -19,6 +19,7 @@
 #include "MDBattleLayer.h"
 #include "ChatLayer.h"
 #include "common.h"
+#include "MDSoundManager.h"
 #include "GlobalData.h"
 
 using namespace cocos2d;

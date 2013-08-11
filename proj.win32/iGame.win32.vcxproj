@@ -346,6 +346,7 @@
     <ClInclude Include="..\Classes\Common\MainLayerBase.h" />
     <ClInclude Include="..\Classes\Common\MDDefine.h" />
     <ClInclude Include="..\Classes\Common\MDMessageCenter.h" />
+    <ClInclude Include="..\Classes\Common\MDSoundManager.h" />
     <ClInclude Include="..\Classes\Common\StringExt.h" />
     <ClInclude Include="..\Classes\Friends\AddFriendScene.h" />
     <ClInclude Include="..\Classes\Friends\AddFriendSceneLoader.h" />
@@ -593,6 +594,7 @@
     <ClCompile Include="..\Classes\Common\GlobalData.cpp" />
     <ClCompile Include="..\Classes\Common\MainLayerBase.cpp" />
     <ClCompile Include="..\Classes\Common\MDMessageCenter.cpp" />
+    <ClCompile Include="..\Classes\Common\MDSoundManager.cpp" />
     <ClCompile Include="..\Classes\Friends\AddFriendScene.cpp" />
     <ClCompile Include="..\Classes\Friends\FriendListScene.cpp" />
     <ClCompile Include="..\Classes\Login\CharacterScene.cpp" />

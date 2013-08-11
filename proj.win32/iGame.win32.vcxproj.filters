@@ -1468,6 +1468,9 @@
     <ClInclude Include="..\Classes\Other\MDCatalogueDetailLayerLoader.h">
       <Filter>Classes\Other</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Common\MDSoundManager.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -1977,6 +1980,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Other\MDCatalogueDetailLayer.cpp">
       <Filter>Classes\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\MDSoundManager.cpp">
+      <Filter>Classes\Common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

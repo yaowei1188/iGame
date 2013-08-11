@@ -60,19 +60,15 @@ typedef enum _FACTION_TYPE
 #endif
 
 
-// android effect only support ogg
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-#define EFFECT_FILE        "effect2.ogg"
-#else
-#define EFFECT_FILE        "effect1.wav"
-#endif // CC_PLATFORM_ANDROID
+#define MENU1_EFFECT        "menu1.wav"
+#define MENU2_EFFECT        "menu2.wav"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-#define MUSIC_FILE        "music.mid"
+#define MUSIC_FILE        "background.wav"
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_BLACKBERRY)
-#define MUSIC_FILE        "background.ogg"
+#define MUSIC_FILE        "background.wav"
 #else
-#define MUSIC_FILE        "background.mp3"
+#define MUSIC_FILE        "background.wav"
 #endif // CC_PLATFORM_WIN32
 
 /*Function url*/

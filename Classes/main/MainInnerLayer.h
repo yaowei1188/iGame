@@ -9,12 +9,10 @@
 #ifndef __MainInnerLayer__
 #define __MainInnerLayer__
 
-#include <iostream>
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "common.h"
+
 #include "MainLayerBase.h"
-#include "StringExt.h"
 #include "MDProgressBar.h"
 
 using namespace cocos2d;
@@ -39,6 +37,8 @@ class MainInnerLayer : public MainLayerBase,
 public:
     ~MainInnerLayer();
     MainInnerLayer();
+
+	virtual bool init();
     
 	CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MainInnerLayer, create);
     CC_SYNTHESIZE(MainInnerLayerDelegate*, m_delegate, Delegate);
@@ -64,10 +64,10 @@ private:
 	virtual void tableCellHighlight(CCTableView* table, CCTableViewCell* cell);
 	virtual void tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell);
     
-    virtual bool init();
-    
     void buttonClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
     void toolBarBtnClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
+
+	void getCharacterProfile();
     
 	unsigned int selectedindex;
 	CCTableView* mTableView;
@@ -85,8 +85,8 @@ private:
 
     MDProgressBar *hpBar;
     MDProgressBar *expBar;
-    
-    CCSprite * m_sCharacter;
+
+	CCDictionary *dictCharacter;
 public:
     void updateUserInfo(int hp,int maxhp,int exp,int maxExp,int grade,int gold);
 

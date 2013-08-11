@@ -33,61 +33,64 @@ bool MDSettingLayer::init()
         CC_BREAK_IF(! CCLayer::init());
 
 		btnTouched = false;
+
+		m_blnMusic = CCUserDefault::sharedUserDefault()->getBoolForKey("IsSound",true);
+		m_blnEffect = CCUserDefault::sharedUserDefault()->getBoolForKey("IsEffect",true);
         
-        mHeroList = CCArray::createWithCapacity(7);
-        mHeroList->retain();
+        mSettingList = CCArray::createWithCapacity(7);
+        mSettingList->retain();
 
 		CCDictionary *dict0 = CCDictionary::create();
 		dict0->setObject(CCString::create(""),"RowText");
 		dict0->setObject(CCString::create("0"),"Row");
 		dict0->setObject(CCString::create("0"),"Category");
 		dict0->setObject(CCString::create("背景音乐"),"CategoryText");
-		mHeroList->addObject(dict0);
+		mSettingList->addObject(dict0);
 
 		CCDictionary *dict1 = CCDictionary::create();
 		dict1->setObject(CCString::create("1"),"Row");
 		dict1->setObject(CCString::create("QQ账号"),"RowText");
 		dict1->setObject(CCString::create("1"),"Category");
 		dict1->setObject(CCString::create("账号绑定"),"CategoryText");
-		mHeroList->addObject(dict1);
+		mSettingList->addObject(dict1);
 
 		CCDictionary *dict2 = CCDictionary::create();
 		dict2->setObject(CCString::create("2"),"Row");
 		dict2->setObject(CCString::create("新浪账号"),"RowText");
 		dict2->setObject(CCString::create("1"),"Category");
 //        dict2->setObject(CCString::create(""),"CategoryText");
-		mHeroList->addObject(dict2);
+		mSettingList->addObject(dict2);
 
 		CCDictionary *dict3 = CCDictionary::create();
 		dict3->setObject(CCString::create("3"),"Row");
 		dict3->setObject(CCString::create("人人账号"),"RowText");
 		dict3->setObject(CCString::create("1"),"Category");
 //        dict3->setObject(CCString::create(""),"CategoryText");
-		mHeroList->addObject(dict3);
+		mSettingList->addObject(dict3);
 
 		CCDictionary *dict4 = CCDictionary::create();
 		dict4->setObject(CCString::create("4"),"Row");
 		dict4->setObject(CCString::create("修改密码"),"RowText");
 		dict4->setObject(CCString::create("2"),"Category");
 		dict4->setObject(CCString::create("账号设置"),"CategoryText");
-		mHeroList->addObject(dict4);
+		mSettingList->addObject(dict4);
 
 		CCDictionary *dict5 = CCDictionary::create();
 		dict5->setObject(CCString::create("5"),"Row");
 		dict5->setObject(CCString::create("意义反馈"),"RowText");
 		dict5->setObject(CCString::create("2"),"Category");
 //        dict5->setObject(CCString::create(""),"CategoryText");
-		mHeroList->addObject(dict5);
+		mSettingList->addObject(dict5);
 
 		CCDictionary *dict6 = CCDictionary::create();
 		dict6->setObject(CCString::create("6"),"Row");
 		dict6->setObject(CCString::create("关于我们"),"RowText");
 		dict6->setObject(CCString::create("2"),"Category");
 //        dict6->setObject(CCString::create(""),"CategoryText");
-		mHeroList->addObject(dict6);
+		mSettingList->addObject(dict6);
 
-		vUserData = new int[mHeroList->count()]();
-		memset(vUserData, sizeof(int) * mHeroList->count(), 0);
+		//vUserData = new int[mSettingList->count()]();
+		//memset(vUserData, sizeof(int) * mSettingList->count(), 0);
 
         bRet = true;
     } while (0);
@@ -95,59 +98,59 @@ bool MDSettingLayer::init()
     return bRet;
 }
 
-void MDSettingLayer::LoadHeros()
-{
-	this->ShowLoadingIndicator("");
+//void MDSettingLayer::LoadHeros()
+//{
+//	this->ShowLoadingIndicator("");
+//
+//	CCHttpRequest *request = new CCHttpRequest();
+//	request->setRequestType(CCHttpRequest::kHttpGet);
+//	request->setResponseCallback(this,httpresponse_selector(MDSettingLayer::requestFinishedCallback));
+//	request->setTag("101");
+//
+//    string _strUrl = CompleteUrl(URL_FRIEND_LIST);
+//    _strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
+//
+//	request->setUrl(_strUrl.c_str());
+//
+//	CCHttpClient *client = CCHttpClient::getInstance();
+//	client->send(request);
+//
+//	request->release();
+//}
 
-	CCHttpRequest *request = new CCHttpRequest();
-	request->setRequestType(CCHttpRequest::kHttpGet);
-	request->setResponseCallback(this,httpresponse_selector(MDSettingLayer::requestFinishedCallback));
-	request->setTag("101");
-
-    string _strUrl = CompleteUrl(URL_FRIEND_LIST);
-    _strUrl.append(CCUserDefault::sharedUserDefault()->getStringForKey("userinfo"));
-
-	request->setUrl(_strUrl.c_str());
-
-	CCHttpClient *client = CCHttpClient::getInstance();
-	client->send(request);
-
-	request->release();
-}
-
-void MDSettingLayer::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
-{
-	if (!this->ValidateResponseData(client,response))
-	{
-		return;
-	}
-
-	std::vector<char> *buffer = response->getResponseData();
-	std::string content(buffer->begin(),buffer->end());
-
-    CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
-	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
-    if (code != 200) {
-        CCMessageBox("invoke web api failed!","ERROR");
-        return;
-    }
-
-	std::string requestTag(response->getHttpRequest()->getTag());
-
-	if (requestTag == "101") {
-		mHeroList = dynamic_cast<CCArray *>(dictionary->objectForKey("friendList"));
-		if (mHeroList== NULL)
-		{
-			mHeroList = CCArray::create();
-		}
-        mHeroList->retain();
-		selectedindex = -1;
-		mTableView->reloadData();
-	} else if (requestTag == "103"){
-		this->LoadHeros();
-		CCMessageBox("delete friend successfully","Success");
-	}
-}
+//void MDSettingLayer::requestFinishedCallback(CCHttpClient* client, CCHttpResponse* response)
+//{
+//	if (!this->ValidateResponseData(client,response))
+//	{
+//		return;
+//	}
+//
+//	std::vector<char> *buffer = response->getResponseData();
+//	std::string content(buffer->begin(),buffer->end());
+//
+//    CCDictionary * dictionary = CCJSONConverter::sharedConverter()->dictionaryFrom(content.c_str());
+//	int code = ((CCNumber *)dictionary->objectForKey("code"))->getIntValue();
+//    if (code != 200) {
+//        CCMessageBox("invoke web api failed!","ERROR");
+//        return;
+//    }
+//
+//	std::string requestTag(response->getHttpRequest()->getTag());
+//
+//	if (requestTag == "101") {
+//		mSettingList = dynamic_cast<CCArray *>(dictionary->objectForKey("friendList"));
+//		if (mSettingList== NULL)
+//		{
+//			mSettingList = CCArray::create();
+//		}
+//        mSettingList->retain();
+//		selectedindex = -1;
+//		mTableView->reloadData();
+//	} else if (requestTag == "103"){
+//		this->LoadHeros();
+//		CCMessageBox("delete friend successfully","Success");
+//	}
+//}
 
 bool MDSettingLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode)
 {
@@ -211,13 +214,41 @@ void MDSettingLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 //    }
 //
 //    table->refreshData();
-    //MainGameScene *mainScene = (MainGameScene *)this->getParent();
-    //mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroDetailLayer"));
+
+
+	//CCDictionary *dict = (CCDictionary *)mSettingList->objectAtIndex(cell->getIdx());
+	//if (dict->objectForKey(""))
+	//{
+	//}
+	selectedindex = cell->getIdx();
+	switch (selectedindex)
+	{
+	case 1:
+		//qq
+		break;
+	case 2:
+		//weibo
+		break;
+	case 3:
+		//renren
+		break;
+	case 4:
+		//password
+		break;
+	case 5:
+		//feedback
+		break;
+	case 6:
+		//MainGameScene *mainScene = (MainGameScene *)this->getParent();
+		//mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroDetailLayer"));
+		//about
+		break;
+	}
 }
 
 unsigned int MDSettingLayer::numberOfCellsInTableView(CCTableView *table)
 {
-	return mHeroList->count();
+	return mSettingList->count();
 }
 
 CCSize MDSettingLayer::cellSizeForTable(CCTableView *table)
@@ -232,13 +263,31 @@ CCSize MDSettingLayer::tableCellSizeForIndex(CCTableView *table, unsigned int id
 
 void MDSettingLayer::radioButtonCallback(CCObject* pSender)
 {
-    
+	CCMenuItemToggle* pSwitch = (CCMenuItemToggle*)pSender;
+	CCMenu *menu = (CCMenu *)pSwitch->getParent();
+
+	if (menu->getTag()==120)
+	{
+		if (pSwitch->getSelectedIndex()==0) {
+			 CCUserDefault::sharedUserDefault()->setBoolForKey("IsSound",false);
+			 MDSoundManager::stopBackgroundMusic();
+		} else {
+			CCUserDefault::sharedUserDefault()->setBoolForKey("IsSound",true);
+			MDSoundManager::playBackgroundMusic();
+		}
+	} else if (menu->getTag()==121) {
+		if (pSwitch->getSelectedIndex()==0) {
+			CCUserDefault::sharedUserDefault()->setBoolForKey("IsEffect",false);
+		} else {
+			CCUserDefault::sharedUserDefault()->setBoolForKey("IsEffect",true);
+		}
+	}
 }
 
 CCMenu* MDSettingLayer::generateRadioButton(const char *menuName)
 {
-	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("setting_checkbox_off.png"));
-	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("setting_checkbox_on.png"));
+	CCSprite *spriteOff = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("setting_checkbox_off.png"));
+	CCSprite *spriteOn = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("setting_checkbox_on.png"));
 
 	CCMenu* m_auto_op_menu = CCMenu::create();
 	CCMenuItemSprite* menuOff = CCMenuItemSprite::create(spriteOff, NULL);
@@ -256,7 +305,7 @@ CCMenu* MDSettingLayer::generateRadioButton(const char *menuName)
 
 CCTableViewCell* MDSettingLayer::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
-	CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(idx);
+	CCDictionary *dict = (CCDictionary *)mSettingList->objectAtIndex(idx);
 	bool selected = (idx==selectedindex);
 	CCTableViewCell *cell = table->dequeueCell();
 	CCString *strCategory = (CCString *)dict->objectForKey("Category");
@@ -274,11 +323,25 @@ CCTableViewCell* MDSettingLayer::tableCellAtIndex(CCTableView *table, unsigned i
             menuMusic->setTag(120);
             menuMusic->setPosition(120,size.height * 0.5 - 5);
             cell->addChild(menuMusic);
+			CCMenuItemToggle *itemMusic =  (CCMenuItemToggle *)menuMusic->getChildren()->objectAtIndex(0);
+			if (m_blnMusic)
+			{
+				itemMusic->setSelectedIndex(1);
+			} else {
+				itemMusic->setSelectedIndex(0);
+			}
 
             CCMenu *menuEffect = generateRadioButton("音效");
             menuEffect->setTag(121);
             menuEffect->setPosition(220,size.height * 0.5 - 5);
             cell->addChild(menuEffect);
+			CCMenuItemToggle *itemEffect =  (CCMenuItemToggle *)menuEffect->getChildren()->objectAtIndex(0);
+			if (m_blnEffect)
+			{
+				itemEffect->setSelectedIndex(1);
+			} else {
+				itemEffect->setSelectedIndex(0);
+			}
         } else {
             CCLabelTTF *lblName = CCLabelTTF::create(strRowText->getCString(), FONT_VERDANA, FONT_SIZE_MEDIUM);
             lblName->setColor(ccc3(254, 203, 27));
@@ -331,6 +394,13 @@ CCTableViewCell* MDSettingLayer::tableCellAtIndex(CCTableView *table, unsigned i
                 menuMusic->setTag(120);
                 menuMusic->setPosition(120,size.height * 0.5 - 5);
                 cell->addChild(menuMusic);
+				CCMenuItemToggle *itemMusic =  (CCMenuItemToggle *)menuMusic->getChildren()->objectAtIndex(0);
+				if (m_blnMusic)
+				{
+					itemMusic->setSelectedIndex(1);
+				} else {
+					itemMusic->setSelectedIndex(0);
+				}
             }
             
             if (menuEffect == NULL) {
@@ -338,6 +408,14 @@ CCTableViewCell* MDSettingLayer::tableCellAtIndex(CCTableView *table, unsigned i
                 menuEffect->setTag(121);
                 menuEffect->setPosition(220,size.height * 0.5 - 5);
                 cell->addChild(menuEffect);
+
+				CCMenuItemToggle *itemEffect =  (CCMenuItemToggle *)menuEffect->getChildren()->objectAtIndex(0);
+				if (m_blnEffect)
+				{
+					itemEffect->setSelectedIndex(1);
+				} else {
+					itemEffect->setSelectedIndex(0);
+				}
             }
         } else {
             if (menuMusic != NULL) {
@@ -403,47 +481,27 @@ CCTableViewCell* MDSettingLayer::tableCellAtIndex(CCTableView *table, unsigned i
 }
 
 //    按下按钮事件回调
-void MDSettingLayer::toolBarTouchDownAction(CCObject * sender , CCControlEvent pCCControlEvent)
-{
-	CCControlButton *button = (CCControlButton *)sender;
-	if (pCCControlEvent==CCControlEventTouchDown)
-	{
-		btnTouched = true;
-	}
-	else if (pCCControlEvent==CCControlEventTouchUpInside)
-	{
-		switch (button->getTag()) 
-		{
-		case 127:
-			{
-				btnTouched = false;
-				break;
-			}
-		case 128:
-			{
-				btnTouched = false;
-				MainGameScene *mainScene = (MainGameScene *)this->getParent();
-				mainScene->PushLayer((CCLayer *)this->GetLayer("NewMailScene"));
-				break;
-			}
-		case 129:
-			{
-				btnTouched = false;
-				break;
-			}
-		case 130:
-			{
-				btnTouched = false;
-				//CCMessageDialog *box = CCMessageDialog::create();
-				//box->setTitle(GlobalData::getLocalString("friend_delete_confirm")->getCString());
-				//box->setDelegate(this);
-				//this->addChild(box);
-
-				break;
-			}
-		}
-	}
-}
+//void MDSettingLayer::toolBarTouchDownAction(CCObject * sender , CCControlEvent pCCControlEvent)
+//{
+//	CCControlButton *button = (CCControlButton *)sender;
+//	if (pCCControlEvent==CCControlEventTouchDown)
+//	{
+//		btnTouched = true;
+//	}
+//	else if (pCCControlEvent==CCControlEventTouchUpInside)
+//	{
+//		switch (button->getTag()) 
+//		{
+//		case 128:
+//			{
+//				btnTouched = false;
+//				MainGameScene *mainScene = (MainGameScene *)this->getParent();
+//				mainScene->PushLayer((CCLayer *)this->GetLayer("NewMailScene"));
+//				break;
+//			}
+//		}
+//	}
+//}
 
 void MDSettingLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
 {
@@ -461,7 +519,7 @@ void MDSettingLayer::buttonClicked(CCObject * sender , CCControlEvent controlEve
 MDSettingLayer::MDSettingLayer()
 {
     //mTableView = NULL;
-    mHeroList = NULL;
+    mSettingList = NULL;
 }
 
 MDSettingLayer::~MDSettingLayer()

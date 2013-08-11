@@ -41,6 +41,7 @@ bool MainGameScene::onAssignCCBMemberVariable(CCObject* pTarget, const char* pMe
 
 void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
 
+
     switch (pSender->getTag()) {
         case TOOLBAR_BTN_COMPETITION_TAG:
             break;
@@ -70,10 +71,14 @@ void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
             this->AddChatLayer();
             break;
     }
+
+	MDSoundManager::playEffect();
 }
 
 void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
 {
+	MDSoundManager::playEffect();
+
     int number=1;
     if (intSelectedMenu==pItem->getTag()) {
         if (MENUBAR_HERO_TAG == intSelectedMenu) {

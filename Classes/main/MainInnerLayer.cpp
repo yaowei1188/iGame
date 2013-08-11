@@ -50,6 +50,11 @@ MainInnerLayer::~MainInnerLayer()
     CC_SAFE_RELEASE(m_sPlayerContainer);
 }
 
+void MainInnerLayer::getCharacterProfile()
+{
+	dictCharacter = GlobalData::getCardProfile("101");
+}
+
 void MainInnerLayer::updateUserInfo(int hp,int maxhp,int exp,int maxExp,int grade,int gold)
 {
 	if (maxhp!=0.0)
@@ -94,22 +99,23 @@ void MainInnerLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     this->addChild(expBar);
 
     CCDictionary *userInfo = GlobalData::getUserinfo();
-    if (userInfo!=NULL) {
-        CCNumber* fraction = (CCNumber*)userInfo->objectForKey("fraction");
-        if(fraction->getIntValue()==FACTION_FAIRY)
-        {
-            m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_FAIRY_CONTAINER));
-        }
-        else if (fraction->getIntValue()==FACTION_BUDDHA)
-        {
-            m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_BUDDHA_CONTAINER));
-        }
-        else if (fraction->getIntValue()==FACTION_DEMON)
-        {
-            m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_DEMON_CONTAINER));
-        }
-    }
-    
+	if (userInfo!=NULL)
+	{    
+		CCNumber* fraction = (CCNumber*)userInfo->objectForKey("fraction");
+	if(fraction->getIntValue()==FACTION_FAIRY)
+	{
+		m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_FAIRY_CONTAINER));
+	}
+	else if (fraction->getIntValue()==FACTION_BUDDHA)
+	{
+		m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_BUDDHA_CONTAINER));
+	}
+	else if (fraction->getIntValue()==FACTION_DEMON)
+	{
+		m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_DEMON_CONTAINER));
+	}
+	}
+
 
 	mTableView->setDirection(kCCScrollViewDirectionHorizontal);
 	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
@@ -120,10 +126,6 @@ void MainInnerLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	mTableView->setDelegate(this);
     
     mTableView->reloadData();
-    
-    m_sCharacter = CCSprite::createWithSpriteFrameName("character_sunwukong.png");
-    m_sCharacter->setPosition(ccp(150,144));
-    this->addChild(m_sCharacter);
 }
 
 void MainInnerLayer::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)
