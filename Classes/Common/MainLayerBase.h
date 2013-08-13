@@ -45,6 +45,8 @@ protected:
 	CCMenu* generateCheckBox();
 	virtual void callbackSwitch(CCObject* pSender){};
 
+    void glowEffect(CCPoint p_position,CCSize p_scale,ccColor3B p_color,float p_rotation,CCSprite *p_sprite);
+
 private:
     LoadingScene *loading;
 };

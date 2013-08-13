@@ -9,13 +9,10 @@
 #ifndef __MainOuterLayer__
 #define __MainOuterLayer__
 
-#include <iostream>
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "common.h"
 #include "MainLayerBase.h"
-#include "StringExt.h"
-//#include "MDProgressBar.h"
+#include "MDScrollLabel.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -28,7 +25,6 @@ class MainOuterLayerDelegate
 public:
 
     virtual void menuItemClickedCallBack(CCMenuItem *pItem) = 0;
-
 };
 
 class MainOuterLayer : public MainLayerBase,
@@ -54,19 +50,8 @@ private:
     
     virtual bool init();
 
-//	CCLabelTTF *mlblName;
-//	CCLabelTTF *mlblHealth;
-//	CCLabelTTF *mlblPower;
-//
-//	CCLabelTTF *mlblGold;
-//	CCLabelTTF *mlblBronze;
-//	CCLabelTTF *mlblGrade;
-//	CCSprite   *m_sPlayerContainer;
-//
-//    MDProgressBar *hpBar;
-//    MDProgressBar *expBar;
-//public:
-//    void updateUserInfo(int hp,int maxhp,int exp,int maxExp,int grade,int gold);
+    MDScrollLabel *m_scrollLabel;
+
 };
 
 #endif

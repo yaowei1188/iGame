@@ -32,6 +32,7 @@ MainInnerLayer::MainInnerLayer()
     this->mlblBronze = NULL;
     this->mlblGrade = NULL;
     this->m_sPlayerContainer = NULL;
+    this->m_sCharacter = NULL;
 
 }
 
@@ -126,6 +127,16 @@ void MainInnerLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	mTableView->setDelegate(this);
     
     mTableView->reloadData();
+
+    if (m_sCharacter==NULL) {
+        m_sCharacter = CCSprite::createWithSpriteFrameName("character_sunwukong.png");
+        m_sCharacter->setPosition(ccp(150,144));
+        this->addChild(m_sCharacter);
+
+        CCSize sSize = m_sCharacter->getContentSize();
+
+        this->glowEffect(ccp(sSize.width * 0.5,sSize.height * 0.5), CCSizeMake(11.0, 11.0f), ccc3(255, 230, 0), 1.0f, m_sCharacter);
+    }
 }
 
 void MainInnerLayer::tableCellHighlight(CCTableView* table, CCTableViewCell* cell)

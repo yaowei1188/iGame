@@ -45,6 +45,21 @@ CCNode* MainLayerBase::GetLayer(const char *pCCBFileName)
     return ccbReader->readNodeGraphFromFile(pCCBFileName);
 }
 
+void MainLayerBase::glowEffect(CCPoint p_position,CCSize p_scale,ccColor3B p_color,float p_rotation,CCSprite *p_sprite)
+{
+    CCSprite *glowSprite = CCSprite::create("particle-fire.png");
+    glowSprite->setColor(p_color);
+    glowSprite->setPosition(p_position);
+    glowSprite->setRotation(p_rotation);
+//    glowSprite->setBlendFunc(ccblend)
+    glowSprite->setBlendFunc((ccBlendFunc){GL_ONE,GL_ONE});
+    CCRepeatForever *repeat = CCRepeatForever::create(CCSequence::create(CCScaleTo::create(0.9f, p_scale.width,p_scale.height),CCScaleTo::create(0.9f, p_scale.width * 0.75f,p_scale.height * 0.75f),NULL));
+    glowSprite->runAction(repeat);
+    CCRepeatForever *repeat1 = CCRepeatForever::create(CCSequence::create(CCFadeTo::create(0.9f, 150),CCFadeTo::create(0.9f, 255),NULL));
+     glowSprite->runAction(repeat1);
+    p_sprite->addChild(glowSprite);
+}
+
 //label 描边
 //CCRenderTexture* MainLayerBase::createStroke(cocos2d::CCLabelTTF *label, float size, cocos2d::ccColor3B color)
 //{
