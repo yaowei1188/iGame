@@ -692,7 +692,7 @@ void CCTableView::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)
     }
 }
 
-void CCTableView::setPositionByPaged()
+CCPoint CCTableView::getPositionByPaged(CCPoint point)
 {
     if (isPagingEnableX)
     {
@@ -700,32 +700,20 @@ void CCTableView::setPositionByPaged()
         unsigned int uCountOfItems = m_pDataSource->numberOfCellsInTableView(this);
         if (0 == uCountOfItems)
         {
-            return;
+            return point;
         }
 
-        int eachnumber = this->getContentOffset().x / cellSize.width;
-        float part = fmod(this->getContentOffset().x,cellSize.width);
+        int eachnumber = point.x / cellSize.width;
+        float part = fmod(point.x,cellSize.width);
 
-        if (this->getContentOffset().x >= 0)
+        if (fabs(part)  > cellSize.width * 0.2)
         {
-            eachnumber =0;
+            eachnumber--;
         }
-        else
-        {
-            if (fabs(part)  > cellSize.width * 0.2)
-            {
-                eachnumber--;
-            }
-            
-//            if (eachnumber < -1 * (uCountOfItems-1))
-//            {
-//                eachnumber= -1 * (uCountOfItems-1);
-//            }
-        }
-        
-        this->setContentOffsetInDuration(CCPoint(eachnumber * cellSize.width, 0), 0.2);
-        //this->setContentOffset(CCPoint(eachnumber * cellSize.width, 0),false);
+
+        return CCPointMake(eachnumber * cellSize.width, point.y);
     }
+    return point;
 }
 
 NS_CC_EXT_END

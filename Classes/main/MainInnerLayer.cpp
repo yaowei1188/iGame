@@ -103,18 +103,18 @@ void MainInnerLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	if (userInfo!=NULL)
 	{    
 		CCNumber* fraction = (CCNumber*)userInfo->objectForKey("fraction");
-	if(fraction->getIntValue()==FACTION_FAIRY)
-	{
-		m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_FAIRY_CONTAINER));
-	}
-	else if (fraction->getIntValue()==FACTION_BUDDHA)
-	{
-		m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_BUDDHA_CONTAINER));
-	}
-	else if (fraction->getIntValue()==FACTION_DEMON)
-	{
-		m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_DEMON_CONTAINER));
-	}
+        if(fraction->getIntValue()==FACTION_FAIRY)
+        {
+            m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_FAIRY_CONTAINER));
+        }
+        else if (fraction->getIntValue()==FACTION_BUDDHA)
+        {
+            m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_BUDDHA_CONTAINER));
+        }
+        else if (fraction->getIntValue()==FACTION_DEMON)
+        {
+            m_sPlayerContainer->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(SPRITE_FACTION_DEMON_CONTAINER));
+        }
 	}
 
 
@@ -123,7 +123,7 @@ void MainInnerLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	mTableView->setDataSource(this);
 	mTableView->setViewSize(CCSizeMake(266, 65));
 	mTableView->isPagingEnableX = true;
-	mTableView->setBounceable(false);
+//	mTableView->setBounceable(false);
 	mTableView->setDelegate(this);
     
     mTableView->reloadData();

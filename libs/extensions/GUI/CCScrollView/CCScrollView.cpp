@@ -321,6 +321,11 @@ void CCScrollView::setContainer(CCNode * pContainer)
     this->setViewSize(this->m_tViewSize);
 }
 
+CCPoint CCScrollView::getPositionByPaged(CCPoint point)
+{
+    return point;
+}
+
 void CCScrollView::relocateContainer(bool animated)
 {
     CCPoint oldPoint, min, max;
@@ -345,10 +350,16 @@ void CCScrollView::relocateContainer(bool animated)
         newY     = MAX(newY, min.y);
     }
 
+    CCPoint pagedPoint = this->getPositionByPaged(CCPointMake(newX, newY));
+    newX = pagedPoint.x;
+    newY = pagedPoint.y;
+
     if (newY != oldPoint.y || newX != oldPoint.x)
     {
         this->setContentOffset(ccp(newX, newY), animated);
     }
+
+    
 }
 
 CCPoint CCScrollView::maxContainerOffset()
@@ -391,14 +402,14 @@ void CCScrollView::deaccelerateScrolling(float dt)
     newX     = MAX(newX, minInset.x);
     newY     = MIN(m_pContainer->getPosition().y, maxInset.y);
     newY     = MAX(newY, minInset.y);
-    
+
     newX = m_pContainer->getPosition().x;
     newY = m_pContainer->getPosition().y;
-    
+
     m_tScrollDistance     = ccpSub(m_tScrollDistance, ccp(newX - m_pContainer->getPosition().x, newY - m_pContainer->getPosition().y));
     m_tScrollDistance     = ccpMult(m_tScrollDistance, SCROLL_DEACCEL_RATE);
     this->setContentOffset(ccp(newX,newY));
-    
+
     if ((fabsf(m_tScrollDistance.x) <= SCROLL_DEACCEL_DIST &&
          fabsf(m_tScrollDistance.y) <= SCROLL_DEACCEL_DIST) ||
         newY > maxInset.y || newY < minInset.y ||
@@ -410,7 +421,7 @@ void CCScrollView::deaccelerateScrolling(float dt)
         this->relocateContainer(true);
     }
 
-    this->setPositionByPaged();
+   
 }
 
 void CCScrollView::stoppedAnimatedScroll(CCNode * node)

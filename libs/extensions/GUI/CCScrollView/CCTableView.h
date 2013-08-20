@@ -279,7 +279,7 @@ public:
     //add by ivan
     void refreshData();
     float Orgoffset;
-    void setPositionByPaged();
+    CCPoint getPositionByPaged(CCPoint point);
     bool isPagingEnableX;
 
 };
