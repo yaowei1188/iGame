@@ -8,6 +8,7 @@
 #include "MainGameScene.h"
 #include "MainLayerBase.h"
 #include "SlidingMenu.h"
+#include "CCMultiColumnTableView.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -52,12 +53,15 @@ private:
 	virtual CCTableViewCell* tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx);
 	virtual unsigned int numberOfCellsInTableView(CCTableView *table);
 	virtual CCSize tableCellSizeForIndex(CCTableView *table, unsigned int idx);
+
+    void taskListItemClicked(CCObject* pSender, CCControlEvent event);
     
 	int listUpperIndex;
 	int listSubIndex;
 	int upperIndex;
 	int subIndex;
     CCTableView* mTableView;
+    CCMultiColumnTableView *mTaskListTableView;
     CCArray *mTaskList;
     unsigned int selectedindex;
     SlidingMenuGrid* sliderMenu;

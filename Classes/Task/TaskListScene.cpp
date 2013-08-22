@@ -121,7 +121,7 @@ void TaskListScene::requestFinishedCallback(CCHttpClient* client, CCHttpResponse
 			listSubIndex=0;
 		}
 
-		this->showTaskLists();
+//		this->showTaskLists();
 
 	} else if (requestTag == "102")
 	{
@@ -148,17 +148,29 @@ SEL_CCControlHandler TaskListScene::onResolveCCBCCControlSelector(CCObject *pTar
 
 unsigned int TaskListScene::numberOfCellsInTableView(CCTableView *table)
 {
-	return mTaskList->count();
+    if (table==mTableView) {
+        return mTaskList->count();
+    } else {
+        return mTaskList->count();
+    }
 }
 
 CCSize TaskListScene::cellSizeForTable(CCTableView *table)
 {
-	return CCSizeMake(60, 38);
+    if (table==mTableView) {
+        return CCSizeMake(60, 38); 
+    } else {
+        return CCSizeMake(80, 80);
+    }
 }
 
 CCSize TaskListScene::tableCellSizeForIndex(CCTableView *table, unsigned int idx)
 {
-	return CCSizeMake(60, 38);
+    if (table==mTableView) {
+        return CCSizeMake(60, 38);
+    } else {
+        return CCSizeMake(80, 80);
+    }
 }
 
 void TaskListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
@@ -168,87 +180,128 @@ void TaskListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 
 CCTableViewCell* TaskListScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
-	CCString *string = (CCString *)mTaskList->objectAtIndex(idx);
-    CCSprite *sSelected = NULL;
-	CCTableViewCell *cell = table->dequeueCell();
-    CCLabelTTF *_lblTaskName = NULL;
-    
+    CCTableViewCell *cell = table->dequeueCell();
     CCSize size = this->tableCellSizeForIndex(table,idx);
     
-	if (!cell) {
-		cell = new CCTableViewCell();
-		cell->autorelease();
-        
-		sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_selected.png"));
-		sSelected->setTag(122);
-		sSelected->setPosition(ccp(size.width * 0.5,size.height * 0.5));
-        if (selectedindex == idx) {
-            sSelected->setVisible(true);
-        } else {
-            sSelected->setVisible(false);
-        }
+    if (table==mTableView) {
+        CCString *string = (CCString *)mTaskList->objectAtIndex(idx);
+        CCSprite *sSelected = NULL;
+        CCLabelTTF *_lblTaskName = NULL;
 
-		cell->addChild(sSelected);
-        
-        _lblTaskName = CCLabelTTF::create(string->getCString(), "Arial", 14);
-        _lblTaskName->setTag(123);
-		_lblTaskName->setPosition(ccp(size.width * 0.5,size.height * 0.5));
-		cell->addChild(_lblTaskName);
-	}
-	else
-	{
-		sSelected = (CCSprite*)cell->getChildByTag(122);
-        if (selectedindex == idx) {
-            sSelected->setVisible(true);
-        } else {
-            sSelected->setVisible(false);
+        if (!cell) {
+            cell = new CCTableViewCell();
+            cell->autorelease();
+
+            sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_selected.png"));
+            sSelected->setTag(122);
+            sSelected->setPosition(ccp(size.width * 0.5,size.height * 0.5));
+            if (selectedindex == idx) {
+                sSelected->setVisible(true);
+            } else {
+                sSelected->setVisible(false);
+            }
+
+            cell->addChild(sSelected);
+
+            _lblTaskName = CCLabelTTF::create(string->getCString(), "Arial", 14);
+            _lblTaskName->setTag(123);
+            _lblTaskName->setPosition(ccp(size.width * 0.5,size.height * 0.5));
+            cell->addChild(_lblTaskName);
         }
-        
-        _lblTaskName = (CCLabelTTF*)cell->getChildByTag(123);
-        _lblTaskName->setString(string->getCString());
-	}
+        else
+        {
+            sSelected = (CCSprite*)cell->getChildByTag(122);
+            if (selectedindex == idx) {
+                sSelected->setVisible(true);
+            } else {
+                sSelected->setVisible(false);
+            }
+            
+            _lblTaskName = (CCLabelTTF*)cell->getChildByTag(123);
+            _lblTaskName->setString(string->getCString());
+        }
+    } else {
+        if (!cell) {
+            cell = new CCTableViewCell();
+            cell->autorelease();
+
+            CCControlButton *taskItem = CCControlButton::create();
+            taskItem->setTag(101);
+            taskItem->setZoomOnTouchDown(false);
+            if (idx<3) {
+                taskItem->setBackgroundSpriteForState(CCScale9Sprite::createWithSpriteFrameName("task_passed.png"), CCControlStateNormal);
+            } else if(idx==3) {
+                taskItem->setBackgroundSpriteForState(CCScale9Sprite::createWithSpriteFrameName("task_normal.png"), CCControlStateNormal);
+                taskItem->setBackgroundSpriteForState(CCScale9Sprite::createWithSpriteFrameName("task_progress.png"), CCControlStateHighlighted);
+            } else if(idx >3) {
+                taskItem->setBackgroundSpriteForState(CCScale9Sprite::createWithSpriteFrameName("task_locked.png"), CCControlStateNormal);
+            }
+            
+            taskItem->setPreferredSize(CCSizeMake(72, 72));
+            taskItem->setPosition(ccp(size.width * 0.5,size.height * 0.5));
+            taskItem->addTargetWithActionForControlEvents(this,cccontrol_selector(TaskListScene::taskListItemClicked), CCControlEventTouchUpInside);
+            
+            cell->addChild(taskItem);
+        } else {
+            CCControlButton *taskItem = (CCControlButton *)cell->getChildByTag(101);
+            if (idx<3) {
+                taskItem->setBackgroundSpriteForState(CCScale9Sprite::createWithSpriteFrameName("task_passed.png"), CCControlStateNormal);
+            } else if(idx==3) {
+                taskItem->setBackgroundSpriteForState(CCScale9Sprite::createWithSpriteFrameName("task_normal.png"), CCControlStateNormal);
+                taskItem->setBackgroundSpriteForState(CCScale9Sprite::createWithSpriteFrameName("task_progress.png"), CCControlStateHighlighted);
+            } else if(idx >3) {
+                taskItem->setBackgroundSpriteForState(CCScale9Sprite::createWithSpriteFrameName("task_locked.png"), CCControlStateNormal);
+            }
+        }
+    }
+	
     
 	return cell;
 }
 
-void TaskListScene::showTaskLists()
+void TaskListScene::taskListItemClicked(CCObject* pSender, CCControlEvent event)
 {
-    mArrayList = CCArray::create();
-	mArrayList->retain();
 
-    CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
-
-    for (int i = 1;i<= 24 ;i++)
-    {
-        CCMenuItemSprite* itemSprite = NULL;
-        CCSprite *sNormal = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_normal.png"));
-        CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_progress.png"));
-        CCSprite *sLocked = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_locked.png"));
-		CCSprite *sPassed = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_passed.png"));
-
-        if (i > listUpperIndex) {
-            itemSprite = CCMenuItemSprite::create(sLocked, NULL, NULL, NULL, NULL);
-        } else if (i == listUpperIndex) {
-            itemSprite = CCMenuItemSprite::create(sNormal, sSelected, sLocked, this, menu_selector(TaskListScene::menuItemCallback));
-		} else if (i < listUpperIndex) { 
-			itemSprite = CCMenuItemSprite::create(sPassed, NULL, NULL, NULL, NULL);
-		}
-        itemSprite->setTag(i);
-        mArrayList->addObject(itemSprite);
-    }
-
-    CCPoint p = ccp(100,80);
-
-    float eWidth =  (TASK_COLUMN-1)*(p.x);
-
-    CCPoint menuPosition = ccp(windowSize.width/2.0f -eWidth/2.0f , windowSize.height/2.0f + 30);
-
-    sliderMenu = SlidingMenuGrid::menuWithArray(mArrayList,TASK_COLUMN,TASK_ROW,menuPosition,p );
-    sliderMenu->setAnchorPoint(ccp(0.5, 0.5));
-    sliderMenu->setContentSize(CCSizeMake(280,400));
-    
-    this->addChild(sliderMenu);
 }
+
+//void TaskListScene::showTaskLists()
+//{
+//    mArrayList = CCArray::create();
+//	mArrayList->retain();
+//
+//    CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
+//
+//    for (int i = 1;i<= 24 ;i++)
+//    {
+//        CCMenuItemSprite* itemSprite = NULL;
+//        CCSprite *sNormal = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_normal.png"));
+//        CCSprite *sSelected = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_progress.png"));
+//        CCSprite *sLocked = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_locked.png"));
+//		CCSprite *sPassed = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("task_passed.png"));
+//
+//        if (i > listUpperIndex) {
+//            itemSprite = CCMenuItemSprite::create(sLocked, NULL, NULL, NULL, NULL);
+//        } else if (i == listUpperIndex) {
+//            itemSprite = CCMenuItemSprite::create(sNormal, sSelected, sLocked, this, menu_selector(TaskListScene::menuItemCallback));
+//		} else if (i < listUpperIndex) { 
+//			itemSprite = CCMenuItemSprite::create(sPassed, NULL, NULL, NULL, NULL);
+//		}
+//        itemSprite->setTag(i);
+//        mArrayList->addObject(itemSprite);
+//    }
+//
+//    CCPoint p = ccp(100,80);
+//
+//    float eWidth =  (TASK_COLUMN-1)*(p.x);
+//
+//    CCPoint menuPosition = ccp(windowSize.width/2.0f -eWidth/2.0f , windowSize.height/2.0f + 30);
+//
+//    sliderMenu = SlidingMenuGrid::menuWithArray(mArrayList,TASK_COLUMN,TASK_ROW,menuPosition,p );
+//    sliderMenu->setAnchorPoint(ccp(0.5, 0.5));
+//    sliderMenu->setContentSize(CCSizeMake(280,400));
+//
+//    this->addChild(sliderMenu);
+//}
 
 void TaskListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 {
@@ -261,10 +314,25 @@ void TaskListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	mTableView->isPagingEnableX = true;
 	mTableView->setBounceable(false);
 	mTableView->setDelegate(this);
-    
     mTableView->reloadData();
+
+    if (mTaskListTableView==NULL)
+	{
+		mTaskListTableView = CCMultiColumnTableView::create(this,CCSizeMake(300,288),NULL);
+		this->addChild(mTaskListTableView);
+		mTaskListTableView->setPosition(ccp(0,45));
+		mTaskListTableView->setDirection(kCCScrollViewDirectionVertical);
+		mTaskListTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
+		mTaskListTableView->setDataSource(this);
+		mTaskListTableView->setDelegate(this);
+		mTaskListTableView->setColCount(TASK_COLUMN);
+	}
+
+	mTaskListTableView->reloadData();
     
-	this->retrieveCurrentTask();
+//	this->retrieveCurrentTask();
+
+//    this->showTaskLists();
 }
 
 void TaskListScene::menuItemCallback(CCObject* pSender)
@@ -294,6 +362,7 @@ TaskListScene::TaskListScene()
 {
 	mArrayList = NULL;
     mTableView = NULL;
+    mTaskListTableView = NULL;
 }
 
 TaskListScene::~TaskListScene()
