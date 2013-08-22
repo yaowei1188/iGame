@@ -135,7 +135,7 @@ void MainInnerLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 
         CCSize sSize = m_sCharacter->getContentSize();
 
-        this->glowEffect(ccp(sSize.width * 0.5,sSize.height * 0.5), CCSizeMake(11.0, 11.0f), ccc3(255, 230, 0), 1.0f, m_sCharacter);
+        this->glowEffect(ccp(sSize.width * 0.5,sSize.height * 0.5), CCSizeMake(5.0, 5.0f), ccc3(255, 230, 0), 1.0f, m_sCharacter);
     }
 }
 
@@ -266,4 +266,11 @@ bool MainInnerLayer::init()
 void MainInnerLayer::showTooBar(bool show)
 {
     this->m_layToolBar->setVisible(show);
+	this->m_sCharacter->setVisible(show);
+
+	if (show)
+	{
+		 CCSize sSize = m_sCharacter->getContentSize();
+		//this->glowEffect(ccp(sSize.width * 0.5,sSize.height * 0.5), CCSizeMake(5.0, 5.0f), ccc3(255, 230, 0), 1.0f, m_sCharacter);
+	}
 }

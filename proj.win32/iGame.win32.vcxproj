@@ -411,6 +411,7 @@
     <ClInclude Include="..\Classes\UILibrary\EllipseActionInterval.h" />
     <ClInclude Include="..\Classes\UILibrary\LoadingScene.h" />
     <ClInclude Include="..\Classes\UILibrary\MDProgressBar.h" />
+    <ClInclude Include="..\Classes\UILibrary\MDScrollLabel.h" />
     <ClInclude Include="..\Classes\UILibrary\SharpLabelTTF.h" />
     <ClInclude Include="..\Classes\UILibrary\SlidingMenu.h" />
     <ClInclude Include="..\library\ccnet\inetaddress.h" />
@@ -633,6 +634,7 @@
     <ClCompile Include="..\Classes\UILibrary\EllipseActionInterval.cpp" />
     <ClCompile Include="..\Classes\UILibrary\LoadingScene.cpp" />
     <ClCompile Include="..\Classes\UILibrary\MDProgressBar.cpp" />
+    <ClCompile Include="..\Classes\UILibrary\MDScrollLabel.cpp" />
     <ClCompile Include="..\Classes\UILibrary\SharpLabelTTF.cpp" />
     <ClCompile Include="..\Classes\UILibrary\SlidingMenu.cpp" />
     <ClCompile Include="..\library\ccnet\inetaddress.cpp" />

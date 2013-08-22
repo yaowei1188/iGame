@@ -1471,6 +1471,9 @@
     <ClInclude Include="..\Classes\Common\MDSoundManager.h">
       <Filter>Classes\Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\MDScrollLabel.h">
+      <Filter>Classes\UILibrary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -1983,6 +1986,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Common\MDSoundManager.cpp">
       <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\MDScrollLabel.cpp">
+      <Filter>Classes\UILibrary</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

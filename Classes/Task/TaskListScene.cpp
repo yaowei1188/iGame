@@ -4,27 +4,6 @@
 #define TASK_COLUMN  3
 #define TASK_ROW  3
 
-//CCScene* TaskListScene::scene()
-//{
-//	CCScene * scene = NULL;
-//	do 
-//	{
-//		// 'scene' is an autorelease object
-//		scene = CCScene::create();
-//		CC_BREAK_IF(! scene);
-//
-//		// 'layer' is an autorelease object
-//		TaskListScene *layer = TaskListScene::create();
-//		CC_BREAK_IF(! layer);
-//
-//		// add layer as a child to scene
-//		scene->addChild(layer);
-//	} while (0);
-//
-//	// return the scene
-//	return scene;
-//}
-
 // on "init" you need to initialize your instance
 bool TaskListScene::init()
 {
@@ -151,7 +130,7 @@ unsigned int TaskListScene::numberOfCellsInTableView(CCTableView *table)
     if (table==mTableView) {
         return mTaskList->count();
     } else {
-        return mTaskList->count();
+        return 24;
     }
 }
 
@@ -160,7 +139,7 @@ CCSize TaskListScene::cellSizeForTable(CCTableView *table)
     if (table==mTableView) {
         return CCSizeMake(60, 38); 
     } else {
-        return CCSizeMake(80, 80);
+        return CCSizeMake(106, 90);
     }
 }
 
@@ -169,7 +148,7 @@ CCSize TaskListScene::tableCellSizeForIndex(CCTableView *table, unsigned int idx
     if (table==mTableView) {
         return CCSizeMake(60, 38);
     } else {
-        return CCSizeMake(80, 80);
+        return CCSizeMake(106, 90);
     }
 }
 
@@ -246,11 +225,14 @@ CCTableViewCell* TaskListScene::tableCellAtIndex(CCTableView *table, unsigned in
             CCControlButton *taskItem = (CCControlButton *)cell->getChildByTag(101);
             if (idx<3) {
                 taskItem->setBackgroundSpriteForState(CCScale9Sprite::createWithSpriteFrameName("task_passed.png"), CCControlStateNormal);
+				taskItem->setEnabled(false);
             } else if(idx==3) {
                 taskItem->setBackgroundSpriteForState(CCScale9Sprite::createWithSpriteFrameName("task_normal.png"), CCControlStateNormal);
                 taskItem->setBackgroundSpriteForState(CCScale9Sprite::createWithSpriteFrameName("task_progress.png"), CCControlStateHighlighted);
+				taskItem->setEnabled(true);
             } else if(idx >3) {
                 taskItem->setBackgroundSpriteForState(CCScale9Sprite::createWithSpriteFrameName("task_locked.png"), CCControlStateNormal);
+				taskItem->setEnabled(false);
             }
         }
     }
@@ -318,10 +300,10 @@ void TaskListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 
     if (mTaskListTableView==NULL)
 	{
-		mTaskListTableView = CCMultiColumnTableView::create(this,CCSizeMake(300,288),NULL);
+		mTaskListTableView = CCMultiColumnTableView::create(this,CCSizeMake(320,270),NULL);
 		this->addChild(mTaskListTableView);
-		mTaskListTableView->setPosition(ccp(0,45));
-		mTaskListTableView->setDirection(kCCScrollViewDirectionVertical);
+		mTaskListTableView->setPosition(ccp(0,60));
+		mTaskListTableView->setDirection(kCCScrollViewDirectionHorizontal);
 		mTaskListTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
 		mTaskListTableView->setDataSource(this);
 		mTaskListTableView->setDelegate(this);
