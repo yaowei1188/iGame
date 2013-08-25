@@ -154,7 +154,17 @@ CCSize TaskListScene::tableCellSizeForIndex(CCTableView *table, unsigned int idx
 
 void TaskListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
-    
+    if (table==mTableView) 
+	{
+
+	}
+	else
+	{
+		if (cell->getIdx()==3)
+		{
+			this->menuItemCallback(NULL);
+		}
+	}
 }
 
 CCTableViewCell* TaskListScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
@@ -307,7 +317,9 @@ void TaskListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 		mTaskListTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
 		mTaskListTableView->setDataSource(this);
 		mTaskListTableView->setDelegate(this);
-		mTaskListTableView->setColCount(TASK_COLUMN);
+		//mTaskListTableView->isPagingEnableX = true;
+		mTaskListTableView->setBounceable(true);
+		//mTaskListTableView->setColCount(TASK_COLUMN);
 	}
 
 	mTaskListTableView->reloadData();

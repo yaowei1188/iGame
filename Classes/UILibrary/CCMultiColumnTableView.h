@@ -67,13 +67,15 @@ public:
     
     void setColCount(unsigned int cols);
     
-    protected:
+protected:
     
     virtual int __indexFromOffset(CCPoint offset);
     virtual CCPoint __offsetFromIndex(unsigned int index);
     virtual void _updateContentSize();
-    
+	virtual CCPoint getPositionByPaged(CCPoint point);
 
+	//bool m_blnXPaged;
+	int m_intCountEachPage;
 };
 
 NS_CC_EXT_END

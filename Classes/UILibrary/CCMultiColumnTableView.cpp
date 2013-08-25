@@ -48,8 +48,10 @@ CCMultiColumnTableView* CCMultiColumnTableView::create(CCTableViewDataSource* da
     return table;
 }
 
-CCMultiColumnTableView::CCMultiColumnTableView():m_colCount(1) {
-
+CCMultiColumnTableView::CCMultiColumnTableView():m_colCount(1) 
+{
+	isPagingEnableX = true;
+	m_intCountEachPage = 0;
 }
 
 void CCMultiColumnTableView::setColCount(unsigned int cols){
@@ -63,6 +65,7 @@ void CCMultiColumnTableView::setColCount(unsigned int cols){
 int CCMultiColumnTableView::__indexFromOffset(CCPoint offset){
    
     int  index = 0;
+	int page = 0;
     CCSize  cellSize;
     int  col, row;
     float    spaceWidth;
@@ -70,20 +73,40 @@ int CCMultiColumnTableView::__indexFromOffset(CCPoint offset){
     cellSize = m_pDataSource->cellSizeForTable(this);
     
     switch (this->getDirection()) {
-        case kCCScrollViewDirectionHorizontal:
-            spaceWidth = this->getContainer()->getContentSize().height / m_colCount;
-            col        = (offset.y - (spaceWidth - cellSize.height)*0.5)/spaceWidth;
-            row        = offset.x / cellSize.width;    
-            break;
+        //case kCCScrollViewDirectionHorizontal:
+        //    spaceWidth = this->getContainer()->getContentSize().height / m_colCount;
+        //    col        = (offset.y - (spaceWidth - cellSize.height)*0.5)/spaceWidth;
+        //    row        = offset.x / cellSize.width;    
+        //    break;
+	case kCCScrollViewDirectionHorizontal:
+		{
+			if (isPagingEnableX)
+			{				
+				page = (int)(offset.x / this->getViewSize().width);
+				float fleft = fmod(offset.x,this->getViewSize().width);
+
+				spaceWidth = this->getViewSize().width / m_colCount;
+				col        = (fleft - (spaceWidth - cellSize.width)*0.5)/spaceWidth;
+				row        = offset.y / cellSize.height;   
+				break;
+			}
+			else 
+			{
+				spaceWidth = this->getContainer()->getContentSize().height / m_colCount;
+				col        = (offset.y - (spaceWidth - cellSize.height)*0.5)/spaceWidth;
+				row        = offset.x / cellSize.width;    
+				break;
+			}
+		}
+
         default:
             spaceWidth = this->getContainer()->getContentSize().width / m_colCount;
             col        = (offset.x - (spaceWidth - cellSize.width)*0.5)/spaceWidth;
             row        = offset.y / cellSize.height;
             break;
     }
-    index = col + row * m_colCount;
+    index = page * m_intCountEachPage + col + row * m_colCount;
     return index;
-    
 }
 
 CCPoint CCMultiColumnTableView::__offsetFromIndex(unsigned int index){
@@ -95,20 +118,46 @@ CCPoint CCMultiColumnTableView::__offsetFromIndex(unsigned int index){
     
     cellSize = m_pDataSource->cellSizeForTable(this);
     switch (this->getDirection()) {
+        //case kCCScrollViewDirectionHorizontal:
+        //    row        = index / m_colCount;
+        //    col        = index % m_colCount;
+        //    spaceWidth = this->getContainer()->getContentSize().height / m_colCount;
+        //    offset     = ccp(row * cellSize.height,
+        //                     col * spaceWidth + (spaceWidth - cellSize.width) * 0.5);
+        //    break;
         case kCCScrollViewDirectionHorizontal:
-            row        = index / m_colCount;
-            col        = index % m_colCount;
-            spaceWidth = this->getContainer()->getContentSize().height / m_colCount;
-            offset     = ccp(row * cellSize.height,
-                             col * spaceWidth + (spaceWidth - cellSize.width) * 0.5);
-            break;
+			{
+				if (isPagingEnableX)
+				{
+					int cPages = index / m_intCountEachPage;
+					int cLeft = index % m_intCountEachPage;
+
+					row        = cLeft / m_colCount;
+					col        = cLeft % m_colCount;
+
+					spaceWidth = this->getViewSize().width / m_colCount;
+					offset     = ccp(cPages * this->getViewSize().width + col * spaceWidth + (spaceWidth - cellSize.width) * 0.5,
+						row * cellSize.height);
+				}
+				else
+				{
+					row        = index / m_colCount;
+					col        = index % m_colCount;
+					spaceWidth = this->getContainer()->getContentSize().height / m_colCount;
+					offset     = ccp(row * cellSize.height,
+						col * spaceWidth + (spaceWidth - cellSize.width) * 0.5);
+				}
+				break;
+			}
         default:
-            row        = index / m_colCount;
-            col        = index % m_colCount;
-            spaceWidth = this->getContainer()->getContentSize().width / m_colCount;
-            offset     = ccp(col * spaceWidth + (spaceWidth - cellSize.width) * 0.5,
-                             row * cellSize.height);
-            break;
+			{
+				row        = index / m_colCount;
+				col        = index % m_colCount;
+				spaceWidth = this->getContainer()->getContentSize().width / m_colCount;
+				offset     = ccp(col * spaceWidth + (spaceWidth - cellSize.width) * 0.5,
+								 row * cellSize.height);
+				break;
+			}
     }
     
     return offset;
@@ -127,10 +176,19 @@ void CCMultiColumnTableView::_updateContentSize(){
     switch (this->getDirection())
     {
         case kCCScrollViewDirectionHorizontal:
-            m_colCount = getViewSize().height / cellSize.height;
-            rows     = ceilf(cellCount/((float)m_colCount));
-            size     = CCSizeMake(MAX(rows * cellSize.width, viewSize.width), m_colCount * cellSize.height);
-            break;
+			if (isPagingEnableX)
+			{
+				int _colCount1 = getViewSize().height / cellSize.height;
+				int _colRow = getViewSize().height / cellSize.height;
+				m_intCountEachPage = _colCount1 * _colRow;
+			}
+
+			m_colCount = getViewSize().height / cellSize.height;
+			rows     = ceilf(cellCount/((float)m_colCount));
+			size     = CCSizeMake(MAX(rows * cellSize.width, viewSize.width), m_colCount * cellSize.height);
+			break;
+			
+
         default:
             if (getDirection() == kCCScrollViewDirectionVertical) {
                 m_colCount = viewSize.width / cellSize.width;   
@@ -154,6 +212,30 @@ void CCMultiColumnTableView::_updateContentSize(){
 		}
 		m_eOldDirection = m_eDirection;
 	}
+}
+
+CCPoint CCMultiColumnTableView::getPositionByPaged(CCPoint point)
+{
+	if (isPagingEnableX)
+	{
+		const CCSize cellSize = m_pDataSource->cellSizeForTable(this);
+		unsigned int uCountOfItems = m_pDataSource->numberOfCellsInTableView(this);
+		if (0 == uCountOfItems)
+		{
+			return point;
+		}
+
+		int eachnumber = point.x / getViewSize().width;
+		float part = fmod(point.x,getViewSize().width);
+
+		if (fabs(part)  > getViewSize().width * 0.1)
+		{
+			eachnumber--;
+		}
+
+		return CCPointMake(eachnumber * getViewSize().width, point.y);
+	}
+	return point;
 }
 
 NS_CC_EXT_END
