@@ -181,11 +181,22 @@ void CCMultiColumnTableView::_updateContentSize(){
 				int _colCount1 = getViewSize().height / cellSize.height;
 				int _colRow = getViewSize().height / cellSize.height;
 				m_intCountEachPage = _colCount1 * _colRow;
-			}
 
-			m_colCount = getViewSize().height / cellSize.height;
-			rows     = ceilf(cellCount/((float)m_colCount));
-			size     = CCSizeMake(MAX(rows * cellSize.width, viewSize.width), m_colCount * cellSize.height);
+                m_intPageCount = cellCount/m_intCountEachPage ;
+                if (cellCount % m_intCountEachPage) {
+                    m_intPageCount ++;
+                }
+
+                m_colCount = getViewSize().height / cellSize.height;
+                rows     = ceilf(cellCount/((float)m_colCount));
+//                size     = CCSizeMake(MAX(rows * cellSize.width, viewSize.width), m_colCount * cellSize.height);
+                size     = CCSizeMake(MAX(m_intPageCount * viewSize.width, viewSize.width), m_colCount * cellSize.height);
+			} else {
+                m_colCount = getViewSize().height / cellSize.height;
+                rows     = ceilf(cellCount/((float)m_colCount));
+                size     = CCSizeMake(MAX(rows * cellSize.width, viewSize.width), m_colCount * cellSize.height);
+            }
+
 			break;
 			
 
@@ -218,7 +229,7 @@ CCPoint CCMultiColumnTableView::getPositionByPaged(CCPoint point)
 {
 	if (isPagingEnableX)
 	{
-		const CCSize cellSize = m_pDataSource->cellSizeForTable(this);
+//		const CCSize cellSize = m_pDataSource->cellSizeForTable(this);
 		unsigned int uCountOfItems = m_pDataSource->numberOfCellsInTableView(this);
 		if (0 == uCountOfItems)
 		{
@@ -228,10 +239,19 @@ CCPoint CCMultiColumnTableView::getPositionByPaged(CCPoint point)
 		int eachnumber = point.x / getViewSize().width;
 		float part = fmod(point.x,getViewSize().width);
 
-		if (fabs(part)  > getViewSize().width * 0.1)
-		{
-			eachnumber--;
-		}
+        CCLOG("moveDistance.x=%0.2f",m_tScrollDistance1.x);
+
+        if (m_tScrollDistance1.x > 5.0) {
+//            eachnumber++;
+        } else if(m_tScrollDistance1.x < -5.0) {
+            if(abs(eachnumber)<m_intPageCount-1) {
+                eachnumber--;
+            }
+        }
+//		if (fabs(part)  > getViewSize().width * 0.1)
+//		{
+//			eachnumber--;
+//		}
 
 		return CCPointMake(eachnumber * getViewSize().width, point.y);
 	}

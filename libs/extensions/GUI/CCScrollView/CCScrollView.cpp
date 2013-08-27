@@ -718,6 +718,7 @@ void CCScrollView::ccTouchMoved(CCTouch* touch, CCEvent* event)
                 newY     = m_pContainer->getPosition().y + moveDistance.y;
 
                 m_tScrollDistance = moveDistance;
+                m_tScrollDistance1 = moveDistance;
                 this->setContentOffset(ccp(newX, newY));
             }
         }

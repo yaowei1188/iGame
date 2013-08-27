@@ -76,6 +76,7 @@ protected:
 
 	//bool m_blnXPaged;
 	int m_intCountEachPage;
+    int m_intPageCount;
 };
 
 NS_CC_EXT_END

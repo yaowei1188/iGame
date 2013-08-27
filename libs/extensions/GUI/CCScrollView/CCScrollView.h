@@ -297,6 +297,7 @@ protected:
      * scroll speed
      */
     CCPoint m_tScrollDistance;
+    CCPoint m_tScrollDistance1;
     /**
      * Touch point
      */
