@@ -5,7 +5,8 @@
 #define CARD_MARGIN 20
 #define CARD_WIDTH 64
 #define CARD_H_MARGIN 30
-#define CARD_V_MARGIN 30
+#define CARD_V_MARGIN 15
+#define CARD_BOTTOM_MARGIN 10
 
 CCScene* MDBattleLayer::scene()
 {
@@ -135,6 +136,9 @@ bool MDBattleLayer::init()
 		mEnemyCardNameList->addObject(CCString::create("head_rulaifo.png"));
 		mEnemyCardNameList->addObject(CCString::create("head_sunwukong.png"));
 		mEnemyCardNameList->addObject(CCString::create("head_erlangsheng.png"));
+		mEnemyCardNameList->addObject(CCString::create("head_rulaifo.png"));
+		mEnemyCardNameList->addObject(CCString::create("head_sunwukong.png"));
+		mEnemyCardNameList->addObject(CCString::create("head_erlangsheng.png"));
 		mEnemyCardNameList->retain();
 
 		prepareBackGround();
@@ -172,7 +176,7 @@ void MDBattleLayer::prepareBackGround()
 	//CCMenuItemFont *menuFont = CCMenuItemFont::create("逃跑",this,menu_selector(MDBattleLayer::menuCallback));
 	CCLabelBMFont* label = CCLabelBMFont::create("Leave", "test.fnt");
 	CCMenuItemLabel* menuFont = CCMenuItemLabel::create(label, this, menu_selector(MDBattleLayer::menuCallback));
-	menuFont->setPosition(winSize.width * 0.5 - 60,winSize.height * 0.5 - 60);
+	menuFont->setPosition( -100,-40);
 	menuFont->setTag(101);
 	menu->addChild(menuFont);
 
@@ -184,7 +188,7 @@ void MDBattleLayer::prepareBackGround()
     
     CCLabelBMFont* lblFightLabel = CCLabelBMFont::create("Fight", "test.fnt");
 	CCMenuItemLabel* menuFight = CCMenuItemLabel::create(lblFightLabel, this, menu_selector(MDBattleLayer::menuCallback));
-	menuFight->setPosition(winSize.width * 0.5 - 60,0-winSize.height * 0.5 - 12);
+	menuFight->setPosition(winSize.width * 0.5 - 60, -40);
 	menuFight->setTag(103);
 	menu->addChild(menuFight);
 }
@@ -283,7 +287,7 @@ void MDBattleLayer::prepareFormation()
 		MDCardPlayer *cardPlayer = MDCardPlayer::create(strCardName->getCString());
 		mCardList->addObject(cardPlayer);
 		this->addChild(cardPlayer->m_sCardPlayer);
-		cardPlayer->m_location = ccp(leftcap + CARD_H_MARGIN * col + col * CARD_WIDTH + CARD_WIDTH * 0.5,0 + CARD_MARGIN * row + row * CARD_WIDTH + CARD_WIDTH * 0.5);
+		cardPlayer->m_location = ccp(leftcap + CARD_H_MARGIN * col + col * CARD_WIDTH + CARD_WIDTH * 0.5,CARD_BOTTOM_MARGIN + CARD_V_MARGIN * row + row * CARD_WIDTH + CARD_WIDTH * 0.5);
 		cardPlayer->m_sCardPlayer->setPosition(cardPlayer->m_location);
 	}
 }
@@ -317,7 +321,7 @@ void MDBattleLayer::prepareEnemyFormation()
 		MDCardPlayer *cardPlayer = MDCardPlayer::create(strCardName->getCString());
 		mEnemyCardList->addObject(cardPlayer);
 		this->addChild(cardPlayer->m_sCardPlayer);
-		cardPlayer->m_location = ccp(leftcap + CARD_H_MARGIN * col + col * CARD_WIDTH + CARD_WIDTH * 0.5,250 + CARD_MARGIN * row + row * CARD_WIDTH + CARD_WIDTH * 0.5);
+		cardPlayer->m_location = ccp(leftcap + CARD_H_MARGIN * col + col * CARD_WIDTH + CARD_WIDTH * 0.5,winSize.height - CARD_BOTTOM_MARGIN - CARD_V_MARGIN * row - row * CARD_WIDTH - CARD_WIDTH * 0.5);
 		cardPlayer->m_sCardPlayer->setPosition(cardPlayer->m_location);
 	}
 }

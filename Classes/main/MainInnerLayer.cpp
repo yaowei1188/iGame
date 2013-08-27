@@ -117,13 +117,12 @@ void MainInnerLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
         }
 	}
 
-
 	mTableView->setDirection(kCCScrollViewDirectionHorizontal);
 	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
 	mTableView->setDataSource(this);
 	mTableView->setViewSize(CCSizeMake(266, 65));
 	mTableView->isPagingEnableX = true;
-//	mTableView->setBounceable(false);
+	mTableView->setBounceable(false);
 	mTableView->setDelegate(this);
     
     mTableView->reloadData();

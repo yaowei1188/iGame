@@ -317,9 +317,8 @@ void TaskListScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 		mTaskListTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
 		mTaskListTableView->setDataSource(this);
 		mTaskListTableView->setDelegate(this);
-		//mTaskListTableView->isPagingEnableX = true;
-		mTaskListTableView->setBounceable(true);
-		//mTaskListTableView->setColCount(TASK_COLUMN);
+		mTaskListTableView->isPagingEnableX = true;
+		mTaskListTableView->setBounceable(false);
 	}
 
 	mTaskListTableView->reloadData();

@@ -10,6 +10,8 @@
 #include "MDCatalogueLayer.h"
 #include "MDPackageLayer.h"
 
+#define Y_OFFSET 38
+
 MainGameScene::MainGameScene()
 {
     mMainOutScene = NULL;
@@ -78,6 +80,7 @@ void MainGameScene::toolBarButtonClickedCallBack(CCControlButton *pSender) {
 void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
 {
 	MDSoundManager::playEffect();
+	int yOffset = Y_OFFSET;
 
     int number=1;
     if (intSelectedMenu==pItem->getTag()) {
@@ -100,6 +103,7 @@ void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
 	} else if (intSelectedMenu == MENUBAR_COPY_TAG) {
 		//layer = (CCLayer *)this->GetLayer("MDBattleLayer");
 		layer = (CCLayer *)MDBattleLayer::create();
+		yOffset = 0;
 	} else if (intSelectedMenu == MENUBAR_HERO_TAG) {
 		layer = (CCLayer *)this->GetLayer("MDHeroMainLayer");
         layer->setUserObject(mMainInnerLayer);
@@ -137,14 +141,14 @@ void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
 		mMainInnerLayer->showTooBar(false);
 		if (mMainInnerLayer->getParent()==NULL)
 		{
-			mMainInnerLayer->setPosition(ccp(0, 38));
+			mMainInnerLayer->setPosition(ccp(0, Y_OFFSET));
 			this->addChild(mMainInnerLayer);
 		}
     }
     
     mlayArray->addObject(layer);
     
-    layer->setPosition(ccp(0, 38));
+    layer->setPosition(ccp(0, yOffset));
     this->addChild(layer);
 }
 
@@ -210,9 +214,9 @@ void MainGameScene::PushLayer(CCLayer *subLayer,bool fromRight)
             mMainInnerLayer->runAction(sequence1);
         }
         
-        subLayer->setPosition(ccp(0 + winSize.width,38));
+        subLayer->setPosition(ccp(0 + winSize.width,Y_OFFSET));
         this->addChild(subLayer);
-        subLayer->runAction(CCMoveTo::create(0.2, ccp(0,38)));
+        subLayer->runAction(CCMoveTo::create(0.2, ccp(0,Y_OFFSET)));
         
         this->mlayArray->addObject(subLayer);
     }
@@ -228,9 +232,9 @@ void MainGameScene::AddChatLayer()
     
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     
-    mChatLayer->setPosition(ccp(0 - winSize.width,38));
+    mChatLayer->setPosition(ccp(0 - winSize.width,Y_OFFSET));
     this->addChild(mChatLayer);
-    mChatLayer->runAction(CCMoveTo::create(0.2, ccp(0,38)));
+    mChatLayer->runAction(CCMoveTo::create(0.2, ccp(0,Y_OFFSET)));
 }
 
 void MainGameScene::RemoveChatLayer()
@@ -276,7 +280,7 @@ void MainGameScene::returnToMainLayer()
 
 	mlayArray->addObject(mMainInnerLayer);
     mMainInnerLayer->showTooBar(true);
-	mMainInnerLayer->setPosition(ccp(0, 38));
+	mMainInnerLayer->setPosition(ccp(0, Y_OFFSET));
 	this->addChild(mMainInnerLayer);
 }
 
