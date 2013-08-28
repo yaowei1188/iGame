@@ -105,8 +105,11 @@ void MDCardPlayer::playAttackAnnimation(CCArray *enemyList)
 
 void MDCardPlayer::playShakeAnnimation()
 {
-	CCShake *shake = CCShake::create(0.5,4,2);
-	m_sCardPlayer->runAction(shake);
+	CCShake *_shake = CCShake::create(0.5,4,2);
+	
+	CCFiniteTimeAction* _actionFinished = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::actionFinished));
+
+	m_sCardPlayer->runAction(CCSequence::create(_shake,_actionFinished,NULL));
 }
 
 void MDCardPlayer::playDeadAnnimation()
@@ -176,7 +179,7 @@ void MDCardPlayer::playMeteorEffect(MDCardPlayer *target)
     
     
     CCMoveTo *_moveAction = CCMoveTo::create(0.3, target->m_sCardPlayer->getPosition());
-    CCFiniteTimeAction* _actionMoveDone = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::actionFinished));
+    CCFiniteTimeAction* _actionMoveDone = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::playUnderAttackAnnimate));
     
     m_emitter->runAction(CCSequence::create(_moveAction,_actionMoveDone,NULL));
 }
@@ -191,7 +194,7 @@ void MDCardPlayer::playFireEffect(MDCardPlayer *target)
     _particle->setUserObject(target);
     
     CCMoveTo *_moveAction = CCMoveTo::create(0.3, target->m_sCardPlayer->getPosition());
-    CCFiniteTimeAction* _actionMoveDone = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::actionFinished));
+    CCFiniteTimeAction* _actionMoveDone = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::playUnderAttackAnnimate));
     
     _particle->runAction(CCSequence::create(_moveAction,_actionMoveDone,NULL));
 }
@@ -206,15 +209,23 @@ void MDCardPlayer::playEcllipseEffect(MDCardPlayer *target)
     _particle->setUserObject(target);
     
     CCDelayTime *_delayTime = CCDelayTime::create(0.3);
-    CCFiniteTimeAction* _actionMoveDone = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::actionFinished));
+    CCFiniteTimeAction* _actionMoveDone = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::playUnderAttackAnnimate));
     _particle->runAction(CCSequence::create(_delayTime,_actionMoveDone,NULL));
 }
 
 void MDCardPlayer::actionFinished(CCNode* sender)
 {
-    MDCardPlayer *target = (MDCardPlayer *)sender->getUserObject();
-    target->playShakeAnnimation();
-    target->playFireEffect();
+    CCLOG("actionFinished");
+	if(m_delegate != NULL) {
+		m_delegate->didActionFinished(this);
+	}
+}
+
+void MDCardPlayer::playUnderAttackAnnimate(CCNode* sender)
+{
+	MDCardPlayer *target = (MDCardPlayer *)sender->getUserObject();
+	target->playShakeAnnimation();
+	target->playFireEffect();
 }
 
 void MDCardPlayer::allEnemyUnderAttack(float dt)

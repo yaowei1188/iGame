@@ -7,6 +7,7 @@
 #include "SimpleAudioEngine.h"
 #include "MainGameScene.h"
 #include "MDCardPlayer.h"
+#include "GlobalData.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -15,7 +16,8 @@ class MDBattleLayer : public CCLayerColor,
 public CCBSelectorResolver,
 public CCNodeLoaderListener,
 public CCBMemberVariableAssigner,
-public CCMessageDialogDelegate
+public CCMessageDialogDelegate,
+public MDCardPlayerDelegate
 {
 public:
     MDBattleLayer();
@@ -41,6 +43,7 @@ public:
 	virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
     
 	void buttonClicked(CCObject *pSender,CCControlEvent event);
+	void didActionFinished(MDCardPlayer* player);
     
     void toolBarTouchDownAction(CCObject *pSender, CCControlEvent pCCControlEvent);
     
@@ -73,15 +76,18 @@ protected:
 private:
     
     void AttackEnemy();
-    
+	void doBattle();
+
 	CCArray *mCardNameList;
 	CCArray *mCardList;
 	CCArray *mEnemyCardNameList;
 	CCArray *mEnemyCardList;
 	CCSprite *m_sSelectedSprite;
     CCArray *mParticle;
+	CCArray *mHeroList;
 	int enemyCount;
     int intCurrentCard;
+	bool actionFinished;
 };
 
 #endif  // __LOGINSCENE_SCENE_H__

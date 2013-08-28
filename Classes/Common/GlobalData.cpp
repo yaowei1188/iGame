@@ -177,8 +177,12 @@ CCArray* GlobalData::getCardProfile(int group)
 		return NULL;
 	}
 
-	std::string szSql = "select * from card where game_group_id = ";
-	szSql.append(IntToString(group));
+	std::string szSql = "select * from card";
+	if (group>=0)
+	{
+		szSql.append(" where game_group_id = ");
+		szSql.append(IntToString(group));
+	}
 
 	const char *argc = QUERY_CATEGORY_CARDBYGROUP;
 	result = sqlite3_exec(pDB,szSql.c_str(), sqliteExecCallBack, (void *)argc, &errMsg);

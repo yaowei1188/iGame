@@ -97,28 +97,33 @@ bool MDBattleLayer::init()
 
 		setTouchEnabled(true);
 
+		CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("art_head.plist");
+
 		mCardList= CCArray::create();
 		mCardList->retain();
 
 		mEnemyCardList= CCArray::create();
 		mEnemyCardList->retain();
         
-        mParticle = CCArray::create();
-		mParticle->retain();
-        
-        CCDictionary *dict = CCDictionary::create();
-        dict->setObject(CCString::create("myAttack1.plist"), "pname");
-        dict->setObject(CCString::create("0"), "target");
-        dict->setObject(CCString::create("0"), "position");
-        mParticle->addObject(dict);
-        
-        dict = CCDictionary::create();
-        dict->setObject(CCString::create("galaxy"), "pname");
-        dict->setObject(CCString::create("1"), "target");
-        dict->setObject(CCString::create("1"), "position");
-        mParticle->addObject(dict);
+  //      mParticle = CCArray::create();
+		//mParticle->retain();
+  //      
+  //      CCDictionary *dict = CCDictionary::create();
+  //      dict->setObject(CCString::create("myAttack1.plist"), "pname");
+  //      dict->setObject(CCString::create("0"), "target");
+  //      dict->setObject(CCString::create("0"), "position");
+  //      mParticle->addObject(dict);
+  //      
+  //      dict = CCDictionary::create();
+  //      dict->setObject(CCString::create("galaxy"), "pname");
+  //      dict->setObject(CCString::create("1"), "target");
+  //      dict->setObject(CCString::create("1"), "position");
+  //      mParticle->addObject(dict);
         
         intCurrentCard = 0;
+
+		mHeroList = GlobalData::getCardProfile(-1);
+		mHeroList->retain();
 
 		mCardNameList= CCArray::create();
 		mCardNameList->addObject(CCString::create("head_rulaifo.png"));
@@ -128,18 +133,6 @@ bool MDBattleLayer::init()
 		mCardNameList->addObject(CCString::create("head_rulaifo.png"));
 		mCardNameList->addObject(CCString::create("head_erlangsheng.png"));
 		mCardNameList->retain();
-
-		mEnemyCardNameList = CCArray::create();
-		mEnemyCardNameList->addObject(CCString::create("head_rulaifo.png"));
-		mEnemyCardNameList->addObject(CCString::create("head_sunwukong.png"));
-		mEnemyCardNameList->addObject(CCString::create("head_erlangsheng.png"));
-		mEnemyCardNameList->addObject(CCString::create("head_rulaifo.png"));
-		mEnemyCardNameList->addObject(CCString::create("head_sunwukong.png"));
-		mEnemyCardNameList->addObject(CCString::create("head_erlangsheng.png"));
-		mEnemyCardNameList->addObject(CCString::create("head_rulaifo.png"));
-		mEnemyCardNameList->addObject(CCString::create("head_sunwukong.png"));
-		mEnemyCardNameList->addObject(CCString::create("head_erlangsheng.png"));
-		mEnemyCardNameList->retain();
 
 		prepareBackGround();
 
@@ -234,7 +227,7 @@ void MDBattleLayer::AttackEnemy()
 {
     srand(time(NULL));
     int enemyNum = rand()%6;
-    int attackCategory = rand()%5;
+    int attackCategory = rand()%4;
     MDCardPlayer *enmeyCardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(enemyNum);
     
     MDCardPlayer *cardPlayer = (MDCardPlayer *)mCardList->objectAtIndex(intCurrentCard++);
@@ -271,6 +264,8 @@ void MDBattleLayer::AttackEnemy()
     if (intCurrentCard==6) {
         intCurrentCard = 0;
     }
+
+		actionFinished = false;
 }
 
 void MDBattleLayer::prepareFormation()
@@ -289,6 +284,7 @@ void MDBattleLayer::prepareFormation()
 		this->addChild(cardPlayer->m_sCardPlayer);
 		cardPlayer->m_location = ccp(leftcap + CARD_H_MARGIN * col + col * CARD_WIDTH + CARD_WIDTH * 0.5,CARD_BOTTOM_MARGIN + CARD_V_MARGIN * row + row * CARD_WIDTH + CARD_WIDTH * 0.5);
 		cardPlayer->m_sCardPlayer->setPosition(cardPlayer->m_location);
+		cardPlayer->setDelegate(this);
 	}
 }
 
@@ -297,6 +293,27 @@ void MDBattleLayer::prepareEnemyFormation()
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	float leftcap = (winSize.width - 3 * CARD_WIDTH - 2 * CARD_H_MARGIN) * 0.5;
 	int row,col;
+
+	if (mEnemyCardNameList==NULL)
+	{
+		mEnemyCardNameList = CCArray::create();
+		mEnemyCardNameList->retain();
+	}
+	mEnemyCardNameList->removeAllObjects();
+
+	srand(time(NULL));
+
+	for (int i=0;i<9;i++)
+	{
+		int idx = rand()%(mHeroList->count());
+		CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(idx);
+		if(dict==NULL) {
+			continue;
+		}
+		std::string strCardHeadImg(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
+		strCardHeadImg.append(".png");
+		mEnemyCardNameList->addObject(CCString::create(strCardHeadImg));
+	}
 
 	if (mEnemyCardList->count()>0)
 	{
@@ -323,6 +340,7 @@ void MDBattleLayer::prepareEnemyFormation()
 		this->addChild(cardPlayer->m_sCardPlayer);
 		cardPlayer->m_location = ccp(leftcap + CARD_H_MARGIN * col + col * CARD_WIDTH + CARD_WIDTH * 0.5,winSize.height - CARD_BOTTOM_MARGIN - CARD_V_MARGIN * row - row * CARD_WIDTH - CARD_WIDTH * 0.5);
 		cardPlayer->m_sCardPlayer->setPosition(cardPlayer->m_location);
+		cardPlayer->setDelegate(this);
 	}
 }
 
@@ -349,6 +367,13 @@ void MDBattleLayer::cardMoveFinished(CCNode* sender)
 
 		cardPlayer->stopAllAction();
 	}
+
+	this->doBattle();
+}
+
+void MDBattleLayer::doBattle()
+{
+	this->AttackEnemy();
 }
 
 void MDBattleLayer::backgroundMoveForward()
@@ -370,6 +395,17 @@ void MDBattleLayer::cardMoveForward()
 
 		cardPlayer->playParadeAnnimation();
 	}
+}
+
+void MDBattleLayer::didActionFinished(MDCardPlayer* player)
+{
+	CCLOG("didActionFinished");
+	if (actionFinished)
+	{
+		return;
+	}
+	actionFinished = true;
+	this->AttackEnemy();
 }
 
 
@@ -648,6 +684,7 @@ void MDBattleLayer::exchangeCard(MDCardPlayer *p_cardOne,MDCardPlayer *p_cardTwo
 MDBattleLayer::MDBattleLayer()
 {
     mCardNameList = NULL;
+	mEnemyCardNameList = NULL;
 }
 
 MDBattleLayer::~MDBattleLayer()

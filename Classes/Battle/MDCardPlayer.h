@@ -17,12 +17,21 @@ using namespace std;
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
+class MDCardPlayer;
+
+class MDCardPlayerDelegate
+{
+public:
+	virtual void didActionFinished(MDCardPlayer* player) = 0;
+};
+
 class MDCardPlayer : public CCScheduler
 {
 public:
 	CCSprite *m_sCardPlayer;
 	CCPoint m_location; //卡牌所在坐标
 	int position; //卡牌所在位置
+	CC_SYNTHESIZE(MDCardPlayerDelegate*, m_delegate, Delegate);
 
 private:
 	CCString *m_strCardName;
@@ -73,7 +82,8 @@ private:
     void actionFinished(CCNode* sender);
     void allEnemyUnderAttack(float dt);
     void removeNodeCallBack(CCNode* pNode);
-    CCArray *m_EnemyList;
+	void playUnderAttackAnnimate(CCNode* sender);
+	CCArray *m_EnemyList;
 
 };
 
