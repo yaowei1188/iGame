@@ -21,6 +21,7 @@ static CCArray *arrayCardProfile;
 static CCDictionary* userinfo;
 static CCArray* arrayFraction;
 static CCDictionary* dictCard;
+static CCArray *arrayEnemyFormation;
 
 CCString* GlobalData::getLocalString(std::string name)
 {
@@ -164,6 +165,16 @@ CCDictionary* GlobalData::getCardProfile(std::string name)
 
 	return dictCard;
 }
+
+CCArray* GlobalData::getEnemyFormation(int round)
+{
+	if (arrayEnemyFormation==NULL) {
+		arrayEnemyFormation = CCArray::createWithContentsOfFile("Formation.plist");
+		arrayEnemyFormation->retain();
+	}
+	return arrayEnemyFormation;
+}
+
 
 CCArray* GlobalData::getCardProfile(int group)
 {

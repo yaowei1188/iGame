@@ -20,6 +20,13 @@ MDCardPlayer * MDCardPlayer::create(std::string p_cardName)
 	return NULL;
 }
 
+MDCardPlayer::MDCardPlayer()
+{
+	m_hostCardPlayer = NULL;
+	m_lblValue = NULL;
+	isActionFinished = false;
+}
+
 bool MDCardPlayer::init(std::string p_cardName)
 {
 	m_sCardPlayer = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(p_cardName.c_str()));
@@ -82,7 +89,7 @@ void MDCardPlayer::stopAllAction()
 	m_sCardPlayer->stopAllActions();
 }
 
-void MDCardPlayer::playAttackAnnimation(CCArray *enemyList)
+void MDCardPlayer::playRainAnnimation(CCArray *enemyList)
 {
     string attack("myAttack1.plist");
     CCParticleSystem *_particle = CCParticleSystemQuad::create(attack.c_str());
@@ -93,13 +100,15 @@ void MDCardPlayer::playAttackAnnimation(CCArray *enemyList)
     _particle->setPosition(point);
     _particle->setAutoRemoveOnFinish(true);
     
-//    m_EnemyList = CC_SAFE_RETAIN(enemyList);
     m_EnemyList = enemyList;
+
+	CCDelayTime *delay = CCDelayTime::create(0.6);
+
+	CCFiniteTimeAction* _delayFinished = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::allEnemyUnderAttack));
+
+	m_sCardPlayer->runAction(CCSequence::create(delay,_delayFinished,NULL));
     
-//    this->scheduleSelector(schedule_selector(MDCardPlayer::allEnemyUnderAttack), this, 2,false);
-    
-    CCDirector::sharedDirector()->getScheduler()->scheduleSelector(
-                                                                   schedule_selector(MDCardPlayer::allEnemyUnderAttack), this, 0.3, false);
+    //CCDirector::sharedDirector()->getScheduler()->scheduleSelector( schedule_selector(MDCardPlayer::allEnemyUnderAttack), this, 0.6, false);
     
 }
 
@@ -110,6 +119,13 @@ void MDCardPlayer::playShakeAnnimation()
 	CCFiniteTimeAction* _actionFinished = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::actionFinished));
 
 	m_sCardPlayer->runAction(CCSequence::create(_shake,_actionFinished,NULL));
+	m_lblValue = (CCLabelTTF *)m_sCardPlayer->getChildByTag(101);
+	if (m_lblValue==NULL)
+	{
+		m_lblValue = CCLabelTTF::create("63","Arial",13);
+		m_sCardPlayer->addChild(m_lblValue);
+	}
+	m_lblValue->setVisible(true);
 }
 
 void MDCardPlayer::playDeadAnnimation()
@@ -215,28 +231,63 @@ void MDCardPlayer::playEcllipseEffect(MDCardPlayer *target)
 
 void MDCardPlayer::actionFinished(CCNode* sender)
 {
-    CCLOG("actionFinished");
-	if(m_delegate != NULL) {
-		m_delegate->didActionFinished(this);
+	if (m_hostCardPlayer!=NULL)
+	{
+		if (!m_hostCardPlayer->isActionFinished)
+		{
+			m_hostCardPlayer->isActionFinished = true;
+
+			if(m_delegate != NULL) {
+				m_delegate->didActionFinished(this);
+			}
+		}
+	} else {
+		if(m_delegate != NULL) {
+			m_delegate->didActionFinished(this);
+		}
 	}
 }
 
 void MDCardPlayer::playUnderAttackAnnimate(CCNode* sender)
 {
 	MDCardPlayer *target = (MDCardPlayer *)sender->getUserObject();
+	target->setHostCardPlayer(NULL);
 	target->playShakeAnnimation();
 	target->playFireEffect();
 }
 
-void MDCardPlayer::allEnemyUnderAttack(float dt)
+void MDCardPlayer::allEnemyUnderAttack(CCNode *pnode)
 {
-    CCDirector::sharedDirector()->getScheduler()->unscheduleSelector(schedule_selector(MDCardPlayer::allEnemyUnderAttack), this);
-    for (int i=0; i<m_EnemyList->count(); i++) {
-        MDCardPlayer *enemyPlayer = (MDCardPlayer *)m_EnemyList->objectAtIndex(i);
-        enemyPlayer->playShakeAnnimation();
-        enemyPlayer->playDeadAnnimation();
-    }
+	CCLOG("allEnemyUnderAttack");
+	//CCDirector::sharedDirector()->getScheduler()->unscheduleSelector(schedule_selector(MDCardPlayer::allEnemyUnderAttack), this);
+
+	isActionFinished = false;
+
+	for (int i=0; i<m_EnemyList->count(); i++) {
+		MDCardPlayer *enemyPlayer = (MDCardPlayer *)m_EnemyList->objectAtIndex(i);
+
+		enemyPlayer->setHostCardPlayer(this);
+		enemyPlayer->playDeadAnnimation();
+		enemyPlayer->playShakeAnnimation();
+		
+	}
 }
+
+//void MDCardPlayer::allEnemyUnderAttack(float dt)
+//{
+//	CCLOG("allEnemyUnderAttack");
+//    CCDirector::sharedDirector()->getScheduler()->unscheduleSelector(schedule_selector(MDCardPlayer::allEnemyUnderAttack), this);
+//
+//	isActionFinished = false;
+//
+//    for (int i=0; i<m_EnemyList->count(); i++) {
+//        MDCardPlayer *enemyPlayer = (MDCardPlayer *)m_EnemyList->objectAtIndex(i);
+//		
+//		enemyPlayer->setHostCardPlayer(this);
+//        enemyPlayer->playShakeAnnimation();
+//        enemyPlayer->playDeadAnnimation();
+//    }
+//}
 
 void MDCardPlayer::playExploreEffect(MDCardPlayer *target)
 {

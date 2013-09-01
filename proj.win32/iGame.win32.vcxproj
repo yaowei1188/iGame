@@ -313,6 +313,7 @@
     <None Include="..\Resources\scene\ThirdLoginScene.ccbi" />
     <None Include="..\Resources\scene\UserMailScene.ccbi" />
     <None Include="..\Resources\Task\Card1.plist" />
+    <None Include="..\Resources\Task\Formation.plist" />
     <None Include="..\Resources\Task\Task1.plist" />
     <None Include="..\Resources\transparent.png" />
     <None Include="res\iGame.ico" />

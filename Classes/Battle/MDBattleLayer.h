@@ -85,9 +85,10 @@ private:
 	CCSprite *m_sSelectedSprite;
     CCArray *mParticle;
 	CCArray *mHeroList;
-	int enemyCount;
     int intCurrentCard;
 	bool actionFinished;
+	int m_intRound;
+	int m_intEnemyCount;
 };
 
 #endif  // __LOGINSCENE_SCENE_H__

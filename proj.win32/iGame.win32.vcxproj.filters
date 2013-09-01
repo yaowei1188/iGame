@@ -697,6 +697,9 @@
     <None Include="..\Resources\art\art_profile\yg039_2.png">
       <Filter>Resources\art\art_profile</Filter>
     </None>
+    <None Include="..\Resources\Task\Formation.plist">
+      <Filter>Resources\Task</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="iGame.rc">

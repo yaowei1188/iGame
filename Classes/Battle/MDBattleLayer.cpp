@@ -97,6 +97,8 @@ bool MDBattleLayer::init()
 
 		setTouchEnabled(true);
 
+		m_intRound = -1;
+
 		CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("art_head.plist");
 
 		mCardList= CCArray::create();
@@ -137,8 +139,8 @@ bool MDBattleLayer::init()
 		prepareBackGround();
 
 		prepareFormation();
-        
-        prepareEnemyFormation();
+
+		//prepareEnemyFormation();
 
 //		startPuzzle();
 
@@ -225,33 +227,34 @@ void MDBattleLayer::menuCallback(CCObject* sender)
 
 void MDBattleLayer::AttackEnemy()
 {
+	CCLOG("AttackEnemy");
     srand(time(NULL));
-    int enemyNum = rand()%6;
+    int enemyNum = rand()%m_intEnemyCount;
     int attackCategory = rand()%4;
     MDCardPlayer *enmeyCardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(enemyNum);
     
     MDCardPlayer *cardPlayer = (MDCardPlayer *)mCardList->objectAtIndex(intCurrentCard++);
     switch (attackCategory) {
         case 0:
-        {
-            cardPlayer->playMeteorEffect(enmeyCardPlayer);
-            break;
-        }
+			{
+				cardPlayer->playMeteorEffect(enmeyCardPlayer);
+				break;
+			}
         case 1:
-        {
-            cardPlayer->playAttackAnnimation(mEnemyCardList);
-            break;
-        }
+			{
+				cardPlayer->playFireEffect(enmeyCardPlayer);
+				break;
+			}
         case 2:
-        {
-            cardPlayer->playFireEffect(enmeyCardPlayer);
-            break;
-        }
-        case 3:
-        {
-            cardPlayer->playEcllipseEffect(enmeyCardPlayer);
-            break;
-        }
+			{
+				cardPlayer->playEcllipseEffect(enmeyCardPlayer);
+				break;
+			}
+		case 3:
+			{
+				cardPlayer->playRainAnnimation(mEnemyCardList);
+				break;
+			}
 		case 4:
 			{
 				enmeyCardPlayer->playAnnimateFrame("2200",18);
@@ -265,7 +268,18 @@ void MDBattleLayer::AttackEnemy()
         intCurrentCard = 0;
     }
 
-		actionFinished = false;
+	actionFinished = false;
+}
+
+void MDBattleLayer::didActionFinished(MDCardPlayer* player)
+{
+	CCLOG("didActionFinished");
+	if (actionFinished)
+	{
+		return;
+	}
+	actionFinished = true;
+	this->AttackEnemy();
 }
 
 void MDBattleLayer::prepareFormation()
@@ -290,9 +304,15 @@ void MDBattleLayer::prepareFormation()
 
 void MDBattleLayer::prepareEnemyFormation()
 {
+	CCArray *allEnemyFormation = GlobalData::getEnemyFormation(-1);
+	CCDictionary *dictFormation = (CCDictionary *)allEnemyFormation->objectAtIndex(m_intRound);
+	CCArray *enemyFormation  = (CCArray *)dictFormation->objectForKey("Formation");
+
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	float leftcap = (winSize.width - 3 * CARD_WIDTH - 2 * CARD_H_MARGIN) * 0.5;
 	int row,col;
+
+	m_intEnemyCount = enemyFormation->count();
 
 	if (mEnemyCardNameList==NULL)
 	{
@@ -303,7 +323,7 @@ void MDBattleLayer::prepareEnemyFormation()
 
 	srand(time(NULL));
 
-	for (int i=0;i<9;i++)
+	for (int i=0;i<m_intEnemyCount;i++)
 	{
 		int idx = rand()%(mHeroList->count());
 		CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(idx);
@@ -315,21 +335,16 @@ void MDBattleLayer::prepareEnemyFormation()
 		mEnemyCardNameList->addObject(CCString::create(strCardHeadImg));
 	}
 
-	if (mEnemyCardList->count()>0)
-	{
-		for(int i=0;i<mEnemyCardList->count();i++)
-		{
-			MDCardPlayer *cardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(i);
-
-			cardPlayer->m_sCardPlayer->setVisible(true);
-		}
-		return;
-	}
-
 	for(int i=0;i<mEnemyCardNameList->count();i++)
 	{
-		row = i / 3;
-		col = i % 3;
+		CCDictionary *dict = (CCDictionary *)enemyFormation->objectAtIndex(i);
+		int position = ((CCString *)dict->objectForKey("Position"))->intValue();
+
+		row = position / 3;
+		col = position % 3;
+
+		//row = i / 3;
+		//col = i % 3;
 		CCString *strCardName = (CCString *)mEnemyCardNameList->objectAtIndex(i);
 		if(strCardName->length()==0)
 		{
@@ -359,6 +374,7 @@ void MDBattleLayer::cardMoveFinished(CCNode* sender)
 	CCMenuItemFont *menuMove = (CCMenuItemFont *)menu->getChildByTag(102);
 	menuMove->setVisible(true);
 
+	m_intRound ++;
 	this->prepareEnemyFormation();
 
 	for(int i=0;i<mCardList->count();i++)
@@ -395,17 +411,6 @@ void MDBattleLayer::cardMoveForward()
 
 		cardPlayer->playParadeAnnimation();
 	}
-}
-
-void MDBattleLayer::didActionFinished(MDCardPlayer* player)
-{
-	CCLOG("didActionFinished");
-	if (actionFinished)
-	{
-		return;
-	}
-	actionFinished = true;
-	this->AttackEnemy();
 }
 
 

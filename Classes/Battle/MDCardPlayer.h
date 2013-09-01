@@ -28,7 +28,11 @@ public:
 class MDCardPlayer : public CCScheduler
 {
 public:
+
+	MDCardPlayer();
+
 	CCSprite *m_sCardPlayer;
+	CCLabelTTF *m_lblValue;
 	CCPoint m_location; //卡牌所在坐标
 	int position; //卡牌所在位置
 	CC_SYNTHESIZE(MDCardPlayerDelegate*, m_delegate, Delegate);
@@ -58,8 +62,11 @@ private:
 
 	
 public:
+
+	static MDCardPlayer * create(std::string p_cardName);
+
 	void playParadeAnnimation();//播放前进动画
-    void playAttackAnnimation(CCArray *enemyList);//播放攻击动画
+    void playRainAnnimation(CCArray *enemyList);//播放攻击动画
     void playShakeAnnimation();//播放被攻击动画
     void playDeadAnnimation();//播放死亡动画
 	void playWiggleAnnimation();//播放死亡动画
@@ -68,7 +75,7 @@ public:
 	void playFireEffect();
 	//CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MDCardPlayer,create);
 
-	static MDCardPlayer * create(std::string p_cardName);
+	
 	void playGalaxyEffect();
 	void playMeteorEffect(MDCardPlayer *target);
     void playFireEffect(MDCardPlayer *target);
@@ -77,13 +84,17 @@ public:
     void playExploreEffect(MDCardPlayer *target);
     void playAnnimateFrame(std::string p_name,int count);
 
-    
+	void setHostCardPlayer(MDCardPlayer *p_hostCardPlayer){m_hostCardPlayer = p_hostCardPlayer;};
+
 private:
     void actionFinished(CCNode* sender);
-    void allEnemyUnderAttack(float dt);
+    //void allEnemyUnderAttack(float dt);
+	void allEnemyUnderAttack(CCNode *pnode);
     void removeNodeCallBack(CCNode* pNode);
 	void playUnderAttackAnnimate(CCNode* sender);
 	CCArray *m_EnemyList;
+	MDCardPlayer *m_hostCardPlayer;
+	bool isActionFinished;
 
 };
 

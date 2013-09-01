@@ -40,6 +40,8 @@ public:
 	static CCDictionary* getCardProfile(std::string name);
 	static CCArray* getCardProfile(int group);
 
+	static CCArray* getEnemyFormation(int round);
+
 private:
     static int sqliteExecCallBack( void * para, int n_column, char ** column_value, char ** column_name );
 };
