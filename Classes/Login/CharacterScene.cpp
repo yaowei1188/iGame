@@ -67,7 +67,8 @@ bool CharacterScene::init()
 		mCardNameList = CCArray::create();
 		mCardNameList->retain();
 
-        CCArray *allCardArray = GlobalData::getAllCards("");
+        /*CCArray *allCardArray = GlobalData::getAllCards("");*/
+		CCArray *allCardArray = GlobalData::getCardProfile(-1);
 
         CCObject *obj = NULL;
         CCARRAY_FOREACH(allCardArray,obj)
