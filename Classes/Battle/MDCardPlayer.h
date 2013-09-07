@@ -104,11 +104,14 @@ private:
 	void allEnemyUnderAttack(CCNode *pnode);
     void removeNodeCallBack(CCNode* pNode);
 	void playUnderAttackAnnimate(CCNode* sender);
+	void setNodeInvisible(CCNode* pNode);
+	void determineValue(MDCardPlayer *target);
 	CCArray *m_EnemyList;
 	MDCardPlayer *m_hostCardPlayer;
 	bool isActionFinished;
 
 	CCArray *m_AnimateList;
+	int m_intValue;
 
 };
 

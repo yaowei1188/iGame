@@ -39,45 +39,6 @@ bool MDCardPlayer::init(std::string p_cardName)
 
 void MDCardPlayer::playAnnimateFrame(MDCardPlayer *target)
 {
-	//CCSpriteFrameCache* cache = CCSpriteFrameCache::sharedSpriteFrameCache();  
-	//cache->addSpriteFramesWithFile("flash.plist");
-	//CCArray* animFrames = CCArray::createWithCapacity(count);
-
-	//char firstFrame[64] = {0};
-	//for(int i=1;i<=count;i++)
-	//{
-	//	string prefix(p_name);
-	//	char strPlist[64] = {0};
-	//	if(i<10)
-	//	{
-	//		prefix.append("0");
-	//	}
-	//	sprintf(strPlist,"%s%d.png",prefix.c_str(),i); 
-	//	if (i==1)
-	//	{
-	//		strcpy(firstFrame,strPlist);
-	//	}
-	//	CCSpriteFrame *spriteFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strPlist);
-	//	animFrames->addObject(spriteFrame);
-	//}
-
-	//CCAnimation *animation = CCAnimation::createWithSpriteFrames(animFrames, 0.1f);
-	//CCAnimate *animate = CCAnimate::create(animation);
-	////CCActionInterval* seq = CCSequence::create(animate,NULL);
-	//	//CCFlipX::create(true),
-	//	//animate->copy()->autorelease(),
-	//	//CCFlipX::create(false),
-	//	//NULL);
-
-	//CCSequence *sequence = CCSequence::create(animate,CCCallFuncN::create(this, callfuncN_selector(MDCardPlayer::removeNodeCallBack)),NULL);
-
-	//CCSprite *sprite = CCSprite::createWithSpriteFrameName(firstFrame);
-	//this->m_sCardPlayer->getParent()->addChild(sprite);
-	//CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-	//sprite->setPosition(ccp(winSize.width * 0.1,winSize.height * 0.5));
-
-	//sprite->runAction(sequence);
-	////m_sCardPlayer->runAction(animate);
 
 	CCArray *arrayAnimate = CCArray::create();
 	arrayAnimate->addObject(CCString::create("hlz"));
@@ -117,7 +78,6 @@ void MDCardPlayer::playAnnimateFrame(MDCardPlayer *target)
 
 	std::string strCategory = ((CCString *)arrayAnimate->objectAtIndex(category))->getCString();
 
-
 	AnimatePacker::getInstance()->loadAnimations((strCategory + std::string(".xml")).c_str()); 
 	CCSprite *sprite = CCSprite::create("transparent.png");
 
@@ -138,9 +98,6 @@ void MDCardPlayer::playAnnimateFrame(MDCardPlayer *target)
 	this->playAttackInstruction();
 
 	sprite->runAction(sequence);
-
-	
-	/*sprite->runAction( CCRepeatForever::create(AnimatePacker::getInstance()->getAnimate(strCategory.c_str())));*/
 }
 
 
@@ -195,19 +152,25 @@ void MDCardPlayer::playRainAnnimation(CCArray *enemyList)
 void MDCardPlayer::playShakeAnnimation()
 {
 	CCShake *_shake = CCShake::create(0.5,4,2);
-	
 	CCFiniteTimeAction* _actionFinished = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::actionFinished));
 	CCDelayTime *_delayTime = CCDelayTime::create(2.0);
 
 	m_sCardPlayer->runAction(CCSequence::create(_shake,_delayTime,_actionFinished,NULL));
+
 	m_lblValue = (CCLabelTTF *)m_sCardPlayer->getChildByTag(101);
 
 	if (m_lblValue==NULL)
 	{
-		m_lblValue = CCLabelTTF::create("63","Arial",13);
+		m_lblValue = CCLabelTTF::create("-30","Marker Felt",40);
+		m_lblValue->setColor(ccc3(255,0,0));
+		CCSize size = m_sCardPlayer->getContentSize();
+		m_lblValue->setPosition(ccp(size.width * 0.5,size.height * 0.5));
 		m_sCardPlayer->addChild(m_lblValue);
 	}
 	m_lblValue->setVisible(true);
+	CCDelayTime *_delayTime1 = CCDelayTime::create(2.0);
+	CCFiniteTimeAction* _actionSetInvisible = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::setNodeInvisible));
+	m_lblValue->runAction(CCSequence::create(_delayTime1,_actionSetInvisible,NULL));
 }
 
 void MDCardPlayer::playDeadAnnimation()
@@ -397,5 +360,15 @@ void MDCardPlayer::playExploreEffect(MDCardPlayer *target)
 void MDCardPlayer::removeNodeCallBack(CCNode* pNode)
 {
 	pNode->removeFromParentAndCleanup(true);
+}
+
+void MDCardPlayer::setNodeInvisible(CCNode* pNode)
+{
+	pNode->setVisible(false);
+}
+
+void MDCardPlayer::determineValue(MDCardPlayer *target)
+{
+	
 }
 

@@ -40,14 +40,6 @@ bool MDCatalogueLayer::init()
 
 		CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("art_head.plist");
         
-  //      mHeroList = CCArray::create(CCString::create("Li1"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),NULL);
-  //      mHeroList->retain();
-
-		//vUserData = new int[mHeroList->count()]();
-		//memset(vUserData, sizeof(int) * mHeroList->count(), 0);
-
-		
-
         bRet = true;
     } while (0);
 
@@ -151,7 +143,7 @@ void MDCatalogueLayer::reloadDataSource()
 		mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
 		mTableView->setDataSource(this);
 		mTableView->setDelegate(this);
-		mTableView->setColCount(COLUMN_NUM);
+		//mTableView->setColCount(COLUMN_NUM);
 	}
 
 	mTableView->reloadData();
