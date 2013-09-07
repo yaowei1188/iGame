@@ -33,7 +33,7 @@ bool MDPackageLayer::init()
 
 		btnTouched = false;
         
-        mHeroList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
+        mHeroList = CCArray::create(CCString::create("Li1"),CCString::create("Li3"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
         mHeroList->retain();
 
 		vUserData = new int[mHeroList->count()]();
@@ -141,14 +141,14 @@ void MDPackageLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     _preSelectedTab = itemFairy;
     
     CCMenuItemSprite* itemBuddha = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("package_tab_normal.png"),CCSprite::createWithSpriteFrameName("package_tab_selected.png"),NULL,this,menu_selector(MDPackageLayer::switchCallback));
-    CCLabelBMFont *lblPackage2 = CCLabelBMFont::create("背包二", "btn.fnt");
+    CCLabelBMFont *lblPackage2 = CCLabelBMFont::create("背包一", "btn.fnt");
     itemBuddha->addChild(lblPackage2);
     lblPackage2->setPosition(ccp(itemSize.width * 0.5,itemSize.height * 0.5));
     menuTab->addChild(itemBuddha);
     itemBuddha->setPosition(ccp(0, 0));
     
     CCMenuItemSprite* itemDemon = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("package_tab_normal.png"),CCSprite::createWithSpriteFrameName("package_tab_selected.png"),NULL,this,menu_selector(MDPackageLayer::switchCallback));
-    CCLabelBMFont *lblPackage3 = CCLabelBMFont::create("背包三", "btn.fnt");
+    CCLabelBMFont *lblPackage3 = CCLabelBMFont::create("背包一", "btn.fnt");
     itemDemon->addChild(lblPackage3);
     lblPackage3->setPosition(ccp(itemSize.width * 0.5,itemSize.height * 0.5));
     menuTab->addChild(itemDemon);
@@ -183,6 +183,7 @@ void MDPackageLayer::reloadDataSource()
 	mTableView->setDirection(kCCScrollViewDirectionVertical);
 	mTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
 	mTableView->setDataSource(this);
+	mTableView->isPagingEnableX = true;
 	mTableView->setDelegate(this);
 	mTableView->setColCount(5);
 	mTableView->reloadData();

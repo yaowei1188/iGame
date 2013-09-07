@@ -20,6 +20,13 @@ using namespace std;
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
+class CardQueryCriteria
+{
+public:
+	std::string cardName;
+	int groupid;
+};
+
 class GlobalData
 {
 public:
@@ -29,15 +36,16 @@ public:
 
     static CCArray* getFraction(std::string name);
 
-    static CCArray* getAllCards(std::string name);
+    //static CCArray* getAllCards(std::string name);
 
-    static CCDictionary* getCardById(std::string cardId);
+    //static CCDictionary* getCardById(std::string cardId);
     static CCDictionary* getCardInfoById(std::string cardId);
 
 	static CCDictionary* getUserinfo();
 	static void setUserinfo(CCDictionary* p_userInfo);
 
-	static CCDictionary* getCardProfile(std::string name);
+	static CCArray* getAllCardProfile(CardQueryCriteria *query = NULL);
+	static CCDictionary* getCardProfileByName(std::string name);
 	static CCArray* getCardProfile(int group);
 
 	static CCArray* getEnemyFormation(int round);

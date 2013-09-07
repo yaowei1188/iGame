@@ -56,6 +56,7 @@ public:
 	virtual void didClickButton(CCMessageDialog* dialog,unsigned int index);
 	void prepareFormation();
 	void prepareEnemyFormation();
+
 	void prepareBackGround();
 	void selectSpriteForTouch(CCPoint touchLocation);
 	void panForTranslation(CCPoint translation);
@@ -75,20 +76,23 @@ protected:
 
 private:
     
-    void AttackEnemy();
+    void playHeroAction();
+	void playEnemyAction();
 	void doBattle();
 
 	CCArray *mCardNameList;
-	CCArray *mCardList;
-	CCArray *mEnemyCardNameList;
+	CCArray *mHeroCardList;
+	//CCArray *mEnemyCardNameList;
 	CCArray *mEnemyCardList;
 	CCSprite *m_sSelectedSprite;
     CCArray *mParticle;
 	CCArray *mHeroList;
-    int intCurrentCard;
+    int intCurrentHeroCard;
+	int intCurrentEnemyCard;
 	bool actionFinished;
 	int m_intRound;
 	int m_intEnemyCount;
+	int m_intWhoAttack;
 };
 
 #endif  // __LOGINSCENE_SCENE_H__

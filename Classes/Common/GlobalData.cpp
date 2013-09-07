@@ -13,6 +13,7 @@
 #define QUERY_CATEGORY_CARDINFO "2"
 #define QUERY_CATEGORY_CARDBYGROUP "3"
 #define QUERY_CARD_PROFILE_BY_NAME "4"
+#define QUERY_CARD_PROFILE_ALL "5"
 
 static CCDictionary *dictLanguage;
 static CCArray *arrayTasks;
@@ -52,7 +53,7 @@ CCDictionary* GlobalData::getTasks(std::string name)
 int GlobalData::sqliteExecCallBack( void * para, int n_column, char ** column_value, char ** column_name )
 {
     const char *myPara = (const char *)para;
-//    printf("para:%s",myPara);
+
     if (strcmp(myPara, QUERY_CATEGORY_FRACTION)==0) {
         CCDictionary *dict = CCDictionary::create();
         for(int i = 0 ; i < n_column; i ++ )
@@ -67,22 +68,25 @@ int GlobalData::sqliteExecCallBack( void * para, int n_column, char ** column_va
             dictCard->setObject(CCString::create(column_value[i]), column_name[i]);
         }
 	} else if(strcmp(myPara, QUERY_CATEGORY_CARDBYGROUP)==0) {
-		CCDictionary *dict = CCDictionary::create();
+		dictCard = CCDictionary::create();
 		for(int i = 0 ; i < n_column; i ++ )
 		{
-			dict->setObject(CCString::create(column_value[i]), column_name[i]);
+			dictCard->setObject(CCString::create(column_value[i]), column_name[i]);
 		}
-		arrayCardProfile->addObject(dict);
+		arrayCardProfile->addObject(dictCard);
 	} else if(strcmp(myPara, QUERY_CARD_PROFILE_BY_NAME)==0) {
 		dictCard = CCDictionary::create();
 		for(int i = 0 ; i < n_column; i ++ )
 		{
-//            str:string name = column_name[i];
-//            std::string value = column_value[i];
-
 			dictCard->setObject(CCString::create(column_value[i]), column_name[i]);
-
 		}
+	} else if(strcmp(myPara, QUERY_CARD_PROFILE_ALL)==0) {
+		dictCard = CCDictionary::create();
+		for(int i = 0 ; i < n_column; i ++ )
+		{
+			dictCard->setObject(CCString::create(column_value[i]), column_name[i]);
+		}
+		arrayCards->addObject(dictCard);
 	}
 
     return 0;
@@ -140,12 +144,8 @@ CCArray* GlobalData::getFraction(std::string name)
     return arrayFraction;
 }
 
-CCDictionary* GlobalData::getCardProfile(std::string name)
+CCDictionary* GlobalData::getCardProfileByName(std::string name)
 {
-	//if (dictCard==NULL) {
-	//	dictCard = CCDictionary::create();
-	//}
-
 	sqlite3 *pDB = NULL;
 	char* errMsg = NULL;
 	std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
@@ -164,6 +164,51 @@ CCDictionary* GlobalData::getCardProfile(std::string name)
 	}
 
 	return dictCard;
+}
+
+CCArray* GlobalData::getAllCardProfile(CardQueryCriteria *query)
+{
+	arrayCards = CCArray::create();
+
+	sqlite3 *pDB = NULL;
+	char* errMsg = NULL;
+	std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
+	int result = sqlite3_open_v2(dbPath.c_str(),&pDB,SQLITE_OPEN_READWRITE, NULL);
+	if (result!=SQLITE_OK) {
+		return NULL;
+	}
+
+	std::string szSql = "select c.cardHeadImg,c.cardBodyImg,c.cardProfileImg,c.game_group_id,r.roleName,r.starGrade,r.beginGrade,r.blood,r.attack,r.defence,r.crit,r.dodge,r.roleDescription from card c left join game_role r on c.cardProfileImg = r.roleImageId where r.starGrade is not null";
+	if (query != NULL)
+	{
+		if (query->groupid >= 0)
+		{
+
+		}
+		if (query->cardName.length()>0)
+		{
+			std::vector<std::string> slist = split(query->cardName,';');
+			if (slist.size()<=1)
+			{
+				szSql.append(" AND c.cardProfileImg = '");
+				szSql.append(slist[0]);
+				szSql.append("'");
+			} else {
+				szSql.append(" AND c.cardProfileImg in (\'");
+				std::string sresult = vectorToString(slist,"\',\'");
+				szSql.append(sresult);
+				szSql.append("\')");
+			}
+		}
+	}
+
+	const char *argc = QUERY_CARD_PROFILE_ALL;
+	result = sqlite3_exec(pDB,szSql.c_str(), sqliteExecCallBack, (void *)argc, &errMsg);
+	if (result != SQLITE_OK) {
+		return NULL;
+	}
+
+	return arrayCards;
 }
 
 CCArray* GlobalData::getEnemyFormation(int round)
@@ -202,33 +247,6 @@ CCArray* GlobalData::getCardProfile(int group)
 	}
 
 	return arrayCardProfile;
-}
-
-CCArray* GlobalData::getAllCards(std::string name)
-{
-    if (arrayCards==NULL) {
-        arrayCards = CCArray::createWithContentsOfFile("Card1.plist");
-		arrayCards->retain();
-    }
-    return arrayCards;
-};
-
-CCDictionary* GlobalData::getCardById(std::string cardId)
-{
-    if (arrayCards==NULL) {
-        arrayCards = CCArray::createWithContentsOfFile("Card1.plist");
-		arrayCards->retain();
-    }
-    CCObject *obj = NULL;
-    CCARRAY_FOREACH(arrayCards, obj)
-    {
-        CCDictionary *dict = (CCDictionary *)obj;
-        CCString *strCardId = (CCString *)dict->objectForKey("CardId");
-        if (cardId == strCardId->getCString()) {
-            return dict;
-        }
-    }
-    return NULL;
 }
 
 CCDictionary* GlobalData::getUserinfo()

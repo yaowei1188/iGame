@@ -17,6 +17,13 @@ using namespace std;
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
+typedef enum _CardCategory
+{
+	CardCategoryAttack = 1,
+	CardCategoryDefence,
+	CardCategoryAssist
+} CardCategory;
+
 class MDCardPlayer;
 
 class MDCardPlayerDelegate
@@ -36,6 +43,8 @@ public:
 	CCPoint m_location; //卡牌所在坐标
 	int position; //卡牌所在位置
 	CC_SYNTHESIZE(MDCardPlayerDelegate*, m_delegate, Delegate);
+	
+	CC_SYNTHESIZE(CCDictionary*, m_dicFormation, Formation);
 
 private:
 	CCString *m_strCardName;
@@ -82,9 +91,12 @@ public:
     void playEcllipseEffect(MDCardPlayer *target);
 	void stopAllAction();
     void playExploreEffect(MDCardPlayer *target);
-    void playAnnimateFrame(std::string p_name,int count);
+    void playAnnimateFrame(MDCardPlayer *target);
 
 	void setHostCardPlayer(MDCardPlayer *p_hostCardPlayer){m_hostCardPlayer = p_hostCardPlayer;};
+	void setCardData(CCDictionary *dict);
+
+	void playAttackInstruction();
 
 private:
     void actionFinished(CCNode* sender);
@@ -95,6 +107,8 @@ private:
 	CCArray *m_EnemyList;
 	MDCardPlayer *m_hostCardPlayer;
 	bool isActionFinished;
+
+	CCArray *m_AnimateList;
 
 };
 

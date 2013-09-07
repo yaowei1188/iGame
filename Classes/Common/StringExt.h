@@ -10,6 +10,7 @@
 #define __StringExt__
 
 #include <iostream>
+#include <iterator>
 
 inline std::string trimLeft(const std::string& str) {
     std::string t = str;
@@ -170,6 +171,33 @@ inline std::string secondsToString(int seconds)
     }
     result.append(IntToString(sec));
     return result;
+}
+
+inline std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) {
+	std::stringstream ss(s);
+	std::string item;
+	while (std::getline(ss, item, delim)) {
+		elems.push_back(item);
+	}
+	return elems;
+}
+
+inline std::vector<std::string> split(const std::string &s, char delim) {
+	std::vector<std::string> elems;
+	split(s, delim, elems);
+	return elems;
+}
+
+inline std::string vectorToString(std::vector<std::string> &vec, std::string delim) {
+	std::stringstream  ss;
+
+	//std::ostream_iterator<std::string> out_file_iterator ( out_file, delim );
+
+	std::copy(vec.begin(), vec.end()-1,ostream_iterator<std::string>(ss, delim.c_str()));
+
+	ss << vec.back();
+
+	return ss.str();
 }
 
 #endif /* defined(__StringExt__) */

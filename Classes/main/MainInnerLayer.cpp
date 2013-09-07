@@ -53,7 +53,7 @@ MainInnerLayer::~MainInnerLayer()
 
 void MainInnerLayer::getCharacterProfile()
 {
-	dictCharacter = GlobalData::getCardProfile("101");
+	dictCharacter = GlobalData::getCardProfileByName("101");
 }
 
 void MainInnerLayer::updateUserInfo(int hp,int maxhp,int exp,int maxExp,int grade,int gold)

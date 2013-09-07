@@ -107,7 +107,7 @@ void MDCatalogueDetailLayer::setCardInfo(CCDictionary *dict)
 
     CCSize bgSize = m_sCard->getContentSize();
 
-	CCDictionary *dictCardProfile = GlobalData::getCardProfile(((CCString *)dict->objectForKey("cardProfileImg"))->getCString());
+	CCDictionary *dictCardProfile = GlobalData::getCardProfileByName(((CCString *)dict->objectForKey("cardProfileImg"))->getCString());
 
     CCString *strGroupId = (CCString *)dictCardProfile->objectForKey("game_group_id");
     std::string strGroup = determineGroup(strGroupId);
