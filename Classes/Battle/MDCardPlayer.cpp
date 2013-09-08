@@ -163,6 +163,7 @@ void MDCardPlayer::playShakeAnnimation()
 	{
 		m_lblValue = CCLabelTTF::create("-30","Marker Felt",40);
 		m_lblValue->setColor(ccc3(255,0,0));
+        m_lblValue->enableStroke(ccc3(0, 0, 0), 1.5);
 		CCSize size = m_sCardPlayer->getContentSize();
 		m_lblValue->setPosition(ccp(size.width * 0.5,size.height * 0.5));
 		m_sCardPlayer->addChild(m_lblValue);
