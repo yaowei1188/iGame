@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <plists>
+        <plist>e11.plist</plist>
+    </plists>
+    <animations>
+        <animation>
+            <name>e11</name>
+            <delay>0.1</delay>
+            <flipX>false</flipX>
+            <flipY>false</flipY>
+            <spriteFrame>精选技能光效 (11)0001.png</spriteFrame>
+            <spriteFrame>精选技能光效 (11)0002.png</spriteFrame>
+            <spriteFrame>精选技能光效 (11)0003.png</spriteFrame>
+            <spriteFrame>精选技能光效 (11)0004.png</spriteFrame>
+            <spriteFrame>精选技能光效 (11)0005.png</spriteFrame>
+            <spriteFrame>精选技能光效 (11)0006.png</spriteFrame>
+            <spriteFrame>精选技能光效 (11)0007.png</spriteFrame>
+            <spriteFrame>精选技能光效 (11)0008.png</spriteFrame>
+            <spriteFrame>精选技能光效 (11)0009.png</spriteFrame>
+            <spriteFrame>精选技能光效 (11)0010.png</spriteFrame>
+            <spriteFrame>精选技能光效 (11)0011.png</spriteFrame>
+            <spriteFrame>精选技能光效 (11)0012.png</spriteFrame>
+            <spriteFrame>精选技能光效 (11)0013.png</spriteFrame>
+            <spriteFrame>精选技能光效 (11)0014.png</spriteFrame>
+            <spriteFrame>精选技能光效 (11)0015.png</spriteFrame>
+            <spriteFrame>精选技能光效 (11)0016.png</spriteFrame>
+        </animation>
+    </animations>
+</root>
