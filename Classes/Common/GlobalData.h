@@ -52,6 +52,7 @@ public:
 
 private:
     static int sqliteExecCallBack( void * para, int n_column, char ** column_value, char ** column_name );
+	static std::string getWritablePath();
 };
 
 #endif /* defined(__mengdou__GlobalData__) */

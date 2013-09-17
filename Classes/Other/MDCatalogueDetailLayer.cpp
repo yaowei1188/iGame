@@ -122,7 +122,7 @@ void MDCatalogueDetailLayer::setCardInfo(CCDictionary *dict)
 
     CCSprite *sPeople = CCSprite::create(strCardImg.c_str());
     sPeople->setPosition(ccp(98,270));
-    sPeople->setScale(0.5f);
+//    sPeople->setScale(0.5f);
     this->addChild(sPeople);
 
     m_lblDesc->setColor(ccc3(51, 52, 50));

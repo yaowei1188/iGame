@@ -19,6 +19,7 @@ using namespace cocos2d::extension;
 
 typedef enum _CardCategory
 {
+	CardCategoryNone = 0,
 	CardCategoryAttack = 1,
 	CardCategoryDefence,
 	CardCategoryAssist
@@ -67,9 +68,6 @@ private:
     float m_fltVipBUFF;   //VIP BUFF
 
     int battleMode;//战斗模式
-    bool isDead;
-
-	
 public:
 
 	static MDCardPlayer * create(std::string p_cardName);
@@ -78,6 +76,7 @@ public:
     void playRainAnnimation(CCArray *enemyList);//播放攻击动画
     void playShakeAnnimation();//播放被攻击动画
     void playDeadAnnimation();//播放死亡动画
+	void playFeebleAnnimation();//播放死亡动画
 	void playWiggleAnnimation();//播放死亡动画
 	void MoveToPosition();//返回原来位置
 	bool init(std::string p_cardName);
@@ -91,12 +90,16 @@ public:
     void playEcllipseEffect(MDCardPlayer *target);
 	void stopAllAction();
     void playExploreEffect(MDCardPlayer *target);
-    void playAnnimateFrame(MDCardPlayer *target);
+    void playAttackAnnimateFrame(MDCardPlayer *target);
+	void playAssistAnnimateFrame(MDCardPlayer *target);
 
-	void setHostCardPlayer(MDCardPlayer *p_hostCardPlayer){m_hostCardPlayer = p_hostCardPlayer;};
+	void setHostCardPlayer(MDCardPlayer *p_hostCardPlayer);
 	void setCardData(CCDictionary *dict);
 
 	void playAttackInstruction();
+
+	bool isDead;
+	int side;
 
 private:
     void actionFinished(CCNode* sender);
@@ -106,12 +109,16 @@ private:
 	void playUnderAttackAnnimate(CCNode* sender);
 	void setNodeInvisible(CCNode* pNode);
 	void determineValue(MDCardPlayer *target);
+	void determineHealth(CCNode* sender);
+	void setActionPara(CardCategory p_cardCategory=CardCategoryAttack);
 	CCArray *m_EnemyList;
 	MDCardPlayer *m_hostCardPlayer;
 	bool isActionFinished;
 
 	CCArray *m_AnimateList;
 	int m_intValue;
+
+	CardCategory m_intActionCategory;
 
 };
 

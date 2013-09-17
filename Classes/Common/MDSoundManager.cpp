@@ -17,6 +17,7 @@ void MDSoundManager::preLoadSound()
 	// preload background music and effect
 	SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic( MUSIC_FILE );
 	SimpleAudioEngine::sharedEngine()->preloadEffect( MENU1_EFFECT );
+	SimpleAudioEngine::sharedEngine()->preloadEffect( ATTACK_EFFECT );
 
 	// set default volume
 	SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.5);

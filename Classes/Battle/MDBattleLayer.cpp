@@ -93,7 +93,7 @@ bool MDBattleLayer::init()
     do 
     {
 
-        CC_BREAK_IF(! CCLayerColor::initWithColor(ccc4(255, 255, 255,255)));
+        CC_BREAK_IF(! CCLayerColor::initWithColor(ccc4(0, 0, 0,255)));
 
 		setTouchEnabled(true);
 
@@ -148,7 +148,7 @@ bool MDBattleLayer::init()
 
 		prepareFormation();
 
-		//prepareEnemyFormation();
+
 
 //		startPuzzle();
 
@@ -158,9 +158,28 @@ bool MDBattleLayer::init()
     return bRet;
 }
 
+void MDBattleLayer::playWinAction()
+{
+	CCSprite *sprite = CCSprite::create("base.png");
+	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+	sprite->setPosition(ccp(winSize.width * 0.5,winSize.height * 0.5 - 20));
+	this->addChild(sprite);
+
+	CCFiniteTimeAction* _removeCallBack = CCCallFuncN::create(this, callfuncN_selector(MDBattleLayer::removeNodeCallBack));
+	CCSequence *seq = CCSequence::create(CCRotateBy::create(3.0,360.0),_removeCallBack,NULL);
+
+	sprite->runAction(seq);
+}
+
+void MDBattleLayer::removeNodeCallBack(CCNode* pNode)
+{
+	pNode->removeFromParentAndCleanup(true);
+}
+
 void MDBattleLayer::prepareBackGround()
 {
-	CCSprite* background = CCSprite::create("background.jpeg");
+	/*CCSprite* background = CCSprite::create("background.jpeg");*/
+	CCSprite* background = CCSprite::create("transparent.png");
 
 //	background->setScale( 1.5f );
 	background->setAnchorPoint(ccp(0.5,0));
@@ -176,24 +195,55 @@ void MDBattleLayer::prepareBackGround()
 	menu->setTag(2);
 	this->addChild(menu);
 
-	//CCMenuItemFont *menuFont = CCMenuItemFont::create("逃跑",this,menu_selector(MDBattleLayer::menuCallback));
-	CCLabelBMFont* label = CCLabelBMFont::create("Leave", "test.fnt");
-	CCMenuItemLabel* menuFont = CCMenuItemLabel::create(label, this, menu_selector(MDBattleLayer::menuCallback));
+	/*CCLabelBMFont* label = CCLabelBMFont::create("Leave", "test.fnt");*/
+	CCLabelTTF *leaveLabel = CCLabelTTF::create("逃跑","Arial",20);
+	CCMenuItemLabel* menuFont = CCMenuItemLabel::create(leaveLabel, this, menu_selector(MDBattleLayer::menuCallback));
 	menuFont->setPosition( -100,-40);
 	menuFont->setTag(101);
 	menu->addChild(menuFont);
 
-	CCLabelBMFont* MoveLabel = CCLabelBMFont::create("Move", "test.fnt");
+	//CCLabelBMFont* MoveLabel = CCLabelBMFont::create("前进", "test.fnt");
+	CCLabelTTF *MoveLabel = CCLabelTTF::create("前进","Arial",20);
 	CCMenuItemLabel* menuMove = CCMenuItemLabel::create(MoveLabel, this, menu_selector(MDBattleLayer::menuCallback));
 	menuMove->setPosition(0,-40);
 	menuMove->setTag(102);
 	menu->addChild(menuMove);
+
+	//CCSprite *sprite = CCSprite::create("di.jpg");
+	//this->setPosition(ccp(winSize.width * 0.5,winSize.height * 0.5));
+	//this->addChild(sprite);
     
-    CCLabelBMFont* lblFightLabel = CCLabelBMFont::create("Fight", "test.fnt");
-	CCMenuItemLabel* menuFight = CCMenuItemLabel::create(lblFightLabel, this, menu_selector(MDBattleLayer::menuCallback));
-	menuFight->setPosition(winSize.width * 0.5 - 60, -40);
-	menuFight->setTag(103);
-	menu->addChild(menuFight);
+ //   CCLabelBMFont* lblFightLabel = CCLabelBMFont::create("Fight", "test.fnt");
+	//CCMenuItemLabel* menuFight = CCMenuItemLabel::create(lblFightLabel, this, menu_selector(MDBattleLayer::menuCallback));
+	//menuFight->setPosition(winSize.width * 0.5 - 60, -40);
+	//menuFight->setTag(103);
+	//menu->addChild(menuFight);
+}
+
+void MDBattleLayer::showRoundInfo() 
+{
+	CCSize size = CCDirector::sharedDirector()->getWinSize();
+	if (m_lblRoundInfo==NULL)
+	{
+		m_lblRoundInfo = CCLabelTTF::create("","Marker Felt",30);
+		this->addChild(m_lblRoundInfo);
+	}
+	m_lblRoundInfo->setVisible(true);
+	m_lblRoundInfo->setPosition(ccp(0,size.height * 0.5));
+	if (m_intRound==0)
+	{
+		m_lblRoundInfo->setString("第一波敌人来袭！");
+	} else if(m_intRound == 1) {
+		m_lblRoundInfo->setString("第二波敌人来袭！");
+	} else if(m_intRound == 2) {
+		m_lblRoundInfo->setString("BOSS");
+	}
+	
+	CCMoveBy *_moveRight= CCMoveBy::create(0.3,ccp(size.width * 0.5,0));
+	CCDelayTime *_delayTime1 = CCDelayTime::create(1.0);
+	CCMoveBy *_moveRight1= CCMoveBy::create(0.3,ccp(size.width * 0.5,0));
+	CCHide *_hideAction = CCHide::create();
+	m_lblRoundInfo->runAction(CCSequence::create(_moveRight,_delayTime1,_moveRight1,_hideAction,NULL));
 }
 
 void MDBattleLayer::menuCallback(CCObject* sender) 
@@ -214,35 +264,92 @@ void MDBattleLayer::menuCallback(CCObject* sender)
 			CCMenuItemFont *menuMove = (CCMenuItemFont *)menu->getChildByTag(102);
 			menuMove->setVisible(false);
 
-			for(int i=0;i<mEnemyCardList->count();i++)
-			{
-				MDCardPlayer *cardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(i);
+			//for(int i=0;i<mEnemyCardList->count();i++)
+			//{
+			//	MDCardPlayer *cardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(i);
 
-				cardPlayer->m_sCardPlayer->setVisible(false);
-			}
+			//	cardPlayer->m_sCardPlayer->setVisible(false);
+			//}
 
 			this->backgroundMoveForward();
 			this->cardMoveForward();
 			break;
 		}
-    case 103:
-        {
-            this->playHeroAction();
-            break;
-        }
+    //case 103:
+    //    {
+    //        this->playHeroAction();
+    //        break;
+    //    }
 	}
+}
+
+void MDBattleLayer::prepareMoveForward()
+{
+	CCMenu *menu = (CCMenu *)this->getChildByTag(2);
+	CCMenuItemFont *menuLeave = (CCMenuItemFont *)menu->getChildByTag(101);
+	menuLeave->setVisible(true);
+	CCMenuItemFont *menuMove = (CCMenuItemFont *)menu->getChildByTag(102);
+	menuMove->setVisible(true);
+
+	for(int i=0;i<mEnemyCardList->count();i++)
+	{
+		MDCardPlayer *cardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(i);
+
+		cardPlayer->m_sCardPlayer->setVisible(false);
+	}
+}
+
+int MDBattleLayer::getNextVictim(CCArray *array)
+{
+	CCArray *randomArray =  CCArray::create();
+	for(int i=0;i<array->count();i++)
+	{
+		MDCardPlayer *player = (MDCardPlayer *)array->objectAtIndex(i);
+		if (player->isDead)
+		{
+			continue;
+		}
+		randomArray->addObject(CCNumber::create(i));
+	}
+	if (randomArray->count()==0)
+	{
+		return -1;
+	}
+	srand(time(NULL));
+	int num = rand()%randomArray->count();
+	return ((CCNumber *)randomArray->objectAtIndex(num))->getIntValue();
+}
+
+int MDBattleLayer::getNextPresenter(CCArray *array,int *num)
+{
+	MDCardPlayer *player = (MDCardPlayer *)array->objectAtIndex(*num);
+	while(player->isDead) {
+		*num = *num + 1;
+		if (*num == array->count()) {
+			*num = 0;
+		}
+		player = (MDCardPlayer *)array->objectAtIndex(*num);
+	}
+	int returnNum = *num;
+	*num = returnNum + 1;
+	if (*num == array->count()) {
+		*num = 0;
+	}
+	return returnNum;
 }
 
 void MDBattleLayer::playEnemyAction()
 {
-	CCLOG("playEnemyAction");
-	srand(time(NULL));
-	int heroNum = rand()%mCardNameList->count();
+	int num = getNextVictim(mHeroCardList);
+	if (num==-1)
+	{
+		return;
+	}
 	int attackCategory = rand()%3;
-	MDCardPlayer *heroCardPlayer = (MDCardPlayer *)mHeroCardList->objectAtIndex(heroNum);
+	MDCardPlayer *heroCardPlayer = (MDCardPlayer *)mHeroCardList->objectAtIndex(num);
 
-
-	MDCardPlayer *enemyCardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(intCurrentEnemyCard++);
+	int presenterNum = this->getNextPresenter(mEnemyCardList,&intCurrentEnemyCard);
+	MDCardPlayer *enemyCardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(presenterNum);
 	CCDictionary *dictFormation = enemyCardPlayer->getFormation();
 	CardCategory category = (CardCategory)((CCString *)dictFormation->objectForKey("Category"))->intValue();
 
@@ -262,14 +369,14 @@ void MDBattleLayer::playEnemyAction()
 				}
 			case 2:
 				{
-					enemyCardPlayer->playRainAnnimation(mHeroCardList);
+					enemyCardPlayer->playAttackAnnimateFrame(heroCardPlayer);
 					break;
 				}
-			case 3:
-				{
-					enemyCardPlayer->playAnnimateFrame(heroCardPlayer);
-					break;
-				}
+			//case 3:
+			//	{
+			//		enemyCardPlayer->playRainAnnimation(mHeroCardList);
+			//		break;
+			//	}
 			default:
 				break;
 			}
@@ -277,24 +384,20 @@ void MDBattleLayer::playEnemyAction()
 		}
 	case CardCategoryDefence:
 		{
-			int enemyCardNum = rand()%mEnemyCardList->count();
+			int enemyCardNum = getNextVictim(mEnemyCardList);
 			MDCardPlayer *randomEnemyCardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(enemyCardNum);
 			enemyCardPlayer->playEcllipseEffect(randomEnemyCardPlayer);
 			break;
 		}
 	case CardCategoryAssist:
 		{
-			int enemyCardNum = rand()%mEnemyCardList->count();
+			int enemyCardNum = getNextVictim(mEnemyCardList);
 			MDCardPlayer *randomEnemyCardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(enemyCardNum);
-			enemyCardPlayer->playEcllipseEffect(randomEnemyCardPlayer);
+			enemyCardPlayer->playAssistAnnimateFrame(randomEnemyCardPlayer);
 			break;
 		}
 	default:
 		break;
-	}
-
-	if (intCurrentEnemyCard == mEnemyCardList->count()) {
-		intCurrentEnemyCard = 0;
 	}
 
 	actionFinished = false;
@@ -302,12 +405,18 @@ void MDBattleLayer::playEnemyAction()
 
 void MDBattleLayer::playHeroAction()
 {
-    srand(time(NULL));
-    int enemyNum = rand()%m_intEnemyCount;
-    int attackCategory = 4;//rand()%4;
-    MDCardPlayer *enmeyCardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(enemyNum);
+	int num = getNextVictim(mEnemyCardList);
+	if (num==-1)
+	{
+		return;
+	}
+
+    int attackCategory = rand()%5;
+    MDCardPlayer *enmeyCardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(num);
     
-    MDCardPlayer *cardPlayer = (MDCardPlayer *)mHeroCardList->objectAtIndex(intCurrentHeroCard++);
+	int presenterNum = this->getNextPresenter(mHeroCardList,&intCurrentHeroCard);
+
+    MDCardPlayer *cardPlayer = (MDCardPlayer *)mHeroCardList->objectAtIndex(presenterNum);
     switch (attackCategory) {
         case 0:
 			{
@@ -321,21 +430,29 @@ void MDBattleLayer::playHeroAction()
 			}
         case 2:
 			{
-				int myCardNum = rand()%mHeroCardList->count();
+				int myCardNum = getNextVictim(mHeroCardList);
 				MDCardPlayer *myCardPlayer = (MDCardPlayer *)mHeroCardList->objectAtIndex(myCardNum);
 				cardPlayer->playEcllipseEffect(myCardPlayer);
 				break;
 			}
 		case 3:
 			{
-				cardPlayer->playRainAnnimation(mEnemyCardList);
+
+				cardPlayer->playAttackAnnimateFrame(enmeyCardPlayer);
 				break;
 			}
 		case 4:
 			{
-				cardPlayer->playAnnimateFrame(enmeyCardPlayer);
+				int myCardNum = getNextVictim(mHeroCardList);
+				MDCardPlayer *myCardPlayer = (MDCardPlayer *)mHeroCardList->objectAtIndex(myCardNum);
+				cardPlayer->playAssistAnnimateFrame(myCardPlayer);
 				break;
 			}
+		//case 5:
+		//	{
+		//		cardPlayer->playRainAnnimation(mEnemyCardList);
+		//		break;
+		//	}
         default:
             break;
     }
@@ -377,6 +494,7 @@ void MDBattleLayer::prepareFormation()
 		MDCardPlayer *cardPlayer = MDCardPlayer::create(strCardHeadName);
 		mHeroCardList->addObject(cardPlayer);
 		cardPlayer->setCardData(dictHero);
+		cardPlayer->side = 0;
 		this->addChild(cardPlayer->m_sCardPlayer);
 		cardPlayer->m_location = ccp(leftcap + CARD_H_MARGIN * col + col * CARD_WIDTH + CARD_WIDTH * 0.5,CARD_BOTTOM_MARGIN + CARD_V_MARGIN * row + row * CARD_WIDTH + CARD_WIDTH * 0.5);
 		cardPlayer->m_sCardPlayer->setPosition(cardPlayer->m_location);
@@ -416,6 +534,8 @@ void MDBattleLayer::prepareEnemyFormation()
 		mEnemyCardList->addObject(cardPlayer);
 		cardPlayer->setFormation(dictFormation);
 		cardPlayer->setCardData(dictHero);
+		cardPlayer->side = 1;
+
 		this->addChild(cardPlayer->m_sCardPlayer);
 		cardPlayer->m_location = ccp(leftcap + CARD_H_MARGIN * col + col * CARD_WIDTH + CARD_WIDTH * 0.5,winSize.height - CARD_BOTTOM_MARGIN - CARD_V_MARGIN * row - row * CARD_WIDTH - CARD_WIDTH * 0.5);
 		cardPlayer->m_sCardPlayer->setPosition(cardPlayer->m_location);
@@ -432,43 +552,109 @@ void MDBattleLayer::cardMoveFinished(CCNode* sender)
 	{
 		return;
 	}
-	menuLeave->setVisible(true);
+	menuLeave->setVisible(false);
 	CCMenuItemFont *menuMove = (CCMenuItemFont *)menu->getChildByTag(102);
-	menuMove->setVisible(true);
+	menuMove->setVisible(false);
 
 	m_intRound ++;
-	this->prepareEnemyFormation();
 
-	for(int i=0;i<mHeroCardList->count();i++)
-	{
-		MDCardPlayer *cardPlayer = (MDCardPlayer *)mHeroCardList->objectAtIndex(i);
+	//this->showRoundInfo(NULL);
 
-		cardPlayer->stopAllAction();
-	}
+	//this->prepareEnemyFormation();
 
-	this->doBattle();
+	//this->doBattle();
 }
 
 void MDBattleLayer::doBattle()
 {
+	BattleWinerSide winner = determineWinner();
+
+	if (winner == BattleWinner_Heros)
+	{
+		if (m_intRound < 2)
+		{
+			prepareMoveForward();
+		}
+		else
+		{
+			playWinAction();
+		}
+
+		return;
+	}
+
+	if (winner == BattleWinner_Enemy)
+	{
+		return;
+	}
+
 	if (m_intWhoAttack==0)
 	{
 		this->playHeroAction();
 		m_intWhoAttack = 1;
-	} else if(m_intWhoAttack==1) {
+	} 
+	else if(m_intWhoAttack==1) 
+	{
 		this->playEnemyAction();
 		m_intWhoAttack = 0;
 	}
 }
 
+BattleWinerSide MDBattleLayer::determineWinner()
+{
+	bool haveSurvive = false;
+	for(int i=0;i<mEnemyCardList->count();i++)
+	{
+		MDCardPlayer *cardPlayer = (MDCardPlayer *)mEnemyCardList->objectAtIndex(i);
+
+		if (!cardPlayer->isDead)
+		{
+			haveSurvive = true;
+			break;;
+		}
+	}
+
+	if (!haveSurvive)
+	{
+		return BattleWinner_Heros;
+	}
+
+	haveSurvive = false;
+	for(int i=0;i<mHeroCardList->count();i++)
+	{
+		MDCardPlayer *cardPlayer = (MDCardPlayer *)mHeroCardList->objectAtIndex(i);
+
+		if (!cardPlayer->isDead)
+		{
+			haveSurvive = true;
+			break;;
+		}
+	}
+
+	if (!haveSurvive)
+	{
+		return BattleWinner_Enemy;
+	}
+
+	return BattleWinner_None;
+}
+
 void MDBattleLayer::backgroundMoveForward()
 {
 	CCParallaxNode* backgroundNode = (CCParallaxNode*)this->getChildByTag(103);
-	CCActionInterval* goUp = CCMoveBy::create(4, ccp(0,-80) );
+	CCActionInterval* goUp = CCMoveBy::create(2.0, ccp(0,-40) );
+	CCDelayTime *_delayTime = CCDelayTime::create(1.0);
+	CCDelayTime *_delayTime1 = CCDelayTime::create(2.0);
+
+	CCFiniteTimeAction* _showRoundInfoAction = CCCallFunc::create(this,callfunc_selector(MDBattleLayer::showRoundInfo));
+
+	CCFiniteTimeAction* _prepareEnemyFormationAction = CCCallFunc::create(this,callfunc_selector(MDBattleLayer::prepareEnemyFormation));
 
 	CCFiniteTimeAction* actionMoveDone = CCCallFuncN::create( this, callfuncN_selector(MDBattleLayer::cardMoveFinished));
 
-	CCSequence* seq = CCSequence::create(goUp, actionMoveDone,NULL);
+	CCFiniteTimeAction* _doBattleAction = CCCallFunc::create(this,callfunc_selector(MDBattleLayer::doBattle));
+
+	CCSequence* seq = CCSequence::create(goUp, _delayTime,actionMoveDone,_showRoundInfoAction,_delayTime,_prepareEnemyFormationAction,_delayTime1,_doBattleAction,NULL);
 	backgroundNode->runAction(seq);
 }
 
@@ -477,7 +663,6 @@ void MDBattleLayer::cardMoveForward()
 	for(int i=0;i<mHeroCardList->count();i++)
 	{
 		MDCardPlayer *cardPlayer = (MDCardPlayer *)mHeroCardList->objectAtIndex(i);
-
 		cardPlayer->playParadeAnnimation();
 	}
 }
@@ -757,6 +942,7 @@ void MDBattleLayer::exchangeCard(MDCardPlayer *p_cardOne,MDCardPlayer *p_cardTwo
 MDBattleLayer::MDBattleLayer()
 {
     mCardNameList = NULL;
+	m_lblRoundInfo = NULL;
 }
 
 MDBattleLayer::~MDBattleLayer()
