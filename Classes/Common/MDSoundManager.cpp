@@ -47,7 +47,7 @@ void MDSoundManager::playBackgroundMusic(std::string name, bool isLoop)
 		return;
 	}
 
-	SimpleAudioEngine::sharedEngine()->playBackgroundMusic(name.c_str(),isLoop);
+//	SimpleAudioEngine::sharedEngine()->playBackgroundMusic(name.c_str(),isLoop);
 }
 
 void MDSoundManager::stopBackgroundMusic()
@@ -62,5 +62,5 @@ void MDSoundManager::playEffect(std::string name)
 	{
 		return;
 	}
-	SimpleAudioEngine::sharedEngine()->playEffect(name.c_str());
+//	SimpleAudioEngine::sharedEngine()->playEffect(name.c_str());
 }
