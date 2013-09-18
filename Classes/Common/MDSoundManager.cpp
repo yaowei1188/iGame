@@ -17,7 +17,6 @@ void MDSoundManager::preLoadSound()
 	// preload background music and effect
 	SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic( MUSIC_FILE );
 	SimpleAudioEngine::sharedEngine()->preloadEffect( MENU1_EFFECT );
-	SimpleAudioEngine::sharedEngine()->preloadEffect( ATTACK_EFFECT );
 
 	// set default volume
 	SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.5);
@@ -48,7 +47,7 @@ void MDSoundManager::playBackgroundMusic(std::string name, bool isLoop)
 		return;
 	}
 
-	SimpleAudioEngine::sharedEngine()->playBackgroundMusic(name.c_str(),isLoop);
+//	SimpleAudioEngine::sharedEngine()->playBackgroundMusic(name.c_str(),isLoop);
 }
 
 void MDSoundManager::stopBackgroundMusic()
@@ -63,5 +62,5 @@ void MDSoundManager::playEffect(std::string name)
 	{
 		return;
 	}
-	SimpleAudioEngine::sharedEngine()->playEffect(name.c_str());
+//	SimpleAudioEngine::sharedEngine()->playEffect(name.c_str());
 }
