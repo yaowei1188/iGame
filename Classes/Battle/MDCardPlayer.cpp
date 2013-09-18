@@ -73,7 +73,9 @@ void MDCardPlayer::playAssistAnnimateFrame(MDCardPlayer *target)
 	CCString *strXPos = (CCString *)dictAnnimate->objectForKey("PosOffsetX");
 	CCString *strYPos = (CCString *)dictAnnimate->objectForKey("PosOffsetY");
 
-	AnimatePacker::getInstance()->loadAnimations((strCategory + std::string(".xml")).c_str()); 
+	m_strAnnimatePath = strCategory + std::string(".xml");
+
+	AnimatePacker::getInstance()->loadAnimations(m_strAnnimatePath.c_str()); 
 	CCSprite *sprite = CCSprite::create("transparent.png");
 
 	sprite->setUserObject(target);
@@ -264,8 +266,11 @@ void MDCardPlayer::playAttackAnnimateFrame(MDCardPlayer *target)
 	CCString *strXPos = (CCString *)dictAnnimate->objectForKey("PosOffsetX");
 	CCString *strYPos = (CCString *)dictAnnimate->objectForKey("PosOffsetY");
 
-	AnimatePacker::getInstance()->loadAnimations((strCategory + std::string(".xml")).c_str()); 
+	m_strAnnimatePath = strCategory + std::string(".xml");
+
+	AnimatePacker::getInstance()->loadAnimations(m_strAnnimatePath.c_str()); 
 	CCSprite *sprite = CCSprite::create("transparent.png");
+	
 
 	sprite->setUserObject(target);
 
@@ -639,6 +644,11 @@ void MDCardPlayer::playExploreEffect(MDCardPlayer *target)
 
 void MDCardPlayer::removeNodeCallBack(CCNode* pNode)
 {
+	if (m_strAnnimatePath.length()>0 )
+	{
+		AnimatePacker::getInstance()->freeAnimations(m_strAnnimatePath.c_str());
+		m_strAnnimatePath.clear();
+	}
 	pNode->removeFromParentAndCleanup(true);
 }
 

@@ -229,9 +229,8 @@ void MDBattleLayer::showRoundInfo()
 		this->addChild(m_lblRoundInfo);
 	}
 	m_lblRoundInfo->setVisible(true);
-	m_lblRoundInfo->setPosition(ccp(0,size.height * 0.5));
-	if (m_intRound==0)
-	{
+	m_lblRoundInfo->setPosition(ccp(0,size.height * 0.5 - 30));
+	if (m_intRound==0) {
 		m_lblRoundInfo->setString("第一波敌人来袭！");
 	} else if(m_intRound == 1) {
 		m_lblRoundInfo->setString("第二波敌人来袭！");

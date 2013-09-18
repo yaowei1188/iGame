@@ -117,6 +117,7 @@ private:
 
 	CCArray *m_AnimateList;
 	int m_intValue;
+	string m_strAnnimatePath;
 
 	CardCategory m_intActionCategory;
 
