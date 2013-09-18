@@ -9,6 +9,8 @@
 #include "MDCardPlayer.h"
 #include "CCShake.h"
 #include "AnimatePacker.h"
+#include "StringExt.h"
+#include "MDSoundManager.h"
 
 MDCardPlayer * MDCardPlayer::create(std::string p_cardName)
 {
@@ -25,8 +27,10 @@ MDCardPlayer::MDCardPlayer()
 {
 	m_hostCardPlayer = NULL;
 	m_lblValue = NULL;
+	m_intActionCategory = CardCategoryNone;
 	isActionFinished = false;
 	m_AnimateList= NULL;
+	isDead = false;
 }
 
 bool MDCardPlayer::init(std::string p_cardName)
@@ -37,46 +41,37 @@ bool MDCardPlayer::init(std::string p_cardName)
 	return true;
 }
 
-void MDCardPlayer::playAnnimateFrame(MDCardPlayer *target)
+void MDCardPlayer::playAssistAnnimateFrame(MDCardPlayer *target)
 {
+	setActionPara(CardCategoryAssist);
 
 	CCArray *arrayAnimate = CCArray::create();
-	arrayAnimate->addObject(CCString::create("hlz"));
-	arrayAnimate->addObject(CCString::create("hqz"));
-	arrayAnimate->addObject(CCString::create("kszd"));
-	arrayAnimate->addObject(CCString::create("ldz"));
-	arrayAnimate->addObject(CCString::create("ln"));
-	arrayAnimate->addObject(CCString::create("mrj"));
 
-	arrayAnimate->addObject(CCString::create("myz"));
-	arrayAnimate->addObject(CCString::create("pjj"));
-	arrayAnimate->addObject(CCString::create("qbj"));
+	CCDictionary *dictAnnimate = CCDictionary::create();
+	dictAnnimate->setObject(CCString::create("mrj"),"Annimate");
+	arrayAnimate->addObject(dictAnnimate);
 
-	//arrayAnimate->addObject(CCString::create("qishouTX"));
-	arrayAnimate->addObject(CCString::create("sdjx"));
+	dictAnnimate = CCDictionary::create();
+	dictAnnimate->setObject(CCString::create("e17"),"Annimate");
+	dictAnnimate->setObject(CCString::create("30"),"PosOffsetY");
+	arrayAnimate->addObject(dictAnnimate);
 
-	arrayAnimate->addObject(CCString::create("sfzs"));
-	arrayAnimate->addObject(CCString::create("sjsql"));
-	arrayAnimate->addObject(CCString::create("sjzs"));
-	arrayAnimate->addObject(CCString::create("sqzs"));
-	arrayAnimate->addObject(CCString::create("srzs"));
-	arrayAnimate->addObject(CCString::create("szh"));
+	dictAnnimate = CCDictionary::create();
+	dictAnnimate->setObject(CCString::create("e20"),"Annimate");
+	dictAnnimate->setObject(CCString::create("15"),"PosOffsetX");
+	arrayAnimate->addObject(dictAnnimate);
 
-	arrayAnimate->addObject(CCString::create("tgn"));
-	arrayAnimate->addObject(CCString::create("tjbgz"));
-	arrayAnimate->addObject(CCString::create("tx"));
-	arrayAnimate->addObject(CCString::create("wjqf"));
-	arrayAnimate->addObject(CCString::create("wlbf"));
+	//arrayAnimate->addObject(CCString::create("mrj"));//粉色的心
+	//arrayAnimate->addObject(CCString::create("e17"));//位置偏下 恢复的
+	//arrayAnimate->addObject(CCString::create("e20"));//位置偏左 恢复的
 
-	arrayAnimate->addObject(CCString::create("xfz"));
-	arrayAnimate->addObject(CCString::create("yhly"));//quanti
-	arrayAnimate->addObject(CCString::create("yszs"));//position
-	arrayAnimate->addObject(CCString::create("zhxj"));
-	
 	srand(time(NULL));
 	int category = rand()%arrayAnimate->count();
 
-	std::string strCategory = ((CCString *)arrayAnimate->objectAtIndex(category))->getCString();
+	dictAnnimate = (CCDictionary *)arrayAnimate->objectAtIndex(category);
+	std::string strCategory = ((CCString *)dictAnnimate->objectForKey("Annimate"))->getCString();
+	CCString *strXPos = (CCString *)dictAnnimate->objectForKey("PosOffsetX");
+	CCString *strYPos = (CCString *)dictAnnimate->objectForKey("PosOffsetY");
 
 	AnimatePacker::getInstance()->loadAnimations((strCategory + std::string(".xml")).c_str()); 
 	CCSprite *sprite = CCSprite::create("transparent.png");
@@ -84,9 +79,209 @@ void MDCardPlayer::playAnnimateFrame(MDCardPlayer *target)
 	sprite->setUserObject(target);
 
 	this->m_sCardPlayer->getParent()->addChild(sprite);
-	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-	//sprite->setPosition(ccp(winSize.width * 0.5,winSize.height * 0.5));
-	sprite->setPosition(target->m_sCardPlayer->getPosition());
+	CCPoint pos = target->m_sCardPlayer->getPosition();
+	if (strXPos != NULL)
+	{
+		pos.x += strXPos->intValue();
+	}
+	if (strYPos != NULL)
+	{
+		pos.y += strYPos->intValue();
+	}
+
+	sprite->setPosition(pos);
+
+	CCDelayTime *_delay = CCDelayTime::create(0.6);
+	CCAnimate *_animate = AnimatePacker::getInstance()->getAnimate(strCategory.c_str());
+	CCFiniteTimeAction* _underAttack = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::playUnderAttackAnnimate));
+	CCFiniteTimeAction* _removeCallBack = CCCallFuncN::create(this, callfuncN_selector(MDCardPlayer::removeNodeCallBack));
+
+	CCSequence *sequence = CCSequence::create(_delay,_animate,_underAttack,_removeCallBack,NULL);
+
+	this->playAttackInstruction();
+
+	sprite->runAction(sequence);
+}
+
+void MDCardPlayer::playAttackAnnimateFrame(MDCardPlayer *target)
+{
+	setActionPara();
+
+	CCArray *arrayAnimate = CCArray::create();
+
+	//arrayAnimate->addObject(CCString::create("hlz"));//从上而下的火焰，位置不正确;
+	//arrayAnimate->addObject(CCString::create("hqz"));//斜着飞的蝙蝠
+	//arrayAnimate->addObject(CCString::create("kszd"));//红色的XXXX
+	//arrayAnimate->addObject(CCString::create("ldz"));//几把弯刀
+	//arrayAnimate->addObject(CCString::create("ln"));//横向闪电
+	//arrayAnimate->addObject(CCString::create("mrj"));//粉色的心
+
+	//arrayAnimate->addObject(CCString::create("myz"));//灰色的一团烟雾
+	//arrayAnimate->addObject(CCString::create("pjj"));//断掉的剑
+	//arrayAnimate->addObject(CCString::create("qbj"));//长矛
+
+	////arrayAnimate->addObject(CCString::create("qishouTX"));
+	//arrayAnimate->addObject(CCString::create("sdjx"));//圆形冰圈
+
+	//arrayAnimate->addObject(CCString::create("sfzs"));//雷神之锤
+	//arrayAnimate->addObject(CCString::create("sjsql"));//喷发的冰泉
+	//arrayAnimate->addObject(CCString::create("sjzs"));//从下到上的红色的矛
+	//arrayAnimate->addObject(CCString::create("sqzs"));//从下到上三把匕首
+	//arrayAnimate->addObject(CCString::create("srzs"));//挥舞的三把刀
+	//arrayAnimate->addObject(CCString::create("szh"));//圆形的火圈
+
+	//arrayAnimate->addObject(CCString::create("tgn"));//从上而下的闪电
+	//arrayAnimate->addObject(CCString::create("tjbgz"));//阴阳
+	//arrayAnimate->addObject(CCString::create("tx"));//圆形的爆炸
+	//arrayAnimate->addObject(CCString::create("wjqf"));//从上而下的三把飞弹 爆炸 位置不正确
+	//arrayAnimate->addObject(CCString::create("wlbf"));//方形的冰圈
+
+	//arrayAnimate->addObject(CCString::create("xfz"));//黑色的风
+	//arrayAnimate->addObject(CCString::create("yhly"));//从下到上的爆炸 位置不正确
+	//arrayAnimate->addObject(CCString::create("yszs"));//位置不正确
+	//arrayAnimate->addObject(CCString::create("zhxj"));//骷髅头
+
+	//arrayAnimate->addObject(CCString::create("e0"));
+	//arrayAnimate->addObject(CCString::create("e4"));//位置偏右
+	//arrayAnimate->addObject(CCString::create("e5"));
+	//arrayAnimate->addObject(CCString::create("e11"));
+	//arrayAnimate->addObject(CCString::create("e13"));//龙
+	//arrayAnimate->addObject(CCString::create("e16"));
+	//arrayAnimate->addObject(CCString::create("e17"));//位置偏下 恢复的
+	//arrayAnimate->addObject(CCString::create("e20"));//位置偏左 恢复的
+
+	CCDictionary *dictAnnimate = CCDictionary::create();
+	if (this->side==1)
+	{
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("yszs"),"Annimate");//position
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("yhly"),"Annimate");//position
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("hlz"),"Annimate");
+		dictAnnimate->setObject(CCString::create("210"),"PosOffsetY");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("hqz"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("myz"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("tjbgz"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("xfz"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("zhxj"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("srzs"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("pjj"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("qbj"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("kszd"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("szh"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+	} else {
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("sjzs"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("ldz"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("ln"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("sdjx"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("sfzs"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("sjsql"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("sqzs"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("tgn"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("tx"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("wjqf"),"Annimate");
+		dictAnnimate->setObject(CCString::create("120"),"PosOffsetY");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("wlbf"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("e0"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("e4"),"Annimate");
+		dictAnnimate->setObject(CCString::create("-12"),"PosOffsetX");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("e5"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("e11"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("e13"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("e16"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("e17"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("e20"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+	}
+	
+	srand(time(NULL));
+	int category = rand()%arrayAnimate->count();
+
+	dictAnnimate = (CCDictionary *)arrayAnimate->objectAtIndex(category);
+	std::string strCategory = ((CCString *)dictAnnimate->objectForKey("Annimate"))->getCString();
+	CCString *strXPos = (CCString *)dictAnnimate->objectForKey("PosOffsetX");
+	CCString *strYPos = (CCString *)dictAnnimate->objectForKey("PosOffsetY");
+
+	AnimatePacker::getInstance()->loadAnimations((strCategory + std::string(".xml")).c_str()); 
+	CCSprite *sprite = CCSprite::create("transparent.png");
+
+	sprite->setUserObject(target);
+
+	this->m_sCardPlayer->getParent()->addChild(sprite);
+
+	CCPoint pos = target->m_sCardPlayer->getPosition();
+	if (strXPos != NULL)
+	{
+		pos.x += strXPos->intValue();
+	}
+	if (strYPos != NULL)
+	{
+		pos.y += strYPos->intValue();
+	}
+
+	sprite->setPosition(pos);
 
 	CCDelayTime *_delay = CCDelayTime::create(0.6);
 	CCAnimate *_animate = AnimatePacker::getInstance()->getAnimate(strCategory.c_str());
@@ -103,20 +298,44 @@ void MDCardPlayer::playAnnimateFrame(MDCardPlayer *target)
 
 void MDCardPlayer::playAttackInstruction()
 {
-	m_sCardPlayer->stopAllActions();
-	CCMoveBy * rotMoveUp = CCMoveBy::create(0.1,ccp(0,25));
+	int offset = 25;
+	if (side==1)
+	{
+		offset = -25;
+	}
+	//m_sCardPlayer->stopAllActions();
+	CCMoveBy * rotMoveUp = CCMoveBy::create(0.1,ccp(0,offset));
 	CCRotateBy * rotLeft = CCRotateBy::create(0.1,18.0);
 	CCRotateBy * rotRight = CCRotateBy::create(0.1,-18.0);
-	CCMoveBy * rotMoveDown = CCMoveBy::create(0.1,ccp(0,-25));
+	CCMoveBy * rotMoveDown = CCMoveBy::create(0.1,ccp(0,-offset));
 	CCSequence * rotSeq = CCSequence::create(rotMoveUp,rotLeft, rotRight,rotMoveDown, NULL);
 	m_sCardPlayer->runAction(rotSeq);
+
+	if (m_intActionCategory == CardCategoryAttack)
+	{
+		CCSprite *normalAttack = CCSprite::create("attack_img.png");
+
+		CCPoint pos = ccp(m_sCardPlayer->getPosition().x, m_sCardPlayer->getPosition().y + 40);
+		if (side==1)
+		{
+			normalAttack->setRotation(180);
+			pos = ccp(m_sCardPlayer->getPosition().x, m_sCardPlayer->getPosition().y -40);
+		}
+		normalAttack->setPosition(pos);
+		m_sCardPlayer->getParent()->addChild(normalAttack);
+
+		CCActionInterval * moveto=CCMoveTo::create(0.4, pos);//改动 ccp(enemy->getPosition().x, enemy->getPosition().y)
+		CCFiniteTimeAction* _removeCallBack = CCCallFuncN::create(this, callfuncN_selector(MDCardPlayer::removeNodeCallBack));
+		CCFiniteTimeAction *playerAct=CCSequence::create(moveto,_removeCallBack,NULL);
+		normalAttack->runAction(playerAct);
+	}
 }
 
 void MDCardPlayer::playParadeAnnimation()
 {
 	CCJumpBy *jump = CCJumpBy::create(2.0,ccp(0,0),15,4);
-	CCRepeatForever *repeat = CCRepeatForever::create(jump);
-	m_sCardPlayer->runAction(repeat);
+	//CCRepeatForever *repeat = CCRepeatForever::create(jump);
+	m_sCardPlayer->runAction(jump);
 }
 
 void MDCardPlayer::stopAllAction()
@@ -126,6 +345,10 @@ void MDCardPlayer::stopAllAction()
 
 void MDCardPlayer::playRainAnnimation(CCArray *enemyList)
 {
+	//MDSoundManager::playEffect(ATTACK_EFFECT);
+
+	setActionPara();
+
     string attack("myAttack1.plist");
     CCParticleSystem *_particle = CCParticleSystemQuad::create(attack.c_str());
     m_sCardPlayer->getParent()->addChild(_particle);
@@ -151,46 +374,78 @@ void MDCardPlayer::playRainAnnimation(CCArray *enemyList)
 
 void MDCardPlayer::playShakeAnnimation()
 {
-	CCShake *_shake = CCShake::create(0.5,4,2);
+	CCShake *_shake = CCShake::create(0.65,4,2);
+	CCFiniteTimeAction* _determineHealth = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::determineHealth));
 	CCFiniteTimeAction* _actionFinished = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::actionFinished));
-	CCDelayTime *_delayTime = CCDelayTime::create(2.0);
+	CCDelayTime *_delayTime = CCDelayTime::create(0.5);
 
-	m_sCardPlayer->runAction(CCSequence::create(_shake,_delayTime,_actionFinished,NULL));
+	if (m_hostCardPlayer->m_intActionCategory == CardCategoryAssist)
+	{
+		m_sCardPlayer->runAction(CCSequence::create(_determineHealth,_delayTime,_actionFinished,NULL));
+	}
+	else
+	{
+		m_sCardPlayer->runAction(CCSequence::create(_shake,_determineHealth,_delayTime,_actionFinished,NULL));
+	}
 
 	m_lblValue = (CCLabelTTF *)m_sCardPlayer->getChildByTag(101);
 
+	CCSize size = m_sCardPlayer->getContentSize();
 	if (m_lblValue==NULL)
 	{
-		m_lblValue = CCLabelTTF::create("-30","Marker Felt",40);
-		m_lblValue->setColor(ccc3(255,0,0));
-        m_lblValue->enableStroke(ccc3(0, 0, 0), 1.5);
-		CCSize size = m_sCardPlayer->getContentSize();
-		m_lblValue->setPosition(ccp(size.width * 0.5,size.height * 0.5));
+		m_lblValue = CCLabelTTF::create("","Marker Felt",40);
 		m_sCardPlayer->addChild(m_lblValue);
 	}
+	m_lblValue->setPosition(ccp(size.width * 0.5,size.height * 0.5));
+	if (m_hostCardPlayer-> m_intActionCategory==CardCategoryAssist)
+	{
+		m_lblValue->setColor(ccc3(0,255,0));
+	}
+	else
+	{
+		m_lblValue->setColor(ccc3(255,0,0));
+	}
+	m_lblValue->setString(IntToString(m_intValue).c_str());
 	m_lblValue->setVisible(true);
-	CCDelayTime *_delayTime1 = CCDelayTime::create(2.0);
-	CCFiniteTimeAction* _actionSetInvisible = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::setNodeInvisible));
-	m_lblValue->runAction(CCSequence::create(_delayTime1,_actionSetInvisible,NULL));
+	CCDelayTime *_delayTime1 = CCDelayTime::create(1.0);
+
+	CCMoveBy *_moveUp= CCMoveBy::create(0.3,ccp(0,30));
+	CCHide *_hideAction = CCHide::create();
+	m_lblValue->runAction(CCSequence::create(_moveUp,_delayTime1,_hideAction,NULL));
 }
+
+void MDCardPlayer::playFeebleAnnimation()
+{
+	CCActionInterval *colorAction = CCSequence::create(
+		CCTintTo::create(0.15f, 255, 0, 0),
+		CCTintTo::create(0.15f, 0, 255, 0),
+		CCTintTo::create(0.15f, 0, 0, 255),
+		//		CCTintTo::create(0.2f, 0, 255, 255),
+		//		CCTintTo::create(0.2f, 255, 255, 0),
+		//		CCTintTo::create(0.2f, 255, 0, 255),
+		CCTintTo::create(0.15f, 255, 255, 255),
+		NULL);
+	m_sCardPlayer->runAction(colorAction);
+}
+
 
 void MDCardPlayer::playDeadAnnimation()
 {
 	CCActionInterval *colorAction = CCSequence::create(
-		CCTintTo::create(0.2f, 255, 0, 0),
-		CCTintTo::create(0.2f, 0, 255, 0),
-		CCTintTo::create(0.2f, 0, 0, 255),
+		CCTintTo::create(0.0f, 255, 0, 0),
+		//CCTintTo::create(0.2f, 0, 255, 0),
+		//CCTintTo::create(0.2f, 0, 0, 255),
 //		CCTintTo::create(0.2f, 0, 255, 255),
 //		CCTintTo::create(0.2f, 255, 255, 0),
 //		CCTintTo::create(0.2f, 255, 0, 255),
-		CCTintTo::create(0.2f, 255, 255, 255),
+		//CCTintTo::create(0.2f, 255, 255, 255),
 		NULL);
 	m_sCardPlayer->runAction(colorAction);
 }
 
 void MDCardPlayer::playWiggleAnnimation()
 {
-	m_sCardPlayer->stopAllActions();
+	//m_sCardPlayer->stopAllActions();
 	CCRotateBy * rotLeft = CCRotateBy::create(0.1,-4.0);
 	CCRotateBy * rotCenter = CCRotateBy::create(0.1,0.0);
 	CCRotateBy * rotRight = CCRotateBy::create(0.1,4.0);
@@ -200,13 +455,15 @@ void MDCardPlayer::playWiggleAnnimation()
 
 void MDCardPlayer::MoveToPosition()
 {
-	m_sCardPlayer->stopAllActions();
+	//m_sCardPlayer->stopAllActions();
 
 	m_sCardPlayer->runAction(CCEaseBackOut::create(CCMoveTo::create(0.2,m_location)));  
 }
 
 void MDCardPlayer::playFireEffect()
 {
+	setActionPara();
+
 	CCParticleFire *m_emitter = CCParticleFire::create();
 	m_emitter->setDuration(0.5);
 	m_emitter->retain();
@@ -218,6 +475,8 @@ void MDCardPlayer::playFireEffect()
 
 void MDCardPlayer::playGalaxyEffect()
 {
+	setActionPara();
+
 	CCParticleGalaxy *m_emitter = CCParticleGalaxy::create();
 	//m_emitter->setDuration(1);
 	m_emitter->retain();
@@ -229,6 +488,8 @@ void MDCardPlayer::playGalaxyEffect()
 
 void MDCardPlayer::playMeteorEffect(MDCardPlayer *target)
 {
+	setActionPara();
+
 	CCParticleMeteor *m_emitter = CCParticleMeteor::create();
     m_emitter->setGravity(ccp(0,-10));
 	m_emitter->setDuration(0.3);
@@ -250,6 +511,8 @@ void MDCardPlayer::playMeteorEffect(MDCardPlayer *target)
 
 void MDCardPlayer::playFireEffect(MDCardPlayer *target)
 {
+	setActionPara();
+
     CCParticleSystem *_particle = CCParticleSystemQuad::create("fire.plist");
     _particle->setDuration(0.3);
     m_sCardPlayer->getParent()->addChild(_particle);
@@ -267,6 +530,8 @@ void MDCardPlayer::playFireEffect(MDCardPlayer *target)
 
 void MDCardPlayer::playEcllipseEffect(MDCardPlayer *target)
 {
+	setActionPara(CardCategoryAssist);
+
     CCParticleSystem *_particle = CCParticleSystemQuad::create("ellipse.plist");
     _particle->setDuration(0.3);
     target->m_sCardPlayer->addChild(_particle);
@@ -275,19 +540,35 @@ void MDCardPlayer::playEcllipseEffect(MDCardPlayer *target)
     _particle->setUserObject(target);
     
     CCDelayTime *_delayTime = CCDelayTime::create(0.3);
-    CCFiniteTimeAction* _actionMoveDone = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::playUnderAttackAnnimate));
+    CCFiniteTimeAction* _underAttackAction = CCCallFuncN::create( this, callfuncN_selector(MDCardPlayer::playUnderAttackAnnimate));
 
 	this->playAttackInstruction();
 
-    _particle->runAction(CCSequence::create(_delayTime,_actionMoveDone,NULL));
+    _particle->runAction(CCSequence::create(_delayTime,_underAttackAction,NULL));
 }
 
 void MDCardPlayer::setCardData(CCDictionary *dict)
 {
 	this->m_fltTotalHp = ((CCString *)dict->objectForKey("blood"))->intValue();
+	this->m_fltCurrentHp = ((CCString *)dict->objectForKey("blood"))->intValue();
 	this->m_fltDefencePoint = ((CCString *)dict->objectForKey("defence"))->floatValue();
 	this->m_fltAttackPoint = ((CCString *)dict->objectForKey("attack"))->intValue();
 	this->m_fltDodgePoint = ((CCString *)dict->objectForKey("dodge"))->floatValue();
+}
+
+void MDCardPlayer::determineHealth(CCNode* sender)
+{
+	m_fltCurrentHp += m_intValue;
+	if (m_fltCurrentHp>m_fltTotalHp)
+	{
+		m_fltCurrentHp=m_fltTotalHp;
+	}
+	
+	if (m_fltCurrentHp <= 0)
+	{
+		this->playDeadAnnimation();
+		isDead = true;
+	}
 }
 
 void MDCardPlayer::actionFinished(CCNode* sender)
@@ -312,43 +593,41 @@ void MDCardPlayer::actionFinished(CCNode* sender)
 void MDCardPlayer::playUnderAttackAnnimate(CCNode* sender)
 {
 	MDCardPlayer *target = (MDCardPlayer *)sender->getUserObject();
-	target->setHostCardPlayer(NULL);
+	target->setHostCardPlayer(this);
+	target->determineValue(this);
+	if (m_intActionCategory!=CardCategoryAssist)
+	{
+		target->playFeebleAnnimation();
+	}
+
 	target->playShakeAnnimation();
-	target->playFireEffect();
+}
+
+void MDCardPlayer::setActionPara(CardCategory p_cardCategory)
+{
+	m_intActionCategory = p_cardCategory;
+
+	isActionFinished = false;
 }
 
 void MDCardPlayer::allEnemyUnderAttack(CCNode *pnode)
 {
-	CCLOG("allEnemyUnderAttack");
-	//CCDirector::sharedDirector()->getScheduler()->unscheduleSelector(schedule_selector(MDCardPlayer::allEnemyUnderAttack), this);
-
-	isActionFinished = false;
+	setActionPara();
 
 	for (int i=0; i<m_EnemyList->count(); i++) {
 		MDCardPlayer *enemyPlayer = (MDCardPlayer *)m_EnemyList->objectAtIndex(i);
+		if(enemyPlayer->isDead)
+		{
+			continue;
+		}
 
 		enemyPlayer->setHostCardPlayer(this);
-		enemyPlayer->playDeadAnnimation();
+		enemyPlayer->determineValue(this);
+		enemyPlayer->playFeebleAnnimation();
 		enemyPlayer->playShakeAnnimation();
 		
 	}
 }
-
-//void MDCardPlayer::allEnemyUnderAttack(float dt)
-//{
-//	CCLOG("allEnemyUnderAttack");
-//    CCDirector::sharedDirector()->getScheduler()->unscheduleSelector(schedule_selector(MDCardPlayer::allEnemyUnderAttack), this);
-//
-//	isActionFinished = false;
-//
-//    for (int i=0; i<m_EnemyList->count(); i++) {
-//        MDCardPlayer *enemyPlayer = (MDCardPlayer *)m_EnemyList->objectAtIndex(i);
-//		
-//		enemyPlayer->setHostCardPlayer(this);
-//        enemyPlayer->playShakeAnnimation();
-//        enemyPlayer->playDeadAnnimation();
-//    }
-//}
 
 void MDCardPlayer::playExploreEffect(MDCardPlayer *target)
 {
@@ -363,13 +642,25 @@ void MDCardPlayer::removeNodeCallBack(CCNode* pNode)
 	pNode->removeFromParentAndCleanup(true);
 }
 
-void MDCardPlayer::setNodeInvisible(CCNode* pNode)
+void MDCardPlayer::setHostCardPlayer(MDCardPlayer *p_hostCardPlayer)
 {
-	pNode->setVisible(false);
+	m_hostCardPlayer = p_hostCardPlayer;
+
+	//int attackValue = max(p_hostCardPlayer->m_fltAttackPoint * 0.8,(p_hostCardPlayer->m_fltAttackPoint - this->m_fltDefencePoint) * (1 + 0.05));
 }
 
-void MDCardPlayer::determineValue(MDCardPlayer *target)
+void MDCardPlayer::determineValue(MDCardPlayer *p_sender)
 {
-	
+	//m_intValue = max(p_sender->m_fltAttackPoint * 0.8,(p_sender->m_fltAttackPoint - this->m_fltDefencePoint) * (1 + 0.05));
+	m_intValue = -590;
+	if (side==0)
+	{
+		m_intValue = -10;
+	}
+
+	if (m_hostCardPlayer->m_intActionCategory ==  CardCategoryAssist)
+	{
+		m_intValue = abs(m_intValue)/5;
+	}
 }
 

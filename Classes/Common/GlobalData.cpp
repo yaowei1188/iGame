@@ -100,7 +100,11 @@ CCDictionary* GlobalData::getCardInfoById(std::string cardId)
 
     sqlite3 *pDB = NULL;
     char* errMsg = NULL;
-    std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	std::string dbPath = getWritablePath();
+#else
+	std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
+#endif
     int result = sqlite3_open_v2(dbPath.c_str(),&pDB,SQLITE_OPEN_READONLY, NULL);
     if (result!=SQLITE_OK) {
         return NULL;
@@ -127,7 +131,11 @@ CCArray* GlobalData::getFraction(std::string name)
     
     sqlite3 *pDB = NULL;
     char* errMsg = NULL;
-    std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	std::string dbPath = getWritablePath();
+#else
+	std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
+#endif
     int result = sqlite3_open_v2(dbPath.c_str(),&pDB,SQLITE_OPEN_READWRITE, NULL);
     if (result!=SQLITE_OK) {
         return NULL;
@@ -148,8 +156,12 @@ CCDictionary* GlobalData::getCardProfileByName(std::string name)
 {
 	sqlite3 *pDB = NULL;
 	char* errMsg = NULL;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	std::string dbPath = getWritablePath();
+#else
 	std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
-	int result = sqlite3_open_v2(dbPath.c_str(),&pDB,SQLITE_OPEN_READWRITE, NULL);
+#endif
+	int result = sqlite3_open_v2(dbPath.c_str(),&pDB,SQLITE_OPEN_READONLY, NULL);
 	if (result!=SQLITE_OK) {
 		return NULL;
 	}
@@ -172,7 +184,11 @@ CCArray* GlobalData::getAllCardProfile(CardQueryCriteria *query)
 
 	sqlite3 *pDB = NULL;
 	char* errMsg = NULL;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	std::string dbPath = getWritablePath();
+#else
 	std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
+#endif
 	int result = sqlite3_open_v2(dbPath.c_str(),&pDB,SQLITE_OPEN_READWRITE, NULL);
 	if (result!=SQLITE_OK) {
 		return NULL;
@@ -227,10 +243,20 @@ CCArray* GlobalData::getCardProfile(int group)
 
 	sqlite3 *pDB = NULL;
 	char* errMsg = NULL;
+	
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	std::string dbPath = getWritablePath();
+#else
 	std::string dbPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("card.s3db");
-	int result = sqlite3_open_v2(dbPath.c_str(),&pDB,SQLITE_OPEN_READWRITE, NULL);
+#endif
+
+	int result = sqlite3_open_v2(dbPath.c_str(),&pDB,SQLITE_OPEN_READONLY, NULL);
 	if (result!=SQLITE_OK) {
-		return NULL;
+		CCLOG("status=================:%d ",result);
+		return arrayCardProfile;
+	} else {
+		CCLOG("status=================:%d ",result);
 	}
 
 	std::string szSql = "select * from card";
@@ -242,11 +268,39 @@ CCArray* GlobalData::getCardProfile(int group)
 
 	const char *argc = QUERY_CATEGORY_CARDBYGROUP;
 	result = sqlite3_exec(pDB,szSql.c_str(), sqliteExecCallBack, (void *)argc, &errMsg);
-	if (result != SQLITE_OK) {
-		return NULL;
+	if (result!=SQLITE_OK) {
+		CCLOG("status=================:%d ",result);
+		return arrayCardProfile;
+	} else {
+		CCLOG("status=================:%d ",result);
 	}
 
 	return arrayCardProfile;
+}
+
+std::string GlobalData::getWritablePath()
+{
+	string dbPath = CCFileUtils::sharedFileUtils()->getWritablePath();
+	dbPath.append("card.db");
+
+	if (!CCFileUtils::sharedFileUtils()->isFileExist(dbPath))
+	{
+		CCLog("create new db");
+		unsigned long tmpSize;
+		unsigned char* readData = CCFileUtils::sharedFileUtils()->getFileData("card.s3db", "rb", &tmpSize);
+		FILE *fp = fopen(dbPath.c_str(), "wb");
+		fwrite(readData, tmpSize, 1, fp);
+		fclose(fp);
+	} else {
+		CCLog("db already exist!");
+		unsigned long tmpSize;
+		unsigned char* readData = CCFileUtils::sharedFileUtils()->getFileData("card.s3db", "rb", &tmpSize);
+		FILE *fp = fopen(dbPath.c_str(), "wb");
+		fwrite(readData, tmpSize, 1, fp);
+		fclose(fp);
+	}
+
+	return dbPath;
 }
 
 CCDictionary* GlobalData::getUserinfo()

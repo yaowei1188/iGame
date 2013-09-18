@@ -63,6 +63,8 @@ typedef enum _FACTION_TYPE
 #define MENU1_EFFECT        "menu1.wav"
 #define MENU2_EFFECT        "menu2.wav"
 
+#define ATTACK_EFFECT       "battleAttack1.mp3"
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 #define MUSIC_FILE        "background.wav"
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_BLACKBERRY)

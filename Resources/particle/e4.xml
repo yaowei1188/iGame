@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <plists>
+        <plist>e4.plist</plist>
+    </plists>
+    <animations>
+        <animation>
+            <name>e4</name>
+            <delay>0.1</delay>
+            <flipX>false</flipX>
+            <flipY>false</flipY>
+            <spriteFrame>精选技能光效 (4)0001.png</spriteFrame>
+            <spriteFrame>精选技能光效 (4)0002.png</spriteFrame>
+            <spriteFrame>精选技能光效 (4)0003.png</spriteFrame>
+            <spriteFrame>精选技能光效 (4)0004.png</spriteFrame>
+            <spriteFrame>精选技能光效 (4)0005.png</spriteFrame>
+            <spriteFrame>精选技能光效 (4)0006.png</spriteFrame>
+            <spriteFrame>精选技能光效 (4)0007.png</spriteFrame>
+            <spriteFrame>精选技能光效 (4)0008.png</spriteFrame>
+            <spriteFrame>精选技能光效 (4)0009.png</spriteFrame>
+            <spriteFrame>精选技能光效 (4)0010.png</spriteFrame>
+            <spriteFrame>精选技能光效 (4)0011.png</spriteFrame>
+        </animation>
+    </animations>
+</root>

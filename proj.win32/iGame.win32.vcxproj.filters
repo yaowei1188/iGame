@@ -113,6 +113,9 @@
     <Filter Include="Resources\art\art_profile">
       <UniqueIdentifier>{3835ff58-6ecc-4fbf-9b20-9f9e06d6a618}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\sound">
+      <UniqueIdentifier>{667ea711-ec68-446c-8922-e3c19476c42c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\iGame.ico">
@@ -699,6 +702,417 @@
     </None>
     <None Include="..\Resources\Task\Formation.plist">
       <Filter>Resources\Task</Filter>
+    </None>
+    <None Include="..\Resources\particle\dlrh.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\dlrhtx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\dlrhtx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\hlz.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\hlztx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\hlztx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\hqz.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\hqztx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\hqztx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\kszd.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\kszdtx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\kszdtx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\ldz.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\ldztx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\ldztx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\ln.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\ln.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\lntx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\lntx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\loading.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\loading.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\mrj.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\mrjtx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\mrjtx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\myz.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\myztx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\myztx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\pjj.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\pjjtx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\pjjtx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\qbj.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\qbj.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\qbj.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\qbjtx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\qbjtx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\qishouTX.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\qstx_01.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\qstx_01.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\qstx_02.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\qstx_02.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\result_attacked.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\result_attacked.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sdjx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sdjx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sdjx.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sdjxtx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sdjxtx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sfzs.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sfzstx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sfzstx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sjsql.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sjsqltx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sjsqltx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sjzs.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sjzstx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sjzstx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\slzstx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\slzstx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sqzs.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sqzstx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\sqzstx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\srzs.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\srzstx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\srzstx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\szh.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\szhtx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\szhtx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\tgn.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\tgntx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\tgntx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\tjbgz.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\tjbgztx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\tjbgztx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\tlztx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\touxi_1.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\tx.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\txtx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\txtx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\wjqf.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\wjqftx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\wjqftx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\wlbf.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\wlbftx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\wlbftx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\xfz.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\xfztx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\xfztx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\xsj.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\xsj.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\xsjbuff.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\xsjtx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\yanwu5.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\yanwu5.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\yhly.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\yhlytx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\yhlytx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\yszs.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\yszsbuff.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\yszstx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\yszstx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\zhxj.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\zhxjtx.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\zhxjtx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\zxjtx.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\base.png">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\base_add.png">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\sound\background.wav">
+      <Filter>Resources\sound</Filter>
+    </None>
+    <None Include="..\Resources\sound\battleAttack1.mp3">
+      <Filter>Resources\sound</Filter>
+    </None>
+    <None Include="..\Resources\sound\battleAttack2.mp3">
+      <Filter>Resources\sound</Filter>
+    </None>
+    <None Include="..\Resources\sound\battleAttack3.mp3">
+      <Filter>Resources\sound</Filter>
+    </None>
+    <None Include="..\Resources\sound\menu1.wav">
+      <Filter>Resources\sound</Filter>
+    </None>
+    <None Include="..\Resources\sound\menu2.wav">
+      <Filter>Resources\sound</Filter>
+    </None>
+    <None Include="..\Resources\particle\e20.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e20.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e20.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e17.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e17.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e17.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e16.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e16.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e16.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e13.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e13.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e13.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e11.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e11.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e11.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e5.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e5.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e5.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e4.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e4.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e4.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e0.xml">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e0.png">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\particle\e0.plist">
+      <Filter>Resources\particle</Filter>
+    </None>
+    <None Include="..\Resources\di.jpg">
+      <Filter>Resources</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -1477,6 +1891,12 @@
     <ClInclude Include="..\Classes\UILibrary\MDScrollLabel.h">
       <Filter>Classes\UILibrary</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\AnimatePacker.h">
+      <Filter>Classes\UILibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UILibrary\Singleton.h">
+      <Filter>Classes\UILibrary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -1991,6 +2411,9 @@
       <Filter>Classes\Common</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\UILibrary\MDScrollLabel.cpp">
+      <Filter>Classes\UILibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UILibrary\AnimatePacker.cpp">
       <Filter>Classes\UILibrary</Filter>
     </ClCompile>
   </ItemGroup>

@@ -11,6 +11,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/MainGameScene.cpp \
                    ../../Classes/Common/MainLayerBase.cpp \
                    ../../Classes/Common/GlobalData.cpp \
+                   ../../Classes/Common/MDSoundManager.cpp \
                    ../../Classes/main/MainInnerLayer.cpp \
                    ../../Classes/main/MainOuterLayer.cpp \
                    ../../Classes/Friends/FriendListScene.cpp \
@@ -26,6 +27,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Mail/NewMailScene.cpp \
                    ../../Classes/Other/AboutScene.cpp \
                    ../../Classes/Other/MDCatalogueLayer.cpp \
+                   ../../Classes/Other/MDCatalogueDetailLayer.cpp \
                    ../../Classes/Other/MDSettingLayer.cpp \
                    ../../Classes/Package/MDPackageLayer.cpp \
                    ../../Classes/Task/TaskDetailScene.cpp \
@@ -38,11 +40,14 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/UILibrary/CCMessageDialog.cpp \
                    ../../Classes/UILibrary/CCShake.cpp \
                    ../../Classes/UILibrary/CCTabView.cpp \
+                   ../../Classes/UILibrary/MDScrollLabel.cpp \
                    ../../Classes/UILibrary/EllipseActionInterval.cpp \
                    ../../Classes/UILibrary/LoadingScene.cpp \
                    ../../Classes/UILibrary/MDProgressBar.cpp \
                    ../../Classes/UILibrary/SlidingMenu.cpp \
                    ../../Classes/UILibrary/SharpLabelTTF.cpp \
+                   ../../Classes/UILibrary/CCMultiColumnTableView.cpp \
+                   ../../Classes/UILibrary/AnimatePacker.cpp \
                    ../../library/XmlParser/XmlParser.cpp \
                    ../../library/sqlite3/sqlite3.c \
                    ../../library/jsonconverter/cJSON.c \

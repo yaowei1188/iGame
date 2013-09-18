@@ -12,6 +12,13 @@
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
+typedef enum _BattleWinerSide
+{
+	BattleWinner_Heros = 1,
+	BattleWinner_Enemy,
+	BattleWinner_None
+} BattleWinerSide;
+
 class MDBattleLayer : public CCLayerColor,
 public CCBSelectorResolver,
 public CCNodeLoaderListener,
@@ -79,7 +86,13 @@ private:
     void playHeroAction();
 	void playEnemyAction();
 	void doBattle();
-
+	int getNextVictim(CCArray *array);
+	int getNextPresenter(CCArray *array,int *num);
+	BattleWinerSide determineWinner();
+	void prepareMoveForward();
+	void showRoundInfo();
+	void playWinAction();
+	void removeNodeCallBack(CCNode* pNode);
 	CCArray *mCardNameList;
 	CCArray *mHeroCardList;
 	//CCArray *mEnemyCardNameList;
@@ -93,6 +106,8 @@ private:
 	int m_intRound;
 	int m_intEnemyCount;
 	int m_intWhoAttack;
+
+	CCLabelTTF *m_lblRoundInfo;
 };
 
 #endif  // __LOGINSCENE_SCENE_H__
