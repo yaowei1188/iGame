@@ -89,6 +89,7 @@ private:
 	CCDictionary *dictCharacter;
 
     CCSprite *m_sCharacter;
+    CCControlButton *btnAgate;
 public:
     void updateUserInfo(int hp,int maxhp,int exp,int maxExp,int grade,int gold);
 

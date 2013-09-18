@@ -33,6 +33,7 @@ MainInnerLayer::MainInnerLayer()
     this->mlblGrade = NULL;
     this->m_sPlayerContainer = NULL;
     this->m_sCharacter = NULL;
+    this->btnAgate = NULL;
 
 }
 
@@ -47,6 +48,7 @@ MainInnerLayer::~MainInnerLayer()
     CC_SAFE_RELEASE(mlblGold);
     CC_SAFE_RELEASE(mlblBronze);
     CC_SAFE_RELEASE(mlblGrade);
+    CC_SAFE_RELEASE(btnAgate);
 
     CC_SAFE_RELEASE(m_sPlayerContainer);
 }
@@ -240,6 +242,7 @@ bool MainInnerLayer::onAssignCCBMemberVariable(CCObject* pTarget, const char* pM
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mlblBronze", CCLabelTTF*, this->mlblBronze);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mlblGold", CCLabelTTF*, this->mlblGold);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mlblGrade", CCLabelTTF*, this->mlblGrade);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "btnAgate", CCControlButton*, this->btnAgate);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sPlayerContainer", CCSprite*, this->m_sPlayerContainer);
     return true;
 }
@@ -266,6 +269,7 @@ void MainInnerLayer::showTooBar(bool show)
 {
     this->m_layToolBar->setVisible(show);
 	this->m_sCharacter->setVisible(show);
+    this->btnAgate->setVisible(show);
 
 	if (show)
 	{
