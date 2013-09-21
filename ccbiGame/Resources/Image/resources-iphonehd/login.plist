@@ -98,7 +98,7 @@
             <key>card_shadow.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{377,2008},{310,30}}</string>
+                <string>{{414,2008},{310,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -459,6 +459,19 @@
                 <key>sourceSize</key>
                 <string>{140,80}</string>
             </dict>
+            <key>yuan.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{377,2008},{35,35}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{35,35}}</string>
+                <key>sourceSize</key>
+                <string>{35,35}</string>
+            </dict>
             <key>yun_bg.png</key>
             <dict>
                 <key>frame</key>
@@ -482,7 +495,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:d9b7ab155efd19d1b68d1670d11e0910$</string>
+            <string>$TexturePacker:SmartUpdate:5604cd0705a72412198e05c69f321187$</string>
             <key>textureFileName</key>
             <string>login.png</string>
         </dict>

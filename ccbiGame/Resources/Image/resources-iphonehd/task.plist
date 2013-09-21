@@ -199,19 +199,6 @@
                 <key>sourceSize</key>
                 <string>{68,48}</string>
             </dict>
-            <key>yuan.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{144,979},{35,35}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{35,35}}</string>
-                <key>sourceSize</key>
-                <string>{35,35}</string>
-            </dict>
             <key>yuanbao.png</key>
             <dict>
                 <key>frame</key>
@@ -235,7 +222,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:ffcbda187559379a0360febbb70a1109$</string>
+            <string>$TexturePacker:SmartUpdate:6a3be38ce238dfc1dd855e0791b8562b$</string>
             <key>textureFileName</key>
             <string>task.png</string>
         </dict>
