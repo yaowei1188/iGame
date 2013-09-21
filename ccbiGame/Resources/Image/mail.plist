@@ -407,6 +407,45 @@
                 <key>sourceSize</key>
                 <string>{320,234}</string>
             </dict>
+            <key>nev_neirong.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{95,982},{40,15}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{40,15}}</string>
+                <key>sourceSize</key>
+                <string>{40,15}</string>
+            </dict>
+            <key>nev_shoujian.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{78,982},{40,15}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{40,15}}</string>
+                <key>sourceSize</key>
+                <string>{40,15}</string>
+            </dict>
+            <key>nev_zhuti.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{61,982},{40,15}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{40,15}}</string>
+                <key>sourceSize</key>
+                <string>{40,15}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -417,7 +456,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:3099459b111affafa7749f9354935546$</string>
+            <string>$TexturePacker:SmartUpdate:512ba482075dec10414411fc31559672$</string>
             <key>textureFileName</key>
             <string>mail.png</string>
         </dict>
