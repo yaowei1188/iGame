@@ -539,8 +539,10 @@ void MDCardPlayer::playEcllipseEffect(MDCardPlayer *target)
 
     CCParticleSystem *_particle = CCParticleSystemQuad::create("ellipse.plist");
     _particle->setDuration(0.3);
-    target->m_sCardPlayer->addChild(_particle);
-    _particle->setPosition(ccp(30,0));
+    target->m_sCardPlayer->getParent()->addChild(_particle);
+    _particle->setPosition(target->m_sCardPlayer->getPosition());
+//    target->m_sCardPlayer->addChild(_particle);
+//    _particle->setPosition(ccp(30,0));
     _particle->setAutoRemoveOnFinish(true);
     _particle->setUserObject(target);
     

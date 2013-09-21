@@ -88,7 +88,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/friends.plist</string>
+							<string>Image/main.plist</string>
 							<string>main_frame.png</string>
 						</array>
 					</dict>
@@ -160,7 +160,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/friends.plist</string>
+							<string>Image/catalogue.plist</string>
 							<string>catalogue_title.png</string>
 						</array>
 					</dict>
@@ -520,7 +520,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/friends.plist</string>
+							<string>Image/catalogue.plist</string>
 							<string>catalogue_card_cycle.png</string>
 						</array>
 					</dict>
@@ -720,7 +720,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/friends.plist</string>
+							<string>Image/catalogue.plist</string>
 							<string>catalogue_attack.png</string>
 						</array>
 					</dict>
@@ -792,7 +792,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/friends.plist</string>
+							<string>Image/catalogue.plist</string>
 							<string>catalogue_crit.png</string>
 						</array>
 					</dict>
@@ -864,7 +864,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/friends.plist</string>
+							<string>Image/catalogue.plist</string>
 							<string>catalogue_defence.png</string>
 						</array>
 					</dict>
@@ -936,7 +936,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/friends.plist</string>
+							<string>Image/catalogue.plist</string>
 							<string>catalogue_hp.png</string>
 						</array>
 					</dict>
@@ -1453,6 +1453,8 @@
 						<string></string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

@@ -88,7 +88,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/main.plist</string>
+							<string>Image/mail.plist</string>
 							<string>mail_bg.png</string>
 						</array>
 					</dict>
@@ -160,7 +160,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/main.plist</string>
+							<string>Image/mail.plist</string>
 							<string>mail_page_bg.png</string>
 						</array>
 					</dict>
@@ -446,7 +446,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/card.plist</string>
+							<string>Image/main.plist</string>
 							<string>btn_bg.png</string>
 						</array>
 					</dict>
@@ -469,7 +469,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/card.plist</string>
+							<string>Image/main.plist</string>
 							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
@@ -492,7 +492,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/card.plist</string>
+							<string>Image/main.plist</string>
 							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
@@ -576,7 +576,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/main.plist</string>
+							<string>Image/mail.plist</string>
 							<string>mail_title.png</string>
 						</array>
 					</dict>
@@ -734,7 +734,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/card.plist</string>
+							<string>Image/main.plist</string>
 							<string>btn_bg.png</string>
 						</array>
 					</dict>
@@ -757,7 +757,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/card.plist</string>
+							<string>Image/main.plist</string>
 							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
@@ -780,7 +780,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/card.plist</string>
+							<string>Image/main.plist</string>
 							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
@@ -950,7 +950,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/card.plist</string>
+							<string>Image/main.plist</string>
 							<string>btn_bg.png</string>
 						</array>
 					</dict>
@@ -973,7 +973,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/card.plist</string>
+							<string>Image/main.plist</string>
 							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
@@ -996,7 +996,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/card.plist</string>
+							<string>Image/main.plist</string>
 							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
@@ -1013,8 +1013,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

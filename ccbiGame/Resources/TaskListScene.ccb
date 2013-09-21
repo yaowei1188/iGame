@@ -88,7 +88,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/friends.plist</string>
+							<string>Image/task.plist</string>
 							<string>task_bg.png</string>
 						</array>
 					</dict>
@@ -457,7 +457,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/login.plist</string>
+							<string>Image/task.plist</string>
 							<string>task_eightyone.png</string>
 						</array>
 					</dict>
@@ -529,7 +529,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/login.plist</string>
+							<string>Image/task.plist</string>
 							<string>task_title.png</string>
 						</array>
 					</dict>

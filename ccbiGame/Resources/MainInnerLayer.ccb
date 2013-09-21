@@ -4221,7 +4221,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/card.plist</string>
+							<string>Image/main.plist</string>
 							<string>card_atlas.png</string>
 						</array>
 					</dict>
@@ -4244,7 +4244,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/card.plist</string>
+							<string>Image/main.plist</string>
 							<string>card_atlas_highlight.png</string>
 						</array>
 					</dict>
@@ -4267,8 +4267,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/card.plist</string>
-							<string>card_atlas_highlight.png</string>
+							<string>Image/main.plist</string>
+							<string>btn_bg_highlight.png</string>
 						</array>
 					</dict>
 					<dict>

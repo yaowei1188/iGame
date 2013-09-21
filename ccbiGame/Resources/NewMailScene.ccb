@@ -88,7 +88,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/main.plist</string>
+							<string>Image/mail.plist</string>
 							<string>mail_bg.png</string>
 						</array>
 					</dict>
@@ -160,7 +160,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/main.plist</string>
+							<string>Image/mail.plist</string>
 							<string>mail_title_compose.png</string>
 						</array>
 					</dict>
@@ -880,7 +880,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/main.plist</string>
+							<string>Image/mail.plist</string>
 							<string>mail_compose_textbg.png</string>
 						</array>
 					</dict>
@@ -952,7 +952,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/main.plist</string>
+							<string>Image/mail.plist</string>
 							<string>mail_compose_textbg.png</string>
 						</array>
 					</dict>
@@ -1024,7 +1024,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/main.plist</string>
+							<string>Image/mail.plist</string>
 							<string>mail_compose_textviewbg.png</string>
 						</array>
 					</dict>

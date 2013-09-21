@@ -88,7 +88,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/friends.plist</string>
+							<string>Image/task.plist</string>
 							<string>task_bg.png</string>
 						</array>
 					</dict>
@@ -462,7 +462,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/login.plist</string>
+							<string>Image/task.plist</string>
 							<string>discover_truth.png</string>
 						</array>
 					</dict>
@@ -485,7 +485,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/login.plist</string>
+							<string>Image/task.plist</string>
 							<string>discover_truth_clicked.png</string>
 						</array>
 					</dict>
@@ -508,7 +508,7 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/login.plist</string>
+							<string>Image/task.plist</string>
 							<string>discover_truth_clicked.png</string>
 						</array>
 					</dict>
@@ -720,13 +720,11 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>Image/login.plist</string>
+							<string>Image/task.plist</string>
 							<string>task_normal.png</string>
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
