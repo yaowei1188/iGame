@@ -4,460 +4,408 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>back_1.png</key>
+            <key>mail_bg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{619,209},{40,23}}</string>
+                <string>{{2,2},{640,830}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{40,23}}</string>
+                <string>{{0,0},{640,830}}</string>
                 <key>sourceSize</key>
-                <string>{40,23}</string>
+                <string>{640,830}</string>
             </dict>
-            <key>back_2.png</key>
+            <key>mail_checkbox.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{619,184},{40,23}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{40,23}}</string>
-                <key>sourceSize</key>
-                <string>{40,23}</string>
-            </dict>
-            <key>bt_bg.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{963,362},{70,40}}</string>
+                <string>{{825,84},{46,43}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{70,40}}</string>
+                <string>{{0,0},{46,43}}</string>
                 <key>sourceSize</key>
-                <string>{70,40}</string>
+                <string>{46,43}</string>
             </dict>
-            <key>btn_cancel.png</key>
+            <key>mail_checkbox_checked.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{963,290},{70,40}}</string>
+                <string>{{840,629},{46,43}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{46,43}}</string>
+                <key>sourceSize</key>
+                <string>{46,43}</string>
+            </dict>
+            <key>mail_checkbox_highlight.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{825,84},{46,43}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{70,40}}</string>
+                <string>{{0,0},{46,43}}</string>
                 <key>sourceSize</key>
-                <string>{70,40}</string>
+                <string>{46,43}</string>
             </dict>
-            <key>btn_login.png</key>
+            <key>mail_compose_textbg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{963,218},{70,40}}</string>
+                <string>{{726,2},{478,65}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{70,40}}</string>
+                <string>{{0,0},{478,65}}</string>
                 <key>sourceSize</key>
-                <string>{70,40}</string>
+                <string>{478,65}</string>
             </dict>
-            <key>btn_reg.png</key>
+            <key>mail_compose_textviewbg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{966,146},{70,40}}</string>
+                <string>{{606,1468},{565,446}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{70,40}}</string>
+                <string>{{0,0},{565,446}}</string>
                 <key>sourceSize</key>
-                <string>{70,40}</string>
+                <string>{565,446}</string>
             </dict>
-            <key>btn_tourist.png</key>
+            <key>mail_highlight.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{966,74},{70,40}}</string>
+                <string>{{644,2},{540,80}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{70,40}}</string>
+                <string>{{0,0},{540,80}}</string>
                 <key>sourceSize</key>
-                <string>{70,40}</string>
+                <string>{540,80}</string>
             </dict>
-            <key>card_shadow.png</key>
+            <key>mail_lblFriend.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1005,218},{155,15}}</string>
+                <string>{{793,445},{47,26}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{47,26}}</string>
+                <key>sourceSize</key>
+                <string>{47,26}</string>
+            </dict>
+            <key>mail_lblcontent.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{793,255},{80,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{155,15}}</string>
+                <string>{{0,0},{80,30}}</string>
                 <key>sourceSize</key>
-                <string>{155,15}</string>
+                <string>{80,30}</string>
             </dict>
-            <key>forgot_pwd_1.png</key>
+            <key>mail_lblreceiver.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{284,966},{91,40}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{91,40}}</string>
-                <key>sourceSize</key>
-                <string>{91,40}</string>
-            </dict>
-            <key>forgot_pwd_2.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{191,966},{91,40}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{91,40}}</string>
-                <key>sourceSize</key>
-                <string>{91,40}</string>
-            </dict>
-            <key>formation_frame.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{377,294},{152,34}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{152,34}}</string>
-                <key>sourceSize</key>
-                <string>{152,34}</string>
-            </dict>
-            <key>formation_frame_clicked.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{377,258},{152,34}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{152,34}}</string>
-                <key>sourceSize</key>
-                <string>{152,34}</string>
-            </dict>
-            <key>formation_selected.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{324,2},{76,40}}</string>
+                <string>{{793,173},{80,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{76,40}}</string>
+                <string>{{0,0},{80,30}}</string>
                 <key>sourceSize</key>
-                <string>{76,40}</string>
+                <string>{80,30}</string>
             </dict>
-            <key>gou_1.png</key>
+            <key>mail_lblsubject.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{98,966},{91,40}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{91,40}}</string>
-                <key>sourceSize</key>
-                <string>{91,40}</string>
-            </dict>
-            <key>gou_2.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{5,966},{91,40}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{91,40}}</string>
-                <key>sourceSize</key>
-                <string>{91,40}</string>
-            </dict>
-            <key>login_btn.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{966,2},{70,40}}</string>
+                <string>{{821,2},{80,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{70,40}}</string>
+                <string>{{0,0},{80,30}}</string>
                 <key>sourceSize</key>
-                <string>{70,40}</string>
+                <string>{80,30}</string>
             </dict>
-            <key>login_btn_click.png</key>
+            <key>mail_lbltitle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{619,234},{240,35}}</string>
+                <string>{{793,2},{87,26}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{240,35}}</string>
+                <string>{{0,0},{87,26}}</string>
                 <key>sourceSize</key>
-                <string>{240,35}</string>
+                <string>{87,26}</string>
             </dict>
-            <key>login_btn_normal.png</key>
+            <key>mail_line.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{324,224},{240,35}}</string>
+                <string>{{2,2043},{2,2}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{2,2}}</string>
+                <key>sourceSize</key>
+                <string>{2,2}</string>
+            </dict>
+            <key>mail_list_bg.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,1476},{565,602}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{240,35}}</string>
+                <string>{{0,0},{565,602}}</string>
                 <key>sourceSize</key>
-                <string>{240,35}</string>
+                <string>{565,602}</string>
             </dict>
-            <key>login_game.png</key>
+            <key>mail_mailbox_title.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{377,221},{240,35}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{240,35}}</string>
-                <key>sourceSize</key>
-                <string>{240,35}</string>
-            </dict>
-            <key>login_game_clicked.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{377,184},{240,35}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{240,35}}</string>
-                <key>sourceSize</key>
-                <string>{240,35}</string>
-            </dict>
-            <key>login_section.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{377,2},{295,180}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{295,180}}</string>
-                <key>sourceSize</key>
-                <string>{295,180}</string>
-            </dict>
-            <key>logo.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{674,174},{250,135}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{250,135}}</string>
-                <key>sourceSize</key>
-                <string>{250,135}</string>
-            </dict>
-            <key>qqs_1.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{501,354},{60,30}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{60,30}}</string>
-                <key>sourceSize</key>
-                <string>{60,30}</string>
-            </dict>
-            <key>qqs_2.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{439,330},{60,30}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{60,30}}</string>
-                <key>sourceSize</key>
-                <string>{60,30}</string>
-            </dict>
-            <key>register_btn.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{324,152},{70,40}}</string>
+                <string>{{736,698},{134,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{70,40}}</string>
+                <string>{{0,0},{134,38}}</string>
                 <key>sourceSize</key>
-                <string>{70,40}</string>
+                <string>{134,38}</string>
             </dict>
-            <key>rrs_1.png</key>
+            <key>mail_page_bg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{377,330},{60,30}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{60,30}}</string>
-                <key>sourceSize</key>
-                <string>{60,30}</string>
-            </dict>
-            <key>rrs_2.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{531,322},{60,30}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{60,30}}</string>
-                <key>sourceSize</key>
-                <string>{60,30}</string>
-            </dict>
-            <key>san_bg.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,966},{1,55}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{1,55}}</string>
-                <key>sourceSize</key>
-                <string>{1,55}</string>
-            </dict>
-            <key>select_formation_bg.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,484},{320,480}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{320,480}}</string>
-                <key>sourceSize</key>
-                <string>{320,480}</string>
-            </dict>
-            <key>select_server_bg.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{674,2},{290,170}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{290,170}}</string>
-                <key>sourceSize</key>
-                <string>{290,170}</string>
-            </dict>
-            <key>server_cell_bg.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{926,174},{240,35}}</string>
+                <string>{{840,540},{87,33}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{240,35}}</string>
+                <string>{{0,0},{87,33}}</string>
                 <key>sourceSize</key>
-                <string>{240,35}</string>
+                <string>{87,33}</string>
             </dict>
-            <key>sign-bg.png</key>
+            <key>mail_sender.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{320,480}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{320,480}}</string>
-                <key>sourceSize</key>
-                <string>{320,480}</string>
-            </dict>
-            <key>sina_1.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{531,290},{60,30}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{60,30}}</string>
-                <key>sourceSize</key>
-                <string>{60,30}</string>
-            </dict>
-            <key>sina_2.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{531,258},{60,30}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{60,30}}</string>
-                <key>sourceSize</key>
-                <string>{60,30}</string>
-            </dict>
-            <key>tourist_btn.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{324,80},{70,40}}</string>
+                <string>{{793,91},{80,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{70,40}}</string>
+                <string>{{0,0},{80,30}}</string>
                 <key>sourceSize</key>
-                <string>{70,40}</string>
+                <string>{80,30}</string>
+            </dict>
+            <key>mail_state_approved.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{690,702},{120,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{120,44}}</string>
+                <key>sourceSize</key>
+                <string>{120,44}</string>
+            </dict>
+            <key>mail_state_denied.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{644,702},{120,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{120,44}}</string>
+                <key>sourceSize</key>
+                <string>{120,44}</string>
+            </dict>
+            <key>mail_state_read.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{793,391},{48,52}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{48,52}}</string>
+                <key>sourceSize</key>
+                <string>{48,52}</string>
+            </dict>
+            <key>mail_state_unread.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{793,337},{48,52}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{48,52}}</string>
+                <key>sourceSize</key>
+                <string>{48,52}</string>
+            </dict>
+            <key>mail_tab_secret.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{834,674},{132,56}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{132,56}}</string>
+                <key>sourceSize</key>
+                <string>{132,56}</string>
+            </dict>
+            <key>mail_tab_secret_selected.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{782,540},{132,56}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{132,56}}</string>
+                <key>sourceSize</key>
+                <string>{132,56}</string>
+            </dict>
+            <key>mail_tab_sys_mail.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{776,698},{132,56}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{132,56}}</string>
+                <key>sourceSize</key>
+                <string>{132,56}</string>
+            </dict>
+            <key>mail_tab_sys_mail_selected.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{726,482},{132,56}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{132,56}}</string>
+                <key>sourceSize</key>
+                <string>{132,56}</string>
+            </dict>
+            <key>mail_textarea.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{472,834},{565,446}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{565,446}}</string>
+                <key>sourceSize</key>
+                <string>{565,446}</string>
+            </dict>
+            <key>mail_textbox.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{472,1401},{478,65}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{478,65}}</string>
+                <key>sourceSize</key>
+                <string>{478,65}</string>
+            </dict>
+            <key>mail_title.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{736,540},{156,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{156,44}}</string>
+                <key>sourceSize</key>
+                <string>{156,44}</string>
+            </dict>
+            <key>mail_title_compose.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{690,544},{156,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{156,44}}</string>
+                <key>sourceSize</key>
+                <string>{156,44}</string>
+            </dict>
+            <key>mail_title_receive.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{644,544},{156,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{156,44}}</string>
+                <key>sourceSize</key>
+                <string>{156,44}</string>
+            </dict>
+            <key>main_talk_bg.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,834},{640,468}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{640,468}}</string>
+                <key>sourceSize</key>
+                <string>{640,468}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -465,13 +413,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>login.png</string>
+            <string>mail.png</string>
             <key>size</key>
-            <string>{1024,1024}</string>
+            <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:2044357babfdbac7ceaca8c0051c1467$</string>
+            <string>$TexturePacker:SmartUpdate:f78bf2c35c265cbd33a28e2765354326$</string>
             <key>textureFileName</key>
-            <string>login.png</string>
+            <string>mail.png</string>
         </dict>
     </dict>
 </plist>
