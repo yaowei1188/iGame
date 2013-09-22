@@ -6,12 +6,13 @@ using namespace cocos2d;
 
 MDHeroMainLayer::MDHeroMainLayer()
 {
-
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("card.plist");
 }
 
 MDHeroMainLayer::~MDHeroMainLayer()
 {
-    
+
+	CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("card.plist");
 }
 
 CCScene* MDHeroMainLayer::scene()

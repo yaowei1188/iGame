@@ -97,9 +97,17 @@ void MDCardAlchemyLayer::requestFinishedCallback(CCHttpClient* client, CCHttpRes
 
 void MDCardAlchemyLayer::didSelectedItems(CCArray *pItems)
 {
+	if (pItems==NULL || pItems->count()==0)
+	{
+		return;
+	}
 	//CCLOG("items:%d",pItems->count());
+	CCDictionary *dict = (CCDictionary *)pItems->objectAtIndex(0);
+	std::string strCardHeadImg(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
+	strCardHeadImg.append(".png");
+
 	CCControlButton *btn = (CCControlButton *)this->getChildByTag(selectedButton);
-	CCSpriteFrame *sHeadFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_rulaifo.png");
+	CCSpriteFrame *sHeadFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardHeadImg.c_str());
 	btn->setBackgroundSpriteFrameForState(sHeadFrame,CCControlStateNormal);
 	btn->setBackgroundSpriteFrameForState(sHeadFrame,CCControlStateHighlighted);
 }
@@ -207,17 +215,17 @@ void MDCardAlchemyLayer::finishAlchemy()
     this->addChild(m_spriteSuccess);
     m_spriteSuccess->setPosition(ccp(winSize.width * 0.5,130));
 
-    CCLabelTTF *lblName = CCLabelTTF::create("元魂丹", "Arial", 14);
+    CCLabelTTF *lblName = CCLabelTTF::create("yuan", "Arial", 14);
     this->addChild(lblName);
     lblName->setColor(ccc3(255, 255, 0));
     lblName->setPosition(ccp(winSize.width * 0.5,winSize.height * 0.5 + 40));
 
-    CCLabelTTF *lblDesc = CCLabelTTF::create("吸收大量经验", "Arial", 14);
+    CCLabelTTF *lblDesc = CCLabelTTF::create("xi", "Arial", 14);
     this->addChild(lblDesc);
     lblDesc->setColor(ccc3(255, 255, 255));
     lblDesc->setPosition(ccp(winSize.width * 0.5,winSize.height * 0.5 + 20));
 
-    m_spriteResult = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("jingyandan.png"));
+    m_spriteResult = CCSprite::create("jingyandan.png");
     this->addChild(m_spriteResult);
     m_spriteResult->setPosition(ccp(winSize.width * 0.5,winSize.height * 0.5 - 30));
 

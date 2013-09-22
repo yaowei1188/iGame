@@ -194,6 +194,8 @@ MailMainScene::MailMainScene()
     //mTableView = NULL;
     m_lblPage = NULL;
     mFriendList = NULL;
+
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("mail.plist");
 }
 
 MailMainScene::~MailMainScene()
@@ -201,5 +203,6 @@ MailMainScene::~MailMainScene()
 //    mTableViewFriend->release();
 //    mMainSceneTemp->release();
 //    mFriendList->release();
+	CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("mail.plist");
 }
 

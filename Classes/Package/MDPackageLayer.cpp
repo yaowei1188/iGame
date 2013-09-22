@@ -39,8 +39,6 @@ bool MDPackageLayer::init()
 		vUserData = new int[mHeroList->count()]();
 		memset(vUserData, sizeof(int) * mHeroList->count(), 0);
 
-		this->reloadDataSource();
-
         bRet = true;
     } while (0);
 
@@ -362,11 +360,15 @@ MDPackageLayer::MDPackageLayer()
     mTableView = NULL;
     mHeroList = NULL;
     //m_sTitle = NULL;
+
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("package.plist");
 }
 
 MDPackageLayer::~MDPackageLayer()
 {
     //CC_SAFE_RELEASE(mTableView);
     //CC_SAFE_RELEASE(m_sTitle);
+
+	CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("package.plist");
 }
 

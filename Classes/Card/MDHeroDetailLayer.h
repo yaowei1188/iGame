@@ -33,6 +33,7 @@ public:
 
 	// implement the "static node()" method manually
 	CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MDHeroDetailLayer,create);
+	CC_SYNTHESIZE(CCDictionary*, m_dictHero, DictHero);
 
 	virtual void onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader);
 	virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
@@ -43,6 +44,7 @@ public:
 	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
     void doPromotion();
     void menuItemCallback(CCObject* pSender);
+	void setHeroInfo();
 private:
 	unsigned int selectedindex;
     CCSprite *m_sCard;

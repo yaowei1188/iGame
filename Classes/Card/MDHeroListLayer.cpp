@@ -1,4 +1,5 @@
 #include "MDHeroListLayer.h"
+#include "MDHeroDetailLayer.h"
 
 using namespace cocos2d;
 
@@ -36,8 +37,11 @@ bool MDHeroListLayer::init()
 
 		btnTouched = false;
         
-        mHeroList = CCArray::create(CCString::create("Li1"),CCString::create("张三"),CCString::create("Li3"),CCString::create("李四"),CCString::create("Li1653"),CCString::create("Li1qwe"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li409"),CCString::create("Li134"),CCString::create("Li51"),CCString::create("Li18974523"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li1"),CCString::create("Li124"),CCString::create("Li1998"),CCString::create("Li3561"),NULL);
-        mHeroList->retain();
+		mHeroList =  CCArray::create();
+		CardQueryCriteria *query = new CardQueryCriteria();
+		query->cardName = "ft001_2;ft003_2;ft004_2;ft005_2;ft006_2;ft017_2";
+		mHeroList= GlobalData::getAllCardProfile(query);
+		mHeroList->retain();
 
 		vUserData = new int[mHeroList->count()]();
 		memset(vUserData, sizeof(int) * mHeroList->count(), 0);
@@ -193,7 +197,13 @@ void MDHeroListLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cell
 //
 //    table->refreshData();
     MainGameScene *mainScene = (MainGameScene *)this->getParent();
-    mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroDetailLayer"));
+	MDHeroDetailLayer *detailLayer = (MDHeroDetailLayer *)this->GetLayer("MDHeroDetailLayer");
+
+	CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(cell->getIdx());
+	detailLayer->setDictHero(dict);
+	detailLayer->setHeroInfo();
+
+    mainScene->PushLayer(detailLayer);
 }
 
 unsigned int MDHeroListLayer::numberOfCellsInTableView(CCTableView *table)
@@ -213,8 +223,12 @@ CCSize MDHeroListLayer::tableCellSizeForIndex(CCTableView *table, unsigned int i
 
 CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
-//	CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(idx);
 //    bool selected = (idx==selectedindex);
+
+	CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(idx);
+	std::string strCardHeadName(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
+	strCardHeadName.append(".png");
+
 	CCTableViewCell *cell = table->dequeueCell();
     CCSize size = this->tableCellSizeForIndex(table, idx);
 	if (!cell) {
@@ -228,7 +242,7 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
 		sSelected->setAnchorPoint(CCPointZero);
 		cell->addChild(sSelected);
         
-        CCSprite *sHead = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_rulaifo.png"));
+        CCSprite *sHead = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardHeadName.c_str()));
         sHead->setTag(122);
         sHead->setPosition(ccp(10,size.height * 0.5));
 		sHead->setAnchorPoint(ccp(0, 0.5));
@@ -296,6 +310,7 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
         }
         
         CCSprite *sHead = (CCSprite*)cell->getChildByTag(122);
+		sHead->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardHeadName.c_str()));
         
 		CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);
 		lblName->setString("weiweiyao");

@@ -46,6 +46,7 @@ private:
 	void touchUpInside(CCObject* pSender, CCControlEvent event);
 
     CCLabelTTF *m_lblFightCapacity;
+		CCArray *mCardList;
 };
 
 #endif  // __HEROS_FORMATION_LAYER_H__

@@ -127,19 +127,31 @@ void MDHeroDetailLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
     this->setFntTitle(101);
     this->setFntTitle(102);
     
-    CCSize bgSize = m_sCard->getContentSize();
 
-    std::string strGroup = determineGroup(CCString::create("1"));
-    CCSprite *sCardGroup = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strGroup.c_str()));
-    sCardGroup->setAnchorPoint(ccp(1,1));
-    sCardGroup->setPosition(ccp(bgSize.width - 5,bgSize.height - 10));
-    m_sCard->addChild(sCardGroup);
+}
 
-    CCSprite *sPeople = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("character_rulaifo.png"));
-    sPeople->setPosition(ccp(bgSize.width * 0.5,bgSize.height * 0.5));
-    m_sCard->addChild(sPeople);
+void MDHeroDetailLayer::setHeroInfo()
+{
+	CCSize bgSize = m_sCard->getContentSize();
 
-    m_lblDesc->setColor(ccc3(0, 255, 0));
+	std::string strGroup = determineGroup(CCString::create("1"));
+	CCSprite *sCardGroup = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strGroup.c_str()));
+	sCardGroup->setAnchorPoint(ccp(1,1));
+	sCardGroup->setPosition(ccp(bgSize.width - 5,bgSize.height - 10));
+	m_sCard->addChild(sCardGroup);
+
+	//std::string strCardImg(((CCString *)m_dictHero->objectForKey("cardProfileImg"))->getCString());
+	//strCardImg.append(".png");
+
+	std::string strCardImg("art/art_profile/");
+	strCardImg.append(((CCString *)m_dictHero->objectForKey("cardProfileImg"))->getCString());
+	strCardImg.append(".png");
+
+    CCSprite *sPeople = CCSprite::create(strCardImg.c_str());
+	sPeople->setPosition(ccp(bgSize.width * 0.5,bgSize.height * 0.5));
+	m_sCard->addChild(sPeople);
+
+	m_lblDesc->setColor(ccc3(0, 255, 0));
 }
 
 void MDHeroDetailLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)

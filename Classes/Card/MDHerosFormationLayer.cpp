@@ -109,6 +109,12 @@ void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoa
 	int col = 0;
     float scale = 0.71;
 
+	mCardList =  CCArray::create();
+	CardQueryCriteria *query = new CardQueryCriteria();
+	query->cardName = "ft001_2;ft003_2;ft004_2;ft005_2;ft006_2;ft017_2";
+	mCardList= GlobalData::getAllCardProfile(query);
+	mCardList->retain();
+
 	for(int i=0;i<6;i++)
 	{
 		CCScale9Sprite *scaleSprite = NULL;
@@ -119,16 +125,31 @@ void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoa
 			CCRect rect = CCRectMake(0,0,150,205);
 			scaleSprite = CCScale9Sprite::createWithSpriteFrameName("card_upgrade_hero_bg.png",rect);
 		}
+		scaleSprite->setTag(i);
+
+		CCDictionary *dict = (CCDictionary *)mCardList->objectAtIndex(i);
+		std::string strCardImg(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
+		strCardImg.append(".png");
+
+		std::string strRoleName(((CCString *)dict->objectForKey("roleName"))->getCString());
+		CCString *strGroup1 = (CCString *)dict->objectForKey("game_group_id");
+
+		CCString *strBlood = (CCString *)dict->objectForKey("blood");
+		CCString *strAttak = (CCString *)dict->objectForKey("attack");
+		//CCString *strDefence = (CCString *)dict->objectForKey("defence");
+		//CCString *strCrit = (CCString *)dict->objectForKey("crit");
+		//CCString *strDodge = (CCString *)dict->objectForKey("dodge");
 
 		CCControlButton *btn = CCControlButton::create(scaleSprite);
 		btn->setPreferredSize(CCSizeMake(150 * scale,205 * scale));
 		btn->setAnchorPoint(ccp(0.5,0.5));
+		
 		CCSize spriteSize = scaleSprite->getContentSize();
 		btn->setPosition(ccp(spriteSize.width * 0.5 + col++ * spriteSize.width,winSize.height - spriteSize.height * 0.5  - 45 - row * spriteSize.height));
 
 		if (i<4)
 		{
-			CCLabelTTF *lblCardName = CCLabelTTF::create("erlangsheng", "Arial", 14.0);
+			CCLabelTTF *lblCardName = CCLabelTTF::create(strRoleName.c_str(), "Arial", 14.0);
 			lblCardName->setAnchorPoint(ccp(0.5,1));
 			lblCardName->setTag(99);
 			lblCardName->setPosition(ccp(spriteSize.width * 0.5,spriteSize.height - 5));
@@ -138,21 +159,21 @@ void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoa
 			lblCardLevel->setTag(100);
 			lblCardLevel->setPosition(ccp(spriteSize.width * 0.5,spriteSize.height - 70));
 
-			std::string strGroup = determineGroup(CCString::create("1"));
+			std::string strGroup = determineGroup(strGroup1);
 			CCSprite *sCardGroup = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strGroup.c_str()));
 			sCardGroup->setAnchorPoint(ccp(1,1));
 			sCardGroup->setPosition(ccp(spriteSize.width - 5,spriteSize.height - 5));
 			sCardGroup->setScale(0.71);
 			
 			
-			CCSprite *sCard = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("head_erlangsheng.png"));
+			CCSprite *sCard = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardImg.c_str()));
 			sCard->setAnchorPoint(ccp(0.5,1));
 			sCard->setTag(101);
 			sCard->setPosition(ccp(spriteSize.width * 0.5,spriteSize.height - 25));
 			sCard->setScale(0.71);
 
 			std::string _attackStr(LITERAL_STRING_ATTACK);
-			_attackStr.append("+60").append(LITERAL_STRING_POINT);
+			_attackStr.append("+").append(strAttak->getCString()).append(LITERAL_STRING_POINT);
 
 			CCLabelTTF *lblAttack = CCLabelTTF::create(_attackStr.c_str(), "Arial", 12.0);
 			lblAttack->setAnchorPoint(ccp(0.5,1));
@@ -161,7 +182,7 @@ void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoa
 			lblAttack->setColor(ccc3(252,255,56));
 
 			std::string _bloodStr(LITERAL_STRING_BLOOD);
-			_bloodStr.append("+125").append(LITERAL_STRING_POINT);
+			_bloodStr.append("+").append(strBlood->getCString()).append(LITERAL_STRING_POINT);
 
 			CCLabelTTF *lblHP = CCLabelTTF::create(_bloodStr.c_str(), "Arial", 12.0);
 			lblHP->setAnchorPoint(ccp(0.5,1));
@@ -203,6 +224,12 @@ void MDHerosFormationLayer::touchUpInside(CCObject* pSender, CCControlEvent even
 	CCNode *parent = btn->getParent();
 
 	CCSize spriteSize = parent->getContentSize();
+	
+	CCControlButton *btnCard = (CCControlButton *)btn->getParent();
+	CCDictionary *dict = (CCDictionary *)mCardList->objectAtIndex(btnCard->getTag());
+	CCString *strDefence = (CCString *)dict->objectForKey("defence");
+	CCString *strCrit = (CCString *)dict->objectForKey("crit");
+	CCString *strDodge = (CCString *)dict->objectForKey("dodge");
 
 	if (btn->getTag()==1)
 	{
@@ -232,7 +259,7 @@ void MDHerosFormationLayer::touchUpInside(CCObject* pSender, CCControlEvent even
 		lblHP->setPosition(ccpAdd(lblHP->getPosition(),ccp(0,40)));
 
 		std::string _defenceStr(LITERAL_STRING_DEFENCE);
-		_defenceStr.append("+20").append(LITERAL_STRING_POINT);
+		_defenceStr.append("+").append(strDefence->getCString()).append(LITERAL_STRING_POINT);
 
 		CCLabelTTF *lblDefence = CCLabelTTF::create(_defenceStr.c_str(), "Arial", 12.0);
 		lblDefence->setAnchorPoint(ccp(0.5,1));
@@ -242,7 +269,7 @@ void MDHerosFormationLayer::touchUpInside(CCObject* pSender, CCControlEvent even
 		parent->addChild(lblDefence);
 
 		std::string _critStr(LITERAL_STRING_CRIT);
-		_critStr.append("+100").append(LITERAL_STRING_POINT);
+		_critStr.append("+").append(strCrit->getCString()).append(LITERAL_STRING_POINT);
 
 		CCLabelTTF *lblCrit = CCLabelTTF::create(_critStr.c_str(), "Arial", 12.0);
 		lblCrit->setAnchorPoint(ccp(0.5,1));
@@ -252,7 +279,7 @@ void MDHerosFormationLayer::touchUpInside(CCObject* pSender, CCControlEvent even
 		parent->addChild(lblCrit);
 
 		std::string _dodgeStr(LITERAL_STRING_DODGE);
-		_dodgeStr.append("+15%");
+		_dodgeStr.append("+").append(floatToPercent(strDodge->floatValue() * 100));
 
 		CCLabelTTF *lblDodge = CCLabelTTF::create("闪+15%", "Arial", 12.0);
 		lblDodge->setAnchorPoint(ccp(0.5,1));

@@ -14,14 +14,19 @@ MainInnerLayer::MainInnerLayer()
 {
     mTableView = NULL;
     m_layToolBar = NULL;
+
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("art_head.plist");
      
     mCardList =  CCArray::create();
-    mCardList->addObject(CCString::create("head_rulaifo.png"));
-    mCardList->addObject(CCString::create("head_sunwukong.png"));
-    mCardList->addObject(CCString::create("head_erlangsheng.png"));
-	mCardList->addObject(CCString::create("head_rulaifo.png"));
-	mCardList->addObject(CCString::create("head_sunwukong.png"));
-	mCardList->addObject(CCString::create("head_erlangsheng.png"));
+	CardQueryCriteria *query = new CardQueryCriteria();
+	query->cardName = "ft001_2;ft003_2;ft004_2;ft005_2;ft006_2;ft017_2";
+	mCardList= GlobalData::getAllCardProfile(query);
+ //   mCardList->addObject(CCString::create("head_rulaifo.png"));
+ //   mCardList->addObject(CCString::create("head_sunwukong.png"));
+ //   mCardList->addObject(CCString::create("head_erlangsheng.png"));
+	//mCardList->addObject(CCString::create("head_rulaifo.png"));
+	//mCardList->addObject(CCString::create("head_sunwukong.png"));
+	//mCardList->addObject(CCString::create("head_erlangsheng.png"));
 
     mCardList->retain();
 
@@ -127,7 +132,7 @@ void MainInnerLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	mTableView->setBounceable(false);
 	mTableView->setDelegate(this);
     
-//    mTableView->reloadData();
+    mTableView->reloadData();
 
 //    if (m_sCharacter==NULL) {
 //        m_sCharacter = CCSprite::createWithSpriteFrameName("character_sunwukong.png");
@@ -184,7 +189,11 @@ CCSize MainInnerLayer::tableCellSizeForIndex(CCTableView *table, unsigned int id
 
 CCTableViewCell* MainInnerLayer::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
-	CCString *string = (CCString *)mCardList->objectAtIndex(idx);
+	//CCString *string = (CCString *)mCardList->objectAtIndex(idx);
+	CCDictionary *dict = (CCDictionary *)mCardList->objectAtIndex(idx);
+	std::string strCardHeadName(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
+	strCardHeadName.append(".png");
+
 	bool selected = (idx==selectedindex);
     CCSprite *sCard = NULL;
     CCSprite *sSelected = NULL;
@@ -202,7 +211,7 @@ CCTableViewCell* MainInnerLayer::tableCellAtIndex(CCTableView *table, unsigned i
 		sSelected->setAnchorPoint(CCPointZero);
 		cell->addChild(sSelected);
 
-		sCard = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(string->getCString()));
+		sCard = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardHeadName.c_str()));
 		sCard->setTag(122);
 		sCard->setPosition(ccp(2,0));
 		sCard->setAnchorPoint(CCPointZero);
@@ -211,9 +220,8 @@ CCTableViewCell* MainInnerLayer::tableCellAtIndex(CCTableView *table, unsigned i
 	else
 	{
 		sCard = (CCSprite*)cell->getChildByTag(122);
-        sCard->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(string->getCString()));
+        sCard->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardHeadName.c_str()));
 	}
-
 
 	return cell;
 }
