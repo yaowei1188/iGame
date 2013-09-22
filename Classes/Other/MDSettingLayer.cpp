@@ -520,10 +520,13 @@ MDSettingLayer::MDSettingLayer()
 {
     //mTableView = NULL;
     mSettingList = NULL;
+
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("setting.plist");
 }
 
 MDSettingLayer::~MDSettingLayer()
 {
     //CC_SAFE_RELEASE(mTableView);
+	CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("setting.plist");
 }
 

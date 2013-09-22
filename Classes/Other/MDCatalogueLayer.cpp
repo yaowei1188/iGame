@@ -278,11 +278,14 @@ MDCatalogueLayer::MDCatalogueLayer()
     mTableView = NULL;
     mHeroList = NULL;
     _preSelectedTab = NULL;
+
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("catalogue.plist");
 }
 
 MDCatalogueLayer::~MDCatalogueLayer()
 {
 //    CC_SAFE_RELEASE(mTableView);
-	CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("art_head.plist");
+	//CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("art_head.plist");
+	CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("catalogue.plist");
 }
 
