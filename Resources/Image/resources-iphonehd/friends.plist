@@ -69,32 +69,6 @@
                 <key>sourceSize</key>
                 <string>{70,70}</string>
             </dict>
-            <key>friends_dairy.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{858,158},{60,60}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{60,60}}</string>
-                <key>sourceSize</key>
-                <string>{60,60}</string>
-            </dict>
-            <key>friends_dairy_copy.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{570,244},{60,60}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{60,60}}</string>
-                <key>sourceSize</key>
-                <string>{60,60}</string>
-            </dict>
             <key>friends_email.png</key>
             <dict>
                 <key>frame</key>
@@ -107,32 +81,6 @@
                 <string>{{0,0},{134,38}}</string>
                 <key>sourceSize</key>
                 <string>{134,38}</string>
-            </dict>
-            <key>friends_fo.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{632,222},{60,60}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{60,60}}</string>
-                <key>sourceSize</key>
-                <string>{60,60}</string>
-            </dict>
-            <key>friends_fo_copy.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{714,168},{60,60}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{60,60}}</string>
-                <key>sourceSize</key>
-                <string>{60,60}</string>
             </dict>
             <key>friends_love.png</key>
             <dict>
@@ -225,32 +173,6 @@
                 <key>sourceSize</key>
                 <string>{110,40}</string>
             </dict>
-            <key>friends_wizard.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{570,182},{60,60}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{60,60}}</string>
-                <key>sourceSize</key>
-                <string>{60,60}</string>
-            </dict>
-            <key>friends_wizard_copy.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{652,160},{60,60}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{60,60}}</string>
-                <key>sourceSize</key>
-                <string>{60,60}</string>
-            </dict>
             <key>myfriend_btn.png</key>
             <dict>
                 <key>frame</key>
@@ -339,7 +261,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:d2e16c6a27d18e3293a02cf4420b6913$</string>
+            <string>$TexturePacker:SmartUpdate:9b95fe7c698c0a0bdacb2bf45e60d011$</string>
             <key>textureFileName</key>
             <string>friends.png</string>
         </dict>
