@@ -227,6 +227,16 @@ void AnimatePacker::freeAnimations(const char *path){
 	    string plistPath =CCFileUtils::sharedFileUtils()->fullPathFromRelativeFile(plists[i].c_str(), pszPath.c_str());
         //CCFileUtils::fullPathFromRelativeFile(plists[i].c_str(), pszPath);
 		CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile(plistPath.c_str());
+
+		//add by ivan
+		// remove .xxx
+		std::string texturePath(plists[i]);
+		size_t startPos = texturePath.find_last_of("."); 
+		texturePath = texturePath.erase(startPos);
+
+		// append .png
+		texturePath = texturePath.append(".png");
+		CCTextureCache::sharedTextureCache()->removeTextureForKey(texturePath.c_str());
 	}
 	pathToPlistsMap.erase(path);
 	

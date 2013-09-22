@@ -356,10 +356,15 @@ TaskListScene::TaskListScene()
 	mArrayList = NULL;
     mTableView = NULL;
     mTaskListTableView = NULL;
+
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("task.plist");
 }
 
 TaskListScene::~TaskListScene()
 {
     CC_SAFE_RELEASE(mTableView);
+
+	CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("task.plist");
+	CCTextureCache::sharedTextureCache()->removeTextureForKey("task.png");
 }
 
