@@ -252,9 +252,9 @@ void MDCardPlayer::playAttackAnnimateFrame(MDCardPlayer *target)
 		dictAnnimate = CCDictionary::create();
 		dictAnnimate->setObject(CCString::create("e11"),"Annimate");
 		arrayAnimate->addObject(dictAnnimate);
-		dictAnnimate = CCDictionary::create();
-		dictAnnimate->setObject(CCString::create("e13"),"Annimate");
-		arrayAnimate->addObject(dictAnnimate);
+		//dictAnnimate = CCDictionary::create();
+		//dictAnnimate->setObject(CCString::create("e13"),"Annimate");
+		//arrayAnimate->addObject(dictAnnimate);
 		dictAnnimate = CCDictionary::create();
 		dictAnnimate->setObject(CCString::create("e16"),"Annimate");
 		arrayAnimate->addObject(dictAnnimate);
