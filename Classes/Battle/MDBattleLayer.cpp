@@ -101,7 +101,7 @@ bool MDBattleLayer::init()
 
 		m_intWhoAttack = 0;
 
-		CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("art_head.plist");
+		//CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("art_head.plist");
 
 		mHeroCardList= CCArray::create();
 		mHeroCardList->retain();
@@ -487,7 +487,11 @@ void MDBattleLayer::prepareFormation()
 		col = i % 3;
 
 		CCDictionary *dictHero = (CCDictionary *)mCardNameList->objectAtIndex(i);
-		std::string strCardHeadName(((CCString *)dictHero->objectForKey("cardHeadImg"))->getCString());
+		//std::string strCardHeadName(((CCString *)dictHero->objectForKey("cardHeadImg"))->getCString());
+		//strCardHeadName.append(".png");
+
+		std::string strCardHeadName("art/art_head/");
+		strCardHeadName.append(((CCString *)dictHero->objectForKey("cardHeadImg"))->getCString());
 		strCardHeadName.append(".png");
 
 		MDCardPlayer *cardPlayer = MDCardPlayer::create(strCardHeadName);
@@ -526,7 +530,12 @@ void MDBattleLayer::prepareEnemyFormation()
 		int idx = rand()%(mHeroList->count());
 		CCDictionary *dictHero = (CCDictionary *)mHeroList->objectAtIndex(idx);
 
-		std::string strCardHeadName(((CCString *)dictHero->objectForKey("cardHeadImg"))->getCString());
+		//std::string strCardHeadName(((CCString *)dictHero->objectForKey("cardHeadImg"))->getCString());
+		//strCardHeadName.append(".png");
+
+
+		std::string strCardHeadName("art/art_head/");
+		strCardHeadName.append(((CCString *)dictHero->objectForKey("cardHeadImg"))->getCString());
 		strCardHeadName.append(".png");
 
 		MDCardPlayer *cardPlayer = MDCardPlayer::create(strCardHeadName);

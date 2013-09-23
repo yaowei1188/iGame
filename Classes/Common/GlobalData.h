@@ -50,6 +50,8 @@ public:
 
 	static CCArray* getEnemyFormation(int round);
 
+	//static float factor;
+
 private:
     static int sqliteExecCallBack( void * para, int n_column, char ** column_value, char ** column_name );
 	static std::string getWritablePath();

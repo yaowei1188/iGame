@@ -92,26 +92,31 @@ bool AppDelegate::applicationDidFinishLaunching()
         {
             resourceSize = CCSizeMake(640, 960);
             resDirOrders.push_back("resources-iphonehd");
+			//GlobalData::factor = 1.0;
         }
         else
         {
             resDirOrders.push_back("resources-iphone");
+			//GlobalData::factor = 0.5;
         }
     }
     else if (platform == kTargetAndroid)
     {
 		if (screenSize.height > 960)
 		{
+			//GlobalData::factor = 1.0;
 			resourceSize = CCSizeMake(640, 960);
 			resDirOrders.push_back("resources-iphonehd");
 		}
 		else if (screenSize.height > 480)
 		{
+			//GlobalData::factor = 1.0;
 			resourceSize = CCSizeMake(640, 960);
 			resDirOrders.push_back("resources-iphonehd");
 		}
 		else
 		{
+			//GlobalData::factor = 0.5;
 			resDirOrders.push_back("resources-iphone");
 		}
     }
@@ -119,11 +124,13 @@ bool AppDelegate::applicationDidFinishLaunching()
 	{
 		if (screenSize.height > 480)
 		{
+			//GlobalData::factor = 1.0;
 			resourceSize = CCSizeMake(640, 960);
 			resDirOrders.push_back("resources-iphonehd");
 		}
 		else
 		{
+			//GlobalData::factor = 0.5;
 			resDirOrders.push_back("resources-iphone");
 		}
 	}

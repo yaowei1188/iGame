@@ -11,6 +11,7 @@
 #include "AnimatePacker.h"
 #include "StringExt.h"
 #include "MDSoundManager.h"
+#include "GlobalData.h"
 
 MDCardPlayer * MDCardPlayer::create(std::string p_cardName)
 {
@@ -35,7 +36,14 @@ MDCardPlayer::MDCardPlayer()
 
 bool MDCardPlayer::init(std::string p_cardName)
 {
-	m_sCardPlayer = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(p_cardName.c_str()));
+	//m_sCardPlayer = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(p_cardName.c_str()));
+
+	m_sCardPlayer = CCSprite::create(p_cardName.c_str());
+	//if (GlobalData::factor!=1.0)
+	//{
+	//	m_sCardPlayer->setScale(GlobalData::factor);
+	//}
+			m_sCardPlayer->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
 	m_sCardPlayer->setUserObject(this);
 
 	return true;
