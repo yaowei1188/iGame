@@ -116,6 +116,9 @@
     <Filter Include="Resources\sound">
       <UniqueIdentifier>{667ea711-ec68-446c-8922-e3c19476c42c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\art\art_head">
+      <UniqueIdentifier>{7e785b18-ee19-4b81-9f46-4be6d9e5473e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\iGame.ico">
@@ -1113,6 +1116,252 @@
     </None>
     <None Include="..\Resources\di.jpg">
       <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Image\art_head.plist">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\art_head.png">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\catalogue.plist">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\catalogue.png">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\mail.plist">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\mail.png">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\package.plist">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\package.png">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\setting.plist">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\setting.png">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\task.plist">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\task.png">
+      <Filter>Resources\Image</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\art_head.plist">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\art_head.png">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\catalogue.plist">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\catalogue.png">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\mail.plist">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\mail.png">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\package.plist">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\package.png">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\setting.plist">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\setting.png">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\task.plist">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Image\resources-iphonehd\task.png">
+      <Filter>Resources\Image\resources-iphonehd</Filter>
+    </None>
+    <None Include="..\Resources\Card_Level1.png">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Card_Level2.png">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Card_Level3.png">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Card_Level4.png">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Card_Level5.png">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Card_Level6.png">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Card_Level7.png">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Card_Level8.png">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Card_Level9.png">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Card_Level10.png">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\jingyandan.png">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\ft001_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\ft003_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\ft004_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\ft005_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\ft006_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\ft017_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\ft025_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\ft027_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\ft045_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx002_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx004_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx005_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx006_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx007_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx008_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx009_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx012_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx014_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx015_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx017_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx026_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx027_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx031_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx045_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx047_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\sx049_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg001_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg002_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg004_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg005_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg006_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg007_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg010_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg011_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg013_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg016_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg017_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg018_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg021_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg024_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg025_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg028_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg029_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg030_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg031_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg035_0.png">
+      <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\art\art_head\yg039_0.png">
+      <Filter>Resources\art\art_head</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
