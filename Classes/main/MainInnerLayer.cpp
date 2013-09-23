@@ -15,7 +15,7 @@ MainInnerLayer::MainInnerLayer()
     mTableView = NULL;
     m_layToolBar = NULL;
 
-	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("art_head.plist");
+	//CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("art_head.plist");
      
     mCardList =  CCArray::create();
 	CardQueryCriteria *query = new CardQueryCriteria();
@@ -194,7 +194,7 @@ CCTableViewCell* MainInnerLayer::tableCellAtIndex(CCTableView *table, unsigned i
 	//std::string strCardHeadName(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
 	//strCardHeadName.append(".png");
 
-	std::string strCardHeadImg("art/art_head/");
+	std::string strCardHeadImg("art/art_head1/");
 	strCardHeadImg.append(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
 	strCardHeadImg.append(".png");
 

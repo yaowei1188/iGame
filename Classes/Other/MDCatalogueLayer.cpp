@@ -38,7 +38,7 @@ bool MDCatalogueLayer::init()
 
 		btnTouched = false;
 
-		CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("art_head.plist");
+		//CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("art_head.plist");
         
         bRet = true;
     } while (0);
@@ -203,6 +203,11 @@ CCTableViewCell* MDCatalogueLayer::tableCellAtIndex(CCTableView *table, unsigned
 	CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(idx);
 	CCTableViewCell *cell = table->dequeueCell();
     CCSize size = this->tableCellSizeForIndex(table, idx);
+
+	std::string strCardHeadImg("art/art_head1/");
+	strCardHeadImg.append(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
+	strCardHeadImg.append(".png");
+
 	if (!cell) {
 		cell = new CCTableViewCell();
 		cell->autorelease();
@@ -214,9 +219,11 @@ CCTableViewCell* MDCatalogueLayer::tableCellAtIndex(CCTableView *table, unsigned
 		sSelected->setAnchorPoint(ccp(0.5, 1.0));
 		cell->addChild(sSelected);
         
-		std::string strCardHeadImg(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
-		strCardHeadImg.append(".png");
-        CCSprite *sHead = CCSprite::createWithSpriteFrameName(strCardHeadImg.c_str());
+		//std::string strCardHeadImg(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
+		//strCardHeadImg.append(".png");
+
+
+        CCSprite *sHead = CCSprite::create(strCardHeadImg.c_str());
         sHead->setTag(122);
         sHead->setPosition(ccp(size.width * 0.5,size.height * 1.0 - 2));
 		sHead->setAnchorPoint(ccp(0.5, 1));
@@ -248,10 +255,12 @@ CCTableViewCell* MDCatalogueLayer::tableCellAtIndex(CCTableView *table, unsigned
         }
         
         CCSprite *sHead = (CCSprite*)cell->getChildByTag(122);
-		std::string strCardHeadImg(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
-		strCardHeadImg.append(".png");
+		//std::string strCardHeadImg(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
+		//strCardHeadImg.append(".png");
 
-		sHead->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardHeadImg.c_str()));
+		sHead->setDisplayFrame(CCSpriteFrame::create(strCardHeadImg.c_str(),CCRect(0,0,126,126)));
+		sHead->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
+		//sHead->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardHeadImg.c_str()));
         
 		//CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);
 		//lblName->setString("weiweiyao");

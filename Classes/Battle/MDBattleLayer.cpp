@@ -490,7 +490,7 @@ void MDBattleLayer::prepareFormation()
 		//std::string strCardHeadName(((CCString *)dictHero->objectForKey("cardHeadImg"))->getCString());
 		//strCardHeadName.append(".png");
 
-		std::string strCardHeadName("art/art_head/");
+		std::string strCardHeadName("art/art_head1/");
 		strCardHeadName.append(((CCString *)dictHero->objectForKey("cardHeadImg"))->getCString());
 		strCardHeadName.append(".png");
 
@@ -534,7 +534,7 @@ void MDBattleLayer::prepareEnemyFormation()
 		//strCardHeadName.append(".png");
 
 
-		std::string strCardHeadName("art/art_head/");
+		std::string strCardHeadName("art/art_head1/");
 		strCardHeadName.append(((CCString *)dictHero->objectForKey("cardHeadImg"))->getCString());
 		strCardHeadName.append(".png");
 
