@@ -9,22 +9,22 @@
             <delay>0.1</delay>
             <flipX>false</flipX>
             <flipY>false</flipY>
-            <spriteFrame>精选技能光效 (17)0001.png</spriteFrame>
-            <spriteFrame>精选技能光效 (17)0002.png</spriteFrame>
-            <spriteFrame>精选技能光效 (17)0003.png</spriteFrame>
-            <spriteFrame>精选技能光效 (17)0004.png</spriteFrame>
-            <spriteFrame>精选技能光效 (17)0005.png</spriteFrame>
-            <spriteFrame>精选技能光效 (17)0006.png</spriteFrame>
-            <spriteFrame>精选技能光效 (17)0007.png</spriteFrame>
-            <spriteFrame>精选技能光效 (17)0008.png</spriteFrame>
-            <spriteFrame>精选技能光效 (17)0009.png</spriteFrame>
-            <spriteFrame>精选技能光效 (17)0010.png</spriteFrame>
-            <spriteFrame>精选技能光效 (17)0011.png</spriteFrame>
-            <spriteFrame>精选技能光效 (17)0012.png</spriteFrame>
-            <spriteFrame>精选技能光效 (17)0013.png</spriteFrame>
-            <spriteFrame>精选技能光效 (17)0014.png</spriteFrame>
-            <spriteFrame>精选技能光效 (17)0015.png</spriteFrame>
-            <spriteFrame>精选技能光效 (17)0016.png</spriteFrame>
+            <spriteFrame>e17(1).png</spriteFrame>
+            <spriteFrame>e17(2).png</spriteFrame>
+            <spriteFrame>e17(3).png</spriteFrame>
+            <spriteFrame>e17(4).png</spriteFrame>
+            <spriteFrame>e17(5).png</spriteFrame>
+            <spriteFrame>e17(6).png</spriteFrame>
+            <spriteFrame>e17(7).png</spriteFrame>
+            <spriteFrame>e17(8).png</spriteFrame>
+            <spriteFrame>e17(9).png</spriteFrame>
+            <spriteFrame>e17(10).png</spriteFrame>
+            <spriteFrame>e17(11).png</spriteFrame>
+            <spriteFrame>e17(12).png</spriteFrame>
+            <spriteFrame>e17(13).png</spriteFrame>
+            <spriteFrame>e17(14).png</spriteFrame>
+            <spriteFrame>e17(15).png</spriteFrame>
+            <spriteFrame>e17(16).png</spriteFrame>
         </animation>
     </animations>
 </root>

@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>精选技能光效 (4)0001.png</key>
+            <key>e4(1).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{354,706},{350,350}}</string>
@@ -17,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{350,350}</string>
             </dict>
-            <key>精选技能光效 (4)0002.png</key>
+            <key>e4(10).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{354,354},{350,350}}</string>
@@ -30,7 +30,7 @@
                 <key>sourceSize</key>
                 <string>{350,350}</string>
             </dict>
-            <key>精选技能光效 (4)0003.png</key>
+            <key>e4(11).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1410,2},{350,350}}</string>
@@ -43,7 +43,7 @@
                 <key>sourceSize</key>
                 <string>{350,350}</string>
             </dict>
-            <key>精选技能光效 (4)0004.png</key>
+            <key>e4(2).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1058,2},{350,350}}</string>
@@ -56,7 +56,7 @@
                 <key>sourceSize</key>
                 <string>{350,350}</string>
             </dict>
-            <key>精选技能光效 (4)0005.png</key>
+            <key>e4(3).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{706,2},{350,350}}</string>
@@ -69,7 +69,7 @@
                 <key>sourceSize</key>
                 <string>{350,350}</string>
             </dict>
-            <key>精选技能光效 (4)0006.png</key>
+            <key>e4(4).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{354,2},{350,350}}</string>
@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{350,350}</string>
             </dict>
-            <key>精选技能光效 (4)0007.png</key>
+            <key>e4(5).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,1410},{350,350}}</string>
@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{350,350}</string>
             </dict>
-            <key>精选技能光效 (4)0008.png</key>
+            <key>e4(6).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,1058},{350,350}}</string>
@@ -108,7 +108,7 @@
                 <key>sourceSize</key>
                 <string>{350,350}</string>
             </dict>
-            <key>精选技能光效 (4)0009.png</key>
+            <key>e4(7).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,706},{350,350}}</string>
@@ -121,7 +121,7 @@
                 <key>sourceSize</key>
                 <string>{350,350}</string>
             </dict>
-            <key>精选技能光效 (4)0010.png</key>
+            <key>e4(8).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,354},{350,350}}</string>
@@ -134,7 +134,7 @@
                 <key>sourceSize</key>
                 <string>{350,350}</string>
             </dict>
-            <key>精选技能光效 (4)0011.png</key>
+            <key>e4(9).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,2},{350,350}}</string>
@@ -157,7 +157,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:eb4da4c4319728b09b3d8a1e656d05cc$</string>
+            <string>$TexturePacker:SmartUpdate:89f186a754e6849e6bc3ede8a309e1e0$</string>
             <key>textureFileName</key>
             <string>e4.png</string>
         </dict>

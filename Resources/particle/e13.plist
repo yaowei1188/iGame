@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>精选技能光效 (13)0001.png</key>
+            <key>e13(1).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1508,1006},{500,500}}</string>
@@ -17,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{500,500}</string>
             </dict>
-            <key>精选技能光效 (13)0002.png</key>
+            <key>e13(10).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1006,1508},{500,500}}</string>
@@ -30,7 +30,7 @@
                 <key>sourceSize</key>
                 <string>{500,500}</string>
             </dict>
-            <key>精选技能光效 (13)0003.png</key>
+            <key>e13(11).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1006,1006},{500,500}}</string>
@@ -43,7 +43,7 @@
                 <key>sourceSize</key>
                 <string>{500,500}</string>
             </dict>
-            <key>精选技能光效 (13)0004.png</key>
+            <key>e13(12).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1508,504},{500,500}}</string>
@@ -56,7 +56,7 @@
                 <key>sourceSize</key>
                 <string>{500,500}</string>
             </dict>
-            <key>精选技能光效 (13)0005.png</key>
+            <key>e13(13).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1006,504},{500,500}}</string>
@@ -69,7 +69,7 @@
                 <key>sourceSize</key>
                 <string>{500,500}</string>
             </dict>
-            <key>精选技能光效 (13)0006.png</key>
+            <key>e13(14).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{504,1508},{500,500}}</string>
@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{500,500}</string>
             </dict>
-            <key>精选技能光效 (13)0007.png</key>
+            <key>e13(15).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{504,1006},{500,500}}</string>
@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{500,500}</string>
             </dict>
-            <key>精选技能光效 (13)0008.png</key>
+            <key>e13(2).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{504,504},{500,500}}</string>
@@ -108,7 +108,7 @@
                 <key>sourceSize</key>
                 <string>{500,500}</string>
             </dict>
-            <key>精选技能光效 (13)0009.png</key>
+            <key>e13(3).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1508,2},{500,500}}</string>
@@ -121,7 +121,7 @@
                 <key>sourceSize</key>
                 <string>{500,500}</string>
             </dict>
-            <key>精选技能光效 (13)0010.png</key>
+            <key>e13(4).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1006,2},{500,500}}</string>
@@ -134,7 +134,7 @@
                 <key>sourceSize</key>
                 <string>{500,500}</string>
             </dict>
-            <key>精选技能光效 (13)0011.png</key>
+            <key>e13(5).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{504,2},{500,500}}</string>
@@ -147,7 +147,7 @@
                 <key>sourceSize</key>
                 <string>{500,500}</string>
             </dict>
-            <key>精选技能光效 (13)0012.png</key>
+            <key>e13(6).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,1508},{500,500}}</string>
@@ -160,7 +160,7 @@
                 <key>sourceSize</key>
                 <string>{500,500}</string>
             </dict>
-            <key>精选技能光效 (13)0013.png</key>
+            <key>e13(7).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,1006},{500,500}}</string>
@@ -173,7 +173,7 @@
                 <key>sourceSize</key>
                 <string>{500,500}</string>
             </dict>
-            <key>精选技能光效 (13)0014.png</key>
+            <key>e13(8).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,504},{500,500}}</string>
@@ -186,7 +186,7 @@
                 <key>sourceSize</key>
                 <string>{500,500}</string>
             </dict>
-            <key>精选技能光效 (13)0015.png</key>
+            <key>e13(9).png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,2},{500,500}}</string>
@@ -209,7 +209,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:b6645ed31efaa029305efb2a2d31021f$</string>
+            <string>$TexturePacker:SmartUpdate:2d5f2a8db9be4b5e4c3733fc8874d5f0$</string>
             <key>textureFileName</key>
             <string>e13.png</string>
         </dict>

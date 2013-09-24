@@ -9,23 +9,23 @@
             <delay>0.1</delay>
             <flipX>false</flipX>
             <flipY>false</flipY>
-            <spriteFrame>精选技能光效 (16)0001.png</spriteFrame>
-            <spriteFrame>精选技能光效 (16)0002.png</spriteFrame>
-            <spriteFrame>精选技能光效 (16)0003.png</spriteFrame>
-            <spriteFrame>精选技能光效 (16)0004.png</spriteFrame>
-            <spriteFrame>精选技能光效 (16)0005.png</spriteFrame>
-            <spriteFrame>精选技能光效 (16)0006.png</spriteFrame>
-            <spriteFrame>精选技能光效 (16)0007.png</spriteFrame>
-            <spriteFrame>精选技能光效 (16)0008.png</spriteFrame>
-            <spriteFrame>精选技能光效 (16)0009.png</spriteFrame>
-            <spriteFrame>精选技能光效 (16)0010.png</spriteFrame>
-            <spriteFrame>精选技能光效 (16)0011.png</spriteFrame>
-            <spriteFrame>精选技能光效 (16)0012.png</spriteFrame>
-            <spriteFrame>精选技能光效 (16)0013.png</spriteFrame>
-            <spriteFrame>精选技能光效 (16)0014.png</spriteFrame>
-            <spriteFrame>精选技能光效 (16)0015.png</spriteFrame>
-            <spriteFrame>精选技能光效 (16)0016.png</spriteFrame>
-            <spriteFrame>精选技能光效 (16)0017.png</spriteFrame>
+            <spriteFrame>e16(1).png</spriteFrame>
+            <spriteFrame>e16(2).png</spriteFrame>
+            <spriteFrame>e16(3).png</spriteFrame>
+            <spriteFrame>e16(4).png</spriteFrame>
+            <spriteFrame>e16(5).png</spriteFrame>
+            <spriteFrame>e16(6).png</spriteFrame>
+            <spriteFrame>e16(7).png</spriteFrame>
+            <spriteFrame>e16(8).png</spriteFrame>
+            <spriteFrame>e16(9).png</spriteFrame>
+            <spriteFrame>e16(10).png</spriteFrame>
+            <spriteFrame>e16(11).png</spriteFrame>
+            <spriteFrame>e16(12).png</spriteFrame>
+            <spriteFrame>e16(13).png</spriteFrame>
+            <spriteFrame>e16(14).png</spriteFrame>
+            <spriteFrame>e16(15).png</spriteFrame>
+            <spriteFrame>e16(16).png</spriteFrame>
+            <spriteFrame>e16(17).png</spriteFrame>
         </animation>
     </animations>
 </root>
