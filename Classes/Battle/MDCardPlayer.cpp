@@ -36,14 +36,8 @@ MDCardPlayer::MDCardPlayer()
 
 bool MDCardPlayer::init(std::string p_cardName)
 {
-	//m_sCardPlayer = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(p_cardName.c_str()));
-
 	m_sCardPlayer = CCSprite::create(p_cardName.c_str());
-	//if (GlobalData::factor!=1.0)
-	//{
-	//	m_sCardPlayer->setScale(GlobalData::factor);
-	//}
-			m_sCardPlayer->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
+	m_sCardPlayer->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
 	m_sCardPlayer->setUserObject(this);
 
 	return true;
@@ -163,11 +157,16 @@ void MDCardPlayer::playAttackAnnimateFrame(MDCardPlayer *target)
 	CCDictionary *dictAnnimate = CCDictionary::create();
 	if (this->side==1)
 	{
+		//dictAnnimate = CCDictionary::create();
+		//dictAnnimate->setObject(CCString::create("qishouTX"),"Annimate");//position
+		//arrayAnimate->addObject(dictAnnimate);
 		dictAnnimate = CCDictionary::create();
-		dictAnnimate->setObject(CCString::create("yszs"),"Annimate");//position
+		dictAnnimate->setObject(CCString::create("yszs"),"Annimate");
+		dictAnnimate->setObject(CCString::create("50"),"PosOffsetY");
 		arrayAnimate->addObject(dictAnnimate);
 		dictAnnimate = CCDictionary::create();
 		dictAnnimate->setObject(CCString::create("yhly"),"Annimate");//position
+		dictAnnimate->setObject(CCString::create("90"),"PosOffsetY");
 		arrayAnimate->addObject(dictAnnimate);
 		dictAnnimate = CCDictionary::create();
 		dictAnnimate->setObject(CCString::create("hlz"),"Annimate");
@@ -202,6 +201,12 @@ void MDCardPlayer::playAttackAnnimateFrame(MDCardPlayer *target)
 		arrayAnimate->addObject(dictAnnimate);
 		dictAnnimate = CCDictionary::create();
 		dictAnnimate->setObject(CCString::create("szh"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("dlrh"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("slzs"),"Annimate");
 		arrayAnimate->addObject(dictAnnimate);
 	} else {
 		dictAnnimate = CCDictionary::create();
@@ -252,9 +257,9 @@ void MDCardPlayer::playAttackAnnimateFrame(MDCardPlayer *target)
 		dictAnnimate = CCDictionary::create();
 		dictAnnimate->setObject(CCString::create("e11"),"Annimate");
 		arrayAnimate->addObject(dictAnnimate);
-		//dictAnnimate = CCDictionary::create();
-		//dictAnnimate->setObject(CCString::create("e13"),"Annimate");
-		//arrayAnimate->addObject(dictAnnimate);
+		dictAnnimate = CCDictionary::create();
+		dictAnnimate->setObject(CCString::create("e13"),"Annimate");
+		arrayAnimate->addObject(dictAnnimate);
 		dictAnnimate = CCDictionary::create();
 		dictAnnimate->setObject(CCString::create("e16"),"Annimate");
 		arrayAnimate->addObject(dictAnnimate);
