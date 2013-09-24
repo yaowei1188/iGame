@@ -226,6 +226,7 @@ CCTableViewCell* MDCatalogueLayer::tableCellAtIndex(CCTableView *table, unsigned
         CCSprite *sHead = CCSprite::create(strCardHeadImg.c_str());
         sHead->setTag(122);
         sHead->setPosition(ccp(size.width * 0.5,size.height * 1.0 - 2));
+        sHead->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
 		sHead->setAnchorPoint(ccp(0.5, 1));
 		cell->addChild(sHead);
 
@@ -255,11 +256,12 @@ CCTableViewCell* MDCatalogueLayer::tableCellAtIndex(CCTableView *table, unsigned
         }
         
         CCSprite *sHead = (CCSprite*)cell->getChildByTag(122);
-		//std::string strCardHeadImg(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
-		//strCardHeadImg.append(".png");
-
-		sHead->setDisplayFrame(CCSpriteFrame::create(strCardHeadImg.c_str(),CCRect(0,0,126,126)));
-		sHead->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
+//		sHead->setDisplayFrame(CCSpriteFrame::create(strCardHeadImg.c_str(),CCRect(0,0,126,126)));
+        CCTexture2D* tex = CCTextureCache::sharedTextureCache()->addImage(strCardHeadImg.c_str());
+        sHead->setTexture(tex);
+        sHead->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
+        
+//		sHead->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
 		//sHead->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardHeadImg.c_str()));
         
 		//CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);

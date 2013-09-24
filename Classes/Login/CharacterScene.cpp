@@ -235,11 +235,11 @@ void CharacterScene::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 	{
         CCDictionary *dict = (CCDictionary *)object;
         
-        CCSprite *sCardBg = CCSprite::createWithSpriteFrameName("Card_Level4.png");
+        CCSprite *sCardBg = CCSprite::create("Card_Level4.png");
         CCSize bgSize = sCardBg->getContentSize();
         
         CCString *strCardName = (CCString *)dict->objectForKey("CardName");
-        std::string strCardName1 = this->addReturnForName(strCardName);
+//        std::string strCardName1 = this->addReturnForName(strCardName);
         
         //CCLabelTTF *lblCardName = CCLabelTTF::create(strCardName->getCString(), "Arial", 14.0);
         //lblCardName->setAnchorPoint(ccp(1,1));

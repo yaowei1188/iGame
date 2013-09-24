@@ -226,8 +226,10 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
 //    bool selected = (idx==selectedindex);
 
 	CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(idx);
-	std::string strCardHeadName(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
-	strCardHeadName.append(".png");
+    
+    std::string strCardHeadImg("art/art_head1/");
+	strCardHeadImg.append(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
+	strCardHeadImg.append(".png");
 
 	CCTableViewCell *cell = table->dequeueCell();
     CCSize size = this->tableCellSizeForIndex(table, idx);
@@ -242,7 +244,7 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
 		sSelected->setAnchorPoint(CCPointZero);
 		cell->addChild(sSelected);
         
-        CCSprite *sHead = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardHeadName.c_str()));
+        CCSprite *sHead = CCSprite::create(strCardHeadImg.c_str());
         sHead->setTag(122);
         sHead->setPosition(ccp(10,size.height * 0.5));
 		sHead->setAnchorPoint(ccp(0, 0.5));
@@ -310,7 +312,9 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
         }
         
         CCSprite *sHead = (CCSprite*)cell->getChildByTag(122);
-		sHead->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardHeadName.c_str()));
+        CCTexture2D* tex = CCTextureCache::sharedTextureCache()->addImage(strCardHeadImg.c_str());
+        sHead->setTexture(tex);
+//		sHead->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardHeadName.c_str()));
         
 		CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);
 		lblName->setString("weiweiyao");

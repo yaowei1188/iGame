@@ -53,15 +53,15 @@ void MDCardPlayer::playAssistAnnimateFrame(MDCardPlayer *target)
 	dictAnnimate->setObject(CCString::create("mrj"),"Annimate");
 	arrayAnimate->addObject(dictAnnimate);
 
-	dictAnnimate = CCDictionary::create();
-	dictAnnimate->setObject(CCString::create("e17"),"Annimate");
-	dictAnnimate->setObject(CCString::create("30"),"PosOffsetY");
-	arrayAnimate->addObject(dictAnnimate);
+//	dictAnnimate = CCDictionary::create();
+//	dictAnnimate->setObject(CCString::create("e17"),"Annimate");
+//	dictAnnimate->setObject(CCString::create("30"),"PosOffsetY");
+//	arrayAnimate->addObject(dictAnnimate);
 
-	dictAnnimate = CCDictionary::create();
-	dictAnnimate->setObject(CCString::create("e20"),"Annimate");
-	dictAnnimate->setObject(CCString::create("15"),"PosOffsetX");
-	arrayAnimate->addObject(dictAnnimate);
+//	dictAnnimate = CCDictionary::create();
+//	dictAnnimate->setObject(CCString::create("e20"),"Annimate");
+//	dictAnnimate->setObject(CCString::create("15"),"PosOffsetX");
+//	arrayAnimate->addObject(dictAnnimate);
 
 	//arrayAnimate->addObject(CCString::create("mrj"));//粉色的心
 	//arrayAnimate->addObject(CCString::create("e17"));//位置偏下 恢复的
@@ -244,31 +244,31 @@ void MDCardPlayer::playAttackAnnimateFrame(MDCardPlayer *target)
 		dictAnnimate = CCDictionary::create();
 		dictAnnimate->setObject(CCString::create("wlbf"),"Annimate");
 		arrayAnimate->addObject(dictAnnimate);
-		dictAnnimate = CCDictionary::create();
-		dictAnnimate->setObject(CCString::create("e0"),"Annimate");
-		arrayAnimate->addObject(dictAnnimate);
-		dictAnnimate = CCDictionary::create();
-		dictAnnimate->setObject(CCString::create("e4"),"Annimate");
-		dictAnnimate->setObject(CCString::create("-12"),"PosOffsetX");
-		arrayAnimate->addObject(dictAnnimate);
-		dictAnnimate = CCDictionary::create();
-		dictAnnimate->setObject(CCString::create("e5"),"Annimate");
-		arrayAnimate->addObject(dictAnnimate);
-		dictAnnimate = CCDictionary::create();
-		dictAnnimate->setObject(CCString::create("e11"),"Annimate");
-		arrayAnimate->addObject(dictAnnimate);
-		dictAnnimate = CCDictionary::create();
-		dictAnnimate->setObject(CCString::create("e13"),"Annimate");
-		arrayAnimate->addObject(dictAnnimate);
-		dictAnnimate = CCDictionary::create();
-		dictAnnimate->setObject(CCString::create("e16"),"Annimate");
-		arrayAnimate->addObject(dictAnnimate);
-		dictAnnimate = CCDictionary::create();
-		dictAnnimate->setObject(CCString::create("e17"),"Annimate");
-		arrayAnimate->addObject(dictAnnimate);
-		dictAnnimate = CCDictionary::create();
-		dictAnnimate->setObject(CCString::create("e20"),"Annimate");
-		arrayAnimate->addObject(dictAnnimate);
+//		dictAnnimate = CCDictionary::create();
+//		dictAnnimate->setObject(CCString::create("e0"),"Annimate");
+//		arrayAnimate->addObject(dictAnnimate);
+//		dictAnnimate = CCDictionary::create();
+//		dictAnnimate->setObject(CCString::create("e4"),"Annimate");
+//		dictAnnimate->setObject(CCString::create("-12"),"PosOffsetX");
+//		arrayAnimate->addObject(dictAnnimate);
+//		dictAnnimate = CCDictionary::create();
+//		dictAnnimate->setObject(CCString::create("e5"),"Annimate");
+//		arrayAnimate->addObject(dictAnnimate);
+//		dictAnnimate = CCDictionary::create();
+//		dictAnnimate->setObject(CCString::create("e11"),"Annimate");
+//		arrayAnimate->addObject(dictAnnimate);
+//		dictAnnimate = CCDictionary::create();
+//		dictAnnimate->setObject(CCString::create("e13"),"Annimate");
+//		arrayAnimate->addObject(dictAnnimate);
+//		dictAnnimate = CCDictionary::create();
+//		dictAnnimate->setObject(CCString::create("e16"),"Annimate");
+//		arrayAnimate->addObject(dictAnnimate);
+//		dictAnnimate = CCDictionary::create();
+//		dictAnnimate->setObject(CCString::create("e17"),"Annimate");
+//		arrayAnimate->addObject(dictAnnimate);
+//		dictAnnimate = CCDictionary::create();
+//		dictAnnimate->setObject(CCString::create("e20"),"Annimate");
+//		arrayAnimate->addObject(dictAnnimate);
 	}
 	
 	srand(time(NULL));

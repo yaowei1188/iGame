@@ -165,8 +165,10 @@ void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoa
 			sCardGroup->setPosition(ccp(spriteSize.width - 5,spriteSize.height - 5));
 			sCardGroup->setScale(0.71);
 			
-			
-			CCSprite *sCard = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardImg.c_str()));
+            std::string strCardHeadImg("art/art_head1/");
+            strCardHeadImg.append(strCardImg);
+            
+			CCSprite *sCard = CCSprite::create(strCardHeadImg.c_str());
 			sCard->setAnchorPoint(ccp(0.5,1));
 			sCard->setTag(101);
 			sCard->setPosition(ccp(spriteSize.width * 0.5,spriteSize.height - 25));

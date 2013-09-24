@@ -48,12 +48,12 @@ USING_NS_CC;
 
 AppDelegate::AppDelegate()
 {
-	MDSoundManager::preLoadSound();
+//	MDSoundManager::preLoadSound();
 }
 
 AppDelegate::~AppDelegate()
 {
-	MDSoundManager::end();
+//	MDSoundManager::end(); 
 }
 
 bool AppDelegate::applicationDidFinishLaunching()
@@ -206,7 +206,7 @@ void AppDelegate::applicationDidEnterBackground()
 {
     CCDirector::sharedDirector()->stopAnimation();
 
-	MDSoundManager::pauseBackgroundMusic();
+//	MDSoundManager::pauseBackgroundMusic();
 }
 
 // this function will be called when the app is active again
@@ -214,5 +214,5 @@ void AppDelegate::applicationWillEnterForeground()
 {
     CCDirector::sharedDirector()->startAnimation();
 
-    MDSoundManager::resumeBackgroundMusic();
+//    MDSoundManager::resumeBackgroundMusic();
 }

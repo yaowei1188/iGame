@@ -103,11 +103,16 @@ void MDCardAlchemyLayer::didSelectedItems(CCArray *pItems)
 	}
 	//CCLOG("items:%d",pItems->count());
 	CCDictionary *dict = (CCDictionary *)pItems->objectAtIndex(0);
-	std::string strCardHeadImg(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
+    
+    std::string strCardHeadImg("art/art_head1/");
+	strCardHeadImg.append(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
 	strCardHeadImg.append(".png");
 
 	CCControlButton *btn = (CCControlButton *)this->getChildByTag(selectedButton);
-	CCSpriteFrame *sHeadFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardHeadImg.c_str());
+    
+    CCTexture2D* tex = CCTextureCache::sharedTextureCache()->addImage(strCardHeadImg.c_str());
+    CCSize rect = tex->getContentSize();
+	CCSpriteFrame *sHeadFrame = CCSpriteFrame::createWithTexture(tex, CCRectMake(0, 0, rect.width, rect.height));
 	btn->setBackgroundSpriteFrameForState(sHeadFrame,CCControlStateNormal);
 	btn->setBackgroundSpriteFrameForState(sHeadFrame,CCControlStateHighlighted);
 }

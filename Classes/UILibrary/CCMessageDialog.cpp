@@ -40,10 +40,10 @@ bool CCMessageDialog::init()
         this->setTouchEnabled(true);
         
         CCSprite *mBg = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("prompt_dialog.png"));
-        CCSprite *cancelNormal = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("no_1.png"));
-        CCSprite *cancelHighlight = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("no_2.png"));
-        CCSprite *OKNormal = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("ok_1.png"));
-        CCSprite *OKHighlight = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("ok_2.png"));
+        CCSprite *cancelNormal = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("btn_bg.png"));
+        CCSprite *cancelHighlight = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("btn_bg_highlight.png"));
+        CCSprite *OKNormal = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("btn_bg.png"));
+        CCSprite *OKHighlight = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("btn_bg_highlight.png"));
 
         CCSize mSize=CCDirector::sharedDirector()->getWinSize();
         mBg->setPosition(ccp(mSize.width / 2, mSize.height / 3));

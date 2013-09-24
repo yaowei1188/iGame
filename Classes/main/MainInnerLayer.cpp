@@ -227,7 +227,12 @@ CCTableViewCell* MainInnerLayer::tableCellAtIndex(CCTableView *table, unsigned i
 	else
 	{
 		sCard = (CCSprite*)cell->getChildByTag(122);
-		sCard->setDisplayFrame(CCSpriteFrame::create(strCardHeadImg.c_str(),CCRect(0,0,126,126)));
+        
+        CCTexture2D* tex = CCTextureCache::sharedTextureCache()->addImage(strCardHeadImg.c_str());
+        sCard->setTexture(tex);
+        sCard->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
+        
+//		sCard->setDisplayFrame(CCSpriteFrame::create(strCardHeadImg.c_str(),CCRect(0,0,126,126)));
 		//if (GlobalData::factor!=1.0)
 		//{
 		//	sCard->setScale(GlobalData::factor);

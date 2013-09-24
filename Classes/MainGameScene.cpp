@@ -108,7 +108,7 @@ void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
 		yOffset = 0;
 	} else if (intSelectedMenu == MENUBAR_HERO_TAG) {
 		layer = (CCLayer *)this->GetLayer("MDHeroMainLayer");
-        //layer->setUserObject(mMainInnerLayer);
+        layer->setUserObject(mMainInnerLayer);
 	} else if (intSelectedMenu == MENUBAR_GROUP_TAG) {
 		this->updateUserInfo(80,100,150,200,5,900);
 		return;
