@@ -217,7 +217,6 @@ CCTableViewCell* MainInnerLayer::tableCellAtIndex(CCTableView *table, unsigned i
 
 		/*sCard = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardHeadName.c_str()));*/
 		sCard = CCSprite::create(strCardHeadImg.c_str());
-		//CCDirector::sharedDirector()->getContentScaleFactor();
 		sCard->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
 		sCard->setTag(122);
 		sCard->setPosition(ccp(2,0));
@@ -232,11 +231,6 @@ CCTableViewCell* MainInnerLayer::tableCellAtIndex(CCTableView *table, unsigned i
         sCard->setTexture(tex);
         sCard->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
         
-//		sCard->setDisplayFrame(CCSpriteFrame::create(strCardHeadImg.c_str(),CCRect(0,0,126,126)));
-		//if (GlobalData::factor!=1.0)
-		//{
-		//	sCard->setScale(GlobalData::factor);
-		//}
 		sCard->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
         //sCard->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardHeadName.c_str()));
 	}

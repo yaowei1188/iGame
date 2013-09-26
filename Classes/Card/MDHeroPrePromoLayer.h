@@ -42,6 +42,8 @@ public:
 
 	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
     void showTaskInfo();
+
+	void setCardInfo(CCDictionary *dict);
     
 private:
 	unsigned int selectedindex;
@@ -54,9 +56,9 @@ private:
     CCLabelTTF *m_lblAftQuality;
     CCLabelTTF *m_lblCardName;
     
-    CCLabelTTF *m_lblRank;
-    CCLabelTTF *m_lbExp;
-    CCLabelTTF *m_lbHP;
+    CCLabelTTF *m_lblLevel;
+    CCLabelTTF *m_lblExp;
+    CCLabelTTF *m_lblHp;
     CCLabelTTF *m_lblAttack;
     CCLabelTTF *m_lblDefence;
     CCLabelTTF *m_lblSuper;

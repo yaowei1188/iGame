@@ -123,7 +123,6 @@ void MainGameScene::menuItemClickedCallBack(CCMenuItem *pItem)
     if (MENUBAR_HERO_TAG == intSelectedMenu) {
         if ((CCLayer *)mlayArray->objectAtIndex(0)==mMainInnerLayer) {
             number = 2;
-            //mMainInnerLayer->showTooBar(false);
         }
     }
     
@@ -184,7 +183,11 @@ void MainGameScene::PopToNLayer(int nLayer)
 
     if (layer->getUserObject()!= NULL && layer->getUserObject()==mMainInnerLayer) {
         mMainInnerLayer->setPosition(ccp(-320, layer->getPosition().y));
-		mMainInnerLayer->showTooBar(true);
+		if (MENUBAR_HERO_TAG == intSelectedMenu) {
+			mMainInnerLayer->showTooBar(false);
+		} else {
+			mMainInnerLayer->showTooBar(true);
+		}
         this->addChild(mMainInnerLayer);
         mMainInnerLayer->runAction(CCMoveTo::create(0.2, ccp(0,layer->getPosition().y)));
     }

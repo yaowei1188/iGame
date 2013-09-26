@@ -91,9 +91,9 @@ bool MDHeroPrePromoLayer::onAssignCCBMemberVariable(CCObject* pTarget, const cha
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAftQuality", CCLabelTTF*, this->m_lblAftQuality);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblCardName", CCLabelTTF*, this->m_lblCardName);
     
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblRank", CCLabelTTF*, this->m_lblRank);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lbExp", CCLabelTTF*, this->m_lbExp);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lbHP", CCLabelTTF*, this->m_lbHP);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblRank", CCLabelTTF*, this->m_lblLevel);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lbExp", CCLabelTTF*, this->m_lblExp);
+    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lbHP", CCLabelTTF*, this->m_lblHp);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAttack", CCLabelTTF*, this->m_lblAttack);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblDefence", CCLabelTTF*, this->m_lblDefence);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblSuper", CCLabelTTF*, this->m_lblSuper);
@@ -105,8 +105,8 @@ bool MDHeroPrePromoLayer::onAssignCCBMemberVariable(CCObject* pTarget, const cha
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAftDefence", CCLabelTTF*, this->m_lblAftDefence);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_lblAftSuper", CCLabelTTF*, this->m_lblAftSuper);
 
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCardBefore", CCSprite*, this->m_sCardBefore);
-    CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCardAfter", CCSprite*, this->m_sCardAfter);
+    //CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCardBefore", CCSprite*, this->m_sCardBefore);
+    //CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "m_sCardAfter", CCSprite*, this->m_sCardAfter);
 	return true;
 }
 
@@ -125,28 +125,82 @@ void MDHeroPrePromoLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoade
 {
     this->setFntTitle(101);
     this->setFntTitle(102);
-    
-    CCSize bgSize = m_sCardBefore->getContentSize();
+}
 
-    std::string strGroup = determineGroup(CCString::create("1"));
-    CCSprite *sCardGroupBefore = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strGroup.c_str()));
-    sCardGroupBefore->setAnchorPoint(ccp(1,1));
-    sCardGroupBefore->setPosition(ccp(bgSize.width - 5,bgSize.height - 10));
-    m_sCardBefore->addChild(sCardGroupBefore);
+void MDHeroPrePromoLayer::setCardInfo(CCDictionary *dict)
+{
+	int intLevel = ((CCString *)dict->objectForKey("beginGrade"))->intValue();
+	string strLevelImg("Card_Level");
+	strLevelImg.append(IntToString(intLevel));
+	strLevelImg.append(".png");
+	m_sCardBefore = CCSprite::create(strLevelImg.c_str());
+	m_sCardBefore->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
+	m_sCardBefore->setPosition(ccp(82,247));
+	this->addChild(m_sCardBefore);
 
-    CCSprite *sPeopleBefore = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("character_rulaifo.png"));
-    sPeopleBefore->setPosition(ccp(bgSize.width * 0.5,bgSize.height * 0.5));
-    m_sCardBefore->addChild(sPeopleBefore);
+	CCSize bgSize = m_sCardBefore->getContentSize();
 
-    CCSprite *sCardGroupAfter = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strGroup.c_str()));
-    sCardGroupAfter->setAnchorPoint(ccp(1,1));
-    sCardGroupAfter->setPosition(ccp(bgSize.width - 5,bgSize.height - 10));
-    m_sCardAfter->addChild(sCardGroupAfter);
+	string strLevelImg1("Card_Level");
+	strLevelImg1.append(IntToString(intLevel+1));
+	strLevelImg1.append(".png");
+	m_sCardAfter = CCSprite::create(strLevelImg1.c_str());
+	m_sCardAfter->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
+	m_sCardAfter->setPosition(ccp(238,247));
+	this->addChild(m_sCardAfter);
 
-    CCSprite *sPeopleAfter = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("character_rulaifo.png"));
-    sPeopleAfter->setPosition(ccp(bgSize.width * 0.5,bgSize.height * 0.5));
-    m_sCardAfter->addChild(sPeopleAfter);
+	CCString *strGroupId = (CCString *)dict->objectForKey("game_group_id");
+	std::string strGroup = determineGroup(strGroupId);
+	CCSprite *sCardGroupBefore = CCSprite::createWithSpriteFrameName(strGroup.c_str());
+	sCardGroupBefore->setAnchorPoint(ccp(1,1));
+	sCardGroupBefore->setPosition(ccp(bgSize.width - 5,bgSize.height - 10));
+	m_sCardBefore->addChild(sCardGroupBefore);
 
+	std::string strCardImg("art/art_profile/");
+	strCardImg.append(((CCString *)dict->objectForKey("cardProfileImg"))->getCString());
+	strCardImg.append(".png");
+
+	CCSprite *sPeopleBefore = CCSprite::create(strCardImg.c_str());
+	sPeopleBefore->setPosition(ccp(bgSize.width * 0.5,bgSize.height * 0.5));
+	//sPeopleBefore->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
+	m_sCardBefore->addChild(sPeopleBefore);
+
+
+	//m_sCardAfter->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
+
+	CCSprite *sCardGroupAfter = CCSprite::createWithSpriteFrameName(strGroup.c_str());
+	sCardGroupAfter->setAnchorPoint(ccp(1,1));
+	sCardGroupAfter->setPosition(ccp(bgSize.width - 5,bgSize.height - 10));
+	m_sCardAfter->addChild(sCardGroupAfter);
+
+	CCSprite *sPeopleAfter = CCSprite::create(strCardImg.c_str());
+	sPeopleAfter->setPosition(ccp(bgSize.width * 0.5,bgSize.height * 0.5));
+	//sPeopleAfter->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
+	m_sCardAfter->addChild(sPeopleAfter);
+
+	m_lblCardName->setString(((CCString *)dict->objectForKey("roleName"))->getCString());
+	m_lblCardName->enableStroke(ccc3(45, 1, 2), 0.6);
+
+	std::string strLevel("LV.");
+	strLevel.append(IntToString(((CCString *)dict->objectForKey("beginGrade"))->intValue()));
+	m_lblLevel->setColor(ccc3(242, 179, 20));
+	m_lblLevel->enableStroke(ccc3(51, 1, 4), 0.3);
+	m_lblLevel->setString(strLevel.c_str());
+
+	m_lblHp->setString(IntToString(((CCString *)dict->objectForKey("blood"))->intValue()).c_str());
+
+	m_lblDefence->setString(IntToString(((CCString *)dict->objectForKey("defence"))->intValue()).c_str());
+	m_lblDefence->enableStroke(ccc3(45, 1, 2), 0.2);
+
+	m_lblAttack->setString(IntToString(((CCString *)dict->objectForKey("attack"))->intValue()).c_str());
+	m_lblAttack->enableStroke(ccc3(45, 1, 2), 0.2);
+
+	float fltCrit = ((CCString *)dict->objectForKey("crit"))->floatValue();
+	string _critStr("+");
+	_critStr.append(floatToPercent(fltCrit).c_str());
+	m_lblSuper->setString(_critStr.c_str());
+	//float fltDodge = ((CCString *)dict->objectForKey("dodge"))->floatValue();
+	//m_lblAvoid->setString(floatToPercent(fltDodge).c_str());
+	//m_lblAvoid->enableStroke(ccc3(45, 1, 2), 0.3);
 }
 
 void MDHeroPrePromoLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
@@ -176,9 +230,9 @@ MDHeroPrePromoLayer::MDHeroPrePromoLayer()
     m_lblAftQuality = NULL;
     m_lblCardName = NULL;
     
-    m_lblRank = NULL;
-    m_lbExp = NULL;
-    m_lbHP = NULL;
+    m_lblLevel = NULL;
+    m_lblExp = NULL;
+    m_lblHp = NULL;
     m_lblAttack = NULL;
     m_lblDefence = NULL;
     m_lblSuper = NULL;
@@ -200,9 +254,9 @@ MDHeroPrePromoLayer::~MDHeroPrePromoLayer()
     CC_SAFE_RELEASE(m_lblAftQuality);
     CC_SAFE_RELEASE(m_lblCardName);
     
-    CC_SAFE_RELEASE(m_lblRank);
-    CC_SAFE_RELEASE(m_lbExp);
-    CC_SAFE_RELEASE(m_lbHP);
+    CC_SAFE_RELEASE(m_lblLevel);
+    CC_SAFE_RELEASE(m_lblExp);
+    CC_SAFE_RELEASE(m_lblHp);
     CC_SAFE_RELEASE(m_lblAttack);
     CC_SAFE_RELEASE(m_lblDefence);
     CC_SAFE_RELEASE(m_lblSuper);

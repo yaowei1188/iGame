@@ -200,8 +200,7 @@ void MDHeroListLayer::tableCellTouched(CCTableView* table, CCTableViewCell* cell
 	MDHeroDetailLayer *detailLayer = (MDHeroDetailLayer *)this->GetLayer("MDHeroDetailLayer");
 
 	CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(cell->getIdx());
-	detailLayer->setDictHero(dict);
-	detailLayer->setHeroInfo();
+	detailLayer->setCardInfo(dict);
 
     mainScene->PushLayer(detailLayer);
 }
@@ -223,13 +222,15 @@ CCSize MDHeroListLayer::tableCellSizeForIndex(CCTableView *table, unsigned int i
 
 CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
-//    bool selected = (idx==selectedindex);
-
 	CCDictionary *dict = (CCDictionary *)mHeroList->objectAtIndex(idx);
     
     std::string strCardHeadImg("art/art_head1/");
 	strCardHeadImg.append(((CCString *)dict->objectForKey("cardHeadImg"))->getCString());
 	strCardHeadImg.append(".png");
+
+	string strName = ((CCString *)dict->objectForKey("roleName"))->getCString();
+	string strLevel = string("LV. ") + IntToString(((CCString *)dict->objectForKey("beginGrade"))->intValue());
+	string strStartGrade = string("card_l_star") + IntToString(((CCString *)dict->objectForKey("starGrade"))->intValue()) + string(".png");
 
 	CCTableViewCell *cell = table->dequeueCell();
     CCSize size = this->tableCellSizeForIndex(table, idx);
@@ -246,11 +247,12 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
         
         CCSprite *sHead = CCSprite::create(strCardHeadImg.c_str());
         sHead->setTag(122);
+		sHead->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
         sHead->setPosition(ccp(10,size.height * 0.5));
 		sHead->setAnchorPoint(ccp(0, 0.5));
 		cell->addChild(sHead);
 
-		CCLabelTTF *lblName = CCLabelTTF::create("rulaifo", FONT_VERDANA, FONT_SIZE_BIG);
+		CCLabelTTF *lblName = CCLabelTTF::create(strName.c_str(), FONT_VERDANA, FONT_SIZE_BIG);
 		lblName->setPosition(ccp(80,size.height - CELL_ITEMS_Y));
 		lblName->setAnchorPoint(ccp(0, 0.5));
         lblName->setColor(ccc3(235, 234, 181));
@@ -258,7 +260,7 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
 		lblName->setTag(123);
 		cell->addChild(lblName);
 
-		CCLabelTTF *lblLevel = CCLabelTTF::create("LV. 3", FONT_VERDANA, FONT_SIZE_MEDIUM);
+		CCLabelTTF *lblLevel = CCLabelTTF::create(strLevel.c_str(), FONT_VERDANA, FONT_SIZE_MEDIUM);
 		lblLevel->setPosition(ccp(80,size.height - 2 * CELL_ITEMS_Y));
 		lblLevel->setAnchorPoint(ccp(0, 0.5));
         lblLevel->setColor(ccc3(235, 234, 181));
@@ -278,9 +280,9 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
 			point = ccp(170 ,size.height * 0.5);
 		}
 
-        CCSprite *sStarGrade = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("card_l_star5.png"));
+        CCSprite *sStarGrade = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strStartGrade.c_str()));
         sStarGrade->setPosition(point);
-		lblLevel->setTag(125);
+		sStarGrade->setTag(125);
         sStarGrade->setAnchorPoint(ccp(0, 0.5));
         cell->addChild(sStarGrade);
 
@@ -314,14 +316,17 @@ CCTableViewCell* MDHeroListLayer::tableCellAtIndex(CCTableView *table, unsigned 
         CCSprite *sHead = (CCSprite*)cell->getChildByTag(122);
         CCTexture2D* tex = CCTextureCache::sharedTextureCache()->addImage(strCardHeadImg.c_str());
         sHead->setTexture(tex);
+		sHead->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
 //		sHead->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strCardHeadName.c_str()));
         
 		CCLabelTTF *lblName = (CCLabelTTF*)cell->getChildByTag(123);
-		lblName->setString("weiweiyao");
+		lblName->setString(strName.c_str());
         
         CCLabelTTF *lblLevel = (CCLabelTTF*)cell->getChildByTag(124);
-		//lblLevel->setString(string->getCString());
-        
+		lblLevel->setString(strLevel.c_str());
+
+		CCSprite *sStarGrade = (CCSprite*)cell->getChildByTag(125);
+        sStarGrade->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strStartGrade.c_str()));
 //        CCScale9Sprite *background = (CCScale9Sprite *)cell->getChildByTag(121);
 //        background->setContentSize(size);
 

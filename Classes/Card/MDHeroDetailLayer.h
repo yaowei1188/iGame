@@ -44,11 +44,12 @@ public:
 	void buttonClicked(CCObject * sender , CCControlEvent controlEvent);
     void doPromotion();
     void menuItemCallback(CCObject* pSender);
-	void setHeroInfo();
+	void setCardInfo(CCDictionary *dict);
 private:
 	unsigned int selectedindex;
     CCSprite *m_sCard;
 	CCDictionary *mTaskList;
+	CCDictionary *mCardInfo;
     
     CCLabelTTF *m_lblLevel;
     CCLabelTTF *m_lblCardName;

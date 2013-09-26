@@ -172,7 +172,7 @@ void MDHerosFormationLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoa
 			sCard->setAnchorPoint(ccp(0.5,1));
 			sCard->setTag(101);
 			sCard->setPosition(ccp(spriteSize.width * 0.5,spriteSize.height - 25));
-			sCard->setScale(0.71);
+			sCard->setScale(0.71 * CCDirector::sharedDirector()->getContentScaleFactor()/2);
 
 			std::string _attackStr(LITERAL_STRING_ATTACK);
 			_attackStr.append("+").append(strAttak->getCString()).append(LITERAL_STRING_POINT);

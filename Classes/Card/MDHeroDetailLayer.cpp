@@ -1,4 +1,5 @@
 #include "MDHeroDetailLayer.h"
+#include "MDHeroPrePromoLayer.h"
 
 #define TASK_COLUMN  3
 #define TASK_ROW  3
@@ -44,8 +45,9 @@ bool MDHeroDetailLayer::init()
 void MDHeroDetailLayer::doPromotion()
 {
     MainGameScene *mainScene = (MainGameScene *)this->getParent();
-    mainScene->PushLayer((CCLayer *)this->GetLayer("MDHeroPrePromoLayer"));
-    
+	MDHeroPrePromoLayer *prePromoLayer = (MDHeroPrePromoLayer *)this->GetLayer("MDHeroPrePromoLayer");
+    mainScene->PushLayer(prePromoLayer);
+    prePromoLayer->setCardInfo(mCardInfo);
 //	this->ShowLoadingIndicator("");
 //
 //	CCHttpRequest *request = new CCHttpRequest();
@@ -130,12 +132,15 @@ void MDHeroDetailLayer::onNodeLoaded(CCNode * pNode, CCNodeLoader * pNodeLoader)
 
 }
 
-void MDHeroDetailLayer::setHeroInfo()
+void MDHeroDetailLayer::setCardInfo(CCDictionary *dict)
 {
+	mCardInfo = dict;
+
 	CCSize bgSize = m_sCard->getContentSize();
 
-	std::string strGroup = determineGroup(CCString::create("1"));
-	CCSprite *sCardGroup = CCSprite::createWithSpriteFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(strGroup.c_str()));
+	CCString *strGroupId = (CCString *)dict->objectForKey("game_group_id");
+	std::string strGroup = determineGroup(strGroupId);
+	CCSprite *sCardGroup = CCSprite::createWithSpriteFrameName(strGroup.c_str());
 	sCardGroup->setAnchorPoint(ccp(1,1));
 	sCardGroup->setPosition(ccp(bgSize.width - 5,bgSize.height - 10));
 	m_sCard->addChild(sCardGroup);
@@ -144,14 +149,36 @@ void MDHeroDetailLayer::setHeroInfo()
 	//strCardImg.append(".png");
 
 	std::string strCardImg("art/art_profile/");
-	strCardImg.append(((CCString *)m_dictHero->objectForKey("cardProfileImg"))->getCString());
+	strCardImg.append(((CCString *)dict->objectForKey("cardProfileImg"))->getCString());
 	strCardImg.append(".png");
 
     CCSprite *sPeople = CCSprite::create(strCardImg.c_str());
-	sPeople->setPosition(ccp(bgSize.width * 0.5,bgSize.height * 0.5));
+	sPeople->setPosition(ccp(bgSize.width * 0.5,bgSize.height * 0.5 + 62));
+	sPeople->setScale(CCDirector::sharedDirector()->getContentScaleFactor()/2);
 	m_sCard->addChild(sPeople);
 
-	m_lblDesc->setColor(ccc3(0, 255, 0));
+	m_lblDesc->setColor(ccc3(51, 52, 50));
+	m_lblDesc->setString(((CCString *)dict->objectForKey("roleDescription"))->getCString());
+
+	std::string strLevel("LV.");
+	strLevel.append(IntToString(((CCString *)dict->objectForKey("beginGrade"))->intValue()));
+	m_lblLevel->setColor(ccc3(242, 179, 20));
+	m_lblLevel->enableStroke(ccc3(51, 1, 4), 0.3);
+	m_lblLevel->setString(strLevel.c_str());
+
+	m_lblCardName->setString(((CCString *)dict->objectForKey("roleName"))->getCString());
+	m_lblCardName->enableStroke(ccc3(45, 1, 2), 0.6);
+
+	m_lblHp->setString(IntToString(((CCString *)dict->objectForKey("blood"))->intValue()).c_str());
+	float fltDefence = ((CCString *)dict->objectForKey("defence"))->floatValue();
+	m_lblDefence->setString(floatToPercent(fltDefence).c_str());
+
+	m_lblAttack->setString(IntToString(((CCString *)dict->objectForKey("attack"))->intValue()).c_str());
+	m_lblAttack->enableStroke(ccc3(45, 1, 2), 0.2);
+
+	float fltDodge = ((CCString *)dict->objectForKey("dodge"))->floatValue();
+	m_lblAvoid->setString(floatToPercent(fltDodge).c_str());
+	m_lblAvoid->enableStroke(ccc3(45, 1, 2), 0.3);
 }
 
 void MDHeroDetailLayer::buttonClicked(CCObject * sender , CCControlEvent controlEvent)
