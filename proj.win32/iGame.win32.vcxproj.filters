@@ -1114,9 +1114,6 @@
     <None Include="..\Resources\particle\e0.plist">
       <Filter>Resources\particle</Filter>
     </None>
-    <None Include="..\Resources\di.jpg">
-      <Filter>Resources</Filter>
-    </None>
     <None Include="..\Resources\Image\art_head.plist">
       <Filter>Resources\Image</Filter>
     </None>
@@ -1362,6 +1359,9 @@
     </None>
     <None Include="..\Resources\art\art_head\yg039_0.png">
       <Filter>Resources\art\art_head</Filter>
+    </None>
+    <None Include="..\Resources\sword.jpg">
+      <Filter>Resources</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

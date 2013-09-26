@@ -295,7 +295,6 @@
     <None Include="..\Resources\Card_Level9.png" />
     <None Include="..\Resources\data\card.s3db" />
     <None Include="..\Resources\Default.png" />
-    <None Include="..\Resources\di.jpg" />
     <None Include="..\Resources\font\JDJYCHAO.TTF" />
     <None Include="..\Resources\font\Marker Felt.ttf" />
     <None Include="..\Resources\font\resources-iphonehd\btn.fnt" />
@@ -531,6 +530,7 @@
     <None Include="..\Resources\sound\battleAttack3.mp3" />
     <None Include="..\Resources\sound\menu1.wav" />
     <None Include="..\Resources\sound\menu2.wav" />
+    <None Include="..\Resources\sword.jpg" />
     <None Include="..\Resources\Task\Card1.plist" />
     <None Include="..\Resources\Task\Formation.plist" />
     <None Include="..\Resources\Task\Task1.plist" />
