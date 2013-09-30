@@ -773,7 +773,7 @@
 						<key>value</key>
 						<array>
 							<real>97</real>
-							<real>102</real>
+							<real>101</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1029,7 +1029,7 @@
 						<key>value</key>
 						<array>
 							<real>81</real>
-							<real>132</real>
+							<real>133</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1157,7 +1157,7 @@
 						<key>value</key>
 						<array>
 							<real>81</real>
-							<real>117</real>
+							<real>116</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1540,7 +1540,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>57</real>
+							<real>56</real>
 							<real>84</real>
 							<integer>0</integer>
 						</array>
@@ -1924,8 +1924,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>97</real>
-							<real>84</real>
+							<real>96</real>
+							<real>83</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2552,7 +2552,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>250</real>
+							<real>249</real>
 							<real>102</real>
 							<integer>0</integer>
 						</array>
@@ -2657,6 +2657,8 @@
 						<string>攻:</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -2936,8 +2938,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>234</real>
-							<real>130</real>
+							<real>235</real>
+							<real>133</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3064,8 +3066,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>234</real>
-							<real>117</real>
+							<real>235</real>
+							<real>118</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3193,7 +3195,7 @@
 						<key>value</key>
 						<array>
 							<real>216</real>
-							<real>102</real>
+							<real>103</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3320,8 +3322,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>287</real>
-							<real>102</real>
+							<real>283</real>
+							<real>103</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3449,7 +3451,7 @@
 						<key>value</key>
 						<array>
 							<real>216</real>
-							<real>84</real>
+							<real>85</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3576,7 +3578,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>287</real>
+							<real>283</real>
 							<real>84</real>
 							<integer>0</integer>
 						</array>
@@ -4113,152 +4115,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
-			</dict>
-			<dict>
-				<key>baseClass</key>
-				<string>CCSprite</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string></string>
-				<key>displayName</key>
-				<string>CCSprite</string>
-				<key>memberVarAssignmentName</key>
-				<string>m_sCardBefore</string>
-				<key>memberVarAssignmentType</key>
-				<integer>1</integer>
-				<key>properties</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>82</real>
-							<real>247</real>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>anchorPoint</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.5</real>
-							<real>0.5</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>scale</string>
-						<key>type</key>
-						<string>ScaleLock</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<false/>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>ignoreAnchorPointForPosition</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>displayFrame</string>
-						<key>type</key>
-						<string>SpriteFrame</string>
-						<key>value</key>
-						<array>
-							<string>Image/main.plist</string>
-							<string>Card_Level1.png</string>
-						</array>
-					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>baseClass</key>
-				<string>CCSprite</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string></string>
-				<key>displayName</key>
-				<string>CCSprite</string>
-				<key>memberVarAssignmentName</key>
-				<string>m_sCardAfter</string>
-				<key>memberVarAssignmentType</key>
-				<integer>1</integer>
-				<key>properties</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>238</real>
-							<real>247</real>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>anchorPoint</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.5</real>
-							<real>0.5</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>scale</string>
-						<key>type</key>
-						<string>ScaleLock</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<false/>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>ignoreAnchorPointForPosition</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>displayFrame</string>
-						<key>type</key>
-						<string>SpriteFrame</string>
-						<key>value</key>
-						<array>
-							<string>Image/main.plist</string>
-							<string>Card_Level2.png</string>
-						</array>
-					</dict>
-				</array>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -4327,6 +4183,16 @@
 			</dict>
 			<dict>
 				<key>name</key>
+				<string>accelerometerEnabled</string>
+				<key>platform</key>
+				<string>iOS</string>
+				<key>type</key>
+				<string>Check</string>
+				<key>value</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>mouseEnabled</string>
 				<key>platform</key>
 				<string>Mac</string>
@@ -4334,6 +4200,16 @@
 				<string>Check</string>
 				<key>value</key>
 				<true/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>keyboardEnabled</string>
+				<key>platform</key>
+				<string>Mac</string>
+				<key>type</key>
+				<string>Check</string>
+				<key>value</key>
+				<false/>
 			</dict>
 		</array>
 	</dict>

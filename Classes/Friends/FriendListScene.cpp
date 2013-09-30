@@ -472,6 +472,6 @@ FriendListScene::~FriendListScene()
     //CC_SAFE_RELEASE(mTableViewFriend);
     CC_SAFE_RELEASE(m_lblFriendCount);
 
-	CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("friends.plist");
+	//CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("friends.plist");
 }
 
